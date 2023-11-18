@@ -1,0 +1,74 @@
+:root {
+    --size-4x: 0.8rem;
+    --size-6x: 1.2rem;
+    --size-8x: 1.6rem;
+
+    /* Colors */
+    --neutral-100: #fff;
+    --neutral-200: #F6F2F8;
+    --neutral-900: #333;
+    --text-300: #888;
+    --text-500: #000;
+    --dangerous-500: #E20102;
+}
+
+/* TODO Вынести в отдельный файл */
+
+.input {
+    display: flex;
+    width: 100%;
+    border: 0.1rem solid #888; /* TODO обсудить с дизайном */
+    border-radius: var(--size-4x);
+    overflow: hidden;
+}
+
+.input__inner {
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 2.2rem;
+    color: var(--text-500);
+    background: var(--neutral-100);
+    padding: var(--size-6x) var(--size-8x);
+    border: none;
+}
+
+.input__inner:placeholder-shown {
+    color: var(--text-300);
+}
+
+.input__inner:focus {
+    outline: none;
+    background: var(--neutral-200);
+}
+
+.input:focus-within {
+    outline: 0.1rem solid blue;
+    outline-offset: 0.1rem;
+}
+
+.input:hover:not(.input_disabled) {
+    border-color: var(--neutral-900);
+}
+
+.input_disabled {
+    border-color: var(--text-300);
+}
+
+.input__inner:disabled,
+.input_disabled .input__inner {
+    color: var(--text-300);
+    background: var(--neutral-200);
+    cursor: not-allowed;
+}
+
+.input_error {
+    border-color: var(--dangerous-500);
+}
+
+.input_error .input__inner {
+    color: var(--dangerous-500);
+}

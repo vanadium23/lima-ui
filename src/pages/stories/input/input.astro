@@ -1,0 +1,9 @@
+---
+import StorybookPage from '../../../layouts/storybook/storybook.astro';
+import {BasicInput} from '../../../components/input/input.tsx';
+---
+
+<StorybookPage title="Input">
+    <BasicInput type={"text"} isError={false} isDisabled={true} placeholder="Enter text..." maxLength={10}
+                isRequired={true}/>
+</StorybookPage>
