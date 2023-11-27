@@ -1,6 +1,5 @@
 import type {Component} from 'solid-js';
-import './input.css'
-import clsx from "clsx";
+import './basicInput.css'
 
 type InputProps = {
     isError: boolean;
@@ -13,10 +12,8 @@ type InputProps = {
 }
 
 export const BasicInput: Component<InputProps> = (props) => {
-    const inputClass = clsx("input", {input_error: props.isError, input_disabled: props.isDisabled});
-
     return (
-        <div class={inputClass}>
+        <div class="input" classList={{input_error: props.isError, input_disabled: props.isDisabled}}>
             <input type={props.type} class="input__inner" disabled={props.isDisabled} maxlength={props.maxLength}
                    placeholder={props.placeholder} required={props.isRequired} readonly={props.isReadonly}/>
         </div>
