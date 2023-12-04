@@ -1,0 +1,103 @@
+.button {
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  flex-wrap: nowrap;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  border-radius: 1rem;
+  gap: 1rem;
+}
+
+.button_small {
+  font-size: 1.2rem;
+  line-height: 1.2;
+  min-width: 8.2rem;
+  height: var(--size-15x);
+  padding: var(--size-3x) var(--size-8x);
+}
+
+.button_medium {
+  font-size: 1.6rem;
+  line-height: 2rem;
+  min-width: 9rem;
+  height: var(--size-16x);
+  padding: var(--size-3x) var(--size-9x);
+}
+
+.button_large {
+  font-size: 1.8rem;
+  line-height: 2.2rem;
+  min-width: 9.6rem;
+  height: var(--size-17x);
+  padding: var(--size-3x) var(--size-10x);
+}
+
+.button_primary {
+  color: var(--text-100);
+  background: var(--primary-500);
+  fill: var(--text-100);
+}
+
+.button_primary:hover:not(:disabled, .button_disabled, .button_loading) {
+  background: var(--primary-400);
+}
+
+.button_primary:active:not(:disabled, .button_disabled, .button_loading) {
+  transform: translateY(0.1rem);
+  background: var(--primary-800);
+}
+
+.button_secondary {
+  color: var(--text-400);
+  background: var(--secondary-500);
+  fill: var(--text-400);
+}
+
+.button_secondary:hover:not(:disabled, .button_disabled, .button_loading) {
+  background: var(--secondary-400);
+}
+
+.button_secondary:active:not(:disabled, .button_disabled, .button_loading) {
+  transform: translateY(0.1rem);
+  background: var(--secondary-600);
+}
+
+.button_dangerous {
+  color: var(--text-100);
+  background: var(--dangerous-500);
+  fill: var(--text-100);
+}
+
+.button_dangerous:hover:not(:disabled, .button_disabled, .button_loading) {
+  background: var(--dangerous-400);
+}
+
+.button_dangerous:active:not(:disabled, .button_disabled, .button_loading) {
+  transform: translateY(0.1rem);
+  background: var(--dangerous-600);
+}
+
+.button:disabled,
+.button_disabled {
+  cursor: not-allowed;
+  color: var(--text-100);
+  background: var(--neutral-300);
+}
+
+.button:focus-visible {
+  outline: var(--outline);
+  outline-offset: var(--outline-offset);
+}
+
+.button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.button_loading {
+  cursor: wait;
+}
+
+

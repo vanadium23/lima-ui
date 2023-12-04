@@ -1,0 +1,96 @@
+---
+import StorybookPage from '../../../layouts/storybook/storybook.astro';
+import {Button} from '../../../components/button/button.tsx';
+---
+
+<StorybookPage title="Button">
+
+    <h2 id="main-button-link">Button</h2>
+
+    <div class="demoThemeWrapper">
+        <h3 style="font-size: 24px; margin-bottom: 10px;">Primary</h3>
+        <div class="grid grid_3Col">
+            <span class="chead"/>
+            <span class="chead">Default</span>
+            <span class="chead">Loading</span>
+            <span class="chead">Disabled</span>
+
+            <span class="rhead">Small</span>
+
+            <Button client:only="solid-js" theme="primary" size="small" text="Text"/>
+            <Button client:only="solid-js" theme="primary" size="small" text="Text" isLoading={true}/>
+            <Button client:only="solid-js" theme="primary" size="small" text="Text" isDisabled={true}/>
+
+            <span class="rhead">Medium</span>
+
+            <Button client:only="solid-js" theme="primary" size="medium" text="Text"/>
+            <Button client:only="solid-js" theme="primary" size="medium" text="Text" isLoading={true}/>
+            <Button client:only="solid-js" theme="primary" size="medium" text="Text" isDisabled={true}/>
+
+            <span class="rhead">Large</span>
+
+            <Button client:only="solid-js" theme="primary" size="large" text="Text"/>
+            <Button client:only="solid-js" theme="primary" size="large" text="Text" isLoading={true}/>
+            <Button client:only="solid-js" theme="primary" size="large" text="Text" isDisabled={true}/>
+        </div>
+    </div>
+
+    <div class="demoThemeWrapper">
+        <h3 style="font-size: 24px; margin-bottom: 10px;">Secondary</h3>
+        <div class="grid grid_3Col">
+            <span class="chead"/>
+            <span class="chead">Default</span>
+            <span class="chead">Loading</span>
+            <span class="chead">Disabled</span>
+
+            <span class="rhead">Small</span>
+
+            <Button client:only="solid-js" theme="secondary" size="small" text="Text"/>
+            <Button client:only="solid-js" theme="secondary" size="small" text="Text" isLoading={true}/>
+            <Button client:only="solid-js" theme="secondary" size="small" text="Text" isDisabled={true}/>
+
+            <span class="rhead">Medium</span>
+
+            <Button client:only="solid-js" theme="secondary" size="medium" text="Text"/>
+            <Button client:only="solid-js" theme="secondary" size="medium" text="Text" isLoading={true}/>
+            <Button client:only="solid-js" theme="secondary" size="medium" text="Text" isDisabled={true}/>
+
+            <span class="rhead">Large</span>
+
+            <Button client:only="solid-js" theme="secondary" size="large" text="Text"/>
+            <Button client:only="solid-js" theme="secondary" size="large" text="Text" isLoading={true}/>
+            <Button client:only="solid-js" theme="secondary" size="large" text="Text" isDisabled={true}/>
+
+        </div>
+    </div>
+
+    <div class="demoThemeWrapper">
+        <h3 style="font-size: 24px; margin-bottom: 10px;">Dangerous</h3>
+        <div class="grid grid_3Col">
+            <span class="chead"/>
+            <span class="chead">Default</span>
+            <span class="chead">Loading</span>
+            <span class="chead">Disabled</span>
+
+            <span class="rhead">Small</span>
+
+            <Button client:only="solid-js" theme="dangerous" size="small" text="Text"/>
+            <Button client:only="solid-js" theme="dangerous" size="small" text="Text" isLoading={true}/>
+            <Button client:only="solid-js" theme="dangerous" size="small" text="Text" isDisabled={true}/>
+
+            <span class="rhead">Medium</span>
+
+            <Button client:only="solid-js" theme="dangerous" size="medium" text="Text"/>
+            <Button client:only="solid-js" theme="dangerous" size="medium" text="Text" isLoading={true}/>
+            <Button client:only="solid-js" theme="dangerous" size="medium" text="Text" isDisabled={true}/>
+
+            <span class="rhead">Large</span>
+
+            <Button client:only="solid-js" theme="dangerous" size="large" text="Text"/>
+            <Button client:only="solid-js" theme="dangerous" size="large" text="Text" isLoading={true}/>
+            <Button client:only="solid-js" theme="dangerous" size="large" text="Text" isDisabled={true}/>
+
+        </div>
+    </div>
+
+</StorybookPage>
