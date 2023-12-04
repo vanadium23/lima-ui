@@ -8,7 +8,7 @@
       }
     ],
     "selector-class-pattern": [
-      "^[a-z]([A-Z]?[a-z0-9])*(__[a-z]([A-Z]?[a-z0-9])+)?(_[a-z]([A-Z]?[a-z0-9])+)?$",
+      "^[a-z]([A-Z]?[a-z0-9])*(__[\\da-z]([A-Z]?[a-z0-9])+)?(_[\\da-z]([A-Z]?[a-z0-9])+)?$",
       {
         "message": "Expected CSS-class to follow camelCase BEM variant: .blockName__elementName_modificatorName."
       }
