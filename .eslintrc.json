@@ -6,7 +6,6 @@
     "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
-        "plugin:solid/typescript",
         "plugin:astro/recommended"
     ],
     "parser": "@typescript-eslint/parser",
@@ -15,8 +14,7 @@
         "sourceType": "module"
     },
     "plugins": [
-        "@typescript-eslint",
-        "solid"
+        "@typescript-eslint"
     ],
     "overrides": [
         {
@@ -30,6 +28,18 @@
                     ".astro"
                 ]
             }
+        },
+        {
+            "files": [
+                "*.tsx"
+            ],
+            "extends": [
+                "plugin:solid/typescript"
+            ],
+            "plugins": [
+                "@typescript-eslint",
+                "solid"
+            ]
         }
     ]
 }
