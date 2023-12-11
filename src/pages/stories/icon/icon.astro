@@ -1,0 +1,27 @@
+---
+import StorybookPage from '../../../layouts/storybook/storybook.astro';
+import {Icon} from '../../../components/icon/icon.tsx';
+---
+
+<StorybookPage title="Icon">
+
+
+    <h2 id="main-button-link">Icon Button</h2>
+
+    <div class="demoThemeWrapper">
+        <h3 style="font-size: 24px; margin-bottom: 10px;">Primary</h3>
+        <h4 style="font-size: 18px; margin-bottom: 5px;">Large</h4>
+        <div class="grid grid_3Col">
+            <span class="chead"></span>
+            <span class="chead">Default</span>
+            <span class="chead">Disabled</span>
+            <span class="chead">Loading</span>
+            <span class="rhead"></span>
+
+            <Icon client:only="solid-js" type="cross"/>
+
+
+        </div>
+    </div>
+
+</StorybookPage>
