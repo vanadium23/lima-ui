@@ -1,7 +1,13 @@
 ---
 import 'normalize.css';
-import './storybook.css';
+import './storybookPage.css';
 import '../main.css';
+
+interface Props {
+    title: string;
+}
+
+const {title} = Astro.props;
 ---
 
 
@@ -14,7 +20,7 @@ import '../main.css';
     <meta content="#ffffff" name="msapplication-TileColor">
     <meta content="img/favicon/ms-icon-144x144.png" name="msapplication-TileImage">
     <meta content="#ffffff" name="theme-color">
-    <title>Svernik Storybook</title>
+    <title>Svernik - {title}</title>
 </head>
 <body>
 
@@ -39,6 +45,8 @@ import '../main.css';
         <div class="main__wrapper">
 
             <section class="component">
+
+                <h2 id="main-button-link">{title}</h2>
 
                 <slot/>
 
