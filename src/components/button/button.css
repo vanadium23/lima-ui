@@ -6,77 +6,99 @@
   flex-wrap: nowrap;
   justify-content: center;
   cursor: pointer;
-  border: none;
-  border-radius: 1rem;
+  border-width: 0.1rem;
+  border-style: solid;
+  border-radius: var(--size-4x);
   gap: 1rem;
 }
 
 .button_small {
-  font-size: 1.2rem;
-  line-height: 1.2;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
   min-width: 8.2rem;
-  height: var(--size-15x);
-  padding: var(--size-3x) var(--size-8x);
+  height: var(--size-12x);
+  padding: var(--size-1x) var(--size-8x);
 }
 
 .button_medium {
   font-size: 1.6rem;
   line-height: 2rem;
   min-width: 9rem;
-  height: var(--size-16x);
-  padding: var(--size-3x) var(--size-9x);
+  height: var(--size-17x);
+  padding: var(--size-3x) var(--size-8x);
 }
 
 .button_large {
   font-size: 1.8rem;
   line-height: 2.2rem;
-  min-width: 9.6rem;
-  height: var(--size-17x);
-  padding: var(--size-3x) var(--size-10x);
+  min-width: 9.4rem;
+  height: var(--size-20x);
+  padding: var(--size-4x) var(--size-8x);
 }
 
 .button_primary {
   color: var(--text-100);
+  border-color: var(--primary-500);
   background: var(--primary-500);
   fill: var(--text-100);
 }
 
 .button_primary:hover:not(:disabled, .button_disabled, .button_loading) {
+  border-color: var(--primary-400);
   background: var(--primary-400);
 }
 
 .button_primary:active:not(:disabled, .button_disabled, .button_loading) {
-  transform: translateY(0.1rem);
+  border-color: var(--primary-800);
   background: var(--primary-800);
 }
 
 .button_secondary {
+  color: var(--primary-500); /* TODO Переменная не переменная */
+  border-color: var(--primary-500);
+  background: var(--neutral-100);
+  fill: var(--primary-500); /* TODO Переменная не переменная */
+}
+
+.button_secondary:hover:not(:disabled, .button_disabled, .button_loading) {
+  border-color: var(--primary-400);
+}
+
+.button_secondary:active:not(:disabled, .button_disabled, .button_loading) {
+  border-color: var(--primary-800);
+}
+
+.button_successful {
   color: var(--text-400);
+  border-color: var(--secondary-500);
   background: var(--secondary-500);
   fill: var(--text-400);
 }
 
-.button_secondary:hover:not(:disabled, .button_disabled, .button_loading) {
+.button_successful:hover:not(:disabled, .button_disabled, .button_loading) {
+  border-color: var(--secondary-400);
   background: var(--secondary-400);
 }
 
-.button_secondary:active:not(:disabled, .button_disabled, .button_loading) {
-  transform: translateY(0.1rem);
+.button_successful:active:not(:disabled, .button_disabled, .button_loading) {
+  border-color: var(--secondary-600);
   background: var(--secondary-600);
 }
 
 .button_dangerous {
   color: var(--text-100);
+  border-color: var(--dangerous-500);
   background: var(--dangerous-500);
   fill: var(--text-100);
 }
 
 .button_dangerous:hover:not(:disabled, .button_disabled, .button_loading) {
+  border-color: var(--dangerous-400);
   background: var(--dangerous-400);
 }
 
 .button_dangerous:active:not(:disabled, .button_disabled, .button_loading) {
-  transform: translateY(0.1rem);
+  border-color: var(--dangerous-600);
   background: var(--dangerous-600);
 }
 
@@ -84,6 +106,7 @@
 .button_disabled {
   cursor: not-allowed;
   color: var(--text-100);
+  border-color: var(--neutral-300);
   background: var(--neutral-300);
 }
 
@@ -94,6 +117,10 @@
 
 .button:focus:not(:focus-visible) {
   outline: none;
+}
+
+.button:active:not(:disabled, .button_disabled, .button_loading) {
+  transform: translateY(0.1rem);
 }
 
 .button_loading {
