@@ -1,33 +1,45 @@
 ---
-import AppPage from '../../layouts/app/app.astro';
-import './style.css'
-import {BasicInput, InputSize, InputTheme} from "../../components/basicInput/basicInput";
-import {Button, ButtonTheme, ButtonSize} from "../../components/button/button";
-import {EditList} from "./widgets/editList/editList";
+import AppPage from "../../layouts/app/app.astro";
+import "./style.css";
+import {
+  BasicInput,
+  InputSize,
+  InputTheme,
+} from "../../components/basicInput/basicInput";
+import {
+  Button,
+  ButtonTheme,
+  ButtonSize,
+} from "../../components/button/button";
+import { EditList } from "./widgets/editList/editList";
 ---
 
 <AppPage>
-    <div class="headerСhecklist" slot="header">
-        <h1 class="headerСhecklist__title">Создание списка</h1>
-        <div class="headerСhecklist__search">
-
-        </div>
+  <div class="headerСhecklist" slot="header">
+    <h1 class="headerСhecklist__title">Создание списка</h1>
+    <div class="headerСhecklist__search"></div>
+  </div>
+  <div class="createList" slot="mainContent">
+    <div class="createList__title">
+      <div class="createList__input">
+        <BasicInput
+          client:only="solid-js"
+          theme={InputTheme.Secondary}
+          size={InputSize.Medium}
+          placeholder="Название чек-листа"
+          maxLength={200}
+          isRequired={true}
+        />
+      </div>
+      <Button
+        client:only="solid-js"
+        theme={ButtonTheme.Primary}
+        size={ButtonSize.Medium}
+        text="Создать"
+        isDisabled={true}
+      />
     </div>
-    <div class="createList" slot="mainContent">
-        <div class="createList__title">
-            <div class="createList__input">
-                <BasicInput client:only="solid-js"
-                            theme={InputTheme.Secondary}
-                            size={InputSize.Medium}
-                            placeholder="Название чек-листа"
-                            maxLength={200}
-                            isRequired={true}/>
-            </div>
-            <Button client:only="solid-js" theme={ButtonTheme.Primary} size={ButtonSize.Medium} text="Создать"
-                    isDisabled={true}/>
-        </div>
 
-        <EditList client:only="solid-js"/>
-
-    </div>
+    <EditList client:only="solid-js" />
+  </div>
 </AppPage>

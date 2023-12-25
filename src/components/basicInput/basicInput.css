@@ -1,118 +1,118 @@
 .input {
-    display: flex;
-    overflow: hidden;
-    width: 100%;
-    border-width: 0.1rem;
-    border-style: solid;
-    gap: var(--size-6x);
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  border-width: 0.1rem;
+  border-style: solid;
+  gap: var(--size-6x);
 }
 
 .input__inner {
-    display: block;
-    background: transparent;
-    width: 100%;
-    height: 100%;
-    border: none;
+  display: block;
+  background: transparent;
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
 .input__inner:disabled,
 .input_disabled .input__inner {
-    cursor: not-allowed;
+  cursor: not-allowed;
 }
 
 .input__inner:focus {
-    outline: none;
+  outline: none;
 }
 
 .input:focus-within {
-    outline: var(--outline);
-    outline-offset: var(--outline-offset);
+  outline: var(--outline);
+  outline-offset: var(--outline-offset);
 }
 
 .input_small .input__inner {
-    font-size: 1.4rem;
-    line-height: 1.8rem;
-    padding: var(--size-1x) var(--size-8x);
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  padding: var(--size-1x) var(--size-8x);
 }
 
 .input_medium .input__inner {
-    font-size: 1.6rem;
-    line-height: 2rem;
-    padding: var(--size-3x) var(--size-8x);
+  font-size: 1.6rem;
+  line-height: 2rem;
+  padding: var(--size-3x) var(--size-8x);
 }
 
 .input_large .input__inner {
-    font-size: 1.8rem;
-    line-height: 2.2rem;
-    padding: var(--size-4x) var(--size-8x);
+  font-size: 1.8rem;
+  line-height: 2.2rem;
+  padding: var(--size-4x) var(--size-8x);
 }
 
 .input_primary {
-    border-color: var(--neutral-400);
-    background: var(--neutral-100);
-    border-radius: var(--size-4x);
+  border-color: var(--neutral-400);
+  background: var(--neutral-100);
+  border-radius: var(--size-4x);
 }
 
 .input_primary:hover:not(.input_disabled, .input_error) {
-    border-color: var(--neutral-900);
+  border-color: var(--neutral-900);
 }
 
 .input_primary .input__inner {
-    color: var(--text-400);
-    font-weight: 500;
+  color: var(--text-400);
+  font-weight: 500;
 }
 
 .input_secondary .input__inner {
-    color: var(--text-400);
-    font-weight: 600;
+  color: var(--text-400);
+  font-weight: 600;
 }
 
 .input_primary .input__inner:placeholder-shown {
-    color: var(--text-300);
+  color: var(--text-300);
 }
 
 .input_primary.input_error {
-    border-color: var(--dangerous-500);
+  border-color: var(--dangerous-500);
 }
 
 .input_primary.input_error .input__inner {
-    color: var(--text-dangerous-500);
+  color: var(--text-dangerous-500);
 }
 
 .input_primary.input_disabled {
-    border-color: var(--neutral-400);
-    background: var(--neutral-200);
+  border-color: var(--neutral-400);
+  background: var(--neutral-200);
 }
 
 .input_primary .input__inner:disabled,
 .input_primary.input_disabled .input__inner {
-    color: var(--text-300);
+  color: var(--text-300);
 }
 
 .input_secondary {
-    border-color: transparent transparent var(--neutral-400) transparent;
-    background: transparent;
-    border-radius: 0;
+  border-color: transparent transparent var(--neutral-400) transparent;
+  background: transparent;
+  border-radius: 0;
 }
 
 .input_secondary:hover:not(.input_disabled, .input_error) {
-    border-color: transparent transparent var(--neutral-900) transparent;
+  border-color: transparent transparent var(--neutral-900) transparent;
 }
 
 .input_secondary .input__inner:placeholder-shown {
-    color: var(--text-300);
+  color: var(--text-300);
 }
 
 .input_secondary.input_error {
-    border-color: transparent transparent var(--dangerous-500) transparent;
+  border-color: transparent transparent var(--dangerous-500) transparent;
 }
 
 .input_secondary.input_error .input__inner {
-    color: var(--text-dangerous-500);
+  color: var(--text-dangerous-500);
 }
 
 .input_secondary .input__inner:disabled,
 .input_secondary.input_disabled .input__inner {
-    background: var(--neutral-200);
-    color: var(--text-300);
+  background: var(--neutral-200);
+  color: var(--text-300);
 }

@@ -1,63 +1,61 @@
 ---
-import 'normalize.css';
-import './storybookPage.css';
-import '../main.css';
+import "normalize.css";
+import "./storybookPage.css";
+import "../main.css";
 
 interface Props {
-    title: string;
+  title: string;
 }
 
-const {title} = Astro.props;
+const { title } = Astro.props;
 ---
 
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1.0"
-          name="viewport">
-    <meta content="#ffffff" name="msapplication-TileColor">
-    <meta content="img/favicon/ms-icon-144x144.png" name="msapplication-TileImage">
-    <meta content="#ffffff" name="theme-color">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="#ffffff" name="msapplication-TileColor" />
+    <meta
+      content="img/favicon/ms-icon-144x144.png"
+      name="msapplication-TileImage"
+    />
+    <meta content="#ffffff" name="theme-color" />
     <title>Svernik - {title}</title>
-</head>
-<body>
+  </head>
+  <body>
+    <header></header>
 
-<header/>
-
-<div class="wrapper">
-
-    <aside class="sidebar">
+    <div class="wrapper">
+      <aside class="sidebar">
         <h1 hidden>Svernik</h1>
         <div class="logo"></div>
         <div class="sidebar__navWrapper">
-            <div class="sidebar__nav">
-                <a class="sidebar__navItem" href="/stories/basicInput/basicInput/">Input</a>
-                <a class="sidebar__navItem" href="/stories/button/button/">Button</a>
-                <a class="sidebar__navItem" href="/stories/icon/icon/">Icon</a>
-                <a class="sidebar__navItem" href="/stories/iconButton/iconButton/">Icon Button</a>
-            </div>
+          <div class="sidebar__nav">
+            <a class="sidebar__navItem" href="/stories/basicInput/basicInput/"
+              >Input</a
+            >
+            <a class="sidebar__navItem" href="/stories/button/button/">Button</a
+            >
+            <a class="sidebar__navItem" href="/stories/icon/icon/">Icon</a>
+            <a class="sidebar__navItem" href="/stories/iconButton/iconButton/"
+              >Icon Button</a
+            >
+          </div>
         </div>
-    </aside>
+      </aside>
 
-    <main class="main">
+      <main class="main">
         <div class="main__wrapper">
+          <section class="component">
+            <h2 id="main-button-link">{title}</h2>
 
-            <section class="component">
-
-                <h2 id="main-button-link">{title}</h2>
-
-                <slot/>
-
-            </section>
-
+            <slot />
+          </section>
         </div>
-    </main>
+      </main>
+    </div>
 
-</div>
-
-<footer/>
-
-</body>
+    <footer></footer>
+  </body>
 </html>

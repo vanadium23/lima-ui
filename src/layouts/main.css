@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
   /* Sizes (paddings, margins, gaps, heights) */
@@ -20,33 +20,34 @@
 
   /* Colors */
   --neutral-100: #fff;
-  --neutral-200: #F6F2F8;
-  --neutral-300: #C4C4C4;
+  --neutral-200: #f6f2f8;
+  --neutral-300: #c4c4c4;
   --neutral-400: #888;
   --neutral-900: #333;
   --text-100: #fff;
   --text-300: #888;
   --text-400: #333;
   --text-500: #000;
-  --text-dangerous-500: #E20102;
-  --dangerous-400: #F53B3C;
-  --dangerous-500: #E20102;
-  --dangerous-600: #C80507;
-  --primary-400: #41A6F8;
-  --primary-500: #0285F1;
-  --primary-800: #0C6EBF;
-  --secondary-400: #DAF098;
-  --secondary-500: #C8F051;
-  --secondary-600: #A6DB09;
-  --outline-500: #0285F1;
+  --text-dangerous-500: #e20102;
+  --dangerous-400: #f53b3c;
+  --dangerous-500: #e20102;
+  --dangerous-600: #c80507;
+  --primary-400: #41a6f8;
+  --primary-500: #0285f1;
+  --primary-800: #0c6ebf;
+  --secondary-400: #daf098;
+  --secondary-500: #c8f051;
+  --secondary-600: #a6db09;
+  --outline-500: #0285f1;
 
   /* Custom-properties */
   --outline: 0.1rem solid var(--outline-500);
   --outline-offset: 0.1rem;
 }
 
-
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
@@ -58,6 +59,8 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-input, button, textarea {
+input,
+button,
+textarea {
   appearance: none;
 }

@@ -1,27 +1,26 @@
 ---
-import StorybookPage from '../../../layouts/storybook/storybook.astro';
-import {IconButton} from '../../../components/iconButton/iconButton.tsx';
+import StorybookPage from "../../../layouts/storybook/storybook.astro";
+import { IconButton } from "../../../components/iconButton/iconButton.tsx";
 ---
 
 <StorybookPage title="Icon Button">
+  <h2 id="main-button-link">Icon Button</h2>
 
+  <div class="demoThemeWrapper">
+    <h3 style="font-size: 24px; margin-bottom: 10px;">Primary</h3>
+    <h4 style="font-size: 18px; margin-bottom: 5px;">Large</h4>
+    <div class="grid grid_3Col">
+      <span class="chead"></span>
+      <span class="chead">Default</span>
+      <span class="chead">Disabled</span>
+      <span class="chead">Loading</span>
+      <span class="rhead"></span>
 
-    <h2 id="main-button-link">Icon Button</h2>
-
-    <div class="demoThemeWrapper">
-        <h3 style="font-size: 24px; margin-bottom: 10px;">Primary</h3>
-        <h4 style="font-size: 18px; margin-bottom: 5px;">Large</h4>
-        <div class="grid grid_3Col">
-            <span class="chead"></span>
-            <span class="chead">Default</span>
-            <span class="chead">Disabled</span>
-            <span class="chead">Loading</span>
-            <span class="rhead"></span>
-
-            <IconButton client:only="solid-js" isDisabled={false} aria-label={"text"}/>
-
-
-        </div>
+      <IconButton
+        client:only="solid-js"
+        isDisabled={false}
+        aria-label={"text"}
+      />
     </div>
-
+  </div>
 </StorybookPage>

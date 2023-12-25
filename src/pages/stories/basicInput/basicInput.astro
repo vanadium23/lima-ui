@@ -1,6 +1,10 @@
 ---
-import StorybookPage from '../../../layouts/storybook/storybookPage.astro';
-import {BasicInput, InputTheme, InputSize} from '../../../components/basicInput/basicInput.tsx';
+import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
+import {
+  BasicInput,
+  InputTheme,
+  InputSize,
+} from "../../../components/basicInput/basicInput.tsx";
 
 const themes = Object.values(InputTheme);
 const sizes = Object.values(InputSize);
@@ -9,40 +13,68 @@ const PLACEHOLDER_TEXT = "Enter text...";
 ---
 
 <StorybookPage title="Input">
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 style="font-size: 24px; margin-bottom: 10px; text-transform: capitalize;">
+          {theme}
+        </h3>
+        <div class="grid grid_4Col">
+          <span class="chead" />
+          <span class="chead">Default</span>
+          <span class="chead">Error</span>
+          <span class="chead">Error Typed</span>
+          <span class="chead">Disabled</span>
 
-    {themes.map((theme) => (
-            <div class="demoThemeWrapper">
-                <h3 style="font-size: 24px; margin-bottom: 10px; text-transform: capitalize;">{theme}</h3>
-                <div class="grid grid_4Col">
-                    <span class="chead"/>
-                    <span class="chead">Default</span>
-                    <span class="chead">Error</span>
-                    <span class="chead">Error Typed</span>
-                    <span class="chead">Disabled</span>
+          {sizes.map((size) => (
+            // TODO: Обсудить с Максимом.
+            <>
+              <span class="rhead">{size}</span>
 
-                    {sizes.map((size) => (
-                            <span class="rhead">{size}</span>
-
-                            <BasicInput client:only="solid-js" type={"text"} theme={theme} size={size}
-                                        placeholder={PLACEHOLDER_TEXT}
-                                        maxLength={10}
-                                        isRequired={true}/>
-                            <BasicInput client:only="solid-js" type={"text"} theme={theme} size={size} isError={true}
-                                        placeholder={PLACEHOLDER_TEXT}
-                                        maxLength={10}
-                                        isRequired={true}/>
-                            <BasicInput client:only="solid-js" type={"text"} theme={theme} size={size} isError={true}
-                                        placeholder={PLACEHOLDER_TEXT}
-                                        maxLength={10}
-                                        isRequired={true} defaultValue={"Text"}/>
-                            <BasicInput client:only="solid-js" type={"text"} theme={theme} size={size} isDisabled={true}
-                                        placeholder={PLACEHOLDER_TEXT}
-                                        maxLength={10}
-                                        isRequired={true}/>
-                    ))}
-
-                </div>
-            </div>
-    ))}
-
+              <BasicInput
+                client:only="solid-js"
+                type={"text"}
+                theme={theme}
+                size={size}
+                placeholder={PLACEHOLDER_TEXT}
+                maxLength={10}
+                isRequired={true}
+              />
+              <BasicInput
+                client:only="solid-js"
+                type={"text"}
+                theme={theme}
+                size={size}
+                isError={true}
+                placeholder={PLACEHOLDER_TEXT}
+                maxLength={10}
+                isRequired={true}
+              />
+              <BasicInput
+                client:only="solid-js"
+                type={"text"}
+                theme={theme}
+                size={size}
+                isError={true}
+                placeholder={PLACEHOLDER_TEXT}
+                maxLength={10}
+                isRequired={true}
+                defaultValue={"Text"}
+              />
+              <BasicInput
+                client:only="solid-js"
+                type={"text"}
+                theme={theme}
+                size={size}
+                isDisabled={true}
+                placeholder={PLACEHOLDER_TEXT}
+                maxLength={10}
+                isRequired={true}
+              />
+            </>
+          ))}
+        </div>
+      </div>
+    ))
+  }
 </StorybookPage>
