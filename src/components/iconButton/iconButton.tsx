@@ -9,12 +9,18 @@ type IconButtonProps = {
   theme?: "primary" | "secondary";
   size?: "small" | "medium" | "large";
   isLoading?: boolean;
-  handleClick: () => void;
+  handleClick?: () => void;
 };
 
 export const IconButton: Component<IconButtonProps> = (props) => {
   const mProps = mergeProps(
-    { theme: "primary", size: "small", isDisabled: false, isLoading: false },
+    {
+      theme: "primary",
+      size: "small",
+      isDisabled: false,
+      isLoading: false,
+      handleClick: () => console.log("Hello, World!"),
+    },
     props,
   );
 

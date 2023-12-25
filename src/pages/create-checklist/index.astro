@@ -5,13 +5,13 @@ import {
   BasicInput,
   InputSize,
   InputTheme,
-} from "../../components/basicInput/basicInput";
+} from "../../components/basicInput/basicInput.tsx";
 import {
   Button,
   ButtonTheme,
   ButtonSize,
 } from "../../components/button/button";
-import { EditList } from "./widgets/editList/editList";
+import { EditList } from "./widgets/editList/editList.tsx";
 ---
 
 <AppPage>
@@ -29,6 +29,7 @@ import { EditList } from "./widgets/editList/editList";
           placeholder="Название чек-листа"
           maxLength={200}
           isRequired={true}
+          name="some-name"
         />
       </div>
       <Button

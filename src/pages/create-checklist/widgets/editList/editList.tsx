@@ -12,7 +12,9 @@ import {
   ButtonTheme,
 } from "../../../../components/button/button.tsx";
 
-type EditListProps = Record<string, never>;
+// It's not Record<string, string> as there is a TypeScript error arriving:
+// Type '{ "client:only": string; }' is not assignable to type 'EditListProps'.
+type EditListProps = Record<string, string>;
 
 export const EditList: Component<EditListProps> = () => {
   const [inputs] = createSignal([{}]);

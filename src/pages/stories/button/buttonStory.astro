@@ -21,10 +21,10 @@ const sizes = Object.values(ButtonSize);
                     {sizes.map((size) => (
                             <span class="rhead">{size}</span>
 
-                            <Button client:only="solid-js" name="Some-text" theme={theme} size={size} text="Text"/>
-                            <Button client:only="solid-js" name="Some-text" theme={theme} size={size} text="Text"
+                            <Button client:only="solid-js" theme={theme} size={size} text="Text"/>
+                            <Button client:only="solid-js" theme={theme} size={size} text="Text"
                                     isLoading={true}/>
-                            <Button client:only="solid-js" name="Some-text" theme={theme} size={size} text="Text"
+                            <Button client:only="solid-js" theme={theme} size={size} text="Text"
                                     isDisabled={true}/>
                     ))}
 
