@@ -1,0 +1,54 @@
+.editList {
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--size-8x);
+  overflow: auto;
+  padding-right: 0.3rem;
+}
+
+.editList__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-8x);
+  overflow: auto;
+  padding-right: 0.8rem;
+}
+
+.editList__inner::-webkit-scrollbar {
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
+.editList__inner::-webkit-scrollbar-track {
+  background-color: rgb(0 0 0 / 0%);
+  border-radius: 100px;
+}
+
+.editList__inner::-webkit-scrollbar-thumb {
+  background-color: rgb(83 83 83 / 30%);
+  border-radius: 100px;
+}
+
+.editList__inner:hover::-webkit-scrollbar-thumb {
+  background-color: rgb(83 83 83 / 100%);
+}
+
+.editList__item {
+  display: flex;
+  gap: var(--size-8x);
+}
+
+.editList__input {
+  flex-grow: 1;
+  max-width: 50rem;
+}
+
+.editList__error {
+  height: 3.2rem;
+  padding: var(--size-3x) 0;
+}
+
+.editList__controls {
+  display: flex;
+  gap: var(--size-6x);
+}

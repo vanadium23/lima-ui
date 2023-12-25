@@ -1,0 +1,40 @@
+---
+import 'normalize.css';
+import '../main.css';
+import './app.css'
+---
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0"
+          name="viewport">
+    <meta content="#ffffff" name="msapplication-TileColor">
+    <meta content="img/favicon/ms-icon-144x144.png" name="msapplication-TileImage">
+    <meta content="#ffffff" name="theme-color">
+    <title>Svernik APP</title>
+</head>
+<body>
+
+<header>
+
+</header>
+
+<div class="appContainer">
+
+    <aside class="sidebar">
+
+    </aside>
+
+    <main class="main">
+        <slot name="header"/>
+        <slot name="mainContent"/>
+    </main>
+
+</div>
+
+<footer/>
+
+</body>
+</html>

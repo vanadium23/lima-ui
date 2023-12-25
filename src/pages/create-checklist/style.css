@@ -1,0 +1,19 @@
+html {
+  background: var(--neutral-900); /* Для удобства чтения */
+}
+
+.createList {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.createList__title {
+  display: flex;
+  gap: var(--size-16x);
+}
+
+.createList__input {
+  flex-grow: 1;
+  max-width: 50rem;
+}

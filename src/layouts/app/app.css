@@ -1,0 +1,16 @@
+.appContainer {
+  display: flex;
+}
+
+.sidebar {
+  width: 365px;
+  height: 100vh;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  flex-grow: 1;
+  padding-left: 2.4rem;
+}

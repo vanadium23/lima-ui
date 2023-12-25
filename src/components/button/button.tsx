@@ -19,14 +19,12 @@ type ButtonProps = {
     isDisabled?: boolean;
     ariaLabel?: string;
     text: string;
-    theme?: ButtonTheme;
-    size?: ButtonSize;
+    theme: ButtonTheme;
+    size: ButtonSize;
     isLoading?: boolean;
 }
 export const Button: Component<ButtonProps> = (props) => {
     const mProps = mergeProps({
-        theme: ButtonTheme.Primary,
-        size: ButtonSize.Medium,
         isDisabled: false,
         isLoading: false,
         ariaLabel: undefined

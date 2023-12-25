@@ -15,8 +15,8 @@ export enum InputSize {
 
 
 type InputProps = {
-    theme?: InputTheme;
-    size?: InputSize;
+    theme: InputTheme;
+    size: InputSize;
     isError?: boolean;
     isDisabled?: boolean;
     placeholder: string;
@@ -24,19 +24,18 @@ type InputProps = {
     maxLength: number;
     isReadonly?: boolean;
     isRequired?: boolean;
-    type: "text" | "password";
+    type?: "text" | "password";
     defaultValue?: string;
 }
 
 export const BasicInput: Component<InputProps> = (props) => {
 
     const mProps = mergeProps({
-        theme: InputTheme.Primary,
-        size: InputSize.Medium,
         isDisabled: false,
         isReadonly: false,
         isError: false,
         isRequired: false,
+        type: "text",
         defaultValue: ""
     }, props)
 
