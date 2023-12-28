@@ -22,6 +22,7 @@ type ButtonProps = {
   theme: ButtonTheme;
   size: ButtonSize;
   isLoading?: boolean;
+  handleClick?: () => void;
 };
 export const Button: Component<ButtonProps> = (props) => {
   const mProps = mergeProps(
@@ -29,6 +30,7 @@ export const Button: Component<ButtonProps> = (props) => {
       isDisabled: false,
       isLoading: false,
       ariaLabel: undefined,
+      handleClick: () => {},
     },
     props,
   );
@@ -44,6 +46,9 @@ export const Button: Component<ButtonProps> = (props) => {
       disabled={mProps.isDisabled}
       aria-disabled={props.isLoading}
       aria-label={mProps.ariaLabel}
+      onClick={() => {
+        mProps.handleClick();
+      }}
     >
       {mProps.text}
     </button>

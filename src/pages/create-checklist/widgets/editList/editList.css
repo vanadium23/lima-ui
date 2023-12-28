@@ -44,8 +44,12 @@
 }
 
 .editList__error {
-  height: 3.2rem;
   padding: var(--size-3x) 0;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.8rem;
+  color: var(--text-dangerous-500);
+  min-height: calc(var(--size-3x) + 1.8rem);
 }
 
 .editList__controls {

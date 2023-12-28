@@ -1,5 +1,5 @@
 import type { Component } from "solid-js";
-import { createSignal, For } from "solid-js";
+import { createSignal, For, Show } from "solid-js";
 import "./editList.css";
 import {
   BasicInput,
@@ -17,12 +17,22 @@ import {
 type EditListProps = Record<string, string>;
 
 export const EditList: Component<EditListProps> = () => {
-  const [inputs] = createSignal([{}]);
+  const [getInputs, setInputs] = createSignal([{}]);
+
+  const addItem = () => {
+    if (!checkItemsLimitReached()) {
+      setInputs((prev) => prev.concat({}));
+    }
+  };
+
+  const checkItemsLimitReached = () => {
+    return getInputs().length >= 500;
+  };
 
   return (
     <div class="editList">
       <div class="editList__inner">
-        <For each={inputs()}>
+        <For each={getInputs()}>
           {() => (
             <div class="editList__item">
               <div class="editList__input">
@@ -40,18 +50,27 @@ export const EditList: Component<EditListProps> = () => {
         </For>
       </div>
 
-      <div class="editList__error" />
+      <div class="editList__error">
+        <Show when={checkItemsLimitReached()}>
+          <span class="editList__errorText">
+            Вы использовали лимит в 500 пунктов
+          </span>
+        </Show>
+      </div>
 
       <div class="editList__controls">
         <Button
           theme={ButtonTheme.Secondary}
           size={ButtonSize.Medium}
           text="Добавить пункт"
+          handleClick={addItem}
+          isDisabled={checkItemsLimitReached()}
         />
         <Button
           theme={ButtonTheme.Secondary}
           size={ButtonSize.Medium}
           text="Импортировать"
+          isDisabled={checkItemsLimitReached()}
         />
       </div>
     </div>
