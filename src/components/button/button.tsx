@@ -1,6 +1,7 @@
 import type { Component } from "solid-js";
 import { mergeProps } from "solid-js";
 import "./button.css";
+import type { Testable } from "../utilities/testable.ts";
 
 export enum ButtonTheme {
   Primary = "primary",
@@ -23,7 +24,7 @@ type ButtonProps = {
   size: ButtonSize;
   isLoading?: boolean;
   handleClick?: () => void;
-};
+} & Testable;
 export const Button: Component<ButtonProps> = (props) => {
   const mProps = mergeProps(
     {
@@ -49,6 +50,7 @@ export const Button: Component<ButtonProps> = (props) => {
       onClick={() => {
         mProps.handleClick();
       }}
+      data-test-id={mProps.testId}
     >
       {mProps.text}
     </button>

@@ -1,6 +1,7 @@
 import type { Component } from "solid-js";
 import { mergeProps } from "solid-js";
 import "./basicInput.css";
+import type { Testable } from "../utilities/testable.ts";
 
 export enum InputTheme {
   Primary = "primary",
@@ -25,7 +26,7 @@ type InputProps = {
   isRequired?: boolean;
   type?: "text" | "password";
   defaultValue?: string;
-};
+} & Testable;
 
 export const BasicInput: Component<InputProps> = (props) => {
   const mProps = mergeProps(
@@ -58,6 +59,7 @@ export const BasicInput: Component<InputProps> = (props) => {
         required={mProps.isRequired}
         readonly={mProps.isReadonly}
         value={mProps.defaultValue}
+        data-test-id={mProps.testId}
       />
     </div>
   );

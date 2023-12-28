@@ -1,6 +1,7 @@
 ---
 import StorybookPage from '../../../layouts/storybook/storybookPage.astro';
 import {Button, ButtonSize, ButtonTheme} from '../../../components/button/button.tsx';
+import {DEFAULT_TEST_ID} from "../../../../features/testIds";
 
 const themes = Object.values(ButtonTheme);
 const sizes = Object.values(ButtonSize);
@@ -21,10 +22,10 @@ const sizes = Object.values(ButtonSize);
                     {sizes.map((size) => (
                             <span class="rhead">{size}</span>
 
-                            <Button client:only="solid-js" theme={theme} size={size} text="Text"/>
-                            <Button client:only="solid-js" theme={theme} size={size} text="Text"
+                            <Button client:only="solid-js" theme={theme} size={size} text="Text" testId={DEFAULT_TEST_ID}/>
+                            <Button client:only="solid-js" theme={theme} size={size} text="Text" testId={DEFAULT_TEST_ID}
                                     isLoading={true}/>
-                            <Button client:only="solid-js" theme={theme} size={size} text="Text"
+                            <Button client:only="solid-js" theme={theme} size={size} text="Text" testId={DEFAULT_TEST_ID}
                                     isDisabled={true}/>
                     ))}
 

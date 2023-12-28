@@ -11,6 +11,11 @@ import {
   ButtonSize,
   ButtonTheme,
 } from "../../../../components/button/button.tsx";
+import {
+  ADD_ITEM_BUTTON,
+  IMPORT_BUTTON,
+  ITEM_INPUT,
+} from "../../../../../features/testIds.ts";
 
 // It's not Record<string, string> as there is a TypeScript error arriving:
 // Type '{ "client:only": string; }' is not assignable to type 'EditListProps'.
@@ -43,6 +48,7 @@ export const EditList: Component<EditListProps> = () => {
                   maxLength={200}
                   isRequired={true}
                   name="checklist-item"
+                  testId={ITEM_INPUT}
                 />
               </div>
             </div>
@@ -65,12 +71,14 @@ export const EditList: Component<EditListProps> = () => {
           text="Добавить пункт"
           handleClick={addItem}
           isDisabled={checkItemsLimitReached()}
+          testId={ADD_ITEM_BUTTON}
         />
         <Button
           theme={ButtonTheme.Secondary}
           size={ButtonSize.Medium}
           text="Импортировать"
           isDisabled={checkItemsLimitReached()}
+          testId={IMPORT_BUTTON}
         />
       </div>
     </div>

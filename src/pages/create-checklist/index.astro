@@ -12,11 +12,18 @@ import {
   ButtonSize,
 } from "../../components/button/button";
 import { EditList } from "./widgets/editList/editList.tsx";
+import {
+  CREATE_LIST_BUTTON,
+  LIST_TITLE_INPUT,
+  PAGE_TITLE,
+} from "../../../features/testIds";
 ---
 
 <AppPage>
   <div class="headerСhecklist" slot="header">
-    <h1 class="headerСhecklist__title">Создание списка</h1>
+    <h1 class="headerСhecklist__title" data-test-id={PAGE_TITLE}>
+      Создание списка
+    </h1>
     <div class="headerСhecklist__search"></div>
   </div>
   <div class="createList" slot="mainContent">
@@ -30,6 +37,7 @@ import { EditList } from "./widgets/editList/editList.tsx";
           maxLength={200}
           isRequired={true}
           name="some-name"
+          testId={LIST_TITLE_INPUT}
         />
       </div>
       <Button
@@ -38,6 +46,7 @@ import { EditList } from "./widgets/editList/editList.tsx";
         size={ButtonSize.Medium}
         text="Создать"
         isDisabled={true}
+        testId={CREATE_LIST_BUTTON}
       />
     </div>
 
