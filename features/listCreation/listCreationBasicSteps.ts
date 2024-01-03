@@ -54,25 +54,36 @@ Then(
   },
 );
 
+const BUTTON_TEST_IDS = {
+  create: CREATE_LIST_BUTTON,
+  "add item": ADD_ITEM_BUTTON,
+  import: IMPORT_BUTTON,
+};
+
 Then(
-  "I expect to see the disabled {string} button",
-  function (this: AccountedTesting, buttonText: string) {
-    cy.get(buildTestSelector(this.registerTestId(CREATE_LIST_BUTTON)))
+  "I expect to see the disabled {string} button with the following text: {string}",
+  function (
+    this: AccountedTesting,
+    buttonMeaning: keyof typeof BUTTON_TEST_IDS,
+    buttonText: string,
+  ) {
+    const buttonTestId = BUTTON_TEST_IDS[buttonMeaning];
+
+    cy.get(buildTestSelector(this.registerTestId(buttonTestId)))
       .should("be.visible")
       .should("be.disabled")
       .invoke("text")
       .should("equal", buttonText);
   },
 );
-
-const BUTTON_TEST_IDS = {
-  "Добавить пункт": ADD_ITEM_BUTTON,
-  Импортировать: IMPORT_BUTTON,
-};
 Then(
-  "I expect to see the {string} button ready for clicking",
-  function (this: AccountedTesting, buttonText: keyof typeof BUTTON_TEST_IDS) {
-    const buttonTestId = BUTTON_TEST_IDS[buttonText];
+  "I expect to see the {string} button ready for clicking with the following text: {string}",
+  function (
+    this: AccountedTesting,
+    buttonMeaning: keyof typeof BUTTON_TEST_IDS,
+    buttonText: string,
+  ) {
+    const buttonTestId = BUTTON_TEST_IDS[buttonMeaning];
 
     cy.get(buildTestSelector(this.registerTestId(buttonTestId)))
       .should("be.visible")
