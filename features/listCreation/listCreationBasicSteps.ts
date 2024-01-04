@@ -1,22 +1,17 @@
-import { When, Then } from "@badeball/cypress-cucumber-preprocessor";
+import { Then } from "@badeball/cypress-cucumber-preprocessor";
 import {
   buildTestSelector,
-  TEST_ID_ATTRIBUTE,
+  TEST_SUB_ID_ATTRIBUTE,
 } from "../utilities/buildTestSelector.ts";
 import {
-  ADD_ITEM_BUTTON,
-  CREATE_LIST_BUTTON,
-  IMPORT_BUTTON,
+  BUTTON_TEST_IDS,
+  type ButtonTestId,
   ITEM_INPUT,
   LIST_TITLE_INPUT,
   PAGE_TITLE,
   SIDEBAR,
 } from "../testIds.ts";
 import type { AccountedTesting } from "../../cypress/support/e2e.ts";
-
-When("I open list creation page", function () {
-  cy.visit("create-checklist");
-});
 
 Then("I expect to see sidebar", function (this: AccountedTesting) {
   cy.get(buildTestSelector(this.registerTestId(SIDEBAR))).should("be.visible");
@@ -46,7 +41,13 @@ Then(
 Then(
   "I expect to see single item input ready for typing with the following placeholder: {string}",
   function (this: AccountedTesting, placeholder: string) {
-    cy.get(buildTestSelector(this.registerTestId(ITEM_INPUT)))
+    cy.get(buildTestSelector(ITEM_INPUT))
+      .each((input) =>
+        this.registerTestIdAndSubId(
+          ITEM_INPUT,
+          input.attr(TEST_SUB_ID_ATTRIBUTE),
+        ),
+      )
       .should("have.length", 1)
       .should("be.visible")
       .should("be.enabled")
@@ -54,17 +55,11 @@ Then(
   },
 );
 
-const BUTTON_TEST_IDS = {
-  create: CREATE_LIST_BUTTON,
-  "add item": ADD_ITEM_BUTTON,
-  import: IMPORT_BUTTON,
-};
-
 Then(
   "I expect to see the disabled {string} button with the following text: {string}",
   function (
     this: AccountedTesting,
-    buttonMeaning: keyof typeof BUTTON_TEST_IDS,
+    buttonMeaning: ButtonTestId,
     buttonText: string,
   ) {
     const buttonTestId = BUTTON_TEST_IDS[buttonMeaning];
@@ -80,7 +75,7 @@ Then(
   "I expect to see the {string} button ready for clicking with the following text: {string}",
   function (
     this: AccountedTesting,
-    buttonMeaning: keyof typeof BUTTON_TEST_IDS,
+    buttonMeaning: ButtonTestId,
     buttonText: string,
   ) {
     const buttonTestId = BUTTON_TEST_IDS[buttonMeaning];
@@ -92,13 +87,3 @@ Then(
       .should("equal", buttonText);
   },
 );
-
-Then("I expect to see no other elements", function (this: AccountedTesting) {
-  cy.get(buildTestSelector())
-    .then(($elements) => {
-      return Cypress.$.makeArray($elements)
-        .map((element) => element.getAttribute(TEST_ID_ATTRIBUTE))
-        .sort();
-    })
-    .should("deep.equal", this.getTestIds());
-});

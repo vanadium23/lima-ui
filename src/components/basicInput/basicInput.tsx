@@ -60,6 +60,7 @@ export const BasicInput: Component<InputProps> = (props) => {
         readonly={mProps.isReadonly}
         value={mProps.defaultValue}
         data-test-id={mProps.testId}
+        data-test-sub-id={mProps.testSubId}
       />
     </div>
   );

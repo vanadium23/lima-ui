@@ -38,7 +38,7 @@ export const EditList: Component<EditListProps> = () => {
     <div class="editList">
       <div class="editList__inner">
         <For each={getInputs()}>
-          {() => (
+          {(input, index) => (
             <div class="editList__item">
               <div class="editList__input">
                 <BasicInput
@@ -49,6 +49,7 @@ export const EditList: Component<EditListProps> = () => {
                   isRequired={true}
                   name="checklist-item"
                   testId={ITEM_INPUT}
+                  testSubId={index()}
                 />
               </div>
             </div>

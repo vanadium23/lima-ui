@@ -14,24 +14,40 @@
 // ***********************************************************
 
 import "./commands";
+import type { SeveralTestIds, TestId } from "../../features/testIds.ts";
 
-export interface AccountedTesting extends Mocha.Context {
-  registerTestId(testId: string): string;
-  getTestIds(): string[];
+interface AccountedTestingMethods {
+  registerTestId(testId: TestId): TestId;
+  registerTestIdAndSubId(testId: TestId, testSubId?: TestId): void;
+  registerSeveralTestIds(severalTestIds: SeveralTestIds): void;
+  getTestIds(): SeveralTestIds;
 }
+export interface AccountedTesting
+  extends Mocha.Context,
+    AccountedTestingMethods {}
 
 beforeEach(function () {
-  const testIds: string[] = [];
+  const testIds: SeveralTestIds = [];
 
-  Object.assign(this, {
-    registerTestId(testId: string): string {
+  const accountedTesting: AccountedTestingMethods = {
+    registerTestId(testId) {
       testIds.push(testId);
 
       return testId;
     },
 
-    getTestIds(): string[] {
+    registerTestIdAndSubId(testId: TestId, testSubId: TestId = "") {
+      this.registerTestId(testId + testSubId);
+    },
+
+    registerSeveralTestIds(severalTestIds: SeveralTestIds): void {
+      severalTestIds.forEach((testId) => this.registerTestId(testId));
+    },
+
+    getTestIds(): SeveralTestIds {
       return testIds.sort();
     },
-  });
+  };
+
+  Object.assign(this, accountedTesting);
 });
