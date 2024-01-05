@@ -3,15 +3,9 @@ import {
   buildTestSelector,
   TEST_SUB_ID_ATTRIBUTE,
 } from "../utilities/buildTestSelector.ts";
-import {
-  BUTTON_TEST_IDS,
-  type ButtonTestId,
-  ITEM_INPUT,
-  LIST_TITLE_INPUT,
-  PAGE_TITLE,
-  SIDEBAR,
-} from "../testIds.ts";
+import { ITEM_INPUT, ITEMS_INPUTS, PAGE_TITLE, SIDEBAR } from "../testIds.ts";
 import type { AccountedTesting } from "../../cypress/support/e2e.ts";
+import { noVerticalScroll } from "../utilities/checkScroll.ts";
 
 Then("I expect to see sidebar", function (this: AccountedTesting) {
   cy.get(buildTestSelector(this.registerTestId(SIDEBAR))).should("be.visible");
@@ -25,16 +19,6 @@ Then(
       .invoke("text")
       .invoke("trim")
       .should("equal", pageTitleText);
-  },
-);
-
-Then(
-  "I expect to see list title input ready for typing with the following placeholder: {string}",
-  function (this: AccountedTesting, placeholder: string) {
-    cy.get(buildTestSelector(this.registerTestId(LIST_TITLE_INPUT)))
-      .should("be.visible")
-      .should("be.enabled")
-      .should("have.attr", "placeholder", placeholder);
   },
 );
 
@@ -56,34 +40,12 @@ Then(
 );
 
 Then(
-  "I expect to see the disabled {string} button with the following text: {string}",
-  function (
-    this: AccountedTesting,
-    buttonMeaning: ButtonTestId,
-    buttonText: string,
-  ) {
-    const buttonTestId = BUTTON_TEST_IDS[buttonMeaning];
-
-    cy.get(buildTestSelector(this.registerTestId(buttonTestId)))
-      .should("be.visible")
-      .should("be.disabled")
-      .invoke("text")
-      .should("equal", buttonText);
-  },
-);
-Then(
-  "I expect to see the {string} button ready for clicking with the following text: {string}",
-  function (
-    this: AccountedTesting,
-    buttonMeaning: ButtonTestId,
-    buttonText: string,
-  ) {
-    const buttonTestId = BUTTON_TEST_IDS[buttonMeaning];
-
-    cy.get(buildTestSelector(this.registerTestId(buttonTestId)))
-      .should("be.visible")
-      .should("be.enabled")
-      .invoke("text")
-      .should("equal", buttonText);
+  "I expect to see items inputs area without scroll",
+  function (this: AccountedTesting) {
+    cy.get(buildTestSelector(this.registerTestId(ITEMS_INPUTS))).should(
+      ($element) => {
+        expect(noVerticalScroll($element.get(0))).to.be.true;
+      },
+    );
   },
 );

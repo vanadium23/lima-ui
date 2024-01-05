@@ -15,6 +15,7 @@ import {
   ADD_ITEM_BUTTON,
   IMPORT_BUTTON,
   ITEM_INPUT,
+  ITEMS_INPUTS,
 } from "../../../../../features/testIds.ts";
 
 // It's not Record<string, string> as there is a TypeScript error arriving:
@@ -36,7 +37,7 @@ export const EditList: Component<EditListProps> = () => {
 
   return (
     <div class="editList">
-      <div class="editList__inner">
+      <div class="editList__inner" data-test-id={ITEMS_INPUTS}>
         <For each={getInputs()}>
           {(input, index) => (
             <div class="editList__item">
