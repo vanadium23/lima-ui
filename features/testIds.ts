@@ -8,6 +8,7 @@ export const ITEM_INPUT = "itemInput";
 export const CREATE_LIST_BUTTON = "createListButton";
 export const ADD_ITEM_BUTTON = "addItemButton";
 export const IMPORT_BUTTON = "importButton";
+export const ITEMS_LIMIT_REACHED_WARNING = "itemsLimitReachedWarning";
 
 export const BUTTON_TEST_IDS = {
   create: CREATE_LIST_BUTTON,

@@ -16,7 +16,9 @@ import {
   IMPORT_BUTTON,
   ITEM_INPUT,
   ITEMS_INPUTS,
+  ITEMS_LIMIT_REACHED_WARNING,
 } from "../../../../../features/testIds.ts";
+import { ITEMS_LIMIT } from "../../../../../configuration.ts";
 
 // It's not Record<string, string> as there is a TypeScript error arriving:
 // Type '{ "client:only": string; }' is not assignable to type 'EditListProps'.
@@ -32,7 +34,7 @@ export const EditList: Component<EditListProps> = () => {
   };
 
   const checkItemsLimitReached = () => {
-    return getInputs().length >= 500;
+    return getInputs().length >= ITEMS_LIMIT;
   };
 
   return (
@@ -60,8 +62,11 @@ export const EditList: Component<EditListProps> = () => {
 
       <div class="editList__error">
         <Show when={checkItemsLimitReached()}>
-          <span class="editList__errorText">
-            Вы использовали лимит в 500 пунктов
+          <span
+            class="editList__errorText"
+            data-test-id={ITEMS_LIMIT_REACHED_WARNING}
+          >
+            Вы использовали лимит в {ITEMS_LIMIT} пунктов
           </span>
         </Show>
       </div>

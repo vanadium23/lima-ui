@@ -1,10 +1,11 @@
-import { Then } from "@badeball/cypress-cucumber-preprocessor";
+import { Then, When } from "@badeball/cypress-cucumber-preprocessor";
 import {
   ADD_ITEM_BUTTON,
   BUTTON_TEST_IDS,
   type ButtonTestId,
   ITEM_INPUT,
   ITEMS_INPUTS,
+  ITEMS_LIMIT_REACHED_WARNING,
 } from "../testIds.ts";
 import {
   buildTestSelector,
@@ -12,6 +13,7 @@ import {
 } from "../utilities/buildTestSelector.ts";
 import type { AccountedTesting } from "../../cypress/support/e2e.ts";
 import { noVerticalScroll } from "../utilities/checkScroll.ts";
+import { ITEMS_LIMIT } from "../../configuration.ts";
 
 Then("I press the {string} button", function (buttonMeaning: ButtonTestId) {
   const buttonTestId = BUTTON_TEST_IDS[buttonMeaning];
@@ -50,7 +52,7 @@ function addItemWhileNoVerticalScrollInItemsInputs(
   });
 }
 
-Then("I add items inputs till scroll appears plus one item input", function () {
+When("I add items inputs till scroll appears plus one item input", function () {
   const $addItemButton = cy.get(buildTestSelector(ADD_ITEM_BUTTON));
 
   addItemWhileNoVerticalScrollInItemsInputs($addItemButton);
@@ -65,3 +67,18 @@ Then("I expect to see the last added item input", function () {
 Then("I expect not to see the first item input", function () {
   cy.get(buildTestSelector(ITEM_INPUT)).first().should("not.be.visible");
 });
+
+When("I add items inputs to their limit", function () {
+  const $addItemButton = cy.get(buildTestSelector(ADD_ITEM_BUTTON));
+
+  Cypress._.times(ITEMS_LIMIT - 1, () => {
+    $addItemButton.click();
+  });
+});
+
+Then(
+  "I expect to see the warning about items inputs limit reached",
+  function () {
+    cy.get(buildTestSelector(ITEMS_LIMIT_REACHED_WARNING)).should("be.visible");
+  },
+);
