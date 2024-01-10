@@ -19,10 +19,9 @@ Feature: Seeing the basis of List Creation page
     And I press Tab key
     Then I expect the "list title input" to be focused
     And I press Tab key
+    Then I expect the "create list button" not to be focused
     Then I expect the "first item input" to be focused
     And I press Tab key
     Then I expect the "add item button" to be focused
     And I press Tab key
     Then I expect the "import button" to be focused
-    And I press Tab key
-    Then I expect the "create list button" not to be focused
