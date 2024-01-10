@@ -2,19 +2,25 @@ html {
   background: #fff; /* Для удобства чтения */
 }
 
+.headerСhecklist {
+  padding: 0 var(--size-20x);
+}
+
 .createList {
   display: flex;
   flex-direction: column;
   overflow: auto;
+  padding: var(--size-12x) var(--size-20x);
+  gap: var(--size-10x);
 }
 
 .createList__title {
   display: flex;
   gap: var(--size-16x);
+  padding: var(--size-1x);
 }
 
 .createList__input {
   flex-grow: 1;
   max-width: 50rem;
-  padding: var(--size-1x);
 }

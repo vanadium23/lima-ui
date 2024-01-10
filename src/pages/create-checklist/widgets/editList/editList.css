@@ -1,23 +1,21 @@
 .editList {
   display: flex;
+  gap: var(--size-2x);
   flex-direction: column;
-  padding-top: var(--size-8x);
   overflow: auto;
-  padding-right: 0.3rem;
 }
 
 .editList__inner {
   display: flex;
   flex-direction: column-reverse;
   overflow: auto;
-  padding-right: var(--size-4x);
+  padding: var(--size-2x) var(--size-4x) var(--size-2x) var(--sizex);
 }
 
 .editList__scrollWrapper {
   display: flex;
   gap: var(--size-8x);
   flex-direction: column;
-  padding: var(--size-1x);
 }
 
 .editList__inner::-webkit-scrollbar {
@@ -50,16 +48,15 @@
 }
 
 .editList__error {
-  padding: var(--size-3x) 0;
   font-size: 1.4rem;
   font-weight: 500;
   line-height: 1.8rem;
   color: var(--text-dangerous-500);
-  min-height: calc(var(--size-3x) + 1.8rem);
+  min-height: 1.8rem;
 }
 
 .editList__controls {
   display: flex;
   gap: var(--size-6x);
-  padding: var(--size-1x);
+  padding: var(--size-1x) var(--size-1x) var(--size-2x);
 }
