@@ -40,24 +40,26 @@ export const EditList: Component<EditListProps> = () => {
   return (
     <div class="editList">
       <div class="editList__inner" data-test-id={ITEMS_INPUTS}>
-        <For each={getInputs()}>
-          {(input, index) => (
-            <div class="editList__item">
-              <div class="editList__input">
-                <BasicInput
-                  placeholder="Текст пункта"
-                  theme={InputTheme.Primary}
-                  size={InputSize.Medium}
-                  maxLength={200}
-                  isRequired={true}
-                  name="checklist-item"
-                  testId={ITEM_INPUT}
-                  testSubId={index()}
-                />
+        <div class="editList__scrollWrapper">
+          <For each={getInputs()}>
+            {(input, index) => (
+              <div class="editList__item">
+                <div class="editList__input">
+                  <BasicInput
+                    placeholder="Текст пункта"
+                    theme={InputTheme.Primary}
+                    size={InputSize.Medium}
+                    maxLength={200}
+                    isRequired={true}
+                    name="checklist-item"
+                    testId={ITEM_INPUT}
+                    testSubId={index()}
+                  />
+                </div>
               </div>
-            </div>
-          )}
-        </For>
+            )}
+          </For>
+        </div>
       </div>
 
       <div class="editList__error">

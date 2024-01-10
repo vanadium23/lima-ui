@@ -8,10 +8,16 @@
 
 .editList__inner {
   display: flex;
-  flex-direction: column;
-  gap: var(--size-8x);
+  flex-direction: column-reverse;
   overflow: auto;
-  padding-right: 0.8rem;
+  padding-right: var(--size-4x);
+}
+
+.editList__scrollWrapper {
+  display: flex;
+  gap: var(--size-8x);
+  flex-direction: column;
+  padding: var(--size-1x);
 }
 
 .editList__inner::-webkit-scrollbar {
@@ -55,4 +61,5 @@
 .editList__controls {
   display: flex;
   gap: var(--size-6x);
+  padding: var(--size-1x);
 }

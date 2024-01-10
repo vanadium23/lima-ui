@@ -1,5 +1,5 @@
 html {
-  background: var(--neutral-900); /* Для удобства чтения */
+  background: #fff; /* Для удобства чтения */
 }
 
 .createList {
@@ -16,4 +16,5 @@ html {
 .createList__input {
   flex-grow: 1;
   max-width: 50rem;
+  padding: var(--size-1x);
 }
