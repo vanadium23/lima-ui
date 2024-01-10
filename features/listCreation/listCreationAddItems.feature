@@ -2,9 +2,9 @@ Feature: Adding items on the List Creation page
 
   Background:
     When I open List Creation page
-    Then All elements expected to be on the List Creation page right after opening are here
 
   Scenario: Adding single item input
+    Then All elements expected to be on the List Creation page right after opening are here
     And I press the "add item" button
     Then I expect to see second item input ready for typing with the following placeholder: "Текст пункта"
     Then I expect to see no other elements
@@ -18,8 +18,8 @@ Feature: Adding items on the List Creation page
     Then I expect to see the "add item" button ready for clicking with the following text: "Добавить пункт"
     Then I expect to see the "import" button ready for clicking with the following text: "Импортировать"
 
-    Scenario: Adding items inputs to the limit
-      When I add items inputs to their limit
-      Then I expect to see the warning about items inputs limit reached
-      Then I expect to see the disabled "add item" button with the following text: "Добавить пункт"
-      Then I expect to see the disabled "import" button with the following text: "Импортировать"
+  Scenario: Adding items inputs to the limit
+    When I add items inputs to their limit
+    Then I expect to see the warning about items inputs limit reached
+    Then I expect to see the disabled "add item" button with the following text: "Добавить пункт"
+    Then I expect to see the disabled "import" button with the following text: "Импортировать"

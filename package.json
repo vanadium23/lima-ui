@@ -8,8 +8,7 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "test": "cypress run",
-    "watch-test": "cypress open"
+    "test": "cross-env NODE_OPTIONS='--loader ts-node/esm' cucumber-js"
   },
   "dependencies": {
     "@astrojs/check": "^0.3.1",
@@ -20,14 +19,15 @@
     "typescript": "^5.2.2"
   },
   "devDependencies": {
-    "@badeball/cypress-cucumber-preprocessor": "^20.0.0",
-    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+    "@cucumber/cucumber": "^10.2.1",
+    "@playwright/test": "^1.40.1",
+    "@types/node": "^20.10.7",
     "@typescript-eslint/eslint-plugin": "^6.12.0",
     "@typescript-eslint/parser": "^6.12.0",
     "autoprefixer": "^10.4.16",
     "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
     "cssnano": "^6.0.1",
-    "cypress": "^13.6.2",
     "eslint": "^8.54.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-astro": "^0.29.1",
@@ -35,6 +35,7 @@
     "eslint-plugin-solid": "^0.13.0",
     "prettier": "3.1.1",
     "prettier-plugin-astro": "^0.12.2",
-    "stylelint-config-standard": "^34.0.0"
+    "stylelint-config-standard": "^34.0.0",
+    "ts-node": "^10.9.2"
   }
 }

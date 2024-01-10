@@ -1,0 +1,9 @@
+{
+  "default": {
+    "formatOptions": {
+      "snippetInterface": "async-await"
+    },
+    "paths": ["features"],
+    "import": ["features/**/*.ts"]
+  }
+}

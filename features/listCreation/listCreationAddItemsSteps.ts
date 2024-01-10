@@ -1,4 +1,4 @@
-import { Then, When } from "@badeball/cypress-cucumber-preprocessor";
+import { Then, When } from "@cucumber/cucumber";
 import {
   ADD_ITEM_BUTTON,
   BUTTON_TEST_IDS,
@@ -7,78 +7,84 @@ import {
   ITEMS_INPUTS,
   ITEMS_LIMIT_REACHED_WARNING,
 } from "../testIds.ts";
-import {
-  buildTestSelector,
-  TEST_SUB_ID_ATTRIBUTE,
-} from "../utilities/buildTestSelector.ts";
-import type { AccountedTesting } from "../../cypress/support/e2e.ts";
+import { TEST_SUB_ID_ATTRIBUTE } from "../utilities/buildTestSelector.ts";
 import { noVerticalScroll } from "../utilities/checkScroll.ts";
+import type { ComplexWorld } from "../context/hooks.ts";
+import { expect } from "@playwright/test";
 import { ITEMS_LIMIT } from "../../configuration.ts";
 
-Then("I press the {string} button", function (buttonMeaning: ButtonTestId) {
-  const buttonTestId = BUTTON_TEST_IDS[buttonMeaning];
-
-  cy.get(buildTestSelector(buttonTestId)).click();
-});
-
 Then(
-  "I expect to see second item input ready for typing with the following placeholder: {string}",
-  function (this: AccountedTesting, placeholder: string) {
-    cy.get(buildTestSelector(ITEM_INPUT))
-      .eq(1)
-      .each((input) =>
-        this.registerTestIdAndSubId(
-          ITEM_INPUT,
-          input.attr(TEST_SUB_ID_ATTRIBUTE),
-        ),
-      )
-      .should("be.visible")
-      .should("be.enabled")
-      .should("have.attr", "placeholder", placeholder);
+  "I press the {string} button",
+  async function (this: ComplexWorld, buttonMeaning: ButtonTestId) {
+    const buttonTestId = BUTTON_TEST_IDS[buttonMeaning];
+
+    await this.locate(buttonTestId).click();
   },
 );
 
-function addItemWhileNoVerticalScrollInItemsInputs(
-  $addItemButton: Cypress.Chainable<JQuery<HTMLElement>>,
-) {
-  cy.get(buildTestSelector(ITEMS_INPUTS)).then(($itemsInputs) => {
-    if (noVerticalScroll($itemsInputs.get(0))) {
-      // It's complicated to extract boolean values from Cypress.Chainable to add them
-      // to if expression, so it's a workaround. When adding items till scroll appears,
-      // it's expected that items' limit is not reached.
-      $addItemButton.should("be.enabled").click();
-      addItemWhileNoVerticalScrollInItemsInputs($addItemButton);
+Then(
+  "I expect to see second item input ready for typing with the following placeholder: {string}",
+  async function (this: ComplexWorld, placeholder: string) {
+    const secondItemInput = this.locate(ITEM_INPUT).nth(1);
+
+    this.accounting.registerTestIdAndSubId(
+      ITEM_INPUT,
+      await secondItemInput.getAttribute(TEST_SUB_ID_ATTRIBUTE),
+    );
+
+    const expectSecondItemInput = expect(secondItemInput);
+
+    await expectSecondItemInput.toBeInViewport();
+    await expectSecondItemInput.toBeEnabled();
+    await expectSecondItemInput.toHaveAttribute("placeholder", placeholder);
+  },
+);
+
+When(
+  "I add items inputs till scroll appears plus one item input",
+  async function (this: ComplexWorld) {
+    const addItemButton = this.locate(ADD_ITEM_BUTTON);
+    const itemsInputs = this.locate(ITEMS_INPUTS);
+
+    while (
+      (await itemsInputs.evaluate(noVerticalScroll)) &&
+      (await addItemButton.isEnabled())
+    ) {
+      await addItemButton.click();
     }
-  });
-}
 
-When("I add items inputs till scroll appears plus one item input", function () {
-  const $addItemButton = cy.get(buildTestSelector(ADD_ITEM_BUTTON));
+    if (await addItemButton.isEnabled()) {
+      await addItemButton.click();
+    }
+  },
+);
 
-  addItemWhileNoVerticalScrollInItemsInputs($addItemButton);
+Then(
+  "I expect to see the last added item input",
+  async function (this: ComplexWorld) {
+    await expect(this.locate(ITEM_INPUT).last()).toBeInViewport();
+  },
+);
 
-  $addItemButton.click();
+Then("I expect not to see the first item input", async function () {
+  await expect(this.locate(ITEM_INPUT).first()).not.toBeInViewport();
 });
 
-Then("I expect to see the last added item input", function () {
-  cy.get(buildTestSelector(ITEM_INPUT)).last().should("be.visible");
-});
+When(
+  "I add items inputs to their limit",
+  { timeout: 60000 },
+  async function (this: ComplexWorld) {
+    const addItemButton = this.locate(ADD_ITEM_BUTTON);
 
-Then("I expect not to see the first item input", function () {
-  cy.get(buildTestSelector(ITEM_INPUT)).first().should("not.be.visible");
-});
-
-When("I add items inputs to their limit", function () {
-  const $addItemButton = cy.get(buildTestSelector(ADD_ITEM_BUTTON));
-
-  Cypress._.times(ITEMS_LIMIT - 1, () => {
-    $addItemButton.click();
-  });
-});
+    for (let i = 1; i <= ITEMS_LIMIT - 1; i++) {
+      await addItemButton.click();
+    }
+  },
+);
 
 Then(
   "I expect to see the warning about items inputs limit reached",
-  function () {
-    cy.get(buildTestSelector(ITEMS_LIMIT_REACHED_WARNING)).should("be.visible");
+  async function (this: ComplexWorld) {
+    await this.expectLocated(ITEMS_LIMIT_REACHED_WARNING).toBeInViewport();
   },
 );

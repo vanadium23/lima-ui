@@ -1,6 +1,0 @@
-{
-  "stepDefinitions": [
-    "features/listCreation/[filepath]Steps.ts",
-    "features/commonStepsDefinitions.ts"
-  ]
-}
