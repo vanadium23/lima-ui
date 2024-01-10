@@ -1,8 +1,6 @@
 import { Then, When } from "@cucumber/cucumber";
 import {
   ADD_ITEM_BUTTON,
-  BUTTON_TEST_IDS,
-  type ButtonTestId,
   CREATE_LIST_BUTTON,
   IMPORT_BUTTON,
   ITEM_INPUT,
@@ -19,6 +17,12 @@ import {
   TEST_ID_ATTRIBUTE,
   TEST_SUB_ID_ATTRIBUTE,
 } from "../utilities/buildTestSelector.ts";
+import {
+  BUTTON_TEST_IDS,
+  type ButtonMeaning,
+  type FocusableMeaning,
+  FOCUSABLES_TEST_IDS,
+} from "./testIds.ts";
 
 When("I open List Creation page", async function (this: ComplexWorld) {
   await this.navigate("create-checklist");
@@ -87,7 +91,7 @@ Then(
   "I expect to see the disabled {string} button with the following text: {string}",
   async function (
     this: ComplexWorld,
-    buttonMeaning: ButtonTestId,
+    buttonMeaning: ButtonMeaning,
     buttonText: string,
   ) {
     const expectButton = this.expectLocated(
@@ -104,7 +108,7 @@ Then(
   "I expect to see the {string} button ready for clicking with the following text: {string}",
   async function (
     this: ComplexWorld,
-    buttonMeaning: ButtonTestId,
+    buttonMeaning: ButtonMeaning,
     buttonText: string,
   ) {
     const expectButton = this.expectLocated(
@@ -152,3 +156,25 @@ Then("I expect to see no other elements", async function (this: ComplexWorld) {
     ).sort(),
   ).toEqual(this.accounting.getTestIds());
 });
+
+When("I press Tab key", async function (this: ComplexWorld) {
+  await this.page.keyboard.press("Tab");
+});
+
+Then(
+  "I expect the {string} to be focused",
+  async function (this: ComplexWorld, focusableMeaning: FocusableMeaning) {
+    const focusable = FOCUSABLES_TEST_IDS[focusableMeaning];
+
+    await this.expectLocated(focusable).toBeFocused();
+  },
+);
+
+Then(
+  "I expect the {string} not to be focused",
+  async function (this: ComplexWorld, focusableMeaning: FocusableMeaning) {
+    const focusable = FOCUSABLES_TEST_IDS[focusableMeaning];
+
+    await this.expectLocated(focusable).not.toBeFocused();
+  },
+);

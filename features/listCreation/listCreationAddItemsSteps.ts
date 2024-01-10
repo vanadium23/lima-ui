@@ -1,8 +1,6 @@
 import { Then, When } from "@cucumber/cucumber";
 import {
   ADD_ITEM_BUTTON,
-  BUTTON_TEST_IDS,
-  type ButtonTestId,
   ITEM_INPUT,
   ITEMS_INPUTS,
   ITEMS_LIMIT_REACHED_WARNING,
@@ -12,10 +10,11 @@ import { noVerticalScroll } from "../utilities/checkScroll.ts";
 import type { ComplexWorld } from "../context/hooks.ts";
 import { expect } from "@playwright/test";
 import { ITEMS_LIMIT } from "../../configuration.ts";
+import { BUTTON_TEST_IDS, type ButtonMeaning } from "./testIds.ts";
 
 Then(
   "I press the {string} button",
-  async function (this: ComplexWorld, buttonMeaning: ButtonTestId) {
+  async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
     const buttonTestId = BUTTON_TEST_IDS[buttonMeaning];
 
     await this.locate(buttonTestId).click();
