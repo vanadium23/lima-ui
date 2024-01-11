@@ -157,8 +157,8 @@ Then("I expect to see no other elements", async function (this: ComplexWorld) {
   ).toEqual(this.accounting.getTestIds());
 });
 
-When("I press Tab key", async function (this: ComplexWorld) {
-  await this.page.keyboard.press("Tab");
+When("I press {string} key", async function (this: ComplexWorld, key: string) {
+  await this.page.keyboard.press(key);
 });
 
 Then(
