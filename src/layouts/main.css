@@ -60,6 +60,10 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html.dark {
+  background: var(--neutral-900);
+}
+
 input,
 button,
 textarea {

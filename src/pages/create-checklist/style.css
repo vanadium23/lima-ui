@@ -1,8 +1,4 @@
-html {
-  background: #fff; /* Для удобства чтения */
-}
-
-.headerСhecklist {
+.headerChecklist {
   padding: 0 var(--size-20x);
 }
 
