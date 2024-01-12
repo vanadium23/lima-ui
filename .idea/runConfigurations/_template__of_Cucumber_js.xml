@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
+    <option name="myFilePath" value="" />
+    <option name="myNameFilter" value="" />
+    <option name="cucumberJsArguments" value="" />
+    <option name="workingDirectory" value="$PROJECT_DIR$" />
+    <envs>
+      <env name="NODE_OPTIONS" value="--loader ts-node/esm" />
+    </envs>
+    <method v="2" />
+  </configuration>
+</component>
