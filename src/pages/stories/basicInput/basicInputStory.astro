@@ -6,6 +6,7 @@ import {
   InputSize,
 } from "../../../components/basicInput/basicInput.tsx";
 import { DEFAULT_TEST_ID } from "../../../../features/testIds";
+import { InputType } from "../../../components/basicInput/basicInput";
 
 const themes = Object.values(InputTheme);
 const sizes = Object.values(InputSize);
@@ -33,7 +34,7 @@ const PLACEHOLDER_TEXT = "Enter text...";
 
               <BasicInput
                 client:only="solid-js"
-                type={"text"}
+                type={InputType.Text}
                 theme={theme}
                 size={size}
                 placeholder={PLACEHOLDER_TEXT}
@@ -44,7 +45,7 @@ const PLACEHOLDER_TEXT = "Enter text...";
               />
               <BasicInput
                 client:only="solid-js"
-                type={"text"}
+                type={InputType.Text}
                 theme={theme}
                 size={size}
                 isError={true}
@@ -56,7 +57,7 @@ const PLACEHOLDER_TEXT = "Enter text...";
               />
               <BasicInput
                 client:only="solid-js"
-                type={"text"}
+                type={InputType.Text}
                 theme={theme}
                 size={size}
                 isError={true}
@@ -69,7 +70,7 @@ const PLACEHOLDER_TEXT = "Enter text...";
               />
               <BasicInput
                 client:only="solid-js"
-                type={"text"}
+                type={InputType.Text}
                 theme={theme}
                 size={size}
                 isDisabled={true}

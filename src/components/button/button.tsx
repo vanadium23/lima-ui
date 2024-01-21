@@ -2,6 +2,7 @@ import type { Component } from "solid-js";
 import { mergeProps } from "solid-js";
 import "./button.css";
 import type { Testable } from "../utilities/testable.ts";
+import { prepareARIALabel } from "../utilities/prepareARIALabel.ts";
 
 export enum ButtonTheme {
   Primary = "primary",
@@ -24,13 +25,13 @@ type ButtonProps = {
   size: ButtonSize;
   isLoading?: boolean;
   handleClick?: () => void;
-} & Testable;
-export const Button: Component<ButtonProps> = (props) => {
-  const mProps = mergeProps(
+};
+export const Button: Component<Testable<ButtonProps>> = (props) => {
+  const mProps: Testable<Required<ButtonProps>> = mergeProps(
     {
       isDisabled: false,
       isLoading: false,
-      ariaLabel: undefined,
+      ariaLabel: "",
       handleClick: () => {},
     },
     props,
@@ -45,8 +46,8 @@ export const Button: Component<ButtonProps> = (props) => {
         button_loading: mProps.isLoading,
       }}
       disabled={mProps.isDisabled}
-      aria-disabled={props.isLoading}
-      aria-label={mProps.ariaLabel}
+      aria-disabled={mProps.isLoading}
+      {...prepareARIALabel(mProps.ariaLabel)}
       onClick={() => {
         mProps.handleClick();
       }}
