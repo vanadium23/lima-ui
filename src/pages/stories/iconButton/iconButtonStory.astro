@@ -1,6 +1,11 @@
 ---
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
-import { IconButton } from "../../../components/iconButton/iconButton.tsx";
+import {
+  IconButton,
+  IconButtonTheme,
+  IconButtonSize,
+} from "../../../components/iconButton/iconButton.tsx";
+import { IconName } from "../../../components/icon/icon.tsx";
 ---
 
 <StorybookPage title="Icon Button">
@@ -20,6 +25,9 @@ import { IconButton } from "../../../components/iconButton/iconButton.tsx";
         client:only="solid-js"
         isDisabled={false}
         ariaLabel={"text"}
+        theme={IconButtonTheme.Primary}
+        size={IconButtonSize.Medium}
+        iconName={IconName.Cancel}
       />
     </div>
   </div>

@@ -42,7 +42,7 @@ export const EditList: Component<EditListProps> = () => {
       <div class="editList__inner" data-test-id={ITEMS_INPUTS}>
         <div class="editList__scrollWrapper">
           <For each={getInputs()}>
-            {(input, index) => (
+            {(_input, index) => (
               <div class="editList__item">
                 <div class="editList__input">
                   <BasicInput

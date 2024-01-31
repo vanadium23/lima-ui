@@ -1,13 +1,27 @@
 import type { Component } from "solid-js";
 import { mergeProps } from "solid-js";
 import "./iconButton.css";
-import { Icon } from "../icon/icon.tsx";
+import { Icon, IconName } from "../icon/icon.tsx";
+
+export enum IconButtonTheme {
+  Primary = "primary",
+  Secondary = "secondary",
+  Successful = "successful",
+  Dangerous = "dangerous",
+}
+
+export enum IconButtonSize {
+  Small = "small",
+  Medium = "medium",
+  Large = "large",
+}
 
 type IconButtonProps = {
+  iconName: IconName;
   isDisabled?: boolean;
   ariaLabel: string;
-  theme?: "primary" | "secondary";
-  size?: "small" | "medium" | "large";
+  theme: IconButtonTheme;
+  size: IconButtonSize;
   isLoading?: boolean;
   handleClick?: () => void;
 };
@@ -15,11 +29,9 @@ type IconButtonProps = {
 export const IconButton: Component<IconButtonProps> = (props) => {
   const mProps = mergeProps(
     {
-      theme: "primary",
-      size: "small",
       isDisabled: false,
       isLoading: false,
-      handleClick: () => console.log("Hello, World!"),
+      handleClick: () => {},
     },
     props,
   );
@@ -38,7 +50,7 @@ export const IconButton: Component<IconButtonProps> = (props) => {
       disabled={mProps.isDisabled}
       aria-label={mProps.ariaLabel}
     >
-      <Icon type="cross" />
+      <Icon name={mProps.iconName} />
     </button>
   );
 };
