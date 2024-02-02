@@ -19,30 +19,37 @@ import {
   ITEMS_LIMIT_REACHED_WARNING,
 } from "../../../../../features/testIds.ts";
 import { ITEMS_LIMIT } from "../../../../../configuration.ts";
+import { RemoveIconButton } from "../../../../components/removeIconButton/removeIconButton.tsx";
 
 // It's not Record<string, string> as there is a TypeScript error arriving:
 // Type '{ "client:only": string; }' is not assignable to type 'EditListProps'.
 type EditListProps = Record<string, string>;
 
 export const EditList: Component<EditListProps> = () => {
-  const [getInputs, setInputs] = createSignal([{}]);
+  const [getItems, setItems] = createSignal([{}]);
 
-  const addItem = () => {
+  function addItem() {
     if (!checkItemsLimitReached()) {
-      setInputs((prev) => prev.concat({}));
+      setItems((items) => items.concat({}));
     }
-  };
+  }
 
-  const checkItemsLimitReached = () => {
-    return getInputs().length >= ITEMS_LIMIT;
-  };
+  function checkItemsLimitReached() {
+    return getItems().length >= ITEMS_LIMIT;
+  }
+
+  function removeItem(indexToRemove: number) {
+    setItems((items) =>
+      items.filter((_item, index) => index !== indexToRemove),
+    );
+  }
 
   return (
     <div class="editList">
       <div class="editList__inner" data-test-id={ITEMS_INPUTS}>
         <div class="editList__scrollWrapper">
-          <For each={getInputs()}>
-            {(_input, index) => (
+          <For each={getItems()}>
+            {(_item, getIndex) => (
               <div class="editList__item">
                 <div class="editList__input">
                   <BasicInput
@@ -53,7 +60,14 @@ export const EditList: Component<EditListProps> = () => {
                     isRequired={true}
                     name="checklist-item"
                     testId={ITEM_INPUT}
-                    testSubId={index()}
+                    testSubId={getIndex()}
+                  />
+                </div>
+                <div class="editList__itemControls">
+                  <RemoveIconButton
+                    removeItem={() => {
+                      removeItem(getIndex());
+                    }}
                   />
                 </div>
               </div>

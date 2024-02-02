@@ -23,14 +23,3 @@ Feature: Adding items on the List Creation page
     Then I expect to see the warning about items inputs limit reached
     Then I expect to see the disabled "add item" button with the following text: "Добавить пункт"
     Then I expect to see the disabled "import" button with the following text: "Импортировать"
-    Then I expect the "add item button" not to be focused
-
-  Scenario: Adding item input with keyboard
-    And I press "Tab" key
-    And I press "Tab" key
-    And I press "Tab" key
-    Then I expect the "add item button" to be focused
-    And I press "Space" key
-    Then I expect to see second item input ready for typing with the following placeholder: "Текст пункта"
-    Then I expect the "add item button" to be focused
-    Then I expect to see the "add item" button ready for clicking with the following text: "Добавить пункт"

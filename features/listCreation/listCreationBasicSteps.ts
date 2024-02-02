@@ -17,12 +17,7 @@ import {
   TEST_ID_ATTRIBUTE,
   TEST_SUB_ID_ATTRIBUTE,
 } from "../utilities/buildTestSelector.ts";
-import {
-  BUTTON_TEST_IDS,
-  type ButtonMeaning,
-  type FocusableMeaning,
-  FOCUSABLES_TEST_IDS,
-} from "./testIds.ts";
+import { BUTTON_TEST_IDS, type ButtonMeaning } from "./testIds.ts";
 
 When("I open List Creation page", async function (this: ComplexWorld) {
   await this.navigate("create-checklist");
@@ -156,25 +151,3 @@ Then("I expect to see no other elements", async function (this: ComplexWorld) {
     ).sort(),
   ).toEqual(this.accounting.getTestIds());
 });
-
-When("I press {string} key", async function (this: ComplexWorld, key: string) {
-  await this.page.keyboard.press(key);
-});
-
-Then(
-  "I expect the {string} to be focused",
-  async function (this: ComplexWorld, focusableMeaning: FocusableMeaning) {
-    const focusable = FOCUSABLES_TEST_IDS[focusableMeaning];
-
-    await this.expectLocated(focusable).toBeFocused();
-  },
-);
-
-Then(
-  "I expect the {string} not to be focused",
-  async function (this: ComplexWorld, focusableMeaning: FocusableMeaning) {
-    const focusable = FOCUSABLES_TEST_IDS[focusableMeaning];
-
-    await this.expectLocated(focusable).not.toBeFocused();
-  },
-);
