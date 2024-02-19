@@ -1,5 +1,4 @@
-import type { Component } from "solid-js";
-import { For, Show } from "solid-js";
+import { type Component, createEffect, For, Show } from "solid-js";
 import { createStore } from "solid-js/store";
 import "./editList.css";
 import {
@@ -30,42 +29,50 @@ type Item = {
 };
 
 export const EditList: Component<EditListProps> = () => {
-  const [items, setItems] = createStore([{ deleteInProgress: false }]);
+  const [store, setStore] = createStore({
+    // This derived state is required to avoid significant
+    // performance drop caused by the isLastItem function
+    // in case filtering of items is done in there.
+    allButLastDeleteInProgress: true,
+    items: [{ deleteInProgress: false }],
+  });
+
+  createEffect(() => {
+    setStore(
+      "allButLastDeleteInProgress",
+      store.items.filter((item) => item.deleteInProgress).length ===
+        store.items.length - 1,
+    );
+  });
 
   function addItem() {
     if (!checkItemsLimitReached()) {
-      setItems((items) => items.concat({ deleteInProgress: false }));
+      setStore("items", (items) => items.concat({ deleteInProgress: false }));
     }
   }
 
   function checkItemsLimitReached() {
-    return items.length >= ITEMS_LIMIT;
+    return store.items.length >= ITEMS_LIMIT;
   }
 
   function isLastItem(item: Item) {
-    const deleteInProgressCount = items.filter(
-      (item) => item.deleteInProgress,
-    ).length;
-
-    return !item.deleteInProgress
-      ? deleteInProgressCount === items.length - 1
-      : false;
+    return !item.deleteInProgress && store.allButLastDeleteInProgress;
   }
 
   function removeItem(indexToRemove: number) {
-    setItems((items) =>
+    setStore("items", (items) =>
       items.filter((_item, index) => index !== indexToRemove),
     );
   }
 
   function setDeleteInProgress(indexToSet: number) {
-    setItems(indexToSet, {
+    setStore("items", indexToSet, {
       deleteInProgress: true,
     });
   }
 
   function resetDeleteInProgress(indexToReset: number) {
-    setItems(indexToReset, {
+    setStore("items", indexToReset, {
       deleteInProgress: false,
     });
   }
@@ -74,7 +81,7 @@ export const EditList: Component<EditListProps> = () => {
     <div class="editList">
       <div class="editList__inner" data-test-id={ITEMS_INPUTS}>
         <div class="editList__scrollWrapper">
-          <For each={items}>
+          <For each={store.items}>
             {(item, getIndex) => (
               <div class="editList__item">
                 <div class="editList__input">
