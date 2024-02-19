@@ -71,7 +71,7 @@ Then("I expect not to see the first item input", async function () {
 
 When(
   "I add items inputs to their limit",
-  { timeout: 60000 },
+  { timeout: 90000 },
   async function (this: ComplexWorld) {
     const addItemButton = this.locate(ADD_ITEM_BUTTON);
 

@@ -10,6 +10,9 @@ import { IconName } from "../icon/icon.tsx";
 
 type RemoveIconButtonProps = {
   removeItem: () => void;
+  onTimerStart: () => void;
+  onTimerCancel: () => void;
+  isDisabled: boolean;
 };
 
 export const RemoveIconButton: Component<RemoveIconButtonProps> = (props) => {
@@ -19,11 +22,14 @@ export const RemoveIconButton: Component<RemoveIconButtonProps> = (props) => {
   const runRemove = () => {
     if (getIconName() !== IconName.Cancel) {
       setIconName(IconName.Cancel);
+      props.onTimerStart();
+
       removeTimer = setTimeout(() => {
         props.removeItem();
       }, 5000);
     } else {
       setIconName(IconName.Trash);
+      props.onTimerCancel();
       clearTimeout(removeTimer);
     }
   };
@@ -35,6 +41,7 @@ export const RemoveIconButton: Component<RemoveIconButtonProps> = (props) => {
       theme={IconButtonTheme.Dangerous}
       size={IconButtonSize.Medium}
       handleClick={runRemove}
+      isDisabled={props.isDisabled}
     />
   );
 };

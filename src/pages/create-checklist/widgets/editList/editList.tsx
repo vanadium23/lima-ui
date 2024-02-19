@@ -1,5 +1,6 @@
 import type { Component } from "solid-js";
-import { createSignal, For, Show } from "solid-js";
+import { For, Show } from "solid-js";
+import { createStore } from "solid-js/store";
 import "./editList.css";
 import {
   BasicInput,
@@ -24,18 +25,31 @@ import { RemoveIconButton } from "../../../../components/removeIconButton/remove
 // It's not Record<string, string> as there is a TypeScript error arriving:
 // Type '{ "client:only": string; }' is not assignable to type 'EditListProps'.
 type EditListProps = Record<string, string>;
+type Item = {
+  deleteInProgress: boolean;
+};
 
 export const EditList: Component<EditListProps> = () => {
-  const [getItems, setItems] = createSignal([{}]);
+  const [items, setItems] = createStore([{ deleteInProgress: false }]);
 
   function addItem() {
     if (!checkItemsLimitReached()) {
-      setItems((items) => items.concat({}));
+      setItems((items) => items.concat({ deleteInProgress: false }));
     }
   }
 
   function checkItemsLimitReached() {
-    return getItems().length >= ITEMS_LIMIT;
+    return items.length >= ITEMS_LIMIT;
+  }
+
+  function isLastItem(item: Item) {
+    const deleteInProgressCount = items.filter(
+      (item) => item.deleteInProgress,
+    ).length;
+
+    return !item.deleteInProgress
+      ? deleteInProgressCount === items.length - 1
+      : false;
   }
 
   function removeItem(indexToRemove: number) {
@@ -44,12 +58,24 @@ export const EditList: Component<EditListProps> = () => {
     );
   }
 
+  function setDeleteInProgress(indexToSet: number) {
+    setItems(indexToSet, {
+      deleteInProgress: true,
+    });
+  }
+
+  function resetDeleteInProgress(indexToReset: number) {
+    setItems(indexToReset, {
+      deleteInProgress: false,
+    });
+  }
+
   return (
     <div class="editList">
       <div class="editList__inner" data-test-id={ITEMS_INPUTS}>
         <div class="editList__scrollWrapper">
-          <For each={getItems()}>
-            {(_item, getIndex) => (
+          <For each={items}>
+            {(item, getIndex) => (
               <div class="editList__item">
                 <div class="editList__input">
                   <BasicInput
@@ -68,6 +94,13 @@ export const EditList: Component<EditListProps> = () => {
                     removeItem={() => {
                       removeItem(getIndex());
                     }}
+                    onTimerStart={() => {
+                      setDeleteInProgress(getIndex());
+                    }}
+                    onTimerCancel={() => {
+                      resetDeleteInProgress(getIndex());
+                    }}
+                    isDisabled={isLastItem(item)}
                   />
                 </div>
               </div>
