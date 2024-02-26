@@ -2,29 +2,33 @@
 
 :root {
   /* Sizes (paddings, margins, gaps, heights) */
-  --size-1x: 0.2rem;
-  --size-2x: 0.4rem;
-  --size-3x: 0.6rem;
-  --size-4x: 0.8rem;
-  --size-5x: 1rem;
-  --size-6x: 1.2rem;
-  --size-7x: 1.4rem;
-  --size-8x: 1.6rem;
-  --size-9x: 1.8rem;
-  --size-10x: 2rem;
-  --size-11x: 2.2rem;
-  --size-12x: 2.4rem;
-  --size-15x: 3rem;
-  --size-16x: 3.2rem;
-  --size-17x: 3.4rem;
-  --size-20x: 4rem;
+  --size-x1: 0.2rem;
+  --size-x2: 0.4rem;
+  --size-x3: 0.6rem;
+  --size-x4: 0.8rem;
+  --size-x5: 1rem;
+  --size-x6: 1.2rem;
+  --size-x7: 1.4rem;
+  --size-x8: 1.6rem;
+  --size-x9: 1.8rem;
+  --size-x10: 2rem;
+  --size-x11: 2.2rem;
+  --size-x12: 2.4rem;
+  --size-x15: 3rem;
+  --size-x16: 3.2rem;
+  --size-x17: 3.4rem;
+  --size-x20: 4rem;
 
   /* Colors */
   --neutral-100: #fff;
   --neutral-200: #f6f2f8;
   --neutral-300: #c4c4c4;
   --neutral-400: #888;
-  --neutral-900: #333;
+  --neutral-500: #999; /* TODO у нас 500 светлее чем 400 */
+  --neutral-600: #777;
+  --neutral-700: #444;
+  --neutral-800: #222;
+  --neutral-900: #333; /* TODO у нас 900 светлее чем 800 */
   --text-100: #fff;
   --text-300: #888;
   --text-400: #333;
@@ -39,7 +43,7 @@
   --secondary-400: #daf098;
   --secondary-500: #c8f051;
   --secondary-600: #a6db09;
-  --outline-500: #0285f1;
+  --outline-500: #0285f1; /* TODO создать переменную дизайнеру отдельную для аутлайна */
 
   /* Custom-properties */
   --outline: 0.1rem solid var(--outline-500);

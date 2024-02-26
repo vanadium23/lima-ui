@@ -1,4 +1,4 @@
-import type { Component } from "solid-js";
+import { type Component } from "solid-js";
 import Sprite from "./sprite.svg?url";
 import "./icon.css";
 
@@ -7,13 +7,20 @@ export enum IconName {
   Trash = "trash",
 }
 
+export enum IconSize {
+  x7 = "x7",
+  x10 = "x10",
+  x12 = "x12",
+}
+
 type IconProps = {
   name: IconName;
+  size: IconSize;
 };
 
 export const Icon: Component<IconProps> = (props) => {
   return (
-    <svg class="icon icon_4x" aria-hidden="true">
+    <svg class={`icon icon_${props.size}`} aria-hidden="true">
       <use href={Sprite + "#" + props.name} />
     </svg>
   );

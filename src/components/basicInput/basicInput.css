@@ -4,7 +4,7 @@
   width: 100%;
   border-width: 0.1rem;
   border-style: solid;
-  gap: var(--size-6x);
+  gap: var(--size-x6);
 }
 
 .input__inner {
@@ -32,25 +32,25 @@
 .input_small .input__inner {
   font-size: 1.4rem;
   line-height: 1.8rem;
-  padding: var(--size-1x) var(--size-8x);
+  padding: var(--size-x1) var(--size-x8);
 }
 
 .input_medium .input__inner {
   font-size: 1.6rem;
   line-height: 2rem;
-  padding: var(--size-3x) var(--size-8x);
+  padding: var(--size-x3) var(--size-x8);
 }
 
 .input_large .input__inner {
   font-size: 1.8rem;
   line-height: 2.2rem;
-  padding: var(--size-4x) var(--size-8x);
+  padding: var(--size-x4) var(--size-x8);
 }
 
 .input_primary {
   border-color: var(--neutral-400);
   background: var(--neutral-100);
-  border-radius: var(--size-4x);
+  border-radius: var(--size-x4);
 }
 
 .input_primary:hover:not(.input_disabled, .input_error) {

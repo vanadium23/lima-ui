@@ -8,32 +8,33 @@
   cursor: pointer;
   border-width: 0.1rem;
   border-style: solid;
-  border-radius: var(--size-4x);
+  border-radius: var(--size-x4);
   gap: 1rem;
+  appearance: none;
 }
 
 .button_small {
   font-size: 1.4rem;
   line-height: 1.8rem;
   min-width: 8.2rem;
-  height: var(--size-12x);
-  padding: var(--size-1x) var(--size-8x);
+  height: var(--size-x12);
+  padding: var(--size-x1) var(--size-x8);
 }
 
 .button_medium {
   font-size: 1.6rem;
   line-height: 2rem;
   min-width: 9rem;
-  height: var(--size-17x);
-  padding: var(--size-3x) var(--size-8x);
+  height: var(--size-x17);
+  padding: var(--size-x3) var(--size-x8);
 }
 
 .button_large {
   font-size: 1.8rem;
   line-height: 2.2rem;
   min-width: 9.4rem;
-  height: var(--size-20x);
-  padding: var(--size-4x) var(--size-8x);
+  height: var(--size-x20);
+  padding: var(--size-x4) var(--size-x8);
 }
 
 .button_primary {

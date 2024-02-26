@@ -1,6 +1,7 @@
 ---
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 import { Icon, IconName } from "../../../components/icon/icon.tsx";
+import { IconSize } from "../../../components/icon/icon";
 ---
 
 <StorybookPage title="Icon">
@@ -16,7 +17,7 @@ import { Icon, IconName } from "../../../components/icon/icon.tsx";
       <span class="chead">Loading</span>
       <span class="rhead"></span>
 
-      <Icon client:only="solid-js" name={IconName.Cancel} />
+      <Icon client:only="solid-js" name={IconName.Cancel} size={IconSize.x7} />
     </div>
   </div>
 </StorybookPage>

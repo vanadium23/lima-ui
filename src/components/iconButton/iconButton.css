@@ -1,0 +1,100 @@
+.iconButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border: none;
+  padding: 0;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.iconButton:focus-visible {
+  outline: var(--outline);
+  outline-offset: var(--outline-offset);
+}
+
+.iconButton:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.iconButton:active:not(:disabled, .iconButton_disabled, .iconButton_loading) {
+  transform: translateY(0.1rem);
+}
+
+.iconButton_loading {
+  cursor: wait;
+}
+
+/* Sizes */
+
+.iconButton_small {
+  width: var(--size-x12);
+  height: var(--size-x12);
+}
+
+.iconButton_medium {
+  width: var(--size-x17);
+  height: var(--size-x17);
+}
+
+.iconButton_large {
+  width: var(--size-x20);
+  height: var(--size-x20);
+}
+
+/* Themes */
+
+.iconButton_primary {
+  fill: var(--neutral-800);
+}
+
+.iconButton_primary:hover:not(:disabled, .iconButton_disabled, .iconButton_loading) {
+  fill: var(--neutral-700);
+}
+
+.iconButton_primary:active:not(:disabled, .iconButton_disabled, .iconButton_loading) {
+  fill: var(--neutral-900);
+}
+
+.iconButton_secondary {
+  fill: var(--neutral-600);
+}
+
+.iconButton_secondary:hover:not(:disabled, .iconButton_disabled, .iconButton_loading) {
+  fill: var(--neutral-500);
+}
+
+.iconButton_secondary:active:not(:disabled, .iconButton_disabled, .iconButton_loading) {
+  fill: var(--neutral-700);
+}
+
+.iconButton_successful {
+  fill: green; /* TODO Заменить на нормальную переменную */
+}
+
+.iconButton_successful:hover:not(:disabled, .iconButton_disabled, .iconButton_loading) {
+  fill: green; /* TODO Заменить на нормальную переменную */
+}
+
+.iconButton_successful:active:not(:disabled, .iconButton_disabled, .iconButton_loading) {
+  fill: green; /* TODO Заменить на нормальную переменную */
+}
+
+.iconButton_dangerous {
+  fill: var(--dangerous-500);
+}
+
+.iconButton_dangerous:hover:not(:disabled, .iconButton_disabled, .iconButton_loading) {
+  fill: var(--dangerous-400);
+}
+
+.iconButton_dangerous:active:not(:disabled, .iconButton_disabled, .iconButton_loading) {
+  fill: var(--dangerous-600);
+}
+
+.iconButton_disabled {
+  cursor: not-allowed;
+  fill: var(--neutral-300);
+}

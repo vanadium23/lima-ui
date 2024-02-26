@@ -1,7 +1,7 @@
 import type { Component } from "solid-js";
 import { mergeProps } from "solid-js";
 import "./iconButton.css";
-import { Icon, IconName } from "../icon/icon.tsx";
+import { Icon, IconName, IconSize } from "../icon/icon.tsx";
 
 export enum IconButtonTheme {
   Primary = "primary",
@@ -27,7 +27,7 @@ type IconButtonProps = {
 };
 
 export const IconButton: Component<IconButtonProps> = (props) => {
-  const mProps = mergeProps(
+  const mProps: Required<IconButtonProps> = mergeProps(
     {
       isDisabled: false,
       isLoading: false,
@@ -35,6 +35,12 @@ export const IconButton: Component<IconButtonProps> = (props) => {
     },
     props,
   );
+
+  const iconSize = {
+    [IconButtonSize.Small]: IconSize.x7,
+    [IconButtonSize.Medium]: IconSize.x10,
+    [IconButtonSize.Large]: IconSize.x12,
+  };
 
   return (
     <button
@@ -48,9 +54,10 @@ export const IconButton: Component<IconButtonProps> = (props) => {
         iconButton_loading: mProps.isLoading,
       }}
       disabled={mProps.isDisabled}
+      aria-disabled={mProps.isLoading}
       aria-label={mProps.ariaLabel}
     >
-      <Icon name={mProps.iconName} />
+      <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
     </button>
   );
 };

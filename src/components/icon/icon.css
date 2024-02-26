@@ -1,5 +1,14 @@
-.icon {
-  width: 16px;
-  height: 16px;
-  fill: red;
+.icon_x7 {
+  width: var(--size-x7);
+  height: var(--size-x7);
+}
+
+.icon_x10 {
+  width: var(--size-x10);
+  height: var(--size-x10);
+}
+
+.icon_x12 {
+  width: var(--size-x12);
+  height: var(--size-x12);
 }

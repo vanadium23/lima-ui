@@ -1,6 +1,6 @@
 .editList {
   display: flex;
-  gap: var(--size-2x);
+  gap: var(--size-x2);
   flex-direction: column;
   overflow: auto;
 }
@@ -9,12 +9,12 @@
   display: flex;
   flex-direction: column-reverse;
   overflow: auto;
-  padding: var(--size-2x) var(--size-4x) var(--size-2x) var(--size-1x);
+  padding: var(--size-x2) var(--size-x4) var(--size-x2) var(--size-x1);
 }
 
 .editList__scrollWrapper {
   display: flex;
-  gap: var(--size-8x);
+  gap: var(--size-x8);
   flex-direction: column;
 }
 
@@ -39,7 +39,7 @@
 
 .editList__item {
   display: flex;
-  gap: var(--size-8x);
+  gap: var(--size-x8);
 }
 
 .editList__input {
@@ -57,6 +57,6 @@
 
 .editList__controls {
   display: flex;
-  gap: var(--size-6x);
-  padding: var(--size-1x) var(--size-1x) var(--size-2x);
+  gap: var(--size-x6);
+  padding: var(--size-x1) var(--size-x1) var(--size-x2);
 }

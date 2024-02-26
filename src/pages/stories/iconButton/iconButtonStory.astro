@@ -5,30 +5,55 @@ import {
   IconButtonTheme,
   IconButtonSize,
 } from "../../../components/iconButton/iconButton.tsx";
-import { IconName } from "../../../components/icon/icon.tsx";
+import {IconName} from "../../../components/icon/icon.tsx";
+
+const themes = Object.values(IconButtonTheme);
+const sizes = Object.values(IconButtonSize);
 ---
 
 <StorybookPage title="Icon Button">
-  <h2 id="main-button-link">Icon Button</h2>
 
-  <div class="demoThemeWrapper">
-    <h3 style="font-size: 24px; margin-bottom: 10px;">Primary</h3>
-    <h4 style="font-size: 18px; margin-bottom: 5px;">Large</h4>
-    <div class="grid grid_3Col">
-      <span class="chead"></span>
-      <span class="chead">Default</span>
-      <span class="chead">Disabled</span>
-      <span class="chead">Loading</span>
-      <span class="rhead"></span>
+  {themes.map((theme) => (
+          <div class="demoThemeWrapper">
+              <h3 style="font-size: 24px; margin-bottom: 10px;">{theme}</h3>
+              <div class="grid grid_3Col">
+                  <span class="chead"></span>
+                  <span class="chead">Default</span>
+                  <span class="chead">Loading</span>
+                  <span class="chead">Disabled</span>
 
-      <IconButton
-        client:only="solid-js"
-        isDisabled={false}
-        ariaLabel={"text"}
-        theme={IconButtonTheme.Primary}
-        size={IconButtonSize.Medium}
-        iconName={IconName.Cancel}
-      />
-    </div>
-  </div>
+                {sizes.map((size) => (
+                        <span class="rhead">{size}</span>
+
+                        <IconButton
+                                client:only="solid-js"
+                                ariaLabel={"text"}
+                                theme={theme}
+                                size={size}
+                                iconName={IconName.Cancel}
+                        />
+
+                        <IconButton
+                                client:only="solid-js"
+                                isLoading={true}
+                                ariaLabel={"text"}
+                                theme={theme}
+                                size={size}
+                                iconName={IconName.Cancel}
+                        />
+                  <!-- TODO Хз как размеры иконки перечислить -->
+                        <IconButton
+                                client:only="solid-js"
+                                isDisabled={true}
+                                ariaLabel={"text"}
+                                theme={theme}
+                                size={size}
+                                iconName={IconName.Cancel}
+                        />
+                ))}
+
+              </div>
+          </div>
+  ))}
+
 </StorybookPage>
