@@ -7,6 +7,13 @@ export const RemoveIconButtonAdapter: Component = () => {
       removeItem={() => {
         console.log("blet");
       }}
+      onTimerStart={() => {
+        console.log("timerStart-blet");
+      }}
+      onTimerCancel={() => {
+        console.log("timerCancel-blet");
+      }}
+      isDisabled={false}
     />
   );
 };
