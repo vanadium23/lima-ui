@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "concurrently 'COLOR_THEME=dark astro dev' 'astro check --watch'",
-    "start": "node ./dist/server/entry.mjs",
+    "start": "serve dist/",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
@@ -16,6 +16,7 @@
     "@astrojs/solid-js": "^4.0.1",
     "astro": "^4.4.5",
     "normalize.css": "^8.0.1",
+    "serve": "^14.2.1",
     "solid-js": "^1.8.7",
     "typescript": "^5.2.2"
   },
