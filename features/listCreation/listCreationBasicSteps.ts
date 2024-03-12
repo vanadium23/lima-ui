@@ -13,10 +13,12 @@ import { noVerticalScroll } from "../utilities/checkScroll.ts";
 import { expect } from "@playwright/test";
 import type { ComplexWorld } from "../context/hooks.ts";
 import {
-  extractAllCompleteIds,
+  buildFullId,
+  ID_SUB_ID_SEPARATOR,
+  InPlaywrightExtractAllCompleteIds,
   TEST_ID_ATTRIBUTE,
   TEST_SUB_ID_ATTRIBUTE,
-} from "../utilities/buildTestSelector.ts";
+} from "../utilities/buildTestableSelector.ts";
 import { BUTTON_TEST_IDS, type ButtonMeaning } from "./testIds.ts";
 
 When("I open List Creation page", async function (this: ComplexWorld) {
@@ -124,7 +126,7 @@ Then(
       CREATE_LIST_BUTTON,
       IMPORT_BUTTON,
       ITEMS_INPUTS,
-      `${ITEM_INPUT}0`,
+      buildFullId(ITEM_INPUT, 0),
       LIST_TITLE_INPUT,
       PAGE_TITLE,
       SIDEBAR,
@@ -144,10 +146,14 @@ Then(
 Then("I expect to see no other elements", async function (this: ComplexWorld) {
   expect(
     (
-      await this.locateAllTestable().evaluateAll(extractAllCompleteIds, {
-        testIdAttribute: TEST_ID_ATTRIBUTE,
-        testSubIdAttribute: TEST_SUB_ID_ATTRIBUTE,
-      })
+      await this.locateAllTestable().evaluateAll(
+        InPlaywrightExtractAllCompleteIds,
+        {
+          testIdAttribute: TEST_ID_ATTRIBUTE,
+          testSubIdAttribute: TEST_SUB_ID_ATTRIBUTE,
+          idSubIdSeparator: ID_SUB_ID_SEPARATOR,
+        },
+      )
     ).sort(),
   ).toEqual(this.accounting.getTestIds());
 });

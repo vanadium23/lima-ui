@@ -5,7 +5,10 @@ import {
   ITEMS_INPUTS,
   ITEMS_LIMIT_REACHED_WARNING,
 } from "../testIds.ts";
-import { TEST_SUB_ID_ATTRIBUTE } from "../utilities/buildTestSelector.ts";
+import {
+  destructureFullId,
+  TEST_SUB_ID_ATTRIBUTE,
+} from "../utilities/buildTestableSelector.ts";
 import { noVerticalScroll } from "../utilities/checkScroll.ts";
 import type { ComplexWorld } from "../context/hooks.ts";
 import { expect } from "@playwright/test";
@@ -15,9 +18,14 @@ import { BUTTON_TEST_IDS, type ButtonMeaning } from "./testIds.ts";
 Then(
   "I press the {string} button",
   async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
-    const buttonTestId = BUTTON_TEST_IDS[buttonMeaning];
+    const buttonFullTestId = BUTTON_TEST_IDS[buttonMeaning];
+    const { testId, testSubId } = destructureFullId(buttonFullTestId);
 
-    await this.locate(buttonTestId).click();
+    if (testSubId) {
+      await this.locate(testId, testSubId).click();
+    } else {
+      await this.locate(testId).click();
+    }
   },
 );
 

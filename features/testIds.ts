@@ -1,4 +1,5 @@
-export type TestId = string;
+import type { TestId } from "../src/components/utilities/testable.ts";
+
 export type SeveralTestIds = TestId[];
 
 export const DEFAULT_TEST_ID = "defaultTestId";
@@ -12,3 +13,4 @@ export const CREATE_LIST_BUTTON = "createListButton";
 export const ADD_ITEM_BUTTON = "addItemButton";
 export const IMPORT_BUTTON = "importButton";
 export const ITEMS_LIMIT_REACHED_WARNING = "itemsLimitReachedWarning";
+export const REMOVE_ITEM_BUTTON = "removeItemButton";

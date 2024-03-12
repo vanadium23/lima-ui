@@ -2,6 +2,7 @@ import type { Component } from "solid-js";
 import { mergeProps } from "solid-js";
 import "./iconButton.css";
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
+import type { Testable } from "../utilities/testable.ts";
 
 export enum IconButtonTheme {
   Primary = "primary",
@@ -26,8 +27,8 @@ type IconButtonProps = {
   handleClick?: () => void;
 };
 
-export const IconButton: Component<IconButtonProps> = (props) => {
-  const mProps: Required<IconButtonProps> = mergeProps(
+export const IconButton: Component<Testable<IconButtonProps>> = (props) => {
+  const mProps: Testable<Required<IconButtonProps>> = mergeProps(
     {
       isDisabled: false,
       isLoading: false,
@@ -56,6 +57,8 @@ export const IconButton: Component<IconButtonProps> = (props) => {
       disabled={mProps.isDisabled}
       aria-disabled={mProps.isLoading}
       aria-label={mProps.ariaLabel}
+      data-test-id={mProps.testId}
+      data-test-sub-id={mProps.testSubId}
     >
       <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
     </button>
