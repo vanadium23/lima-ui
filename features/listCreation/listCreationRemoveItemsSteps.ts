@@ -2,7 +2,12 @@ import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 import type { ComplexWorld } from "../context/hooks.ts";
 import { REMOVE_ITEM_BUTTON } from "../testIds.ts";
-import { ITEM_INPUT_TEST_IDS, type ItemInputMeaning } from "./testIds.ts";
+import {
+  BUTTON_TEST_IDS,
+  type ButtonMeaning,
+  ITEM_INPUT_TEST_IDS,
+  type ItemInputMeaning,
+} from "./testIds.ts";
 
 const MILLISECONDS_IN_SECOND = 1000;
 
@@ -31,5 +36,20 @@ Then(
   "I expect to see the only one item input left on the page",
   async function (this: ComplexWorld) {
     await expect(this.locate(REMOVE_ITEM_BUTTON)).toHaveCount(1);
+  },
+);
+
+When(
+  "I press the {string} button {int} times",
+  async function (
+    this: ComplexWorld,
+    buttonMeaning: ButtonMeaning,
+    repeatTimes: number,
+  ) {
+    const button = this.locateByFullId(BUTTON_TEST_IDS[buttonMeaning]);
+
+    for (let i = 0; i < repeatTimes; i++) {
+      await button.click();
+    }
   },
 );
