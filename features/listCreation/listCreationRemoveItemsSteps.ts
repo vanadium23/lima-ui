@@ -66,3 +66,17 @@ Then(
     }
   },
 );
+
+When(
+  "I hover {string} input",
+  async function (this: ComplexWorld, itemInputMeaning: ItemInputMeaning) {
+    await this.locateByFullId(ITEM_INPUT_TEST_IDS[itemInputMeaning]).hover();
+  },
+);
+
+Then(
+  "I expect to see {string} button",
+  async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
+    await this.expectLocated(BUTTON_TEST_IDS[buttonMeaning]).toBeInViewport();
+  },
+);
