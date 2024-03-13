@@ -16,6 +16,7 @@ export const BUTTON_TEST_IDS = {
   "remove third item": buildFullTestId(REMOVE_ITEM_BUTTON, 2),
   "remove forth item": buildFullTestId(REMOVE_ITEM_BUTTON, 3),
   "cancel second item removal": buildFullTestId(REMOVE_ITEM_BUTTON, 1),
+  "cancel third item removal": buildFullTestId(REMOVE_ITEM_BUTTON, 2),
 };
 export type ButtonMeaning = keyof typeof BUTTON_TEST_IDS;
 

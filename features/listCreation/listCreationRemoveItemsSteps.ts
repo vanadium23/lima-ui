@@ -1,7 +1,7 @@
 import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 import type { ComplexWorld } from "../context/hooks.ts";
-import { REMOVE_ITEM_BUTTON } from "../testIds.ts";
+import { ITEM_INPUT, REMOVE_ITEM_BUTTON } from "../testIds.ts";
 import {
   BUTTON_TEST_IDS,
   type ButtonMeaning,
@@ -50,6 +50,19 @@ When(
 
     for (let i = 0; i < repeatTimes; i++) {
       await button.click();
+    }
+  },
+);
+
+Then(
+  "I expect to see {int} items inputs ready for typing",
+  async function (this: ComplexWorld, itemsInputsQuantity: number) {
+    const itemsInputs = this.locate(ITEM_INPUT);
+
+    await expect(itemsInputs).toHaveCount(itemsInputsQuantity);
+
+    for (const itemInput of await itemsInputs.all()) {
+      await expect(itemInput).toBeEnabled();
     }
   },
 );
