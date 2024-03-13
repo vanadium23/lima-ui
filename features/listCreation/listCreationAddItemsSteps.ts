@@ -21,11 +21,11 @@ Then(
     const buttonFullTestId = BUTTON_TEST_IDS[buttonMeaning];
     const { testId, testSubId } = destructureFullId(buttonFullTestId);
 
-    if (testSubId) {
-      await this.locate(testId, testSubId).click();
-    } else {
-      await this.locate(testId).click();
-    }
+    const button = testSubId
+      ? this.locate(testId, testSubId)
+      : this.locate(testId);
+
+    await button.click();
   },
 );
 
