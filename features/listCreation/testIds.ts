@@ -12,6 +12,7 @@ export const BUTTON_TEST_IDS = {
   "add item": ADD_ITEM_BUTTON,
   import: IMPORT_BUTTON,
   "remove second item": buildFullId(REMOVE_ITEM_BUTTON, 1),
+  "cancel second item removal": buildFullId(REMOVE_ITEM_BUTTON, 1),
 };
 export type ButtonMeaning = keyof typeof BUTTON_TEST_IDS;
 
