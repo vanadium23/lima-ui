@@ -11,8 +11,10 @@ import { accountedTesting } from "./accountedTesting.ts";
 import {
   buildTestableSelector,
   buildTestableSubSelector,
+  destructureFullTestId,
 } from "../utilities/buildTestableSelector.ts";
 import type {
+  FullTestId,
   TestId,
   TestSubId,
 } from "../../src/components/utilities/testable.ts";
@@ -50,12 +52,20 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
     return elementWithRequiredId.and(elementWithRequiredSubId);
   }
 
+  locateByFullId(fullTestId: FullTestId) {
+    const { testId, testSubId } = destructureFullTestId(fullTestId);
+
+    if (testSubId) return this.locate(testId, testSubId);
+
+    return this.locate(testId);
+  }
+
   locateAllTestable() {
     return this.page.locator(buildTestableSelector());
   }
 
-  expectLocated(testId: TestId) {
-    return expect(this.locate(testId));
+  expectLocated(fullTestId: FullTestId) {
+    return expect(this.locateByFullId(fullTestId));
   }
 }
 

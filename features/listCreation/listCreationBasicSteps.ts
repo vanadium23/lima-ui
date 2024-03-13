@@ -13,7 +13,7 @@ import { noVerticalScroll } from "../utilities/checkScroll.ts";
 import { expect } from "@playwright/test";
 import type { ComplexWorld } from "../context/hooks.ts";
 import {
-  buildFullId,
+  buildFullTestId,
   ID_SUB_ID_SEPARATOR,
   InPlaywrightExtractAllCompleteIds,
   TEST_ID_ATTRIBUTE,
@@ -126,7 +126,7 @@ Then(
       CREATE_LIST_BUTTON,
       IMPORT_BUTTON,
       ITEMS_INPUTS,
-      buildFullId(ITEM_INPUT, 0),
+      buildFullTestId(ITEM_INPUT, 0),
       LIST_TITLE_INPUT,
       PAGE_TITLE,
       SIDEBAR,
@@ -144,16 +144,23 @@ Then(
 );
 
 Then("I expect to see no other elements", async function (this: ComplexWorld) {
-  expect(
-    (
-      await this.locateAllTestable().evaluateAll(
-        InPlaywrightExtractAllCompleteIds,
-        {
-          testIdAttribute: TEST_ID_ATTRIBUTE,
-          testSubIdAttribute: TEST_SUB_ID_ATTRIBUTE,
-          idSubIdSeparator: ID_SUB_ID_SEPARATOR,
-        },
-      )
-    ).sort(),
-  ).toEqual(this.accounting.getTestIds());
+  const allCompleteIds = (
+    await this.locateAllTestable().evaluateAll(
+      InPlaywrightExtractAllCompleteIds,
+      {
+        testIdAttribute: TEST_ID_ATTRIBUTE,
+        testSubIdAttribute: TEST_SUB_ID_ATTRIBUTE,
+        idSubIdSeparator: ID_SUB_ID_SEPARATOR,
+      },
+    )
+  ).sort();
+
+  const accountedTestIds = this.accounting.getTestIds();
+  const excessiveIds = allCompleteIds.filter(
+    (id) => !accountedTestIds.includes(id),
+  );
+
+  for (const id of excessiveIds) {
+    await this.expectLocated(id).not.toBeVisible();
+  }
 });

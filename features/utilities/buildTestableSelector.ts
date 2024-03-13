@@ -1,5 +1,6 @@
 import type { SeveralTestIds } from "../testIds.ts";
 import type {
+  FullTestId,
   FullTestIdParts,
   TestId,
   TestSubId,
@@ -21,14 +22,14 @@ export function buildTestableSubSelector(testSubId: TestSubId) {
   return `[${TEST_SUB_ID_ATTRIBUTE}="${testSubId}"]`;
 }
 
-export function buildFullId(testId: TestId, testSubId: TestSubId) {
+export function buildFullTestId(testId: TestId, testSubId: TestSubId) {
   return [testId, testSubId]
     .filter((id) => id || id === 0)
     .join(ID_SUB_ID_SEPARATOR);
 }
 
-export function destructureFullId(fullId: string): FullTestIdParts {
-  const [testId = "", testSubId = ""] = fullId.split(ID_SUB_ID_SEPARATOR);
+export function destructureFullTestId(fullTestId: FullTestId): FullTestIdParts {
+  const [testId = "", testSubId = ""] = fullTestId.split(ID_SUB_ID_SEPARATOR);
 
   return {
     testId,
@@ -54,7 +55,7 @@ export function InPlaywrightExtractAllCompleteIds(
     const testId = element.getAttribute(testIdAttribute) || "";
     const testSubId = element.getAttribute(testSubIdAttribute) || "";
 
-    // The buildFullId function is not available in external Playwright browsers.
+    // The buildFullTestId function is not available in external Playwright browsers.
     return [testId, testSubId].filter((id) => id).join(idSubIdSeparator);
   });
 }

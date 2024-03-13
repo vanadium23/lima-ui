@@ -1,5 +1,5 @@
 import type { SeveralTestIds } from "../testIds.ts";
-import { buildFullId } from "../utilities/buildTestableSelector.ts";
+import { buildFullTestId } from "../utilities/buildTestableSelector.ts";
 import type { TestId } from "../../src/components/utilities/testable.ts";
 
 interface AccountedTesting {
@@ -21,7 +21,7 @@ export const accountedTesting: AccountedTesting = {
   },
 
   registerTestIdAndSubId(testId, testSubId) {
-    this.registerTestId(buildFullId(testId, testSubId ?? ""));
+    this.registerTestId(buildFullTestId(testId, testSubId ?? ""));
   },
 
   registerSeveralTestIds(severalTestIds): void {
