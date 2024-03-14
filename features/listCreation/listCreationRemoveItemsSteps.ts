@@ -80,3 +80,10 @@ Then(
     await this.expectLocated(BUTTON_TEST_IDS[buttonMeaning]).toBeInViewport();
   },
 );
+
+When(
+  "I hover {string} button",
+  async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
+    await this.locateByFullId(BUTTON_TEST_IDS[buttonMeaning]).hover();
+  },
+);
