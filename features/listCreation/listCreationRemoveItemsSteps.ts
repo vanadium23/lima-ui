@@ -103,3 +103,28 @@ When(
     await this.locateByFullId(ITEM_INPUT_TEST_IDS[itemInputMeaning]).focus();
   },
 );
+
+When(
+  "I focus {string} button",
+  async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
+    await this.locateByFullId(BUTTON_TEST_IDS[buttonMeaning]).focus();
+  },
+);
+
+Then(
+  "I expect to see the following number of {string} buttons on the page: {int}",
+  async function (
+    this: ComplexWorld,
+    buttonMeaning: ButtonMeaning,
+    buttonsQuantity: number,
+  ) {
+    const buttons = this.locate(BUTTON_TEST_IDS[buttonMeaning]);
+    const visibleButtons = [];
+
+    for (const button of await buttons.all()) {
+      if (await button.isVisible()) visibleButtons.push(button);
+    }
+
+    expect(visibleButtons).toHaveLength(buttonsQuantity);
+  },
+);

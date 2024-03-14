@@ -12,6 +12,7 @@ export const BUTTON_TEST_IDS = {
   create: CREATE_LIST_BUTTON,
   "add item": ADD_ITEM_BUTTON,
   import: IMPORT_BUTTON,
+  "remove item": REMOVE_ITEM_BUTTON,
   "remove first item": buildFullTestId(REMOVE_ITEM_BUTTON, 0),
   "remove second item": buildFullTestId(REMOVE_ITEM_BUTTON, 1),
   "remove third item": buildFullTestId(REMOVE_ITEM_BUTTON, 2),
