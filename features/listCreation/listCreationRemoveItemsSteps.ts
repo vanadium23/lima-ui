@@ -96,3 +96,10 @@ When(
     await this.locateByFullId(ELEMENT_TEST_IDS[elementMeaning]).hover();
   },
 );
+
+When(
+  "I focus {string} input",
+  async function (this: ComplexWorld, itemInputMeaning: ItemInputMeaning) {
+    await this.locateByFullId(ITEM_INPUT_TEST_IDS[itemInputMeaning]).focus();
+  },
+);

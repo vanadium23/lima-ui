@@ -51,3 +51,8 @@ Feature: Removing items on the List Creation page
     And I press the "add item" button
     And I hover "first item container"
     Then I expect to see "remove first item" button
+
+  Scenario: Seeing remove item button on item input focus
+    And I press the "add item" button
+    And I focus "first item" input
+    Then I expect to see "remove first item" button
