@@ -1,4 +1,4 @@
-import { type Component, createEffect } from "solid-js";
+import { type Component, Switch, Match } from "solid-js";
 import "./icon.css";
 import { Cancel, Trash } from "./sprite.tsx";
 
@@ -18,21 +18,17 @@ type IconProps = {
   size: IconSize;
 };
 
-const icons = {
-  [IconName.Cancel]: Cancel,
-  [IconName.Trash]: Trash,
-};
-
 export const Icon: Component<IconProps> = (props) => {
-  let Sprite = icons[props.name];
-
-  createEffect(() => {
-    Sprite = icons[props.name];
-  });
-
   return (
     <svg class={`icon icon_${props.size}`} aria-hidden="true">
-      <Sprite size={props.size} />
+      <Switch>
+        <Match when={props.name === IconName.Trash}>
+          <Trash size={props.size} />
+        </Match>
+        <Match when={props.name === IconName.Cancel}>
+          <Cancel size={props.size} />
+        </Match>
+      </Switch>
     </svg>
   );
 };

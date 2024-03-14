@@ -24,8 +24,8 @@ export const Cancel: Component<SpriteProps> = (props) => {
         stroke="red"
         fill="none"
         stroke-linecap="round"
-        style="transform:rotateY(-180deg) rotateZ(-90deg);"
-      ></circle>
+        style={{ transform: "rotateY(-180deg) rotateZ(-90deg)" }}
+      />
       <line
         class="cancel2"
         x1="6"
