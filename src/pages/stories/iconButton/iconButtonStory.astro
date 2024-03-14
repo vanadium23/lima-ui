@@ -6,6 +6,7 @@ import {
   IconButtonSize,
 } from "../../../components/iconButton/iconButton.tsx";
 import {IconName} from "../../../components/icon/icon.tsx";
+import {DEFAULT_TEST_ID} from "../../../../features/testIds";
 
 const themes = Object.values(IconButtonTheme);
 const sizes = Object.values(IconButtonSize);
@@ -31,6 +32,7 @@ const sizes = Object.values(IconButtonSize);
                                 theme={theme}
                                 size={size}
                                 iconName={IconName.Cancel}
+                                testId={DEFAULT_TEST_ID}
                         />
 
                         <IconButton
@@ -40,6 +42,7 @@ const sizes = Object.values(IconButtonSize);
                                 theme={theme}
                                 size={size}
                                 iconName={IconName.Cancel}
+                                testId={DEFAULT_TEST_ID}
                         />
 
                         <IconButton
@@ -49,6 +52,7 @@ const sizes = Object.values(IconButtonSize);
                                 theme={theme}
                                 size={size}
                                 iconName={IconName.Cancel}
+                                testId={DEFAULT_TEST_ID}
                         />
                 ))}
 

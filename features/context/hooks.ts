@@ -8,8 +8,16 @@ import {
 } from "@cucumber/cucumber";
 import { type Browser, expect, firefox, type Page } from "@playwright/test";
 import { accountedTesting } from "./accountedTesting.ts";
-import type { TestId } from "../testIds.ts";
-import { buildTestSelector } from "../utilities/buildTestSelector.ts";
+import {
+  buildTestableSelector,
+  buildTestableSubSelector,
+  destructureFullTestId,
+} from "../utilities/buildTestableSelector.ts";
+import type {
+  FullTestId,
+  TestId,
+  TestSubId,
+} from "../../src/components/utilities/testable.ts";
 
 let browser: Browser;
 
@@ -31,23 +39,42 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
     await this.page.goto(`http://localhost:4321/${address}`);
   }
 
-  locate(testId: string) {
-    return this.page.locator(buildTestSelector(testId));
+  locate(testId: TestId, testSubId?: TestSubId) {
+    const elementWithRequiredId = this.page.locator(
+      buildTestableSelector(testId),
+    );
+
+    if (!testSubId) return elementWithRequiredId;
+
+    const elementWithRequiredSubId = this.page.locator(
+      buildTestableSubSelector(testSubId),
+    );
+    return elementWithRequiredId.and(elementWithRequiredSubId);
+  }
+
+  locateByFullId(fullTestId: FullTestId) {
+    const { testId, testSubId } = destructureFullTestId(fullTestId);
+
+    if (testSubId) return this.locate(testId, testSubId);
+
+    return this.locate(testId);
   }
 
   locateAllTestable() {
-    return this.page.locator(buildTestSelector());
+    return this.page.locator(buildTestableSelector());
   }
 
-  expectLocated(testId: TestId) {
-    return expect(this.locate(testId));
+  expectLocated(fullTestId: FullTestId) {
+    return expect(this.locateByFullId(fullTestId));
   }
 }
 
 setWorldConstructor(ComplexWorld);
 
 BeforeAll(async function () {
-  browser = await firefox.launch();
+  const BROWSER_OPTIONS = { headless: true };
+
+  browser = await firefox.launch(BROWSER_OPTIONS);
 });
 
 Before(async function (this: ComplexWorld) {

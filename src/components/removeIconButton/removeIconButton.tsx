@@ -7,6 +7,7 @@ import {
   IconButtonTheme,
 } from "../iconButton/iconButton.tsx";
 import { IconName } from "../icon/icon.tsx";
+import type { Testable } from "../utilities/testable.ts";
 
 type RemoveIconButtonProps = {
   removeItem: () => void;
@@ -15,7 +16,9 @@ type RemoveIconButtonProps = {
   isDisabled: boolean;
 };
 
-export const RemoveIconButton: Component<RemoveIconButtonProps> = (props) => {
+export const RemoveIconButton: Component<Testable<RemoveIconButtonProps>> = (
+  props,
+) => {
   const [getIconName, setIconName] = createSignal(IconName.Trash);
 
   let removeTimer: NodeJS.Timeout;
@@ -42,6 +45,8 @@ export const RemoveIconButton: Component<RemoveIconButtonProps> = (props) => {
       size={IconButtonSize.Medium}
       handleClick={runRemove}
       isDisabled={props.isDisabled}
+      testId={props.testId}
+      testSubId={props.testSubId ?? ""}
     />
   );
 };

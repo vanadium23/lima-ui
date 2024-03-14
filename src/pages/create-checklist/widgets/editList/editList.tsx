@@ -17,6 +17,7 @@ import {
   ITEM_INPUT,
   ITEMS_INPUTS,
   ITEMS_LIMIT_REACHED_WARNING,
+  REMOVE_ITEM_BUTTON,
 } from "../../../../../features/testIds.ts";
 import { ITEMS_LIMIT } from "../../../../../configuration.ts";
 import { RemoveIconButton } from "../../../../components/removeIconButton/removeIconButton.tsx";
@@ -25,7 +26,7 @@ import { RemoveIconButton } from "../../../../components/removeIconButton/remove
 // Type '{ "client:only": string; }' is not assignable to type 'EditListProps'.
 type EditListProps = Record<string, string>;
 type Item = {
-  deleteInProgress: boolean;
+  removeInProgress: boolean;
 };
 
 export const EditList: Component<EditListProps> = () => {
@@ -34,20 +35,20 @@ export const EditList: Component<EditListProps> = () => {
     // performance drop caused by the isLastItem function
     // in case filtering of items is done in there.
     allButLastDeleteInProgress: true,
-    items: [{ deleteInProgress: false }],
+    items: [{ removeInProgress: false }],
   });
 
   createEffect(() => {
     setStore(
       "allButLastDeleteInProgress",
-      store.items.filter((item) => item.deleteInProgress).length ===
+      store.items.filter((item) => item.removeInProgress).length ===
         store.items.length - 1,
     );
   });
 
   function addItem() {
     if (!checkItemsLimitReached()) {
-      setStore("items", (items) => items.concat({ deleteInProgress: false }));
+      setStore("items", (items) => items.concat({ removeInProgress: false }));
     }
   }
 
@@ -56,7 +57,7 @@ export const EditList: Component<EditListProps> = () => {
   }
 
   function isLastItem(item: Item) {
-    return !item.deleteInProgress && store.allButLastDeleteInProgress;
+    return !item.removeInProgress && store.allButLastDeleteInProgress;
   }
 
   function removeItem(indexToRemove: number) {
@@ -67,13 +68,13 @@ export const EditList: Component<EditListProps> = () => {
 
   function setDeleteInProgress(indexToSet: number) {
     setStore("items", indexToSet, {
-      deleteInProgress: true,
+      removeInProgress: true,
     });
   }
 
   function resetDeleteInProgress(indexToReset: number) {
     setStore("items", indexToReset, {
-      deleteInProgress: false,
+      removeInProgress: false,
     });
   }
 
@@ -108,6 +109,8 @@ export const EditList: Component<EditListProps> = () => {
                       resetDeleteInProgress(getIndex());
                     }}
                     isDisabled={isLastItem(item)}
+                    testId={REMOVE_ITEM_BUTTON}
+                    testSubId={getIndex()}
                   />
                 </div>
               </div>
