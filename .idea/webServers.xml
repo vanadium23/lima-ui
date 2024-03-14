@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="5a30fd10-221f-48cd-a489-b7612dd28518" name="test">
+        <fileTransfer rootFolder="/var/www/www-root/data/www/svernik.ru" accessType="SFTP" host="80.87.194.25" port="22" sshConfigId="741877e1-d699-4c02-839b-a7e890e62178" sshConfig="root@80.87.194.25:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

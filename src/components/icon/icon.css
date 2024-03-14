@@ -12,3 +12,32 @@
   width: var(--size-x12);
   height: var(--size-x12);
 }
+
+.cancel-circle-animation {
+  animation: countdown 5s linear infinite forwards;
+}
+
+.cancel2 {
+  stroke: red;
+}
+
+@-webkit-keyframes countdown {
+  from {
+    stroke-dashoffset: 0px;
+  }
+
+  to {
+    stroke-dashoffset: 56px;
+  }
+
+}
+
+@keyframes countdown {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: 56px;
+  }
+}

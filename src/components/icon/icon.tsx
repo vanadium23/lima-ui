@@ -1,6 +1,6 @@
-import { type Component } from "solid-js";
-import Sprite from "./sprite.svg?url";
+import { type Component, createEffect } from "solid-js";
 import "./icon.css";
+import { Cancel, Trash } from "./sprite.tsx";
 
 export enum IconName {
   Cancel = "cancel",
@@ -18,10 +18,21 @@ type IconProps = {
   size: IconSize;
 };
 
+const icons = {
+  [IconName.Cancel]: Cancel,
+  [IconName.Trash]: Trash,
+};
+
 export const Icon: Component<IconProps> = (props) => {
+  let Sprite = icons[props.name];
+
+  createEffect(() => {
+    Sprite = icons[props.name];
+  });
+
   return (
     <svg class={`icon icon_${props.size}`} aria-hidden="true">
-      <use href={Sprite + "#" + props.name} />
+      <Sprite size={props.size} />
     </svg>
   );
 };
