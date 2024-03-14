@@ -5,6 +5,8 @@ import { ITEM_INPUT, REMOVE_ITEM_BUTTON } from "../testIds.ts";
 import {
   BUTTON_TEST_IDS,
   type ButtonMeaning,
+  ELEMENT_TEST_IDS,
+  type ElementMeaning,
   ITEM_INPUT_TEST_IDS,
   type ItemInputMeaning,
 } from "./testIds.ts";
@@ -85,5 +87,12 @@ When(
   "I hover {string} button",
   async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
     await this.locateByFullId(BUTTON_TEST_IDS[buttonMeaning]).hover();
+  },
+);
+
+When(
+  "I hover {string}",
+  async function (this: ComplexWorld, elementMeaning: ElementMeaning) {
+    await this.locateByFullId(ELEMENT_TEST_IDS[elementMeaning]).hover();
   },
 );

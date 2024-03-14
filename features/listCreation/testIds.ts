@@ -3,6 +3,7 @@ import {
   CREATE_LIST_BUTTON,
   IMPORT_BUTTON,
   ITEM_INPUT,
+  ITEM_INPUT_CONTAINER,
   REMOVE_ITEM_BUTTON,
 } from "../testIds.ts";
 import { buildFullTestId } from "../utilities/buildTestableSelector.ts";
@@ -27,3 +28,8 @@ export const ITEM_INPUT_TEST_IDS = {
   "forth item": buildFullTestId(ITEM_INPUT, 3),
 };
 export type ItemInputMeaning = keyof typeof ITEM_INPUT_TEST_IDS;
+
+export const ELEMENT_TEST_IDS = {
+  "first item container": buildFullTestId(ITEM_INPUT_CONTAINER, 0),
+};
+export type ElementMeaning = keyof typeof ELEMENT_TEST_IDS;

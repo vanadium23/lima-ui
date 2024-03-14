@@ -15,6 +15,7 @@ import {
   ADD_ITEM_BUTTON,
   IMPORT_BUTTON,
   ITEM_INPUT,
+  ITEM_INPUT_CONTAINER,
   ITEMS_INPUTS,
   ITEMS_LIMIT_REACHED_WARNING,
   REMOVE_ITEM_BUTTON,
@@ -84,7 +85,11 @@ export const EditList: Component<EditListProps> = () => {
         <div class="editList__scrollWrapper">
           <For each={store.items}>
             {(item, getIndex) => (
-              <div class="editList__item">
+              <div
+                class="editList__item"
+                data-test-id={ITEM_INPUT_CONTAINER}
+                data-test-sub-id={getIndex()}
+              >
                 <div class="editList__input">
                   <BasicInput
                     placeholder="Текст пункта"
