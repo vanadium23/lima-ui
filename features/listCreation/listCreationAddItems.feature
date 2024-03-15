@@ -14,12 +14,12 @@ Feature: Adding items on the List Creation page
     Then I expect to see the last added item input
     Then I expect not to see the first item input
     Then I expect to see list title input ready for typing with the following placeholder: "Название чек-листа"
-    Then I expect to see the disabled "create" button with the following text: "Создать"
+    Then I expect to see the "create" button disabled with the following text: "Создать"
     Then I expect to see the "add item" button ready for clicking with the following text: "Добавить пункт"
     Then I expect to see the "import" button ready for clicking with the following text: "Импортировать"
 
   Scenario: Adding items inputs to the limit
     When I add items inputs to their limit
     Then I expect to see the warning about items inputs limit reached
-    Then I expect to see the disabled "add item" button with the following text: "Добавить пункт"
-    Then I expect to see the disabled "import" button with the following text: "Импортировать"
+    Then I expect to see the "add item" button disabled with the following text: "Добавить пункт"
+    Then I expect to see the "import" button disabled with the following text: "Импортировать"

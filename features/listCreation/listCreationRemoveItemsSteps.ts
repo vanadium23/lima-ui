@@ -77,7 +77,7 @@ When(
 );
 
 Then(
-  "I expect to see {string} button",
+  "I expect to see the {string} button",
   async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
     await this.expectLocated(BUTTON_TEST_IDS[buttonMeaning]).toBeInViewport();
   },
@@ -126,5 +126,12 @@ Then(
     }
 
     expect(visibleButtons).toHaveLength(buttonsQuantity);
+  },
+);
+
+Then(
+  "I expect to see the {string} button disabled",
+  async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
+    await this.expectLocated(BUTTON_TEST_IDS[buttonMeaning]).toBeDisabled();
   },
 );

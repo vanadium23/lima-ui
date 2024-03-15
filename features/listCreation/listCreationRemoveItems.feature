@@ -40,29 +40,33 @@ Feature: Removing items on the List Creation page
   Scenario: Seeing remove item button on item input hover
     And I press the "add item" button
     And I hover "first item" input
-    Then I expect to see "remove first item" button
+    Then I expect to see the "remove first item" button
     Then I expect to see the following number of "remove item" buttons on the page: 1
 
   Scenario: Seeing remove item button on its own hover
     And I press the "add item" button
     And I hover "remove first item" button
-    Then I expect to see "remove first item" button
+    Then I expect to see the "remove first item" button
     Then I expect to see the following number of "remove item" buttons on the page: 1
 
   Scenario: Seeing remove item button on item input container hover
     And I press the "add item" button
     And I hover "first item container"
-    Then I expect to see "remove first item" button
+    Then I expect to see the "remove first item" button
     Then I expect to see the following number of "remove item" buttons on the page: 1
 
   Scenario: Seeing remove item button on item input focus
     And I press the "add item" button
     And I focus "first item" input
-    Then I expect to see "remove first item" button
+    Then I expect to see the "remove first item" button
     Then I expect to see the following number of "remove item" buttons on the page: 1
 
   Scenario: Seeing remove item button on its on focus
     And I press the "add item" button
     And I focus "remove first item" button
-    Then I expect to see "remove first item" button
+    Then I expect to see the "remove first item" button
     Then I expect to see the following number of "remove item" buttons on the page: 1
+
+    Scenario: Seeing remove item button disabled for the only item input
+      And I focus "remove first item" button
+      Then I expect to see the "remove first item" button disabled

@@ -85,7 +85,7 @@ Then(
 );
 
 Then(
-  "I expect to see the disabled {string} button with the following text: {string}",
+  "I expect to see the {string} button disabled with the following text: {string}",
   async function (
     this: ComplexWorld,
     buttonMeaning: ButtonMeaning,
