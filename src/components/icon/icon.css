@@ -13,23 +13,14 @@
   height: var(--size-x12);
 }
 
-.cancel-circle-animation {
-  animation: countdown 5s linear infinite forwards;
+/* Specific icons styles */
+
+.svgCancelCircleAnimation {
+  animation: countdown 5s linear forwards;
 }
 
-.cancel2 {
-  stroke: red;
-}
-
-@-webkit-keyframes countdown {
-  from {
-    stroke-dashoffset: 0px;
-  }
-
-  to {
-    stroke-dashoffset: 56px;
-  }
-
+.svgCancelLine, .svgCancelCircleAnimation {
+  stroke: var(--dangerous-500);
 }
 
 @keyframes countdown {
