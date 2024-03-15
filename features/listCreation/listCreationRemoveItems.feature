@@ -67,6 +67,13 @@ Feature: Removing items on the List Creation page
     Then I expect to see the "remove first item" button
     Then I expect to see the following number of "remove item" buttons on the page: 1
 
-    Scenario: Seeing remove item button disabled for the only item input
-      And I focus "remove first item" button
-      Then I expect to see the "remove first item" button disabled
+  Scenario: Seeing remove item button disabled for the only item input
+    And I hover "first item container"
+    Then I expect to see the "remove first item" button disabled
+
+  Scenario: Seeing remove item button disabled for the only item input left not for removal
+    And I press the "add item" button 2 times
+    And I press the "remove first item" button
+    And I press the "remove third item" button
+    And I hover "second item container"
+    Then I expect to see the "remove second item" button disabled
