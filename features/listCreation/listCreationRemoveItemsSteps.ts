@@ -156,3 +156,15 @@ Then(
     await expectButton.toBeEnabled();
   },
 );
+
+When(
+  "I hover {string} and press the {string} button",
+  async function (
+    this: ComplexWorld,
+    elementMeaning: ElementMeaning,
+    buttonMeaning: ButtonMeaning,
+  ) {
+    await this.locateByFullId(ELEMENT_TEST_IDS[elementMeaning]).hover();
+    await this.locateByFullId(BUTTON_TEST_IDS[buttonMeaning]).click();
+  },
+);

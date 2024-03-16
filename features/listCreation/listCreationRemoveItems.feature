@@ -5,23 +5,23 @@ Feature: Removing items on the List Creation page
 
   Scenario: Removing single item input
     And I press the "add item" button
-    And I press the "remove second item" button
+    And I hover "second item container" and press the "remove second item" button
     Then I expect to see the "second item" input disabled
     And I wait for the removal pawl countdown of 5 seconds to pass
     Then I expect to see the only one item input left on the page
 
   Scenario: Canceling single item input removal
     And I press the "add item" button
-    And I press the "remove second item" button
+    And I hover "second item container" and press the "remove second item" button
     And I press the "cancel second item removal" button
     And I wait for the removal pawl countdown of 5 seconds to pass
     Then I expect to see second item input ready for typing with the following placeholder: "Текст пункта"
 
   Scenario: Removing several items inputs
     And I press the "add item" button 3 times
-    And I press the "remove first item" button
-    And I press the "remove third item" button
-    And I press the "remove forth item" button
+    And I hover "first item container" and press the "remove first item" button
+    And I hover "third item container" and press the "remove third item" button
+    And I hover "forth item container" and press the "remove forth item" button
     Then I expect to see the "first item" input disabled
     Then I expect to see the "third item" input disabled
     Then I expect to see the "forth item" input disabled
@@ -30,8 +30,8 @@ Feature: Removing items on the List Creation page
 
   Scenario: Canceling several items inputs removal
     And I press the "add item" button 2 times
-    And I press the "remove second item" button
-    And I press the "remove third item" button
+    And I hover "second item container" and press the "remove second item" button
+    And I hover "third item container" and press the "remove third item" button
     And I press the "cancel second item removal" button
     And I press the "cancel third item removal" button
     And I wait for the removal pawl countdown of 5 seconds to pass
@@ -73,15 +73,14 @@ Feature: Removing items on the List Creation page
 
   Scenario: Seeing remove item button disabled for the only item input left not for removal
     And I press the "add item" button 2 times
-    And I press the "remove first item" button
-    And I press the "remove third item" button
+    And I hover "first item container" and press the "remove first item" button
+    And I hover "third item container" and press the "remove third item" button
     And I hover "second item container"
     Then I expect to see the "remove second item" button disabled
 
   Scenario: Adding items inputs to the limit and then deleting one item input leads to warning disappear and buttons enablement
     When I add items inputs to their limit
-    And I hover "on limit item container"
-    And I press the "remove on limit item" button
+    And I hover "on limit item container" and press the "remove on limit item" button
     And I wait for the removal pawl countdown of 5 seconds to pass
     Then I expect not to see the warning about items inputs limit reached
     Then I expect to see the "add item" button enabled

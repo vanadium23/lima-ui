@@ -35,6 +35,8 @@ export type ItemInputMeaning = keyof typeof ITEM_INPUT_TEST_IDS;
 export const ELEMENT_TEST_IDS = {
   "first item container": buildFullTestId(ITEM_INPUT_CONTAINER, 0),
   "second item container": buildFullTestId(ITEM_INPUT_CONTAINER, 1),
+  "third item container": buildFullTestId(ITEM_INPUT_CONTAINER, 2),
+  "forth item container": buildFullTestId(ITEM_INPUT_CONTAINER, 3),
   "on limit item container": buildFullTestId(
     ITEM_INPUT_CONTAINER,
     ITEMS_LIMIT - 1,

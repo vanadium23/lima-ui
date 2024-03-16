@@ -15,9 +15,7 @@ import { BUTTON_TEST_IDS, type ButtonMeaning } from "./testIds.ts";
 Then(
   "I press the {string} button",
   async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
-    const button = this.locateByFullId(BUTTON_TEST_IDS[buttonMeaning]);
-
-    await button.click();
+    await this.locateByFullId(BUTTON_TEST_IDS[buttonMeaning]).click();
   },
 );
 
