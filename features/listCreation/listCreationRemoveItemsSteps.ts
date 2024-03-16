@@ -1,7 +1,11 @@
 import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 import type { ComplexWorld } from "../context/hooks.ts";
-import { ITEM_INPUT, REMOVE_ITEM_BUTTON } from "../testIds.ts";
+import {
+  ITEM_INPUT,
+  ITEMS_LIMIT_REACHED_WARNING,
+  REMOVE_ITEM_BUTTON,
+} from "../testIds.ts";
 import {
   BUTTON_TEST_IDS,
   type ButtonMeaning,
@@ -133,5 +137,22 @@ Then(
   "I expect to see the {string} button disabled",
   async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
     await this.expectLocated(BUTTON_TEST_IDS[buttonMeaning]).toBeDisabled();
+  },
+);
+
+Then(
+  "I expect not to see the warning about items inputs limit reached",
+  async function (this: ComplexWorld) {
+    await this.expectLocated(ITEMS_LIMIT_REACHED_WARNING).not.toBeVisible();
+  },
+);
+
+Then(
+  "I expect to see the {string} button enabled",
+  async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
+    const expectButton = this.expectLocated(BUTTON_TEST_IDS[buttonMeaning]);
+
+    await expectButton.toBeInViewport();
+    await expectButton.toBeEnabled();
   },
 );

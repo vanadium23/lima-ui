@@ -77,3 +77,12 @@ Feature: Removing items on the List Creation page
     And I press the "remove third item" button
     And I hover "second item container"
     Then I expect to see the "remove second item" button disabled
+
+  Scenario: Adding items inputs to the limit and then deleting one item input leads to warning disappear and buttons enablement
+    When I add items inputs to their limit
+    And I hover "on limit item container"
+    And I press the "remove on limit item" button
+    And I wait for the removal pawl countdown of 5 seconds to pass
+    Then I expect not to see the warning about items inputs limit reached
+    Then I expect to see the "add item" button enabled
+    Then I expect to see the "import" button enabled
