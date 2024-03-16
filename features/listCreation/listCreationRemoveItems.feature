@@ -7,6 +7,8 @@ Feature: Removing items on the List Creation page
     And I press the "add item" button
     And I hover "second item container" and press the "remove second item" button
     Then I expect to see the "second item" input disabled
+    And I hover "list title" input
+    Then I expect to see the following number of "cancel item removal" buttons on the page: 1
     And I wait for the removal pawl countdown of 5 seconds to pass
     Then I expect to see the only one item input left on the page
 
@@ -25,6 +27,8 @@ Feature: Removing items on the List Creation page
     Then I expect to see the "first item" input disabled
     Then I expect to see the "third item" input disabled
     Then I expect to see the "forth item" input disabled
+    And I hover "list title" input
+    Then I expect to see the following number of "cancel item removal" buttons on the page: 3
     And I wait for the removal pawl countdown of 5 seconds to pass
     Then I expect to see the only one item input left on the page
 

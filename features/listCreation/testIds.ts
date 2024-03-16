@@ -1,9 +1,11 @@
 import {
   ADD_ITEM_BUTTON,
+  CANCEL_ITEM_REMOVAL_BUTTON,
   CREATE_LIST_BUTTON,
   IMPORT_BUTTON,
   ITEM_INPUT,
   ITEM_INPUT_CONTAINER,
+  LIST_TITLE_INPUT,
   REMOVE_ITEM_BUTTON,
 } from "../testIds.ts";
 import { buildFullTestId } from "../utilities/buildTestableSelector.ts";
@@ -19,12 +21,14 @@ export const BUTTON_TEST_IDS = {
   "remove third item": buildFullTestId(REMOVE_ITEM_BUTTON, 2),
   "remove forth item": buildFullTestId(REMOVE_ITEM_BUTTON, 3),
   "remove on limit item": buildFullTestId(REMOVE_ITEM_BUTTON, ITEMS_LIMIT - 1),
-  "cancel second item removal": buildFullTestId(REMOVE_ITEM_BUTTON, 1),
-  "cancel third item removal": buildFullTestId(REMOVE_ITEM_BUTTON, 2),
+  "cancel item removal": CANCEL_ITEM_REMOVAL_BUTTON,
+  "cancel second item removal": buildFullTestId(CANCEL_ITEM_REMOVAL_BUTTON, 1),
+  "cancel third item removal": buildFullTestId(CANCEL_ITEM_REMOVAL_BUTTON, 2),
 };
 export type ButtonMeaning = keyof typeof BUTTON_TEST_IDS;
 
 export const ITEM_INPUT_TEST_IDS = {
+  "list title": LIST_TITLE_INPUT,
   "first item": buildFullTestId(ITEM_INPUT, 0),
   "second item": buildFullTestId(ITEM_INPUT, 1),
   "third item": buildFullTestId(ITEM_INPUT, 2),

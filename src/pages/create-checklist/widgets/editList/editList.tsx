@@ -13,6 +13,7 @@ import {
 } from "../../../../components/button/button.tsx";
 import {
   ADD_ITEM_BUTTON,
+  CANCEL_ITEM_REMOVAL_BUTTON,
   IMPORT_BUTTON,
   ITEM_INPUT,
   ITEM_INPUT_CONTAINER,
@@ -114,7 +115,11 @@ export const EditList: Component<EditListProps> = () => {
                       resetDeleteInProgress(getIndex());
                     }}
                     isDisabled={isLastItem(item)}
-                    testId={REMOVE_ITEM_BUTTON}
+                    testId={
+                      !item.removeInProgress
+                        ? REMOVE_ITEM_BUTTON
+                        : CANCEL_ITEM_REMOVAL_BUTTON
+                    }
                     testSubId={getIndex()}
                   />
                 </div>
