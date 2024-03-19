@@ -1,5 +1,4 @@
-import type { Component } from "solid-js";
-import { mergeProps } from "solid-js";
+import { type Component, createSignal, mergeProps } from "solid-js";
 import "./basicInput.css";
 import type { Testable } from "../utilities/testable.ts";
 
@@ -46,6 +45,8 @@ export const BasicInput: Component<Testable<InputProps>> = (props) => {
     props,
   );
 
+  const [getCounter, setCounter] = createSignal(mProps.defaultValue.length);
+
   return (
     <div
       class={`input input_${mProps.theme} input_${mProps.size}`}
@@ -66,7 +67,9 @@ export const BasicInput: Component<Testable<InputProps>> = (props) => {
         value={mProps.defaultValue}
         data-test-id={mProps.testId}
         data-test-sub-id={mProps.testSubId}
+        onInput={(event) => setCounter(event.target.value.length)}
       />
+      <span class="input__counter">{mProps.maxLength - getCounter()}</span>
     </div>
   );
 };

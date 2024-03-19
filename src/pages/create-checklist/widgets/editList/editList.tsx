@@ -21,7 +21,10 @@ import {
   ITEMS_LIMIT_REACHED_WARNING,
   REMOVE_ITEM_BUTTON,
 } from "../../../../../features/testIds.ts";
-import { ITEMS_LIMIT } from "../../../../../configuration.ts";
+import {
+  EDIT_LIST_INPUT_LIMIT,
+  ITEMS_LIMIT,
+} from "../../../../../configuration.ts";
 import { RemoveIconButton } from "../../../../components/removeIconButton/removeIconButton.tsx";
 
 // It's not Record<string, string> as there is a TypeScript error arriving:
@@ -99,7 +102,7 @@ export const EditList: Component<EditListProps> = () => {
                     placeholder="Текст пункта"
                     theme={InputTheme.Primary}
                     size={InputSize.Medium}
-                    maxLength={200}
+                    maxLength={EDIT_LIST_INPUT_LIMIT}
                     isRequired={true}
                     name="checklist-item"
                     testId={ITEM_INPUT}

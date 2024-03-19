@@ -17,6 +17,7 @@ import {
   LIST_TITLE_INPUT,
   PAGE_TITLE,
 } from "../../../features/testIds";
+import { LIST_TITLE_INPUT_LIMIT } from "../../../configuration";
 ---
 
 <AppPage>
@@ -34,7 +35,7 @@ import {
           theme={InputTheme.Secondary}
           size={InputSize.Medium}
           placeholder="Название чек-листа"
-          maxLength={200}
+          maxLength={LIST_TITLE_INPUT_LIMIT}
           isRequired={true}
           name="some-name"
           testId={LIST_TITLE_INPUT}
