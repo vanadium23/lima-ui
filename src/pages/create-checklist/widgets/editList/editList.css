@@ -60,3 +60,13 @@
   gap: var(--size-x6);
   padding: var(--size-x1) var(--size-x1) var(--size-x2);
 }
+
+.editList__itemControls {
+  display: none;
+}
+
+.editList__item_removeInProgress .editList__itemControls,
+.editList__item:hover .editList__itemControls,
+.editList__item:focus-within .editList__itemControls {
+  display: block;
+}

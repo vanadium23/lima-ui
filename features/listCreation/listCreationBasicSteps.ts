@@ -4,6 +4,7 @@ import {
   CREATE_LIST_BUTTON,
   IMPORT_BUTTON,
   ITEM_INPUT,
+  ITEM_INPUT_CONTAINER,
   ITEMS_INPUTS,
   LIST_TITLE_INPUT,
   PAGE_TITLE,
@@ -72,9 +73,13 @@ Then(
   async function (this: ComplexWorld, placeholder: string) {
     const expectItemInput = this.expectLocated(ITEM_INPUT);
 
+    const itemInputTestSubId = await this.locate(ITEM_INPUT).getAttribute(
+      TEST_SUB_ID_ATTRIBUTE,
+    );
+    this.accounting.registerTestIdAndSubId(ITEM_INPUT, itemInputTestSubId);
     this.accounting.registerTestIdAndSubId(
-      ITEM_INPUT,
-      await this.locate(ITEM_INPUT).getAttribute(TEST_SUB_ID_ATTRIBUTE),
+      ITEM_INPUT_CONTAINER,
+      itemInputTestSubId,
     );
 
     await expectItemInput.toHaveCount(1);
@@ -126,6 +131,7 @@ Then(
       CREATE_LIST_BUTTON,
       IMPORT_BUTTON,
       ITEMS_INPUTS,
+      buildFullTestId(ITEM_INPUT_CONTAINER, 0),
       buildFullTestId(ITEM_INPUT, 0),
       LIST_TITLE_INPUT,
       PAGE_TITLE,

@@ -65,7 +65,7 @@ html {
 }
 
 html.dark {
-  background: var(--neutral-900);
+  background: #fff;
 }
 
 input,

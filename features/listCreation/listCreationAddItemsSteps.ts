@@ -2,6 +2,7 @@ import { Then, When } from "@cucumber/cucumber";
 import {
   ADD_ITEM_BUTTON,
   ITEM_INPUT,
+  ITEM_INPUT_CONTAINER,
   ITEMS_INPUTS,
   ITEMS_LIMIT_REACHED_WARNING,
 } from "../testIds.ts";
@@ -24,9 +25,13 @@ Then(
   async function (this: ComplexWorld, placeholder: string) {
     const secondItemInput = this.locate(ITEM_INPUT).nth(1);
 
+    const secondItemTestSubId = await secondItemInput.getAttribute(
+      TEST_SUB_ID_ATTRIBUTE,
+    );
+    this.accounting.registerTestIdAndSubId(ITEM_INPUT, secondItemTestSubId);
     this.accounting.registerTestIdAndSubId(
-      ITEM_INPUT,
-      await secondItemInput.getAttribute(TEST_SUB_ID_ATTRIBUTE),
+      ITEM_INPUT_CONTAINER,
+      secondItemTestSubId,
     );
 
     const expectSecondItemInput = expect(secondItemInput);

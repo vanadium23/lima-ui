@@ -68,13 +68,13 @@ export const EditList: Component<EditListProps> = () => {
     );
   }
 
-  function setDeleteInProgress(indexToSet: number) {
+  function setRemoveInProgress(indexToSet: number) {
     setStore("items", indexToSet, {
       removeInProgress: true,
     });
   }
 
-  function resetDeleteInProgress(indexToReset: number) {
+  function resetRemoveInProgress(indexToReset: number) {
     setStore("items", indexToReset, {
       removeInProgress: false,
     });
@@ -88,6 +88,9 @@ export const EditList: Component<EditListProps> = () => {
             {(item, getIndex) => (
               <div
                 class="editList__item"
+                classList={{
+                  editList__item_removeInProgress: item.removeInProgress,
+                }}
                 data-test-id={ITEM_INPUT_CONTAINER}
                 data-test-sub-id={getIndex()}
               >
@@ -101,6 +104,7 @@ export const EditList: Component<EditListProps> = () => {
                     name="checklist-item"
                     testId={ITEM_INPUT}
                     testSubId={getIndex()}
+                    isDisabled={item.removeInProgress}
                   />
                 </div>
                 <div class="editList__itemControls">
@@ -109,10 +113,10 @@ export const EditList: Component<EditListProps> = () => {
                       removeItem(getIndex());
                     }}
                     onTimerStart={() => {
-                      setDeleteInProgress(getIndex());
+                      setRemoveInProgress(getIndex());
                     }}
                     onTimerCancel={() => {
-                      resetDeleteInProgress(getIndex());
+                      resetRemoveInProgress(getIndex());
                     }}
                     isDisabled={isLastItem(item)}
                     testId={
