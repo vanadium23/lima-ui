@@ -16,3 +16,7 @@ export const IMPORT_BUTTON = "importButton";
 export const ITEMS_LIMIT_REACHED_WARNING = "itemsLimitReachedWarning";
 export const REMOVE_ITEM_BUTTON = "removeItemButton";
 export const CANCEL_ITEM_REMOVAL_BUTTON = "cancelItemRemovalButton";
+
+export function buildInputCounterTestId(inputId: string): string {
+  return `${inputId}Counter`;
+}

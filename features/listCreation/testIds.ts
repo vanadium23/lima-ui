@@ -1,5 +1,6 @@
 import {
   ADD_ITEM_BUTTON,
+  buildInputCounterTestId,
   CANCEL_ITEM_REMOVAL_BUTTON,
   CREATE_LIST_BUTTON,
   IMPORT_BUTTON,
@@ -35,6 +36,11 @@ export const ITEM_INPUT_TEST_IDS = {
   "forth item": buildFullTestId(ITEM_INPUT, 3),
 };
 export type ItemInputMeaning = keyof typeof ITEM_INPUT_TEST_IDS;
+
+export const COUNTER_TEST_IDS = {
+  "list title": buildInputCounterTestId(LIST_TITLE_INPUT),
+};
+export type CounterMeaning = keyof typeof COUNTER_TEST_IDS;
 
 export const ELEMENT_TEST_IDS = {
   "first item container": buildFullTestId(ITEM_INPUT_CONTAINER, 0),

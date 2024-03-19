@@ -1,6 +1,7 @@
 import { type Component, createSignal, mergeProps } from "solid-js";
 import "./basicInput.css";
 import type { Testable } from "../utilities/testable.ts";
+import { buildInputCounterTestId } from "../../../features/testIds.ts";
 
 export enum InputTheme {
   Primary = "primary",
@@ -69,7 +70,13 @@ export const BasicInput: Component<Testable<InputProps>> = (props) => {
         data-test-sub-id={mProps.testSubId}
         onInput={(event) => setCounter(event.target.value.length)}
       />
-      <span class="input__counter">{mProps.maxLength - getCounter()}</span>
+      <span
+        class="input__counter"
+        data-test-id={buildInputCounterTestId(mProps.testId)}
+        data-test-sub-id={mProps.testSubId}
+      >
+        {mProps.maxLength - getCounter()}
+      </span>
     </div>
   );
 };
