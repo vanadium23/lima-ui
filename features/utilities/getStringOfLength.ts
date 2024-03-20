@@ -10,3 +10,13 @@ export function getStringUpToLimit(limit: number): string {
 
   return getStringOfLength(stringLength);
 }
+
+export function getStringLongerThanLowerLimit(limit: number): string {
+  const LONGER_ENSURER = 1;
+  const stringLength =
+    limit +
+    LONGER_ENSURER +
+    Math.round(Math.random() * (loremIpsum.length - limit - LONGER_ENSURER));
+
+  return getStringOfLength(stringLength);
+}

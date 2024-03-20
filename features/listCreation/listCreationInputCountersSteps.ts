@@ -1,4 +1,5 @@
 import { Then, When } from "@cucumber/cucumber";
+import { expect } from "@playwright/test";
 import type { ComplexWorld } from "../context/hooks.ts";
 import {
   COUNTER_TEST_IDS,
@@ -10,7 +11,10 @@ import {
   EDIT_LIST_INPUT_LIMIT,
   LIST_TITLE_INPUT_LIMIT,
 } from "../../configuration.ts";
-import { getStringUpToLimit } from "../utilities/getStringOfLength.ts";
+import {
+  getStringLongerThanLowerLimit,
+  getStringUpToLimit,
+} from "../utilities/getStringOfLength.ts";
 import { extractInputTestIdFromItsCounterTestId } from "../testIds.ts";
 
 Then(
@@ -65,5 +69,42 @@ Then(
     await this.expectLocated(COUNTER_TEST_IDS[counterMeaning]).toHaveText(
       counterRemainder.toString(),
     );
+  },
+);
+
+When(
+  "I type some text with length more than of {string} input limit",
+  async function (this: ComplexWorld, inputMeaning: InputMeaning) {
+    const inputLimit = INPUT_LIMIT_RELATION[inputMeaning];
+
+    await this.locateByFullId(INPUT_TEST_IDS[inputMeaning]).fill(
+      getStringLongerThanLowerLimit(inputLimit),
+    );
+  },
+);
+
+Then(
+  "I expect {string} counter to show {int}",
+  async function (
+    this: ComplexWorld,
+    counterMeaning: CounterMeaning,
+    remainder: 0,
+  ) {
+    await this.expectLocated(COUNTER_TEST_IDS[counterMeaning]).toHaveText(
+      remainder.toString(),
+    );
+  },
+);
+
+Then(
+  "I expect {string} input content length to be equal to its limit",
+  async function (this: ComplexWorld, inputMeaning: InputMeaning) {
+    const inputValueLength = (
+      await this.locateByFullId(INPUT_TEST_IDS[inputMeaning]).inputValue()
+    ).length;
+
+    const inputLimit = INPUT_LIMIT_RELATION[inputMeaning];
+
+    expect(inputValueLength).toBe(inputLimit);
   },
 );
