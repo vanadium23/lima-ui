@@ -28,14 +28,14 @@ export const BUTTON_TEST_IDS = {
 };
 export type ButtonMeaning = keyof typeof BUTTON_TEST_IDS;
 
-export const ITEM_INPUT_TEST_IDS = {
+export const INPUT_TEST_IDS = {
   "list title": LIST_TITLE_INPUT,
   "first item": buildFullTestId(ITEM_INPUT, 0),
   "second item": buildFullTestId(ITEM_INPUT, 1),
   "third item": buildFullTestId(ITEM_INPUT, 2),
   "forth item": buildFullTestId(ITEM_INPUT, 3),
 };
-export type ItemInputMeaning = keyof typeof ITEM_INPUT_TEST_IDS;
+export type InputMeaning = keyof typeof INPUT_TEST_IDS;
 
 export const COUNTER_TEST_IDS = {
   "list title input": buildInputCounterTestId(LIST_TITLE_INPUT),
