@@ -69,7 +69,9 @@ export const BasicInput: Component<Testable<InputProps>> = (props) => {
         data-test-sub-id={mProps.testSubId}
         onInput={(event) => setCounter(event.target.value.length)}
       />
-      <span class="input__counter">{mProps.maxLength - getCounter()}</span>
+      <div class="input__controls">
+        <span class="input__counter">{mProps.maxLength - getCounter()}</span>
+      </div>
     </div>
   );
 };

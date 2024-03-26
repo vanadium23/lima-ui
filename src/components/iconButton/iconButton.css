@@ -11,7 +11,7 @@
 }
 
 .iconButton:focus-visible {
-  outline: var(--outline);
+  outline: var(--outline-set);
   outline-offset: var(--outline-offset);
 }
 

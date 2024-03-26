@@ -1,19 +1,19 @@
 .headerChecklist {
-  padding: 0 var(--size-20x);
+  padding: 0 var(--size-x20);
 }
 
 .createList {
   display: flex;
   flex-direction: column;
   overflow: auto;
-  padding: var(--size-12x) var(--size-20x);
-  gap: var(--size-10x);
+  padding: var(--size-x12) var(--size-x20);
+  gap: var(--size-x10);
 }
 
 .createList__title {
   display: flex;
-  gap: var(--size-16x);
-  padding: var(--size-1x);
+  gap: var(--size-x10);
+  padding: var(--size-x1);
 }
 
 .createList__input {

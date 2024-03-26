@@ -29,10 +29,10 @@
   --neutral-700: #444;
   --neutral-800: #222;
   --neutral-900: #333; /* TODO у нас 900 светлее чем 800 */
-  --text-100: #fff;
-  --text-300: #888;
-  --text-400: #333;
-  --text-500: #000;
+  --text-neutral-100: #fff;
+  --text-neutral-500: #888;
+  --text-neutral-700: #444;
+  --text-neutral-900: #000;
   --text-dangerous-500: #e20102;
   --dangerous-400: #f53b3c;
   --dangerous-500: #e20102;
@@ -43,10 +43,10 @@
   --secondary-400: #daf098;
   --secondary-500: #c8f051;
   --secondary-600: #a6db09;
-  --outline-500: #0285f1; /* TODO создать переменную дизайнеру отдельную для аутлайна */
+  --outline: #0285f1; /* TODO создать переменную дизайнеру отдельную для аутлайна */
 
   /* Custom-properties */
-  --outline: 0.1rem solid var(--outline-500);
+  --outline-set: 0.1rem solid var(--outline);
   --outline-offset: 0.1rem;
 }
 
@@ -72,4 +72,5 @@ input,
 button,
 textarea {
   appearance: none;
+  padding: 0; /* TODO Изучить почему бы нам не использовать reset.css вместо normalize.css */
 }

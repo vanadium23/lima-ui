@@ -38,10 +38,10 @@
 }
 
 .button_primary {
-  color: var(--text-100);
+  color: var(--text-neutral-100);
   border-color: var(--primary-500);
   background: var(--primary-500);
-  fill: var(--text-100);
+  fill: var(--text-neutral-100);
 }
 
 .button_primary:hover:not(:disabled, .button_disabled, .button_loading) {
@@ -70,10 +70,10 @@
 }
 
 .button_successful {
-  color: var(--text-400);
+  color: var(--text-neutral-700);
   border-color: var(--secondary-500);
   background: var(--secondary-500);
-  fill: var(--text-400);
+  fill: var(--text-neutral-700);
 }
 
 .button_successful:hover:not(:disabled, .button_disabled, .button_loading) {
@@ -87,10 +87,10 @@
 }
 
 .button_dangerous {
-  color: var(--text-100);
+  color: var(--text-neutral-100);
   border-color: var(--dangerous-500);
   background: var(--dangerous-500);
-  fill: var(--text-100);
+  fill: var(--text-neutral-100);
 }
 
 .button_dangerous:hover:not(:disabled, .button_disabled, .button_loading) {
@@ -106,13 +106,13 @@
 .button:disabled,
 .button_disabled {
   cursor: not-allowed;
-  color: var(--text-100);
+  color: var(--text-neutral-100);
   border-color: var(--neutral-300);
   background: var(--neutral-300);
 }
 
 .button:focus-visible {
-  outline: var(--outline);
+  outline: var(--outline-set);
   outline-offset: var(--outline-offset);
 }
 
