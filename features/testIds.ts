@@ -16,3 +16,15 @@ export const IMPORT_BUTTON = "importButton";
 export const ITEMS_LIMIT_REACHED_WARNING = "itemsLimitReachedWarning";
 export const REMOVE_ITEM_BUTTON = "removeItemButton";
 export const CANCEL_ITEM_REMOVAL_BUTTON = "cancelItemRemovalButton";
+
+const COUNTER_SUFFIX = `Counter`;
+
+export function buildInputCounterTestId(inputId: TestId): TestId {
+  return `${inputId}${COUNTER_SUFFIX}`;
+}
+
+export function extractInputTestIdFromItsCounterTestId(
+  counterTestId: TestId,
+): TestId {
+  return counterTestId.replace(COUNTER_SUFFIX, "");
+}

@@ -11,8 +11,8 @@ import {
   type ButtonMeaning,
   ELEMENT_TEST_IDS,
   type ElementMeaning,
-  ITEM_INPUT_TEST_IDS,
-  type ItemInputMeaning,
+  INPUT_TEST_IDS,
+  type InputMeaning,
 } from "./testIds.ts";
 
 const MILLISECONDS_IN_SECOND = 1000;
@@ -31,10 +31,8 @@ When(
 
 Then(
   "I expect to see the {string} input disabled",
-  async function (this: ComplexWorld, itemInputMeaning: ItemInputMeaning) {
-    await this.expectLocated(
-      ITEM_INPUT_TEST_IDS[itemInputMeaning],
-    ).toBeDisabled();
+  async function (this: ComplexWorld, inputMeaning: InputMeaning) {
+    await this.expectLocated(INPUT_TEST_IDS[inputMeaning]).toBeDisabled();
   },
 );
 
@@ -75,8 +73,8 @@ Then(
 
 When(
   "I hover {string} input",
-  async function (this: ComplexWorld, itemInputMeaning: ItemInputMeaning) {
-    await this.locateByFullId(ITEM_INPUT_TEST_IDS[itemInputMeaning]).hover();
+  async function (this: ComplexWorld, inputMeaning: InputMeaning) {
+    await this.locateByFullId(INPUT_TEST_IDS[inputMeaning]).hover();
   },
 );
 
@@ -103,8 +101,8 @@ When(
 
 When(
   "I focus {string} input",
-  async function (this: ComplexWorld, itemInputMeaning: ItemInputMeaning) {
-    await this.locateByFullId(ITEM_INPUT_TEST_IDS[itemInputMeaning]).focus();
+  async function (this: ComplexWorld, inputMeaning: InputMeaning) {
+    await this.locateByFullId(INPUT_TEST_IDS[inputMeaning]).focus();
   },
 );
 
