@@ -6,6 +6,7 @@ import {
   IMPORT_BUTTON,
   ITEM_INPUT,
   ITEM_INPUT_CONTAINER,
+  LIST_PURPOSE_INPUT,
   LIST_TITLE_INPUT,
   REMOVE_ITEM_BUTTON,
 } from "../testIds.ts";
@@ -30,6 +31,7 @@ export type ButtonMeaning = keyof typeof BUTTON_TEST_IDS;
 
 export const INPUT_TEST_IDS = {
   "list title": LIST_TITLE_INPUT,
+  "list purpose": LIST_PURPOSE_INPUT,
   "first item": buildFullTestId(ITEM_INPUT, 0),
   "second item": buildFullTestId(ITEM_INPUT, 1),
   "third item": buildFullTestId(ITEM_INPUT, 2),

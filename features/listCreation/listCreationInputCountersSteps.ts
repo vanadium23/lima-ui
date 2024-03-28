@@ -9,6 +9,7 @@ import {
 } from "./testIds.ts";
 import {
   EDIT_LIST_INPUT_LIMIT,
+  LIST_PURPOSE_INPUT_LIMIT,
   LIST_TITLE_INPUT_LIMIT,
 } from "../../configuration.ts";
 import {
@@ -40,6 +41,7 @@ Then(
 
 const INPUT_LIMIT_RELATION = {
   "list title": LIST_TITLE_INPUT_LIMIT,
+  "list purpose": LIST_PURPOSE_INPUT_LIMIT,
   "first item": EDIT_LIST_INPUT_LIMIT,
   "second item": EDIT_LIST_INPUT_LIMIT,
   "third item": EDIT_LIST_INPUT_LIMIT,

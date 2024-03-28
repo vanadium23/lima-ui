@@ -6,6 +6,7 @@ import {
   ITEM_INPUT,
   ITEM_INPUT_CONTAINER,
   ITEMS_INPUTS,
+  LIST_PURPOSE_INPUT,
   LIST_TITLE_INPUT,
   PAGE_TITLE,
   SIDEBAR,
@@ -20,7 +21,12 @@ import {
   TEST_ID_ATTRIBUTE,
   TEST_SUB_ID_ATTRIBUTE,
 } from "../utilities/buildTestableSelector.ts";
-import { BUTTON_TEST_IDS, type ButtonMeaning } from "./testIds.ts";
+import {
+  BUTTON_TEST_IDS,
+  type ButtonMeaning,
+  INPUT_TEST_IDS,
+  type InputMeaning,
+} from "./testIds.ts";
 
 When("I open List Creation page", async function (this: ComplexWorld) {
   await this.navigate("create-checklist");
@@ -45,10 +51,14 @@ Then(
 );
 
 Then(
-  "I expect to see list title input ready for typing with the following placeholder: {string}",
-  async function (this: ComplexWorld, placeholder: string) {
+  "I expect to see {string} input ready for typing with the following placeholder: {string}",
+  async function (
+    this: ComplexWorld,
+    inputMeaning: InputMeaning,
+    placeholder: string,
+  ) {
     const expectListTitleInput = this.expectLocated(
-      this.accounting.registerTestId(LIST_TITLE_INPUT),
+      this.accounting.registerTestId(INPUT_TEST_IDS[inputMeaning]),
     );
 
     await expectListTitleInput.toBeInViewport();
@@ -134,6 +144,7 @@ Then(
       buildFullTestId(ITEM_INPUT_CONTAINER, 0),
       buildFullTestId(ITEM_INPUT, 0),
       LIST_TITLE_INPUT,
+      LIST_PURPOSE_INPUT,
       PAGE_TITLE,
       SIDEBAR,
     ].sort();
