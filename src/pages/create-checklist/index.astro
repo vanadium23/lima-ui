@@ -14,10 +14,14 @@ import {
 import { EditList } from "./widgets/editList/editList.tsx";
 import {
   CREATE_LIST_BUTTON,
+  LIST_PURPOSE_INPUT,
   LIST_TITLE_INPUT,
   PAGE_TITLE,
 } from "../../../features/testIds";
-import { LIST_TITLE_INPUT_LIMIT } from "../../../configuration";
+import {
+  LIST_PURPOSE_INPUT_LIMIT,
+  LIST_TITLE_INPUT_LIMIT,
+} from "../../../configuration";
 ---
 
 <AppPage>
@@ -28,27 +32,41 @@ import { LIST_TITLE_INPUT_LIMIT } from "../../../configuration";
     <div class="headerChecklist__search"></div>
   </div>
   <div class="createList" slot="mainContent">
-    <div class="createList__title">
+    <div class="createList__listHeader">
+      <div class="createList__title">
+        <div class="createList__input">
+          <BasicInput
+            client:only="solid-js"
+            theme={InputTheme.Secondary}
+            size={InputSize.Medium}
+            placeholder="Название чек-листа"
+            maxLength={LIST_TITLE_INPUT_LIMIT}
+            isRequired={true}
+            name="List Title"
+            testId={LIST_TITLE_INPUT}
+          />
+        </div>
+        <Button
+          client:only="solid-js"
+          theme={ButtonTheme.Primary}
+          size={ButtonSize.Medium}
+          text="Создать"
+          isDisabled={true}
+          testId={CREATE_LIST_BUTTON}
+        />
+      </div>
       <div class="createList__input">
         <BasicInput
           client:only="solid-js"
-          theme={InputTheme.Secondary}
+          theme={InputTheme.Primary}
           size={InputSize.Medium}
-          placeholder="Название чек-листа"
-          maxLength={LIST_TITLE_INPUT_LIMIT}
-          isRequired={true}
-          name="some-name"
-          testId={LIST_TITLE_INPUT}
+          placeholder="Назначение чек-листа"
+          maxLength={LIST_PURPOSE_INPUT_LIMIT}
+          isRequired={false}
+          name="List Purpose"
+          testId={LIST_PURPOSE_INPUT}
         />
       </div>
-      <Button
-        client:only="solid-js"
-        theme={ButtonTheme.Primary}
-        size={ButtonSize.Medium}
-        text="Создать"
-        isDisabled={true}
-        testId={CREATE_LIST_BUTTON}
-      />
     </div>
 
     <EditList client:only="solid-js" />

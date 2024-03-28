@@ -7,6 +7,7 @@ export const DEFAULT_TEST_ID = "defaultTestId";
 export const SIDEBAR = "sidebar";
 export const PAGE_TITLE = "pageTitle";
 export const LIST_TITLE_INPUT = "listTitleInput";
+export const LIST_PURPOSE_INPUT = "listPurposeInput";
 export const ITEMS_INPUTS = "itemsInputs";
 export const ITEM_INPUT_CONTAINER = "itemInputContainer";
 export const ITEM_INPUT = "itemInput";
