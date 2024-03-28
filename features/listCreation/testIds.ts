@@ -41,6 +41,7 @@ export type InputMeaning = keyof typeof INPUT_TEST_IDS;
 
 export const COUNTER_TEST_IDS = {
   "list title input": buildInputCounterTestId(LIST_TITLE_INPUT),
+  "list purpose input": buildInputCounterTestId(LIST_PURPOSE_INPUT),
   "first item input": buildFullTestId(buildInputCounterTestId(ITEM_INPUT), 0),
 };
 export type CounterMeaning = keyof typeof COUNTER_TEST_IDS;
