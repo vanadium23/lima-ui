@@ -1,0 +1,8 @@
+---
+import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
+import { Accordion } from "../../../components/accordion/accordion.tsx";
+---
+
+<StorybookPage title="Accordion">
+  <Accordion client:only="solid-js" />
+</StorybookPage>

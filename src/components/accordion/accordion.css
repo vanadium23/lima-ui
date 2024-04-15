@@ -1,0 +1,39 @@
+.accordion {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  flex-grow: 1;
+  border: 0.1rem solid var(--neutral-500);
+  border-radius: 0.8rem;
+}
+
+.accordion__header {
+  display: flex;
+  gap: var(--size-x2);
+  background: transparent;
+  border: none;
+}
+
+.accordion_small .accordion__header {
+  padding: var(--size-x2) var(--size-x8);
+}
+
+.accordion_small .accordion__content {
+  min-height: 2.4rem;
+}
+
+.accordion_medium .accordion__header {
+  padding: var(--size-x3) var(--size-x8);
+}
+
+.accordion_large .accordion__header {
+  padding: var(--size-x4) var(--size-x8);
+}
+
+.accordion__title {
+  color: var(--text-neutral-700);
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.8rem;
+}
