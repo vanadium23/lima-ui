@@ -8,7 +8,7 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "test": "cross-env NODE_OPTIONS='--loader ts-node/esm' cucumber-js"
+    "test": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" cucumber-js"
   },
   "dependencies": {
     "@astrojs/check": "^0.5.6",

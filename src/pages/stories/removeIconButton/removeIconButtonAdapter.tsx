@@ -6,7 +6,7 @@ export const RemoveIconButtonAdapter: Component = () => {
   return (
     <RemoveIconButton
       removeItem={() => {
-        console.log("blet");
+        console.log("blet"); /* TODO убрать Блеты */
       }}
       onTimerStart={() => {
         console.log("timerStart-blet");

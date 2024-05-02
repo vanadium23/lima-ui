@@ -60,3 +60,17 @@ export const Trash: Component<SpriteProps> = (props) => {
     </svg>
   );
 };
+
+export const Chevron: Component<SpriteProps> = (props) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class={`icon icon_${props.size}`}
+      id="chevron"
+      viewBox="0 -960 960 960"
+      aria-hidden={props.ariaHidden}
+    >
+      <path d="M480-345 240-585l56-56 184 184 184-184 56 56-240 240Z" />
+    </svg>
+  );
+};

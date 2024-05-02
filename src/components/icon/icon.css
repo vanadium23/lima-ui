@@ -3,9 +3,19 @@
   height: var(--size-x7);
 }
 
+.icon_x9 {
+  width: var(--size-x9);
+  height: var(--size-x9);
+}
+
 .icon_x10 {
   width: var(--size-x10);
   height: var(--size-x10);
+}
+
+.icon_x11 {
+  width: var(--size-x11);
+  height: var(--size-x11);
 }
 
 .icon_x12 {

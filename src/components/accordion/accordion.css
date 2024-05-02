@@ -3,8 +3,13 @@
   flex-direction: column;
   flex-shrink: 0;
   flex-grow: 1;
-  border: 0.1rem solid var(--neutral-500);
+  border-width: 0.1rem;
+  border-style: solid;
   border-radius: 0.8rem;
+}
+
+.accordion:not(.accordion_disabled):has(.accordion__header:hover) {
+  border-color: var(--neutral-700);
 }
 
 .accordion__header {
@@ -12,28 +17,92 @@
   gap: var(--size-x2);
   background: transparent;
   border: none;
+  cursor: pointer;
+  border-radius: 0.8rem;
+  font-weight: 500;
+}
+
+.accordion__headerIcon {
+  display: flex;
+}
+
+.accordion_expanded .accordion__headerIcon {
+  transform: rotate(-180deg);
+}
+
+.accordion__content {
+  display: none;
+}
+
+.accordion_expanded .accordion__content {
+  display: block;
 }
 
 .accordion_small .accordion__header {
   padding: var(--size-x2) var(--size-x8);
+  font-size: 1.4rem;
+  line-height: 1.8rem;
 }
 
 .accordion_small .accordion__content {
-  min-height: 2.4rem;
+  min-height: 2.2rem;
 }
 
 .accordion_medium .accordion__header {
   padding: var(--size-x3) var(--size-x8);
+  font-size: 1.6rem;
+  line-height: 2rem;
+}
+
+.accordion_medium .accordion__content {
+  min-height: 3.2rem;
 }
 
 .accordion_large .accordion__header {
   padding: var(--size-x4) var(--size-x8);
+  font-size: 1.8rem;
+  line-height: 2.2rem;
 }
 
-.accordion__title {
-  color: var(--text-neutral-700);
-  font-size: 1.4rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 1.8rem;
+.accordion_large .accordion__content {
+  min-height: 3.8rem;
 }
+
+.accordion_primary {
+  border-color: var(--neutral-500);
+  background: var(--neutral-100);
+}
+
+.accordion_disabled {
+  background: var(--neutral-200);
+}
+
+.accordion_primary .accordion__header {
+  color: var(--neutral-700);
+}
+
+.accordion_disabled .accordion__header {
+  color: var(--text-neutral-500);
+  cursor: not-allowed;
+}
+
+.accordion_primary .accordion__headerIcon {
+  fill: var(--neutral-700);
+}
+
+.accordion_disabled .accordion__headerIcon {
+  fill: var(--text-neutral-500);
+}
+
+.accordion__header:focus-visible {
+  outline: var(--outline-set);
+  outline-offset: -0.2rem;
+}
+
+.accordion__header:focus:not(:focus-visible) {
+  outline: none;
+}
+
+
+
+

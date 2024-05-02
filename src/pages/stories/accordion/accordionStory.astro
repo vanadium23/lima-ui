@@ -1,8 +1,33 @@
 ---
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
-import { Accordion } from "../../../components/accordion/accordion.tsx";
+import {Accordion, AccordionSize, AccordionTheme} from "../../../components/accordion/accordion.tsx";
+
+const themes = Object.values(AccordionTheme);
+const sizes = Object.values(AccordionSize);
 ---
 
+
 <StorybookPage title="Accordion">
-  <Accordion client:only="solid-js" />
+    {themes.map((theme) => (
+            <div class="demoThemeWrapper">
+                <h3 style="font-size: 24px; margin-bottom: 10px; text-transform: capitalize;">{theme}</h3>
+                <div class="grid grid_2Col">
+                    <span class="chead"/>
+                    <span class="chead">Default</span>
+                    <span class="chead">Disabled</span>
+
+                    {sizes.map((size) => (
+                            <span class="rhead">{size}</span>
+                            <Accordion theme={theme} size={size} client:only="solid-js" title="Гармонь">
+                                <div>Paste Content</div>
+                            </Accordion>
+                            <Accordion isDisabled="true" theme={theme} size={size} client:only="solid-js" title="Гармонь">
+                                <div>Paste Content</div>
+                            </Accordion>
+                    ))}
+
+                </div>
+            </div>
+
+    ))}
 </StorybookPage>
