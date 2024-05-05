@@ -26,7 +26,6 @@ export const Accordion: Component<AccordionProps> = (props) => {
   const mProps: Required<AccordionProps> = mergeProps(
     {
       isDisabled: false,
-      handleClick: () => {},
     },
     props,
   );
