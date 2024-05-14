@@ -1,0 +1,89 @@
+---
+import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
+import {
+  Textarea,
+  TextareaTheme,
+  TextareaSize,
+} from "../../../components/textarea/textarea";
+import { DEFAULT_TEST_ID } from "../../../../features/testIds";
+import { InputType } from "../../../components/basicInput/basicInput";
+
+const themes = Object.values(TextareaTheme);
+const sizes = Object.values(TextareaSize);
+
+const PLACEHOLDER_TEXT = "Enter text...";
+---
+
+<StorybookPage title="Textarea">
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 style="font-size: 24px; margin-bottom: 10px; text-transform: capitalize;">
+          {theme}
+        </h3>
+        <div class="grid grid_4Col">
+          <span class="chead" />
+          <span class="chead">Default</span>
+          <span class="chead">Error</span>
+          <span class="chead">Error Typed</span>
+          <span class="chead">Disabled</span>
+
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+
+              <Textarea
+                client:only="solid-js"
+                type={InputType.Text}
+                theme={theme}
+                size={size}
+                placeholder={PLACEHOLDER_TEXT}
+                maxLength={500}
+                isRequired={true}
+                name="Some-text"
+                testId={DEFAULT_TEST_ID}
+              />
+              <Textarea
+                client:only="solid-js"
+                type={InputType.Text}
+                theme={theme}
+                size={size}
+                isError={true}
+                placeholder={PLACEHOLDER_TEXT}
+                maxLength={500}
+                name="Some-text"
+                isRequired={true}
+                testId={DEFAULT_TEST_ID}
+              />
+              <Textarea
+                client:only="solid-js"
+                type={InputType.Text}
+                theme={theme}
+                size={size}
+                isError={true}
+                placeholder={PLACEHOLDER_TEXT}
+                maxLength={500}
+                name="Some-text"
+                isRequired={true}
+                defaultValue={"Text"}
+                testId={DEFAULT_TEST_ID}
+              />
+              <Textarea
+                client:only="solid-js"
+                type={InputType.Text}
+                theme={theme}
+                size={size}
+                isDisabled={true}
+                placeholder={PLACEHOLDER_TEXT}
+                maxLength={500}
+                name="Some-text"
+                isRequired={true}
+                testId={DEFAULT_TEST_ID}
+              />
+            </>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+</StorybookPage>

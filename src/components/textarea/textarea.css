@@ -1,0 +1,158 @@
+.textarea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+    border-width: 0.1rem;
+    border-style: solid;
+    border-radius: var(--size-x4);
+}
+
+.textarea__inner {
+    display: flex;
+    flex-grow: 1;
+    background: transparent;
+    width: 100%;
+    border: none;
+    resize: none;
+}
+
+.textarea__inner:disabled,
+.textarea_disabled .textarea__inner {
+    cursor: not-allowed;
+}
+
+.textarea__inner:focus {
+    outline: none;
+}
+
+.textarea:focus-within {
+    outline: var(--outline-set);
+}
+
+.textarea__controls {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    visibility: visible;
+    gap: var(--size-x6);
+}
+
+.textarea__counter {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+}
+
+.textarea_small {
+    height: 9.6rem;
+    padding: var(--size-x1) var(--size-x8);
+}
+
+.textarea_small .textarea__inner {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+}
+
+.textarea_medium {
+    height: 13.6rem;
+    padding: var(--size-x3) var(--size-x8);
+}
+
+.textarea_medium .textarea__inner {
+    font-size: 1.6rem;
+    line-height: 2rem; /* TODO Есть проблемы с line-height в Firefox высота получается по факту 21px из-за font-size 16px, но когда 15px всё норм, магия */
+}
+
+.textarea_large {
+    height: 16rem;
+    padding: var(--size-x4) var(--size-x8);
+}
+
+.textarea_large .textarea__inner {
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+}
+
+.textarea_primary {
+    border-color: var(--neutral-500);
+    background: var(--neutral-100);
+}
+
+.textarea_primary:focus-within {
+    outline-offset: var(--outline-offset);
+}
+
+.textarea_primary:hover:not(.textarea_disabled, .textarea_error) {
+    border-color: var(--neutral-900);
+}
+
+.textarea_primary .textarea__inner {
+    color: var(--text-neutral-700);
+    font-weight: 500;
+}
+
+.textarea_primary .textarea__counter {
+    color: var(--text-neutral-700);
+    font-weight: 500;
+}
+
+.textarea_secondary .textarea__inner {
+    color: var(--text-neutral-700);
+    font-weight: 600;
+}
+
+.textarea_primary .textarea__inner:placeholder-shown {
+    color: var(--text-neutral-500);
+}
+
+.textarea_primary.textarea_error {
+    border-color: var(--dangerous-500);
+}
+
+.textarea_primary.textarea_error .textarea__inner {
+    color: var(--text-dangerous-500);
+}
+
+.textarea_primary.textarea_disabled {
+    border-color: var(--neutral-500);
+    background: var(--neutral-200);
+}
+
+.textarea_primary.textarea_disabled .textarea__inner {
+    color: var(--text-neutral-500);
+}
+
+.textarea_secondary {
+    border-color: transparent;
+    background: transparent;
+}
+
+.textarea_secondary:focus-within {
+    outline-offset: -0.2rem;
+}
+
+.textarea_secondary .textarea__inner:placeholder-shown {
+    color: var(--text-neutral-500);
+}
+
+.textarea_secondary .textarea__counter {
+    color: var(--text-neutral-700);
+    font-weight: 600;
+}
+
+.textarea_secondary.textarea_error .textarea__inner {
+    color: var(--text-dangerous-500);
+}
+
+.textarea_secondary.textarea_disabled .textarea__inner {
+    color: var(--text-neutral-500);
+}
+
+.textarea_secondary.textarea_disabled {
+    background: var(--neutral-200);
+}
+
+.textarea:has(.textarea__inner:focus) .textarea__controls {
+    visibility: visible;
+}
