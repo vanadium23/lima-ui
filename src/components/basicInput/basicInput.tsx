@@ -27,7 +27,6 @@ type InputProps = {
   placeholder: string;
   name: string;
   maxLength: number;
-  isReadonly?: boolean;
   isRequired?: boolean;
   type?: InputType;
   defaultValue?: string;
@@ -37,7 +36,6 @@ export const BasicInput: Component<Testable<InputProps>> = (props) => {
   const mProps: Testable<Required<InputProps>> = mergeProps(
     {
       isDisabled: false,
-      isReadonly: false,
       isError: false,
       isRequired: false,
       type: InputType.Text,
@@ -64,7 +62,6 @@ export const BasicInput: Component<Testable<InputProps>> = (props) => {
         maxlength={mProps.maxLength}
         placeholder={mProps.placeholder}
         required={mProps.isRequired}
-        readonly={mProps.isReadonly}
         value={mProps.defaultValue}
         data-test-id={mProps.testId}
         data-test-sub-id={mProps.testSubId}

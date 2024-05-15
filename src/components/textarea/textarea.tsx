@@ -20,7 +20,6 @@ type TextareaProps = {
   placeholder: string;
   name: string;
   maxLength: number;
-  isReadonly?: boolean;
   isRequired?: boolean;
   defaultValue?: string;
 };
@@ -29,7 +28,6 @@ export const Textarea: Component<TextareaProps> = (props) => {
   const mProps: Required<TextareaProps> = mergeProps(
     {
       isDisabled: false,
-      isReadonly: false,
       isError: false,
       isRequired: false,
       defaultValue: "",
@@ -54,7 +52,6 @@ export const Textarea: Component<TextareaProps> = (props) => {
         maxlength={mProps.maxLength}
         placeholder={mProps.placeholder}
         required={mProps.isRequired}
-        readonly={mProps.isReadonly}
         value={mProps.defaultValue}
         onInput={(event) => setCounter(event.target.value.length)}
       />

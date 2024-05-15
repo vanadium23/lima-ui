@@ -2,11 +2,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow: hidden;
     width: 100%;
     border-width: 0.1rem;
     border-style: solid;
     border-radius: var(--size-x4);
+    gap: var(--size-x2);
 }
 
 .textarea__inner {
@@ -35,8 +35,8 @@
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    visibility: visible;
-    gap: var(--size-x6);
+    visibility: hidden;
+    gap: var(--size-x2);
 }
 
 .textarea__counter {
@@ -81,10 +81,11 @@
 
 .textarea_primary:focus-within {
     outline-offset: var(--outline-offset);
+    border-color: var(--neutral-700);
 }
 
 .textarea_primary:hover:not(.textarea_disabled, .textarea_error) {
-    border-color: var(--neutral-900);
+    border-color: var(--neutral-700);
 }
 
 .textarea_primary .textarea__inner {
@@ -99,7 +100,7 @@
 
 .textarea_secondary .textarea__inner {
     color: var(--text-neutral-700);
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .textarea_primary .textarea__inner:placeholder-shown {
@@ -138,7 +139,7 @@
 
 .textarea_secondary .textarea__counter {
     color: var(--text-neutral-700);
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .textarea_secondary.textarea_error .textarea__inner {

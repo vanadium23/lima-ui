@@ -84,8 +84,12 @@
   border-radius: var(--size-x4);
 }
 
+.input_primary:focus-within {
+  border-color: var(--neutral-700);
+}
+
 .input_primary:hover:not(.input_disabled, .input_error) {
-  border-color: var(--neutral-900);
+  border-color: var(--neutral-700);
 }
 
 .input_primary .input__inner {
@@ -128,6 +132,10 @@
   border-color: transparent transparent var(--neutral-400) transparent;
   background: transparent;
   border-radius: 0;
+}
+
+.input_secondary:focus-within {
+  border-color: transparent transparent var(--neutral-900) transparent;
 }
 
 .input_secondary:hover:not(.input_disabled, .input_error) {
