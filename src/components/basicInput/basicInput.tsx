@@ -83,7 +83,7 @@ export const BasicInput: Component<Testable<InputProps>> = (props) => {
           size={charCounterSize[mProps.size]}
           value={mProps.maxLength - getCounter()}
           testId={mProps.testId}
-          testSubId={mProps.testSubId || ""} // TODO Посмотреть Герману повнимательней что здесь происходит
+          testSubId={mProps.testSubId ?? ""}
         />
       </div>
     </div>
