@@ -1,0 +1,70 @@
+import type { Component } from "solid-js";
+import { mergeProps } from "solid-js";
+import {
+  Accordion,
+  AccordionSize,
+  AccordionTheme,
+} from "../accordion/accordion.tsx";
+import {
+  Textarea,
+  TextareaSize,
+  TextareaTheme,
+} from "../textarea/textarea.tsx";
+
+export enum NoteTheme {
+  Primary = "primary",
+}
+
+export enum NoteSize {
+  Small = "small",
+  Medium = "medium",
+  Large = "large",
+}
+
+type NoteProps = {
+  theme: NoteTheme;
+  isDisabled?: boolean;
+  size: NoteSize;
+  title: string;
+};
+
+export const Note: Component<NoteProps> = (props) => {
+  const mProps: Required<NoteProps> = mergeProps(
+    {
+      title: "Note",
+      isDisabled: false,
+      isLoading: false,
+    },
+    props,
+  );
+
+  const accordionSize = {
+    [NoteSize.Small]: AccordionSize.Small,
+    [NoteSize.Medium]: AccordionSize.Medium,
+    [NoteSize.Large]: AccordionSize.Large,
+  };
+
+  const textareaSize = {
+    [NoteSize.Small]: TextareaSize.Small,
+    [NoteSize.Medium]: TextareaSize.Medium,
+    [NoteSize.Large]: TextareaSize.Large,
+  };
+
+  return (
+    <Accordion
+      theme={AccordionTheme.Primary}
+      size={accordionSize[mProps.size]}
+      title={mProps.title}
+      isDisabled={mProps.isDisabled}
+    >
+      <Textarea
+        theme={TextareaTheme.Secondary}
+        size={textareaSize[mProps.size]}
+        placeholder={"Напиши сюда"}
+        name={"Заметка"}
+        maxLength={100}
+        isDisabled={mProps.isDisabled}
+      />
+    </Accordion>
+  );
+};
