@@ -1,8 +1,28 @@
 /* ---- Стили для демо состояний(не копировать их отсюда xD) ---- */
 
+:root {
+  --storybook-html-bg: #f1f1f1;
+  --storybook-html-color: #232323;
+  --storybook-demo-wrapper-bg: #fff;
+  --storybook-sidebar-bg: #fff;
+  --storybook-demo-nav-item-color: #000;
+  --storybook-demo-border-color: #cdcdcd;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --storybook-html-bg: #141414;
+    --storybook-html-color: #fff;
+    --storybook-demo-wrapper-bg: #232323;
+    --storybook-sidebar-bg: #222;
+    --storybook-demo-nav-item-color: #fff;
+    --storybook-demo-border-color: #444;
+  }
+}
+
 html {
-  background: #141414;
-  color: #fff;
+  background: var(--storybook-html-bg);
+  color: var(--storybook-html-color);
 }
 
 .wrapper {
@@ -52,12 +72,12 @@ html {
 
 .demoThemeWrapper {
   box-sizing: border-box;
-  background: #232323;
+  background: var(--storybook-demo-wrapper-bg);
   padding-block: 1rem 3rem;
   padding-inline: 3rem;
   border-radius: 2rem;
   margin-block-end: 2rem;
-  border: 0.1rem solid #444;
+  border: 0.1rem solid var(--storybook-demo-border-color);
 }
 
 .chead,
@@ -157,8 +177,8 @@ h2 {
   display: flex;
   flex-direction: column;
   max-height: 100vh;
-  background: #222;
-  border-right: 0.1rem solid #535353;
+  background: var(--storybook-sidebar-bg);
+  border-right: 0.1rem solid var(--storybook-demo-border-color);
 }
 
 .sidebar__navWrapper {
@@ -167,7 +187,7 @@ h2 {
   max-height: 100%;
   overflow: hidden;
   padding: 0.3rem 0.4rem 0.3rem 2rem;
-  border-top: 0.1rem solid #535353;
+  border-top: 0.1rem solid var(--storybook-demo-border-color);
 }
 
 .sidebar__nav {
@@ -198,6 +218,11 @@ h2 {
 }
 
 .sidebar__navItem {
-  color: #fff;
+  color: var(--storybook-demo-nav-item-color);
   font-size: 1.6rem;
 }
+
+.sidebar__navItem:hover {
+  color: #ff00ff;
+}
+
