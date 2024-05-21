@@ -1,0 +1,13 @@
+.pasteContent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-radius: var(--size-x4);
+    border: 1px dashed var(--neutral-300);
+    background: var(--neutral-150);
+    color: var(--text-neutral-500);
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 2rem;
+}

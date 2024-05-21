@@ -3,6 +3,7 @@
     flex-direction: column;
     flex-shrink: 0;
     flex-grow: 1;
+    width: 100%;
     border-width: 0.1rem;
     border-style: solid;
     border-radius: var(--size-x4);
@@ -35,7 +36,7 @@
 }
 
 .accordion_expanded .accordion__content {
-    display: block;
+    display: flex;
 }
 
 .accordion_small .accordion__header {
