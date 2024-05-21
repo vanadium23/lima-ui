@@ -1,7 +1,11 @@
 import { type Component, createSignal, mergeProps } from "solid-js";
 import "./basicInput.css";
 import type { Testable } from "../utilities/testable.ts";
-import { buildInputCounterTestId } from "../../../features/testIds.ts";
+import {
+  CharCounter,
+  CharCounterSize,
+  CharCounterTheme,
+} from "../charCounter/charCounter.tsx";
 
 export enum InputTheme {
   Primary = "primary",
@@ -44,6 +48,12 @@ export const BasicInput: Component<Testable<InputProps>> = (props) => {
     props,
   );
 
+  const charCounterSize = {
+    [InputSize.Small]: CharCounterSize.Small,
+    [InputSize.Medium]: CharCounterSize.Medium,
+    [InputSize.Large]: CharCounterSize.Large,
+  };
+
   const [getCounter, setCounter] = createSignal(mProps.defaultValue.length);
 
   return (
@@ -68,13 +78,13 @@ export const BasicInput: Component<Testable<InputProps>> = (props) => {
         onInput={(event) => setCounter(event.target.value.length)}
       />
       <div class="input__controls">
-        <span
-          class="input__counter"
-          data-test-id={buildInputCounterTestId(mProps.testId)}
-          data-test-sub-id={mProps.testSubId}
-        >
-          {mProps.maxLength - getCounter()}
-        </span>
+        <CharCounter
+          theme={CharCounterTheme.Primary}
+          size={charCounterSize[mProps.size]}
+          value={mProps.maxLength - getCounter()}
+          testId={mProps.testId}
+          testSubId={mProps.testSubId || ""} // TODO Посмотреть Герману повнимательней что здесь происходит
+        />
       </div>
     </div>
   );

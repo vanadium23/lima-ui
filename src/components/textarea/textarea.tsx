@@ -1,5 +1,10 @@
 import { type Component, createSignal, mergeProps } from "solid-js";
 import "./textarea.css";
+import {
+  CharCounter,
+  CharCounterSize,
+  CharCounterTheme,
+} from "../charCounter/charCounter.tsx";
 
 export enum TextareaTheme {
   Primary = "primary",
@@ -56,7 +61,13 @@ export const Textarea: Component<TextareaProps> = (props) => {
         onInput={(event) => setCounter(event.target.value.length)}
       />
       <div class="textarea__controls">
-        <span class="textarea__counter">{mProps.maxLength - getCounter()}</span>
+        <CharCounter
+          theme={CharCounterTheme.Primary}
+          size={CharCounterSize.ExtraSmall}
+          value={mProps.maxLength - getCounter()}
+          testId={""} // TODO Посмотреть Герману ЕЩЁ повнимательней что здесь происходит
+          testSubId={""} //TODO И здесь
+        />
       </div>
     </div>
   );
