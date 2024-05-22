@@ -223,6 +223,13 @@ h2 {
 }
 
 .sidebar__navItem:hover {
-  color: #ff00ff;
+  color: #f0f;
 }
 
+.sidebar__sectionTitle {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 10px;
+  color: #989898;
+}

@@ -65,10 +65,6 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-html.dark {
-  background: #fff;
-}
-
 input,
 button,
 textarea {

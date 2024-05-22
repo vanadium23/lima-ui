@@ -3,14 +3,10 @@ import "normalize.css";
 import "../main.css";
 import "./app.css";
 import { SIDEBAR } from "../../../features/testIds";
-import type { ImportMetaEnv } from "../../env";
-
-const theme: ImportMetaEnv["COLOR_THEME"] =
-  import.meta.env.COLOR_THEME || "default";
 ---
 
 <!doctype html>
-<html lang="ru" class:list={[{ [theme]: true }]}>
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
