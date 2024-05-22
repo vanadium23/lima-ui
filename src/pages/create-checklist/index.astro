@@ -10,6 +10,7 @@ import {
   Button,
   ButtonTheme,
   ButtonSize,
+  ButtonType,
 } from "../../components/button/button";
 import { EditList } from "./widgets/editList/editList.tsx";
 import {
@@ -31,7 +32,7 @@ import {
     </h1>
     <div class="headerChecklist__search"></div>
   </div>
-  <div class="createList" slot="mainContent">
+  <form class="createList" slot="mainContent">
     <div class="createList__listHeader">
       <div class="createList__title">
         <div class="createList__input">
@@ -47,11 +48,12 @@ import {
           />
         </div>
         <Button
+          type={ButtonType.Submit}
           client:only="solid-js"
           theme={ButtonTheme.Primary}
           size={ButtonSize.Medium}
           text="Создать"
-          isDisabled={true}
+          isDisabled={false}
           testId={CREATE_LIST_BUTTON}
         />
       </div>
@@ -70,5 +72,5 @@ import {
     </div>
 
     <EditList client:only="solid-js" />
-  </div>
+  </form>
 </AppPage>

@@ -17,7 +17,14 @@ export enum ButtonSize {
   Large = "large",
 }
 
+export enum ButtonType {
+  Button = "button",
+  Submit = "submit",
+  Reset = "reset",
+}
+
 type ButtonProps = {
+  type?: ButtonType; //TODO - Подумать Герману как это сделать получше (может Union type)
   isDisabled?: boolean;
   ariaLabel?: string;
   text: string;
@@ -29,6 +36,7 @@ type ButtonProps = {
 export const Button: Component<Testable<ButtonProps>> = (props) => {
   const mProps: Testable<Required<ButtonProps>> = mergeProps(
     {
+      type: ButtonType.Button,
       isDisabled: false,
       isLoading: false,
       ariaLabel: "",
@@ -39,7 +47,7 @@ export const Button: Component<Testable<ButtonProps>> = (props) => {
 
   return (
     <button
-      type="button"
+      type={mProps.type}
       class={`button button_${mProps.theme} button_${mProps.size}`}
       classList={{
         button_disabled: mProps.isDisabled,

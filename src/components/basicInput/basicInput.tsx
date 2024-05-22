@@ -23,6 +23,11 @@ export enum InputType {
   Password = "password",
 }
 
+export enum AutocompleteType {
+  On = "on",
+  Off = "off",
+}
+
 type InputProps = {
   theme: InputTheme;
   size: InputSize;
@@ -34,11 +39,13 @@ type InputProps = {
   isRequired?: boolean;
   type?: InputType;
   defaultValue?: string;
+  autocomplete?: AutocompleteType; //TODO - Подумать Герману как это сделать получше (может Union type)
 };
 
 export const BasicInput: Component<Testable<InputProps>> = (props) => {
   const mProps: Testable<Required<InputProps>> = mergeProps(
     {
+      autocomplete: AutocompleteType.Off,
       isDisabled: false,
       isError: false,
       isRequired: false,
@@ -76,6 +83,7 @@ export const BasicInput: Component<Testable<InputProps>> = (props) => {
         data-test-id={mProps.testId}
         data-test-sub-id={mProps.testSubId}
         onInput={(event) => setCounter(event.target.value.length)}
+        autocomplete={mProps.autocomplete}
       />
       <div class="input__controls">
         <CharCounter
