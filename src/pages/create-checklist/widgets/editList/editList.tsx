@@ -26,6 +26,11 @@ import {
   ITEMS_LIMIT,
 } from "../../../../../configuration.ts";
 import { RemoveIconButton } from "../../../../components/removeIconButton/removeIconButton.tsx";
+import {
+  Note,
+  NoteSize,
+  NoteTheme,
+} from "../../../../components/note/note.tsx";
 
 // It's not Record<string, string> as there is a TypeScript error arriving:
 // Type '{ "client:only": string; }' is not assignable to type 'EditListProps'.
@@ -162,6 +167,13 @@ export const EditList: Component<EditListProps> = () => {
           text="Импортировать"
           isDisabled={checkItemsLimitReached()}
           testId={IMPORT_BUTTON}
+        />
+      </div>
+      <div class="editList__note">
+        <Note
+          theme={NoteTheme.Primary}
+          size={NoteSize.Medium}
+          title={"Заметка"}
         />
       </div>
     </div>

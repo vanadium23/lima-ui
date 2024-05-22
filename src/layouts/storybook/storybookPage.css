@@ -228,8 +228,8 @@ h2 {
 
 .sidebar__sectionTitle {
   display: inline-block;
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: 600;
-  margin-top: 10px;
+  margin-top: 1rem;
   color: #989898;
 }
