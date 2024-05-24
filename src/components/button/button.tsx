@@ -3,6 +3,7 @@ import { mergeProps } from "solid-js";
 import "./button.css";
 import type { Testable } from "../utilities/testable.ts";
 import { prepareARIALabel } from "../utilities/prepareARIALabel.ts";
+import { Icon, IconName, IconSize } from "../icon/icon.tsx";
 
 export enum ButtonTheme {
   Primary = "primary",
@@ -45,6 +46,12 @@ export const Button: Component<Testable<ButtonProps>> = (props) => {
     props,
   );
 
+  const loadingIconSize = {
+    [ButtonSize.Small]: IconSize.x7,
+    [ButtonSize.Medium]: IconSize.x10,
+    [ButtonSize.Large]: IconSize.x12,
+  };
+
   return (
     <button
       type={mProps.type}
@@ -61,7 +68,10 @@ export const Button: Component<Testable<ButtonProps>> = (props) => {
       }}
       data-test-id={mProps.testId}
     >
-      {mProps.text}
+      {mProps.isLoading && (
+        <Icon name={IconName.Loading} size={loadingIconSize[mProps.size]} />
+      )}
+      <span class="button__text">{mProps.text}</span>
     </button>
   );
 };

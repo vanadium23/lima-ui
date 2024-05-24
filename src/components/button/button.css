@@ -9,7 +9,6 @@
   border-width: 0.1rem;
   border-style: solid;
   border-radius: var(--size-x4);
-  gap: 1rem;
   appearance: none;
 }
 
@@ -17,6 +16,7 @@
   font-size: 1.4rem;
   line-height: 1.8rem;
   min-width: 8.2rem;
+  gap: var(--size-x2);
   height: var(--size-x12);
   padding: var(--size-x1) var(--size-x8);
 }
@@ -25,6 +25,7 @@
   font-size: 1.6rem;
   line-height: 2rem;
   min-width: 9rem;
+  gap: var(--size-x2);
   height: var(--size-x17);
   padding: var(--size-x3) var(--size-x8);
 }
@@ -33,6 +34,7 @@
   font-size: 1.8rem;
   line-height: 2.2rem;
   min-width: 9.4rem;
+  gap: var(--size-x3);
   height: var(--size-x20);
   padding: var(--size-x4) var(--size-x8);
 }
@@ -55,10 +57,10 @@
 }
 
 .button_secondary {
-  color: var(--primary-500); /* TODO Переменная не переменная */
+  color: var(--text-primary-500);
   border-color: var(--primary-500);
   background: var(--neutral-100);
-  fill: var(--primary-500); /* TODO Переменная не переменная */
+  fill: var(--text-primary-500);
 }
 
 .button_secondary:hover:not(:disabled, .button_disabled, .button_loading) {

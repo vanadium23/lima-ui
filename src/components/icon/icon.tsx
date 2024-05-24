@@ -1,11 +1,14 @@
 import { type Component, Match, Switch } from "solid-js";
 import "./icon.css";
-import { Cancel, Chevron, Trash } from "./sprite.tsx";
+import { Cancel, Chevron, Trash, Loading } from "./sprite.tsx";
+
+// GERMAN Слишком сложно добавлять иконки, надо в 50 мест написать название иконки
 
 export enum IconName {
   Cancel = "cancel",
   Trash = "trash",
   Chevron = "chevron",
+  Loading = "loading",
 }
 
 export enum IconSize {
@@ -24,8 +27,8 @@ type IconProps = {
 export const Icon: Component<IconProps> = (props) => {
   return (
     <Switch>
+      {/* GERMAN Придумать как сделать здесь красивый цикл */}
       <Match when={props.name === IconName.Trash}>
-        {/* TODO Придумать как сделать здесь красивый цикл */}
         <Trash size={props.size} ariaHidden={true} />
       </Match>
       <Match when={props.name === IconName.Cancel}>
@@ -33,6 +36,9 @@ export const Icon: Component<IconProps> = (props) => {
       </Match>
       <Match when={props.name === IconName.Chevron}>
         <Chevron size={props.size} ariaHidden={true} />
+      </Match>
+      <Match when={props.name === IconName.Loading}>
+        <Loading size={props.size} ariaHidden={true} />
       </Match>
     </Switch>
   );
