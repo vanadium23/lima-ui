@@ -29,3 +29,9 @@ export function extractInputTestIdFromItsCounterTestId(
 ): TestId {
   return counterTestId.replace(COUNTER_SUFFIX, "");
 }
+
+export const NOTE_ACCORDION = "noteAccordion";
+
+export function buildAccordionContentTestId(accordionTestId: TestId): TestId {
+  return `${accordionTestId}Content`;
+}

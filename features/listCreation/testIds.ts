@@ -8,6 +8,7 @@ import {
   ITEM_INPUT_CONTAINER,
   LIST_PURPOSE_INPUT,
   LIST_TITLE_INPUT,
+  NOTE_ACCORDION,
   REMOVE_ITEM_BUTTON,
 } from "../testIds.ts";
 import { buildFullTestId } from "../utilities/buildTestableSelector.ts";
@@ -57,3 +58,8 @@ export const ELEMENT_TEST_IDS = {
   ),
 };
 export type ElementMeaning = keyof typeof ELEMENT_TEST_IDS;
+
+export const ACCORDION_TEST_IDS = {
+  note: NOTE_ACCORDION,
+};
+export type AccordionMeaning = keyof typeof ACCORDION_TEST_IDS;
