@@ -1,4 +1,4 @@
-import type { Component } from "solid-js";
+import { Show, type Component } from "solid-js";
 import { mergeProps } from "solid-js";
 import "./button.css";
 import type { Testable } from "../utilities/testable.ts";
@@ -68,9 +68,9 @@ export const Button: Component<Testable<ButtonProps>> = (props) => {
       }}
       data-test-id={mProps.testId}
     >
-      {mProps.isLoading && (
+      <Show when={mProps.isLoading}>
         <Icon name={IconName.Loading} size={loadingIconSize[mProps.size]} />
-      )}
+      </Show>
       <span class="button__text">{mProps.text}</span>
     </button>
   );
