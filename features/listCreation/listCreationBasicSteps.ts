@@ -1,6 +1,7 @@
 import { Then, When } from "@cucumber/cucumber";
 import {
   ADD_ITEM_BUTTON,
+  buildAccordionContentTestId,
   CREATE_LIST_BUTTON,
   IMPORT_BUTTON,
   ITEM_INPUT,
@@ -8,6 +9,7 @@ import {
   ITEMS_INPUTS,
   LIST_PURPOSE_INPUT,
   LIST_TITLE_INPUT,
+  NOTE_ACCORDION,
   PAGE_TITLE,
   SIDEBAR,
 } from "../testIds.ts";
@@ -22,6 +24,8 @@ import {
   TEST_SUB_ID_ATTRIBUTE,
 } from "../utilities/buildTestableSelector.ts";
 import {
+  ACCORDION_TEST_IDS,
+  type AccordionMeaning,
   BUTTON_TEST_IDS,
   type ButtonMeaning,
   INPUT_TEST_IDS,
@@ -147,6 +151,7 @@ Then(
       LIST_PURPOSE_INPUT,
       PAGE_TITLE,
       SIDEBAR,
+      NOTE_ACCORDION,
     ].sort();
     const testIds = this.accounting.getTestIds();
 
@@ -181,3 +186,21 @@ Then("I expect to see no other elements", async function (this: ComplexWorld) {
     await this.expectLocated(id).not.toBeVisible();
   }
 });
+Then(
+  "I expect to see the collapsed {string} accordion ready for expanding",
+  async function (this: ComplexWorld, accordionMeaning: AccordionMeaning) {
+    const accordionTestId = ACCORDION_TEST_IDS[accordionMeaning];
+
+    const expectAccordion = this.expectLocated(
+      this.accounting.registerTestId(accordionTestId),
+    );
+
+    await expectAccordion.toBeInViewport();
+
+    const expectAccordionContent = this.expectLocated(
+      buildAccordionContentTestId(accordionTestId),
+    );
+
+    await expectAccordionContent.not.toBeVisible();
+  },
+);

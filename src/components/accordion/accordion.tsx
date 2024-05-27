@@ -1,6 +1,8 @@
 import { type Component, createSignal, type JSX, mergeProps } from "solid-js";
 import "./accordion.css";
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
+import type { Testable } from "../utilities/testable.ts";
+import { buildAccordionContentTestId } from "../../../features/testIds.ts";
 
 export enum AccordionTheme {
   Primary = "primary",
@@ -20,10 +22,10 @@ type AccordionProps = {
   size: AccordionSize;
 };
 
-export const Accordion: Component<AccordionProps> = (props) => {
+export const Accordion: Component<Testable<AccordionProps>> = (props) => {
   const [getExpanded, setExpanded] = createSignal(false);
 
-  const mProps: Required<AccordionProps> = mergeProps(
+  const mProps: Testable<Required<AccordionProps>> = mergeProps(
     {
       isDisabled: false,
     },
@@ -47,6 +49,7 @@ export const Accordion: Component<AccordionProps> = (props) => {
         accordion_disabled: mProps.isDisabled,
         accordion_expanded: getExpanded(),
       }}
+      data-test-id={mProps.testId}
     >
       <button
         type="button"
@@ -60,7 +63,12 @@ export const Accordion: Component<AccordionProps> = (props) => {
         </div>
         <span class="accordion__title">{mProps.title}</span>
       </button>
-      <div class="accordion__content">{mProps.children}</div>
+      <div
+        class="accordion__content"
+        data-test-id={buildAccordionContentTestId(mProps.testId)}
+      >
+        {mProps.children}
+      </div>
     </div>
   );
 };

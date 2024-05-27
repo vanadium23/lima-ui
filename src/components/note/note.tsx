@@ -10,6 +10,7 @@ import {
   TextareaSize,
   TextareaTheme,
 } from "../textarea/textarea.tsx";
+import { NOTE_ACCORDION } from "../../../features/testIds.ts";
 
 export enum NoteTheme {
   Primary = "primary",
@@ -56,6 +57,7 @@ export const Note: Component<NoteProps> = (props) => {
       size={accordionSize[mProps.size]}
       title={mProps.title}
       isDisabled={mProps.isDisabled}
+      testId={NOTE_ACCORDION}
     >
       <Textarea
         theme={TextareaTheme.Secondary}
