@@ -9,6 +9,7 @@ import {
   LIST_PURPOSE_INPUT,
   LIST_TITLE_INPUT,
   NOTE_ACCORDION,
+  NOTE_TEXT_AREA,
   REMOVE_ITEM_BUTTON,
 } from "../testIds.ts";
 import { buildFullTestId } from "../utilities/buildTestableSelector.ts";
@@ -63,3 +64,8 @@ export const ACCORDION_TEST_IDS = {
   note: NOTE_ACCORDION,
 };
 export type AccordionMeaning = keyof typeof ACCORDION_TEST_IDS;
+
+export const TEXT_AREA_TEST_IDS = {
+  note: NOTE_TEXT_AREA,
+};
+export type TextAreaMeaning = keyof typeof TEXT_AREA_TEST_IDS;

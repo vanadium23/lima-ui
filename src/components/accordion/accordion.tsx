@@ -2,7 +2,10 @@ import { type Component, createSignal, type JSX, mergeProps } from "solid-js";
 import "./accordion.css";
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
 import type { Testable } from "../utilities/testable.ts";
-import { buildAccordionContentTestId } from "../../../features/testIds.ts";
+import {
+  buildAccordionButtonTestId,
+  buildAccordionContentTestId,
+} from "../../../features/testIds.ts";
 
 export enum AccordionTheme {
   Primary = "primary",
@@ -57,6 +60,7 @@ export const Accordion: Component<Testable<AccordionProps>> = (props) => {
         aria-expanded={getExpanded()}
         onClick={toggleExpanded}
         disabled={mProps.isDisabled}
+        data-test-id={buildAccordionButtonTestId(mProps.testId)}
       >
         <div class="accordion__headerIcon">
           <Icon name={IconName.Chevron} size={iconSize[mProps.size]} />

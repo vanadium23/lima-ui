@@ -1,6 +1,7 @@
 import { Then, When } from "@cucumber/cucumber";
 import {
   ADD_ITEM_BUTTON,
+  buildAccordionButtonTestId,
   buildAccordionContentTestId,
   CREATE_LIST_BUTTON,
   IMPORT_BUTTON,
@@ -152,6 +153,7 @@ Then(
       PAGE_TITLE,
       SIDEBAR,
       NOTE_ACCORDION,
+      buildAccordionButtonTestId(NOTE_ACCORDION),
     ].sort();
     const testIds = this.accounting.getTestIds();
 
@@ -194,13 +196,18 @@ Then(
     const expectAccordion = this.expectLocated(
       this.accounting.registerTestId(accordionTestId),
     );
-
     await expectAccordion.toBeInViewport();
+
+    const expectAccordionButton = this.expectLocated(
+      this.accounting.registerTestId(
+        buildAccordionButtonTestId(accordionTestId),
+      ),
+    );
+    await expectAccordionButton.toBeInViewport();
 
     const expectAccordionContent = this.expectLocated(
       buildAccordionContentTestId(accordionTestId),
     );
-
     await expectAccordionContent.not.toBeVisible();
   },
 );

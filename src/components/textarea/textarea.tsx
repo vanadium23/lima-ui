@@ -5,6 +5,7 @@ import {
   CharCounterSize,
   CharCounterTheme,
 } from "../charCounter/charCounter.tsx";
+import type { Testable } from "../utilities/testable.ts";
 
 export enum TextareaTheme {
   Primary = "primary",
@@ -29,8 +30,8 @@ type TextareaProps = {
   defaultValue?: string;
 };
 
-export const Textarea: Component<TextareaProps> = (props) => {
-  const mProps: Required<TextareaProps> = mergeProps(
+export const Textarea: Component<Testable<TextareaProps>> = (props) => {
+  const mProps: Testable<Required<TextareaProps>> = mergeProps(
     {
       isDisabled: false,
       isError: false,
@@ -59,6 +60,8 @@ export const Textarea: Component<TextareaProps> = (props) => {
         required={mProps.isRequired}
         value={mProps.defaultValue}
         onInput={(event) => setCounter(event.target.value.length)}
+        data-test-id={mProps.testId}
+        data-test-sub-id={mProps.testSubId}
       />
       <div class="textarea__controls">
         <CharCounter

@@ -10,7 +10,7 @@ import {
   TextareaSize,
   TextareaTheme,
 } from "../textarea/textarea.tsx";
-import { NOTE_ACCORDION } from "../../../features/testIds.ts";
+import { NOTE_ACCORDION, NOTE_TEXT_AREA } from "../../../features/testIds.ts";
 
 export enum NoteTheme {
   Primary = "primary",
@@ -66,6 +66,7 @@ export const Note: Component<NoteProps> = (props) => {
         name={"Заметка"}
         maxLength={100}
         isDisabled={mProps.isDisabled}
+        testId={NOTE_TEXT_AREA}
       />
     </Accordion>
   );

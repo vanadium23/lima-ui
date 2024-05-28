@@ -35,3 +35,9 @@ export const NOTE_ACCORDION = "noteAccordion";
 export function buildAccordionContentTestId(accordionTestId: TestId): TestId {
   return `${accordionTestId}Content`;
 }
+
+export function buildAccordionButtonTestId(accordionTestId: TestId): TestId {
+  return `${accordionTestId}Button`;
+}
+
+export const NOTE_TEXT_AREA = "noteTextArea";
