@@ -189,21 +189,21 @@ Then("I expect to see no other elements", async function (this: ComplexWorld) {
   }
 });
 Then(
-  "I expect to see the collapsed {string} accordion ready for expanding",
+  "I expect to fully see the collapsed {string} accordion ready for expanding",
   async function (this: ComplexWorld, accordionMeaning: AccordionMeaning) {
     const accordionTestId = ACCORDION_TEST_IDS[accordionMeaning];
 
     const expectAccordion = this.expectLocated(
       this.accounting.registerTestId(accordionTestId),
     );
-    await expectAccordion.toBeInViewport();
+    await expectAccordion.toBeInViewport({ ratio: 1 });
 
     const expectAccordionButton = this.expectLocated(
       this.accounting.registerTestId(
         buildAccordionButtonTestId(accordionTestId),
       ),
     );
-    await expectAccordionButton.toBeInViewport();
+    await expectAccordionButton.toBeEnabled();
 
     const expectAccordionContent = this.expectLocated(
       buildAccordionContentTestId(accordionTestId),

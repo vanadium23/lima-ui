@@ -6,7 +6,10 @@ import {
   TEXT_AREA_TEST_IDS,
   type TextAreaMeaning,
 } from "./testIds.ts";
-import { buildAccordionButtonTestId } from "../testIds.ts";
+import {
+  buildAccordionButtonTestId,
+  buildAccordionContentTestId,
+} from "../testIds.ts";
 import { NOTE_TEXT_AREA_LIMIT } from "../../configuration.ts";
 import { getStringUpToLimit } from "../utilities/getStringOfLength.ts";
 
@@ -70,5 +73,29 @@ Then(
     await this.expectLocated(TEXT_AREA_TEST_IDS[textAreaMeaning]).toHaveValue(
       this.data.noteValue || "",
     );
+  },
+);
+
+Then(
+  "I expect to fully see the expanded {string} accordion ready for collapsing",
+  async function (this: ComplexWorld, accordionMeaning: AccordionMeaning) {
+    const accordionTestId = ACCORDION_TEST_IDS[accordionMeaning];
+
+    const expectAccordion = this.expectLocated(
+      this.accounting.registerTestId(accordionTestId),
+    );
+    await expectAccordion.toBeInViewport({ ratio: 1 });
+
+    const expectAccordionButton = this.expectLocated(
+      this.accounting.registerTestId(
+        buildAccordionButtonTestId(accordionTestId),
+      ),
+    );
+    await expectAccordionButton.toBeEnabled();
+
+    const expectAccordionContent = this.expectLocated(
+      buildAccordionContentTestId(accordionTestId),
+    );
+    await expectAccordionContent.toBeInViewport();
   },
 );

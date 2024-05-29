@@ -10,6 +10,9 @@ export default defineConfig({
     adapter: node({
         mode: "standalone",
     }),
+    devToolbar: {
+        enabled: false
+    },
     vite: {
         // To fix the Vite loading issue as recommended in https://github.com/vitejs/vite/discussions/13910#discussioncomment-8377145.
         base: "./",
