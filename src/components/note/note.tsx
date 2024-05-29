@@ -11,6 +11,7 @@ import {
   TextareaTheme,
 } from "../textarea/textarea.tsx";
 import { NOTE_ACCORDION, NOTE_TEXT_AREA } from "../../../features/testIds.ts";
+import { NOTE_TEXT_AREA_LIMIT } from "../../../configuration.ts";
 
 export enum NoteTheme {
   Primary = "primary",
@@ -64,7 +65,7 @@ export const Note: Component<NoteProps> = (props) => {
         size={textareaSize[mProps.size]}
         placeholder={"Напиши сюда"}
         name={"Заметка"}
-        maxLength={100}
+        maxLength={NOTE_TEXT_AREA_LIMIT}
         isDisabled={mProps.isDisabled}
         testId={NOTE_TEXT_AREA}
       />

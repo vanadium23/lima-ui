@@ -7,6 +7,8 @@ import {
   type TextAreaMeaning,
 } from "./testIds.ts";
 import { buildAccordionButtonTestId } from "../testIds.ts";
+import { NOTE_TEXT_AREA_LIMIT } from "../../configuration.ts";
+import { getStringUpToLimit } from "../utilities/getStringOfLength.ts";
 
 When(
   "I press on the {string} accordion",
@@ -35,5 +37,38 @@ Then(
     await this.expectLocated(
       TEXT_AREA_TEST_IDS[textAreaMeaning],
     ).not.toBeVisible();
+  },
+);
+
+const TEXT_AREA_LIMIT_RELATION = {
+  note: NOTE_TEXT_AREA_LIMIT,
+};
+
+When(
+  "I type some text with length less or equal to the one of {string} text area limit",
+  async function (this: ComplexWorld, textAreaMeaning: TextAreaMeaning) {
+    const textAreaLimit = TEXT_AREA_LIMIT_RELATION[textAreaMeaning];
+
+    await this.locateByFullId(TEXT_AREA_TEST_IDS[textAreaMeaning]).fill(
+      getStringUpToLimit(textAreaLimit),
+    );
+  },
+);
+
+When(
+  "I remember the text typed in the {string} text area",
+  async function (this: ComplexWorld, textAreaMeaning: TextAreaMeaning) {
+    this.data.noteValue = await this.locateByFullId(
+      TEXT_AREA_TEST_IDS[textAreaMeaning],
+    ).inputValue();
+  },
+);
+
+Then(
+  "I expect to see the remembered text in the {string} text area",
+  async function (this: ComplexWorld, textAreaMeaning: TextAreaMeaning) {
+    await this.expectLocated(TEXT_AREA_TEST_IDS[textAreaMeaning]).toHaveValue(
+      this.data.noteValue || "",
+    );
   },
 );

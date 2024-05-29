@@ -26,6 +26,7 @@ interface ComplexWorldParameters {}
 export class ComplexWorld extends World<ComplexWorldParameters> {
   page!: Page;
   accounting = accountedTesting;
+  data: Record<string, string> = {};
 
   constructor(options: IWorldOptions<ComplexWorldParameters>) {
     super(options);
