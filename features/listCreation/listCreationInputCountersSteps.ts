@@ -11,6 +11,7 @@ import {
   EDIT_LIST_INPUT_LIMIT,
   LIST_PURPOSE_INPUT_LIMIT,
   LIST_TITLE_INPUT_LIMIT,
+  NOTE_TEXT_AREA_LIMIT,
 } from "../../configuration.ts";
 import {
   getStringLongerThanLowerLimit,
@@ -29,6 +30,7 @@ const COUNTER_LIMITS = {
   "list title input": LIST_TITLE_INPUT_LIMIT,
   "list purpose input": LIST_PURPOSE_INPUT_LIMIT,
   "first item input": EDIT_LIST_INPUT_LIMIT,
+  "note text area": NOTE_TEXT_AREA_LIMIT,
 };
 
 Then(

@@ -61,15 +61,13 @@ export const Textarea: Component<Testable<TextareaProps>> = (props) => {
         value={mProps.defaultValue}
         onInput={(event) => setCounter(event.target.value.length)}
         data-test-id={mProps.testId}
-        data-test-sub-id={mProps.testSubId}
       />
       <div class="textarea__controls">
         <CharCounter
           theme={CharCounterTheme.Primary}
           size={CharCounterSize.ExtraSmall}
           value={mProps.maxLength - getCounter()}
-          testId={""} // TODO Посмотреть Герману ЕЩЁ повнимательней что здесь происходит
-          testSubId={""} //TODO И здесь
+          testId={mProps.testId}
         />
       </div>
     </div>

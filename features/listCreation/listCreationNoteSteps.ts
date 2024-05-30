@@ -11,7 +11,11 @@ import {
   buildAccordionContentTestId,
 } from "../testIds.ts";
 import { NOTE_TEXT_AREA_LIMIT } from "../../configuration.ts";
-import { getStringUpToLimit } from "../utilities/getStringOfLength.ts";
+import {
+  getStringLongerThanLowerLimit,
+  getStringUpToLimit,
+} from "../utilities/getStringOfLength.ts";
+import { expect } from "@playwright/test";
 
 When(
   "I press on the {string} accordion",
@@ -97,5 +101,38 @@ Then(
       buildAccordionContentTestId(accordionTestId),
     );
     await expectAccordionContent.toBeInViewport();
+  },
+);
+
+When(
+  "I focus {string} text area",
+  async function (this: ComplexWorld, textAreaMeaning: TextAreaMeaning) {
+    await this.locateByFullId(TEXT_AREA_TEST_IDS[textAreaMeaning]).focus();
+  },
+);
+
+When(
+  "I type some text with length more than of {string} text area limit",
+  async function (this: ComplexWorld, textAreaMeaning: TextAreaMeaning) {
+    const textAreaLimit = TEXT_AREA_LIMIT_RELATION[textAreaMeaning];
+
+    await this.locateByFullId(TEXT_AREA_TEST_IDS[textAreaMeaning]).fill(
+      getStringLongerThanLowerLimit(textAreaLimit),
+    );
+  },
+);
+
+Then(
+  "I expect {string} text area content length to be equal to its limit",
+  async function (this: ComplexWorld, textAreaMeaning: TextAreaMeaning) {
+    const textAreaValueLength = (
+      await this.locateByFullId(
+        TEXT_AREA_TEST_IDS[textAreaMeaning],
+      ).inputValue()
+    ).length;
+
+    const textAreaLimit = TEXT_AREA_LIMIT_RELATION[textAreaMeaning];
+
+    expect(textAreaValueLength).toBe(textAreaLimit);
   },
 );

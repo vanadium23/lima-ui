@@ -41,3 +41,5 @@ export function buildAccordionButtonTestId(accordionTestId: TestId): TestId {
 }
 
 export const NOTE_TEXT_AREA = "noteTextArea";
+
+export const buildTextAreaCounterTestId = buildInputCounterTestId;

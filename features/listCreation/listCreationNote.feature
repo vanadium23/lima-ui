@@ -28,3 +28,22 @@ Feature: Note on the List Creation page
     When I add items inputs till scroll appears plus one item input
     And I press on the "note" accordion
     Then I expect to fully see the expanded "note" accordion ready for collapsing
+
+  Scenario: Seeing the note counter when focusing its text area
+    When I press on the "note" accordion
+    And I focus "note" text area
+    Then I expect to see the "note text area" counter
+    Then I expect "note text area" counter to show the correct limit
+
+  Scenario: Seeing the correct counter remainder with some text in the note text area
+    When I press on the "note" accordion
+    And I focus "note" text area
+    And I type some text with length less or equal to the one of "note" text area limit
+    Then I expect "note text area" counter to show the correct remaining value
+
+  Scenario: Not being able to type more text than in note's text area limit
+    When I press on the "note" accordion
+    And I focus "note" text area
+    And I type some text with length more than of "note" text area limit
+    Then I expect "note text area" counter to show 0
+    Then I expect "note" text area content length to be equal to its limit

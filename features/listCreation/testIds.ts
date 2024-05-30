@@ -1,6 +1,7 @@
 import {
   ADD_ITEM_BUTTON,
   buildInputCounterTestId,
+  buildTextAreaCounterTestId,
   CANCEL_ITEM_REMOVAL_BUTTON,
   CREATE_LIST_BUTTON,
   IMPORT_BUTTON,
@@ -45,6 +46,7 @@ export const COUNTER_TEST_IDS = {
   "list title input": buildInputCounterTestId(LIST_TITLE_INPUT),
   "list purpose input": buildInputCounterTestId(LIST_PURPOSE_INPUT),
   "first item input": buildFullTestId(buildInputCounterTestId(ITEM_INPUT), 0),
+  "note text area": buildTextAreaCounterTestId(NOTE_TEXT_AREA),
 };
 export type CounterMeaning = keyof typeof COUNTER_TEST_IDS;
 

@@ -63,7 +63,7 @@ export const Note: Component<NoteProps> = (props) => {
       <Textarea
         theme={TextareaTheme.Secondary}
         size={textareaSize[mProps.size]}
-        placeholder={"Напиши сюда"}
+        placeholder={"Дополнительная информация о списке"}
         name={"Заметка"}
         maxLength={NOTE_TEXT_AREA_LIMIT}
         isDisabled={mProps.isDisabled}
