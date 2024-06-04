@@ -1,28 +1,8 @@
 ---
 import AppPage from "../../layouts/app/app.astro";
 import "./style.css";
-import {
-  BasicInput,
-  InputSize,
-  InputTheme,
-} from "../../components/basicInput/basicInput.tsx";
-import {
-  Button,
-  ButtonTheme,
-  ButtonSize,
-  ButtonType,
-} from "../../components/button/button";
+import { PAGE_TITLE } from "../../../features/testIds";
 import { EditList } from "./widgets/editList/editList.tsx";
-import {
-  CREATE_LIST_BUTTON,
-  LIST_PURPOSE_INPUT,
-  LIST_TITLE_INPUT,
-  PAGE_TITLE,
-} from "../../../features/testIds";
-import {
-  LIST_PURPOSE_INPUT_LIMIT,
-  LIST_TITLE_INPUT_LIMIT,
-} from "../../../configuration";
 ---
 
 <AppPage>
@@ -32,45 +12,5 @@ import {
     </h1>
     <div class="headerChecklist__search"></div>
   </div>
-  <form class="createList" slot="mainContent">
-    <div class="createList__listHeader">
-      <div class="createList__title">
-        <div class="createList__input">
-          <BasicInput
-            client:only="solid-js"
-            theme={InputTheme.Secondary}
-            size={InputSize.Medium}
-            placeholder="Название чек-листа"
-            maxLength={LIST_TITLE_INPUT_LIMIT}
-            isRequired={true}
-            name="List Title"
-            testId={LIST_TITLE_INPUT}
-          />
-        </div>
-        <Button
-          type={ButtonType.Submit}
-          client:only="solid-js"
-          theme={ButtonTheme.Primary}
-          size={ButtonSize.Medium}
-          text="Создать"
-          isDisabled={false}
-          testId={CREATE_LIST_BUTTON}
-        />
-      </div>
-      <div class="createList__input">
-        <BasicInput
-          client:only="solid-js"
-          theme={InputTheme.Primary}
-          size={InputSize.Medium}
-          placeholder="Назначение чек-листа"
-          maxLength={LIST_PURPOSE_INPUT_LIMIT}
-          isRequired={false}
-          name="List Purpose"
-          testId={LIST_PURPOSE_INPUT}
-        />
-      </div>
-    </div>
-
-    <EditList client:only="solid-js" />
-  </form>
+  <EditList client:only="solid-js" slot="mainContent" />
 </AppPage>

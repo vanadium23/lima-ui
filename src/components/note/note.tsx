@@ -28,6 +28,7 @@ type NoteProps = {
   isDisabled?: boolean;
   size: NoteSize;
   title: string;
+  name: string;
 };
 
 export const Note: Component<NoteProps> = (props) => {
@@ -64,7 +65,7 @@ export const Note: Component<NoteProps> = (props) => {
         theme={TextareaTheme.Secondary}
         size={textareaSize[mProps.size]}
         placeholder={"Дополнительная информация о списке"}
-        name={"Заметка"}
+        name={mProps.name}
         maxLength={NOTE_TEXT_AREA_LIMIT}
         isDisabled={mProps.isDisabled}
         testId={NOTE_TEXT_AREA}

@@ -10,20 +10,26 @@ import {
   Button,
   ButtonSize,
   ButtonTheme,
+  ButtonType,
 } from "../../../../components/button/button.tsx";
 import {
   ADD_ITEM_BUTTON,
   CANCEL_ITEM_REMOVAL_BUTTON,
+  CREATE_LIST_BUTTON,
   IMPORT_BUTTON,
   ITEM_INPUT,
   ITEM_INPUT_CONTAINER,
   ITEMS_INPUTS,
   ITEMS_LIMIT_REACHED_WARNING,
+  LIST_PURPOSE_INPUT,
+  LIST_TITLE_INPUT,
   REMOVE_ITEM_BUTTON,
 } from "../../../../../features/testIds.ts";
 import {
   EDIT_LIST_INPUT_LIMIT,
   ITEMS_LIMIT,
+  LIST_PURPOSE_INPUT_LIMIT,
+  LIST_TITLE_INPUT_LIMIT,
 } from "../../../../../configuration.ts";
 import { RemoveIconButton } from "../../../../components/removeIconButton/removeIconButton.tsx";
 import {
@@ -88,94 +94,177 @@ export const EditList: Component<EditListProps> = () => {
     });
   }
 
+  function submitList(data) {
+    fetch("http://localhost:3000/sverniks", {
+      method: "POST", // или 'PUT', 'DELETE', и т.д.
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data), // преобразование объекта данных в JSON строку
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok " + response.statusText);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data); // обработка полученных данных
+      })
+      .catch((error) => {
+        console.error(
+          "There has been a problem with your fetch operation:",
+          error,
+        );
+      });
+  }
+
   return (
-    <div class="editList">
-      <div class="editList__inner" data-test-id={ITEMS_INPUTS}>
-        <div class="editList__scrollWrapper">
-          <For each={store.items}>
-            {(item, getIndex) => (
-              <div
-                class="editList__item"
-                classList={{
-                  editList__item_removeInProgress: item.removeInProgress,
-                }}
-                data-test-id={ITEM_INPUT_CONTAINER}
-                data-test-sub-id={getIndex()}
-              >
-                <div class="editList__input">
-                  <BasicInput
-                    placeholder="Текст пункта"
-                    theme={InputTheme.Primary}
-                    size={InputSize.Medium}
-                    maxLength={EDIT_LIST_INPUT_LIMIT}
-                    isRequired={true}
-                    name="checklist-item"
-                    testId={ITEM_INPUT}
-                    testSubId={getIndex()}
-                    isDisabled={item.removeInProgress}
-                  />
-                </div>
-                <div class="editList__itemControls">
-                  <RemoveIconButton
-                    removeItem={() => {
-                      removeItem(getIndex());
-                    }}
-                    onTimerStart={() => {
-                      setRemoveInProgress(getIndex());
-                    }}
-                    onTimerCancel={() => {
-                      resetRemoveInProgress(getIndex());
-                    }}
-                    isDisabled={isLastItem(item)}
-                    testId={
-                      !item.removeInProgress
-                        ? REMOVE_ITEM_BUTTON
-                        : CANCEL_ITEM_REMOVAL_BUTTON
-                    }
-                    testSubId={getIndex()}
-                  />
-                </div>
-              </div>
-            )}
-          </For>
+    <form
+      class="createList"
+      method="post"
+      onSubmit={(event: SubmitEvent) => {
+        event.preventDefault();
+
+        const items = Array.from(event.target["List Item"]).map((item) => {
+          return {
+            content: item.value,
+          };
+        });
+        const data = {
+          name: event.target["List Title"].value,
+          reasonForExistence: event.target["List Purpose"].value,
+          note: event.target["List Note"].value,
+          items: items,
+        };
+
+        submitList(data);
+      }}
+    >
+      <div class="createList__listHeader">
+        <div class="createList__title">
+          <div class="createList__input">
+            <BasicInput
+              theme={InputTheme.Secondary}
+              size={InputSize.Medium}
+              placeholder="Название чек-листа"
+              maxLength={LIST_TITLE_INPUT_LIMIT}
+              isRequired={true}
+              name="List Title"
+              testId={LIST_TITLE_INPUT}
+            />
+          </div>
+          <Button
+            type={ButtonType.Submit}
+            theme={ButtonTheme.Primary}
+            size={ButtonSize.Medium}
+            text="Создать"
+            isDisabled={false}
+            testId={CREATE_LIST_BUTTON}
+          />
+        </div>
+        <div class="createList__input">
+          <BasicInput
+            theme={InputTheme.Primary}
+            size={InputSize.Medium}
+            placeholder="Назначение чек-листа"
+            maxLength={LIST_PURPOSE_INPUT_LIMIT}
+            isRequired={false}
+            name="List Purpose"
+            testId={LIST_PURPOSE_INPUT}
+          />
         </div>
       </div>
 
-      <div class="editList__error">
-        <Show when={checkItemsLimitReached()}>
-          <span
-            class="editList__errorText"
-            data-test-id={ITEMS_LIMIT_REACHED_WARNING}
-          >
-            Вы использовали лимит в {ITEMS_LIMIT} пунктов
-          </span>
-        </Show>
-      </div>
+      <div class="editList">
+        <div class="editList__inner" data-test-id={ITEMS_INPUTS}>
+          <div class="editList__scrollWrapper">
+            <For each={store.items}>
+              {(item, getIndex) => (
+                <div
+                  class="editList__item"
+                  classList={{
+                    editList__item_removeInProgress: item.removeInProgress,
+                  }}
+                  data-test-id={ITEM_INPUT_CONTAINER}
+                  data-test-sub-id={getIndex()}
+                >
+                  <div class="editList__input">
+                    <BasicInput
+                      placeholder="Текст пункта"
+                      theme={InputTheme.Primary}
+                      size={InputSize.Medium}
+                      maxLength={EDIT_LIST_INPUT_LIMIT}
+                      isRequired={true}
+                      name="List Item"
+                      testId={ITEM_INPUT}
+                      testSubId={getIndex()}
+                      isDisabled={item.removeInProgress}
+                    />
+                  </div>
+                  <div class="editList__itemControls">
+                    <RemoveIconButton
+                      removeItem={() => {
+                        removeItem(getIndex());
+                      }}
+                      onTimerStart={() => {
+                        setRemoveInProgress(getIndex());
+                      }}
+                      onTimerCancel={() => {
+                        resetRemoveInProgress(getIndex());
+                      }}
+                      isDisabled={isLastItem(item)}
+                      testId={
+                        !item.removeInProgress
+                          ? REMOVE_ITEM_BUTTON
+                          : CANCEL_ITEM_REMOVAL_BUTTON
+                      }
+                      testSubId={getIndex()}
+                    />
+                  </div>
+                </div>
+              )}
+            </For>
+          </div>
+        </div>
 
-      <div class="editList__controls">
-        <Button
-          theme={ButtonTheme.Secondary}
-          size={ButtonSize.Medium}
-          text="Добавить пункт"
-          handleClick={addItem}
-          isDisabled={checkItemsLimitReached()}
-          testId={ADD_ITEM_BUTTON}
-        />
-        <Button
-          theme={ButtonTheme.Secondary}
-          size={ButtonSize.Medium}
-          text="Импортировать"
-          isDisabled={checkItemsLimitReached()}
-          testId={IMPORT_BUTTON}
-        />
+        <div class="editList__error">
+          <Show when={checkItemsLimitReached()}>
+            <span
+              class="editList__errorText"
+              data-test-id={ITEMS_LIMIT_REACHED_WARNING}
+            >
+              Вы использовали лимит в {ITEMS_LIMIT} пунктов
+            </span>
+          </Show>
+        </div>
+
+        <div class="editList__controls">
+          <Button
+            theme={ButtonTheme.Secondary}
+            size={ButtonSize.Medium}
+            text="Добавить пункт"
+            handleClick={addItem}
+            isDisabled={checkItemsLimitReached()}
+            testId={ADD_ITEM_BUTTON}
+          />
+          <Button
+            theme={ButtonTheme.Secondary}
+            size={ButtonSize.Medium}
+            text="Импортировать"
+            isDisabled={checkItemsLimitReached()}
+            testId={IMPORT_BUTTON}
+          />
+        </div>
+        <div class="editList__note">
+          <Note
+            theme={NoteTheme.Primary}
+            size={NoteSize.Medium}
+            title={"Заметка"}
+            name={"List Note"}
+          />
+        </div>
       </div>
-      <div class="editList__note">
-        <Note
-          theme={NoteTheme.Primary}
-          size={NoteSize.Medium}
-          title={"Заметка"}
-        />
-      </div>
-    </div>
+    </form>
   );
 };
