@@ -9,21 +9,21 @@ const sizes = Object.values(NoteSize);
 
 <StorybookPage title="Note">
     {themes.map((theme) => (
-            <div class="demoThemeWrapper">
-                <h3 style="font-size: 24px; margin-bottom: 10px; text-transform: capitalize;">{theme}</h3>
-                <div class="grid grid_2Col">
-                    <span class="chead"/>
-                    <span class="chead">Default</span>
-                    <span class="chead">Disabled</span>
+      <div class="demoThemeWrapper">
+        <h3 style="font-size: 24px; margin-bottom: 10px; text-transform: capitalize;">{theme}</h3>
+        <div class="grid grid_2Col">
+          <span class="chead"/>
+          <span class="chead">Default</span>
+          <span class="chead">Disabled</span>
 
-                    {sizes.map((size) => (
-                            <span class="rhead">{size}</span>
-                            <Note client:only="solid-js" theme={theme} size={size} title="Заметка"/>
-                            <Note client:only="solid-js" theme={theme} size={size} title="Заметка" isDisabled={true} />
-                    ))}
+            {sizes.map((size) => (
+              <span class="rhead">{size}</span>
+              <Note client:only="solid-js" theme={theme} size={size} title="Заметка" name=""/>
+              <Note client:only="solid-js" theme={theme} size={size} title="Заметка" isDisabled={true} name=""/>
+            ))}
 
-                </div>
-            </div>
+        </div>
+      </div>
 
     ))}
 </StorybookPage>

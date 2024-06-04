@@ -45,6 +45,20 @@ type Item = {
   removeInProgress: boolean;
 };
 
+enum EditListFormNames {
+  ListTitle = "List Title",
+  ListPurpose = "List Purpose",
+  ListNote = "List Note",
+}
+
+enum EditListFormItemsName {
+  ListItem = "List Item",
+}
+
+type EditListForm = Record<EditListFormNames, HTMLInputElement> & {
+  [EditListFormItemsName.ListItem]: HTMLInputElement | RadioNodeList;
+};
+
 export const EditList: Component<EditListProps> = () => {
   const [store, setStore] = createStore({
     // This derived state is required to avoid significant
@@ -126,15 +140,28 @@ export const EditList: Component<EditListProps> = () => {
       onSubmit={(event: SubmitEvent) => {
         event.preventDefault();
 
-        const items = Array.from(event.target["List Item"]).map((item) => {
+        if (!event.target) return;
+
+        const target = event.target as typeof event.target & EditListForm;
+
+        const rawItemsNodes = target[EditListFormItemsName.ListItem];
+        let itemsNodes: HTMLInputElement[];
+        if (Symbol.iterator in rawItemsNodes) {
+          itemsNodes = Array.from(rawItemsNodes) as HTMLInputElement[];
+        } else {
+          itemsNodes = [rawItemsNodes];
+        }
+
+        const items = itemsNodes.map((itemNode) => {
           return {
-            content: item.value,
+            content: itemNode.value,
           };
         });
+
         const data = {
-          name: event.target["List Title"].value,
-          reasonForExistence: event.target["List Purpose"].value,
-          note: event.target["List Note"].value,
+          name: target[EditListFormNames.ListTitle].value,
+          reasonForExistence: target[EditListFormNames.ListPurpose].value,
+          note: target[EditListFormNames.ListNote].value,
           items: items,
         };
 
@@ -150,7 +177,7 @@ export const EditList: Component<EditListProps> = () => {
               placeholder="Название чек-листа"
               maxLength={LIST_TITLE_INPUT_LIMIT}
               isRequired={true}
-              name="List Title"
+              name={EditListFormNames.ListTitle}
               testId={LIST_TITLE_INPUT}
             />
           </div>
@@ -170,7 +197,7 @@ export const EditList: Component<EditListProps> = () => {
             placeholder="Назначение чек-листа"
             maxLength={LIST_PURPOSE_INPUT_LIMIT}
             isRequired={false}
-            name="List Purpose"
+            name={EditListFormNames.ListPurpose}
             testId={LIST_PURPOSE_INPUT}
           />
         </div>
@@ -196,7 +223,7 @@ export const EditList: Component<EditListProps> = () => {
                       size={InputSize.Medium}
                       maxLength={EDIT_LIST_INPUT_LIMIT}
                       isRequired={true}
-                      name="List Item"
+                      name={EditListFormItemsName.ListItem}
                       testId={ITEM_INPUT}
                       testSubId={getIndex()}
                       isDisabled={item.removeInProgress}
@@ -260,8 +287,8 @@ export const EditList: Component<EditListProps> = () => {
           <Note
             theme={NoteTheme.Primary}
             size={NoteSize.Medium}
-            title={"Заметка"}
-            name={"List Note"}
+            title="Заметка"
+            name={EditListFormNames.ListNote}
           />
         </div>
       </div>
