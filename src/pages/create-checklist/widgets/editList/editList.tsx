@@ -49,14 +49,13 @@ enum EditListFormNames {
   ListTitle = "List Title",
   ListPurpose = "List Purpose",
   ListNote = "List Note",
-}
-
-enum EditListFormItemsName {
   ListItem = "List Item",
 }
 
-type EditListForm = Record<EditListFormNames, HTMLInputElement> & {
-  [EditListFormItemsName.ListItem]: HTMLInputElement | RadioNodeList;
+type EditListForm = {
+  [EditListFormNames.ListTitle]: HTMLInputElement;
+  [EditListFormNames.ListPurpose]: HTMLInputElement;
+  [EditListFormNames.ListNote]: HTMLInputElement;
 };
 
 export const EditList: Component<EditListProps> = () => {
@@ -108,7 +107,39 @@ export const EditList: Component<EditListProps> = () => {
     });
   }
 
-  function submitList(data) {
+  function prepareAndSendListData(event: SubmitEvent) {
+    event.preventDefault();
+
+    const target = event.target as HTMLFormElement & EditListForm;
+
+    const elements = Array.from(target.elements) as HTMLInputElement[];
+
+    const itemsInputs = elements.filter((element) => {
+      return element.name.startsWith(EditListFormNames.ListItem);
+    });
+
+    const inputsValues = itemsInputs.map((itemInput) => ({
+      content: itemInput.value,
+    }));
+
+    const data = {
+      name: target[EditListFormNames.ListTitle].value,
+      reasonForExistence: target[EditListFormNames.ListPurpose].value,
+      items: inputsValues,
+      note: target[EditListFormNames.ListNote].value,
+    };
+
+    sendList(data);
+  }
+
+  type ListData = {
+    name: string;
+    reasonForExistence: string;
+    items: { content: string }[];
+    note: string;
+  };
+
+  function sendList(data: ListData) {
     fetch("http://localhost:3000/sverniks", {
       method: "POST", // или 'PUT', 'DELETE', и т.д.
       headers: {
@@ -134,40 +165,7 @@ export const EditList: Component<EditListProps> = () => {
   }
 
   return (
-    <form
-      class="createList"
-      method="post"
-      onSubmit={(event: SubmitEvent) => {
-        event.preventDefault();
-
-        if (!event.target) return;
-
-        const target = event.target as typeof event.target & EditListForm;
-
-        const rawItemsNodes = target[EditListFormItemsName.ListItem];
-        let itemsNodes: HTMLInputElement[];
-        if (Symbol.iterator in rawItemsNodes) {
-          itemsNodes = Array.from(rawItemsNodes) as HTMLInputElement[];
-        } else {
-          itemsNodes = [rawItemsNodes];
-        }
-
-        const items = itemsNodes.map((itemNode) => {
-          return {
-            content: itemNode.value,
-          };
-        });
-
-        const data = {
-          name: target[EditListFormNames.ListTitle].value,
-          reasonForExistence: target[EditListFormNames.ListPurpose].value,
-          note: target[EditListFormNames.ListNote].value,
-          items: items,
-        };
-
-        submitList(data);
-      }}
-    >
+    <form class="createList" method="post" onSubmit={prepareAndSendListData}>
       <div class="createList__listHeader">
         <div class="createList__title">
           <div class="createList__input">
@@ -223,7 +221,7 @@ export const EditList: Component<EditListProps> = () => {
                       size={InputSize.Medium}
                       maxLength={EDIT_LIST_INPUT_LIMIT}
                       isRequired={true}
-                      name={EditListFormItemsName.ListItem}
+                      name={`${EditListFormNames.ListItem} ${getIndex() + 1}`}
                       testId={ITEM_INPUT}
                       testSubId={getIndex()}
                       isDisabled={item.removeInProgress}
