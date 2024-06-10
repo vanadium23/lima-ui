@@ -58,7 +58,7 @@
 .editList__controls {
   display: flex;
   gap: var(--size-x6);
-  padding-left: var(--size-x1);
+  padding: 0 0 var(--size-x2) var(--size-x1);
 }
 
 .editList__itemControls {
@@ -69,10 +69,4 @@
 .editList__item:hover .editList__itemControls,
 .editList__item:focus-within .editList__itemControls {
   display: block;
-}
-
-.editList__note {
-  padding: var(--size-x20) 0 0 var(--size-x1) ;
-  flex-grow: 1;
-  max-width: 50rem;
 }

@@ -211,6 +211,15 @@ export const EditList: Component<EditListProps> = () => {
             isDisabled={store.sendingNow}
           />
         </div>
+        <div class="createList__input">
+          <Note
+            theme={NoteTheme.Primary}
+            size={NoteSize.Medium}
+            title="Заметка"
+            name={EditListFormNames.ListNote}
+            isDisabled={store.sendingNow}
+          />
+        </div>
       </div>
 
       <div class="editList">
@@ -291,15 +300,6 @@ export const EditList: Component<EditListProps> = () => {
             text="Импортировать"
             isDisabled={checkItemsLimitReached() || store.sendingNow}
             testId={IMPORT_BUTTON}
-          />
-        </div>
-        <div class="editList__note">
-          <Note
-            theme={NoteTheme.Primary}
-            size={NoteSize.Medium}
-            title="Заметка"
-            name={EditListFormNames.ListNote}
-            isDisabled={store.sendingNow}
           />
         </div>
       </div>
