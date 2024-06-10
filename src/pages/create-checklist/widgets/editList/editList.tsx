@@ -65,6 +65,7 @@ export const EditList: Component<EditListProps> = () => {
     // in case filtering of items is done in there.
     allButLastDeleteInProgress: true,
     items: [{ removeInProgress: false }],
+    sendingNow: false,
   });
 
   createEffect(() => {
@@ -132,6 +133,10 @@ export const EditList: Component<EditListProps> = () => {
     sendList(data);
   }
 
+  function setSendingNow(status: boolean) {
+    setStore("sendingNow", status);
+  }
+
   type ListData = {
     name: string;
     reasonForExistence: string;
@@ -140,6 +145,8 @@ export const EditList: Component<EditListProps> = () => {
   };
 
   function sendList(data: ListData) {
+    setSendingNow(true);
+
     fetch("http://localhost:3000/sverniks", {
       method: "POST", // или 'PUT', 'DELETE', и т.д.
       headers: {
@@ -148,6 +155,7 @@ export const EditList: Component<EditListProps> = () => {
       body: JSON.stringify(data), // преобразование объекта данных в JSON строку
     })
       .then((response) => {
+        setSendingNow(false); // MAKSIM выпилить отмену загрузки когда научимся после отправки перехдить на страницу готового списка
         if (!response.ok) {
           throw new Error("Network response was not ok " + response.statusText);
         }
@@ -155,12 +163,14 @@ export const EditList: Component<EditListProps> = () => {
       })
       .then((data) => {
         console.log(data); // обработка полученных данных
+        setSendingNow(false); // MAKSIM выпилить отмену загрузки когда научимся после отправки перехдить на страницу готового списка
       })
       .catch((error) => {
         console.error(
           "There has been a problem with your fetch operation:",
           error,
         );
+        setSendingNow(false);
       });
   }
 
@@ -177,6 +187,7 @@ export const EditList: Component<EditListProps> = () => {
               isRequired={true}
               name={EditListFormNames.ListTitle}
               testId={LIST_TITLE_INPUT}
+              isDisabled={store.sendingNow}
             />
           </div>
           <Button
@@ -184,7 +195,7 @@ export const EditList: Component<EditListProps> = () => {
             theme={ButtonTheme.Primary}
             size={ButtonSize.Medium}
             text="Создать"
-            isDisabled={false}
+            isLoading={store.sendingNow}
             testId={CREATE_LIST_BUTTON}
           />
         </div>
@@ -197,6 +208,7 @@ export const EditList: Component<EditListProps> = () => {
             isRequired={false}
             name={EditListFormNames.ListPurpose}
             testId={LIST_PURPOSE_INPUT}
+            isDisabled={store.sendingNow}
           />
         </div>
       </div>
@@ -224,7 +236,7 @@ export const EditList: Component<EditListProps> = () => {
                       name={`${EditListFormNames.ListItem} ${getIndex() + 1}`}
                       testId={ITEM_INPUT}
                       testSubId={getIndex()}
-                      isDisabled={item.removeInProgress}
+                      isDisabled={item.removeInProgress || store.sendingNow}
                     />
                   </div>
                   <div class="editList__itemControls">
@@ -238,7 +250,7 @@ export const EditList: Component<EditListProps> = () => {
                       onTimerCancel={() => {
                         resetRemoveInProgress(getIndex());
                       }}
-                      isDisabled={isLastItem(item)}
+                      isDisabled={isLastItem(item) || store.sendingNow}
                       testId={
                         !item.removeInProgress
                           ? REMOVE_ITEM_BUTTON
@@ -270,14 +282,14 @@ export const EditList: Component<EditListProps> = () => {
             size={ButtonSize.Medium}
             text="Добавить пункт"
             handleClick={addItem}
-            isDisabled={checkItemsLimitReached()}
+            isDisabled={checkItemsLimitReached() || store.sendingNow}
             testId={ADD_ITEM_BUTTON}
           />
           <Button
             theme={ButtonTheme.Secondary}
             size={ButtonSize.Medium}
             text="Импортировать"
-            isDisabled={checkItemsLimitReached()}
+            isDisabled={checkItemsLimitReached() || store.sendingNow}
             testId={IMPORT_BUTTON}
           />
         </div>
@@ -287,6 +299,7 @@ export const EditList: Component<EditListProps> = () => {
             size={NoteSize.Medium}
             title="Заметка"
             name={EditListFormNames.ListNote}
+            isDisabled={store.sendingNow}
           />
         </div>
       </div>
