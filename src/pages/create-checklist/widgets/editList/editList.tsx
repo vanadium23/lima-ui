@@ -66,6 +66,7 @@ export const EditList: Component<EditListProps> = () => {
     allButLastDeleteInProgress: true,
     items: [{ removeInProgress: false }],
     sendingNow: false,
+    error: false,
   });
 
   createEffect(() => {
@@ -145,6 +146,7 @@ export const EditList: Component<EditListProps> = () => {
   };
 
   function sendList(data: ListData) {
+    setStore("error", false);
     setSendingNow(true);
 
     fetch("http://localhost:3000/sverniks", {
@@ -170,12 +172,16 @@ export const EditList: Component<EditListProps> = () => {
           "There has been a problem with your fetch operation:",
           error,
         );
+        setStore("error", true);
         setSendingNow(false);
       });
   }
 
   return (
     <form class="createList" method="post" onSubmit={prepareAndSendListData}>
+      <Show when={store.error}>
+        <div class="createList__error">Упс, ошибочка</div>
+      </Show>
       <div class="createList__listHeader">
         <div class="createList__title">
           <div class="createList__input">
@@ -184,9 +190,9 @@ export const EditList: Component<EditListProps> = () => {
               size={InputSize.Medium}
               placeholder="Название чек-листа"
               maxLength={LIST_TITLE_INPUT_LIMIT}
-              isRequired={true}
               name={EditListFormNames.ListTitle}
               testId={LIST_TITLE_INPUT}
+              isRequired={true}
               isDisabled={store.sendingNow}
             />
           </div>
@@ -203,9 +209,9 @@ export const EditList: Component<EditListProps> = () => {
           <BasicInput
             theme={InputTheme.Primary}
             size={InputSize.Medium}
+            isRequired={true}
             placeholder="Назначение чек-листа"
             maxLength={LIST_PURPOSE_INPUT_LIMIT}
-            isRequired={false}
             name={EditListFormNames.ListPurpose}
             testId={LIST_PURPOSE_INPUT}
             isDisabled={store.sendingNow}
