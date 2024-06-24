@@ -1,3 +1,7 @@
+.icon {
+  flex-shrink: 0;
+}
+
 .icon_x7 {
   width: var(--size-x7);
   height: var(--size-x7);

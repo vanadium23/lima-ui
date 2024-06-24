@@ -1,0 +1,22 @@
+---
+import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
+import { Logo } from "../../../components/logo/logo.tsx";
+---
+
+<StorybookPage title="Logo">
+  <div class="demoThemeWrapper">
+    <h3
+      style="font-size: 24px; margin-bottom: 10px; text-transform: capitalize;"
+    >
+      Primary
+    </h3>
+    <div class="grid grid_1Col">
+      <span class="chead"></span>
+      <span class="chead">Default</span>
+
+      <span class="rhead">Medium</span>
+
+      <Logo />
+    </div>
+  </div>
+</StorybookPage>

@@ -2,11 +2,6 @@
   display: flex;
 }
 
-.sidebar {
-  width: 365px;
-  height: 100vh;
-}
-
 .main {
   display: flex;
   flex-direction: column;

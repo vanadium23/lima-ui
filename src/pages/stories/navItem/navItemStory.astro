@@ -1,0 +1,33 @@
+---
+import StorybookPage from '../../../layouts/storybook/storybookPage.astro';
+import {NavItem, NavItemSize, NavItemTheme} from '../../../components/navItem/navItem.tsx';
+import {IconName} from "../../../components/icon/icon";
+
+const themes = Object.values(NavItemTheme);
+const sizes = Object.values(NavItemSize);
+
+---
+
+<StorybookPage title="Nav Item">
+
+    {themes.map((theme) => (
+            <div class="demoThemeWrapper">
+                <h3 style="font-size: 24px; margin-bottom: 10px; text-transform: capitalize;">{theme}</h3>
+                <div class="grid grid_2Col">
+                    <span class="chead"/>
+                    <span class="chead">Default</span>
+                    <span class="chead">Current</span>
+
+                    {sizes.map((size) => (
+                            <span class="rhead">{size}</span>
+
+                            <NavItem url="https://ya.ru" theme={theme} size={size} text="Text" icon={IconName.Home}/>
+                            <NavItem url="https://ya.ru" theme={theme} size={size} text="Text" icon={IconName.Home}
+                                    isCurrent={true}/>
+                    ))}
+
+                </div>
+            </div>
+    ))}
+
+</StorybookPage>

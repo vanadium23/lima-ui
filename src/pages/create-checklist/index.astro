@@ -3,9 +3,11 @@ import AppPage from "../../layouts/app/app.astro";
 import "./style.css";
 import { PAGE_TITLE } from "../../../features/testIds";
 import { EditList } from "./widgets/editList/editList.tsx";
+import { Sidebar } from "./widgets/sidebar/sidebar.tsx";
 ---
 
 <AppPage>
+  <Sidebar client:only="solid-js" slot="sidebar" />
   <div class="headerChecklist" slot="header">
     <h1 class="headerChecklist__title" data-test-id={PAGE_TITLE}>
       Создание списка

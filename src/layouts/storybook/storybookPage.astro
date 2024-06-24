@@ -27,49 +27,110 @@ const { title } = Astro.props;
     <header></header>
 
     <div class="wrapper">
-      <aside class="sidebar">
+      <aside class="storybookSidebar">
         <h1 hidden>Svernik</h1>
-        <div class="logo"></div>
-        <div class="sidebar__navWrapper">
-          <div class="sidebar__nav">
-            <span class="sidebar__sectionTitle">Pages</span>
-            <a class="sidebar__navItem" href="/create-checklist/"
+        <div class="storybookLogo">
+          <svg
+            width="33"
+            height="40"
+            viewBox="0 0 33 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M9.84163 11.6261C7.95322 12.4472 3.06085 15.4484 1.90192 16.4972C-0.265194 18.4573 -0.668314 22.9749 1.14886 24.9356C1.72481 25.5572 3.01996 25.7719 3.67644 25.3548C4.11794 25.0742 4.03215 24.1923 4.11794 22.6787C4.21502 20.9719 4.37833 20.0623 4.63971 19.7733C4.97686 19.4008 7.85564 17.6378 11.336 15.6721C11.9887 15.3036 12.6376 14.7871 12.7784 14.5245C13.3736 13.4122 12.8396 11.9129 11.7075 11.5183C10.7861 11.1969 10.8355 11.1942 9.84163 11.6261Z"
+              fill="#0285F1"></path>
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M5.29338 22.5176C5.10218 24.5679 5.37261 30.301 5.73268 31.8221C6.40507 34.6657 10.1685 37.1971 12.7624 36.5504C13.5847 36.3455 14.3972 35.3144 14.3483 34.5381C14.3154 34.0161 13.5014 33.666 12.2167 32.8611C10.7682 31.9531 10.05 31.3714 9.92289 31.0031C9.75909 30.5281 9.60257 27.156 9.55851 23.1592C9.55038 22.4097 9.41077 21.5921 9.24853 21.3422C8.56109 20.2844 6.99004 20.0294 6.0985 20.8309C5.37273 21.4832 5.39414 21.4386 5.29338 22.5176Z"
+              fill="#0285F1"></path>
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M12.1707 31.313C13.8272 32.5361 18.8755 35.267 20.3638 35.7446C23.1458 36.6384 27.2577 34.7243 28.0443 32.1694C28.2938 31.3595 27.8309 30.131 27.141 29.7718C26.677 29.5302 25.9567 30.0462 24.6037 30.7302C23.0779 31.5012 22.2088 31.8155 21.8278 31.734C21.3365 31.6288 18.3686 30.0204 14.9239 27.9929C14.278 27.6126 13.5059 27.3096 13.2081 27.3194C11.9472 27.3614 10.9171 28.5747 11.1427 29.7521C11.3261 30.7106 11.299 30.6692 12.1707 31.313Z"
+              fill="#0285F1"></path>
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M23.1421 30.0979C25.0221 29.2577 29.8837 26.207 31.0319 25.1464C33.179 23.1644 33.5362 18.6429 31.6992 16.7008C31.117 16.0851 29.8197 15.8835 29.1675 16.3073C28.7289 16.5923 28.8236 17.4733 28.7532 18.9878C28.6735 20.6955 28.5194 21.6067 28.261 21.8983C27.9276 22.2742 25.0669 24.0663 21.6067 26.0673C20.9578 26.4424 20.3141 26.9654 20.1761 27.2295C19.5921 28.3478 20.1414 29.8416 21.2774 30.2247C22.202 30.5366 22.1526 30.5399 23.1421 30.0979Z"
+              fill="#0285F1"></path>
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M21.0548 10.697C19.4328 9.42841 14.4622 6.55858 12.9878 6.03983C10.2315 5.06932 6.06819 6.86867 5.21099 9.40077C4.93915 10.2034 5.36784 11.4443 6.04752 11.8225C6.50462 12.0768 7.23894 11.581 8.6104 10.9348C10.157 10.2064 11.0345 9.91633 11.4131 10.0083C11.9013 10.1271 14.8235 11.8172 18.2106 13.9395C18.8457 14.3375 19.6091 14.6618 19.9071 14.6603C21.1686 14.6533 22.232 13.469 22.0391 12.2857C21.8823 11.3226 21.9083 11.3647 21.0548 10.697Z"
+              fill="#0285F1"></path>
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M24.6158 0.211814C23.7654 0.555482 23.0134 1.70388 23.0134 2.65888C23.0134 3.31912 23.2261 3.7408 23.8984 4.41309C24.6938 5.20854 24.8862 5.28429 25.7993 5.16188C27.0077 4.99958 27.6627 4.46677 28.0334 3.3437C28.4295 2.14287 27.8287 0.818375 26.6678 0.333227C25.6827 -0.0784217 25.3787 -0.0964831 24.6158 0.211814ZM20.0107 5.79929C19.67 5.97514 19.224 6.41714 19.0196 6.78138C18.5412 7.63327 18.7833 7.94508 21.0545 9.40253C21.9776 9.9948 22.8526 10.703 22.9986 10.9759C23.1559 11.2696 23.2642 13.2238 23.2642 15.7656C23.2642 21.101 23.5236 21.8054 25.4798 21.7821C25.8478 21.7778 26.3281 21.6366 26.5471 21.4685C27.4065 20.8085 27.5287 20.0999 27.5287 15.7697C27.5287 13.225 27.6371 11.2696 27.7944 10.9759C27.9404 10.703 28.8153 9.9948 29.7385 9.40253C31.9793 7.9644 32.1765 7.71079 31.748 6.817C31.2243 5.72404 30.2913 5.39643 28.6643 5.73407C27.9158 5.8896 26.8788 6.30476 26.3597 6.65696C25.6167 7.16117 25.3345 7.23668 25.0302 7.01166C23.5211 5.89738 21.0008 5.28856 20.0107 5.79929Z"
+              fill="#18C229"></path>
+          </svg>
+          <span class="storybookLogo__text">Svernik</span>
+        </div>
+        <div class="storybookSidebar__navWrapper">
+          <div class="storybookSidebar__nav">
+            <span class="storybookSidebar__sectionTitle">Pages</span>
+            <a class="storybookSidebar__navItem" href="/create-checklist/"
               >Create checklist</a
             >
-            <span class="sidebar__sectionTitle">Components</span>
+            <span class="storybookSidebar__sectionTitle">Components</span>
             <a
-              class="sidebar__navItem"
+              class="storybookSidebar__navItem"
               href="/stories/basicInput/basicInputStory/">Input</a
             >
-            <a class="sidebar__navItem" href="/stories/button/buttonStory/"
-              >Button</a
-            >
-            <a class="sidebar__navItem" href="/stories/icon/iconStory/">Icon</a>
             <a
-              class="sidebar__navItem"
+              class="storybookSidebar__navItem"
+              href="/stories/button/buttonStory/">Button</a
+            >
+            <a class="storybookSidebar__navItem" href="/stories/icon/iconStory/"
+              >Icon</a
+            >
+            <a
+              class="storybookSidebar__navItem"
               href="/stories/iconButton/iconButtonStory/">Icon Button</a
             >
             <a
-              class="sidebar__navItem"
+              class="storybookSidebar__navItem"
               href="/stories/removeIconButton/removeIconButtonStory/"
               >Remove Icon Button</a
             >
             <a
-              class="sidebar__navItem"
+              class="storybookSidebar__navItem"
               href="/stories/accordion/accordionStory/">Accordion</a
             >
-            <a class="sidebar__navItem" href="/stories/textarea/textareaStory/"
-              >Textarea</a
+            <a
+              class="storybookSidebar__navItem"
+              href="/stories/textarea/textareaStory/">Textarea</a
             >
             <a
-              class="sidebar__navItem"
+              class="storybookSidebar__navItem"
               href="/stories/charCounter/charCounterStory/">Char Counter</a
             >
             <a
-              class="sidebar__navItem"
+              class="storybookSidebar__navItem"
               href="/stories/pasteContent/pasteContentStory/">Paste Content</a
             >
-            <a class="sidebar__navItem" href="/stories/note/noteStory/">Note</a>
+            <a class="storybookSidebar__navItem" href="/stories/note/noteStory/"
+              >Note</a
+            >
+            <a
+              class="storybookSidebar__navItem"
+              href="/stories/navItem/navItemStory/">Nav Item</a
+            >
+            <a class="storybookSidebar__navItem" href="/stories/nav/navStory/"
+              >Nav</a
+            >
+            <a class="storybookSidebar__navItem" href="/stories/logo/logoStory/"
+              >Logo</a
+            >
+            <a
+              class="storybookSidebar__navItem"
+              href="/stories/profileButton/profileButtonStory/"
+              >Profile Button</a
+            >
           </div>
         </div>
       </aside>

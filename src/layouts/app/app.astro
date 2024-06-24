@@ -22,7 +22,9 @@ import { SIDEBAR } from "../../../features/testIds";
     <header></header>
 
     <div class="appContainer">
-      <aside class="sidebar" data-test-id={SIDEBAR}></aside>
+      <aside data-test-id={SIDEBAR}>
+        <slot name="sidebar" />
+      </aside>
 
       <main class="main">
         <slot name="header" />
