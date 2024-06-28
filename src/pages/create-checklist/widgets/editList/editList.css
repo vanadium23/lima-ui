@@ -66,7 +66,7 @@
 }
 
 .editList__item_removeInProgress .editList__itemControls,
-.editList__item:hover .editList__itemControls,
-.editList__item:focus-within .editList__itemControls {
+.editList__item:hover:not(.editList__item_disabled) .editList__itemControls,
+.editList__item:focus-within:not(.editList__item_disabled) .editList__itemControls {
   display: block;
 }

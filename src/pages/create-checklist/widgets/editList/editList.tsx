@@ -237,6 +237,7 @@ export const EditList: Component<EditListProps> = () => {
                   class="editList__item"
                   classList={{
                     editList__item_removeInProgress: item.removeInProgress,
+                    editList__item_disabled: store.sendingNow,
                   }}
                   data-test-id={ITEM_INPUT_CONTAINER}
                   data-test-sub-id={getIndex()}
