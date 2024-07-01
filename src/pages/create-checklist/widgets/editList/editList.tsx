@@ -97,6 +97,10 @@ export const EditList: Component<EditListProps> = () => {
     );
   }
 
+  function isAnyRemoveInProgress() {
+    return store.items.some((item) => item.removeInProgress); //GERMAN почему эта функция вызывается дважды какждый раз?
+  }
+
   function setRemoveInProgress(indexToSet: number) {
     setStore("items", indexToSet, {
       removeInProgress: true,
@@ -180,7 +184,9 @@ export const EditList: Component<EditListProps> = () => {
   return (
     <form class="createList" method="post" onSubmit={prepareAndSendListData}>
       <Show when={store.error}>
-        <div class="createList__error">Упс, ошибочка</div>
+        <div class="createList__error">
+          Произошла ошибка соединения с сервером, попробуйте еще раз
+        </div>
       </Show>
       <div class="createList__listHeader">
         <div class="createList__title">
@@ -203,6 +209,7 @@ export const EditList: Component<EditListProps> = () => {
             text="Создать"
             isLoading={store.sendingNow}
             testId={CREATE_LIST_BUTTON}
+            isDisabled={isAnyRemoveInProgress()}
           />
         </div>
         <div class="createList__input">
