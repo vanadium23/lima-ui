@@ -39,45 +39,39 @@
     gap: var(--size-x2);
 }
 
-.textarea_small {
-    height: 9.6rem;
-}
-
 .textarea_small .textarea__inner {
+    height: 7.4rem;
     font-size: 1.4rem;
     line-height: 1.8rem;
     padding: var(--size-x1) var(--size-x8) 0;
 }
 
 .textarea_small .textarea__controls {
+    height: 1.8rem;
     padding: 0 var(--size-x8) var(--size-x1);
 }
 
-.textarea_medium {
-    height: 13.6rem;
-}
-
 .textarea_medium .textarea__inner {
+    height: 11.2rem;
     font-size: 1.6rem;
     line-height: 2rem; /* TODO Есть проблемы с line-height в Firefox высота получается по факту 21px из-за font-size 16px, но когда 15px всё норм, магия */
     padding: var(--size-x3) var(--size-x8) 0;
 }
 
 .textarea_medium .textarea__controls {
+    height: 1.8rem;
     padding: 0 var(--size-x8) var(--size-x3);
 }
 
-.textarea_large {
-    height: 16rem;
-}
-
 .textarea_large .textarea__inner {
+    height: 13.4rem;
     font-size: 1.8rem;
     line-height: 2.2rem;
     padding: var(--size-x4) var(--size-x8) 0;
 }
 
 .textarea_large .textarea__controls {
+    height: 1.8rem;
     padding: 0 var(--size-x8) var(--size-x4);
 }
 
