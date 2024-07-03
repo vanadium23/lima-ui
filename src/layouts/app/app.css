@@ -7,4 +7,5 @@
   flex-direction: column;
   height: 100vh;
   flex-grow: 1;
+  padding: var(--size-x12) var(--size-x20);
 }

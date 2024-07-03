@@ -3,6 +3,7 @@ import "normalize.css";
 import "../main.css";
 import "./app.css";
 import { SIDEBAR } from "../../../features/testIds";
+import { Sidebar } from "../../organisms/sidebar/sidebar";
 ---
 
 <!doctype html>
@@ -23,7 +24,7 @@ import { SIDEBAR } from "../../../features/testIds";
 
     <div class="appContainer">
       <aside data-test-id={SIDEBAR}>
-        <slot name="sidebar" />
+        <Sidebar />
       </aside>
 
       <main class="main">

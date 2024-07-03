@@ -182,15 +182,15 @@ export const EditList: Component<EditListProps> = () => {
   }
 
   return (
-    <form class="createList" method="post" onSubmit={prepareAndSendListData}>
+    <form class="editList" method="post" onSubmit={prepareAndSendListData}>
       <Show when={store.error}>
-        <div class="createList__error">
+        <div class="editList__serverError">
           Произошла ошибка соединения с сервером, попробуйте еще раз
         </div>
       </Show>
-      <div class="createList__listHeader">
-        <div class="createList__title">
-          <div class="createList__input">
+      <div class="editList__listHeader">
+        <div class="editList__title">
+          <div class="editList__input">
             <BasicInput
               theme={InputTheme.Secondary}
               size={InputSize.Medium}
@@ -212,7 +212,7 @@ export const EditList: Component<EditListProps> = () => {
             isDisabled={isAnyRemoveInProgress()}
           />
         </div>
-        <div class="createList__input">
+        <div class="editList__input">
           <BasicInput
             theme={InputTheme.Primary}
             size={InputSize.Medium}
@@ -224,7 +224,7 @@ export const EditList: Component<EditListProps> = () => {
             isDisabled={store.sendingNow}
           />
         </div>
-        <div class="createList__input">
+        <div class="editList__input">
           <Note
             theme={NoteTheme.Primary}
             size={NoteSize.Medium}
@@ -235,7 +235,7 @@ export const EditList: Component<EditListProps> = () => {
         </div>
       </div>
 
-      <div class="editList">
+      <div class="editList__container">
         <div class="editList__inner" data-test-id={ITEMS_INPUTS}>
           <div class="editList__scrollWrapper">
             <For each={store.items}>

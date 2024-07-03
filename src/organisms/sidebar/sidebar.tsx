@@ -1,20 +1,20 @@
 import { type Component } from "solid-js";
 import "./sidebar.css";
-import { Nav } from "../../../../components/nav/nav.tsx";
+import { Nav } from "../../components/nav/nav.tsx";
 import {
   Button,
   ButtonSize,
   ButtonTheme,
-} from "../../../../components/button/button.tsx";
-import { DEFAULT_TEST_ID } from "../../../../../features/testIds.ts";
-import { ProfileButton } from "../../../../components/profileButton/profileButton.tsx";
-import { IconName } from "../../../../components/icon/icon.tsx";
+} from "../../components/button/button.tsx";
+import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
+import { ProfileButton } from "../../components/profileButton/profileButton.tsx";
+import { IconName } from "../../components/icon/icon.tsx";
 import {
   IconButton,
   IconButtonSize,
   IconButtonTheme,
-} from "../../../../components/iconButton/iconButton.tsx";
-import { Logo } from "../../../../components/logo/logo.tsx";
+} from "../../components/iconButton/iconButton.tsx";
+import { Logo } from "../../components/logo/logo.tsx";
 
 export const Sidebar: Component = () => {
   return (
@@ -39,7 +39,7 @@ export const Sidebar: Component = () => {
           size={ButtonSize.Medium}
           text={"Версия PRO"}
           testId={DEFAULT_TEST_ID}
-        ></Button>
+        />
       </div>
     </div>
   );
