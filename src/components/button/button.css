@@ -52,8 +52,8 @@
 }
 
 .button_primary:active:not(:disabled, .button_disabled, .button_loading) {
-  border-color: var(--primary-800);
-  background: var(--primary-800);
+  border-color: var(--primary-600);
+  background: var(--primary-600);
 }
 
 .button_secondary {
@@ -68,7 +68,7 @@
 }
 
 .button_secondary:active:not(:disabled, .button_disabled, .button_loading) {
-  border-color: var(--primary-800);
+  border-color: var(--primary-600);
 }
 
 .button_successful {

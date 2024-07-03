@@ -25,29 +25,33 @@
   --neutral-150: #f9f9f9;
   --neutral-200: #eee;
   --neutral-300: #c4c4c4;
-  --neutral-400: #888;
-  --neutral-500: #999; /* TODO у нас 500 светлее чем 400 */
+  --neutral-500: #999;
   --neutral-600: #777;
   --neutral-700: #444;
   --neutral-800: #222;
-  --neutral-900: #333; /* TODO у нас 900 светлее чем 800 */
+  --neutral-900: #000;
   --text-neutral-100: #fff;
+  --text-neutral-300: #c4c4c4;
   --text-neutral-500: #999;
   --text-neutral-600: #777;
   --text-neutral-700: #444;
+  --text-neutral-800: #222;
   --text-neutral-900: #000;
-  --text-dangerous-500: #e20102;
+  --dangerous-300: #ff33330c;
   --dangerous-400: #f53b3c;
   --dangerous-500: #e20102;
   --dangerous-600: #c80507;
+  --text-dangerous-500: #e20102;
   --primary-400: #41a6f8;
   --primary-500: #0285f1;
-  --primary-800: #0c6ebf;
+  --primary-600: #0c6ebf;
+  --primary-700: #03457b;
   --text-primary-500: #0285f1;
   --secondary-400: #daf098;
-  --secondary-500: #c8f051;
+  --secondary-500: #cef55a;
   --secondary-600: #a6db09;
-  --outline: #0285f1; /* TODO создать переменную дизайнеру отдельную для аутлайна */
+  --text-secondary-500: #cef55a;
+  --outline: #0285f1;
 
   /* Custom-properties */
   --outline-set: 0.1rem solid var(--outline);

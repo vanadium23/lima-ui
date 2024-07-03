@@ -109,7 +109,7 @@
 }
 
 .input_secondary {
-  border-color: transparent transparent var(--neutral-400) transparent;
+  border-color: transparent transparent var(--neutral-500) transparent;
   background: transparent;
   border-radius: 0;
 }
