@@ -58,3 +58,12 @@ Then("I expect all items inputs disabled", async function (this: ComplexWorld) {
     await expect(itemInput).toBeDisabled();
   }
 });
+
+Then(
+  "I expect not to see the {string} button",
+  async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
+    await this.expectLocated(
+      BUTTON_TEST_IDS[buttonMeaning],
+    ).not.toBeInViewport();
+  },
+);

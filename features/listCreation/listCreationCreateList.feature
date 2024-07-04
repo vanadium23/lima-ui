@@ -24,3 +24,9 @@ Feature: Successfully creating list with correct data
     And I type some text to all items inputs
     And I press the "create" button
     Then I expect all items inputs disabled
+
+  Scenario: Not seeing the remove item buttons
+    And I type some text with length less or equal to the one of "first item" input limit
+    And I press the "create" button
+    And I hover "first item" input
+    Then I expect not to see the "remove first item" button
