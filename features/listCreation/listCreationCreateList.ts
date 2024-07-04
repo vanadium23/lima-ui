@@ -1,4 +1,4 @@
-import { Then } from "@cucumber/cucumber";
+import { Then, When } from "@cucumber/cucumber";
 import type { ComplexWorld } from "../context/hooks.ts";
 import {
   ACCORDION_TEST_IDS,
@@ -9,6 +9,9 @@ import {
   type TextAreaMeaning,
 } from "./testIds.ts";
 import { expect } from "@playwright/test";
+import { ITEM_INPUT } from "../testIds.ts";
+import { getStringUpToLimit } from "../utilities/getStringOfLength.ts";
+import { EDIT_LIST_INPUT_LIMIT } from "../../configuration.ts";
 
 Then(
   "I expect to see the {string} accordion disabled",
@@ -36,3 +39,22 @@ Then(
     ).toBeInViewport();
   },
 );
+
+When(
+  "I type some text to all items inputs",
+  async function (this: ComplexWorld) {
+    const allItemsInputs = await this.locate(ITEM_INPUT).all();
+
+    for (const itemInput of allItemsInputs) {
+      await itemInput.fill(getStringUpToLimit(EDIT_LIST_INPUT_LIMIT));
+    }
+  },
+);
+
+Then("I expect all items inputs disabled", async function (this: ComplexWorld) {
+  const allItemsInputs = await this.locate(ITEM_INPUT).all();
+
+  for (const itemInput of allItemsInputs) {
+    await expect(itemInput).toBeDisabled();
+  }
+});
