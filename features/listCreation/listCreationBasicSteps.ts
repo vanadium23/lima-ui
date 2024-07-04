@@ -1,5 +1,6 @@
 import { Then, When } from "@cucumber/cucumber";
 import {
+  ADD_GROUP_BUTTON,
   ADD_ITEM_BUTTON,
   buildAccordionButtonTestId,
   buildAccordionContentTestId,
@@ -12,6 +13,7 @@ import {
   LIST_TITLE_INPUT,
   NOTE_ACCORDION,
   PAGE_TITLE,
+  PRO_VERSION_BUTTON,
   SIDEBAR,
 } from "../testIds.ts";
 import { noVerticalScroll } from "../utilities/checkScroll.ts";
@@ -41,6 +43,9 @@ Then("I expect to see sidebar", async function (this: ComplexWorld) {
   await this.expectLocated(
     this.accounting.registerTestId(SIDEBAR),
   ).toBeInViewport();
+
+  this.accounting.registerTestId(ADD_GROUP_BUTTON);
+  this.accounting.registerTestId(PRO_VERSION_BUTTON);
 });
 
 Then(
@@ -152,6 +157,8 @@ Then(
       LIST_PURPOSE_INPUT,
       PAGE_TITLE,
       SIDEBAR,
+      ADD_GROUP_BUTTON,
+      PRO_VERSION_BUTTON,
       NOTE_ACCORDION,
       buildAccordionButtonTestId(NOTE_ACCORDION),
     ].sort();

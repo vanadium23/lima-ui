@@ -6,7 +6,10 @@ import {
   ButtonSize,
   ButtonTheme,
 } from "../../components/button/button.tsx";
-import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
+import {
+  ADD_GROUP_BUTTON,
+  PRO_VERSION_BUTTON,
+} from "../../../features/testIds.ts";
 import { ProfileButton } from "../../components/profileButton/profileButton.tsx";
 import { IconName } from "../../components/icon/icon.tsx";
 import {
@@ -31,14 +34,14 @@ export const Sidebar: Component = () => {
             theme={IconButtonTheme.Primary}
             size={IconButtonSize.Medium}
             ariaLabel={"Add user"}
-            testId={DEFAULT_TEST_ID}
+            testId={ADD_GROUP_BUTTON}
           />
         </div>
         <Button
           theme={ButtonTheme.Successful}
           size={ButtonSize.Medium}
           text={"Версия PRO"}
-          testId={DEFAULT_TEST_ID}
+          testId={PRO_VERSION_BUTTON}
         />
       </div>
     </div>

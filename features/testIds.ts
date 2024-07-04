@@ -5,6 +5,8 @@ export type SeveralTestIds = TestId[];
 export const DEFAULT_TEST_ID = "defaultTestId";
 
 export const SIDEBAR = "sidebar";
+export const ADD_GROUP_BUTTON = "addGroupButton";
+export const PRO_VERSION_BUTTON = "proVersionButton";
 export const PAGE_TITLE = "pageTitle";
 export const LIST_TITLE_INPUT = "listTitleInput";
 export const LIST_PURPOSE_INPUT = "listPurposeInput";
