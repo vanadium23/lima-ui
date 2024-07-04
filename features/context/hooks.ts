@@ -27,6 +27,7 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
   page!: Page;
   accounting = accountedTesting;
   data: Record<string, string> = {};
+  counters: Record<string, number> = {};
 
   constructor(options: IWorldOptions<ComplexWorldParameters>) {
     super(options);

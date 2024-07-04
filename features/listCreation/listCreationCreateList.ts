@@ -67,3 +67,20 @@ Then(
     ).not.toBeInViewport();
   },
 );
+
+When(
+  "I start looking at the list creation requests",
+  async function (this: ComplexWorld) {
+    this.counters.listCreationRequestsNumber = 0;
+
+    this.page.on("request", (data) => {
+      if (data.method() === "POST" && data.url().endsWith("/sverniks")) {
+        this.counters.listCreationRequestsNumber++;
+      }
+    });
+  },
+);
+
+When("I expect to see the only one list creation request", async function () {
+  expect(this.counters.listCreationRequestsNumber).toBe(1);
+});

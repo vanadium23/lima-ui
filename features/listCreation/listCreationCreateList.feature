@@ -30,3 +30,12 @@ Feature: Successfully creating list with correct data
     And I press the "create" button
     And I hover "first item" input
     Then I expect not to see the "remove first item" button
+
+  Scenario: "Create" button triggers list creation only once
+    And I type some text with length less or equal to the one of "first item" input limit
+    And I start looking at the list creation requests
+    And I press the "create" button
+    And I press the "create" button
+    And I press the "create" button
+    And I press the "create" button
+    And I expect to see the only one list creation request
