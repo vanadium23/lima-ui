@@ -37,6 +37,7 @@ import {
   NoteSize,
   NoteTheme,
 } from "../../../../components/note/note.tsx";
+import { soften } from "./utilities/soften.ts";
 
 // It's not Record<string, string> as there is a TypeScript error arriving:
 // Type '{ "client:only": string; }' is not assignable to type 'EditListProps'.
@@ -161,7 +162,7 @@ export const EditList: Component<EditListProps> = () => {
       body: JSON.stringify(data), // преобразование объекта данных в JSON строку
     })
       .then((response) => {
-        setSendingNow(false); // MAKSIM выпилить отмену загрузки когда научимся после отправки перехдить на страницу готового списка
+        soften(() => setSendingNow(false)); // MAKSIM выпилить отмену загрузки когда научимся после отправки перехдить на страницу готового списка
         if (!response.ok) {
           throw new Error("Network response was not ok " + response.statusText);
         }
@@ -169,7 +170,6 @@ export const EditList: Component<EditListProps> = () => {
       })
       .then((data) => {
         console.log(data); // обработка полученных данных
-        setSendingNow(false); // MAKSIM выпилить отмену загрузки когда научимся после отправки перехдить на страницу готового списка
       })
       .catch((error) => {
         console.error(
