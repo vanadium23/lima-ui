@@ -84,3 +84,12 @@ When(
 When("I expect to see the only one list creation request", async function () {
   expect(this.counters.listCreationRequestsNumber).toBe(1);
 });
+
+When(
+  "I forcefully press the {string} button",
+  async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
+    await this.locateByFullId(BUTTON_TEST_IDS[buttonMeaning]).click({
+      force: true,
+    });
+  },
+);

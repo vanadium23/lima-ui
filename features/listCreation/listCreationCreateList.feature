@@ -35,7 +35,8 @@ Feature: Successfully creating list with correct data
     And I type some text with length less or equal to the one of "first item" input limit
     And I start looking at the list creation requests
     And I press the "create" button
-    And I press the "create" button
-    And I press the "create" button
-    And I press the "create" button
+    And I forcefully press the "create" button
+    And I forcefully press the "create" button
+    And I forcefully press the "create" button
+    And I wait for "all requests to happen" for the following number of seconds: 1
     And I expect to see the only one list creation request

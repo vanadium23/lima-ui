@@ -9,14 +9,14 @@ Feature: Removing items on the List Creation page
     Then I expect to see the "second item" input disabled
     And I hover "list title" input
     Then I expect to see the following number of "cancel item removal" buttons on the page: 1
-    And I wait for the removal pawl countdown of 5 seconds to pass
+    And I wait for "the removal pawl countdown to pass" for the following number of seconds: 5
     Then I expect to see the only one item input left on the page
 
   Scenario: Canceling single item input removal
     And I press the "add item" button
     And I hover "second item container" and press the "remove second item" button
     And I press the "cancel second item removal" button
-    And I wait for the removal pawl countdown of 5 seconds to pass
+    And I wait for "the removal pawl countdown to pass" for the following number of seconds: 5
     Then I expect to see second item input ready for typing with the following placeholder: "Текст пункта"
 
   Scenario: Removing several items inputs
@@ -29,7 +29,7 @@ Feature: Removing items on the List Creation page
     Then I expect to see the "forth item" input disabled
     And I hover "list title" input
     Then I expect to see the following number of "cancel item removal" buttons on the page: 3
-    And I wait for the removal pawl countdown of 5 seconds to pass
+    And I wait for "the removal pawl countdown to pass" for the following number of seconds: 5
     Then I expect to see the only one item input left on the page
 
   Scenario: Canceling several items inputs removal
@@ -38,7 +38,7 @@ Feature: Removing items on the List Creation page
     And I hover "third item container" and press the "remove third item" button
     And I press the "cancel second item removal" button
     And I press the "cancel third item removal" button
-    And I wait for the removal pawl countdown of 5 seconds to pass
+    And I wait for "the removal pawl countdown to pass" for the following number of seconds: 5
     Then I expect to see 3 items inputs ready for typing
 
   Scenario: Seeing remove item button on item input hover
@@ -89,7 +89,7 @@ Feature: Removing items on the List Creation page
   Scenario: Adding items inputs to the limit and then deleting one item input leads to warning disappear and buttons enablement
     When I add items inputs to their limit
     And I hover "on limit item container" and press the "remove on limit item" button
-    And I wait for the removal pawl countdown of 5 seconds to pass
+    And I wait for "the removal pawl countdown to pass" for the following number of seconds: 5
     Then I expect not to see the warning about items inputs limit reached
     Then I expect to see the "add item" button enabled
     Then I expect to see the "import" button enabled

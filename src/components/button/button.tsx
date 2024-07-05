@@ -1,5 +1,4 @@
-import { Show, type Component } from "solid-js";
-import { mergeProps } from "solid-js";
+import { type Component, mergeProps, Show } from "solid-js";
 import "./button.css";
 import type { Testable } from "../utilities/testable.ts";
 import { prepareARIALabel } from "../utilities/prepareARIALabel.ts";

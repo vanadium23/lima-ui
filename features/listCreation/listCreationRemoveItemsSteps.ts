@@ -18,13 +18,14 @@ import {
 const MILLISECONDS_IN_SECOND = 1000;
 
 When(
-  "I wait for the removal pawl countdown of {int} seconds to pass",
+  "I wait for {string} for the following number of seconds: {int}",
   { timeout: 10000 },
-  async function (this: ComplexWorld, seconds: number) {
-    const SOME_EXTRA_TIME = Math.floor(Math.random() * MILLISECONDS_IN_SECOND);
+  async function (this: ComplexWorld, reason: string, seconds: number) {
+    const someExtraTimeToEnsure =
+      Math.floor(Math.random() * MILLISECONDS_IN_SECOND) + reason.length;
 
     await this.page.waitForTimeout(
-      seconds * MILLISECONDS_IN_SECOND + SOME_EXTRA_TIME,
+      seconds * MILLISECONDS_IN_SECOND + someExtraTimeToEnsure,
     );
   },
 );
