@@ -63,7 +63,9 @@ export const Button: Component<Testable<ButtonProps>> = (props) => {
       aria-disabled={mProps.isLoading}
       {...prepareARIALabel(mProps.ariaLabel)}
       onClick={() => {
-        mProps.handleClick();
+        if (!mProps.isLoading) {
+          mProps.handleClick();
+        }
       }}
       data-test-id={mProps.testId}
     >

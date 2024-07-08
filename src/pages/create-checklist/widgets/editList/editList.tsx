@@ -117,26 +117,28 @@ export const EditList: Component<EditListProps> = () => {
   function prepareAndSendListData(event: SubmitEvent) {
     event.preventDefault();
 
-    const target = event.target as HTMLFormElement & EditListForm;
+    if (!store.sendingNow) {
+      const target = event.target as HTMLFormElement & EditListForm;
 
-    const elements = Array.from(target.elements) as HTMLInputElement[];
+      const elements = Array.from(target.elements) as HTMLInputElement[];
 
-    const itemsInputs = elements.filter((element) => {
-      return element.name.startsWith(EditListFormNames.ListItem);
-    });
+      const itemsInputs = elements.filter((element) => {
+        return element.name.startsWith(EditListFormNames.ListItem);
+      });
 
-    const inputsValues = itemsInputs.map((itemInput) => ({
-      content: itemInput.value,
-    }));
+      const inputsValues = itemsInputs.map((itemInput) => ({
+        content: itemInput.value,
+      }));
 
-    const data = {
-      name: target[EditListFormNames.ListTitle].value,
-      reasonForExistence: target[EditListFormNames.ListPurpose].value,
-      items: inputsValues,
-      note: target[EditListFormNames.ListNote].value,
-    };
+      const data = {
+        name: target[EditListFormNames.ListTitle].value,
+        reasonForExistence: target[EditListFormNames.ListPurpose].value,
+        items: inputsValues,
+        note: target[EditListFormNames.ListNote].value,
+      };
 
-    sendList(data);
+      sendList(data);
+    }
   }
 
   function setSendingNow(status: boolean) {
