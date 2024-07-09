@@ -179,8 +179,11 @@ export const EditList: Component<EditListProps> = () => {
           "There has been a problem with your fetch operation:",
           error,
         );
-        setStore("error", true);
-        setSendingNow(false);
+
+        soften(() => {
+          setStore("error", true);
+          setSendingNow(false);
+        });
       });
   }
 
