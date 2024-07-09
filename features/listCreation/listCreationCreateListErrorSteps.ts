@@ -12,3 +12,7 @@ Then(
     await this.expectLocated(NETWORK_ERROR).toBeInViewport();
   },
 );
+
+Given("Data server is not available", async function (this: ComplexWorld) {
+  await this.context.route("**/sverniks", (route) => route.abort("failed"));
+});
