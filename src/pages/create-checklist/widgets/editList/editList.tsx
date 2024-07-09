@@ -23,6 +23,7 @@ import {
   ITEMS_LIMIT_REACHED_WARNING,
   LIST_PURPOSE_INPUT,
   LIST_TITLE_INPUT,
+  NETWORK_ERROR,
   REMOVE_ITEM_BUTTON,
 } from "../../../../../features/testIds.ts";
 import {
@@ -186,7 +187,7 @@ export const EditList: Component<EditListProps> = () => {
   return (
     <form class="editList" method="post" onSubmit={prepareAndSendListData}>
       <Show when={store.error}>
-        <div class="editList__serverError">
+        <div class="editList__serverError" data-test-id={NETWORK_ERROR}>
           Произошла ошибка соединения с сервером, попробуйте еще раз
         </div>
       </Show>
