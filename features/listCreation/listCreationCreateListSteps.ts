@@ -81,9 +81,14 @@ When(
   },
 );
 
-When("I expect to see the only one list creation request", async function () {
-  expect(this.counters.listCreationRequestsNumber).toBe(1);
-});
+When(
+  "I expect to see the following number of list creation request: {int}",
+  async function (this: ComplexWorld, expectedListCreationRequestsNumber) {
+    expect(this.counters.listCreationRequestsNumber).toBe(
+      expectedListCreationRequestsNumber,
+    );
+  },
+);
 
 When(
   "I forcefully press the {string} button",

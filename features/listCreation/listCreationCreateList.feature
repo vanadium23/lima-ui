@@ -39,4 +39,4 @@ Feature: Successfully creating list with correct data
     And I forcefully press the "create" button
     And I forcefully press the "create" button
     And I wait for "all requests to happen" for the following number of seconds: 1
-    And I expect to see the only one list creation request
+    And I expect to see the following number of list creation request: 1
