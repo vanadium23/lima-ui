@@ -82,8 +82,10 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
 
 setWorldConstructor(ComplexWorld);
 
+const debugging = false;
+
 BeforeAll(async function () {
-  const BROWSER_OPTIONS = { headless: true };
+  const BROWSER_OPTIONS = { headless: !debugging };
 
   browser = await firefox.launch(BROWSER_OPTIONS);
 });
@@ -94,9 +96,9 @@ Before(async function (this: ComplexWorld) {
 });
 
 After(async function (this: ComplexWorld) {
-  await this.context.close();
+  debugging || (await this.context.close());
 });
 
 AfterAll(async function () {
-  await browser.close();
+  debugging || (await browser.close());
 });
