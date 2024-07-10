@@ -1,4 +1,5 @@
 import {
+  After,
   AfterAll,
   Before,
   BeforeAll,
@@ -6,7 +7,13 @@ import {
   setWorldConstructor,
   World,
 } from "@cucumber/cucumber";
-import { type Browser, expect, firefox, type Page } from "@playwright/test";
+import {
+  type Browser,
+  type BrowserContext,
+  expect,
+  firefox,
+  type Page,
+} from "@playwright/test";
 import { accountedTesting } from "./accountedTesting.ts";
 import {
   buildTestableSelector,
@@ -24,6 +31,7 @@ let browser: Browser;
 interface ComplexWorldParameters {}
 
 export class ComplexWorld extends World<ComplexWorldParameters> {
+  context!: BrowserContext;
   page!: Page;
   accounting = accountedTesting;
   data: Record<string, string> = {};
@@ -33,8 +41,9 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
     super(options);
   }
 
-  async setPage() {
-    this.page = await browser.newPage();
+  async setContextAndPage() {
+    this.context = await browser.newContext();
+    this.page = await this.context.newPage();
   }
 
   async navigate(address: string) {
@@ -73,17 +82,23 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
 
 setWorldConstructor(ComplexWorld);
 
+const debugging = false;
+
 BeforeAll(async function () {
-  const BROWSER_OPTIONS = { headless: true };
+  const BROWSER_OPTIONS = { headless: !debugging };
 
   browser = await firefox.launch(BROWSER_OPTIONS);
 });
 
 Before(async function (this: ComplexWorld) {
-  await this.setPage();
+  await this.setContextAndPage();
   this.accounting.clearTestIds();
 });
 
+After(async function (this: ComplexWorld) {
+  debugging || (await this.context.close());
+});
+
 AfterAll(async function () {
-  await browser.close();
+  debugging || (await browser.close());
 });
