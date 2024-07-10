@@ -8,7 +8,9 @@ export enum NavItemTheme {
 }
 
 export enum NavItemSize {
+  Small = "small",
   Medium = "medium",
+  Large = "large",
 }
 
 type NavItemProps = {

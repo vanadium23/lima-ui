@@ -11,10 +11,10 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --storybook-html-bg: #141414;
+    --storybook-html-bg: #1c1c1c;
     --storybook-html-color: #fff;
-    --storybook-demo-wrapper-bg: #232323;
-    --storybook-sidebar-bg: #222;
+    --storybook-demo-wrapper-bg: #282828;
+    --storybook-sidebar-bg: #282828;
     --storybook-demo-nav-item-color: #fff;
     --storybook-demo-border-color: #444;
   }
