@@ -1,6 +1,9 @@
 ---
 import AppPage from "../../layouts/app/app.astro";
 import { PAGE_TITLE } from "../../../features/testIds";
+
+const response = await fetch("http://localhost:3000/sverniks");
+const lists: Array<{ name: string; id: string }> = await response.json();
 ---
 
 <AppPage>
@@ -11,6 +14,13 @@ import { PAGE_TITLE } from "../../../features/testIds";
     <div class="headerChecklist__search"></div>
   </div>
   <ul slot="mainContent">
-    <li>Paste Content</li>
+    {
+      lists.map((list) => (
+        <li>
+          <a href={`./${list.id}`}>{list.name}</a>
+        </li>
+      ))
+    }
+    <pre>{JSON.stringify(lists, null, 2)}</pre>
   </ul>
 </AppPage>

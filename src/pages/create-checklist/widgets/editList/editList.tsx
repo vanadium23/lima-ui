@@ -172,7 +172,7 @@ export const EditList: Component<EditListProps> = () => {
         return response.json();
       })
       .then((data) => {
-        console.log(data); // обработка полученных данных
+        window.location.href = `/lists/${data.id}`; // обработка полученных данных
       })
       .catch((error) => {
         console.error(

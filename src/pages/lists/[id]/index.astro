@@ -1,0 +1,39 @@
+---
+import AppPage from "../../../layouts/app/app.astro";
+import { PAGE_TITLE } from "../../../../features/testIds";
+
+const response = await fetch(
+  `http://localhost:3000/sverniks/${Astro.params.id}`,
+);
+
+type Item = {
+  content: string;
+};
+
+export type List = {
+  name: string;
+  id: string;
+  items: Item[];
+};
+
+const list: List = await response.json();
+---
+
+<AppPage>
+  <div class="headerChecklist" slot="header">
+    <h1 class="headerChecklist__title" data-test-id={PAGE_TITLE}>
+      {list.name}
+    </h1>
+    <div class="headerChecklist__search"></div>
+  </div>
+  <ul slot="mainContent">
+    {
+      list.items.map((item) => (
+        <li>
+          <span>{item.content}</span>
+        </li>
+      ))
+    }
+    <pre>{JSON.stringify(list, null, 2)}</pre>
+  </ul>
+</AppPage>

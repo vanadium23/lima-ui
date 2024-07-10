@@ -33,6 +33,7 @@ type ButtonProps = {
   isLoading?: boolean;
   handleClick?: () => void;
 };
+
 export const Button: Component<Testable<ButtonProps>> = (props) => {
   const mProps: Testable<Required<ButtonProps>> = mergeProps(
     {
