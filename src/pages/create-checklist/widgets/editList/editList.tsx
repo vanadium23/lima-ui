@@ -133,7 +133,7 @@ export const EditList: Component<EditListProps> = () => {
 
       const data = {
         name: target[EditListFormNames.ListTitle].value,
-        reasonForExistence: target[EditListFormNames.ListPurpose].value,
+        purpose: target[EditListFormNames.ListPurpose].value,
         items: inputsValues,
         note: target[EditListFormNames.ListNote].value,
       };
@@ -148,7 +148,7 @@ export const EditList: Component<EditListProps> = () => {
 
   type ListData = {
     name: string;
-    reasonForExistence: string;
+    purpose: string;
     items: { content: string }[];
     note: string;
   };
@@ -157,7 +157,7 @@ export const EditList: Component<EditListProps> = () => {
     setStore("error", false);
     setSendingNow(true);
 
-    fetch("http://localhost:3000/sverniks", {
+    fetch("http://localhost:3000/lists", {
       method: "POST", // или 'PUT', 'DELETE', и т.д.
       headers: {
         "Content-Type": "application/json",
@@ -222,7 +222,6 @@ export const EditList: Component<EditListProps> = () => {
           <BasicInput
             theme={InputTheme.Primary}
             size={InputSize.Medium}
-            isRequired={true}
             placeholder="Назначение чек-листа"
             maxLength={LIST_PURPOSE_INPUT_LIMIT}
             name={EditListFormNames.ListPurpose}

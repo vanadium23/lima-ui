@@ -2,7 +2,7 @@
 import AppPage from "../../layouts/app/app.astro";
 import { PAGE_TITLE } from "../../../features/testIds";
 
-const response = await fetch("http://localhost:3000/sverniks");
+const response = await fetch("http://localhost:3000/lists");
 const lists: Array<{ name: string; id: string }> = await response.json();
 ---
 
