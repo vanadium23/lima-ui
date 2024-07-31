@@ -11,7 +11,7 @@ export const Cancel: Component<SpriteProps> = (props) => {
     <svg
       class={`icon icon_${props.size}`}
       viewBox="0 0 20 20"
-      id="cancel"
+      data-id="cancel"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden={props.ariaHidden}
     >
@@ -52,7 +52,7 @@ export const Trash: Component<SpriteProps> = (props) => {
     <svg
       class={`icon icon_${props.size}`}
       viewBox="0 0 16 18"
-      id="trash"
+      data-id="trash"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden={props.ariaHidden}
     >
@@ -66,7 +66,7 @@ export const Chevron: Component<SpriteProps> = (props) => {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       class={`icon icon_${props.size}`}
-      id="chevron"
+      data-id="chevron"
       viewBox="0 -960 960 960"
       aria-hidden={props.ariaHidden}
     >
@@ -80,7 +80,7 @@ export const Loading: Component<SpriteProps> = (props) => {
     <svg
       class={`icon icon_${props.size}`}
       viewBox="0 0 12 12"
-      id="loading"
+      data-id="loading"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden={props.ariaHidden}
     >
@@ -100,7 +100,7 @@ export const Loading: Component<SpriteProps> = (props) => {
 export const Home: Component<SpriteProps> = (props) => {
   return (
     <svg
-      id="home"
+      data-id="home"
       viewBox="0 0 20 20"
       class={`icon icon_${props.size}`}
       xmlns="http://www.w3.org/2000/svg"
@@ -115,7 +115,7 @@ export const AddGroup: Component<SpriteProps> = (props) => {
   return (
     <svg
       viewBox="0 0 20 20"
-      id="addGroup"
+      data-id="addGroup"
       xmlns="http://www.w3.org/2000/svg"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}

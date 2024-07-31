@@ -38,9 +38,9 @@ export const IconButton: Component<Testable<IconButtonProps>> = (props) => {
   );
 
   const iconSize = {
-    [IconButtonSize.Small]: IconSize.x7,
-    [IconButtonSize.Medium]: IconSize.x10,
-    [IconButtonSize.Large]: IconSize.x12,
+    [IconButtonSize.Small]: IconSize.Small,
+    [IconButtonSize.Medium]: IconSize.Medium,
+    [IconButtonSize.Large]: IconSize.Large,
   };
 
   return (

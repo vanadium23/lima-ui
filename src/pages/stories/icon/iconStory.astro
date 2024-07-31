@@ -1,22 +1,24 @@
 ---
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 import { Icon, IconName, IconSize } from "../../../components/icon/icon.tsx";
+
+const sizes = Object.values(IconSize);
 ---
 
 <StorybookPage title="Icon">
-  <h2 id="main-button-link">Icon Button</h2>
-
   <div class="demoThemeWrapper">
-    <h3 style="font-size: 24px; margin-bottom: 10px;">Primary</h3>
-    <h4 style="font-size: 18px; margin-bottom: 5px;">Large</h4>
-    <div class="grid grid_3Col">
+    <div class="grid grid_1Col">
       <span class="chead"></span>
       <span class="chead">Default</span>
-      <span class="chead">Disabled</span>
-      <span class="chead">Loading</span>
-      <span class="rhead"></span>
 
-      <Icon client:only="solid-js" name={IconName.Trash} size={IconSize.x7} />
+      {
+        sizes.map((size) => (
+          <>
+            <span class="rhead">{size}</span>
+            <Icon client:only="solid-js" name={IconName.Trash} size={size} />
+          </>
+        ))
+      }
     </div>
   </div>
 </StorybookPage>

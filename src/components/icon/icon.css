@@ -2,29 +2,19 @@
   flex-shrink: 0;
 }
 
-.icon_x7 {
-  width: var(--size-x7);
-  height: var(--size-x7);
-}
-
-.icon_x9 {
+.icon_small {
   width: var(--size-x9);
   height: var(--size-x9);
 }
 
-.icon_x10 {
+.icon_medium {
   width: var(--size-x10);
   height: var(--size-x10);
 }
 
-.icon_x11 {
+.icon_large {
   width: var(--size-x11);
   height: var(--size-x11);
-}
-
-.icon_x12 {
-  width: var(--size-x12);
-  height: var(--size-x12);
 }
 
 /* Specific icons styles */

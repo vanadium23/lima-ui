@@ -14,11 +14,9 @@ export enum IconName {
 }
 
 export enum IconSize {
-  x7 = "x7",
-  x9 = "x9",
-  x10 = "x10",
-  x11 = "x11",
-  x12 = "x12",
+  Small = "small",
+  Medium = "medium",
+  Large = "large",
 }
 
 type IconProps = {

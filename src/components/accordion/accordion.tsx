@@ -40,9 +40,9 @@ export const Accordion: Component<Testable<AccordionProps>> = (props) => {
   };
 
   const iconSize = {
-    [AccordionSize.Small]: IconSize.x9,
-    [AccordionSize.Medium]: IconSize.x11,
-    [AccordionSize.Large]: IconSize.x12,
+    [AccordionSize.Small]: IconSize.Small,
+    [AccordionSize.Medium]: IconSize.Medium,
+    [AccordionSize.Large]: IconSize.Large,
   };
 
   return (

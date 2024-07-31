@@ -47,9 +47,9 @@ export const Button: Component<Testable<ButtonProps>> = (props) => {
   );
 
   const loadingIconSize = {
-    [ButtonSize.Small]: IconSize.x7,
-    [ButtonSize.Medium]: IconSize.x10,
-    [ButtonSize.Large]: IconSize.x12,
+    [ButtonSize.Small]: IconSize.Small,
+    [ButtonSize.Medium]: IconSize.Medium,
+    [ButtonSize.Large]: IconSize.Large,
   };
 
   return (

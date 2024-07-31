@@ -40,7 +40,7 @@ export const NavItem: Component<NavItemProps> = (props) => {
         navItem_current: mProps.isCurrent,
       }}
     >
-      <Icon name={mProps.icon} size={IconSize.x12} />
+      <Icon name={mProps.icon} size={IconSize.Large} />
       <span class="navItem__text">{mProps.text}</span>
     </a>
   );
