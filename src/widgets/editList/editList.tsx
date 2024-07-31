@@ -1,17 +1,17 @@
-import { type Component, createEffect, For, Show } from "solid-js";
+import { type Component, createEffect, For, mergeProps, Show } from "solid-js";
 import { createStore } from "solid-js/store";
 import "./editList.css";
 import {
   BasicInput,
   InputSize,
   InputTheme,
-} from "../../../../components/basicInput/basicInput.tsx";
+} from "../../components/basicInput/basicInput.tsx";
 import {
   Button,
   ButtonSize,
   ButtonTheme,
   ButtonType,
-} from "../../../../components/button/button.tsx";
+} from "../../components/button/button.tsx";
 import {
   ADD_ITEM_BUTTON,
   CANCEL_ITEM_REMOVAL_BUTTON,
@@ -25,26 +25,31 @@ import {
   LIST_TITLE_INPUT,
   NETWORK_ERROR,
   REMOVE_ITEM_BUTTON,
-} from "../../../../../features/testIds.ts";
+} from "../../../features/testIds.ts";
 import {
   EDIT_LIST_INPUT_LIMIT,
   ITEMS_LIMIT,
   LIST_PURPOSE_INPUT_LIMIT,
   LIST_TITLE_INPUT_LIMIT,
-} from "../../../../../configuration.ts";
-import { RemoveIconButton } from "../../../../components/removeIconButton/removeIconButton.tsx";
-import {
-  Note,
-  NoteSize,
-  NoteTheme,
-} from "../../../../components/note/note.tsx";
+} from "../../../configuration.ts";
+import { RemoveIconButton } from "../../components/removeIconButton/removeIconButton.tsx";
+import { Note, NoteSize, NoteTheme } from "../../components/note/note.tsx";
 import { soften } from "./utilities/soften.ts";
 
-// It's not Record<string, string> as there is a TypeScript error arriving:
-// Type '{ "client:only": string; }' is not assignable to type 'EditListProps'.
-type EditListProps = Record<string, string>;
+type ServerItem = {
+  content: string;
+};
+
+type EditListProps = {
+  items?: ServerItem[];
+  listName?: string;
+  purpose?: string;
+  note?: string;
+};
+
 type Item = {
   removeInProgress: boolean;
+  defaultValue: string;
 };
 
 enum EditListFormNames {
@@ -60,13 +65,26 @@ type EditListForm = {
   [EditListFormNames.ListNote]: HTMLInputElement;
 };
 
-export const EditList: Component<EditListProps> = () => {
+export const EditList: Component<EditListProps> = (props) => {
+  const mProps: Required<EditListProps> = mergeProps(
+    {
+      listName: "",
+      purpose: "",
+      note: "",
+      items: [{ content: "" }],
+    },
+    props,
+  );
+
   const [store, setStore] = createStore({
     // This derived state is required to avoid significant
     // performance drop caused by the isLastItem function
     // in case filtering of items is done in there.
     allButLastDeleteInProgress: true,
-    items: [{ removeInProgress: false }],
+    items: mProps.items.map((item) => ({
+      removeInProgress: false,
+      defaultValue: item.content,
+    })),
     sendingNow: false,
     error: false,
   });
@@ -81,7 +99,9 @@ export const EditList: Component<EditListProps> = () => {
 
   function addItem() {
     if (!checkItemsLimitReached()) {
-      setStore("items", (items) => items.concat({ removeInProgress: false }));
+      setStore("items", (items) =>
+        items.concat({ removeInProgress: false, defaultValue: "" }),
+      );
     }
   }
 
@@ -165,7 +185,6 @@ export const EditList: Component<EditListProps> = () => {
       body: JSON.stringify(data), // преобразование объекта данных в JSON строку
     })
       .then((response) => {
-        soften(() => setSendingNow(false)); // MAKSIM выпилить отмену загрузки когда научимся после отправки перехдить на страницу готового списка
         if (!response.ok) {
           throw new Error("Network response was not ok " + response.statusText);
         }
@@ -206,6 +225,7 @@ export const EditList: Component<EditListProps> = () => {
               testId={LIST_TITLE_INPUT}
               isRequired={true}
               isDisabled={store.sendingNow}
+              defaultValue={mProps.listName}
             />
           </div>
           <Button
@@ -227,6 +247,7 @@ export const EditList: Component<EditListProps> = () => {
             name={EditListFormNames.ListPurpose}
             testId={LIST_PURPOSE_INPUT}
             isDisabled={store.sendingNow}
+            defaultValue={mProps.purpose}
           />
         </div>
         <div class="editList__input">
@@ -236,6 +257,7 @@ export const EditList: Component<EditListProps> = () => {
             title="Заметка"
             name={EditListFormNames.ListNote}
             isDisabled={store.sendingNow}
+            defaultValue={mProps.note}
           />
         </div>
       </div>
@@ -265,6 +287,7 @@ export const EditList: Component<EditListProps> = () => {
                       testId={ITEM_INPUT}
                       testSubId={getIndex()}
                       isDisabled={item.removeInProgress || store.sendingNow}
+                      defaultValue={item.defaultValue}
                     />
                   </div>
                   <div class="editList__itemControls">

@@ -22,6 +22,7 @@ const list: List = await response.json();
     <h1 class="headerChecklist__title" data-test-id={PAGE_TITLE}>
       {list.name}
     </h1>
+    <a href={`./${list.id}/edit`}>Edit</a>
     <div class="headerChecklist__search"></div>
   </div>
   <ul slot="mainContent">

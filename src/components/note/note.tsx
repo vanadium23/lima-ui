@@ -29,6 +29,7 @@ type NoteProps = {
   size: NoteSize;
   title: string;
   name: string;
+  defaultValue?: string;
 };
 
 export const Note: Component<NoteProps> = (props) => {
@@ -37,6 +38,7 @@ export const Note: Component<NoteProps> = (props) => {
       title: "Note",
       isDisabled: false,
       isLoading: false,
+      defaultValue: "",
     },
     props,
   );
@@ -69,6 +71,7 @@ export const Note: Component<NoteProps> = (props) => {
         maxLength={NOTE_TEXT_AREA_LIMIT}
         isDisabled={mProps.isDisabled}
         testId={NOTE_TEXT_AREA}
+        defaultValue={mProps.defaultValue}
       />
     </Accordion>
   );

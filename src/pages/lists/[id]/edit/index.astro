@@ -1,0 +1,39 @@
+---
+import AppPage from "../../../../layouts/app/app.astro";
+import "./style.css";
+import { PAGE_TITLE } from "../../../../../features/testIds";
+import { EditList } from "../../../../widgets/editList/editList.tsx";
+
+const response = await fetch(`http://localhost:3000/lists/${Astro.params.id}`);
+
+type Item = {
+  content: string;
+};
+
+export type List = {
+  name: string;
+  id: string;
+  items: Item[];
+  purpose: string;
+  note: string;
+};
+
+const list: List = await response.json();
+---
+
+<AppPage>
+  <div class="headerChecklist" slot="header">
+    <h1 class="headerChecklist__title" data-test-id={PAGE_TITLE}>
+      Редактирование списка
+    </h1>
+    <div class="headerChecklist__search"></div>
+  </div>
+  <EditList
+    client:only="solid-js"
+    slot="mainContent"
+    listName={list.name}
+    purpose={list.purpose}
+    note={list.note}
+    items={list.items}
+  />
+</AppPage>
