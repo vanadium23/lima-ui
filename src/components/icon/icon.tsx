@@ -1,16 +1,17 @@
-import { type Component, Match, Switch } from "solid-js";
+import { type Component } from "solid-js";
 import "./icon.css";
-import { Cancel, Chevron, Trash, Loading, Home, AddGroup } from "./sprite.tsx";
+import * as icons from "./sprite.tsx";
+import { Dynamic } from "solid-js/web";
 
 // GERMAN Слишком сложно добавлять иконки, надо в 50 мест написать название иконки
 
 export enum IconName {
-  Cancel = "cancel",
-  Trash = "trash",
-  Chevron = "chevron",
-  Loading = "loading",
-  Home = "home",
-  AddGroup = "addGroup",
+  Cancel = "Cancel",
+  Trash = "Trash",
+  Chevron = "Chevron",
+  Loading = "Loading",
+  Home = "Home",
+  AddGroup = "AddGroup",
 }
 
 export enum IconSize {
@@ -26,26 +27,10 @@ type IconProps = {
 
 export const Icon: Component<IconProps> = (props) => {
   return (
-    <Switch>
-      {/* GERMAN Придумать как сделать здесь красивый цикл */}
-      <Match when={props.name === IconName.Trash}>
-        <Trash size={props.size} ariaHidden={true} />
-      </Match>
-      <Match when={props.name === IconName.Cancel}>
-        <Cancel size={props.size} ariaHidden={true} />
-      </Match>
-      <Match when={props.name === IconName.Chevron}>
-        <Chevron size={props.size} ariaHidden={true} />
-      </Match>
-      <Match when={props.name === IconName.Loading}>
-        <Loading size={props.size} ariaHidden={true} />
-      </Match>
-      <Match when={props.name === IconName.Home}>
-        <Home size={props.size} ariaHidden={true} />
-      </Match>
-      <Match when={props.name === IconName.AddGroup}>
-        <AddGroup size={props.size} ariaHidden={true} />
-      </Match>
-    </Switch>
+    <Dynamic
+      component={icons[props.name]}
+      size={props.size}
+      ariaHidden={true}
+    />
   );
 };
