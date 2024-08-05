@@ -1,26 +1,56 @@
 ---
 import AppPage from "../../layouts/app/app.astro";
 import { PAGE_TITLE } from "../../../features/testIds";
+import "./style.css";
+import {
+  ListStripe,
+  ListStripeSize,
+  ListStripeTheme,
+} from "../../components/listStripe/listStripe";
+import {
+  Button,
+  ButtonComponentType,
+  ButtonSize,
+  ButtonTheme,
+} from "../../components/button/button";
 
 const response = await fetch("http://localhost:3000/lists");
-const lists: Array<{ name: string; id: string }> = await response.json();
+const lists: Array<{ name: string; id: string; purpose: string }> =
+  await response.json();
 ---
 
 <AppPage>
   <div class="headerChecklist" slot="header">
-    <h1 class="headerChecklist__title" data-test-id={PAGE_TITLE}>
-      Списьки списьков
-    </h1>
+    <h1 class="headerChecklist__title" data-test-id={PAGE_TITLE}>Мои списки</h1>
     <div class="headerChecklist__search"></div>
   </div>
-  <ul slot="mainContent">
-    {
-      lists.map((list) => (
-        <li>
-          <a href={`./${list.id}`}>{list.name}</a>
-        </li>
-      ))
-    }
-    <pre>{JSON.stringify(lists, null, 2)}</pre>
-  </ul>
+
+  <div slot="mainContent" class="allLists">
+    <ul slot="mainContent" class="allLists__list">
+      {
+        lists.map((list) => (
+          <li class="allLists__item">
+            <ListStripe
+              theme={ListStripeTheme.Primary}
+              size={ListStripeSize.Medium}
+              link={`./${list.id}`}
+              editLink={`./${list.id}/edit`}
+              listTitle={list.name}
+              listPurpose={list.purpose}
+            />
+          </li>
+        ))
+      }
+      <!--<pre>{JSON.stringify(lists, null, 2)}</pre>-->
+    </ul>
+    <div class="allList__new">
+      <Button
+        componentType={ButtonComponentType.Link}
+        link={"/create-checklist/"}
+        text="Создать"
+        size={ButtonSize.Medium}
+        theme={ButtonTheme.Primary}
+      />
+    </div>
+  </div>
 </AppPage>

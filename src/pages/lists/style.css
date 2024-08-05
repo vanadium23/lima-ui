@@ -1,0 +1,23 @@
+.allLists {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-x9);
+}
+
+.allLists__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-x8);
+    list-style: none;
+    padding: var(--size-x1);
+    margin: 0;
+    overflow-y: auto;
+}
+
+.allLists__item {
+    max-width: 58.4rem;
+}
+
+.allList__new {
+    padding: var(--size-x1);
+}

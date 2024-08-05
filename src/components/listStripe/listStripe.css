@@ -1,0 +1,91 @@
+.listStripe {
+  display: flex;
+  width: 100%;
+  gap: var(--size-x8);
+}
+
+.listStripe__link {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  border: 0.1rem solid var(--neutral-200);
+  border-radius: var(--size-x4);
+  text-decoration: none;
+}
+
+.listStripe__link:active {
+  transform: translateY(0.1rem);
+}
+
+.listStripe_medium .listStripe__link {
+  padding: var(--size-x6);
+  min-width: 50rem;
+}
+
+.listStripe__link:focus-visible {
+  outline: var(--outline-set);
+  outline-offset: var(--outline-offset);
+}
+
+.listStripe__link:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.listStripe__controls {
+  display: flex;
+  align-items: center;
+  visibility: hidden;
+}
+
+
+.listStripe__title {
+  font-weight: 600;
+}
+
+.listStripe__purpose {
+  font-weight: 500;
+}
+
+.listStripe__title, .listStripe__purpose {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.listStripe_medium .listStripe__controls {
+  width: 6.8rem;
+}
+
+.listStripe_medium .listStripe__title {
+  font-size: 1.6rem;
+  line-height: 2rem;
+}
+
+.listStripe_medium .listStripe__purpose {
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+}
+
+.listStripe_primary .listStripe__title {
+  color: var(--text-neutral-800);
+}
+
+.listStripe_primary .listStripe__purpose {
+  color: var(--text-neutral-800);
+}
+
+.listStripe_primary .listStripe__link:hover {
+  background: var(--neutral-150);
+}
+
+.listStripe_primary .listStripe__link:active {
+  background: var(--neutral-200);
+}
+
+.listStripe:hover .listStripe__controls {
+  visibility: visible;
+}
+
+.listStripe:focus-within .listStripe__controls {
+  visibility: visible;
+}

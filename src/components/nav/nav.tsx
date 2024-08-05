@@ -19,7 +19,7 @@ export const Nav: Component = () => {
         </li>
         <li role="none">
           <NavItem
-            url="https://ya.ru"
+            url="/lists/"
             theme={NavItemTheme.Primary}
             size={NavItemSize.Large}
             text="Мои чек-листы"

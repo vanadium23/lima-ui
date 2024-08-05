@@ -6,13 +6,13 @@ export const RemoveIconButtonAdapter: Component = () => {
   return (
     <RemoveIconButton
       removeItem={() => {
-        console.log("blet"); /* TODO убрать Блеты */
+        console.log("Удаление выполнено");
       }}
       onTimerStart={() => {
-        console.log("timerStart-blet");
+        console.log("Таймер запущен");
       }}
       onTimerCancel={() => {
-        console.log("timerCancel-blet");
+        console.log("Таймер отменен");
       }}
       isDisabled={false}
       testId={DEFAULT_TEST_ID}

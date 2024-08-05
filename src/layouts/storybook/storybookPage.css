@@ -113,7 +113,7 @@ html {
 }
 
 .grid_1Col {
-  grid-template-columns: 10rem 26rem;
+  grid-template-columns: 10rem 60rem;
 }
 
 .grid_2Col {

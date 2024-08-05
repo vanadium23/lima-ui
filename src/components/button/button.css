@@ -10,6 +10,7 @@
   border-style: solid;
   border-radius: var(--size-x4);
   appearance: none;
+  text-decoration: none;
 }
 
 .button_small {

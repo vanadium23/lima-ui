@@ -12,6 +12,7 @@ export enum IconName {
   Loading = "Loading",
   Home = "Home",
   AddGroup = "AddGroup",
+  Edit = "Edit",
 }
 
 export enum IconSize {

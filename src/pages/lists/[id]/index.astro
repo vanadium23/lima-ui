@@ -1,6 +1,12 @@
 ---
 import AppPage from "../../../layouts/app/app.astro";
 import { PAGE_TITLE } from "../../../../features/testIds";
+import {
+  Button,
+  ButtonComponentType,
+  ButtonSize,
+  ButtonTheme,
+} from "../../../components/button/button";
 
 const response = await fetch(`http://localhost:3000/lists/${Astro.params.id}`);
 
@@ -22,10 +28,18 @@ const list: List = await response.json();
     <h1 class="headerChecklist__title" data-test-id={PAGE_TITLE}>
       {list.name}
     </h1>
-    <a href={`./${list.id}/edit`}>Edit</a>
+
     <div class="headerChecklist__search"></div>
   </div>
   <ul slot="mainContent">
+    <Button
+      componentType={ButtonComponentType.Link}
+      link={`./${list.id}/edit`}
+      theme={ButtonTheme.Primary}
+      size={ButtonSize.Medium}
+      text="Редактировать"
+    />
+    <div>Пункты списка:</div>
     {
       list.items.map((item) => (
         <li>
@@ -33,6 +47,6 @@ const list: List = await response.json();
         </li>
       ))
     }
-    <pre>{JSON.stringify(list, null, 2)}</pre>
+    <!--<pre>{JSON.stringify(list, null, 2)}</pre>-->
   </ul>
 </AppPage>
