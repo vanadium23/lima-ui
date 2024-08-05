@@ -22,6 +22,12 @@ type NavItemProps = {
   isCurrent?: boolean;
 };
 
+const iconSize = {
+  [NavItemSize.Small]: IconSize.Small,
+  [NavItemSize.Medium]: IconSize.Medium,
+  [NavItemSize.Large]: IconSize.Large,
+};
+
 export const NavItem: Component<NavItemProps> = (props) => {
   const mProps: Required<NavItemProps> = mergeProps(
     {
@@ -40,7 +46,7 @@ export const NavItem: Component<NavItemProps> = (props) => {
         navItem_current: mProps.isCurrent,
       }}
     >
-      <Icon name={mProps.icon} size={IconSize.Large} />
+      <Icon name={mProps.icon} size={iconSize[mProps.size]} />
       <span class="navItem__text">{mProps.text}</span>
     </a>
   );

@@ -6,12 +6,12 @@ import { NavItem, NavItemSize, NavItemTheme } from "../navItem/navItem.tsx";
 export const Nav: Component = () => {
   return (
     <nav class="nav">
-      <ul class="nav__list" role="menubar">
+      <ul class="nav__list" role="menubar" aria-label="Navigation">
         <li class="nav__item" role="none">
           <NavItem
             url="https://ya.ru"
             theme={NavItemTheme.Primary}
-            size={NavItemSize.Medium}
+            size={NavItemSize.Large}
             text="Главная"
             icon={IconName.Home}
             isCurrent={true}
@@ -21,7 +21,7 @@ export const Nav: Component = () => {
           <NavItem
             url="https://ya.ru"
             theme={NavItemTheme.Primary}
-            size={NavItemSize.Medium}
+            size={NavItemSize.Large}
             text="Мои чек-листы"
             icon={IconName.Home}
           />
@@ -30,7 +30,7 @@ export const Nav: Component = () => {
           <NavItem
             url="https://ya.ru"
             theme={NavItemTheme.Primary}
-            size={NavItemSize.Medium}
+            size={NavItemSize.Large}
             text="Избранное"
             icon={IconName.Home}
           />
@@ -39,7 +39,7 @@ export const Nav: Component = () => {
           <NavItem
             url="https://ya.ru"
             theme={NavItemTheme.Primary}
-            size={NavItemSize.Medium}
+            size={NavItemSize.Large}
             text="Архив"
             icon={IconName.Home}
           />
@@ -48,7 +48,7 @@ export const Nav: Component = () => {
           <NavItem
             url="https://ya.ru"
             theme={NavItemTheme.Primary}
-            size={NavItemSize.Medium}
+            size={NavItemSize.Large}
             text="Корзина"
             icon={IconName.Home}
           />
@@ -57,7 +57,7 @@ export const Nav: Component = () => {
           <NavItem
             url="https://ya.ru"
             theme={NavItemTheme.Primary}
-            size={NavItemSize.Medium}
+            size={NavItemSize.Large}
             text="Помощь"
             icon={IconName.Home}
           />
@@ -66,7 +66,7 @@ export const Nav: Component = () => {
           <NavItem
             url="https://ya.ru"
             theme={NavItemTheme.Primary}
-            size={NavItemSize.Medium}
+            size={NavItemSize.Large}
             text="Настройки"
             icon={IconName.Home}
           />
