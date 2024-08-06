@@ -1,6 +1,6 @@
 ---
 import AppPage from "../../layouts/app/app.astro";
-import { PAGE_TITLE } from "../../../features/testIds";
+import { DEFAULT_TEST_ID, PAGE_TITLE } from "../../../features/testIds";
 import "./style.css";
 import {
   ListStripe,
@@ -26,7 +26,7 @@ const lists: Array<{ name: string; id: string; purpose: string }> =
   </div>
 
   <div slot="mainContent" class="allLists">
-    <ul slot="mainContent" class="allLists__list">
+    <ul class="allLists__list">
       {
         lists.map((list) => (
           <li class="allLists__item">
@@ -50,6 +50,7 @@ const lists: Array<{ name: string; id: string; purpose: string }> =
         text="Создать"
         size={ButtonSize.Medium}
         theme={ButtonTheme.Primary}
+        testId={DEFAULT_TEST_ID}
       />
     </div>
   </div>

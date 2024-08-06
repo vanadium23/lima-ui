@@ -8,6 +8,7 @@
   appearance: none;
   background: transparent;
   cursor: pointer;
+  border-radius: var(--size-x4);
 }
 
 .iconButton:focus-visible {

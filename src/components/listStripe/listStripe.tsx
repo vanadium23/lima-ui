@@ -7,6 +7,7 @@ import {
   IconButtonSize,
   IconButtonTheme,
 } from "../iconButton/iconButton.tsx";
+import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 
 export enum ListStripeTheme {
   Primary = "primary",
@@ -22,22 +23,15 @@ type ListStripeProps = {
   editLink: string;
   theme: ListStripeTheme;
   size: ListStripeSize;
-  handleClick?: () => void;
   link: string;
 };
 
 export const ListStripe: Component<ListStripeProps> = (props) => {
-  const mProps: Required<ListStripeProps> = mergeProps(
-    {
-      handleClick: () => {},
-    },
-    props,
-  );
+  const mProps: Required<ListStripeProps> = mergeProps(props);
 
   return (
     <div
       class={`listStripe listStripe_${mProps.theme} listStripe_${mProps.size}`}
-      onClick={() => {}}
     >
       <a class="listStripe__link" href={mProps.link}>
         <span class="listStripe__title" title={mProps.listTitle}>
@@ -54,7 +48,7 @@ export const ListStripe: Component<ListStripeProps> = (props) => {
           theme={IconButtonTheme.Primary}
           size={IconButtonSize.Medium}
           link={mProps.editLink}
-          testId={""}
+          testId={DEFAULT_TEST_ID}
           componentType={IconButtonComponentType.Link}
         />
         <IconButton
@@ -62,7 +56,7 @@ export const ListStripe: Component<ListStripeProps> = (props) => {
           ariaLabel={`Удалить список ${mProps.listTitle}`}
           theme={IconButtonTheme.Dangerous}
           size={IconButtonSize.Medium}
-          testId={""}
+          testId={DEFAULT_TEST_ID}
         />
       </div>
     </div>

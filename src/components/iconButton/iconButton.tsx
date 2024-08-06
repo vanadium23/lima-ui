@@ -1,4 +1,4 @@
-import { type Component, createMemo, Show } from "solid-js";
+import { type Component, Show } from "solid-js";
 import { mergeProps } from "solid-js";
 import "./iconButton.css";
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
@@ -35,16 +35,16 @@ type IconButtonProps = {
 };
 
 export const IconButton: Component<Testable<IconButtonProps>> = (props) => {
-  const defaultProps = {
-    isDisabled: false,
-    isLoading: false,
-    handleClick: () => {},
-    componentType: IconButtonComponentType.Button,
-    link: "",
-  };
-
-  const merged = mergeProps(defaultProps, props);
-  const mProps = createMemo(() => merged);
+  const mProps: Testable<Required<IconButtonProps>> = mergeProps(
+    {
+      isDisabled: false,
+      isLoading: false,
+      handleClick: () => {},
+      componentType: IconButtonComponentType.Button,
+      link: "",
+    },
+    props,
+  );
 
   const iconSize = {
     [IconButtonSize.Small]: IconSize.Small,
@@ -54,41 +54,41 @@ export const IconButton: Component<Testable<IconButtonProps>> = (props) => {
 
   return (
     <>
-      <Show when={mProps().componentType === IconButtonComponentType.Button}>
+      <Show when={mProps.componentType === IconButtonComponentType.Button}>
         <button
           type="button"
           onClick={() => {
-            mProps().handleClick();
+            mProps.handleClick();
           }}
-          class={`iconButton iconButton_${mProps().theme} iconButton_${mProps().size}`}
+          class={`iconButton iconButton_${mProps.theme} iconButton_${mProps.size}`}
           classList={{
-            iconButton_disabled: mProps().isDisabled,
-            iconButton_loading: mProps().isLoading,
+            iconButton_disabled: mProps.isDisabled,
+            iconButton_loading: mProps.isLoading,
           }}
-          title={mProps().ariaLabel}
-          disabled={mProps().isDisabled}
-          aria-disabled={mProps().isLoading}
-          aria-label={mProps().ariaLabel}
-          data-test-id={mProps().testId}
-          data-test-sub-id={mProps().testSubId}
+          title={mProps.ariaLabel}
+          disabled={mProps.isDisabled}
+          aria-disabled={mProps.isLoading}
+          aria-label={mProps.ariaLabel}
+          data-test-id={mProps.testId}
+          data-test-sub-id={mProps.testSubId}
         >
-          <Icon name={mProps().iconName} size={iconSize[mProps().size]} />
+          <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
         </button>
       </Show>
-      <Show when={mProps().componentType === IconButtonComponentType.Link}>
+      <Show when={mProps.componentType === IconButtonComponentType.Link}>
         <a
-          href={mProps().link}
-          class={`iconButton iconButton_${mProps().theme} iconButton_${mProps().size}`}
+          href={mProps.link}
+          class={`iconButton iconButton_${mProps.theme} iconButton_${mProps.size}`}
           classList={{
-            iconButton_disabled: mProps().isDisabled,
-            iconButton_loading: mProps().isLoading,
+            iconButton_disabled: mProps.isDisabled,
+            iconButton_loading: mProps.isLoading,
           }}
-          title={mProps().ariaLabel}
-          aria-label={mProps().ariaLabel}
-          data-test-id={mProps().testId}
-          data-test-sub-id={mProps().testSubId}
+          title={mProps.ariaLabel}
+          aria-label={mProps.ariaLabel}
+          data-test-id={mProps.testId}
+          data-test-sub-id={mProps.testSubId}
         >
-          <Icon name={mProps().iconName} size={iconSize[mProps().size]} />
+          <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
         </a>
       </Show>
     </>

@@ -1,6 +1,6 @@
 ---
 import AppPage from "../../../layouts/app/app.astro";
-import { PAGE_TITLE } from "../../../../features/testIds";
+import { DEFAULT_TEST_ID, PAGE_TITLE } from "../../../../features/testIds";
 import {
   Button,
   ButtonComponentType,
@@ -38,8 +38,8 @@ const list: List = await response.json();
       theme={ButtonTheme.Primary}
       size={ButtonSize.Medium}
       text="Редактировать"
+      testId={DEFAULT_TEST_ID}
     />
-    <div>Пункты списка:</div>
     {
       list.items.map((item) => (
         <li>

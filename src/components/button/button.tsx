@@ -1,5 +1,4 @@
-import { type Component, createMemo, Show } from "solid-js";
-import { mergeProps } from "solid-js";
+import { type Component, mergeProps, Show } from "solid-js";
 import "./button.css";
 import type { Testable } from "../utilities/testable.ts";
 import { prepareARIALabel } from "../utilities/prepareARIALabel.ts";
@@ -43,18 +42,18 @@ type ButtonProps = {
 };
 
 export const Button: Component<Testable<ButtonProps>> = (props) => {
-  const defaultProps = {
-    componentType: ButtonComponentType.Button,
-    type: ButtonType.Button,
-    isDisabled: false,
-    isLoading: false,
-    ariaLabel: "",
-    link: "",
-    handleClick: () => {},
-  };
-
-  const merged = mergeProps(defaultProps, props);
-  const mProps = createMemo(() => merged);
+  const mProps: Testable<Required<ButtonProps>> = mergeProps(
+    {
+      componentType: ButtonComponentType.Button,
+      type: ButtonType.Button,
+      isDisabled: false,
+      isLoading: false,
+      ariaLabel: "",
+      link: "",
+      handleClick: () => {},
+    },
+    props,
+  );
 
   const loadingIconSize = {
     [ButtonSize.Small]: IconSize.Small,
@@ -64,52 +63,46 @@ export const Button: Component<Testable<ButtonProps>> = (props) => {
 
   return (
     <>
-      <Show when={mProps().componentType === ButtonComponentType.Button}>
+      <Show when={mProps.componentType === ButtonComponentType.Button}>
         <button
-          type={mProps().type}
-          class={`button button_${mProps().theme} button_${mProps().size}`}
+          type={mProps.type}
+          class={`button button_${mProps.theme} button_${mProps.size}`}
           classList={{
-            button_disabled: mProps().isDisabled,
-            button_loading: mProps().isLoading,
+            button_disabled: mProps.isDisabled,
+            button_loading: mProps.isLoading,
           }}
-          disabled={mProps().isDisabled}
-          aria-disabled={mProps().isLoading}
-          {...prepareARIALabel(mProps().ariaLabel)}
+          disabled={mProps.isDisabled}
+          aria-disabled={mProps.isLoading}
+          {...prepareARIALabel(mProps.ariaLabel)}
           onClick={() => {
-            if (!mProps().isLoading) {
-              mProps().handleClick();
+            if (!mProps.isLoading) {
+              mProps.handleClick();
             }
           }}
-          data-test-id={mProps().testId}
+          data-test-id={mProps.testId}
         >
-          <Show when={mProps().isLoading}>
-            <Icon
-              name={IconName.Loading}
-              size={loadingIconSize[mProps().size]}
-            />
+          <Show when={mProps.isLoading}>
+            <Icon name={IconName.Loading} size={loadingIconSize[mProps.size]} />
           </Show>
-          <span class="button__text">{mProps().text}</span>
+          <span class="button__text">{mProps.text}</span>
         </button>
       </Show>
-      <Show when={mProps().componentType === ButtonComponentType.Link}>
+      <Show when={mProps.componentType === ButtonComponentType.Link}>
         <a
-          href={mProps().link}
-          class={`button button_${mProps().theme} button_${mProps().size}`}
+          href={mProps.link}
+          class={`button button_${mProps.theme} button_${mProps.size}`}
           classList={{
-            button_disabled: mProps().isDisabled,
-            button_loading: mProps().isLoading,
+            button_disabled: mProps.isDisabled,
+            button_loading: mProps.isLoading,
           }}
-          aria-disabled={mProps().isLoading}
-          {...prepareARIALabel(mProps().ariaLabel)}
-          data-test-id={mProps().testId}
+          aria-disabled={mProps.isLoading}
+          {...prepareARIALabel(mProps.ariaLabel)}
+          data-test-id={mProps.testId}
         >
-          <Show when={mProps().isLoading}>
-            <Icon
-              name={IconName.Loading}
-              size={loadingIconSize[mProps().size]}
-            />
+          <Show when={mProps.isLoading}>
+            <Icon name={IconName.Loading} size={loadingIconSize[mProps.size]} />
           </Show>
-          <span class="button__text">{mProps().text}</span>
+          <span class="button__text">{mProps.text}</span>
         </a>
       </Show>
     </>
