@@ -14,9 +14,15 @@ import {
   ButtonTheme,
 } from "../../components/button/button";
 
-const response = await fetch(`${import.meta.env.API_URL}/lists`);
-const lists: Array<{ name: string; id: string; purpose: string }> =
-  await response.json();
+let lists: Array<{ name: string; id: string; purpose: string }> = [];
+let errorDescription = "";
+
+try {
+  const response = await fetch(`${import.meta.env.API_URL}/lists`);
+  lists = await response.json();
+} catch (error) {
+  errorDescription = JSON.stringify(error, null, 2);
+}
 ---
 
 <AppPage>
@@ -26,6 +32,7 @@ const lists: Array<{ name: string; id: string; purpose: string }> =
   </div>
 
   <div slot="mainContent" class="allLists">
+    <pre>{errorDescription}</pre>
     <ul class="allLists__list">
       {
         lists.map((list) => (
