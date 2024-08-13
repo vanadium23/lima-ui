@@ -177,7 +177,7 @@ export const EditList: Component<EditListProps> = (props) => {
     setStore("error", false);
     setSendingNow(true);
 
-    fetch("http://localhost:3000/lists", {
+    fetch(`${import.meta.env.API_URL}/lists`, {
       method: "POST", // или 'PUT', 'DELETE', и т.д.
       headers: {
         "Content-Type": "application/json",

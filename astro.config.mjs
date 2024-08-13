@@ -23,6 +23,9 @@ export default defineConfig({
         optimizeDeps: {
             // To resolve incorrectly working caching on the first run: https://stackoverflow.com/a/76379587/2008562.
             force: true
-        }
+        },
+        define: {
+            'import.meta.env.API_URL': JSON.stringify(process.env.API_URL || "http://localhost:3000")
+        },
     },
 });

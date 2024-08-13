@@ -14,7 +14,7 @@ import {
   ButtonTheme,
 } from "../../components/button/button";
 
-const response = await fetch("http://localhost:3000/lists");
+const response = await fetch(`${import.meta.env.API_URL}/lists`);
 const lists: Array<{ name: string; id: string; purpose: string }> =
   await response.json();
 ---
