@@ -9,7 +9,7 @@ import {
 } from "../../../components/button/button";
 
 const response = await fetch(
-  `${import.meta.env.API_URL}/lists/${Astro.params.id}`,
+  `${import.meta.env.PUBLIC_API_URL}/lists/${Astro.params.id}`,
 );
 
 type Item = {

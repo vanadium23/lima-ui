@@ -25,7 +25,7 @@ export default defineConfig({
             force: true
         },
         define: {
-            'import.meta.env.API_URL': JSON.stringify(process.env.API_URL || "http://localhost:3000")
+            'import.meta.env.PUBLIC_API_URL': JSON.stringify(process.env.PUBLIC_API_URL || "http://localhost:3000")
         },
     },
 });
