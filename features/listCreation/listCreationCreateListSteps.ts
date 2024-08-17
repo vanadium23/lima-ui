@@ -74,7 +74,7 @@ When(
     this.counters.listCreationRequestsNumber = 0;
 
     this.page.on("request", (data) => {
-      if (data.method() === "POST" && data.url().endsWith("/sverniks")) {
+      if (data.method() === "POST" && data.url().endsWith("/lists")) {
         this.counters.listCreationRequestsNumber++;
       }
     });

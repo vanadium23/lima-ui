@@ -191,7 +191,9 @@ export const EditList: Component<EditListProps> = (props) => {
         return response.json();
       })
       .then((data) => {
-        window.location.href = `/lists/${data.id}`; // обработка полученных данных
+        soften(() => {
+          window.location.href = `/lists/${data.id}`; // обработка полученных данных
+        });
       })
       .catch((error) => {
         console.error(

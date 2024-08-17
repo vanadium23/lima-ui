@@ -15,7 +15,7 @@ Then(
 );
 
 Given("Data server is not available", async function (this: ComplexWorld) {
-  await this.context.route("**/sverniks", (route) => route.abort("failed"));
+  await this.context.route("**/lists", (route) => route.abort("failed"));
 });
 
 Then(
