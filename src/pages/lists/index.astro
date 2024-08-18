@@ -31,6 +31,8 @@ const lists: Array<{ name: string; id: string; purpose: string }> =
         lists.map((list) => (
           <li class="allLists__item">
             <ListStripe
+              client:only="solid-js"
+              listId={list.id}
               theme={ListStripeTheme.Primary}
               size={ListStripeSize.Medium}
               link={`./${list.id}`}
@@ -41,7 +43,7 @@ const lists: Array<{ name: string; id: string; purpose: string }> =
           </li>
         ))
       }
-      <!--<pre>{JSON.stringify(lists, null, 2)}</pre>-->
+      <pre>{JSON.stringify(lists, null, 2)}</pre>
     </ul>
     <div class="allList__new">
       <Button

@@ -24,11 +24,32 @@ type ListStripeProps = {
   theme: ListStripeTheme;
   size: ListStripeSize;
   link: string;
+  listId: string;
 };
 
 export const ListStripe: Component<ListStripeProps> = (props) => {
   const mProps: Required<ListStripeProps> = mergeProps(props);
 
+  function removeList() {
+    fetch(`http://localhost:3000/lists/${mProps.listId}`, {
+      method: "DELETE", // или 'PUT', 'DELETE', и т.д.
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok " + response.statusText);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data); // обработка полученных данных
+      })
+      .catch((error) => {
+        console.error(
+          "There has been a problem with your fetch operation:",
+          error,
+        );
+      });
+  }
   return (
     <div
       class={`listStripe listStripe_${mProps.theme} listStripe_${mProps.size}`}
@@ -54,6 +75,7 @@ export const ListStripe: Component<ListStripeProps> = (props) => {
         <IconButton
           iconName={IconName.Trash}
           ariaLabel={`Удалить список ${mProps.listTitle}`}
+          handleClick={removeList}
           theme={IconButtonTheme.Dangerous}
           size={IconButtonSize.Medium}
           testId={DEFAULT_TEST_ID}

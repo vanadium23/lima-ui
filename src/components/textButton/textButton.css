@@ -1,0 +1,81 @@
+.textButton {
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  flex-wrap: nowrap;
+  justify-content: center;
+  cursor: pointer;
+  border-width: 0.1rem;
+  border-style: solid;
+  border-radius: var(--size-x4);
+  appearance: none;
+  text-decoration: none;
+}
+
+.textButton_small {
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  min-width: 8.2rem;
+  gap: var(--size-x2);
+  height: var(--size-x12);
+  padding: var(--size-x1) var(--size-x8);
+}
+
+.textButton_medium {
+  font-size: 1.6rem;
+  line-height: 2rem;
+  min-width: 9rem;
+  gap: var(--size-x2);
+  height: var(--size-x17);
+  padding: var(--size-x3) var(--size-x8);
+}
+
+.textButton_large {
+  font-size: 1.8rem;
+  line-height: 2.2rem;
+  min-width: 9.4rem;
+  gap: var(--size-x3);
+  height: var(--size-x20);
+  padding: var(--size-x4) var(--size-x8);
+}
+
+.textButton_primary {
+  color: var(--text-primary-500);
+  border-color: transparent;
+  background: transparent;
+  fill: var(--text-primary-500);
+}
+
+.textButton_primary:hover:not(:disabled, .textButton_disabled, .textButton_loading) {
+  color: var(--text-primary-400);
+  fill: var(--text-primary-400);
+}
+
+.textButton_primary:active:not(:disabled, .textButton_disabled, .textButton_loading) {
+  color: var(--text-primary-600);
+  fill: var(--text-primary-600);
+}
+
+.textButton:disabled,
+.textButton_disabled {
+  cursor: not-allowed;
+  color: var(--text-neutral-300);
+}
+
+.textButton:focus-visible {
+  outline: var(--outline-set);
+  outline-offset: var(--outline-offset);
+}
+
+.textButton:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.textButton:active:not(:disabled, .textButton_disabled, .textButton_loading) {
+  transform: translateY(0.1rem);
+}
+
+.textButton_loading {
+  cursor: wait;
+}

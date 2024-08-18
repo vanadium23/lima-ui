@@ -1,0 +1,35 @@
+---
+import StorybookPage from '../../../layouts/storybook/storybookPage.astro';
+import {TextButton, TextButtonSize, TextButtonTheme} from '../../../components/textButton/textButton.tsx';
+import {DEFAULT_TEST_ID} from "../../../../features/testIds";
+
+const themes = Object.values(TextButtonTheme);
+const sizes = Object.values(TextButtonSize);
+---
+
+<StorybookPage title="TextButton">
+
+    {themes.map((theme) => (
+            <div class="demoThemeWrapper">
+                <h3 style="font-size: 24px; margin-bottom: 10px; text-transform: capitalize;">{theme}</h3>
+                <div class="grid grid_3Col">
+                    <span class="chead"/>
+                    <span class="chead">Default</span>
+                    <span class="chead">Loading</span>
+                    <span class="chead">Disabled</span>
+
+                    {sizes.map((size) => (
+                            <span class="rhead">{size}</span>
+
+                            <TextButton client:only="solid-js" theme={theme} size={size} text="Text" testId={DEFAULT_TEST_ID}/>
+                            <TextButton client:only="solid-js" theme={theme} size={size} text="Text" testId={DEFAULT_TEST_ID}
+                                    isLoading={true}/>
+                            <TextButton client:only="solid-js" theme={theme} size={size} text="Text" testId={DEFAULT_TEST_ID}
+                                    isDisabled={true}/>
+                    ))}
+
+                </div>
+            </div>
+    ))}
+
+</StorybookPage>
