@@ -8,7 +8,9 @@ import {
   ButtonTheme,
 } from "../../../components/button/button";
 
-const response = await fetch(`http://localhost:3000/lists/${Astro.params.id}`);
+const response = await fetch(
+  `${import.meta.env.PUBLIC_API_URL}/lists/${Astro.params.id}`,
+);
 
 type Item = {
   content: string;

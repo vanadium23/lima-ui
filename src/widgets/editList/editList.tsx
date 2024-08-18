@@ -177,7 +177,7 @@ export const EditList: Component<EditListProps> = (props) => {
     setStore("error", false);
     setSendingNow(true);
 
-    fetch("http://localhost:3000/lists", {
+    fetch(`${import.meta.env.PUBLIC_API_URL}/lists`, {
       method: "POST", // или 'PUT', 'DELETE', и т.д.
       headers: {
         "Content-Type": "application/json",
@@ -191,7 +191,9 @@ export const EditList: Component<EditListProps> = (props) => {
         return response.json();
       })
       .then((data) => {
-        window.location.href = `/lists/${data.id}`; // обработка полученных данных
+        soften(() => {
+          window.location.href = `/lists/${data.id}`; // обработка полученных данных
+        });
       })
       .catch((error) => {
         console.error(
