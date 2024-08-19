@@ -6,8 +6,8 @@
   flex-wrap: nowrap;
   justify-content: center;
   cursor: pointer;
-  border-width: 0.1rem;
-  border-style: solid;
+  border: 0.1rem solid transparent;
+  background: transparent;
   border-radius: var(--size-x4);
   appearance: none;
   text-decoration: none;
@@ -42,8 +42,6 @@
 
 .textButton_primary {
   color: var(--text-primary-500);
-  border-color: transparent;
-  background: transparent;
   fill: var(--text-primary-500);
 }
 
