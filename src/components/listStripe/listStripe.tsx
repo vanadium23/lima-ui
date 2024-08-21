@@ -31,7 +31,7 @@ export const ListStripe: Component<ListStripeProps> = (props) => {
   const mProps: Required<ListStripeProps> = mergeProps(props);
 
   function removeList() {
-    fetch(`http://localhost:3000/lists/${mProps.listId}`, {
+    fetch(`${import.meta.env.PUBLIC_API_URL}/lists/${mProps.listId}`, {
       method: "DELETE", // или 'PUT', 'DELETE', и т.д.
     })
       .then((response) => {
@@ -50,6 +50,7 @@ export const ListStripe: Component<ListStripeProps> = (props) => {
         );
       });
   }
+
   return (
     <div
       class={`listStripe listStripe_${mProps.theme} listStripe_${mProps.size}`}
