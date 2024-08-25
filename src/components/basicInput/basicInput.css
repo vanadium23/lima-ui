@@ -83,7 +83,7 @@
 }
 
 .input_secondary .input__inner {
-  color: var(--text-neutral-700);
+  color: var(--text-neutral-800);
   font-weight: 600;
 }
 
@@ -110,16 +110,16 @@
 
 .input_secondary {
   border-color: transparent transparent var(--neutral-500) transparent;
-  background: transparent;
+  background: var(--neutral-150);
   border-radius: 0;
 }
 
 .input_secondary:focus-within {
-  border-color: transparent transparent var(--neutral-900) transparent;
+  border-color: transparent transparent var(--neutral-700) transparent;
 }
 
 .input_secondary:hover:not(.input_disabled, .input_error) {
-  border-color: transparent transparent var(--neutral-900) transparent;
+  border-color: transparent transparent var(--neutral-700) transparent;
 }
 
 .input_secondary .input__inner:placeholder-shown {
@@ -128,6 +128,7 @@
 
 .input_secondary.input_error {
   border-color: transparent transparent var(--dangerous-500) transparent;
+  background: var(--dangerous-300);
 }
 
 .input_secondary.input_error .input__inner {
