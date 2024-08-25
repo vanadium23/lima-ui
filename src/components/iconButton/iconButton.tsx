@@ -72,7 +72,14 @@ export const IconButton: Component<Testable<IconButtonProps>> = (props) => {
           data-test-id={mProps.testId}
           data-test-sub-id={mProps.testSubId}
         >
-          <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
+          <Show
+            when={mProps.isLoading}
+            fallback={
+              <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
+            }
+          >
+            <Icon name={IconName.Loading} size={iconSize[mProps.size]} />
+          </Show>
         </button>
       </Show>
       <Show when={mProps.componentType === IconButtonComponentType.Link}>

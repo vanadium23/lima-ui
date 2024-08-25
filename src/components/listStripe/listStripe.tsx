@@ -8,6 +8,7 @@ import {
   IconButtonTheme,
 } from "../iconButton/iconButton.tsx";
 import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
+import { Dialog, DialogSize, DialogTheme } from "../dialog/dialog.tsx";
 
 export enum ListStripeTheme {
   Primary = "primary",
@@ -75,12 +76,19 @@ export const ListStripe: Component<ListStripeProps> = (props) => {
         <IconButton
           iconName={IconName.Trash}
           ariaLabel={`Удалить список ${mProps.listTitle}`}
-          handleClick={removeList}
           theme={IconButtonTheme.Dangerous}
           size={IconButtonSize.Medium}
           testId={DEFAULT_TEST_ID}
         />
       </div>
+
+      <Dialog
+        theme={DialogTheme.Primary}
+        size={DialogSize.Medium}
+        testId={DEFAULT_TEST_ID}
+        onConfirm={removeList}
+        isOpen={false}
+      ></Dialog>
     </div>
   );
 };

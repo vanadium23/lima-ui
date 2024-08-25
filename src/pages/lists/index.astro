@@ -15,13 +15,13 @@ import {
 } from "../../components/button/button";
 
 let lists: Array<{ name: string; id: string; purpose: string }> = [];
-let errorDescription = "";
+// let errorDescription = "";
 
 try {
   const response = await fetch(`${import.meta.env.PUBLIC_API_URL}/lists`);
   lists = await response.json();
 } catch (error) {
-  errorDescription = JSON.stringify(error, null, 2);
+  // errorDescription = JSON.stringify(error, null, 2);
 }
 ---
 
@@ -32,8 +32,6 @@ try {
   </div>
 
   <div slot="mainContent" class="allLists">
-    <pre>{import.meta.env.PUBLIC_API_URL}</pre>
-    <pre>{errorDescription}</pre>
     <ul class="allLists__list">
       {
         lists.map((list) => (
@@ -51,7 +49,7 @@ try {
           </li>
         ))
       }
-      <pre>{JSON.stringify(lists, null, 2)}</pre>
+      <!--<pre>{JSON.stringify(lists, null, 2)}</pre>-->
     </ul>
     <div class="allList__new">
       <Button
