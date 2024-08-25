@@ -1,0 +1,51 @@
+.dialog::backdrop {
+    background: rgb(0 0 0 / 50%);
+}
+
+.dialog {
+    padding: var(--size-x12);
+    border-radius: 2.8rem;
+    background: var(--neutral-100);
+}
+
+.dialog_small {
+    width: 32rem;
+}
+
+.dialog_medium {
+    width: 46rem;
+}
+
+.dialog_large {
+    width: 66.4rem;
+}
+
+.dialog__title {
+    color: var(--neutral-900);
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 2.4rem;
+    padding: 0;
+    margin: 0;
+}
+
+.dialog__content {
+    margin: var(--size-x8) 0 var(--size-x12);
+}
+
+.dialog__content > p {
+    color: var(--text-neutral-900);
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 2rem;
+}
+
+.dialog__content > p > strong {
+    font-weight: 600;
+}
+
+.dialog__controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--size-x4);
+}

@@ -1,4 +1,4 @@
-import { type Component, mergeProps } from "solid-js";
+import { type Component, createSignal, mergeProps } from "solid-js";
 import "./listStripe.css";
 import { IconName } from "../icon/icon.tsx";
 import {
@@ -30,6 +30,17 @@ type ListStripeProps = {
 
 export const ListStripe: Component<ListStripeProps> = (props) => {
   const mProps: Required<ListStripeProps> = mergeProps(props);
+
+  const [isDialogOpen, setIsDialogOpen] = createSignal(false);
+
+  const openDialog = () => {
+    setIsDialogOpen(true);
+  };
+
+  // Функция для закрытия диалога
+  const closeDialog = () => {
+    setIsDialogOpen(false);
+  };
 
   function removeList() {
     fetch(`http://localhost:3000/lists/${mProps.listId}`, {
@@ -79,6 +90,7 @@ export const ListStripe: Component<ListStripeProps> = (props) => {
           theme={IconButtonTheme.Dangerous}
           size={IconButtonSize.Medium}
           testId={DEFAULT_TEST_ID}
+          handleClick={openDialog}
         />
       </div>
 
@@ -87,8 +99,19 @@ export const ListStripe: Component<ListStripeProps> = (props) => {
         size={DialogSize.Medium}
         testId={DEFAULT_TEST_ID}
         onConfirm={removeList}
-        isOpen={false}
-      ></Dialog>
+        onCancel={closeDialog}
+        isOpen={isDialogOpen()}
+        title={"Удаление списка"}
+      >
+        <p>
+          Список{" "}
+          <strong>
+            Для отпуска на Канарских островах в лучшее время года с друзьями
+            года
+          </strong>{" "}
+          будет удален без возможности восстановления.
+        </p>
+      </Dialog>
     </div>
   );
 };
