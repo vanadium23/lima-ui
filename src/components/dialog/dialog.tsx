@@ -33,25 +33,23 @@ export const Dialog: Component<Testable<DialogProps>> = (props) => {
   const mProps: Testable<Required<DialogProps>> = mergeProps(
     {
       isOpen: false,
-      link: "",
       onConfirm: () => {},
       onCancel: () => {},
     },
     props,
   );
 
-  let dialogRef: HTMLDialogElement | undefined = undefined;
+  let dialogRef: HTMLDialogElement | undefined;
 
   createEffect(() => {
     if (mProps.isOpen && dialogRef) {
-      dialogRef.showModal(); // Открываем диалог через showModal()
+      dialogRef.showModal();
     }
   });
 
-  // Функция для закрытия диалога
   const closeDialog = () => {
     if (dialogRef) {
-      dialogRef.close(); // Закрываем диалог вручную
+      dialogRef.close();
     }
   };
 

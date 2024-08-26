@@ -104,12 +104,8 @@ export const ListStripe: Component<ListStripeProps> = (props) => {
         title={"Удаление списка"}
       >
         <p>
-          Список{" "}
-          <strong>
-            Для отпуска на Канарских островах в лучшее время года с друзьями
-            года
-          </strong>{" "}
-          будет удален без возможности восстановления.
+          Список <strong>{mProps.listTitle}</strong> будет удален без
+          возможности восстановления.
         </p>
       </Dialog>
     </div>
