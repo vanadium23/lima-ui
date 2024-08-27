@@ -1,23 +1,19 @@
 .dialog::backdrop {
-    background: rgb(0 0 0 / 50%);
+    background: rgb(0 0 0 / 8%);
 }
 
 .dialog {
-    padding: var(--size-x12);
     border-radius: 2.8rem;
+    padding: 0;
+}
+
+.dialog__wrapper {
+    padding: var(--size-x12);
     background: var(--neutral-100);
 }
 
-.dialog_small {
-    width: 32rem;
-}
-
 .dialog_medium {
-    width: 46rem;
-}
-
-.dialog_large {
-    width: 66.4rem;
+    width: 64rem;
 }
 
 .dialog__title {

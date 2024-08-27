@@ -14,9 +14,7 @@ export enum DialogTheme {
 }
 
 export enum DialogSize {
-  Small = "small",
   Medium = "medium",
-  Large = "large",
 }
 
 type DialogProps = {
@@ -53,36 +51,50 @@ export const Dialog: Component<Testable<DialogProps>> = (props) => {
     }
   };
 
+  function closeOnBackDropClick({
+    currentTarget,
+    target,
+  }: MouseEvent & { currentTarget: HTMLDialogElement; target: EventTarget }) {
+    const isClickedOnBackDrop = target === currentTarget;
+    if (isClickedOnBackDrop) {
+      closeDialog();
+      mProps.onCancel();
+    }
+  }
+
   return (
     <dialog
       class={`dialog dialog_${mProps.theme} dialog_${mProps.size}`}
       aria-label={mProps.title}
       aria-modal={mProps.isOpen}
       ref={(el) => (dialogRef = el)}
+      onClick={closeOnBackDropClick}
     >
-      <h2 class="dialog__title">{mProps.title}</h2>
-      <div class="dialog__content">{mProps.children}</div>
-      <div class="dialog__controls">
-        <TextButton
-          theme={TextButtonTheme.Primary}
-          size={TextButtonSize.Medium}
-          testId={DEFAULT_TEST_ID}
-          text={"Вернуться"}
-          handleClick={() => {
-            mProps.onCancel();
-            closeDialog();
-          }}
-        ></TextButton>
-        <Button
-          theme={ButtonTheme.Dangerous}
-          size={ButtonSize.Medium}
-          testId={DEFAULT_TEST_ID}
-          text={"Удалить"}
-          handleClick={() => {
-            mProps.onConfirm();
-            closeDialog();
-          }}
-        ></Button>
+      <div class="dialog__wrapper">
+        <h2 class="dialog__title">{mProps.title}</h2>
+        <div class="dialog__content">{mProps.children}</div>
+        <div class="dialog__controls">
+          <TextButton
+            theme={TextButtonTheme.Primary}
+            size={TextButtonSize.Medium}
+            testId={DEFAULT_TEST_ID}
+            text={"Вернуться"}
+            handleClick={() => {
+              mProps.onCancel();
+              closeDialog();
+            }}
+          ></TextButton>
+          <Button
+            theme={ButtonTheme.Dangerous}
+            size={ButtonSize.Medium}
+            testId={DEFAULT_TEST_ID}
+            text={"Удалить"}
+            handleClick={() => {
+              mProps.onConfirm();
+              closeDialog();
+            }}
+          ></Button>
+        </div>
       </div>
     </dialog>
   );
