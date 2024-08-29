@@ -21,8 +21,8 @@ type DialogProps = {
   size: DialogSize;
   children: JSX.Element;
   theme: DialogTheme;
-  onConfirm: () => void;
-  onCancel: () => void;
+  onConfirm?: () => void;
+  onCancel?: () => void;
   isOpen: boolean;
   title: string;
 };
