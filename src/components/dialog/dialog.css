@@ -5,6 +5,8 @@
 .dialog {
     border-radius: 2.8rem;
     padding: 0;
+    border: none;
+    box-shadow: rgb(17 17 26 / 10%) 0 4px 16px 0, rgb(17 17 26 / 10%) 0 8px 24px 0, rgb(17 17 26 / 10%) 0 16px 56px 0;
 }
 
 .dialog__wrapper {
