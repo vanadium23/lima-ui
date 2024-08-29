@@ -1,0 +1,35 @@
+---
+import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
+import {
+  Dialog,
+  DialogSize,
+  DialogTheme,
+} from "../../../components/dialog/dialog.tsx";
+import { PasteContent } from "../../../components/pasteContent/pasteContent.tsx";
+import { DEFAULT_TEST_ID } from "../../../../features/testIds";
+---
+
+<StorybookPage title="Dialog">
+  <div class="demoThemeWrapper">
+    <h3
+      style="font-size: 24px; margin-bottom: 10px; text-transform: capitalize;"
+    >
+      Primary
+    </h3>
+    <div class="grid grid_1Col">
+      <span class="chead"></span>
+      <span class="chead">Default</span>
+
+      <Dialog
+        client:only="solid-js"
+        theme={DialogTheme.Primary}
+        size={DialogSize.Medium}
+        title="Заголовок"
+        testId={DEFAULT_TEST_ID}
+        isOpen="true"
+      >
+        <PasteContent />
+      </Dialog>
+    </div>
+  </div>
+</StorybookPage>
