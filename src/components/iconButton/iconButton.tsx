@@ -84,7 +84,7 @@ export const IconButton: Component<Testable<IconButtonProps>> = (props) => {
       </Show>
       <Show when={mProps.componentType === IconButtonComponentType.Link}>
         <a
-          href={mProps.link}
+          href={!mProps.isLoading && !mProps.isDisabled ? mProps.link : "#"}
           class={`iconButton iconButton_${mProps.theme} iconButton_${mProps.size}`}
           classList={{
             iconButton_disabled: mProps.isDisabled,

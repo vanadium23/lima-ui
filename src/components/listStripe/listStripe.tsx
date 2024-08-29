@@ -26,23 +26,36 @@ type ListStripeProps = {
   size: ListStripeSize;
   link: string;
   listId: string;
+  isRemoving?: boolean;
 };
 
 export const ListStripe: Component<ListStripeProps> = (props) => {
-  const mProps: Required<ListStripeProps> = mergeProps(props);
+  const mProps: Required<ListStripeProps> = mergeProps(
+    {
+      isRemoving: false,
+    },
+    props,
+  );
 
   const [isDialogOpen, setIsDialogOpen] = createSignal(false);
+
+  const [isRemoving, setIsRemoving] = createSignal(false);
 
   const openDialog = () => {
     setIsDialogOpen(true);
   };
 
-  // Функция для закрытия диалога
   const closeDialog = () => {
     setIsDialogOpen(false);
   };
 
+  function listStripeIsRemoving() {
+    return isRemoving() || mProps.isRemoving;
+  }
+
   function removeList() {
+    setIsRemoving(true);
+
     fetch(`${import.meta.env.PUBLIC_API_URL}/lists/${mProps.listId}`, {
       method: "DELETE", // или 'PUT', 'DELETE', и т.д.
     })
@@ -60,14 +73,21 @@ export const ListStripe: Component<ListStripeProps> = (props) => {
           "There has been a problem with your fetch operation:",
           error,
         );
+        setIsRemoving(false);
       });
   }
 
   return (
     <div
       class={`listStripe listStripe_${mProps.theme} listStripe_${mProps.size}`}
+      classList={{
+        listStripe_removing: listStripeIsRemoving(),
+      }}
     >
-      <a class="listStripe__link" href={mProps.link}>
+      <a
+        class="listStripe__link"
+        href={listStripeIsRemoving() ? "#" : mProps.link}
+      >
         <span class="listStripe__title" title={mProps.listTitle}>
           {mProps.listTitle}
         </span>
@@ -84,6 +104,7 @@ export const ListStripe: Component<ListStripeProps> = (props) => {
           link={mProps.editLink}
           testId={DEFAULT_TEST_ID}
           componentType={IconButtonComponentType.Link}
+          isDisabled={listStripeIsRemoving()}
         />
         <IconButton
           iconName={IconName.Trash}
@@ -92,6 +113,7 @@ export const ListStripe: Component<ListStripeProps> = (props) => {
           size={IconButtonSize.Medium}
           testId={DEFAULT_TEST_ID}
           handleClick={openDialog}
+          isLoading={listStripeIsRemoving()}
         />
       </div>
 
