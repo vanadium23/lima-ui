@@ -1,4 +1,4 @@
-import "../.astro/types.d.ts"; //GERMAN че за фигня?
+/// <reference types="astro/client" />
 export interface ImportMetaEnv {
   PUBLIC_API_URL: string;
 }
