@@ -1,0 +1,19 @@
+.pageError {
+  display: inline-flex;
+}
+
+.pageError_medium {
+  border: 0.1rem;
+  padding: var(--size-x3) var(--size-x8);
+  border-radius: var(--size-x4);
+  max-width: 50rem;
+  font-size: 1.6rem;
+  line-height: 2rem;
+}
+
+.pageError_dangerous {
+  border-style: solid;
+  font-weight: 500;
+  color: var(--text-dangerous-500);
+  background: var(--dangerous-300);
+}

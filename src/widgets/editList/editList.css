@@ -2,20 +2,7 @@
   display: flex;
   flex-direction: column;
   overflow: auto;
-  gap: var(--size-x10);
-}
-
-.editList__serverError {
-  display: inline-flex;
-  color: var(--text-dangerous-500);
-  border: 0.1rem solid var(--text-dangerous-500);
-  border-radius: var(--size-x4);
-  font-size: 1.6rem;
-  line-height: 2rem;
-  padding: var(--size-x3) var(--size-x8);
-  max-width: 50rem;
-  font-weight: 500;
-  background: var(--dangerous-300);
+  gap: var(--size-x4);
 }
 
 .editList__listHeader {
@@ -31,14 +18,24 @@
   padding: var(--size-x1);
 }
 
+.editList_error {
+  padding: 0 var(--size-x1);
+}
+
 .editList__input {
   flex-grow: 1;
   max-width: 50rem;
 }
 
+.editList__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-x9);
+}
+
 .editList__container {
   display: flex;
-  gap: var(--size-x2);
+  gap: var(--size-x6);
   flex-direction: column;
   overflow: auto;
 }
@@ -78,14 +75,6 @@
 .editList__item {
   display: flex;
   gap: var(--size-x8);
-}
-
-.editList__error {
-  font-size: 1.4rem;
-  font-weight: 500;
-  line-height: 1.8rem;
-  color: var(--text-dangerous-500);
-  min-height: 1.8rem;
 }
 
 .editList__controls {
