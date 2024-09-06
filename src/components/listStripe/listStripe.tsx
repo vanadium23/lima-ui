@@ -25,8 +25,9 @@ type ListStripeProps = {
   theme: ListStripeTheme;
   size: ListStripeSize;
   link: string;
-  listId: string;
+  defaultListId: string;
   isRemoving?: boolean;
+  onRemoveSuccess: (defaultListId: string) => void;
 };
 
 export const ListStripe: Component<ListStripeProps> = (props) => {
@@ -56,7 +57,7 @@ export const ListStripe: Component<ListStripeProps> = (props) => {
   function removeList() {
     setIsRemoving(true);
 
-    fetch(`${import.meta.env.PUBLIC_API_URL}/lists/${mProps.listId}`, {
+    fetch(`${import.meta.env.PUBLIC_API_URL}/lists/${mProps.defaultListId}`, {
       method: "DELETE", // или 'PUT', 'DELETE', и т.д.
     })
       .then((response) => {
@@ -65,8 +66,8 @@ export const ListStripe: Component<ListStripeProps> = (props) => {
         }
         return response.json();
       })
-      .then((data) => {
-        console.log(data); // обработка полученных данных
+      .then(() => {
+        mProps.onRemoveSuccess(mProps.defaultListId);
       })
       .catch((error) => {
         console.error(

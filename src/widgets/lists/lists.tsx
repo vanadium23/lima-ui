@@ -1,0 +1,91 @@
+import { type Component, For, mergeProps, Show } from "solid-js";
+import "./lists.css";
+import {
+  ListStripe,
+  ListStripeSize,
+  ListStripeTheme,
+} from "../../components/listStripe/listStripe";
+import {
+  Button,
+  ButtonComponentType,
+  ButtonSize,
+  ButtonTheme,
+} from "../../components/button/button.tsx";
+import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
+import {
+  PageError,
+  PageErrorSize,
+  PageErrorTheme,
+} from "../../components/pageError/pageError.tsx";
+import { createStore } from "solid-js/store";
+
+type ListsProps = {
+  defaultLists: Array<{ name: string; id: string; purpose: string }>;
+  listsRequestError: boolean;
+};
+
+export const Lists: Component<ListsProps> = (props) => {
+  const mProps: Required<ListsProps> = mergeProps(props);
+
+  const [store, setStore] = createStore({
+    lists: mProps.defaultLists,
+  });
+
+  function removingListInStore(listIdToRemove: string) {
+    setStore("lists", (lists) =>
+      lists.filter((item) => item.id !== listIdToRemove),
+    );
+  }
+
+  return (
+    <div slot="mainContent" class="lists">
+      <Show when={store.lists.length === 0 && !mProps.listsRequestError}>
+        <span class="lists__emptyWarning">
+          У вас еще нет сохраненных списков
+        </span>
+      </Show>
+      <Show
+        when={!mProps.listsRequestError}
+        fallback={
+          <PageError
+            size={PageErrorSize.Medium}
+            theme={PageErrorTheme.Dangerous}
+            testId={DEFAULT_TEST_ID}
+          >
+            Произошла ошибка соединения с сервером, попробуйте еще раз
+          </PageError>
+        }
+      >
+        <ul class="lists__list">
+          <For each={store.lists}>
+            {(list) => (
+              <li class="lists__item">
+                <ListStripe
+                  defaultListId={list.id}
+                  theme={ListStripeTheme.Primary}
+                  size={ListStripeSize.Medium}
+                  link={`./${list.id}`}
+                  editLink={`./${list.id}/edit`}
+                  listTitle={list.name}
+                  listPurpose={list.purpose}
+                  onRemoveSuccess={removingListInStore}
+                />
+              </li>
+            )}
+          </For>
+        </ul>
+      </Show>
+
+      <div class="lists__new">
+        <Button
+          componentType={ButtonComponentType.Link}
+          link={"/create-checklist/"}
+          text="Создать"
+          size={ButtonSize.Medium}
+          theme={ButtonTheme.Primary}
+          testId={DEFAULT_TEST_ID}
+        />
+      </div>
+    </div>
+  );
+};

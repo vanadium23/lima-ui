@@ -1,27 +1,18 @@
 ---
 import AppPage from "../../layouts/app/app.astro";
-import { DEFAULT_TEST_ID, PAGE_TITLE } from "../../../features/testIds";
+import { PAGE_TITLE } from "../../../features/testIds";
+import { Lists } from "../../widgets/lists/lists";
 import "./style.css";
-import {
-  ListStripe,
-  ListStripeSize,
-  ListStripeTheme,
-} from "../../components/listStripe/listStripe";
-import {
-  Button,
-  ButtonComponentType,
-  ButtonSize,
-  ButtonTheme,
-} from "../../components/button/button";
 
 let lists: Array<{ name: string; id: string; purpose: string }> = [];
-// let errorDescription = "";
+
+let listsRequestError = false;
 
 try {
   const response = await fetch(`${import.meta.env.PUBLIC_API_URL}/lists`);
   lists = await response.json();
 } catch (error) {
-  // errorDescription = JSON.stringify(error, null, 2);
+  listsRequestError = true;
 }
 ---
 
@@ -31,35 +22,10 @@ try {
     <div class="headerChecklist__search"></div>
   </div>
 
-  <div slot="mainContent" class="allLists">
-    <ul class="allLists__list">
-      {
-        lists.map((list) => (
-          <li class="allLists__item">
-            <ListStripe
-              client:only="solid-js"
-              listId={list.id}
-              theme={ListStripeTheme.Primary}
-              size={ListStripeSize.Medium}
-              link={`./${list.id}`}
-              editLink={`./${list.id}/edit`}
-              listTitle={list.name}
-              listPurpose={list.purpose}
-            />
-          </li>
-        ))
-      }
-      <!--<pre>{JSON.stringify(lists, null, 2)}</pre>-->
-    </ul>
-    <div class="allList__new">
-      <Button
-        componentType={ButtonComponentType.Link}
-        link={"/create-checklist/"}
-        text="Создать"
-        size={ButtonSize.Medium}
-        theme={ButtonTheme.Primary}
-        testId={DEFAULT_TEST_ID}
-      />
-    </div>
-  </div>
+  <Lists
+    client:only="solid-js"
+    defaultLists={lists}
+    slot="mainContent"
+    listsRequestError={listsRequestError}
+  />
 </AppPage>

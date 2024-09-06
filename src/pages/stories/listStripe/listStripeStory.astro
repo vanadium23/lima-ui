@@ -24,10 +24,11 @@ import {
         theme={ListStripeTheme.Primary}
         size={ListStripeSize.Medium}
         link="https://ya.ru"
-        listId="123"
+        defaultListId="123"
         listTitle="Название списка не вмещается в одну строку и это не проблема"
         listPurpose="Цель списка не вмещается в одну строку, так и было задумано и это не проблема"
         editLink="https://ya.ru"
+        onRemoveSuccess={() => {}}
       />
 
       <span class="rhead">Removing</span>
@@ -36,11 +37,12 @@ import {
         theme={ListStripeTheme.Primary}
         size={ListStripeSize.Medium}
         link="https://ya.ru"
-        listId="123"
+        defaultListId="123"
         listTitle="Название списка не вмещается в одну строку и это не проблема"
         listPurpose="Цель списка не вмещается в одну строку, так и было задумано и это не проблема"
         editLink="https://ya.ru"
         isRemoving={true}
+        onRemoveSuccess={() => {}}
       />
     </div>
   </div>
