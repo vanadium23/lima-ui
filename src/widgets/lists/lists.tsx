@@ -11,7 +11,11 @@ import {
   ButtonSize,
   ButtonTheme,
 } from "../../components/button/button.tsx";
-import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
+import {
+  CREATE_LIST_BUTTON,
+  DEFAULT_TEST_ID,
+  NO_SAVED_LISTS_MESSAGE,
+} from "../../../features/testIds.ts";
 import {
   PageError,
   PageErrorSize,
@@ -40,7 +44,7 @@ export const Lists: Component<ListsProps> = (props) => {
   return (
     <div slot="mainContent" class="lists">
       <Show when={store.lists.length === 0 && !mProps.listsRequestError}>
-        <span class="lists__emptyWarning">
+        <span class="lists__emptyWarning" data-test-id={NO_SAVED_LISTS_MESSAGE}>
           У вас еще нет сохраненных списков
         </span>
       </Show>
@@ -83,7 +87,7 @@ export const Lists: Component<ListsProps> = (props) => {
           text="Создать"
           size={ButtonSize.Medium}
           theme={ButtonTheme.Primary}
-          testId={DEFAULT_TEST_ID}
+          testId={CREATE_LIST_BUTTON}
         />
       </div>
     </div>
