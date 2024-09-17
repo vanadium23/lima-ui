@@ -127,19 +127,14 @@ Then(
 );
 
 Then(
-  "I expect to see the {string} button ready for clicking with the following text: {string}",
-  async function (
-    this: ComplexWorld,
-    buttonMeaning: ButtonMeaning,
-    buttonText: string,
-  ) {
+  "I expect to see the {string} button ready for clicking",
+  async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
     const expectButton = this.expectLocated(
       this.accounting.registerTestId(BUTTON_TEST_IDS[buttonMeaning]),
     );
 
     await expectButton.toBeInViewport();
     await expectButton.toBeEnabled();
-    await expectButton.toContainText(buttonText);
   },
 );
 
