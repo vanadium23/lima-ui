@@ -5,6 +5,7 @@
 .pageError_medium {
   border: 0.1rem;
   padding: var(--size-x3) var(--size-x8);
+  margin-left: var(--size-x1);
   border-radius: var(--size-x4);
   max-width: 50rem;
   font-size: 1.6rem;

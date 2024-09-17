@@ -216,26 +216,22 @@ export const EditList: Component<EditListProps> = (props) => {
   return (
     <form class="editList" method="post" onSubmit={prepareAndSendListData}>
       <Show when={store.error}>
-        <div class="editList__error">
-          <PageError
-            size={PageErrorSize.Medium}
-            theme={PageErrorTheme.Dangerous}
-            testId={NETWORK_ERROR}
-          >
-            Произошла ошибка соединения с сервером, попробуйте еще раз
-          </PageError>
-        </div>
+        <PageError
+          size={PageErrorSize.Medium}
+          theme={PageErrorTheme.Dangerous}
+          testId={NETWORK_ERROR}
+        >
+          Произошла ошибка соединения с сервером, попробуйте еще раз
+        </PageError>
       </Show>
       <Show when={checkItemsLimitReached()}>
-        <div class="editList__error">
-          <PageError
-            size={PageErrorSize.Medium}
-            theme={PageErrorTheme.Dangerous}
-            testId={ITEMS_LIMIT_REACHED_WARNING}
-          >
-            Вы использовали лимит в {ITEMS_LIMIT} пунктов
-          </PageError>
-        </div>
+        <PageError
+          size={PageErrorSize.Medium}
+          theme={PageErrorTheme.Dangerous}
+          testId={ITEMS_LIMIT_REACHED_WARNING}
+        >
+          Вы использовали лимит в {ITEMS_LIMIT} пунктов
+        </PageError>
       </Show>
 
       <div class="editList__wrapper">

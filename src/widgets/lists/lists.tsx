@@ -22,6 +22,7 @@ import {
   PageErrorTheme,
 } from "../../components/pageError/pageError.tsx";
 import { createStore } from "solid-js/store";
+import { LISTS_LIMIT } from "../../../configuration.ts";
 
 type ListsProps = {
   defaultLists: Array<{ name: string; id: string; purpose: string }>;
@@ -35,6 +36,10 @@ export const Lists: Component<ListsProps> = (props) => {
     lists: mProps.defaultLists,
   });
 
+  function checkListsLimitReached() {
+    return store.lists.length >= LISTS_LIMIT;
+  }
+
   function removingListInStore(listIdToRemove: string) {
     setStore("lists", (lists) =>
       lists.filter((item) => item.id !== listIdToRemove),
@@ -47,6 +52,15 @@ export const Lists: Component<ListsProps> = (props) => {
         <span class="lists__emptyWarning" data-test-id={NO_SAVED_LISTS_MESSAGE}>
           У вас еще нет сохраненных списков
         </span>
+      </Show>
+      <Show when={checkListsLimitReached()}>
+        <PageError
+          size={PageErrorSize.Medium}
+          theme={PageErrorTheme.Dangerous}
+          testId={DEFAULT_TEST_ID}
+        >
+          Вы использовали лимит в {LISTS_LIMIT} списков
+        </PageError>
       </Show>
       <Show
         when={!mProps.listsRequestError}
@@ -88,6 +102,7 @@ export const Lists: Component<ListsProps> = (props) => {
           size={ButtonSize.Medium}
           theme={ButtonTheme.Primary}
           testId={CREATE_LIST_BUTTON}
+          isDisabled={checkListsLimitReached()}
         />
       </div>
     </div>

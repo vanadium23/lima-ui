@@ -1,0 +1,4 @@
+.headerChecklist {
+    display: flex;
+    padding-left: var(--size-x1);
+}
