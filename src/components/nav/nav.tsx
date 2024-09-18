@@ -22,7 +22,7 @@ export const Nav: Component = () => {
             url="/lists/"
             theme={NavItemTheme.Primary}
             size={NavItemSize.Large}
-            text="Мои чек-листы"
+            text="Мои списки"
             icon={IconName.Home}
           />
         </li>

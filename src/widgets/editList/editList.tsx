@@ -241,7 +241,7 @@ export const EditList: Component<EditListProps> = (props) => {
               <BasicInput
                 theme={InputTheme.Secondary}
                 size={InputSize.Medium}
-                placeholder="Название чек-листа"
+                placeholder="Название списка"
                 maxLength={LIST_TITLE_INPUT_LIMIT}
                 name={EditListFormNames.ListTitle}
                 testId={LIST_TITLE_INPUT}
@@ -264,7 +264,7 @@ export const EditList: Component<EditListProps> = (props) => {
             <BasicInput
               theme={InputTheme.Primary}
               size={InputSize.Medium}
-              placeholder="Назначение чек-листа"
+              placeholder="Назначение списка"
               maxLength={LIST_PURPOSE_INPUT_LIMIT}
               name={EditListFormNames.ListPurpose}
               testId={LIST_PURPOSE_INPUT}
