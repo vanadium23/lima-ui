@@ -34,10 +34,15 @@ export const Lists: Component<ListsProps> = (props) => {
 
   const [store, setStore] = createStore({
     lists: mProps.defaultLists,
+    removeError: false,
   });
 
   function checkListsLimitReached() {
     return store.lists.length >= LISTS_LIMIT;
+  }
+
+  function setRemoveError(removeError: boolean) {
+    setStore("removeError", removeError);
   }
 
   function removingListInStore(listIdToRemove: string) {
@@ -62,6 +67,16 @@ export const Lists: Component<ListsProps> = (props) => {
           Вы использовали лимит в {LISTS_LIMIT} списков
         </PageError>
       </Show>
+      <Show when={store.removeError}>
+        <PageError
+          size={PageErrorSize.Medium}
+          theme={PageErrorTheme.Dangerous}
+          testId={DEFAULT_TEST_ID}
+        >
+          Не удалось удалить список. Попробуйте ещё раз.
+        </PageError>
+      </Show>
+
       <Show
         when={!mProps.listsRequestError}
         fallback={
@@ -86,7 +101,8 @@ export const Lists: Component<ListsProps> = (props) => {
                   editLink={`./${list.id}/edit`}
                   listTitle={list.name}
                   listPurpose={list.purpose}
-                  onRemoveSuccess={removingListInStore}
+                  staticOnRemoveSuccess={removingListInStore}
+                  staticOnRemoveError={setRemoveError}
                 />
               </li>
             )}

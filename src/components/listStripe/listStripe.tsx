@@ -27,7 +27,8 @@ type ListStripeProps = {
   link: string;
   defaultListId: string;
   isRemoving?: boolean;
-  onRemoveSuccess: (defaultListId: string) => void;
+  staticOnRemoveSuccess: (defaultListId: string) => void;
+  staticOnRemoveError: (removeError: boolean) => void;
 };
 
 export const ListStripe: Component<ListStripeProps> = (props) => {
@@ -55,7 +56,9 @@ export const ListStripe: Component<ListStripeProps> = (props) => {
   }
 
   function removeList() {
+    mProps.staticOnRemoveError(false);
     setIsRemoving(true);
+    setIsDialogOpen(false);
 
     fetch(`${import.meta.env.PUBLIC_API_URL}/lists/${mProps.defaultListId}`, {
       method: "DELETE", // или 'PUT', 'DELETE', и т.д.
@@ -67,9 +70,10 @@ export const ListStripe: Component<ListStripeProps> = (props) => {
         return response.json();
       })
       .then(() => {
-        mProps.onRemoveSuccess(mProps.defaultListId);
+        mProps.staticOnRemoveSuccess(mProps.defaultListId);
       })
       .catch((error) => {
+        mProps.staticOnRemoveError(true);
         console.error(
           "There has been a problem with your fetch operation:",
           error,
