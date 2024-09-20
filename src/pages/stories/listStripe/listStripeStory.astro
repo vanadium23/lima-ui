@@ -28,7 +28,8 @@ import {
         listTitle="Название списка не вмещается в одну строку и это не проблема"
         listPurpose="Цель списка не вмещается в одну строку, так и было задумано и это не проблема"
         editLink="https://ya.ru"
-        onRemoveSuccess={() => {}}
+        staticOnRemoveSuccess={() => {}}
+        staticOnRemoveError={() => {}}
       />
 
       <span class="rhead">Removing</span>
@@ -42,7 +43,8 @@ import {
         listPurpose="Цель списка не вмещается в одну строку, так и было задумано и это не проблема"
         editLink="https://ya.ru"
         isRemoving={true}
-        onRemoveSuccess={() => {}}
+        staticOnRemoveSuccess={() => {}}
+        staticOnRemoveError={() => {}}
       />
     </div>
   </div>
