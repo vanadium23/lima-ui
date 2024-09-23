@@ -49,3 +49,5 @@ export const buildTextAreaCounterTestId = buildInputCounterTestId;
 export const NETWORK_ERROR = "networkError";
 
 export const NO_SAVED_LISTS_MESSAGE = "noSavedListsMessage";
+
+export const LIST_STRIPE = "listStripe";

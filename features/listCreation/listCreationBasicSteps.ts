@@ -34,9 +34,10 @@ import {
   INPUT_TEST_IDS,
   type InputMeaning,
 } from "./testIds.ts";
+import { LISTS_CREATE } from "../utilities/addresses.ts";
 
 When("I open List Creation page", async function (this: ComplexWorld) {
-  await this.navigate("create-checklist");
+  await this.navigate(LISTS_CREATE);
 });
 
 Then("I expect to see sidebar", async function (this: ComplexWorld) {

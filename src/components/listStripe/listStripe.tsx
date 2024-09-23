@@ -7,7 +7,7 @@ import {
   IconButtonSize,
   IconButtonTheme,
 } from "../iconButton/iconButton.tsx";
-import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
+import { DEFAULT_TEST_ID, LIST_STRIPE } from "../../../features/testIds.ts";
 import { Dialog, DialogSize, DialogTheme } from "../dialog/dialog.tsx";
 
 export enum ListStripeTheme {
@@ -88,6 +88,8 @@ export const ListStripe: Component<ListStripeProps> = (props) => {
       classList={{
         listStripe_removing: listStripeIsRemoving(),
       }}
+      data-test-id={LIST_STRIPE}
+      data-test-sub-id={mProps.defaultListId}
     >
       <a
         class="listStripe__link"

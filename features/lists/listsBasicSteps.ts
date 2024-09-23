@@ -8,13 +8,14 @@ import {
   PRO_VERSION_BUTTON,
   SIDEBAR,
 } from "../testIds.ts";
+import { LISTS } from "../utilities/addresses.ts";
 
 When("I clear all data", async function (this: ComplexWorld) {
   await this.request("clear-database", "POST");
 });
 
 When("I open Lists page", async function (this: ComplexWorld) {
-  await this.navigate("lists");
+  await this.navigate(LISTS);
 });
 
 Then(

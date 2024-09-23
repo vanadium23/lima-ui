@@ -1,10 +1,8 @@
 Feature: Seeing the basis of Lists page
 
-  Background:
+  Scenario: Seeing no lists on freshly opened Lists page
     When I clear all data
     When I open Lists page
-
-  Scenario: Opening List Creation page
     Then I expect to see sidebar
     Then I expect to see header with the following title: "Мои списки"
     Then I expect to see the "create" button ready for clicking
