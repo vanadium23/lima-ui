@@ -83,7 +83,10 @@ When(
 
 When(
   "I expect to see the following number of list creation request: {int}",
-  async function (this: ComplexWorld, expectedListCreationRequestsNumber) {
+  async function (
+    this: ComplexWorld,
+    expectedListCreationRequestsNumber: number,
+  ) {
     expect(this.counters.listCreationRequestsNumber).toBe(
       expectedListCreationRequestsNumber,
     );

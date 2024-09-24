@@ -11,6 +11,7 @@ import {
   DIALOG_DELETE_BUTTON,
   DIALOG_RETURN_BUTTON,
 } from "../../../features/testIds.ts";
+import type { Testable } from "../utilities/testable.ts";
 
 export enum DialogTheme {
   Primary = "primary",
@@ -30,8 +31,8 @@ type DialogProps = {
   title: string;
 };
 
-export const Dialog: Component<DialogProps> = (props) => {
-  const mProps: Required<DialogProps> = mergeProps(
+export const Dialog: Component<Testable<DialogProps>> = (props) => {
+  const mProps: Testable<Required<DialogProps>> = mergeProps(
     {
       isOpen: false,
       onConfirm: () => {},
@@ -73,6 +74,7 @@ export const Dialog: Component<DialogProps> = (props) => {
       ref={(el) => (dialogRef = el)}
       onClick={closeOnBackDropClick}
       data-test-id={DIALOG}
+      data-test-sub-id={mProps.testId}
     >
       <div class="dialog__wrapper">
         <h2 class="dialog__title">{mProps.title}</h2>
@@ -81,22 +83,24 @@ export const Dialog: Component<DialogProps> = (props) => {
           <TextButton
             theme={TextButtonTheme.Primary}
             size={TextButtonSize.Medium}
-            testId={DIALOG_RETURN_BUTTON}
             text={"Вернуться"}
             handleClick={() => {
               mProps.onCancel();
               closeDialog();
             }}
+            testId={DIALOG_RETURN_BUTTON}
+            testSubId={mProps.testId}
           ></TextButton>
           <Button
             theme={ButtonTheme.Dangerous}
             size={ButtonSize.Medium}
-            testId={DIALOG_DELETE_BUTTON}
             text={"Удалить"}
             handleClick={() => {
               mProps.onConfirm();
               closeDialog();
             }}
+            testId={DIALOG_DELETE_BUTTON}
+            testSubId={mProps.testId}
           ></Button>
         </div>
       </div>

@@ -9,6 +9,7 @@ import {
   LIST_TITLE_INPUT_LIMIT,
 } from "../../configuration.ts";
 import { LIST_STRIPE } from "../testIds.ts";
+import { TEST_SUB_ID_ATTRIBUTE } from "../utilities/buildTestableSelector.ts";
 
 When("I add a list", async function (this: ComplexWorld) {
   await this.navigate(LISTS_CREATE);
@@ -47,5 +48,22 @@ Then(
     await this.page.locator("body").hover({
       position: { x: 0, y: 0 },
     });
+  },
+);
+
+Then(
+  "I expect to see the following number of list stripes: {int}",
+  async function (this: ComplexWorld, listStripesQuantity: number) {
+    const listStripes = this.locate(LIST_STRIPE);
+
+    const listsIds = (await listStripes.all()).map((listStripe) =>
+      listStripe.getAttribute(TEST_SUB_ID_ATTRIBUTE),
+    );
+
+    for (const listId of listsIds) {
+      this.accounting.registerTestIdAndSubId(LIST_STRIPE, await listId);
+    }
+
+    await this.expectLocated(LIST_STRIPE).toHaveCount(listStripesQuantity);
   },
 );

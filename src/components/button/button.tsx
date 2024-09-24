@@ -80,6 +80,7 @@ export const Button: Component<Testable<ButtonProps>> = (props) => {
             }
           }}
           data-test-id={mProps.testId}
+          data-test-sub-id={mProps.testSubId}
         >
           <Show when={mProps.isLoading}>
             <Icon name={IconName.Loading} size={loadingIconSize[mProps.size]} />
@@ -98,6 +99,7 @@ export const Button: Component<Testable<ButtonProps>> = (props) => {
           aria-disabled={mProps.isLoading}
           {...prepareARIALabel(mProps.ariaLabel)}
           data-test-id={mProps.testId}
+          data-test-sub-id={mProps.testSubId}
         >
           <Show when={mProps.isLoading}>
             <Icon name={IconName.Loading} size={loadingIconSize[mProps.size]} />

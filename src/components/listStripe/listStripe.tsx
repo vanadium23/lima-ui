@@ -113,18 +113,20 @@ export const ListStripe: Component<ListStripeProps> = (props) => {
           theme={IconButtonTheme.Primary}
           size={IconButtonSize.Medium}
           link={mProps.editLink}
-          testId={LIST_STRIPE_EDIT_BUTTON}
           componentType={IconButtonComponentType.Link}
           isDisabled={listStripeIsRemoving()}
+          testId={LIST_STRIPE_EDIT_BUTTON}
+          testSubId={mProps.defaultListId}
         />
         <IconButton
           iconName={IconName.Trash}
           ariaLabel={`Удалить список ${mProps.listTitle}`}
           theme={IconButtonTheme.Dangerous}
           size={IconButtonSize.Medium}
-          testId={LIST_STRIPE_DELETE_BUTTON}
           handleClick={openDialog}
           isLoading={listStripeIsRemoving()}
+          testId={LIST_STRIPE_DELETE_BUTTON}
+          testSubId={mProps.defaultListId}
         />
       </div>
 
@@ -135,6 +137,8 @@ export const ListStripe: Component<ListStripeProps> = (props) => {
         onCancel={closeDialog}
         isOpen={isDialogOpen()}
         title={"Удаление списка"}
+        testId={mProps.defaultListId}
+        testSubId={mProps.defaultListId}
       >
         <p>
           Список <strong>{mProps.listTitle}</strong> будет удален без
