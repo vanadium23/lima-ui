@@ -4,7 +4,7 @@ Feature: Adding items on the List Creation page
     When I open List Creation page
 
   Scenario: Adding single item input
-    Then All elements expected to be on the "List Creation" page right after opening are here
+    Then All elements expected to be on the "List Creation" page
     And I press the "add item" button
     And I hover "list title" input
     Then I expect to see second item input ready for typing with the following placeholder: "Текст пункта"

@@ -6,7 +6,6 @@ import {
   DialogTheme,
 } from "../../../components/dialog/dialog.tsx";
 import { PasteContent } from "../../../components/pasteContent/pasteContent.tsx";
-import { DEFAULT_TEST_ID } from "../../../../features/testIds";
 ---
 
 <StorybookPage title="Dialog">
@@ -25,7 +24,6 @@ import { DEFAULT_TEST_ID } from "../../../../features/testIds";
         theme={DialogTheme.Primary}
         size={DialogSize.Medium}
         title="Заголовок"
-        testId={DEFAULT_TEST_ID}
         isOpen={true}
       >
         <PasteContent />

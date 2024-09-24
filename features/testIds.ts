@@ -51,3 +51,9 @@ export const NETWORK_ERROR = "networkError";
 export const NO_SAVED_LISTS_MESSAGE = "noSavedListsMessage";
 
 export const LIST_STRIPE = "listStripe";
+export const LIST_STRIPE_EDIT_BUTTON = "listStripeEditButton";
+export const LIST_STRIPE_DELETE_BUTTON = "listStripeDeleteButton";
+
+export const DIALOG = "dialog";
+export const DIALOG_RETURN_BUTTON = "dialogReturnButton";
+export const DIALOG_DELETE_BUTTON = "dialogDeleteButton";

@@ -40,3 +40,12 @@ Then("I expect to see created list", async function (this: ComplexWorld) {
     ),
   ).toBeInViewport();
 });
+
+Then(
+  "I hover away from anything actionable",
+  async function (this: ComplexWorld) {
+    await this.page.locator("body").hover({
+      position: { x: 0, y: 0 },
+    });
+  },
+);

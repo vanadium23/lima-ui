@@ -134,7 +134,7 @@ Then(
 );
 
 Then(
-  "All elements expected to be on the {string} page right after opening are here",
+  "All elements expected to be on the {string} page",
   async function (this: ComplexWorld, pageAlias: PageAlias) {
     const testIds = this.accounting.getTestIds();
     const expectedPageIds = PAGES_TEST_IDS[pageAlias];

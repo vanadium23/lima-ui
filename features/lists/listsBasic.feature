@@ -7,5 +7,5 @@ Feature: Seeing the basis of Lists page
     Then I expect to see header with the following title: "Мои списки"
     Then I expect to see the message about lists absence
     Then I expect to see the "create" button ready for clicking
-    Then All elements expected to be on the "Lists" page right after opening are here
+    Then All elements expected to be on the "Lists" page
     Then I expect to see no other elements

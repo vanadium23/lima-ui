@@ -7,7 +7,11 @@ import {
   IconButtonSize,
   IconButtonTheme,
 } from "../iconButton/iconButton.tsx";
-import { DEFAULT_TEST_ID, LIST_STRIPE } from "../../../features/testIds.ts";
+import {
+  LIST_STRIPE,
+  LIST_STRIPE_DELETE_BUTTON,
+  LIST_STRIPE_EDIT_BUTTON,
+} from "../../../features/testIds.ts";
 import { Dialog, DialogSize, DialogTheme } from "../dialog/dialog.tsx";
 
 export enum ListStripeTheme {
@@ -109,7 +113,7 @@ export const ListStripe: Component<ListStripeProps> = (props) => {
           theme={IconButtonTheme.Primary}
           size={IconButtonSize.Medium}
           link={mProps.editLink}
-          testId={DEFAULT_TEST_ID}
+          testId={LIST_STRIPE_EDIT_BUTTON}
           componentType={IconButtonComponentType.Link}
           isDisabled={listStripeIsRemoving()}
         />
@@ -118,7 +122,7 @@ export const ListStripe: Component<ListStripeProps> = (props) => {
           ariaLabel={`Удалить список ${mProps.listTitle}`}
           theme={IconButtonTheme.Dangerous}
           size={IconButtonSize.Medium}
-          testId={DEFAULT_TEST_ID}
+          testId={LIST_STRIPE_DELETE_BUTTON}
           handleClick={openDialog}
           isLoading={listStripeIsRemoving()}
         />
@@ -127,7 +131,6 @@ export const ListStripe: Component<ListStripeProps> = (props) => {
       <Dialog
         theme={DialogTheme.Primary}
         size={DialogSize.Medium}
-        testId={DEFAULT_TEST_ID}
         onConfirm={removeList}
         onCancel={closeDialog}
         isOpen={isDialogOpen()}

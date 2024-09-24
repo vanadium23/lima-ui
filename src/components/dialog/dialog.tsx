@@ -1,6 +1,4 @@
 import { type Component, createEffect, type JSX, mergeProps } from "solid-js";
-import type { Testable } from "../utilities/testable.ts";
-import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import { Button, ButtonSize, ButtonTheme } from "../button/button.tsx";
 import "./dialog.css";
 import {
@@ -8,6 +6,11 @@ import {
   TextButtonSize,
   TextButtonTheme,
 } from "../textButton/textButton.tsx";
+import {
+  DIALOG,
+  DIALOG_DELETE_BUTTON,
+  DIALOG_RETURN_BUTTON,
+} from "../../../features/testIds.ts";
 
 export enum DialogTheme {
   Primary = "primary",
@@ -27,8 +30,8 @@ type DialogProps = {
   title: string;
 };
 
-export const Dialog: Component<Testable<DialogProps>> = (props) => {
-  const mProps: Testable<Required<DialogProps>> = mergeProps(
+export const Dialog: Component<DialogProps> = (props) => {
+  const mProps: Required<DialogProps> = mergeProps(
     {
       isOpen: false,
       onConfirm: () => {},
@@ -69,6 +72,7 @@ export const Dialog: Component<Testable<DialogProps>> = (props) => {
       aria-modal={mProps.isOpen}
       ref={(el) => (dialogRef = el)}
       onClick={closeOnBackDropClick}
+      data-test-id={DIALOG}
     >
       <div class="dialog__wrapper">
         <h2 class="dialog__title">{mProps.title}</h2>
@@ -77,7 +81,7 @@ export const Dialog: Component<Testable<DialogProps>> = (props) => {
           <TextButton
             theme={TextButtonTheme.Primary}
             size={TextButtonSize.Medium}
-            testId={DEFAULT_TEST_ID}
+            testId={DIALOG_RETURN_BUTTON}
             text={"Вернуться"}
             handleClick={() => {
               mProps.onCancel();
@@ -87,7 +91,7 @@ export const Dialog: Component<Testable<DialogProps>> = (props) => {
           <Button
             theme={ButtonTheme.Dangerous}
             size={ButtonSize.Medium}
-            testId={DEFAULT_TEST_ID}
+            testId={DIALOG_DELETE_BUTTON}
             text={"Удалить"}
             handleClick={() => {
               mProps.onConfirm();
