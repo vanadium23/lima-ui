@@ -1,17 +1,11 @@
 import { Then, When } from "@cucumber/cucumber";
 import {
   ADD_GROUP_BUTTON,
-  ADD_ITEM_BUTTON,
   buildAccordionButtonTestId,
   buildAccordionContentTestId,
-  CREATE_LIST_BUTTON,
-  IMPORT_BUTTON,
   ITEM_INPUT,
   ITEM_INPUT_CONTAINER,
   ITEMS_INPUTS,
-  LIST_PURPOSE_INPUT,
-  LIST_TITLE_INPUT,
-  NOTE_ACCORDION,
   PAGE_TITLE,
   PRO_VERSION_BUTTON,
   SIDEBAR,
@@ -20,7 +14,6 @@ import { noVerticalScroll } from "../utilities/checkScroll.ts";
 import { expect } from "@playwright/test";
 import type { ComplexWorld } from "../context/hooks.ts";
 import {
-  buildFullTestId,
   ID_SUB_ID_SEPARATOR,
   InPlaywrightExtractAllCompleteIds,
   TEST_ID_ATTRIBUTE,
@@ -35,6 +28,7 @@ import {
   type InputMeaning,
 } from "./testIds.ts";
 import { LISTS_CREATE } from "../utilities/addresses.ts";
+import { type PageAlias, PAGES_TEST_IDS } from "../utilities/testIds.ts";
 
 When("I open List Creation page", async function (this: ComplexWorld) {
   await this.navigate(LISTS_CREATE);
@@ -140,32 +134,15 @@ Then(
 );
 
 Then(
-  "All elements expected to be on the List Creation page right after opening are here",
-  async function (this: ComplexWorld) {
-    const ALL_ITEMS_OF_LIST_CREATION_PAGE_BASIS = [
-      ADD_ITEM_BUTTON,
-      CREATE_LIST_BUTTON,
-      IMPORT_BUTTON,
-      ITEMS_INPUTS,
-      buildFullTestId(ITEM_INPUT_CONTAINER, 0),
-      buildFullTestId(ITEM_INPUT, 0),
-      LIST_TITLE_INPUT,
-      LIST_PURPOSE_INPUT,
-      PAGE_TITLE,
-      SIDEBAR,
-      ADD_GROUP_BUTTON,
-      PRO_VERSION_BUTTON,
-      NOTE_ACCORDION,
-      buildAccordionButtonTestId(NOTE_ACCORDION),
-    ].sort();
+  "All elements expected to be on the {string} page right after opening are here",
+  async function (this: ComplexWorld, pageAlias: PageAlias) {
     const testIds = this.accounting.getTestIds();
+    const expectedPageIds = PAGES_TEST_IDS[pageAlias];
 
     if (testIds.length) {
-      expect(testIds).toEqual(ALL_ITEMS_OF_LIST_CREATION_PAGE_BASIS);
+      expect(testIds).toEqual(expectedPageIds);
     } else {
-      this.accounting.registerSeveralTestIds(
-        ALL_ITEMS_OF_LIST_CREATION_PAGE_BASIS,
-      );
+      this.accounting.registerSeveralTestIds(expectedPageIds);
     }
   },
 );

@@ -14,5 +14,5 @@ Feature: Seeing the basis of List Creation page
     Then I expect to see the "add item" button ready for clicking
     Then I expect to see the "import" button ready for clicking
     Then I expect to fully see the collapsed "note" accordion ready for expanding
-    Then All elements expected to be on the List Creation page right after opening are here
+    Then All elements expected to be on the "List Creation" page right after opening are here
     Then I expect to see no other elements

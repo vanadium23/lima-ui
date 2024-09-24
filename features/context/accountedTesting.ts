@@ -4,10 +4,18 @@ import type { TestId } from "../../src/components/utilities/testable.ts";
 
 interface AccountedTesting {
   testIds: SeveralTestIds;
+
   registerTestId(testId: TestId): TestId;
-  registerTestIdAndSubId(testId: TestId, testSubId: TestId | null): void;
+
+  registerTestIdAndSubId(
+    testId: TestId,
+    testSubId: TestId | null | undefined,
+  ): TestId;
+
   registerSeveralTestIds(severalTestIds: SeveralTestIds): void;
+
   getTestIds(): SeveralTestIds;
+
   clearTestIds(): void;
 }
 
@@ -21,7 +29,7 @@ export const accountedTesting: AccountedTesting = {
   },
 
   registerTestIdAndSubId(testId, testSubId) {
-    this.registerTestId(buildFullTestId(testId, testSubId ?? ""));
+    return this.registerTestId(buildFullTestId(testId, testSubId ?? ""));
   },
 
   registerSeveralTestIds(severalTestIds): void {

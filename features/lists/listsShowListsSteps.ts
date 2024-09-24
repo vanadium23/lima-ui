@@ -25,8 +25,18 @@ When("I add a list", async function (this: ComplexWorld) {
 
   await this.locateByFullId(BUTTON_TEST_IDS.create).click();
   await this.page.waitForURL(`**/${SOME_LIST}`);
+
+  this.data.createdListId =
+    (await this.page.evaluate(() =>
+      window.location.pathname.split("/").pop(),
+    )) || "";
 });
 
 Then("I expect to see created list", async function (this: ComplexWorld) {
-  this.expectLocated(LIST_STRIPE);
+  await this.expectLocated(
+    this.accounting.registerTestIdAndSubId(
+      LIST_STRIPE,
+      this.data.createdListId,
+    ),
+  ).toBeInViewport();
 });
