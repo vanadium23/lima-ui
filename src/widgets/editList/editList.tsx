@@ -40,6 +40,7 @@ import {
   PageErrorSize,
   PageErrorTheme,
 } from "../../components/pageError/pageError.tsx";
+import { createList, type ListData } from "../../services/createList.ts";
 
 type ServerItem = {
   content: string;
@@ -171,33 +172,14 @@ export const EditList: Component<EditListProps> = (props) => {
     setStore("sendingNow", status);
   }
 
-  type ListData = {
-    name: string;
-    purpose: string;
-    items: { content: string }[];
-    note: string;
-  };
-
   function sendList(data: ListData) {
     setStore("error", false);
     setSendingNow(true);
 
-    fetch(`${import.meta.env.PUBLIC_API_URL}/lists`, {
-      method: "POST", // или 'PUT', 'DELETE', и т.д.
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data), // преобразование объекта данных в JSON строку
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok " + response.statusText);
-        }
-        return response.json();
-      })
-      .then((data) => {
+    createList(data)
+      .then((list) => {
         soften(() => {
-          window.location.href = `/lists/${data.id}`; // обработка полученных данных
+          window.location.href = `/lists/${list.id}`; // обработка полученных данных
         });
       })
       .catch((error) => {

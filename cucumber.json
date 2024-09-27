@@ -4,6 +4,7 @@
       "snippetInterface": "async-await"
     },
     "paths": ["features"],
+    "requireModule": ["ts-node/register"],
     "import": ["features/**/*.ts"]
   }
 }

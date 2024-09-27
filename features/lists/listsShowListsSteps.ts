@@ -7,9 +7,11 @@ import {
   EDIT_LIST_INPUT_LIMIT,
   LIST_PURPOSE_INPUT_LIMIT,
   LIST_TITLE_INPUT_LIMIT,
+  LISTS_LIMIT,
 } from "../../configuration.ts";
 import { LIST_STRIPE } from "../testIds.ts";
 import { TEST_SUB_ID_ATTRIBUTE } from "../utilities/buildTestableSelector.ts";
+import { createList } from "../../src/services/createList.ts";
 
 When("I add a list", async function (this: ComplexWorld) {
   await this.navigate(LISTS_CREATE);
@@ -21,7 +23,9 @@ When("I add a list", async function (this: ComplexWorld) {
   ];
 
   for (const [input, limit] of inputs) {
-    await this.locateByFullId(input).fill(getStringUpToLimit(limit));
+    const inputText = getStringUpToLimit(limit);
+    this.data[input] = inputText;
+    await this.locateByFullId(input).fill(inputText);
   }
 
   await this.locateByFullId(BUTTON_TEST_IDS.create).click();
@@ -67,3 +71,13 @@ Then(
     await this.expectLocated(LIST_STRIPE).toHaveCount(listStripesQuantity);
   },
 );
+
+When("I add lists to their limit", async function (this: ComplexWorld) {
+  for (let i = 0; i < LISTS_LIMIT; i++) {
+    const listData = {
+      name: `Здесь был Максим + ${i}`,
+      items: [{ content: getStringUpToLimit(10) }],
+    };
+    await createList(listData, this.BACKEND_ADDRESS);
+  }
+});

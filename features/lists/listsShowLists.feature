@@ -20,3 +20,7 @@ Feature: Seeing the added lists on the Lists page
     Then All elements expected to be on the "Lists despite lists number" page
     Then I expect to see the following number of list stripes: 3
     Then I expect to see no other elements
+
+  @under-development
+    Scenario: Adding lists to the limit
+      When I add lists to their limit
