@@ -111,13 +111,33 @@ Then(
     buttonMeaning: ButtonMeaning,
     buttonText: string,
   ) {
-    const expectButton = this.expectLocated(
+    // Находим локатор по тестовому ID
+    const buttonLocator = this.locate(
       this.accounting.registerTestId(BUTTON_TEST_IDS[buttonMeaning]),
     );
 
-    await expectButton.toBeInViewport();
-    await expectButton.toBeDisabled();
-    await expectButton.toContainText(buttonText);
+    await expect(buttonLocator).toBeInViewport();
+
+    // Проверить, что текст внутри элемента соответствует ожидаемому
+    await expect(buttonLocator).toContainText(buttonText);
+
+    // Получить имя тега элемента
+    const tagName = await buttonLocator.evaluate((el: HTMLElement) =>
+      el.tagName.toLowerCase(),
+    );
+
+    if (tagName === "button") {
+      // Если это тег <button>, проверить, что он отключен
+      await expect(buttonLocator).toBeDisabled();
+    } else if (tagName === "a") {
+      // Если это тег <a>, проверить наличие aria-disabled="true"
+      await expect(buttonLocator).toHaveAttribute("aria-disabled", "true");
+    } else {
+      // Обработка неожиданных типов тегов
+      throw new Error(
+        `Неподдерживаемый тег элемента: <${tagName}>. Ожидался <button> или <a>.`,
+      );
+    }
   },
 );
 

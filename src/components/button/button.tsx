@@ -96,7 +96,7 @@ export const Button: Component<Testable<ButtonProps>> = (props) => {
             button_disabled: mProps.isDisabled,
             button_loading: mProps.isLoading,
           }}
-          aria-disabled={mProps.isLoading}
+          aria-disabled={mProps.isLoading || mProps.isDisabled}
           {...prepareARIALabel(mProps.ariaLabel)}
           data-test-id={mProps.testId}
           data-test-sub-id={mProps.testSubId}

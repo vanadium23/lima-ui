@@ -14,6 +14,7 @@ import {
 import {
   CREATE_LIST_BUTTON,
   DEFAULT_TEST_ID,
+  LISTS_LIMIT_REACHED_WARNING,
   NO_SAVED_LISTS_MESSAGE,
 } from "../../../features/testIds.ts";
 import {
@@ -62,7 +63,7 @@ export const Lists: Component<ListsProps> = (props) => {
         <PageError
           size={PageErrorSize.Medium}
           theme={PageErrorTheme.Dangerous}
-          testId={DEFAULT_TEST_ID}
+          testId={LISTS_LIMIT_REACHED_WARNING}
         >
           Вы использовали лимит в {LISTS_LIMIT} списков
         </PageError>
@@ -90,7 +91,7 @@ export const Lists: Component<ListsProps> = (props) => {
         }
       >
         <ul class="lists__list">
-          <For each={store.lists}>
+          <For each={store.lists.slice().reverse()}>
             {(list) => (
               <li class="lists__item">
                 <ListStripe

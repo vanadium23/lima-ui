@@ -37,8 +37,8 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
   data: Record<string, string> = {};
   counters: Record<string, number> = {};
 
-  FRONTEND_ADDRESS = "http://localhost:4321/";
-  BACKEND_ADDRESS = "http://localhost:3000/";
+  FRONTEND_ADDRESS = "http://localhost:4321";
+  BACKEND_ADDRESS = "http://localhost:3000";
 
   constructor(options: IWorldOptions<ComplexWorldParameters>) {
     super(options);
@@ -50,11 +50,11 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
   }
 
   async navigate(address: string) {
-    await this.page.goto(`${this.FRONTEND_ADDRESS}${address}`);
+    await this.page.goto(`${this.FRONTEND_ADDRESS}/${address}`);
   }
 
   async request(address: string, method: string) {
-    return fetch(`${this.BACKEND_ADDRESS}${address}`, {
+    return fetch(`${this.BACKEND_ADDRESS}/${address}`, {
       method,
     });
   }
@@ -91,7 +91,7 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
 
 setWorldConstructor(ComplexWorld);
 
-const debugging = false;
+const debugging = false; // HINT DEBUGGING
 
 BeforeAll(async function () {
   const BROWSER_OPTIONS = { headless: !debugging };

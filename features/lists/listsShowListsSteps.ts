@@ -9,7 +9,7 @@ import {
   LIST_TITLE_INPUT_LIMIT,
   LISTS_LIMIT,
 } from "../../configuration.ts";
-import { LIST_STRIPE } from "../testIds.ts";
+import { LIST_STRIPE, LISTS_LIMIT_REACHED_WARNING } from "../testIds.ts";
 import { TEST_SUB_ID_ATTRIBUTE } from "../utilities/buildTestableSelector.ts";
 import { createList } from "../../src/services/createList.ts";
 
@@ -75,9 +75,16 @@ Then(
 When("I add lists to their limit", async function (this: ComplexWorld) {
   for (let i = 0; i < LISTS_LIMIT; i++) {
     const listData = {
-      name: `Здесь был Максим + ${i}`,
+      name: `Здесь был Максим + ${i + 1}`,
       items: [{ content: getStringUpToLimit(10) }],
     };
     await createList(listData, this.BACKEND_ADDRESS);
   }
 });
+
+Then(
+  "I expect to see the warning about lists limit reached",
+  async function (this: ComplexWorld) {
+    await this.expectLocated(LISTS_LIMIT_REACHED_WARNING).toBeInViewport();
+  },
+);

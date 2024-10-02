@@ -6,7 +6,7 @@ function getStringOfLength(length: number): string {
 }
 
 export function getStringUpToLimit(limit: number): string {
-  const stringLength = Math.round(Math.random() * limit);
+  const stringLength = Math.ceil(Math.random() * limit);
 
   return getStringOfLength(stringLength);
 }
