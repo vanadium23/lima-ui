@@ -91,5 +91,5 @@ Feature: Removing items on the List Creation page
     And I hover "on limit item container" and press the "remove on limit item" button
     And I wait for "the removal pawl countdown to pass" for the following number of seconds: 5
     Then I expect not to see the warning about items inputs limit reached
-    Then I expect to see the "add item" button enabled
-    Then I expect to see the "import" button enabled
+    Then I expect to see the "add item" button "enabled" with the following text: "Добавить пункт"
+    Then I expect to see the "import" button "enabled" with the following text: "Импорт"

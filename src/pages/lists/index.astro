@@ -9,6 +9,9 @@ let lists: Array<{ name: string; id: string; purpose: string }> = [];
 let listsRequestError = false;
 
 try {
+  if (Astro.url.searchParams.get("error") === "true") {
+    throw new Error("URL param error present");
+  }
   const response = await fetch(`${import.meta.env.PUBLIC_API_URL}/lists`);
   lists = await response.json();
 } catch (error) {

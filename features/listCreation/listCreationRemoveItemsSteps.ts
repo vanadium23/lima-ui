@@ -146,16 +146,6 @@ Then(
   },
 );
 
-Then(
-  "I expect to see the {string} button enabled",
-  async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
-    const expectButton = this.expectLocated(BUTTON_TEST_IDS[buttonMeaning]);
-
-    await expectButton.toBeInViewport();
-    await expectButton.toBeEnabled();
-  },
-);
-
 When(
   "I hover {string} and press the {string} button",
   async function (

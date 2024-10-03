@@ -105,10 +105,11 @@ Then(
 );
 
 Then(
-  "I expect to see the {string} button disabled with the following text: {string}",
+  "I expect to see the {string} button {string} with the following text: {string}",
   async function (
     this: ComplexWorld,
     buttonMeaning: ButtonMeaning,
+    buttonState: string,
     buttonText: string,
   ) {
     // Находим локатор по тестовому ID
@@ -126,12 +127,29 @@ Then(
       el.tagName.toLowerCase(),
     );
 
+    let buttonDisable = null;
+
+    if (buttonState === "enabled") {
+      buttonDisable = "false";
+    } else if (buttonState === "disabled") {
+      buttonDisable = "true";
+    } else {
+      throw new Error("Ожидалось состояние disabled или enabled");
+    }
+
     if (tagName === "button") {
-      // Если это тег <button>, проверить, что он отключен
-      await expect(buttonLocator).toBeDisabled();
+      // Если это тег <button>, проверить, что он отключен или включен
+      if (buttonState === "enabled") {
+        await expect(buttonLocator).toBeEnabled();
+      } else {
+        await expect(buttonLocator).toBeDisabled();
+      }
     } else if (tagName === "a") {
-      // Если это тег <a>, проверить наличие aria-disabled="true"
-      await expect(buttonLocator).toHaveAttribute("aria-disabled", "true");
+      // Если это тег <a>, проверить наличие aria-disabled="true" aria-disabled="false"
+      await expect(buttonLocator).toHaveAttribute(
+        "aria-disabled",
+        buttonDisable,
+      );
     } else {
       // Обработка неожиданных типов тегов
       throw new Error(

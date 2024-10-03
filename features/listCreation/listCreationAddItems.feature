@@ -23,5 +23,5 @@ Feature: Adding items on the List Creation page
   Scenario: Adding items inputs to the limit
     When I add items inputs to their limit
     Then I expect to see the warning about items inputs limit reached
-    Then I expect to see the "add item" button disabled with the following text: "Добавить пункт"
-    Then I expect to see the "import" button disabled with the following text: "Импортировать"
+    Then I expect to see the "add item" button "disabled" with the following text: "Добавить пункт"
+    Then I expect to see the "import" button "disabled" with the following text: "Импортировать"

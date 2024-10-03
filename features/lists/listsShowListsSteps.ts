@@ -1,6 +1,10 @@
 import { Then, When } from "@cucumber/cucumber";
 import type { ComplexWorld } from "../context/hooks.ts";
-import { LISTS_CREATE, SOME_LIST } from "../utilities/addresses.ts";
+import {
+  LISTS_CREATE,
+  LISTS_WITH_NETWORK_ERROR,
+  SOME_LIST,
+} from "../utilities/addresses.ts";
 import { BUTTON_TEST_IDS, INPUT_TEST_IDS } from "../listCreation/testIds.ts";
 import { getStringUpToLimit } from "../utilities/getStringOfLength.ts";
 import {
@@ -86,5 +90,12 @@ Then(
   "I expect to see the warning about lists limit reached",
   async function (this: ComplexWorld) {
     await this.expectLocated(LISTS_LIMIT_REACHED_WARNING).toBeInViewport();
+  },
+);
+
+When(
+  "I open Lists page with failed lists loading",
+  async function (this: ComplexWorld) {
+    await this.navigate(LISTS_WITH_NETWORK_ERROR);
   },
 );
