@@ -33,7 +33,12 @@ import {
   LIST_TITLE_INPUT_LIMIT,
 } from "../../../configuration.ts";
 import { RemoveIconButton } from "../../components/removeIconButton/removeIconButton.tsx";
-import { Note, NoteSize, NoteTheme } from "../../components/note/note.tsx";
+import {
+  Note,
+  NoteMode,
+  NoteSize,
+  NoteTheme,
+} from "../../components/note/note.tsx";
 import { soften } from "./utilities/soften.ts";
 import {
   PageError,
@@ -262,6 +267,7 @@ export const EditList: Component<EditListProps> = (props) => {
               name={EditListFormNames.ListNote}
               isDisabled={store.sendingNow}
               defaultValue={mProps.note}
+              mode={NoteMode.Edit}
             />
           </div>
         </div>

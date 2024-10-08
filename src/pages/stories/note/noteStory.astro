@@ -1,6 +1,6 @@
 ---
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
-import {Note, NoteSize, NoteTheme} from "../../../components/note/note.tsx";
+import {Note, NoteSize, NoteTheme, NoteMode} from "../../../components/note/note.tsx";
 
 const themes = Object.values(NoteTheme);
 const sizes = Object.values(NoteSize);
@@ -10,7 +10,7 @@ const sizes = Object.values(NoteSize);
 <StorybookPage title="Note">
     {themes.map((theme) => (
       <div class="demoThemeWrapper">
-        <h3 style="font-size: 24px; margin-bottom: 10px; text-transform: capitalize;">{theme}</h3>
+        <h3 style="font-size: 24px; margin-bottom: 10px; text-transform: capitalize;">{theme} - Edit</h3>
         <div class="grid grid_2Col">
           <span class="chead"/>
           <span class="chead">Default</span>
@@ -18,12 +18,30 @@ const sizes = Object.values(NoteSize);
 
             {sizes.map((size) => (
               <span class="rhead">{size}</span>
-              <Note client:only="solid-js" theme={theme} size={size} title="Заметка" name=""/>
-              <Note client:only="solid-js" theme={theme} size={size} title="Заметка" isDisabled={true} name=""/>
+              <Note client:only="solid-js" theme={theme} size={size} title="Заметка" name="" mode={NoteMode.Edit}/>
+              <Note client:only="solid-js" theme={theme} size={size} title="Заметка" isDisabled={true} name="" mode={NoteMode.Edit}/>
             ))}
 
         </div>
       </div>
+
+    ))}
+    {themes.map((theme) => (
+            <div class="demoThemeWrapper">
+                <h3 style="font-size: 24px; margin-bottom: 10px; text-transform: capitalize;">{theme} - View</h3>
+                <div class="grid grid_2Col">
+                    <span class="chead"/>
+                    <span class="chead">Default</span>
+                    <span class="chead">Disabled</span>
+
+                    {sizes.map((size) => (
+                            <span class="rhead">{size}</span>
+                            <Note client:only="solid-js" theme={theme} size={size} title="Заметка" name="" mode={NoteMode.View} defaultValue="Здесь был Максим"/>
+                            <Note client:only="solid-js" theme={theme} size={size} title="Заметка" isDisabled={true} name="" mode={NoteMode.View} defaultValue="Здесь был Максим"/>
+                    ))}
+
+                </div>
+            </div>
 
     ))}
 </StorybookPage>

@@ -34,7 +34,7 @@ Feature: Note on the List Creation page
     And I focus "note" text area
     Then I expect to see the "note text area" counter
     Then I expect "note text area" counter to show the correct limit
-
+    
   Scenario: Seeing the correct counter remainder with some text in the note text area
     When I press on the "note" accordion
     And I focus "note" text area
