@@ -9,8 +9,9 @@ import {
 } from "../iconButton/iconButton.tsx";
 import {
   LIST_STRIPE,
-  LIST_STRIPE_DELETE_BUTTON,
   LIST_STRIPE_EDIT_BUTTON,
+  LIST_STRIPE_REMOVE_BUTTON,
+  REMOVE_LIST_DIALOG,
 } from "../../../features/testIds.ts";
 import { Dialog, DialogSize, DialogTheme } from "../dialog/dialog.tsx";
 
@@ -125,7 +126,7 @@ export const ListStripe: Component<ListStripeProps> = (props) => {
           size={IconButtonSize.Medium}
           handleClick={openDialog}
           isLoading={listStripeIsRemoving()}
-          testId={LIST_STRIPE_DELETE_BUTTON}
+          testId={LIST_STRIPE_REMOVE_BUTTON}
           testSubId={mProps.defaultListId}
         />
       </div>
@@ -137,7 +138,7 @@ export const ListStripe: Component<ListStripeProps> = (props) => {
         onCancel={closeDialog}
         isOpen={isDialogOpen()}
         title={"Удаление списка"}
-        testId={mProps.defaultListId}
+        testId={REMOVE_LIST_DIALOG}
         testSubId={mProps.defaultListId}
       >
         <p>

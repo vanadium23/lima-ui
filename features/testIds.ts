@@ -53,8 +53,8 @@ export const NO_SAVED_LISTS_MESSAGE = "noSavedListsMessage";
 
 export const LIST_STRIPE = "listStripe";
 export const LIST_STRIPE_EDIT_BUTTON = "listStripeEditButton";
-export const LIST_STRIPE_DELETE_BUTTON = "listStripeDeleteButton";
+export const LIST_STRIPE_REMOVE_BUTTON = "listStripeRemoveButton";
 
-export const DIALOG = "dialog";
+export const REMOVE_LIST_DIALOG = "removeListDialog";
 export const DIALOG_RETURN_BUTTON = "dialogReturnButton";
 export const DIALOG_DELETE_BUTTON = "dialogDeleteButton";

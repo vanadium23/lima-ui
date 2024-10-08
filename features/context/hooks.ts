@@ -16,6 +16,7 @@ import {
 } from "@playwright/test";
 import { accountedTesting } from "./accountedTesting.ts";
 import {
+  buildFullTestId,
   buildTestableSelector,
   buildTestableSubSelector,
   destructureFullTestId,
@@ -86,6 +87,10 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
 
   expectLocated(fullTestId: FullTestId) {
     return expect(this.locateByFullId(fullTestId));
+  }
+
+  expectLocatedByIdParts(testId: TestId, testSubId: TestSubId) {
+    return this.expectLocated(buildFullTestId(testId, testSubId));
   }
 }
 
