@@ -47,3 +47,15 @@ Then(
     await expectDialog.toHaveAttribute("aria-modal", "true");
   },
 );
+
+Then(
+  "I expect not to see the {string} dialog modal box",
+  async function (this: ComplexWorld, dialogMeaning: DialogMeaning) {
+    const expectDialog = this.expectLocatedByIdParts(
+      DIALOG_TEST_IDS[dialogMeaning],
+      this.data[DIALOG_TEST_SUB_IDS[dialogMeaning]] || "",
+    );
+
+    await expectDialog.not.toBeInViewport();
+  },
+);
