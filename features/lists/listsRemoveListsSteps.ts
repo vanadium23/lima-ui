@@ -59,3 +59,12 @@ Then(
     await expectDialog.not.toBeInViewport();
   },
 );
+
+When(
+  "I click outside of the {string} dialog modal box",
+  async function (this: ComplexWorld, dialogMeaning: DialogMeaning) {
+    await this.locate(DIALOG_TEST_IDS[dialogMeaning]).click({
+      position: { x: -10, y: -10 },
+    });
+  },
+);
