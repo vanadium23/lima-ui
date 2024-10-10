@@ -10,10 +10,12 @@ import {
 import {
   LIST_STRIPE,
   LIST_STRIPE_EDIT_BUTTON,
+  LIST_STRIPE_LINK_TO_VIEW,
   LIST_STRIPE_REMOVE_BUTTON,
   REMOVE_LIST_DIALOG,
 } from "../../../features/testIds.ts";
 import { Dialog, DialogSize, DialogTheme } from "../dialog/dialog.tsx";
+import { soften } from "../../widgets/editList/utilities/soften.ts";
 
 export enum ListStripeTheme {
   Primary = "primary",
@@ -75,7 +77,7 @@ export const ListStripe: Component<ListStripeProps> = (props) => {
         return response.json();
       })
       .then(() => {
-        mProps.staticOnRemoveSuccess(mProps.defaultListId);
+        soften(() => mProps.staticOnRemoveSuccess(mProps.defaultListId));
       })
       .catch((error) => {
         mProps.staticOnRemoveError(true);
@@ -96,9 +98,12 @@ export const ListStripe: Component<ListStripeProps> = (props) => {
       data-test-id={LIST_STRIPE}
       data-test-sub-id={mProps.defaultListId}
     >
+      {/* MAKSIM: Подумалось, что можно подменять сам тег <a> на какой-нибудь другой при помощи <Dynamic> во время удаления, чтобы не прыгать с #. */}
       <a
         class="listStripe__link"
         href={listStripeIsRemoving() ? "#" : mProps.link}
+        data-test-id={LIST_STRIPE_LINK_TO_VIEW}
+        data-test-sub-id={mProps.defaultListId}
       >
         <span class="listStripe__title" title={mProps.listTitle}>
           {mProps.listTitle}
@@ -107,6 +112,7 @@ export const ListStripe: Component<ListStripeProps> = (props) => {
           {mProps.listPurpose}
         </span>
       </a>
+      {/* MAKSIM: Скрываются в состоянии Loading, когда нет Hover'а. */}
       <div class="listStripe__controls">
         <IconButton
           iconName={IconName.Edit}

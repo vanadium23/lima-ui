@@ -52,9 +52,10 @@ export const NETWORK_ERROR = "networkError";
 export const NO_SAVED_LISTS_MESSAGE = "noSavedListsMessage";
 
 export const LIST_STRIPE = "listStripe";
+export const LIST_STRIPE_LINK_TO_VIEW = "listStripeLinkToView";
 export const LIST_STRIPE_EDIT_BUTTON = "listStripeEditButton";
 export const LIST_STRIPE_REMOVE_BUTTON = "listStripeRemoveButton";
 
 export const REMOVE_LIST_DIALOG = "removeListDialog";
 export const DIALOG_RETURN_BUTTON = "dialogReturnButton";
-export const DIALOG_DELETE_BUTTON = "dialogDeleteButton";
+export const DIALOG_REMOVE_BUTTON = "dialogRemoveButton";

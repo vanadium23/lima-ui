@@ -37,6 +37,7 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
   accounting = accountedTesting;
   data: Record<string, string> = {};
   counters: Record<string, number> = {};
+  listIds: TestId[] = [];
 
   FRONTEND_ADDRESS = "http://localhost:4321";
   BACKEND_ADDRESS = "http://localhost:3000";
@@ -73,6 +74,10 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
     return elementWithRequiredId.and(elementWithRequiredSubId);
   }
 
+  locateVisible(testId: TestId, testSubId?: TestSubId) {
+    return this.locate(testId, testSubId).locator("visible=true");
+  }
+
   locateByFullId(fullTestId: FullTestId) {
     const { testId, testSubId } = destructureFullTestId(fullTestId);
 
@@ -87,6 +92,10 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
 
   expectLocated(fullTestId: FullTestId) {
     return expect(this.locateByFullId(fullTestId));
+  }
+
+  expectLocatedVisible(fullTestId: FullTestId) {
+    return expect(this.locateVisible(fullTestId));
   }
 
   expectLocatedByIdParts(testId: TestId, testSubId: TestSubId) {

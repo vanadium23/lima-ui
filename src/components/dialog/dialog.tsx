@@ -7,7 +7,7 @@ import {
   TextButtonTheme,
 } from "../textButton/textButton.tsx";
 import {
-  DIALOG_DELETE_BUTTON,
+  DIALOG_REMOVE_BUTTON,
   DIALOG_RETURN_BUTTON,
 } from "../../../features/testIds.ts";
 import type { Testable } from "../utilities/testable.ts";
@@ -98,7 +98,7 @@ export const Dialog: Component<Testable<DialogProps>> = (props) => {
               mProps.onConfirm();
               closeDialog();
             }}
-            testId={DIALOG_DELETE_BUTTON}
+            testId={DIALOG_REMOVE_BUTTON}
             testSubId={mProps.testSubId ?? ""}
           ></Button>
         </div>

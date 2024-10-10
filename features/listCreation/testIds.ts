@@ -4,6 +4,7 @@ import {
   buildTextAreaCounterTestId,
   CANCEL_ITEM_REMOVAL_BUTTON,
   CREATE_LIST_BUTTON,
+  DIALOG_REMOVE_BUTTON,
   DIALOG_RETURN_BUTTON,
   IMPORT_BUTTON,
   ITEM_INPUT,
@@ -33,6 +34,7 @@ export const BUTTON_TEST_IDS = {
   "cancel third item removal": buildFullTestId(CANCEL_ITEM_REMOVAL_BUTTON, 2),
   "remove list": LIST_STRIPE_REMOVE_BUTTON,
   "cancel list removal": DIALOG_RETURN_BUTTON,
+  "confirm list removal": DIALOG_REMOVE_BUTTON,
 };
 export type ButtonMeaning = keyof typeof BUTTON_TEST_IDS;
 

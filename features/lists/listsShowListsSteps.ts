@@ -13,7 +13,12 @@ import {
   LIST_TITLE_INPUT_LIMIT,
   LISTS_LIMIT,
 } from "../../configuration.ts";
-import { LIST_STRIPE, LISTS_LIMIT_REACHED_WARNING } from "../testIds.ts";
+import {
+  DEFAULT_TEST_ID,
+  LIST_STRIPE,
+  LIST_STRIPE_LINK_TO_VIEW,
+  LISTS_LIMIT_REACHED_WARNING,
+} from "../testIds.ts";
 import { TEST_SUB_ID_ATTRIBUTE } from "../utilities/buildTestableSelector.ts";
 import { createList } from "../../src/services/createList.ts";
 
@@ -35,19 +40,24 @@ When("I add a list", async function (this: ComplexWorld) {
   await this.locateByFullId(BUTTON_TEST_IDS.create).click();
   await this.page.waitForURL(`**/${SOME_LIST}`);
 
-  this.data.createdListId =
+  this.listIds.unshift(
     (await this.page.evaluate(() =>
       window.location.pathname.split("/").pop(),
-    )) || "";
+    )) || "",
+  );
 });
 
 Then("I expect to see created list", async function (this: ComplexWorld) {
+  const createdListId = this.listIds[0] || DEFAULT_TEST_ID;
+
   await this.expectLocated(
-    this.accounting.registerTestIdAndSubId(
-      LIST_STRIPE,
-      this.data.createdListId,
-    ),
+    this.accounting.registerTestIdAndSubId(LIST_STRIPE, createdListId),
   ).toBeInViewport();
+
+  this.accounting.registerTestIdAndSubId(
+    LIST_STRIPE_LINK_TO_VIEW,
+    createdListId,
+  );
 });
 
 Then(
@@ -70,6 +80,10 @@ Then(
 
     for (const listId of listsIds) {
       this.accounting.registerTestIdAndSubId(LIST_STRIPE, await listId);
+      this.accounting.registerTestIdAndSubId(
+        LIST_STRIPE_LINK_TO_VIEW,
+        await listId,
+      );
     }
 
     await this.expectLocated(LIST_STRIPE).toHaveCount(listStripesQuantity);
