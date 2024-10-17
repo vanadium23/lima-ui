@@ -1,10 +1,6 @@
 import { Given, Then } from "@cucumber/cucumber";
 import type { ComplexWorld } from "../context/hooks.ts";
-import {
-  type ErrorMeaning,
-  ERRORS_TEST_IDS,
-  NETWORK_ERROR,
-} from "../testIds.ts";
+import { type ErrorMeaning, ERRORS_TEST_IDS } from "../testIds.ts";
 import { INPUT_TEST_IDS, type InputMeaning } from "./testIds.ts";
 
 Given("There is no internet connection", async function (this: ComplexWorld) {
@@ -25,9 +21,11 @@ Given("Data server is not available", async function (this: ComplexWorld) {
 });
 
 Then(
-  "I not expect to see the connection error",
-  async function (this: ComplexWorld) {
-    await this.expectLocated(NETWORK_ERROR).not.toBeInViewport();
+  "I expect not to see the {string} error",
+  async function (this: ComplexWorld, errorMeaning: ErrorMeaning) {
+    await this.expectLocated(
+      ERRORS_TEST_IDS[errorMeaning],
+    ).not.toBeInViewport();
   },
 );
 

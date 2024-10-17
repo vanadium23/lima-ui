@@ -80,12 +80,14 @@ export const ListStripe: Component<ListStripeProps> = (props) => {
         soften(() => mProps.staticOnRemoveSuccess(mProps.defaultListId));
       })
       .catch((error) => {
-        mProps.staticOnRemoveError(true);
-        console.error(
-          "There has been a problem with your fetch operation:",
-          error,
-        );
-        setIsRemoving(false);
+        soften(() => {
+          mProps.staticOnRemoveError(true);
+          console.error(
+            "There has been a problem with your fetch operation:",
+            error,
+          );
+          setIsRemoving(false);
+        });
       });
   }
 

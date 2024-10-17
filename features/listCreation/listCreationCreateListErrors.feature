@@ -26,7 +26,7 @@ Feature: Failing to create a new list
     And I type some text with length less or equal to the one of "first item" input limit
     And I press the "create" button
     And I press the "create" button
-    Then I not expect to see the connection error
+    Then I expect not to see the "connection" error
 
   Scenario: Sending is not allowed when list title is empty
     And I type some text with length less or equal to the one of "list purpose" input limit
