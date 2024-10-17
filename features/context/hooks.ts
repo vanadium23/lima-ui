@@ -26,6 +26,7 @@ import type {
   TestId,
   TestSubId,
 } from "../../src/components/utilities/testable.ts";
+import type { AddressMeaning } from "../utilities/addresses.ts";
 
 let browser: Browser;
 
@@ -38,6 +39,9 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
   data: Record<string, string> = {};
   counters: Record<string, number> = {};
   listIds: TestId[] = [];
+  responsesToWait: Partial<
+    Record<AddressMeaning, ReturnType<Page["waitForResponse"]>>
+  > = {};
 
   FRONTEND_ADDRESS = "http://localhost:4321";
   BACKEND_ADDRESS = "http://localhost:3000";

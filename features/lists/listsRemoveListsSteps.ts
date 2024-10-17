@@ -14,6 +14,10 @@ import {
   type ButtonMeaning,
 } from "../listCreation/testIds.ts";
 import { expect } from "@playwright/test";
+import {
+  ADDRESSES_MEANINGS,
+  type AddressMeaning,
+} from "../utilities/addresses.ts";
 
 When(
   "I hover {string} list stripe",
@@ -129,5 +133,21 @@ Then(
     await this.locateVisible(BUTTON_TEST_IDS[buttonMeaning], listId).click({
       force: true,
     });
+  },
+);
+
+When(
+  "I start waiting for the {string} request to happen",
+  async function (this: ComplexWorld, addressMeaning: AddressMeaning) {
+    this.responsesToWait[addressMeaning] = this.page.waitForResponse(
+      `**/${ADDRESSES_MEANINGS[addressMeaning].address}`,
+    );
+  },
+);
+
+When(
+  "I wait for the {string} request to happen",
+  async function (this: ComplexWorld, addressMeaning: AddressMeaning) {
+    await this.responsesToWait[addressMeaning];
   },
 );

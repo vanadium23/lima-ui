@@ -51,3 +51,14 @@ Feature: Removing the lists on the Lists page
     And I press the visible "confirm list removal" button
     And I forcefully press the "first" list stripe "remove list" button
     Then I expect not to see the "remove list" dialog modal box
+
+  Scenario: Successful list removal leads to list stripe's disappearance
+    When I add a list
+    And I add a list
+    And I open Lists page
+    And I hover "first" list stripe
+    And I press the visible "remove list" button
+    And I start waiting for the "list removal" request to happen
+    And I press the visible "confirm list removal" button
+    And I wait for the "list removal" request to happen
+    Then I expect to see the following number of list stripes: 1
