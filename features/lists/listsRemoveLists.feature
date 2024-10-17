@@ -84,3 +84,13 @@ Feature: Removing the lists on the Lists page
     And I press the visible "remove list" button
     And I press the visible "confirm list removal" button
     Then I expect not to see the "list removal" error
+
+  Scenario: Unsuccessful list removal accompanied by reaching lists limit leads to error and warning at the same time
+    When I add lists to their limit
+    And I open Lists page
+    And I hover "first" list stripe
+    And I press the visible "remove list" button
+    Given Data server is not available
+    And I press the visible "confirm list removal" button
+    Then I expect to see the "list removal" error
+    Then I expect to see the warning about lists limit reached
