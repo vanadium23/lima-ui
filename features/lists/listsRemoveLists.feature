@@ -62,3 +62,13 @@ Feature: Removing the lists on the Lists page
     And I press the visible "confirm list removal" button
     And I wait for the "list removal" request to happen
     Then I expect to see the following number of list stripes: 1
+
+  Scenario: Unsuccessful list removal leads to error message appearance
+    When I add a list
+    And I add a list
+    And I open Lists page
+    And I hover "first" list stripe
+    And I press the visible "remove list" button
+    Given Data server is not available
+    And I press the visible "confirm list removal" button
+    Then I expect to see the "list removal" error

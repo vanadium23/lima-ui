@@ -48,6 +48,13 @@ export const NOTE_TEXT_AREA = "noteTextArea";
 export const buildTextAreaCounterTestId = buildInputCounterTestId;
 
 export const NETWORK_ERROR = "networkError";
+export const LIST_REMOVAL_ERROR = "listRemovalError";
+
+export const ERRORS_TEST_IDS = {
+  connection: NETWORK_ERROR,
+  "list removal": LIST_REMOVAL_ERROR,
+};
+export type ErrorMeaning = keyof typeof ERRORS_TEST_IDS;
 
 export const NO_SAVED_LISTS_MESSAGE = "noSavedListsMessage";
 

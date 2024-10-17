@@ -29,5 +29,5 @@ Feature: Seeing the added lists on the Lists page
 
   Scenario: Lists page with lists loading error
     When I open Lists page with failed lists loading
-    Then I expect to see the connection error
+    Then I expect to see the "connection" error
     Then I expect to see the "create" button "enabled" with the following text: "Создать"

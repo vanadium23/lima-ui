@@ -13,7 +13,7 @@ import {
 } from "../../components/button/button.tsx";
 import {
   CREATE_LIST_BUTTON,
-  DEFAULT_TEST_ID,
+  LIST_REMOVAL_ERROR,
   LISTS_LIMIT_REACHED_WARNING,
   NETWORK_ERROR,
   NO_SAVED_LISTS_MESSAGE,
@@ -73,7 +73,7 @@ export const Lists: Component<ListsProps> = (props) => {
         <PageError
           size={PageErrorSize.Medium}
           theme={PageErrorTheme.Dangerous}
-          testId={DEFAULT_TEST_ID}
+          testId={LIST_REMOVAL_ERROR}
         >
           Не удалось удалить список. Попробуйте ещё раз.
         </PageError>
