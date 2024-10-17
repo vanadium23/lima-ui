@@ -8,7 +8,12 @@ import {
   LIST_STRIPE_POSITIONS,
   type ListStripePosition,
 } from "./testIds.ts";
-import { DEFAULT_TEST_ID, LIST_STRIPE } from "../testIds.ts";
+import {
+  DEFAULT_TEST_ID,
+  LIST_STRIPE,
+  type WarningMeaning,
+  WARNINGS_TEST_IDS,
+} from "../testIds.ts";
 import {
   BUTTON_TEST_IDS,
   type ButtonMeaning,
@@ -149,5 +154,14 @@ When(
   "I wait for the {string} request to happen",
   async function (this: ComplexWorld, addressMeaning: AddressMeaning) {
     await this.responsesToWait[addressMeaning];
+  },
+);
+
+Then(
+  "I expect not to see the {string} warning",
+  async function (this: ComplexWorld, warningMeaning: WarningMeaning) {
+    await this.expectLocated(
+      WARNINGS_TEST_IDS[warningMeaning],
+    ).not.toBeInViewport();
   },
 );
