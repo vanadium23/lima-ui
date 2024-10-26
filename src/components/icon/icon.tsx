@@ -3,8 +3,6 @@ import "./icon.css";
 import * as icons from "./sprite.tsx";
 import { Dynamic } from "solid-js/web";
 
-// GERMAN Слишком сложно добавлять иконки, надо в 50 мест написать название иконки
-
 export enum IconName {
   Cancel = "Cancel",
   Trash = "Trash",
@@ -13,6 +11,7 @@ export enum IconName {
   Home = "Home",
   AddGroup = "AddGroup",
   Edit = "Edit",
+  Check = "Check",
 }
 
 export enum IconSize {

@@ -138,3 +138,17 @@ export const Edit: Component<SpriteProps> = (props) => {
     </svg>
   );
 };
+
+export const Check: Component<SpriteProps> = (props) => {
+  return (
+    <svg
+      viewBox="0 0 20 20"
+      data-id="check"
+      class={`icon icon_${props.size}`}
+      aria-hidden={props.ariaHidden}
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M7.95834 15L3.20834 10.25L4.39584 9.0625L7.95834 12.625L15.6042 4.97917L16.7917 6.16667L7.95834 15Z" />
+    </svg>
+  );
+};
