@@ -1,5 +1,4 @@
-import { type Component, Show } from "solid-js";
-import { mergeProps } from "solid-js";
+import { type Component, mergeProps, Show } from "solid-js";
 import "./iconButton.css";
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
 import type { Testable } from "../utilities/testable.ts";
@@ -58,7 +57,9 @@ export const IconButton: Component<Testable<IconButtonProps>> = (props) => {
         <button
           type="button"
           onClick={() => {
-            mProps.handleClick();
+            if (!mProps.isLoading) {
+              mProps.handleClick();
+            }
           }}
           class={`iconButton iconButton_${mProps.theme} iconButton_${mProps.size}`}
           classList={{
