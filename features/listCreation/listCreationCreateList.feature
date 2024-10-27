@@ -8,7 +8,7 @@ Feature: Successfully creating list with correct data
     And I type some text with length less or equal to the one of "note" text area limit
 
   Scenario: Disabling form controls when pressing the "Create" button
-    And I type some text with length less or equal to the one of "first item" input limit
+    When I type some text with length less or equal to the one of "first item" input limit
     And I press the "create" button
     Then I expect to see the "list title" input disabled
     Then I expect to see the "list purpose" input disabled
@@ -26,17 +26,17 @@ Feature: Successfully creating list with correct data
     Then I expect all items inputs disabled
 
   Scenario: Not seeing the remove item buttons
-    And I type some text with length less or equal to the one of "first item" input limit
+    When I type some text with length less or equal to the one of "first item" input limit
     And I press the "create" button
     And I hover "first item" input
     Then I expect not to see the "remove first item" button
 
   Scenario: "Create" button triggers list creation only once
-    And I type some text with length less or equal to the one of "first item" input limit
-    And I start looking at the list creation requests
+    When I type some text with length less or equal to the one of "first item" input limit
+    And I start counting the "list creation" requests
     And I press the "create" button
     And I forcefully press the "create" button
     And I forcefully press the "create" button
     And I forcefully press the "create" button
     And I wait for "all requests to happen" for the following number of seconds: 1
-    Then I expect to see the following number of list creation request: 1
+    Then I expect to see the following number of "list creation" request: 1

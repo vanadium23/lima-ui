@@ -2,3 +2,10 @@ export const LISTS_CREATE = "create-checklist";
 export const LISTS = "lists";
 export const SOME_LIST = `${LISTS}/list-*`;
 export const LISTS_WITH_NETWORK_ERROR = `${LISTS}?error=true`;
+
+export const ADDRESSES_MEANINGS = {
+  "list creation": { address: LISTS, method: "POST" },
+  "list removal": { address: SOME_LIST, method: "DELETE" },
+};
+
+export type AddressMeaning = keyof typeof ADDRESSES_MEANINGS;

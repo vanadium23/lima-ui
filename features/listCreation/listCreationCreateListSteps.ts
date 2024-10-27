@@ -12,6 +12,10 @@ import { expect } from "@playwright/test";
 import { ITEM_INPUT } from "../testIds.ts";
 import { getStringUpToLimit } from "../utilities/getStringOfLength.ts";
 import { EDIT_LIST_INPUT_LIMIT } from "../../configuration.ts";
+import {
+  ADDRESSES_MEANINGS,
+  type AddressMeaning,
+} from "../utilities/addresses.ts";
 
 Then(
   "I expect to see the {string} accordion disabled",
@@ -69,25 +73,28 @@ Then(
 );
 
 When(
-  "I start looking at the list creation requests",
-  async function (this: ComplexWorld) {
-    this.counters.listCreationRequestsNumber = 0;
+  "I start counting the {string} requests",
+  async function (this: ComplexWorld, requestMeaning: AddressMeaning) {
+    this.counters[requestMeaning] = 0;
 
     this.page.on("request", (data) => {
-      if (data.method() === "POST" && data.url().endsWith("/lists")) {
-        this.counters.listCreationRequestsNumber++;
+      const { address, method } = ADDRESSES_MEANINGS[requestMeaning];
+
+      if (data.url().endsWith(address) && data.method() === method) {
+        this.counters[requestMeaning]++;
       }
     });
   },
 );
 
 When(
-  "I expect to see the following number of list creation request: {int}",
+  "I expect to see the following number of {string} request: {int}",
   async function (
     this: ComplexWorld,
+    requestMeaning: string,
     expectedListCreationRequestsNumber: number,
   ) {
-    expect(this.counters.listCreationRequestsNumber).toBe(
+    expect(this.counters[requestMeaning]).toBe(
       expectedListCreationRequestsNumber,
     );
   },

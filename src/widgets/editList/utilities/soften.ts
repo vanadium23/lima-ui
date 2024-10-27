@@ -1,3 +1,3 @@
-export function soften(act: () => unknown): void {
-  setTimeout(act, 500);
+export function soften(act: () => unknown, time = 500): void {
+  setTimeout(act, time);
 }

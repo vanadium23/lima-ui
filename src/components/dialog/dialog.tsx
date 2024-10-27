@@ -7,8 +7,7 @@ import {
   TextButtonTheme,
 } from "../textButton/textButton.tsx";
 import {
-  DIALOG,
-  DIALOG_DELETE_BUTTON,
+  DIALOG_REMOVE_BUTTON,
   DIALOG_RETURN_BUTTON,
 } from "../../../features/testIds.ts";
 import type { Testable } from "../utilities/testable.ts";
@@ -73,8 +72,8 @@ export const Dialog: Component<Testable<DialogProps>> = (props) => {
       aria-modal={mProps.isOpen}
       ref={(el) => (dialogRef = el)}
       onClick={closeOnBackDropClick}
-      data-test-id={DIALOG}
-      data-test-sub-id={mProps.testId}
+      data-test-id={mProps.testId}
+      data-test-sub-id={mProps.testSubId}
     >
       <div class="dialog__wrapper">
         <h2 class="dialog__title">{mProps.title}</h2>
@@ -89,7 +88,7 @@ export const Dialog: Component<Testable<DialogProps>> = (props) => {
               closeDialog();
             }}
             testId={DIALOG_RETURN_BUTTON}
-            testSubId={mProps.testId}
+            testSubId={mProps.testSubId ?? ""}
           ></TextButton>
           <Button
             theme={ButtonTheme.Dangerous}
@@ -99,8 +98,8 @@ export const Dialog: Component<Testable<DialogProps>> = (props) => {
               mProps.onConfirm();
               closeDialog();
             }}
-            testId={DIALOG_DELETE_BUTTON}
-            testSubId={mProps.testId}
+            testId={DIALOG_REMOVE_BUTTON}
+            testSubId={mProps.testSubId ?? ""}
           ></Button>
         </div>
       </div>
