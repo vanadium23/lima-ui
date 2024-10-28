@@ -1,0 +1,84 @@
+---
+import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
+import {
+  ListItemInput,
+  ListItemInputTheme,
+  ListItemInputSize,
+} from "../../../components/listItemInput/listItemInput.tsx";
+import { DEFAULT_TEST_ID } from "../../../../features/testIds";
+
+const themes = Object.values(ListItemInputTheme);
+const sizes = Object.values(ListItemInputSize);
+
+const PLACEHOLDER_TEXT = "Enter text...";
+---
+
+<StorybookPage title="List Item Input">
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 style="font-size: 24px; margin-bottom: 10px; text-transform: capitalize;">
+          {theme}
+        </h3>
+        <div class="grid grid_4Col">
+          <span class="chead" />
+          <span class="chead">Default</span>
+          <span class="chead">Error</span>
+          <span class="chead">Disabled</span>
+          <span class="chead">Disabled Typed</span>
+
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+
+              <ListItemInput
+                client:only="solid-js"
+                theme={theme}
+                size={size}
+                placeholder={PLACEHOLDER_TEXT}
+                maxLength={200}
+                isRequired={true}
+                name="Some-text"
+                testId={DEFAULT_TEST_ID}
+              />
+              <ListItemInput
+                client:only="solid-js"
+                theme={theme}
+                size={size}
+                isError={true}
+                placeholder={PLACEHOLDER_TEXT}
+                maxLength={200}
+                name="Some-text"
+                isRequired={true}
+                testId={DEFAULT_TEST_ID}
+              />
+              <ListItemInput
+                client:only="solid-js"
+                theme={theme}
+                size={size}
+                placeholder={PLACEHOLDER_TEXT}
+                maxLength={200}
+                name="Some-text"
+                isRequired={true}
+                testId={DEFAULT_TEST_ID}
+                isDisabled={true}
+              />
+              <ListItemInput
+                client:only="solid-js"
+                theme={theme}
+                size={size}
+                placeholder={PLACEHOLDER_TEXT}
+                maxLength={200}
+                name="Some-text"
+                isRequired={true}
+                defaultValue={"Text"}
+                testId={DEFAULT_TEST_ID}
+                isDisabled={true}
+              />
+            </>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+</StorybookPage>
