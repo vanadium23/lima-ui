@@ -32,7 +32,6 @@
   cursor: pointer;
   border-width: 0.1rem;
   border-style: solid;
-  appearance: none;
 }
 
 .checkbox_disabled .checkbox__inner {
@@ -54,7 +53,7 @@
 }
 
 .checkbox_primary:active:not(.checkbox_disabled) .checkbox__inner {
-  border-color: var(--neutral-700);
+  border-color: var(--neutral-800);
 }
 
 .checkbox_primary .checkbox__icon {
@@ -73,7 +72,7 @@
   visibility: visible;
 }
 
-.checkbox__input:focus:not(:focus-visible) + .checkbox__inner {
+.checkbox__input:focus:not(:focus-visible) {
   outline: none;
 }
 
