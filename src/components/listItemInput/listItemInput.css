@@ -8,10 +8,8 @@
 }
 
 .listItemInput__inner {
-  display: flex;
   flex-grow: 1;
   background: transparent;
-  width: 100%;
   border: none;
   resize: none;
   overflow-y: hidden;

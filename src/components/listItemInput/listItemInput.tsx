@@ -47,7 +47,7 @@ export const ListItemInput: Component<Testable<ListItemInputProps>> = (
   const [getCounter, setCounter] = createSignal(mProps.defaultValue.length);
 
   const autoGrow = (element: HTMLTextAreaElement) => {
-    element.style.height = "auto";
+    element.style.height = "auto"; // Если удалить многострочный текст, то без этой строки не уменьшается высота textarea
     element.style.height = `${element.scrollHeight}px`;
   };
 
