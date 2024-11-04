@@ -1,4 +1,4 @@
-import { type Component, mergeProps, Show } from "solid-js";
+import { type Component, mergeProps } from "solid-js";
 import "./note.css";
 import {
   Accordion,
@@ -23,11 +23,6 @@ export enum NoteSize {
   Large = "large",
 }
 
-export enum NoteMode {
-  Edit = "edit",
-  View = "view",
-}
-
 type NoteProps = {
   theme: NoteTheme;
   isDisabled?: boolean;
@@ -35,7 +30,6 @@ type NoteProps = {
   title: string;
   name: string;
   defaultValue?: string;
-  mode: NoteMode;
 };
 
 export const Note: Component<NoteProps> = (props) => {
@@ -69,25 +63,16 @@ export const Note: Component<NoteProps> = (props) => {
       isDisabled={mProps.isDisabled}
       testId={NOTE_ACCORDION}
     >
-      <Show
-        when={mProps.mode === NoteMode.View}
-        fallback={
-          <Textarea
-            theme={TextareaTheme.Secondary}
-            size={textareaSize[mProps.size]}
-            placeholder={"Дополнительная информация о списке"}
-            name={mProps.name}
-            maxLength={NOTE_TEXT_AREA_LIMIT}
-            isDisabled={mProps.isDisabled}
-            testId={NOTE_TEXT_AREA}
-            defaultValue={mProps.defaultValue}
-          />
-        }
-      >
-        <span class={`note note_${mProps.theme} note_${mProps.size}`}>
-          {mProps.defaultValue}
-        </span>
-      </Show>
+      <Textarea
+        theme={TextareaTheme.Secondary}
+        size={textareaSize[mProps.size]}
+        placeholder={"Дополнительная информация о списке"}
+        name={mProps.name}
+        maxLength={NOTE_TEXT_AREA_LIMIT}
+        isDisabled={mProps.isDisabled}
+        testId={NOTE_TEXT_AREA}
+        defaultValue={mProps.defaultValue}
+      />
     </Accordion>
   );
 };
