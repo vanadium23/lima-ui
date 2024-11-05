@@ -9,8 +9,6 @@ import { DEFAULT_TEST_ID } from "../../../../features/testIds";
 
 const themes = Object.values(ListItemInputTheme);
 const sizes = Object.values(ListItemInputSize);
-
-const PLACEHOLDER_TEXT = "Enter text...";
 ---
 
 <StorybookPage title="List Item Input">
@@ -35,7 +33,6 @@ const PLACEHOLDER_TEXT = "Enter text...";
                 client:only="solid-js"
                 theme={theme}
                 size={size}
-                placeholder={PLACEHOLDER_TEXT}
                 maxLength={200}
                 isRequired={true}
                 name="Some-text"
@@ -46,7 +43,6 @@ const PLACEHOLDER_TEXT = "Enter text...";
                 theme={theme}
                 size={size}
                 isError={true}
-                placeholder={PLACEHOLDER_TEXT}
                 maxLength={200}
                 name="Some-text"
                 isRequired={true}
@@ -56,7 +52,6 @@ const PLACEHOLDER_TEXT = "Enter text...";
                 client:only="solid-js"
                 theme={theme}
                 size={size}
-                placeholder={PLACEHOLDER_TEXT}
                 maxLength={200}
                 name="Some-text"
                 isRequired={true}
@@ -67,7 +62,6 @@ const PLACEHOLDER_TEXT = "Enter text...";
                 client:only="solid-js"
                 theme={theme}
                 size={size}
-                placeholder={PLACEHOLDER_TEXT}
                 maxLength={200}
                 name="Some-text"
                 isRequired={true}

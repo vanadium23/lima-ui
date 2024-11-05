@@ -20,7 +20,7 @@ type CheckboxProps = {
   theme: CheckboxTheme;
   size: CheckboxSize;
   handleClick?: () => void;
-  checked?: boolean;
+  isChecked?: boolean;
 };
 
 export const Checkbox: Component<Testable<CheckboxProps>> = (props) => {
@@ -29,7 +29,7 @@ export const Checkbox: Component<Testable<CheckboxProps>> = (props) => {
       isDisabled: false,
       ariaLabel: "",
       handleClick: () => {},
-      checked: false,
+      isChecked: false,
     },
     props,
   );
@@ -52,7 +52,7 @@ export const Checkbox: Component<Testable<CheckboxProps>> = (props) => {
         type="checkbox"
         class="checkbox__input"
         disabled={mProps.isDisabled}
-        checked={mProps.checked}
+        checked={mProps.isChecked}
         onClick={() => {
           mProps.handleClick();
         }}

@@ -20,7 +20,6 @@ type ListItemInputProps = {
   size: ListItemInputSize;
   isError?: boolean;
   isDisabled?: boolean;
-  placeholder: string;
   name: string;
   maxLength: number;
   isRequired?: boolean;
@@ -64,7 +63,7 @@ export const ListItemInput: Component<Testable<ListItemInputProps>> = (
         class="listItemInput__inner"
         disabled={mProps.isDisabled}
         maxlength={mProps.maxLength}
-        placeholder={mProps.placeholder}
+        placeholder={"Введите пункт"}
         required={mProps.isRequired}
         value={mProps.defaultValue}
         data-test-id={mProps.testId}
