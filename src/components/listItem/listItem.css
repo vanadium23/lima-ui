@@ -1,0 +1,30 @@
+.listItem {
+  display: flex;
+}
+
+.listItem_medium {
+  padding: var(--size-x1);
+  gap: var(--size-x1);
+}
+
+.listItem__controls {
+  display: flex;
+  gap: var(--size-x1);
+  align-items: center;
+  opacity: 0;
+}
+
+.listItem__checkbox {
+  display: flex;
+  padding: var(--size-x3) var(--size-x4) var(--size-x3) var(--size-x3);
+}
+
+.listItem__inner {
+  display: flex;
+  gap: var(--size-x1);
+}
+
+.listItem__inner:hover .listItem__controls,
+.listItem__inner:focus-within .listItem__controls {
+  opacity: 100;
+}
