@@ -58,6 +58,7 @@ export const Checkbox: Component<Testable<CheckboxProps>> = (props) => {
         }}
         {...prepareARIALabel(mProps.ariaLabel)}
       />
+
       <span class="checkbox__inner">
         <span class="checkbox__icon">
           <Icon name={IconName.Check} size={loadingIconSize[mProps.size]} />

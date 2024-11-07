@@ -39,6 +39,10 @@
   gap: var(--size-x2);
 }
 
+.listItemInput__counter {
+  min-width: 3.3rem;
+}
+
 .listItemInput_medium {
   padding: var(--size-x3) var(--size-x3) var(--size-x3) var(--size-x8);
 }
@@ -56,6 +60,8 @@
 
 .listItemInput_primary .listItemInput__inner::placeholder {
   color: var(--text-neutral-500);
+  white-space: nowrap;
+  overflow-x: hidden;
 }
 
 .listItemInput_primary:focus-within {

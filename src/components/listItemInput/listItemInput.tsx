@@ -75,13 +75,15 @@ export const ListItemInput: Component<Testable<ListItemInputProps>> = (
         }}
       />
       <div class="listItemInput__controls">
-        <CharCounter
-          theme={CharCounterTheme.Primary}
-          size={charCounterSize[mProps.size]}
-          value={mProps.maxLength - getCounter()}
-          testId={mProps.testId}
-          testSubId={mProps.testSubId ?? ""}
-        />
+        <div class="listItemInput__counter">
+          <CharCounter
+            theme={CharCounterTheme.Primary}
+            size={charCounterSize[mProps.size]}
+            value={mProps.maxLength - getCounter()}
+            testId={mProps.testId}
+            testSubId={mProps.testSubId ?? ""}
+          />
+        </div>
       </div>
     </div>
   );
