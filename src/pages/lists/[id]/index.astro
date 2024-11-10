@@ -42,6 +42,15 @@ const list: List = await response.json();
       text="Редактировать"
       testId={DEFAULT_TEST_ID}
     />
+    <Button
+      componentType={ButtonComponentType.Link}
+      link={`./${list.id}/print`}
+      theme={ButtonTheme.Primary}
+      size={ButtonSize.Medium}
+      text="Печать"
+      testId={DEFAULT_TEST_ID}
+      openInNewTab={true}
+    />
     {
       list.items.map((item) => (
         <li>

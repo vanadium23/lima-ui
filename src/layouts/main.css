@@ -80,5 +80,5 @@ input,
 button,
 textarea {
   appearance: none;
-  padding: 0; /* TODO Изучить почему бы нам не использовать reset.css вместо normalize.css */
+  padding: 0;
 }

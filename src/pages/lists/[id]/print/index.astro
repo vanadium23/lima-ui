@@ -1,0 +1,79 @@
+---
+import "./style.css";
+import "normalize.css";
+
+const response = await fetch(
+  `${import.meta.env.PUBLIC_API_URL}/lists/${Astro.params.id}`,
+);
+
+type Item = {
+  content: string;
+};
+
+export type List = {
+  name: string;
+  id: string;
+  items: Item[];
+  purpose: string;
+  note: string;
+};
+
+const list: List = await response.json();
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="#ffffff" name="msapplication-TileColor" />
+    <meta
+      content="img/favicon/ms-icon-144x144.png"
+      name="msapplication-TileImage"
+    />
+    <meta content="#ffffff" name="theme-color" />
+    <title>Svernik APP</title>
+  </head>
+  <body>
+    <div class="print print_checklist">
+      <div class="print__header">
+        <div class="print__headerInner">
+          <span class="print__headerTitle">{list.name}</span>
+          {
+            list.purpose && (
+              <span class="print__headerPurpose">{list.purpose}</span>
+            )
+          }
+        </div>
+        <div class="print__logo">Лого</div>
+      </div>
+      <div class="print__mainContent">
+        {
+          list.note && (
+            <div class="print__note">
+              <div class="print_noteTitle">Заметка:</div>
+              <div class="print_noteText">{list.note}</div>
+            </div>
+          )
+        }
+
+        <ul class="print__list">
+          {
+            list.items.map((item) => (
+              <li class="print__item print_itemChecked">{item.content}</li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <!--<pre>{JSON.stringify(list, null, 2)}</pre>-->
+
+    <script>
+      // Ожидание полной загрузки страницы и вызов печати
+      window.addEventListener("load", () => {
+        window.print();
+      });
+    </script>
+  </body>
+</html>
