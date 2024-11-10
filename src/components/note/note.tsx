@@ -27,15 +27,16 @@ type NoteProps = {
   theme: NoteTheme;
   isDisabled?: boolean;
   size: NoteSize;
-  title: string;
-  name: string;
+  title?: string;
+  name?: string;
   defaultValue?: string;
 };
 
 export const Note: Component<NoteProps> = (props) => {
   const mProps: Required<NoteProps> = mergeProps(
     {
-      title: "Note",
+      title: "Заметка",
+      name: "Note",
       isDisabled: false,
       isLoading: false,
       defaultValue: "",

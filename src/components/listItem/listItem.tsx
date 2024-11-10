@@ -125,7 +125,7 @@ export const ListItem: Component<ListItemProps> = (props) => {
           theme={ListItemInputTheme.Primary}
           size={ListItemInputSize.Medium}
           maxLength={EDIT_LIST_INPUT_LIMIT}
-          name={"ололо"}
+          name={mProps.defaultListItemId}
           testId={DEFAULT_TEST_ID}
           isDisabled={mProps.isDisabled}
           defaultValue={mProps.defaultValue}

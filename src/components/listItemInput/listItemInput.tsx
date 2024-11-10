@@ -65,7 +65,6 @@ export const ListItemInput: Component<Testable<ListItemInputProps>> = (
         maxlength={mProps.maxLength}
         placeholder={"Введите пункт"}
         required={mProps.isRequired}
-        value={mProps.defaultValue}
         data-test-id={mProps.testId}
         data-test-sub-id={mProps.testSubId}
         rows={1}
@@ -73,7 +72,9 @@ export const ListItemInput: Component<Testable<ListItemInputProps>> = (
           setCounter(event.target.value.length);
           autoGrow(event.target as HTMLTextAreaElement);
         }}
-      />
+      >
+        {mProps.defaultValue}
+      </textarea>
       <div class="listItemInput__controls">
         <div class="listItemInput__counter">
           <CharCounter

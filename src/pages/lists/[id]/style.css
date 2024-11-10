@@ -1,0 +1,29 @@
+.listPage {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--size-x4);
+}
+
+.listPage__list {
+    padding: var(--size-x3) var(--size-x1);
+    margin: 0;
+    list-style: none;
+}
+
+.listPage__title {
+    color: var(--text-neutral-900);
+    margin: 0;
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 2.1rem;
+}
+
+.listPage__purpose {
+    color: var(--text-neutral-900);
+    font-size: 1.6rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 2.1rem;
+}

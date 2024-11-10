@@ -58,10 +58,11 @@ export const Textarea: Component<Testable<TextareaProps>> = (props) => {
         maxlength={mProps.maxLength}
         placeholder={mProps.placeholder}
         required={mProps.isRequired}
-        value={mProps.defaultValue}
         onInput={(event) => setCounter(event.target.value.length)}
         data-test-id={mProps.testId}
-      />
+      >
+        {mProps.defaultValue}
+      </textarea>
       <div class="textarea__controls">
         <CharCounter
           theme={CharCounterTheme.Primary}
