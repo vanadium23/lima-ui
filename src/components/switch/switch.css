@@ -1,0 +1,117 @@
+.switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.6rem;
+  cursor: pointer;
+}
+
+.switch:active:not(.switch_disabled) {
+  transform: translateY(0.1rem);
+}
+
+.switch_disabled {
+  cursor: not-allowed;
+}
+
+.switch__input:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.switch_medium .switch__inner {
+  position: relative;
+  width: 4.4rem;
+  height: 2.2rem;
+}
+
+.switch_medium .switch__inner::before {
+  content: "";
+  position: absolute;
+  top: var(--size-x1);
+  left: var(--size-x1);
+  display: block;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 100%;
+  transition: all 0.2s ease;
+}
+
+.switch_medium .switch__text {
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 2rem;
+  color: var(--text-neutral-800);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.switch_primary .switch__inner {
+  background: var(--neutral-400);
+  border-radius: 4.4rem;
+  cursor: pointer;
+}
+
+.switch_primary.switch_disabled .switch__text {
+  color: var(--text-neutral-500);
+}
+
+.switch_primary:hover:not(.switch_disabled) .switch__text {
+  color: var(--text-neutral-700);
+}
+
+.switch_primary:active:not(.switch_disabled) .switch__text {
+  color: var(--text-neutral-900);
+}
+
+.switch_disabled .switch__inner {
+  cursor: not-allowed;
+}
+
+.switch__input:focus-visible + .switch__inner {
+  outline: var(--outline-set);
+  outline-offset: var(--outline-offset);
+}
+
+.switch_primary .switch__inner::before {
+  background: var(--neutral-100);
+}
+
+.switch_primary.switch_disabled .switch__inner {
+  background: var(--neutral-300);
+}
+
+.switch_primary.switch_disabled .switch__inner::before {
+  background: var(--neutral-200);
+}
+
+.switch_primary .switch__input:checked + .switch__inner {
+  background: var(--primary-500);
+}
+
+.switch_primary:hover:not(.switch_disabled) .switch__inner {
+  background: var(--neutral-300);
+}
+
+.switch_primary:active:not(.switch_disabled) .switch__inner {
+  background: var(--neutral-500);
+}
+
+.switch_primary.switch_disabled  .switch__input:checked + .switch__inner {
+  background: var(--primary-300);
+}
+
+.switch_primary:hover:not(.switch_disabled) .switch__input:checked + .switch__inner {
+  background: var(--primary-400);
+}
+
+.switch_primary:active:not(.switch_disabled) .switch__input:checked + .switch__inner {
+  background: var(--primary-600);
+}
+
+.switch__input:checked + .switch__inner::before {
+  left: calc(100% - var(--size-x1));
+  transform: translateX(-100%);
+}
+
+
+
+
