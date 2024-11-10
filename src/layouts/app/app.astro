@@ -4,6 +4,7 @@ import "../main.css";
 import "./app.css";
 import { SIDEBAR } from "../../../features/testIds";
 import { Sidebar } from "../../organisms/sidebar/sidebar";
+import { Header } from "../../organisms/header/header";
 ---
 
 <!doctype html>
@@ -20,7 +21,7 @@ import { Sidebar } from "../../organisms/sidebar/sidebar";
     <title>Svernik APP</title>
   </head>
   <body>
-    <header></header>
+    <Header />
 
     <div class="appContainer">
       <aside data-test-id={SIDEBAR}>

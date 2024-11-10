@@ -1,4 +1,4 @@
-import { type Component, createSignal, mergeProps } from "solid-js";
+import { type Component, createSignal, mergeProps, Show } from "solid-js";
 import "./basicInput.css";
 import type { Testable } from "../utilities/testable.ts";
 import {
@@ -40,6 +40,7 @@ type InputProps = {
   type?: InputType;
   defaultValue?: string;
   autocomplete?: AutocompleteType; //TODO - Подумать Герману как это сделать получше (может Union type)
+  isCountable?: boolean;
 };
 
 export const BasicInput: Component<Testable<InputProps>> = (props) => {
@@ -51,6 +52,7 @@ export const BasicInput: Component<Testable<InputProps>> = (props) => {
       isRequired: false,
       type: InputType.Text,
       defaultValue: "",
+      isCountable: true,
     },
     props,
   );
@@ -86,13 +88,15 @@ export const BasicInput: Component<Testable<InputProps>> = (props) => {
         autocomplete={mProps.autocomplete}
       />
       <div class="input__controls">
-        <CharCounter
-          theme={CharCounterTheme.Primary}
-          size={charCounterSize[mProps.size]}
-          value={mProps.maxLength - getCounter()}
-          testId={mProps.testId}
-          testSubId={mProps.testSubId ?? ""}
-        />
+        <Show when={mProps.isCountable}>
+          <CharCounter
+            theme={CharCounterTheme.Primary}
+            size={charCounterSize[mProps.size]}
+            value={mProps.maxLength - getCounter()}
+            testId={mProps.testId}
+            testSubId={mProps.testSubId ?? ""}
+          />
+        </Show>
       </div>
     </div>
   );

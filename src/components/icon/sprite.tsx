@@ -152,3 +152,30 @@ export const Check: Component<SpriteProps> = (props) => {
     </svg>
   );
 };
+
+export const Search: Component<SpriteProps> = (props) => {
+  return (
+    <svg
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      data-id="search"
+      class={`icon icon_${props.size}`}
+      aria-hidden={props.ariaHidden}
+    >
+      <circle
+        cx="9.16666"
+        cy="9.16666"
+        r="5.83333"
+        stroke="white"
+        stroke-width="2"
+      />
+      <path
+        d="M16.6667 16.6667L14.1667 14.1667"
+        stroke="white"
+        stroke-width="2"
+        stroke-linecap="round"
+      />
+    </svg>
+  );
+};

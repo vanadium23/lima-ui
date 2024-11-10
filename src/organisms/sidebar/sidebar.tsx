@@ -17,13 +17,11 @@ import {
   IconButtonSize,
   IconButtonTheme,
 } from "../../components/iconButton/iconButton.tsx";
-import { Logo } from "../../components/logo/logo.tsx";
 
 export const Sidebar: Component = () => {
   return (
     <div class="sidebar">
       <div class="sidebar__top">
-        <Logo />
         <Nav />
       </div>
       <div class="sidebar__bottom">

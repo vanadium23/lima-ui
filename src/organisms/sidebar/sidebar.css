@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   background: var(--neutral-150);
-  height: 100vh;
+  min-height: 100%;
   width: 27.6rem;
   padding: var(--size-x10) 0;
 }

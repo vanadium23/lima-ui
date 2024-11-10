@@ -1,11 +1,15 @@
 .appContainer {
   display: flex;
+  height: calc(100vh - 4.6rem);
+}
+
+body {
+  height: 100vh;
 }
 
 .main {
   display: flex;
   flex-direction: column;
-  height: 100vh;
   flex-grow: 1;
   padding: var(--size-x12) var(--size-x20);
 }

@@ -12,6 +12,7 @@ export enum IconName {
   AddGroup = "AddGroup",
   Edit = "Edit",
   Check = "Check",
+  Search = "Search",
 }
 
 export enum IconSize {

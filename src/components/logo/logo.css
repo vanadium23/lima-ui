@@ -1,11 +1,10 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: var(--size-x4);
-  padding: var(--size-x1) var(--size-x10);
-  color: var(--text-neutral-900);
-  font-size: 2.4rem;
-  font-weight: 800;
-  line-height: 3rem;
+  gap: var(--size-x2);
+  color: var(--text-neutral-100);
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 2.2rem;
   text-decoration: none;
 }
