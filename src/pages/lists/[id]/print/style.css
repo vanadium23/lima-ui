@@ -26,7 +26,7 @@ body {
     width: 100%;
     flex-direction: column;
     gap: 5px;
-    padding: 10px 0;
+    padding: 10px 0 15px;
 }
 
 .print__headerTitle {

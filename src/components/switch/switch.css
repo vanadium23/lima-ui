@@ -46,7 +46,7 @@
 
 .switch_primary .switch__inner {
   background: var(--neutral-400);
-  border-radius: 4.4rem;
+  border-radius: 2.2rem;
   cursor: pointer;
 }
 
