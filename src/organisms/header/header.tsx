@@ -12,6 +12,12 @@ import {
   IconButtonSize,
   IconButtonTheme,
 } from "../../components/iconButton/iconButton.tsx";
+import {
+  ToggleIconButton,
+  ToggleIconButtonSize,
+  ToggleIconButtonTheme,
+} from "../../components/toggleIconButton/toggleIconButton.tsx";
+
 import { IconName } from "../../components/icon/icon.tsx";
 
 export const Header: Component = () => {
@@ -29,23 +35,23 @@ export const Header: Component = () => {
           maxLength={80}
           testId={DEFAULT_TEST_ID}
           isCountable={false}
-        ></BasicInput>
+        />
         <IconButton
           iconName={IconName.Search}
           ariaLabel={"Начать поиск"}
           testId={DEFAULT_TEST_ID}
           size={IconButtonSize.Medium}
           theme={IconButtonTheme.Primary}
-        ></IconButton>
+        />
       </div>
       <div class="header__controls">
-        <IconButton
+        <ToggleIconButton
           iconName={IconName.Trash}
           ariaLabel={"Переключить панель инструментов"}
           testId={DEFAULT_TEST_ID}
-          size={IconButtonSize.Medium}
-          theme={IconButtonTheme.Primary}
-        ></IconButton>
+          size={ToggleIconButtonSize.Medium}
+          theme={ToggleIconButtonTheme.Secondary}
+        />
       </div>
     </header>
   );

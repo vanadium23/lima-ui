@@ -1,0 +1,52 @@
+---
+import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
+import {
+  ToggleIconButton,
+  ToggleIconButtonTheme,
+  ToggleIconButtonSize,
+} from "../../../components/toggleIconButton/toggleIconButton.tsx";
+import {IconName} from "../../../components/icon/icon.tsx";
+import {DEFAULT_TEST_ID} from "../../../../features/testIds";
+
+const themes = Object.values(ToggleIconButtonTheme);
+const sizes = Object.values(ToggleIconButtonSize);
+---
+
+<StorybookPage title="Toggle Icon Button">
+
+  {themes.map((theme) => (
+          <div class="demoThemeWrapper">
+              <h3 style="font-size: 24px; margin-bottom: 10px;">{theme}</h3>
+              <div class="grid grid_2Col">
+                  <span class="chead"></span>
+                  <span class="chead">Default</span>
+                  <span class="chead">Disabled</span>
+
+                {sizes.map((size) => (
+                        <span class="rhead">{size}</span>
+
+                        <ToggleIconButton
+                                client:only="solid-js"
+                                ariaLabel={"text"}
+                                theme={theme}
+                                size={size}
+                                iconName={IconName.Trash}
+                                testId={DEFAULT_TEST_ID}
+                        />
+
+                        <ToggleIconButton
+                                client:only="solid-js"
+                                isDisabled={true}
+                                ariaLabel={"text"}
+                                theme={theme}
+                                size={size}
+                                iconName={IconName.Trash}
+                                testId={DEFAULT_TEST_ID}
+                        />
+                ))}
+
+              </div>
+          </div>
+  ))}
+
+</StorybookPage>
