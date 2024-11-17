@@ -97,9 +97,16 @@ body {
     border: 1px solid #000;
 }
 
-.print_checklist .print__item.print_itemChecked::before {
-    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNOSAxNi4xNyA0LjgzIDEybC0xLjQyIDEuNDFMOSAxOSAyMSA3bC0xLjQxLTEuNDF6Ii8+PC9zdmc+;');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+.print_checklist .print__item.print_itemChecked::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: -20px;
+    display: block;
+    width: 8px;
+    height: 3px;
+    transform: rotate(-45deg);
+    border-color: #000;
+    border-style: solid;
+    border-width: 0 0 2px 2px;
 }
