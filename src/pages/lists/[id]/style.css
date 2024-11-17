@@ -6,6 +6,9 @@
 }
 
 .listPage__list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     padding: var(--size-x3) var(--size-x1);
     margin: 0;
     list-style: none;
@@ -18,6 +21,7 @@
     font-style: normal;
     font-weight: 600;
     line-height: 2.1rem;
+    padding-left: 0.3rem;
 }
 
 .listPage__purpose {
@@ -26,4 +30,10 @@
     font-style: normal;
     font-weight: 500;
     line-height: 2.1rem;
+    padding-left: 0.3rem;
+}
+
+.listPage__note {
+    width: 100%;
+    padding-left: 0.3rem;
 }

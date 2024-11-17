@@ -46,22 +46,25 @@ const list: List = await response.json();
     {list.purpose && <div class="listPage__purpose">{list.purpose}</div>}
     {
       list.note && (
-        <Note
-          client:only="solid-js"
-          size={NoteSize.Medium}
-          theme={NoteTheme.Primary}
-          defaultValue={list.note}
-        />
+        <div class="listPage__note">
+          <Note
+            client:only="solid-js"
+            size={NoteSize.Medium}
+            theme={NoteTheme.Primary}
+            defaultValue={list.note}
+          />
+        </div>
       )
     }
     <ul class="listPage__list">
       {
         list.items.map((item) => (
           <ListItem
+            client:only="solid-js"
             size={ListItemSize.Medium}
             theme={ListItemTheme.Primary}
             defaultValue={item.content}
-            isCheckable={false}
+            isCheckable={true}
             isChecked={false}
             staticOnRemoveSuccess={() => {}}
             staticOnRemoveError={() => {}}

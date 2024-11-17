@@ -1,4 +1,9 @@
-import { type Component, createSignal, mergeProps } from "solid-js";
+import {
+  type Component,
+  createEffect,
+  createSignal,
+  mergeProps,
+} from "solid-js";
 import "./listItemInput.css";
 import type { Testable } from "../utilities/testable.ts";
 import {
@@ -46,9 +51,18 @@ export const ListItemInput: Component<Testable<ListItemInputProps>> = (
   const [getCounter, setCounter] = createSignal(mProps.defaultValue.length);
 
   const autoGrow = (element: HTMLTextAreaElement) => {
-    element.style.height = "auto"; // Если удалить многострочный текст, то без этой строки не уменьшается высота textarea
+    element.style.height = "auto"; // Если удалить многострочный текст, то без этой строки не уменьшится высота
     element.style.height = `${element.scrollHeight}px`;
   };
+
+  let textAreaRef: HTMLTextAreaElement | undefined; // Используем `undefined` вместо `null`
+
+  createEffect(() => {
+    if (textAreaRef) {
+      // Применяем autoGrow сразу после монтирования компонента с уже существующим контентом
+      autoGrow(textAreaRef);
+    }
+  });
 
   return (
     <div
@@ -59,6 +73,9 @@ export const ListItemInput: Component<Testable<ListItemInputProps>> = (
       }}
     >
       <textarea
+        ref={(el) => {
+          textAreaRef = el;
+        }}
         name={mProps.name}
         class="listItemInput__inner"
         disabled={mProps.isDisabled}

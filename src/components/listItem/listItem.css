@@ -1,5 +1,6 @@
 .listItem {
   display: flex;
+  width: 100%;
 }
 
 .listItem_medium {
@@ -22,6 +23,7 @@
 .listItem__inner {
   display: flex;
   gap: var(--size-x1);
+  width: 100%;
 }
 
 .listItem__inner:hover .listItem__controls,
