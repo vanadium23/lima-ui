@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: var(--size-x4);
+    max-width: 68rem;
 }
 
 .listPage__list {
