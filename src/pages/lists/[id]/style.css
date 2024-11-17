@@ -21,7 +21,7 @@
     font-style: normal;
     font-weight: 600;
     line-height: 2.1rem;
-    padding-left: 0.3rem;
+    padding-left: 0.2rem;
 }
 
 .listPage__purpose {
@@ -30,10 +30,10 @@
     font-style: normal;
     font-weight: 500;
     line-height: 2.1rem;
-    padding-left: 0.3rem;
+    padding-left: 0.2rem;
 }
 
 .listPage__note {
     width: 100%;
-    padding-left: 0.3rem;
+    padding-left: 0.2rem;
 }
