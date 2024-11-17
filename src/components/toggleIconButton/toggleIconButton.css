@@ -35,6 +35,7 @@
 
 .toggleIconButton_secondary {
     fill: var(--neutral-100);
+    stroke: var(--neutral-100);
 }
 
 .toggleIconButton_secondary.toggleIconButton_toggled {
@@ -52,6 +53,7 @@
 .toggleIconButton_disabled {
     cursor: not-allowed;
     fill: var(--neutral-500);
+    stroke: var(--neutral-500);
 }
 
 .toggleIconButton_disabled.toggleIconButton_toggled {

@@ -49,65 +49,81 @@
 
 .iconButton_primary {
   fill: var(--neutral-800);
+  stroke: var(--neutral-800);
 }
 
 .iconButton_primary:hover:not(:disabled, .iconButton_disabled, .iconButton_loading) {
   fill: var(--neutral-700);
+  stroke: var(--neutral-700);
 }
 
 .iconButton_primary:active:not(:disabled, .iconButton_disabled, .iconButton_loading) {
   fill: var(--neutral-900);
+  stroke: var(--neutral-900);
 }
 
 .iconButton_secondary {
   fill: var(--neutral-600);
+  stroke: var(--neutral-600);
 }
 
 .iconButton_secondary:hover:not(:disabled, .iconButton_disabled, .iconButton_loading) {
   fill: var(--neutral-500);
+  stroke: var(--neutral-500);
 }
 
 .iconButton_secondary:active:not(:disabled, .iconButton_disabled, .iconButton_loading) {
   fill: var(--neutral-700);
+  stroke: var(--neutral-700);
 }
 
 .iconButton_tertiary {
   fill: var(--neutral-100);
+  stroke: var(--neutral-100);
 }
 
 .iconButton_tertiary:hover:not(:disabled, .iconButton_disabled, .iconButton_loading) {
   fill: var(--primary-100);
+  stroke: var(--primary-100);
 }
 
 .iconButton_tertiary:active:not(:disabled, .iconButton_disabled, .iconButton_loading) {
   fill: var(--primary-200);
+  stroke: var(--primary-200);
 }
 
 .iconButton_successful {
   fill: green; /* TODO Заменить на нормальную переменную */
+  stroke: green; /* TODO Заменить на нормальную переменную */
 }
 
 .iconButton_successful:hover:not(:disabled, .iconButton_disabled, .iconButton_loading) {
   fill: green; /* TODO Заменить на нормальную переменную */
+  stroke: green; /* TODO Заменить на нормальную переменную */
 }
 
 .iconButton_successful:active:not(:disabled, .iconButton_disabled, .iconButton_loading) {
   fill: green; /* TODO Заменить на нормальную переменную */
+  stroke: green; /* TODO Заменить на нормальную переменную */
 }
 
 .iconButton_dangerous {
   fill: var(--dangerous-500);
+  stroke: var(--dangerous-500);
 }
 
 .iconButton_dangerous:hover:not(:disabled, .iconButton_disabled, .iconButton_loading) {
   fill: var(--dangerous-400);
+  stroke: var(--dangerous-400);
 }
 
 .iconButton_dangerous:active:not(:disabled, .iconButton_disabled, .iconButton_loading) {
   fill: var(--dangerous-600);
+  stroke: var(--dangerous-600);
 }
 
 .iconButton_disabled {
   cursor: not-allowed;
   fill: var(--neutral-500);
+  stroke: var(--neutral-500);
 }

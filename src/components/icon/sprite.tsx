@@ -163,16 +163,9 @@ export const Search: Component<SpriteProps> = (props) => {
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
     >
-      <circle
-        cx="9.16666"
-        cy="9.16666"
-        r="5.83333"
-        stroke="white"
-        stroke-width="2"
-      />
+      <circle cx="9.16666" cy="9.16666" r="5.83333" stroke-width="2" />
       <path
         d="M16.6667 16.6667L14.1667 14.1667"
-        stroke="white"
         stroke-width="2"
         stroke-linecap="round"
       />

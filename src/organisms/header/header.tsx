@@ -28,7 +28,7 @@ export const Header: Component = () => {
       </div>
       <div class="header__search">
         <BasicInput
-          theme={InputTheme.Primary}
+          theme={InputTheme.Tertiary}
           size={InputSize.Medium}
           name={"Search"}
           placeholder={"Поиск"}
@@ -41,7 +41,7 @@ export const Header: Component = () => {
           ariaLabel={"Начать поиск"}
           testId={DEFAULT_TEST_ID}
           size={IconButtonSize.Medium}
-          theme={IconButtonTheme.Primary}
+          theme={IconButtonTheme.Tertiary}
         />
       </div>
       <div class="header__controls">
