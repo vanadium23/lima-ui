@@ -71,6 +71,18 @@
   fill: var(--neutral-700);
 }
 
+.iconButton_tertiary {
+  fill: var(--neutral-100);
+}
+
+.iconButton_tertiary:hover:not(:disabled, .iconButton_disabled, .iconButton_loading) {
+  fill: var(--primary-100);
+}
+
+.iconButton_tertiary:active:not(:disabled, .iconButton_disabled, .iconButton_loading) {
+  fill: var(--primary-200);
+}
+
 .iconButton_successful {
   fill: green; /* TODO Заменить на нормальную переменную */
 }
@@ -97,5 +109,5 @@
 
 .iconButton_disabled {
   cursor: not-allowed;
-  fill: var(--neutral-300);
+  fill: var(--neutral-500);
 }

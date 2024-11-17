@@ -6,6 +6,7 @@ import type { Testable } from "../utilities/testable.ts";
 export enum IconButtonTheme {
   Primary = "primary",
   Secondary = "secondary",
+  Tertiary = "tertiary",
   Successful = "successful",
   Dangerous = "dangerous",
 }
