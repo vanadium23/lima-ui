@@ -157,7 +157,7 @@ export const Search: Component<SpriteProps> = (props) => {
   return (
     <svg
       viewBox="0 0 20 20"
-      fill="none"
+      fill="pink"
       xmlns="http://www.w3.org/2000/svg"
       data-id="search"
       class={`icon icon_${props.size}`}

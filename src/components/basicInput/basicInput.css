@@ -156,10 +156,11 @@
 
 .input_tertiary:hover:not(.input_disabled) {
   background: var(--primary-100);
+  border-color: var(--primary-100);
 }
 
 .input_tertiary .input__inner::placeholder {
-  color: var(--text-neutral-100);
+  color: var(--text-neutral-500);
 }
 
 .input_tertiary.input_error {
@@ -177,6 +178,7 @@
 
 .input_tertiary.input_disabled {
   background: var(--neutral-200);
+  border-color: var(--neutral-200);
 }
 
 .input:has(.input__inner:focus) .input__controls {

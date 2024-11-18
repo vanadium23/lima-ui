@@ -17,19 +17,21 @@ type ToggleIconButtonProps = {
   ariaLabel: string;
   theme: ToggleIconButtonTheme;
   size: ToggleIconButtonSize;
+  defaultIsToggled?: boolean;
 };
 
 export const ToggleIconButton: Component<Testable<ToggleIconButtonProps>> = (
   props,
 ) => {
-  const [getToggled, setToggled] = createSignal(false);
-
   const mProps: Testable<Required<ToggleIconButtonProps>> = mergeProps(
     {
       isDisabled: false,
+      defaultIsToggled: false,
     },
     props,
   );
+
+  const [getToggled, setToggled] = createSignal(mProps.defaultIsToggled);
 
   const toggleToggled = () => {
     setToggled(!getToggled());

@@ -23,7 +23,7 @@ const sizes = Object.values(ToggleIconButtonSize);
                   <span class="chead">Disabled</span>
 
                 {sizes.map((size) => (
-                        <span class="rhead">{size}</span>
+                        <span class="rhead">{size} - Basic</span>
 
                         <ToggleIconButton
                                 client:only="solid-js"
@@ -42,6 +42,30 @@ const sizes = Object.values(ToggleIconButtonSize);
                                 size={size}
                                 iconName={IconName.Trash}
                                 testId={DEFAULT_TEST_ID}
+                        />
+                ))}
+                {sizes.map((size) => (
+                        <span class="rhead">{size} - Toggle</span>
+
+                        <ToggleIconButton
+                                client:only="solid-js"
+                                ariaLabel={"text"}
+                                theme={theme}
+                                size={size}
+                                iconName={IconName.Trash}
+                                testId={DEFAULT_TEST_ID}
+                                defaultIsToggled={true}
+                        />
+
+                        <ToggleIconButton
+                                client:only="solid-js"
+                                isDisabled={true}
+                                ariaLabel={"text"}
+                                theme={theme}
+                                size={size}
+                                iconName={IconName.Trash}
+                                testId={DEFAULT_TEST_ID}
+                                defaultIsToggled={true}
                         />
                 ))}
 

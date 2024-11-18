@@ -23,7 +23,7 @@
 .listItem__inner {
   display: flex;
   gap: var(--size-x1);
-  width: 100%;
+  flex-grow: 1;
 }
 
 .listItem__inner:hover .listItem__controls,
