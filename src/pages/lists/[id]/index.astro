@@ -7,8 +7,18 @@ import {
   ButtonSize,
   ButtonTheme,
 } from "../../../components/button/button";
+import {
+  Switch,
+  SwitchSize,
+  SwitchTheme,
+} from "../../../components/switch/switch";
 
 import { Note, NoteSize, NoteTheme } from "../../../components/note/note";
+import {
+  ToolsPanel,
+  ToolsPanelSize,
+  ToolsPanelTheme,
+} from "../../../organisms/toolsPanel/toolsPanel";
 import {
   ListItem,
   ListItemSize,
@@ -92,4 +102,20 @@ const list: List = await response.json();
       openInNewTab={true}
     />
   </div>
+  <aside slot="toolsPanel">
+    <ToolsPanel
+      size={ToolsPanelSize.Medium}
+      theme={ToolsPanelTheme.Primary}
+      testId={DEFAULT_TEST_ID}
+    >
+      <div class="toolsPanel__section">
+        <Switch
+          size={SwitchSize.Medium}
+          theme={SwitchTheme.Primary}
+          testId={DEFAULT_TEST_ID}
+          text="Режим чеклиста"
+        />
+      </div>
+    </ToolsPanel>
+  </aside>
 </AppPage>
