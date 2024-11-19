@@ -1,9 +1,9 @@
 /* ---- Стили для демо состояний(не копировать их отсюда xD) ---- */
 
 :root {
-  --storybook-html-bg: #f1f1f1;
+  --storybook-html-bg: #fff;
   --storybook-html-color: #232323;
-  --storybook-demo-wrapper-bg: #fff;
+  --storybook-demo-wrapper-bg: #e3e3e3;
   --storybook-sidebar-bg: #fff;
   --storybook-demo-nav-item-color: #000;
   --storybook-demo-border-color: #cdcdcd;
