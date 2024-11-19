@@ -61,6 +61,7 @@ body {
     font-style: normal;
     font-weight: 500;
     line-height: 18px;
+    white-space: pre;
 }
 
 .print__list {
@@ -79,6 +80,7 @@ body {
     font-size: 14px;
     font-weight: 500;
     line-height: 14px;
+    white-space: pre;
 }
 
 .print_checklist .print__list {
