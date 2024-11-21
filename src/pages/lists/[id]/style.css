@@ -59,3 +59,9 @@
     width: 100%;
     padding-left: 0.2rem;
 }
+
+.listPage__controls {
+    display: flex;
+    gap: 1.5rem;
+    padding-bottom: 0.1rem;
+}
