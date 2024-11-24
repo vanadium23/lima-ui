@@ -32,6 +32,7 @@ const sizes = Object.values(ToggleIconButtonSize);
                                 size={size}
                                 iconName={IconName.Trash}
                                 testId={DEFAULT_TEST_ID}
+                                setGlobalToggled={()=> false}
                         />
 
                         <ToggleIconButton
@@ -42,6 +43,7 @@ const sizes = Object.values(ToggleIconButtonSize);
                                 size={size}
                                 iconName={IconName.Trash}
                                 testId={DEFAULT_TEST_ID}
+                                setGlobalToggled={()=> false}
                         />
                 ))}
                 {sizes.map((size) => (
@@ -55,6 +57,7 @@ const sizes = Object.values(ToggleIconButtonSize);
                                 iconName={IconName.Trash}
                                 testId={DEFAULT_TEST_ID}
                                 defaultIsToggled={true}
+                                setGlobalToggled={()=> false}
                         />
 
                         <ToggleIconButton
@@ -66,6 +69,7 @@ const sizes = Object.values(ToggleIconButtonSize);
                                 iconName={IconName.Trash}
                                 testId={DEFAULT_TEST_ID}
                                 defaultIsToggled={true}
+                                setGlobalToggled={()=> false}
                         />
                 ))}
 

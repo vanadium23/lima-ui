@@ -106,6 +106,7 @@ const list: List = await response.json();
   </div>
   <aside slot="toolsPanel">
     <ToolsPanel
+      client:only="solid-js"
       size={ToolsPanelSize.Medium}
       theme={ToolsPanelTheme.Primary}
       testId={DEFAULT_TEST_ID}

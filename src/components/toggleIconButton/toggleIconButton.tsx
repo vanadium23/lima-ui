@@ -18,6 +18,7 @@ type ToggleIconButtonProps = {
   theme: ToggleIconButtonTheme;
   size: ToggleIconButtonSize;
   defaultIsToggled?: boolean;
+  setGlobalToggled: (isToggled: boolean) => void;
 };
 
 export const ToggleIconButton: Component<Testable<ToggleIconButtonProps>> = (
@@ -34,7 +35,9 @@ export const ToggleIconButton: Component<Testable<ToggleIconButtonProps>> = (
   const [getToggled, setToggled] = createSignal(mProps.defaultIsToggled);
 
   const toggleToggled = () => {
-    setToggled(!getToggled());
+    const isToggled = !getToggled();
+    setToggled(isToggled);
+    mProps.setGlobalToggled(isToggled);
   };
 
   const iconSize = {
