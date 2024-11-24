@@ -12,7 +12,7 @@
 }
 
 .toggleIconButton:focus-visible {
-    outline: var(--outline-set);
+    outline: 0.1rem solid var(--neutral-100);
     outline-offset: var(--outline-offset);
 }
 
