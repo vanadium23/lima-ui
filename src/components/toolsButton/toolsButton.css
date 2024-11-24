@@ -1,0 +1,110 @@
+.toolsButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--size-x3);
+  flex-shrink: 0;
+  border: none;
+  padding: 0;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.toolsButton:focus-visible {
+  outline: var(--outline-set);
+  outline-offset: var(--outline-offset);
+}
+
+.toolsButton:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.toolsButton:active:not(:disabled, .toolsButton_disabled) {
+  transform: translateY(0.1rem);
+}
+
+/* Sizes */
+
+.toolsButton_medium {
+  padding: var(--size-x6) 0 var(--size-x3);
+  border-radius: var(--size-x4);
+}
+
+.toolsButton_medium .toolsButton__iconWrapper {
+  padding: 0 var(--size-x8);
+}
+
+.toolsButton_medium .toolsButton__icon {
+  border: 0.1rem solid var(--neutral-200);
+  padding: var(--size-x6);
+  border-radius: var(--size-x4);
+}
+
+.toolsButton_medium .toolsButton__text {
+  display: inline-block;
+  padding: var(--size-x3);
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.4rem;
+  letter-spacing: -0.048rem;
+}
+
+/* Themes */
+
+.toolsButton_primary {
+  background: var(--neutral-100);
+}
+
+.toolsButton_primary .toolsButton__icon {
+  background: var(--neutral-100);
+  border: 0.1rem solid var(--neutral-200);
+  fill: var(--neutral-900);
+}
+
+.toolsButton_primary .toolsButton__text {
+  color: var(--text-neutral-900);
+}
+
+.toolsButton_primary:hover:not(:disabled, .toolsButton_disabled) {
+  background: var(--neutral-150);
+}
+
+.toolsButton_primary:active:not(:disabled, .toolsButton_disabled) {
+  background: var(--neutral-200);
+}
+
+.toolsButton_dangerous {
+  background: var(--neutral-100);
+}
+
+.toolsButton_dangerous .toolsButton__icon {
+  background: var(--neutral-100);
+  border: 0.1rem solid var(--neutral-200);
+  fill: var(--dangerous-500);
+}
+
+.toolsButton_dangerous .toolsButton__text {
+  color: var(--text-dangerous-500);
+}
+
+.toolsButton_dangerous:hover:not(:disabled, .toolsButton_disabled) {
+  background: var(--neutral-150);
+}
+
+.toolsButton_dangerous:active:not(:disabled, .toolsButton_disabled) {
+  background: var(--neutral-200);
+}
+
+.toolsButton_disabled {
+  cursor: not-allowed;
+}
+
+.toolsButton_disabled .toolsButton__icon {
+  fill: var(--neutral-500);
+}
+
+.toolsButton_disabled .toolsButton__text {
+  color: var(--text-neutral-500);
+}
