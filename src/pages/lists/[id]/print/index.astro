@@ -60,7 +60,7 @@ const list: List = await response.json();
         <ul class="print__list">
           {
             list.items.map((item) => (
-              <li class="print__item print_itemChecked">{item.content}</li>
+              <li class="print__item">{item.content}</li>
             ))
           }
         </ul>
