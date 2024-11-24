@@ -1,5 +1,5 @@
 import { type Component, createSignal, mergeProps, Show } from "solid-js";
-import "./basicInput.css";
+import "./input.css";
 import type { Testable } from "../utilities/testable.ts";
 import {
   CharCounter,
@@ -44,7 +44,7 @@ type InputProps = {
   isCountable?: boolean;
 };
 
-export const BasicInput: Component<Testable<InputProps>> = (props) => {
+export const Input: Component<Testable<InputProps>> = (props) => {
   const mProps: Testable<Required<InputProps>> = mergeProps(
     {
       autocomplete: AutocompleteType.Off,

@@ -1,11 +1,7 @@
 import { type Component } from "solid-js";
 import "./header.css";
 import { Logo } from "../../components/logo/logo.tsx";
-import {
-  BasicInput,
-  InputSize,
-  InputTheme,
-} from "../../components/basicInput/basicInput.tsx";
+import { Input, InputSize, InputTheme } from "../../components/input/input.tsx";
 import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import {
   IconButton,
@@ -28,7 +24,7 @@ export const Header: Component = () => {
         <Logo />
       </div>
       <div class="header__search">
-        <BasicInput
+        <Input
           theme={InputTheme.Tertiary}
           size={InputSize.Medium}
           name={"Search"}

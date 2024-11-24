@@ -1,12 +1,12 @@
 ---
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 import {
-  BasicInput,
+  Input,
   InputTheme,
   InputSize,
-} from "../../../components/basicInput/basicInput.tsx";
+} from "../../../components/input/input.tsx";
 import { DEFAULT_TEST_ID } from "../../../../features/testIds";
-import { InputType } from "../../../components/basicInput/basicInput";
+import { InputType } from "../../../components/input/input";
 
 const themes = Object.values(InputTheme);
 const sizes = Object.values(InputSize);
@@ -32,7 +32,7 @@ const PLACEHOLDER_TEXT = "Enter text...";
             <>
               <span class="rhead">{size}</span>
 
-              <BasicInput
+              <Input
                 client:only="solid-js"
                 type={InputType.Text}
                 theme={theme}
@@ -43,7 +43,7 @@ const PLACEHOLDER_TEXT = "Enter text...";
                 name="Some-text"
                 testId={DEFAULT_TEST_ID}
               />
-              <BasicInput
+              <Input
                 client:only="solid-js"
                 type={InputType.Text}
                 theme={theme}
@@ -55,7 +55,7 @@ const PLACEHOLDER_TEXT = "Enter text...";
                 isRequired={true}
                 testId={DEFAULT_TEST_ID}
               />
-              <BasicInput
+              <Input
                 client:only="solid-js"
                 type={InputType.Text}
                 theme={theme}
@@ -68,7 +68,7 @@ const PLACEHOLDER_TEXT = "Enter text...";
                 defaultValue={"Text"}
                 testId={DEFAULT_TEST_ID}
               />
-              <BasicInput
+              <Input
                 client:only="solid-js"
                 type={InputType.Text}
                 theme={theme}

@@ -1,11 +1,7 @@
 import { type Component, createEffect, For, mergeProps, Show } from "solid-js";
 import { createStore } from "solid-js/store";
 import "./editList.css";
-import {
-  BasicInput,
-  InputSize,
-  InputTheme,
-} from "../../components/basicInput/basicInput.tsx";
+import { Input, InputSize, InputTheme } from "../../components/input/input.tsx";
 import {
   Button,
   ButtonSize,
@@ -220,7 +216,7 @@ export const EditList: Component<EditListProps> = (props) => {
         <div class="editList__listHeader">
           <div class="editList__title">
             <div class="editList__input">
-              <BasicInput
+              <Input
                 theme={InputTheme.Secondary}
                 size={InputSize.Medium}
                 placeholder="Название списка"
@@ -243,7 +239,7 @@ export const EditList: Component<EditListProps> = (props) => {
             />
           </div>
           <div class="editList__input">
-            <BasicInput
+            <Input
               theme={InputTheme.Primary}
               size={InputSize.Medium}
               placeholder="Назначение списка"
@@ -281,7 +277,7 @@ export const EditList: Component<EditListProps> = (props) => {
                     data-test-sub-id={getIndex()}
                   >
                     <div class="editList__input">
-                      <BasicInput
+                      <Input
                         placeholder="Текст пункта"
                         theme={InputTheme.Primary}
                         size={InputSize.Medium}
