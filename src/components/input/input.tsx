@@ -42,6 +42,7 @@ type InputProps = {
   defaultValue?: string;
   autocomplete?: AutocompleteType; //TODO - Подумать Герману как это сделать получше (может Union type)
   isCountable?: boolean;
+  label?: string;
 };
 
 export const Input: Component<Testable<InputProps>> = (props) => {
@@ -54,6 +55,7 @@ export const Input: Component<Testable<InputProps>> = (props) => {
       type: InputType.Text,
       defaultValue: "",
       isCountable: true,
+      label: "",
     },
     props,
   );
@@ -87,6 +89,7 @@ export const Input: Component<Testable<InputProps>> = (props) => {
         data-test-sub-id={mProps.testSubId}
         onInput={(event) => setCounter(event.target.value.length)}
         autocomplete={mProps.autocomplete}
+        aria-label={mProps.label}
       />
       <div class="input__controls">
         <Show when={mProps.isCountable}>
