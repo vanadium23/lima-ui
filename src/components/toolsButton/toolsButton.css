@@ -27,23 +27,23 @@
 /* Sizes */
 
 .toolsButton_medium {
-  padding: var(--size-x6) 0 var(--size-x3);
   border-radius: var(--size-x4);
 }
 
 .toolsButton_medium .toolsButton__iconWrapper {
-  padding: 0 var(--size-x8);
+  padding: var(--size-x6) var(--size-x8) 0;
 }
 
 .toolsButton_medium .toolsButton__icon {
+  display: flex;
   border: 0.1rem solid var(--neutral-200);
-  padding: var(--size-x6);
+  padding: var(--size-x4);
   border-radius: var(--size-x4);
 }
 
 .toolsButton_medium .toolsButton__text {
   display: inline-block;
-  padding: var(--size-x3);
+  padding: 0 var(--size-x3) var(--size-x3);
   text-align: center;
   font-size: 1.2rem;
   font-weight: 400;
@@ -60,11 +60,11 @@
 .toolsButton_primary .toolsButton__icon {
   background: var(--neutral-100);
   border: 0.1rem solid var(--neutral-200);
-  fill: var(--neutral-900);
+  fill: var(--neutral-800);
 }
 
 .toolsButton_primary .toolsButton__text {
-  color: var(--text-neutral-900);
+  color: var(--text-neutral-800);
 }
 
 .toolsButton_primary:hover:not(:disabled, .toolsButton_disabled) {
