@@ -38,15 +38,15 @@
 }
 
 .toggleIconButton_secondary.toggleIconButton_toggled {
-    background: var(--primary-500);
-}
-
-.toggleIconButton_secondary:hover:not(:disabled, .toggleIconButton_disabled) {
     background: var(--primary-400);
 }
 
+.toggleIconButton_secondary:hover:not(:disabled, .toggleIconButton_disabled) {
+    background: var(--primary-250);
+}
+
 .toggleIconButton_secondary:active:not(:disabled, .toggleIconButton_disabled) {
-    background: var(--primary-600);
+    background: var(--primary-500);
 }
 
 .toggleIconButton_disabled {
