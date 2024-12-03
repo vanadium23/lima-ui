@@ -1,0 +1,33 @@
+---
+import StorybookPage from '../../../layouts/storybook/storybookPage.astro';
+import {Divider, DividerSize, DividerTheme} from '../../../components/divider/divider.tsx';
+import {DEFAULT_TEST_ID} from "../../../../features/testIds";
+import {DividerOrientation} from "../../../components/divider/divider";
+
+const themes = Object.values(DividerTheme);
+const sizes = Object.values(DividerSize);
+
+---
+
+<StorybookPage title="Button">
+
+    {themes.map((theme) => (
+            <div class="demoThemeWrapper">
+                <h3 style="font-size: 24px; margin-bottom: 10px; text-transform: capitalize;">{theme}</h3>
+                <div class="grid grid_2Col">
+                    <span class="chead"/>
+                    <span class="chead">Horizontal</span>
+                    <span class="chead">Vertical</span>
+
+                    {sizes.map((size) => (
+                            <span class="rhead">{size}</span>
+
+                            <Divider client:only="solid-js" theme={theme} size={size} testId={DEFAULT_TEST_ID} orientation={DividerOrientation.Horizontal}/>
+                            <Divider client:only="solid-js" theme={theme} size={size} testId={DEFAULT_TEST_ID} orientation={DividerOrientation.Vertical}/>
+                    ))}
+
+                </div>
+            </div>
+    ))}
+
+</StorybookPage>
