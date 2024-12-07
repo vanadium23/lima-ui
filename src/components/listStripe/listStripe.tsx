@@ -117,8 +117,8 @@ export const ListStripe: Component<ListStripeProps> = (props) => {
       {/* MAKSIM: Скрываются в состоянии Loading, когда нет Hover'а. */}
       <div class="listStripe__controls">
         <IconButton
-          iconName={IconName.Edit}
-          ariaLabel={`Редактировать список ${mProps.listTitle}`}
+          iconName={IconName.DotsThreeCircle}
+          ariaLabel={`Выпадающее меню для списка ${mProps.listTitle}`}
           theme={IconButtonTheme.Primary}
           size={IconButtonSize.Medium}
           link={mProps.editLink}
