@@ -85,7 +85,12 @@ export const Button: Component<Testable<ButtonProps>> = (props) => {
           data-test-sub-id={mProps.testSubId}
         >
           <Show when={mProps.isLoading}>
-            <Icon name={IconName.Loading} size={loadingIconSize[mProps.size]} />
+            <div class="button__loadingIcon">
+              <Icon
+                name={IconName.CircleNotch}
+                size={loadingIconSize[mProps.size]}
+              />
+            </div>
           </Show>
           <span class="button__text">{mProps.text}</span>
         </button>
@@ -106,7 +111,12 @@ export const Button: Component<Testable<ButtonProps>> = (props) => {
           data-test-sub-id={mProps.testSubId}
         >
           <Show when={mProps.isLoading}>
-            <Icon name={IconName.Loading} size={loadingIconSize[mProps.size]} />
+            <div class="button__loadingIcon">
+              <Icon
+                name={IconName.CircleNotch}
+                size={loadingIconSize[mProps.size]}
+              />
+            </div>
           </Show>
           <span class="button__text">{mProps.text}</span>
         </a>

@@ -88,11 +88,11 @@
 }
 
 .accordion_primary .accordion__headerIcon {
-    fill: var(--neutral-700);
+    color: var(--neutral-700);
 }
 
 .accordion_disabled .accordion__headerIcon {
-    fill: var(--neutral-500);
+    color: var(--neutral-500);
 }
 
 .accordion__header:focus-visible {

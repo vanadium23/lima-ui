@@ -63,7 +63,7 @@ export const Accordion: Component<Testable<AccordionProps>> = (props) => {
         data-test-id={buildAccordionButtonTestId(mProps.testId)}
       >
         <div class="accordion__headerIcon">
-          <Icon name={IconName.Chevron} size={iconSize[mProps.size]} />
+          <Icon name={IconName.CaretDown} size={iconSize[mProps.size]} />
         </div>
         <span class="accordion__title">{mProps.title}</span>
       </button>

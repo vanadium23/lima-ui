@@ -34,7 +34,7 @@ export const Header: Component = () => {
           isCountable={false}
         />
         <IconButton
-          iconName={IconName.Search}
+          iconName={IconName.MagnifyingGlass}
           ariaLabel={"Начать поиск"}
           testId={DEFAULT_TEST_ID}
           size={IconButtonSize.Medium}

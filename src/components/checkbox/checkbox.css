@@ -57,11 +57,11 @@
 }
 
 .checkbox_primary .checkbox__icon {
-  fill: var(--primary-500);
+  color: var(--primary-500);
 }
 
 .checkbox_primary.checkbox_disabled .checkbox__icon {
-  fill: var(--neutral-500);
+  color: var(--neutral-500);
 }
 
 .checkbox_primary .checkbox__input:focus-visible + .checkbox__inner {

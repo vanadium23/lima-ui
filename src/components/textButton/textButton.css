@@ -13,6 +13,11 @@
   text-decoration: none;
 }
 
+.textButton__loadingIcon {
+  display: flex;
+  animation: rotate-infinite 0.7s linear infinite;
+}
+
 .textButton_small {
   font-size: 1.4rem;
   line-height: 1.8rem;
@@ -42,17 +47,14 @@
 
 .textButton_primary {
   color: var(--text-primary-500);
-  fill: var(--text-primary-500);
 }
 
 .textButton_primary:hover:not(:disabled, .textButton_disabled, .textButton_loading) {
   color: var(--text-primary-400);
-  fill: var(--text-primary-400);
 }
 
 .textButton_primary:active:not(:disabled, .textButton_disabled, .textButton_loading) {
   color: var(--text-primary-600);
-  fill: var(--text-primary-600);
 }
 
 .textButton:disabled,
@@ -76,4 +78,14 @@
 
 .textButton_loading {
   cursor: wait;
+}
+
+@keyframes rotate-infinite {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }

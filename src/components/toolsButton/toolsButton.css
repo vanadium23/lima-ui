@@ -60,7 +60,7 @@
 .toolsButton_primary .toolsButton__icon {
   background: var(--neutral-100);
   border: 0.1rem solid var(--neutral-200);
-  fill: var(--neutral-800);
+  color: var(--neutral-800);
 }
 
 .toolsButton_primary .toolsButton__text {
@@ -82,7 +82,7 @@
 .toolsButton_dangerous .toolsButton__icon {
   background: var(--neutral-100);
   border: 0.1rem solid var(--neutral-200);
-  fill: var(--dangerous-500);
+  color: var(--dangerous-500);
 }
 
 .toolsButton_dangerous .toolsButton__text {
@@ -102,7 +102,7 @@
 }
 
 .toolsButton_disabled .toolsButton__icon {
-  fill: var(--neutral-500);
+  color: var(--neutral-500);
 }
 
 .toolsButton_disabled .toolsButton__text {

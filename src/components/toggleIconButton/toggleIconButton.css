@@ -33,7 +33,7 @@
 /* Themes */
 
 .toggleIconButton_secondary {
-    fill: var(--neutral-100);
+    color: var(--neutral-100);
     background: transparent;
 }
 
@@ -51,7 +51,7 @@
 
 .toggleIconButton_disabled {
     cursor: not-allowed;
-    fill: var(--neutral-500);
+    color: var(--neutral-500);
 }
 
 .toggleIconButton_disabled.toggleIconButton_toggled {

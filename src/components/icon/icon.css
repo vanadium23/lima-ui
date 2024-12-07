@@ -16,23 +16,3 @@
   width: var(--size-x11);
   height: var(--size-x11);
 }
-
-/* Specific icons styles */
-
-.svgCancelCircleAnimation {
-  animation: countdown 5s linear forwards;
-}
-
-.svgCancelLine, .svgCancelCircleAnimation {
-  stroke: var(--dangerous-500);
-}
-
-@keyframes countdown {
-  from {
-    stroke-dashoffset: 0;
-  }
-
-  to {
-    stroke-dashoffset: 56px;
-  }
-}
