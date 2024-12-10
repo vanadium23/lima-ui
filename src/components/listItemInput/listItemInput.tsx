@@ -29,6 +29,7 @@ type ListItemInputProps = {
   maxLength: number;
   isRequired?: boolean;
   defaultValue?: string;
+  dataId?: string;
 };
 
 export const ListItemInput: Component<Testable<ListItemInputProps>> = (
@@ -40,6 +41,7 @@ export const ListItemInput: Component<Testable<ListItemInputProps>> = (
       isError: false,
       isRequired: false,
       defaultValue: "",
+      dataId: "",
     },
     props,
   );
@@ -82,6 +84,7 @@ export const ListItemInput: Component<Testable<ListItemInputProps>> = (
         maxlength={mProps.maxLength}
         placeholder={"Введите пункт"}
         required={mProps.isRequired}
+        data-id={mProps.dataId}
         data-test-id={mProps.testId}
         data-test-sub-id={mProps.testSubId}
         rows={1}

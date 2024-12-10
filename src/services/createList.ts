@@ -1,11 +1,9 @@
-export type ListData = {
-  name: string;
-  purpose?: string;
-  items: { content: string }[];
-  note?: string;
-};
+import type { BackendList, NewList } from "../types.ts";
 
-export async function createList(data: ListData, backendURL?: string) {
+export async function createList(
+  data: NewList,
+  backendURL?: string,
+): Promise<BackendList> {
   let backend = "";
 
   if (backendURL) {

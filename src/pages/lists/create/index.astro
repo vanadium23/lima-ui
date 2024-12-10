@@ -1,0 +1,9 @@
+---
+import AppPage from "../../../layouts/app/app.astro";
+
+import { EditList } from "../../../widgets/editList/editList.tsx";
+---
+
+<AppPage>
+  <EditList client:only="solid-js" slot="mainContent" />
+</AppPage>

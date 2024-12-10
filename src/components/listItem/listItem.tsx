@@ -42,6 +42,8 @@ type ListItemProps = {
   isCheckable: boolean;
   isChecked: boolean;
   defaultValue?: string;
+  name: string;
+  dataId?: string;
 };
 
 export const ListItem: Component<ListItemProps> = (props) => {
@@ -50,6 +52,7 @@ export const ListItem: Component<ListItemProps> = (props) => {
       isRemoving: false,
       isDisabled: false,
       defaultValue: "",
+      dataId: "",
     },
     props,
   );
@@ -125,15 +128,16 @@ export const ListItem: Component<ListItemProps> = (props) => {
           theme={ListItemInputTheme.Primary}
           size={ListItemInputSize.Medium}
           maxLength={EDIT_LIST_INPUT_LIMIT}
-          name={mProps.defaultListItemId}
+          name={mProps.name}
           testId={DEFAULT_TEST_ID}
+          dataId={mProps.dataId}
           isDisabled={mProps.isDisabled}
           defaultValue={mProps.defaultValue}
           isRequired={true}
         />
         <div class="listItem__controls">
           <IconButton
-            iconName={IconName.Edit}
+            iconName={IconName.DotsThreeCircle}
             ariaLabel={"Выпадающее меню"}
             theme={IconButtonTheme.Primary}
             size={IconButtonSize.Medium}

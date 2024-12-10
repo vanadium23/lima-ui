@@ -1,124 +1,17 @@
 ---
 import AppPage from "../../../layouts/app/app.astro";
-import { DEFAULT_TEST_ID, PAGE_TITLE } from "../../../../features/testIds";
-import {
-  Button,
-  ButtonComponentType,
-  ButtonSize,
-  ButtonTheme,
-} from "../../../components/button/button";
-import {
-  Switch,
-  SwitchSize,
-  SwitchTheme,
-} from "../../../components/switch/switch";
-
-import { Note, NoteSize, NoteTheme } from "../../../components/note/note";
-import {
-  ToolsPanel,
-  ToolsPanelSize,
-  ToolsPanelTheme,
-} from "../../../organisms/toolsPanel/toolsPanel";
-import {
-  ListItem,
-  ListItemSize,
-  ListItemTheme,
-} from "../../../components/listItem/listItem";
 
 import "./style.css";
+import { EditList } from "../../../widgets/editList/editList";
+import type { BackendList } from "../../../types";
 
 const response = await fetch(
   `${import.meta.env.PUBLIC_API_URL}/lists/${Astro.params.id}`,
 );
 
-type Item = {
-  content: string;
-  id: string;
-};
-
-export type List = {
-  name: string;
-  id: string;
-  items: Item[];
-  purpose: string;
-  note: string;
-};
-
-const list: List = await response.json();
+const list: BackendList = await response.json();
 ---
 
 <AppPage>
-  <div class="headerChecklist" slot="header">
-    <h1 class="headerChecklist__title" data-test-id={PAGE_TITLE}>Список</h1>
-  </div>
-  <div class="listPage" slot="mainContent">
-    <h2 class="listPage__title">{list.name}</h2>
-    {list.purpose && <div class="listPage__purpose">{list.purpose}</div>}
-    {
-      list.note && (
-        <div class="listPage__note">
-          <Note
-            client:only="solid-js"
-            size={NoteSize.Medium}
-            theme={NoteTheme.Primary}
-            defaultValue={list.note}
-          />
-        </div>
-      )
-    }
-    <ul class="listPage__list">
-      {
-        list.items.map((item) => (
-          <ListItem
-            client:only="solid-js"
-            size={ListItemSize.Medium}
-            theme={ListItemTheme.Primary}
-            defaultValue={item.content}
-            isCheckable={false}
-            isChecked={false}
-            staticOnRemoveSuccess={() => {}}
-            staticOnRemoveError={() => {}}
-            defaultListItemId={item.id}
-          />
-        ))
-      }
-      <!--<pre>{JSON.stringify(list, null, 2)}</pre>-->
-    </ul>
-    <div class="listPage__controls">
-      <Button
-        componentType={ButtonComponentType.Link}
-        link={`./${list.id}/edit`}
-        theme={ButtonTheme.Primary}
-        size={ButtonSize.Medium}
-        text="Редактировать"
-        testId={DEFAULT_TEST_ID}
-      />
-      <Button
-        componentType={ButtonComponentType.Link}
-        link={`./${list.id}/print`}
-        theme={ButtonTheme.Primary}
-        size={ButtonSize.Medium}
-        text="Печать"
-        testId={DEFAULT_TEST_ID}
-        openInNewTab={true}
-      />
-    </div>
-  </div>
-  <aside slot="toolsPanel">
-    <ToolsPanel
-      client:only="solid-js"
-      size={ToolsPanelSize.Medium}
-      theme={ToolsPanelTheme.Primary}
-      testId={DEFAULT_TEST_ID}
-    >
-      <div class="toolsPanel__section">
-        <Switch
-          size={SwitchSize.Medium}
-          theme={SwitchTheme.Primary}
-          testId={DEFAULT_TEST_ID}
-          text="Режим чеклиста"
-        />
-      </div>
-    </ToolsPanel>
-  </aside>
+  <EditList client:only="solid-js" slot="mainContent" defaultList={list} />
 </AppPage>

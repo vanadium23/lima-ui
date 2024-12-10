@@ -1,5 +1,21 @@
 .editList {
   display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.editList__main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  max-width: 68rem;
+  padding: var(--size-x12) var(--size-x20);
+  overflow: auto;
+}
+
+.editList__form {
+  display: flex;
   flex-direction: column;
   gap: var(--size-x4);
   overflow: auto;
@@ -16,11 +32,6 @@
   display: flex;
   gap: var(--size-x10);
   padding: var(--size-x1);
-}
-
-.editList__input {
-  flex-grow: 1;
-  max-width: 50rem;
 }
 
 .editList__wrapper {
@@ -83,10 +94,4 @@
 
 .editList__itemControls {
   display: none;
-}
-
-.editList__item_removeInProgress .editList__itemControls,
-.editList__item:hover:not(.editList__item_disabled) .editList__itemControls,
-.editList__item:focus-within:not(.editList__item_disabled) .editList__itemControls {
-  display: block;
 }

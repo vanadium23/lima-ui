@@ -115,7 +115,7 @@ export const Lists: Component<ListsProps> = (props) => {
       <div class="lists__new">
         <Button
           componentType={ButtonComponentType.Link}
-          link={"/create-checklist/"}
+          link={"/lists/create"}
           text="Создать"
           size={ButtonSize.Medium}
           theme={ButtonTheme.Primary}
