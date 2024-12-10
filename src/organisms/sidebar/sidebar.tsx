@@ -28,7 +28,7 @@ export const Sidebar: Component = () => {
         <div class="sidebar__profile">
           <ProfileButton text={"et"} url={"https://ya.ru"} />
           <IconButton
-            iconName={IconName.AddGroup}
+            iconName={IconName.User}
             theme={IconButtonTheme.Primary}
             size={IconButtonSize.Medium}
             ariaLabel={"Add user"}

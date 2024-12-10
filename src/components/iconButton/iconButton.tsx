@@ -80,7 +80,9 @@ export const IconButton: Component<Testable<IconButtonProps>> = (props) => {
               <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
             }
           >
-            <Icon name={IconName.Loading} size={iconSize[mProps.size]} />
+            <div class="iconButton__loadingIcon">
+              <Icon name={IconName.CircleNotch} size={iconSize[mProps.size]} />
+            </div>
           </Show>
         </button>
       </Show>

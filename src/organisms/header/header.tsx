@@ -43,7 +43,7 @@ export const Header: Component = () => {
       </div>
       <div class="header__controls">
         <ToggleIconButton
-          iconName={IconName.Trash}
+          iconName={IconName.SquareHalf}
           ariaLabel={"Переключить панель инструментов"}
           testId={DEFAULT_TEST_ID}
           size={ToggleIconButtonSize.Medium}

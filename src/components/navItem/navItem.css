@@ -31,12 +31,10 @@
 
 .navItem_primary {
   color: var(--text-neutral-800);
-  fill: var(--text-neutral-800);
 }
 
 .navItem_current {
   color: var(--text-neutral-900);
-  fill: var(--text-neutral-900);
   font-weight: 700;
 }
 

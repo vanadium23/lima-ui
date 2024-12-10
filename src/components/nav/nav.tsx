@@ -13,7 +13,7 @@ export const Nav: Component = () => {
             theme={NavItemTheme.Primary}
             size={NavItemSize.Large}
             text="Главная"
-            icon={IconName.Home}
+            icon={IconName.CircleNotch}
             isCurrent={true}
           />
         </li>
@@ -23,7 +23,7 @@ export const Nav: Component = () => {
             theme={NavItemTheme.Primary}
             size={NavItemSize.Large}
             text="Мои списки"
-            icon={IconName.Home}
+            icon={IconName.CircleNotch}
           />
         </li>
         <li role="none">
@@ -32,7 +32,7 @@ export const Nav: Component = () => {
             theme={NavItemTheme.Primary}
             size={NavItemSize.Large}
             text="Избранное"
-            icon={IconName.Home}
+            icon={IconName.CircleNotch}
           />
         </li>
         <li role="none">
@@ -41,7 +41,7 @@ export const Nav: Component = () => {
             theme={NavItemTheme.Primary}
             size={NavItemSize.Large}
             text="Архив"
-            icon={IconName.Home}
+            icon={IconName.CircleNotch}
           />
         </li>
         <li role="none">
@@ -50,7 +50,7 @@ export const Nav: Component = () => {
             theme={NavItemTheme.Primary}
             size={NavItemSize.Large}
             text="Корзина"
-            icon={IconName.Home}
+            icon={IconName.CircleNotch}
           />
         </li>
         <li role="none">
@@ -59,7 +59,7 @@ export const Nav: Component = () => {
             theme={NavItemTheme.Primary}
             size={NavItemSize.Large}
             text="Помощь"
-            icon={IconName.Home}
+            icon={IconName.CircleNotch}
           />
         </li>
         <li role="none">
@@ -68,7 +68,7 @@ export const Nav: Component = () => {
             theme={NavItemTheme.Primary}
             size={NavItemSize.Large}
             text="Настройки"
-            icon={IconName.Home}
+            icon={IconName.CircleNotch}
           />
         </li>
       </ul>
