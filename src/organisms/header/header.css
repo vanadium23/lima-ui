@@ -2,25 +2,25 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: var(--size-x1) var(--size-x5) var(--size-x1) var(--size-x8);
   background: linear-gradient(90deg, #0285F1 0%, #72BBF8 100%);
+  padding: var(--size-x3) var(--size-x5) var(--size-x3) var(--size-x9);
+  gap: var(--size-x5);
 }
 
 .header__logo {
-  width: 23.4rem;
-  padding: var(--size-x3) 0;
+  width: 25rem;
+  padding: var(--size-x1);
 }
 
 .header__search {
   display: flex;
   align-items: center;
-  width: 29.4rem;
-  padding: var(--size-x2) 0;
+  width: 29.6rem;
 }
 
 .header__controls {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  width: 23rem;
+  width: 25rem;
 }

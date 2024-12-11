@@ -8,3 +8,7 @@
   line-height: 2.2rem;
   text-decoration: none;
 }
+
+.logo__text {
+  padding: var(--size-x2) 0;
+}
