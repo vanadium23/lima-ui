@@ -1,6 +1,7 @@
 ---
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 import { Nav } from "../../../components/nav/nav.tsx";
+import { NavSize, NavTheme } from "../../../components/nav/nav";
 ---
 
 <StorybookPage title="Nav">
@@ -16,7 +17,7 @@ import { Nav } from "../../../components/nav/nav.tsx";
 
       <span class="rhead">Medium</span>
 
-      <Nav />
+      <Nav theme={NavTheme.Primary} size={NavSize.Medium} />
     </div>
   </div>
 </StorybookPage>

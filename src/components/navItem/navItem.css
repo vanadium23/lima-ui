@@ -4,28 +4,26 @@
   flex-shrink: 0;
   width: 100%;
   flex-wrap: nowrap;
-  gap: var(--size-x3);
+  gap: var(--size-x4);
   text-decoration: none;
+  font-weight: 500;
 }
 
 .navItem_small {
   font-size: 1.4rem;
   line-height: 1.8rem;
-  font-weight: 500;
-  padding: var(--size-x4) var(--size-x8);
+  padding: var(--size-x1) var(--size-x8);
 }
 
 .navItem_medium {
   font-size: 1.6rem;
   line-height: 2rem;
-  font-weight: 500;
-  padding: var(--size-x4) var(--size-x8);
+  padding: var(--size-x3) var(--size-x8);
 }
 
 .navItem_large {
   font-size: 1.8rem;
   line-height: 2.2rem;
-  font-weight: 500;
   padding: var(--size-x4) var(--size-x8);
 }
 
@@ -35,11 +33,12 @@
 
 .navItem_current {
   color: var(--text-neutral-900);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .navItem_primary:hover {
   background: var(--neutral-200);
+  color: var(--text-neutral-700);
 }
 
 .navItem_primary:active {
