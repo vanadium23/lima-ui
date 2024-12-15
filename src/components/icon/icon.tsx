@@ -217,7 +217,6 @@ export enum IconName {
   BookBookmark = "BookBookmarkIcon",
   BookOpenText = "BookOpenTextIcon",
   BookOpen = "BookOpenIcon",
-  BookUser = "BookUserIcon",
   Book = "BookIcon",
   BookmarkSimple = "BookmarkSimpleIcon",
   Bookmark = "BookmarkIcon",
