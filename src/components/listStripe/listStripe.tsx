@@ -8,10 +8,10 @@ import {
   IconButtonTheme,
 } from "../iconButton/iconButton.tsx";
 import {
+  DEFAULT_TEST_ID,
   LIST_STRIPE,
   LIST_STRIPE_EDIT_BUTTON,
   LIST_STRIPE_LINK_TO_VIEW,
-  LIST_STRIPE_REMOVE_BUTTON,
   REMOVE_LIST_DIALOG,
 } from "../../../features/testIds.ts";
 import { Dialog, DialogSize, DialogTheme } from "../dialog/dialog.tsx";
@@ -134,7 +134,7 @@ export const ListStripe: Component<ListStripeProps> = (props) => {
           size={IconButtonSize.Medium}
           handleClick={openDialog}
           isLoading={listStripeIsRemoving()}
-          testId={LIST_STRIPE_REMOVE_BUTTON}
+          testId={DEFAULT_TEST_ID}
           testSubId={mProps.defaultListId}
         />
       </div>
