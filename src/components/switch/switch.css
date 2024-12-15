@@ -13,6 +13,10 @@
   cursor: not-allowed;
 }
 
+.switch__input {
+  display: none;
+}
+
 .switch__input:focus:not(:focus-visible) {
   outline: none;
 }
