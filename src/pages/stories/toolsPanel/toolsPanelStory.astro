@@ -1,0 +1,94 @@
+---
+import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
+import { ToolsPanel } from "../../../organisms/toolsPanel/toolsPanel.tsx";
+import {
+  ToolsPanelSize,
+  ToolsPanelTheme,
+} from "../../../organisms/toolsPanel/toolsPanel";
+import {
+  ToolsButton,
+  ToolsButtonComponentType,
+  ToolsButtonSize,
+  ToolsButtonTheme,
+} from "../../../components/toolsButton/toolsButton";
+import { IconName } from "../../../components/icon/icon";
+import { DEFAULT_TEST_ID } from "../../../../features/testIds";
+import {
+  Divider,
+  DividerSize,
+  DividerTheme,
+} from "../../../components/divider/divider";
+import {
+  Switch,
+  SwitchSize,
+  SwitchTheme,
+} from "../../../components/switch/switch";
+---
+
+<StorybookPage title="ToolsPanel">
+  <div class="demoThemeWrapper">
+    <h3
+      style="font-size: 24px; margin-bottom: 10px; text-transform: capitalize;"
+    >
+      Primary
+    </h3>
+    <div class="grid grid_1Col">
+      <span class="chead"></span>
+      <span class="chead">Default</span>
+
+      <span class="rhead">Medium</span>
+
+      <ToolsPanel
+        theme={ToolsPanelTheme.Primary}
+        size={ToolsPanelSize.Medium}
+        testId={DEFAULT_TEST_ID}
+      >
+        <div class="toolsPanel__horizontalSection">
+          <ToolsButton
+            componentType={ToolsButtonComponentType.Button}
+            iconName={IconName.CopySimple}
+            theme={ToolsButtonTheme.Primary}
+            size={ToolsButtonSize.Medium}
+            text={"Копировать пункты"}
+            testId={DEFAULT_TEST_ID}
+          />
+          <ToolsButton
+            componentType={ToolsButtonComponentType.Link}
+            iconName={IconName.Printer}
+            theme={ToolsButtonTheme.Primary}
+            size={ToolsButtonSize.Medium}
+            text={"Напечатать список"}
+            testId={DEFAULT_TEST_ID}
+            openInNewTab={true}
+          />
+          <ToolsButton
+            componentType={ToolsButtonComponentType.Button}
+            iconName={IconName.Trash}
+            theme={ToolsButtonTheme.Dangerous}
+            size={ToolsButtonSize.Medium}
+            text={"Удалить список"}
+            testId={DEFAULT_TEST_ID}
+          />
+        </div>
+        <Divider
+          theme={DividerTheme.Primary}
+          size={DividerSize.Medium}
+          testId={DEFAULT_TEST_ID}
+        />
+        <div class="toolsPanel__vertical-section">
+          <Switch
+            size={SwitchSize.Medium}
+            theme={SwitchTheme.Primary}
+            testId={DEFAULT_TEST_ID}
+            text="Чек-лист"
+          />
+        </div>
+        <Divider
+          theme={DividerTheme.Primary}
+          size={DividerSize.Medium}
+          testId={DEFAULT_TEST_ID}
+        />
+      </ToolsPanel>
+    </div>
+  </div>
+</StorybookPage>

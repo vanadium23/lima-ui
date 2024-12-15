@@ -4,7 +4,6 @@ import "./editList.css";
 import { Input, InputSize, InputTheme } from "../../components/input/input.tsx";
 import {
   Button,
-  ButtonComponentType,
   ButtonSize,
   ButtonTheme,
   ButtonType,
@@ -52,6 +51,18 @@ import {
 } from "../../components/switch/switch.tsx";
 import type { BackendList, NewList, UpdatedList } from "../../types.ts";
 import { updateList } from "../../services/updateList.ts";
+import {
+  Divider,
+  DividerSize,
+  DividerTheme,
+} from "../../components/divider/divider.tsx";
+import {
+  ToolsButton,
+  ToolsButtonComponentType,
+  ToolsButtonSize,
+  ToolsButtonTheme,
+} from "../../components/toolsButton/toolsButton.tsx";
+import { IconName } from "../../components/icon/icon.tsx";
 
 type EditListProps = {
   defaultList?: BackendList;
@@ -335,23 +346,52 @@ export const EditList: Component<EditListProps> = (props) => {
           theme={ToolsPanelTheme.Primary}
           testId={DEFAULT_TEST_ID}
         >
-          <div class="toolsPanel__section">
+          <div class="toolsPanel__horizontalSection">
+            <ToolsButton
+              componentType={ToolsButtonComponentType.Button}
+              iconName={IconName.CopySimple}
+              theme={ToolsButtonTheme.Primary}
+              size={ToolsButtonSize.Medium}
+              text={"Копировать пункты"}
+              testId={DEFAULT_TEST_ID}
+            />
+            <ToolsButton
+              componentType={ToolsButtonComponentType.Link}
+              iconName={IconName.Printer}
+              link={`./${list.id}/print`}
+              theme={ToolsButtonTheme.Primary}
+              size={ToolsButtonSize.Medium}
+              text={"Напечатать список"}
+              testId={DEFAULT_TEST_ID}
+              openInNewTab={true}
+            />
+            <ToolsButton
+              componentType={ToolsButtonComponentType.Button}
+              iconName={IconName.Trash}
+              theme={ToolsButtonTheme.Dangerous}
+              size={ToolsButtonSize.Medium}
+              text={"Удалить список"}
+              testId={DEFAULT_TEST_ID}
+            />
+          </div>
+          <Divider
+            theme={DividerTheme.Primary}
+            size={DividerSize.Medium}
+            testId={DEFAULT_TEST_ID}
+          />
+          <div class="toolsPanel__vertical-section">
             <Switch
               size={SwitchSize.Medium}
               theme={SwitchTheme.Primary}
               testId={DEFAULT_TEST_ID}
-              text="Режим чеклиста"
-            />
-            <Button
-              componentType={ButtonComponentType.Link}
-              link={`./${list.id}/print`}
-              theme={ButtonTheme.Primary}
-              size={ButtonSize.Medium}
-              text="Печать"
-              testId={DEFAULT_TEST_ID}
-              openInNewTab={true}
+              text="Чек-лист"
             />
           </div>
+          <Divider
+            theme={DividerTheme.Primary}
+            size={DividerSize.Medium}
+            testId={DEFAULT_TEST_ID}
+          />
         </ToolsPanel>
       </aside>
     </div>

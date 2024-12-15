@@ -15,7 +15,7 @@ import {
 } from "../../components/toggleIconButton/toggleIconButton.tsx";
 
 import { IconName } from "../../components/icon/icon.tsx";
-import { isExpanded, setIsExpanded } from "../../state/toolsPanelState.ts";
+import { isHidden, setIsHidden } from "../../state/toolsPanelState.ts";
 
 export const Header: Component = () => {
   return (
@@ -48,8 +48,8 @@ export const Header: Component = () => {
           testId={DEFAULT_TEST_ID}
           size={ToggleIconButtonSize.Medium}
           theme={ToggleIconButtonTheme.Secondary}
-          defaultIsToggled={isExpanded()}
-          setGlobalToggled={setIsExpanded}
+          defaultIsToggled={isHidden()}
+          setGlobalToggled={setIsHidden}
         />
       </div>
     </header>
