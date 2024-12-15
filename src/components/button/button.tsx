@@ -1,7 +1,6 @@
 import { type Component, mergeProps, Show } from "solid-js";
 import "./button.css";
 import type { Testable } from "../utilities/testable.ts";
-import { prepareARIALabel } from "../utilities/prepareARIALabel.ts";
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
 
 export enum ButtonTheme {
@@ -33,7 +32,6 @@ type ButtonProps = {
   link?: string;
   type?: ButtonType; //GERMAN - Подумать Герману как это сделать получше (может Union type)
   isDisabled?: boolean;
-  ariaLabel?: string;
   text: string;
   theme: ButtonTheme;
   size: ButtonSize;
@@ -49,7 +47,6 @@ export const Button: Component<Testable<ButtonProps>> = (props) => {
       type: ButtonType.Button,
       isDisabled: false,
       isLoading: false,
-      ariaLabel: "",
       link: "",
       openInNewTab: false,
       handleClick: () => {},
@@ -75,7 +72,6 @@ export const Button: Component<Testable<ButtonProps>> = (props) => {
           }}
           disabled={mProps.isDisabled}
           aria-disabled={mProps.isLoading}
-          {...prepareARIALabel(mProps.ariaLabel)}
           onClick={() => {
             if (!mProps.isLoading) {
               mProps.handleClick();
@@ -106,7 +102,6 @@ export const Button: Component<Testable<ButtonProps>> = (props) => {
             button_loading: mProps.isLoading,
           }}
           aria-disabled={mProps.isLoading || mProps.isDisabled}
-          {...prepareARIALabel(mProps.ariaLabel)}
           data-test-id={mProps.testId}
           data-test-sub-id={mProps.testSubId}
         >
