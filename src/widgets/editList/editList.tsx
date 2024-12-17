@@ -379,7 +379,7 @@ export const EditList: Component<EditListProps> = (props) => {
             size={DividerSize.Medium}
             testId={DEFAULT_TEST_ID}
           />
-          <div class="toolsPanel__vertical-section">
+          <div class="toolsPanel__verticalSection">
             <Switch
               size={SwitchSize.Medium}
               theme={SwitchTheme.Primary}

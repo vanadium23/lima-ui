@@ -45,7 +45,12 @@
   background: var(--neutral-200);
 }
 
-.navItem:focus {
+.navItem:focus-visible {
   background: var(--neutral-200);
+  outline: var(--outline-set);
+  outline-offset: var(--outline-offset);
+}
+
+.navItem:focus:not(:focus-visible) {
   outline: none;
 }

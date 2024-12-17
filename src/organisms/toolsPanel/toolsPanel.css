@@ -18,3 +18,7 @@
   display: flex;
   justify-content: space-between;
 }
+
+.toolsPanel__verticalSection {
+  display: flex;
+}

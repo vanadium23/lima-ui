@@ -3,13 +3,13 @@
   justify-content: space-between;
   width: 100%;
   background: linear-gradient(90deg, #0285F1 0%, #72BBF8 100%);
-  padding: var(--size-x3) var(--size-x5) var(--size-x3) var(--size-x9);
+  padding: var(--size-x3) var(--size-x5);
   gap: var(--size-x5);
 }
 
 .header__logo {
   width: 25rem;
-  padding: var(--size-x1);
+  padding: var(--size-x2) var(--size-x4);
 }
 
 .header__search {

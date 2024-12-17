@@ -6,6 +6,7 @@ import {
   EditableTitleSize,
 } from "../../../components/editableTitle/editableTitle.tsx";
 import { DEFAULT_TEST_ID } from "../../../../features/testIds";
+import { LIST_TITLE_INPUT_LIMIT } from "../../../../configuration";
 
 const themes = Object.values(EditableTitleTheme);
 const sizes = Object.values(EditableTitleSize);
@@ -33,7 +34,7 @@ const sizes = Object.values(EditableTitleSize);
                 client:only="solid-js"
                 theme={theme}
                 size={size}
-                maxLength={200}
+                maxLength={LIST_TITLE_INPUT_LIMIT}
                 isRequired={true}
                 name="Some-text"
                 testId={DEFAULT_TEST_ID}
@@ -43,7 +44,7 @@ const sizes = Object.values(EditableTitleSize);
                 theme={theme}
                 size={size}
                 isError={true}
-                maxLength={200}
+                maxLength={LIST_TITLE_INPUT_LIMIT}
                 name="Some-text"
                 isRequired={true}
                 testId={DEFAULT_TEST_ID}
@@ -52,7 +53,7 @@ const sizes = Object.values(EditableTitleSize);
                 client:only="solid-js"
                 theme={theme}
                 size={size}
-                maxLength={200}
+                maxLength={LIST_TITLE_INPUT_LIMIT}
                 name="Some-text"
                 isRequired={true}
                 testId={DEFAULT_TEST_ID}
@@ -62,7 +63,7 @@ const sizes = Object.values(EditableTitleSize);
                 client:only="solid-js"
                 theme={theme}
                 size={size}
-                maxLength={200}
+                maxLength={LIST_TITLE_INPUT_LIMIT}
                 name="Some-text"
                 isRequired={true}
                 defaultValue={"Text"}

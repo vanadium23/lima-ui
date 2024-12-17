@@ -93,7 +93,7 @@ export const Button: Component<Testable<ButtonProps>> = (props) => {
       </Show>
       <Show when={mProps.componentType === ButtonComponentType.Link}>
         <a
-          href={mProps.link}
+          href={!mProps.isLoading && !mProps.isDisabled ? mProps.link : "#"}
           target={mProps.openInNewTab ? "_blank" : "_self"}
           rel={mProps.openInNewTab ? "noopener noreferrer" : ""}
           class={`button button_${mProps.theme} button_${mProps.size}`}

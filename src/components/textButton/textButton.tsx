@@ -92,7 +92,7 @@ export const TextButton: Component<Testable<TextButtonProps>> = (props) => {
       </Show>
       <Show when={mProps.componentType === TextButtonComponentType.Link}>
         <a
-          href={mProps.link}
+          href={!mProps.isLoading && !mProps.isDisabled ? mProps.link : "#"}
           class={`textButton textButton_${mProps.theme} textButton_${mProps.size}`}
           classList={{
             textButton_disabled: mProps.isDisabled,

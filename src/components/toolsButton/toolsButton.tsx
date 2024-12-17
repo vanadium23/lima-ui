@@ -72,7 +72,7 @@ export const ToolsButton: Component<Testable<ToolsButtonProps>> = (props) => {
       </Show>
       <Show when={mProps.componentType === ToolsButtonComponentType.Link}>
         <a
-          href={mProps.link}
+          href={!mProps.isDisabled ? mProps.link : "#"}
           target={mProps.openInNewTab ? "_blank" : "_self"}
           rel={mProps.openInNewTab ? "noopener noreferrer" : ""}
           class={`toolsButton toolsButton_${mProps.theme} toolsButton_${mProps.size}`}
