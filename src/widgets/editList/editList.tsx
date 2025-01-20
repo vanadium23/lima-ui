@@ -97,7 +97,13 @@ export const EditList: Component<EditListProps> = (props) => {
 
   const list = mProps.defaultList;
 
-  const [store, setStore] = createStore({
+  type EditListStore = {
+    items: UpdatedList["items"];
+    sendingNow: boolean;
+    error: boolean;
+  };
+
+  const [store, setStore] = createStore<EditListStore>({
     items: list.items,
     sendingNow: false,
     error: false,
@@ -113,15 +119,15 @@ export const EditList: Component<EditListProps> = (props) => {
     return store.items.length >= ITEMS_LIMIT;
   }
 
-  // function isLastItem() {
-  //   return store.items.length === 1;
-  // }
-  //
-  // function removeItem(indexToRemove: number) {
-  //   setStore("items", (items) =>
-  //     items.filter((_item, index) => index !== indexToRemove),
-  //   );
-  // }
+  function isLastItem() {
+    return store.items.length === 1;
+  }
+
+  function removeItem(indexToRemove: number) {
+    setStore("items", (items) =>
+      items.filter((_item, index) => index !== indexToRemove),
+    );
+  }
 
   function prepareAndSendListData(event: SubmitEvent) {
     event.preventDefault();
@@ -302,14 +308,17 @@ export const EditList: Component<EditListProps> = (props) => {
                       <ListItem
                         theme={ListItemTheme.Primary}
                         size={ListItemSize.Medium}
-                        staticOnRemoveSuccess={() => {}}
-                        staticOnRemoveError={() => {}}
+                        staticOnRemoveSuccess={() => removeItem(getIndex())}
+                        staticOnRemoveError={() =>
+                          console.error("Ошибка удаления элемента")
+                        }
                         isDisabled={store.sendingNow}
+                        isLastItem={isLastItem()}
                         isCheckable={false}
                         isChecked={false}
                         defaultValue={item.content}
                         name={`${EditListFormNames.ListItem} ${getIndex() + 1}`}
-                        dataId={item.id} // TODO может передавать в обычный ID? Может смержить как-то с testID? Как-то много у нас всяких ID.
+                        dataId={"id" in item ? item.id : ""}
                         defaultListItemId={String(getIndex())}
                         data-test-id={ITEM_INPUT_CONTAINER}
                         data-test-sub-id={getIndex()}
