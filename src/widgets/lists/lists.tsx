@@ -13,6 +13,7 @@ import {
 } from "../../components/button/button.tsx";
 import {
   CREATE_LIST_BUTTON,
+  DEFAULT_TEST_ID,
   LIST_REMOVAL_ERROR,
   LISTS_LIMIT_REACHED_WARNING,
   NETWORK_ERROR,
@@ -25,6 +26,7 @@ import {
 } from "../../components/pageError/pageError.tsx";
 import { createStore } from "solid-js/store";
 import { LISTS_LIMIT } from "../../../configuration.ts";
+import { Title, TitleSize, TitleTheme } from "../../components/title/title.tsx";
 
 type ListsProps = {
   defaultLists: Array<{ name: string; id: string; purpose: string }>;
@@ -55,6 +57,15 @@ export const Lists: Component<ListsProps> = (props) => {
 
   return (
     <div slot="mainContent" class="lists">
+      <div class="lists__title">
+        <Title
+          size={TitleSize.Medium}
+          theme={TitleTheme.Primary}
+          testId={DEFAULT_TEST_ID}
+        >
+          Мои списки
+        </Title>
+      </div>
       <Show when={store.lists.length === 0 && !mProps.listsRequestError}>
         <span class="lists__emptyWarning" data-test-id={NO_SAVED_LISTS_MESSAGE}>
           У вас еще нет сохраненных списков

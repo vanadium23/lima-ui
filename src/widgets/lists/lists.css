@@ -5,6 +5,11 @@
     overflow: auto;
 }
 
+.lists__title {
+    display: flex;
+    padding: var(--size-x6) var(--size-x12) var(--size-x6) var(--size-x20);
+}
+
 .lists__emptyWarning {
     display: block;
     padding: var(--size-x5) var(--size-x1);
