@@ -1,0 +1,42 @@
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--size-x12);
+  height: var(--size-x12);
+  border-radius: var(--size-x4);
+  border: none;
+  background: linear-gradient(180deg, #c8f051 0%, #0285f1 65.5%);
+  color: white;
+  cursor: pointer;
+}
+
+.avatar-letter {
+  font-size: var(--size-x8);
+  font-weight: 600;
+  line-height: var(--size-x10);
+  text-transform: capitalize;
+}
+
+.avatar-letter {
+  margin: 0;
+}
+
+.avatar:hover {
+  background: linear-gradient(180deg, #daf098 0%, #40a5f8 65%);
+  outline: none;
+}
+
+.avatar:focus-visible {
+  outline: var(--outline-set);
+  outline-offset: var(--outline-offset);
+}
+
+.avatar:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.avatar:active {
+  color: black;
+  background: linear-gradient(180deg, #a6db09 0%, #0d7fdc 65%);
+}
