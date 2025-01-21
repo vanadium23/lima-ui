@@ -40,12 +40,13 @@ type ListItemProps = {
   defaultValue?: string;
   name: string;
   dataId?: string;
-  isLastItem: boolean;
+  isLastItem?: boolean;
 };
 
 export const ListItem: Component<ListItemProps> = (props) => {
   const mProps: Required<ListItemProps> = mergeProps(
     {
+      isLastItem: false,
       isDisabled: false,
       defaultValue: "",
       dataId: "",
