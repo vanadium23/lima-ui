@@ -1,4 +1,4 @@
-import { type Component, type JSX, mergeProps } from "solid-js";
+import { type JSX, mergeProps } from "solid-js";
 import "./title.css";
 import type { Testable } from "../utilities/testable.ts";
 
@@ -16,7 +16,7 @@ type TitleProps = {
   children: JSX.Element;
 };
 
-export const Title: Component<Testable<TitleProps>> = (props) => {
+export const Title = (props: Testable<TitleProps>) => {
   const mProps: Testable<Required<TitleProps>> = mergeProps(props);
 
   return (

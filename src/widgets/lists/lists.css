@@ -7,7 +7,7 @@
 
 .lists__title {
     display: flex;
-    padding: var(--size-x6) var(--size-x12) var(--size-x6) var(--size-x20);
+    padding: var(--size-x6) var(--size-x4) var(--size-x6) var(--size-x20);
 }
 
 .lists__emptyWarning {

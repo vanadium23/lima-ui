@@ -277,10 +277,7 @@ export const EditList: Component<EditListProps> = (props) => {
                       <ListItem
                         theme={ListItemTheme.Primary}
                         size={ListItemSize.Medium}
-                        staticOnRemoveSuccess={() => removeItem(getIndex())}
-                        staticOnRemoveError={() =>
-                          console.error("Ошибка удаления элемента")
-                        }
+                        removeItem={() => removeItem(getIndex())}
                         isDisabled={store.sendingNow}
                         isLastItem={isLastItem()}
                         isCheckable={false}

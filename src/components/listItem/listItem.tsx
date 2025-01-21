@@ -31,8 +31,7 @@ export enum ListItemSize {
 type ListItemProps = {
   theme: ListItemTheme;
   size: ListItemSize;
-  staticOnRemoveSuccess: (defaultListId: string) => void;
-  staticOnRemoveError: (removeError: boolean) => void;
+  removeItem: (defaultListId: string) => void;
   defaultListItemId: string;
   isDisabled?: boolean;
   isCheckable: boolean;
@@ -54,9 +53,9 @@ export const ListItem: Component<ListItemProps> = (props) => {
     props,
   );
 
-  function removeItem() {
+  function removeItemIfEnabled() {
     if (!mProps.isDisabled) {
-      mProps.staticOnRemoveSuccess(mProps.defaultListItemId);
+      mProps.removeItem(mProps.defaultListItemId);
     }
   }
 
@@ -99,7 +98,7 @@ export const ListItem: Component<ListItemProps> = (props) => {
             ariaLabel={"Удалить пункт"}
             theme={IconButtonTheme.Dangerous}
             size={IconButtonSize.Medium}
-            handleClick={removeItem}
+            handleClick={removeItemIfEnabled}
             testId={DEFAULT_TEST_ID}
             isDisabled={mProps.isLastItem}
           />
