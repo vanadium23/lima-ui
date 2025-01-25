@@ -13,12 +13,12 @@ export type Item = NewItem & {
   id: string;
 };
 
-export type BackendList = NewList & {
+export type BackendList = Omit<NewList, "items"> & {
   id: string;
   items: Item[];
 };
 
-export type UpdatedList = NewList & {
+export type UpdatedList = Omit<NewList, "items"> & {
   id: string;
   items: (Item | NewItem)[];
 };

@@ -48,8 +48,8 @@ export const Header: Component = () => {
           testId={DEFAULT_TEST_ID}
           size={ToggleIconButtonSize.Medium}
           theme={ToggleIconButtonTheme.Secondary}
-          defaultIsToggled={isHidden()}
-          setGlobalToggled={setIsHidden}
+          defaultIsToggled={!isHidden()}
+          setGlobalToggled={(toggled) => setIsHidden(!toggled)}
         />
       </div>
     </header>

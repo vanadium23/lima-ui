@@ -9,10 +9,8 @@ import {
   ButtonType,
 } from "../../components/button/button.tsx";
 import {
-  ADD_ITEM_BUTTON,
   CREATE_LIST_BUTTON,
   DEFAULT_TEST_ID,
-  IMPORT_BUTTON,
   ITEM_INPUT_CONTAINER,
   ITEMS_INPUTS,
   ITEMS_LIMIT_REACHED_WARNING,
@@ -97,7 +95,13 @@ export const EditList: Component<EditListProps> = (props) => {
 
   const list = mProps.defaultList;
 
-  const [store, setStore] = createStore({
+  type EditListStore = {
+    items: UpdatedList["items"];
+    sendingNow: boolean;
+    error: boolean;
+  };
+
+  const [store, setStore] = createStore<EditListStore>({
     items: list.items,
     sendingNow: false,
     error: false,
@@ -113,15 +117,15 @@ export const EditList: Component<EditListProps> = (props) => {
     return store.items.length >= ITEMS_LIMIT;
   }
 
-  // function isLastItem() {
-  //   return store.items.length === 1;
-  // }
-  //
-  // function removeItem(indexToRemove: number) {
-  //   setStore("items", (items) =>
-  //     items.filter((_item, index) => index !== indexToRemove),
-  //   );
-  // }
+  function isLastItem() {
+    return store.items.length === 1;
+  }
+
+  function removeItem(indexToRemove: number) {
+    setStore("items", (items) =>
+      items.filter((_item, index) => index !== indexToRemove),
+    );
+  }
 
   function prepareAndSendListData(event: SubmitEvent) {
     event.preventDefault();
@@ -226,48 +230,19 @@ export const EditList: Component<EditListProps> = (props) => {
           method="post"
           onSubmit={prepareAndSendListData}
         >
-          <Show when={store.error}>
-            <PageError
-              size={PageErrorSize.Medium}
-              theme={PageErrorTheme.Dangerous}
-              testId={NETWORK_ERROR}
-            >
-              Произошла ошибка соединения с сервером, попробуйте еще раз
-            </PageError>
-          </Show>
-          <Show when={checkItemsLimitReached()}>
-            <PageError
-              size={PageErrorSize.Medium}
-              theme={PageErrorTheme.Dangerous}
-              testId={ITEMS_LIMIT_REACHED_WARNING}
-            >
-              Вы использовали лимит в {ITEMS_LIMIT} пунктов
-            </PageError>
-          </Show>
-
           <div class="editList__wrapper">
             <div class="editList__listHeader">
               <div class="editList__title">
-                <div class="editList__input">
-                  <Input
-                    theme={InputTheme.Secondary}
-                    size={InputSize.Medium}
-                    placeholder="Название списка"
-                    maxLength={LIST_TITLE_INPUT_LIMIT}
-                    name={EditListFormNames.ListTitle}
-                    testId={LIST_TITLE_INPUT}
-                    isRequired={true}
-                    isDisabled={store.sendingNow}
-                    defaultValue={list.name}
-                  />
-                </div>
-                <Button
-                  type={ButtonType.Submit}
-                  theme={ButtonTheme.Primary}
-                  size={ButtonSize.Medium}
-                  text="Сохранить"
-                  isLoading={store.sendingNow}
-                  testId={CREATE_LIST_BUTTON}
+                <Input
+                  theme={InputTheme.Secondary}
+                  size={InputSize.Medium}
+                  placeholder="Название списка"
+                  maxLength={LIST_TITLE_INPUT_LIMIT}
+                  name={EditListFormNames.ListTitle}
+                  testId={LIST_TITLE_INPUT}
+                  isRequired={true}
+                  isDisabled={store.sendingNow}
+                  defaultValue={list.name}
                 />
               </div>
               <div class="editList__input">
@@ -302,14 +277,14 @@ export const EditList: Component<EditListProps> = (props) => {
                       <ListItem
                         theme={ListItemTheme.Primary}
                         size={ListItemSize.Medium}
-                        staticOnRemoveSuccess={() => {}}
-                        staticOnRemoveError={() => {}}
+                        removeItem={() => removeItem(getIndex())}
                         isDisabled={store.sendingNow}
+                        isLastItem={isLastItem()}
                         isCheckable={false}
                         isChecked={false}
                         defaultValue={item.content}
                         name={`${EditListFormNames.ListItem} ${getIndex() + 1}`}
-                        dataId={item.id} // TODO может передавать в обычный ID? Может смержить как-то с testID? Как-то много у нас всяких ID.
+                        dataId={"id" in item ? item.id : ""}
                         defaultListItemId={String(getIndex())}
                         data-test-id={ITEM_INPUT_CONTAINER}
                         data-test-sub-id={getIndex()}
@@ -318,22 +293,33 @@ export const EditList: Component<EditListProps> = (props) => {
                   </For>
                 </div>
               </div>
+              <Show when={store.error}>
+                <PageError
+                  size={PageErrorSize.Medium}
+                  theme={PageErrorTheme.Dangerous}
+                  testId={NETWORK_ERROR}
+                >
+                  Произошла ошибка соединения с сервером, попробуйте еще раз
+                </PageError>
+              </Show>
+              <Show when={checkItemsLimitReached()}>
+                <PageError
+                  size={PageErrorSize.Medium}
+                  theme={PageErrorTheme.Dangerous}
+                  testId={ITEMS_LIMIT_REACHED_WARNING}
+                >
+                  Вы использовали лимит в {ITEMS_LIMIT} пунктов
+                </PageError>
+              </Show>
 
               <div class="editList__controls">
                 <Button
-                  theme={ButtonTheme.Secondary}
+                  type={ButtonType.Submit}
+                  theme={ButtonTheme.Primary}
                   size={ButtonSize.Medium}
-                  text="Добавить пункт"
-                  handleClick={addItem}
-                  isDisabled={checkItemsLimitReached() || store.sendingNow}
-                  testId={ADD_ITEM_BUTTON}
-                />
-                <Button
-                  theme={ButtonTheme.Secondary}
-                  size={ButtonSize.Medium}
-                  text="Импортировать"
-                  isDisabled={checkItemsLimitReached() || store.sendingNow}
-                  testId={IMPORT_BUTTON}
+                  text="Сохранить"
+                  isLoading={store.sendingNow}
+                  testId={CREATE_LIST_BUTTON}
                 />
               </div>
             </div>
@@ -349,21 +335,21 @@ export const EditList: Component<EditListProps> = (props) => {
           <div class="toolsPanel__horizontalSection">
             <ToolsButton
               componentType={ToolsButtonComponentType.Button}
+              iconName={IconName.RowsPlusBottom}
+              theme={ToolsButtonTheme.Primary}
+              size={ToolsButtonSize.Medium}
+              handleClick={addItem}
+              isDisabled={checkItemsLimitReached() || store.sendingNow}
+              text={"Добавить пункт"}
+              testId={DEFAULT_TEST_ID}
+            />
+            <ToolsButton
+              componentType={ToolsButtonComponentType.Button}
               iconName={IconName.CopySimple}
               theme={ToolsButtonTheme.Primary}
               size={ToolsButtonSize.Medium}
               text={"Копировать пункты"}
               testId={DEFAULT_TEST_ID}
-            />
-            <ToolsButton
-              componentType={ToolsButtonComponentType.Link}
-              iconName={IconName.Printer}
-              link={`./${list.id}/print`}
-              theme={ToolsButtonTheme.Primary}
-              size={ToolsButtonSize.Medium}
-              text={"Напечатать список"}
-              testId={DEFAULT_TEST_ID}
-              openInNewTab={true}
             />
             <ToolsButton
               componentType={ToolsButtonComponentType.Button}
@@ -392,6 +378,18 @@ export const EditList: Component<EditListProps> = (props) => {
             size={DividerSize.Medium}
             testId={DEFAULT_TEST_ID}
           />
+          <div class="toolsPanel__horizontalSection">
+            <ToolsButton
+              componentType={ToolsButtonComponentType.Link}
+              iconName={IconName.Printer}
+              link={`./${list.id}/print`}
+              theme={ToolsButtonTheme.Primary}
+              size={ToolsButtonSize.Medium}
+              text={"Напечатать список"}
+              testId={DEFAULT_TEST_ID}
+              openInNewTab={true}
+            />
+          </div>
         </ToolsPanel>
       </aside>
     </div>

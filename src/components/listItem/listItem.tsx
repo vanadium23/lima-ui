@@ -1,4 +1,4 @@
-import { type Component, createSignal, mergeProps, Show } from "solid-js";
+import { type Component, mergeProps, Show } from "solid-js";
 import "./listItem.css";
 import { IconName } from "../icon/icon.tsx";
 import {
@@ -7,9 +7,6 @@ import {
   IconButtonSize,
   IconButtonTheme,
 } from "../iconButton/iconButton.tsx";
-
-import { Dialog, DialogSize, DialogTheme } from "../dialog/dialog.tsx";
-import { soften } from "../../widgets/editList/utilities/soften.ts";
 import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import {
   ListItemInput,
@@ -34,9 +31,7 @@ export enum ListItemSize {
 type ListItemProps = {
   theme: ListItemTheme;
   size: ListItemSize;
-  isRemoving?: boolean;
-  staticOnRemoveSuccess: (defaultListId: string) => void;
-  staticOnRemoveError: (removeError: boolean) => void;
+  removeItem: (defaultListId: string) => void;
   defaultListItemId: string;
   isDisabled?: boolean;
   isCheckable: boolean;
@@ -44,12 +39,13 @@ type ListItemProps = {
   defaultValue?: string;
   name: string;
   dataId?: string;
+  isLastItem?: boolean;
 };
 
 export const ListItem: Component<ListItemProps> = (props) => {
   const mProps: Required<ListItemProps> = mergeProps(
     {
-      isRemoving: false,
+      isLastItem: false,
       isDisabled: false,
       defaultValue: "",
       dataId: "",
@@ -57,61 +53,14 @@ export const ListItem: Component<ListItemProps> = (props) => {
     props,
   );
 
-  const [isDialogOpen, setIsDialogOpen] = createSignal(false);
-
-  const [isRemoving, setIsRemoving] = createSignal(false);
-
-  const openDialog = () => {
-    setIsDialogOpen(true);
-  };
-
-  const closeDialog = () => {
-    setIsDialogOpen(false);
-  };
-
-  function listItemIsRemoving() {
-    return isRemoving() || mProps.isRemoving;
-  }
-
-  function removeItem() {
-    mProps.staticOnRemoveError(false);
-    setIsRemoving(true);
-    setIsDialogOpen(false);
-
-    fetch(
-      `${import.meta.env.PUBLIC_API_URL}/lists/${mProps.defaultListItemId}`,
-      {
-        method: "DELETE", // или 'PUT', 'DELETE', и т.д.
-      },
-    )
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok " + response.statusText);
-        }
-        return response.json();
-      })
-      .then(() => {
-        soften(() => mProps.staticOnRemoveSuccess(mProps.defaultListItemId));
-      })
-      .catch((error) => {
-        soften(() => {
-          mProps.staticOnRemoveError(true);
-          console.error(
-            "There has been a problem with your fetch operation:",
-            error,
-          );
-          setIsRemoving(false);
-        });
-      });
+  function removeItemIfEnabled() {
+    if (!mProps.isDisabled) {
+      mProps.removeItem(mProps.defaultListItemId);
+    }
   }
 
   return (
-    <div
-      class={`listItem listItem_${mProps.theme} listItem_${mProps.size}`}
-      classList={{
-        listItem_removing: listItemIsRemoving(),
-      }}
-    >
+    <div class={`listItem listItem_${mProps.theme} listItem_${mProps.size}`}>
       <Show when={mProps.isCheckable}>
         <div class="listItem__checkbox">
           <Checkbox
@@ -142,7 +91,6 @@ export const ListItem: Component<ListItemProps> = (props) => {
             theme={IconButtonTheme.Primary}
             size={IconButtonSize.Medium}
             componentType={IconButtonComponentType.Button}
-            isDisabled={listItemIsRemoving()}
             testId={DEFAULT_TEST_ID}
           />
           <IconButton
@@ -150,25 +98,12 @@ export const ListItem: Component<ListItemProps> = (props) => {
             ariaLabel={"Удалить пункт"}
             theme={IconButtonTheme.Dangerous}
             size={IconButtonSize.Medium}
-            handleClick={openDialog}
-            isLoading={listItemIsRemoving()}
+            handleClick={removeItemIfEnabled}
             testId={DEFAULT_TEST_ID}
+            isDisabled={mProps.isLastItem}
           />
         </div>
       </div>
-      <Dialog
-        theme={DialogTheme.Primary}
-        size={DialogSize.Medium}
-        onConfirm={removeItem}
-        onCancel={closeDialog}
-        isOpen={isDialogOpen()}
-        title={"Удаление пункта"}
-        testId={DEFAULT_TEST_ID}
-      >
-        <p>
-          <strong>Пункт</strong> будет удален без возможности восстановления.
-        </p>
-      </Dialog>
     </div>
   );
 };

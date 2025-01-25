@@ -17,8 +17,10 @@
 .toolsPanel__horizontalSection {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .toolsPanel__verticalSection {
   display: flex;
+  flex-flow: column wrap;
 }
