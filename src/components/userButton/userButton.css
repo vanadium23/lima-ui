@@ -1,13 +1,12 @@
 .userButton {
   display: flex;
   width: 100%;
-  align-items: center;
   border: none;
   background: none;
   cursor: pointer;
   border-radius: var(--size-x4);
   padding: var(--size-x3) var(--size-x6);
-  gap: var(--size-x1);
+  gap: var(--size-x2);
 }
 
 .userButton:active {
@@ -48,7 +47,7 @@
 
 .userButton__userName {
   color: var(--text-neutral-900, #05060f);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-style: normal;
   font-weight: 600;
   line-height: var(--size-x12);
