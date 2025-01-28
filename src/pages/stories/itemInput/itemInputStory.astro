@@ -2,13 +2,13 @@
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 import {
   ItemInput,
-  ListItemInputTheme,
-  ListItemInputSize,
+  ItemInputTheme,
+  ItemInputSize,
 } from "../../../components/itemInput/itemInput.tsx";
 import { DEFAULT_TEST_ID } from "../../../../features/testIds";
 
-const themes = Object.values(ListItemInputTheme);
-const sizes = Object.values(ListItemInputSize);
+const themes = Object.values(ItemInputTheme);
+const sizes = Object.values(ItemInputSize);
 ---
 
 <StorybookPage title="List Item Input">
@@ -27,7 +27,7 @@ const sizes = Object.values(ListItemInputSize);
             <>
               <span class="rhead">{size}</span>
 
-              <ListItemInput
+              <ItemInput
                 client:only="solid-js"
                 theme={theme}
                 size={size}
@@ -35,8 +35,9 @@ const sizes = Object.values(ListItemInputSize);
                 isRequired={true}
                 name="Some-text"
                 testId={DEFAULT_TEST_ID}
+                placeholder="Введите текст"
               />
-              <ListItemInput
+              <ItemInput
                 client:only="solid-js"
                 theme={theme}
                 size={size}
@@ -45,8 +46,9 @@ const sizes = Object.values(ListItemInputSize);
                 name="Some-text"
                 isRequired={true}
                 testId={DEFAULT_TEST_ID}
+                placeholder="Введите текст"
               />
-              <ListItemInput
+              <ItemInput
                 client:only="solid-js"
                 theme={theme}
                 size={size}
@@ -54,9 +56,10 @@ const sizes = Object.values(ListItemInputSize);
                 name="Some-text"
                 isRequired={true}
                 testId={DEFAULT_TEST_ID}
+                placeholder="Введите текст"
                 isDisabled={true}
               />
-              <ListItemInput
+              <ItemInput
                 client:only="solid-js"
                 theme={theme}
                 size={size}
@@ -65,6 +68,7 @@ const sizes = Object.values(ListItemInputSize);
                 isRequired={true}
                 defaultValue={"Text"}
                 testId={DEFAULT_TEST_ID}
+                placeholder="Введите текст"
                 isDisabled={true}
               />
             </>
