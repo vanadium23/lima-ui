@@ -4,7 +4,7 @@ import {
   createSignal,
   mergeProps,
 } from "solid-js";
-import "./listItemInput.css";
+import "./itemInput.css";
 import type { Testable } from "../utilities/testable.ts";
 import {
   CharCounter,
@@ -12,17 +12,17 @@ import {
   CharCounterTheme,
 } from "../charCounter/charCounter.tsx";
 
-export enum ListItemInputTheme {
+export enum ItemInputTheme {
   Primary = "primary",
 }
 
-export enum ListItemInputSize {
+export enum ItemInputSize {
   Medium = "medium",
 }
 
-type ListItemInputProps = {
-  theme: ListItemInputTheme;
-  size: ListItemInputSize;
+type ItemInputProps = {
+  theme: ItemInputTheme;
+  size: ItemInputSize;
   isError?: boolean;
   isDisabled?: boolean;
   name: string;
@@ -30,12 +30,11 @@ type ListItemInputProps = {
   isRequired?: boolean;
   defaultValue?: string;
   dataId?: string;
+  placeholder: string;
 };
 
-export const ListItemInput: Component<Testable<ListItemInputProps>> = (
-  props,
-) => {
-  const mProps: Testable<Required<ListItemInputProps>> = mergeProps(
+export const ItemInput: Component<Testable<ItemInputProps>> = (props) => {
+  const mProps: Testable<Required<ItemInputProps>> = mergeProps(
     {
       isDisabled: false,
       isError: false,
@@ -47,7 +46,7 @@ export const ListItemInput: Component<Testable<ListItemInputProps>> = (
   );
 
   const charCounterSize = {
-    [ListItemInputSize.Medium]: CharCounterSize.Medium,
+    [ItemInputSize.Medium]: CharCounterSize.Medium,
   };
 
   const [getCounter, setCounter] = createSignal(mProps.defaultValue.length);
@@ -68,10 +67,10 @@ export const ListItemInput: Component<Testable<ListItemInputProps>> = (
 
   return (
     <div
-      class={`listItemInput listItemInput_${mProps.theme} listItemInput_${mProps.size}`}
+      class={`itemInput itemInput_${mProps.theme} itemInput_${mProps.size}`}
       classList={{
-        listItemInput_error: mProps.isError,
-        listItemInput_disabled: mProps.isDisabled,
+        itemInput_error: mProps.isError,
+        itemInput_disabled: mProps.isDisabled,
       }}
     >
       <textarea
@@ -79,10 +78,10 @@ export const ListItemInput: Component<Testable<ListItemInputProps>> = (
           textAreaRef = el;
         }}
         name={mProps.name}
-        class="listItemInput__inner"
+        class="itemInput__inner"
         disabled={mProps.isDisabled}
         maxlength={mProps.maxLength}
-        placeholder={"Введите пункт"}
+        placeholder={mProps.placeholder}
         required={mProps.isRequired}
         data-id={mProps.dataId}
         data-test-id={mProps.testId}
@@ -95,8 +94,8 @@ export const ListItemInput: Component<Testable<ListItemInputProps>> = (
       >
         {mProps.defaultValue}
       </textarea>
-      <div class="listItemInput__controls">
-        <div class="listItemInput__counter">
+      <div class="itemInput__controls">
+        <div class="itemInput__counter">
           <CharCounter
             theme={CharCounterTheme.Primary}
             size={charCounterSize[mProps.size]}

@@ -1,7 +1,6 @@
 import { type Component, For, mergeProps, Show } from "solid-js";
 import { createStore } from "solid-js/store";
 import "./editList.css";
-import { Input, InputSize, InputTheme } from "../../components/input/input.tsx";
 import {
   Button,
   ButtonSize,
@@ -17,7 +16,6 @@ import {
   LIST_PURPOSE_INPUT,
   LIST_TITLE_INPUT,
   NETWORK_ERROR,
-  PAGE_TITLE,
 } from "../../../features/testIds.ts";
 import {
   ITEMS_LIMIT,
@@ -61,6 +59,16 @@ import {
   ToolsButtonTheme,
 } from "../../components/toolsButton/toolsButton.tsx";
 import { IconName } from "../../components/icon/icon.tsx";
+import {
+  EditableTitle,
+  EditableTitleSize,
+  EditableTitleTheme,
+} from "../../components/editableTitle/editableTitle.tsx";
+import {
+  ItemInput,
+  ItemInputSize,
+  ItemInputTheme,
+} from "../../components/itemInput/itemInput.tsx";
 
 type EditListProps = {
   defaultList?: BackendList;
@@ -222,9 +230,6 @@ export const EditList: Component<EditListProps> = (props) => {
   return (
     <div class="editList">
       <div class="editList__main">
-        <h1 class="editList__pageTitle" data-test-id={PAGE_TITLE}>
-          Создание списка
-        </h1>
         <form
           class="editList__form"
           method="post"
@@ -233,10 +238,9 @@ export const EditList: Component<EditListProps> = (props) => {
           <div class="editList__wrapper">
             <div class="editList__listHeader">
               <div class="editList__title">
-                <Input
-                  theme={InputTheme.Secondary}
-                  size={InputSize.Medium}
-                  placeholder="Название списка"
+                <EditableTitle
+                  theme={EditableTitleTheme.Primary}
+                  size={EditableTitleSize.Medium}
                   maxLength={LIST_TITLE_INPUT_LIMIT}
                   name={EditListFormNames.ListTitle}
                   testId={LIST_TITLE_INPUT}
@@ -246,10 +250,10 @@ export const EditList: Component<EditListProps> = (props) => {
                 />
               </div>
               <div class="editList__input">
-                <Input
-                  theme={InputTheme.Primary}
-                  size={InputSize.Medium}
-                  placeholder="Назначение списка"
+                <ItemInput
+                  theme={ItemInputTheme.Primary}
+                  size={ItemInputSize.Medium}
+                  placeholder="Цель списка"
                   maxLength={LIST_PURPOSE_INPUT_LIMIT}
                   name={EditListFormNames.ListPurpose}
                   testId={LIST_PURPOSE_INPUT}

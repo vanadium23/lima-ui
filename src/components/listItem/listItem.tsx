@@ -9,10 +9,10 @@ import {
 } from "../iconButton/iconButton.tsx";
 import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import {
-  ListItemInput,
-  ListItemInputSize,
-  ListItemInputTheme,
-} from "../listItemInput/listItemInput.tsx";
+  ItemInput,
+  ItemInputSize,
+  ItemInputTheme,
+} from "../itemInput/itemInput.tsx";
 import {
   Checkbox,
   CheckboxSize,
@@ -73,14 +73,15 @@ export const ListItem: Component<ListItemProps> = (props) => {
         </div>
       </Show>
       <div class="listItem__inner">
-        <ListItemInput
-          theme={ListItemInputTheme.Primary}
-          size={ListItemInputSize.Medium}
+        <ItemInput
+          theme={ItemInputTheme.Primary}
+          size={ItemInputSize.Medium}
           maxLength={EDIT_LIST_INPUT_LIMIT}
           name={mProps.name}
           testId={DEFAULT_TEST_ID}
           dataId={mProps.dataId}
           isDisabled={mProps.isDisabled}
+          placeholder={"Пункт списка"}
           defaultValue={mProps.defaultValue}
           isRequired={true}
         />
