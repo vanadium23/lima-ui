@@ -1,6 +1,6 @@
 import { type Component } from "solid-js";
 import "./sidebar.css";
-import { Nav, NavSize, NavTheme } from "../../components/nav/nav.tsx";
+import { Nav } from "../../components/nav/nav.tsx";
 import {
   Button,
   ButtonSize,
@@ -22,7 +22,7 @@ export const Sidebar: Component = () => {
   return (
     <div class="sidebar">
       <div class="sidebar__top">
-        <Nav theme={NavTheme.Primary} size={NavSize.Medium} />
+        <Nav />
       </div>
       <div class="sidebar__bottom">
         <div class="sidebar__profile">

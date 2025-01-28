@@ -12,13 +12,16 @@ export enum ToolsPanelSize {
 }
 
 type ToolsPanelProps = {
-  theme: ToolsPanelTheme;
-  size: ToolsPanelSize;
+  theme?: ToolsPanelTheme;
+  size?: ToolsPanelSize;
   children: JSX.Element;
 };
 
 export const ToolsPanel: Component<Testable<ToolsPanelProps>> = (props) => {
-  const mProps: Testable<Required<ToolsPanelProps>> = mergeProps(props);
+  const mProps: Testable<Required<ToolsPanelProps>> = mergeProps(
+    { theme: ToolsPanelTheme.Primary, size: ToolsPanelSize.Medium },
+    props,
+  );
 
   return (
     <div

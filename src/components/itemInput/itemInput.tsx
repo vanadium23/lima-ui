@@ -21,8 +21,8 @@ export enum ItemInputSize {
 }
 
 type ItemInputProps = {
-  theme: ItemInputTheme;
-  size: ItemInputSize;
+  theme?: ItemInputTheme;
+  size?: ItemInputSize;
   isError?: boolean;
   isDisabled?: boolean;
   name: string;
@@ -36,6 +36,8 @@ type ItemInputProps = {
 export const ItemInput: Component<Testable<ItemInputProps>> = (props) => {
   const mProps: Testable<Required<ItemInputProps>> = mergeProps(
     {
+      theme: ItemInputTheme.Primary,
+      size: ItemInputSize.Medium,
       isDisabled: false,
       isError: false,
       isRequired: false,

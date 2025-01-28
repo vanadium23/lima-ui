@@ -29,8 +29,8 @@ export enum ListItemSize {
 }
 
 type ListItemProps = {
-  theme: ListItemTheme;
-  size: ListItemSize;
+  theme?: ListItemTheme;
+  size?: ListItemSize;
   removeItem: (defaultListId: string) => void;
   defaultListItemId: string;
   isDisabled?: boolean;
@@ -45,6 +45,8 @@ type ListItemProps = {
 export const ListItem: Component<ListItemProps> = (props) => {
   const mProps: Required<ListItemProps> = mergeProps(
     {
+      theme: ListItemTheme.Primary,
+      size: ListItemSize.Medium,
       isLastItem: false,
       isDisabled: false,
       defaultValue: "",

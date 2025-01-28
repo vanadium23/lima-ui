@@ -23,13 +23,13 @@ export enum IconButtonComponentType {
 }
 
 type IconButtonProps = {
+  theme?: IconButtonTheme;
+  size?: IconButtonSize;
   componentType?: IconButtonComponentType;
   link?: string;
   iconName: IconName;
   isDisabled?: boolean;
   ariaLabel: string;
-  theme: IconButtonTheme;
-  size: IconButtonSize;
   isLoading?: boolean;
   handleClick?: () => void;
 };
@@ -37,6 +37,8 @@ type IconButtonProps = {
 export const IconButton: Component<Testable<IconButtonProps>> = (props) => {
   const mProps: Testable<Required<IconButtonProps>> = mergeProps(
     {
+      theme: IconButtonTheme.Primary,
+      size: IconButtonSize.Medium,
       isDisabled: false,
       isLoading: false,
       handleClick: () => {},

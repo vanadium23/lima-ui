@@ -26,11 +26,11 @@ export enum ListStripeSize {
 }
 
 type ListStripeProps = {
+  theme?: ListStripeTheme;
+  size?: ListStripeSize;
   listTitle: string;
   listPurpose: string;
   editLink: string;
-  theme: ListStripeTheme;
-  size: ListStripeSize;
   link: string;
   defaultListId: string;
   isRemoving?: boolean;
@@ -41,6 +41,8 @@ type ListStripeProps = {
 export const ListStripe: Component<ListStripeProps> = (props) => {
   const mProps: Required<ListStripeProps> = mergeProps(
     {
+      theme: ListStripeTheme.Primary,
+      size: ListStripeSize.Medium,
       isRemoving: false,
     },
     props,

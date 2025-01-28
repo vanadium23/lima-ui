@@ -21,8 +21,8 @@ export enum EditableTitleSize {
 }
 
 type EditableTitleProps = {
-  theme: EditableTitleTheme;
-  size: EditableTitleSize;
+  theme?: EditableTitleTheme;
+  size?: EditableTitleSize;
   isError?: boolean;
   isDisabled?: boolean;
   name: string;
@@ -37,6 +37,8 @@ export const EditableTitle: Component<Testable<EditableTitleProps>> = (
 ) => {
   const mProps: Testable<Required<EditableTitleProps>> = mergeProps(
     {
+      theme: EditableTitleTheme.Primary,
+      size: EditableTitleSize.Medium,
       isDisabled: false,
       isError: false,
       isRequired: false,

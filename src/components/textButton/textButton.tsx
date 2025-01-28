@@ -26,14 +26,14 @@ export enum TextButtonComponentType {
 }
 
 type TextButtonProps = {
+  theme?: TextButtonTheme;
+  size?: TextButtonSize;
   componentType?: TextButtonComponentType;
   link?: string;
   type?: TextButtonType; //GERMAN - Подумать Герману как это сделать получше (может Union type)
   isDisabled?: boolean;
   ariaLabel?: string;
   text: string;
-  theme: TextButtonTheme;
-  size: TextButtonSize;
   isLoading?: boolean;
   handleClick?: () => void;
 };
@@ -41,6 +41,8 @@ type TextButtonProps = {
 export const TextButton: Component<Testable<TextButtonProps>> = (props) => {
   const mProps: Testable<Required<TextButtonProps>> = mergeProps(
     {
+      theme: TextButtonTheme.Primary,
+      size: TextButtonSize.Medium,
       componentType: TextButtonComponentType.Button,
       type: TextButtonType.Button,
       isDisabled: false,

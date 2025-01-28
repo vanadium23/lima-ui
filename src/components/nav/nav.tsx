@@ -14,8 +14,8 @@ export enum NavSize {
 }
 
 type NavProps = {
-  theme: NavTheme;
-  size: NavSize;
+  theme?: NavTheme;
+  size?: NavSize;
 };
 
 const navItemSize = {
@@ -25,7 +25,13 @@ const navItemSize = {
 };
 
 export const Nav: Component<NavProps> = (props) => {
-  const mProps: Required<NavProps> = mergeProps(props);
+  const mProps: Required<NavProps> = mergeProps(
+    {
+      theme: NavTheme.Primary,
+      size: NavSize.Medium,
+    },
+    props,
+  );
 
   return (
     <nav class="nav">

@@ -30,8 +30,8 @@ export enum AutocompleteType {
 }
 
 type InputProps = {
-  theme: InputTheme;
-  size: InputSize;
+  theme?: InputTheme;
+  size?: InputSize;
   isError?: boolean;
   isDisabled?: boolean;
   placeholder: string;
@@ -48,6 +48,8 @@ type InputProps = {
 export const Input: Component<Testable<InputProps>> = (props) => {
   const mProps: Testable<Required<InputProps>> = mergeProps(
     {
+      theme: InputTheme.Primary,
+      size: InputSize.Medium,
       autocomplete: AutocompleteType.Off,
       isDisabled: false,
       isError: false,

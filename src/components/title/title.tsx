@@ -11,13 +11,19 @@ export enum TitleSize {
 }
 
 type TitleProps = {
-  theme: TitleTheme;
-  size: TitleSize;
+  theme?: TitleTheme;
+  size?: TitleSize;
   children: JSX.Element;
 };
 
 export const Title = (props: Testable<TitleProps>) => {
-  const mProps: Testable<Required<TitleProps>> = mergeProps(props);
+  const mProps: Testable<Required<TitleProps>> = mergeProps(
+    {
+      theme: TitleTheme.Primary,
+      size: TitleSize.Medium,
+    },
+    props,
+  );
 
   return (
     <h1

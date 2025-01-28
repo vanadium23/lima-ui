@@ -18,11 +18,11 @@ export enum AccordionSize {
 }
 
 type AccordionProps = {
+  theme?: AccordionTheme;
+  size?: AccordionSize;
   isDisabled?: boolean;
   title: string;
   children: JSX.Element;
-  theme: AccordionTheme;
-  size: AccordionSize;
 };
 
 export const Accordion: Component<Testable<AccordionProps>> = (props) => {
@@ -30,6 +30,8 @@ export const Accordion: Component<Testable<AccordionProps>> = (props) => {
 
   const mProps: Testable<Required<AccordionProps>> = mergeProps(
     {
+      theme: AccordionTheme.Primary,
+      size: AccordionSize.Medium,
       isDisabled: false,
     },
     props,

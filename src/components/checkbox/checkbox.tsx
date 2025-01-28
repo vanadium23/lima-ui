@@ -15,10 +15,10 @@ export enum CheckboxSize {
 }
 
 type CheckboxProps = {
+  theme?: CheckboxTheme;
+  size?: CheckboxSize;
   isDisabled?: boolean;
   ariaLabel?: string;
-  theme: CheckboxTheme;
-  size: CheckboxSize;
   handleClick?: () => void;
   isChecked?: boolean;
 };
@@ -26,6 +26,8 @@ type CheckboxProps = {
 export const Checkbox: Component<Testable<CheckboxProps>> = (props) => {
   const mProps: Testable<Required<CheckboxProps>> = mergeProps(
     {
+      theme: CheckboxTheme.Primary,
+      size: CheckboxSize.Medium,
       isDisabled: false,
       ariaLabel: "",
       handleClick: () => {},

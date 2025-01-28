@@ -1,5 +1,4 @@
-import { type Component } from "solid-js";
-import { mergeProps } from "solid-js";
+import { type Component, mergeProps } from "solid-js";
 import "./navItem.css";
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
 
@@ -14,9 +13,9 @@ export enum NavItemSize {
 }
 
 type NavItemProps = {
+  theme?: NavItemTheme;
+  size?: NavItemSize;
   text: string;
-  theme: NavItemTheme;
-  size: NavItemSize;
   url: string;
   icon: IconName;
   isCurrent?: boolean;
@@ -31,6 +30,8 @@ const iconSize = {
 export const NavItem: Component<NavItemProps> = (props) => {
   const mProps: Required<NavItemProps> = mergeProps(
     {
+      theme: NavItemTheme.Primary,
+      size: NavItemSize.Medium,
       isCurrent: false,
     },
     props,
