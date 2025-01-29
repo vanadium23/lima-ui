@@ -2,14 +2,14 @@ import { type Component } from "solid-js";
 import "./sidebar.css";
 import { Nav } from "../../components/nav/nav.tsx";
 import {
+  ADD_GROUP_BUTTON,
+  PRO_VERSION_BUTTON,
+} from "../../../features/testIds.ts";
+import {
   Button,
   ButtonSize,
   ButtonTheme,
 } from "../../components/button/button.tsx";
-import {
-  ADD_GROUP_BUTTON,
-  PRO_VERSION_BUTTON,
-} from "../../../features/testIds.ts";
 import { ProfileButton } from "../../components/profileButton/profileButton.tsx";
 import { IconName } from "../../components/icon/icon.tsx";
 import {
@@ -17,11 +17,17 @@ import {
   IconButtonSize,
   IconButtonTheme,
 } from "../../components/iconButton/iconButton.tsx";
+import { UserButton, UserButtonSize, UserButtonTheme } from "../../components/userButton/userButton.tsx";
+import "./sidebar.css";
 
 export const Sidebar: Component = () => {
   return (
     <div class="sidebar">
       <div class="sidebar__top">
+        <UserButton
+          userName="Ефросинья_Мыловареная"
+          theme={UserButtonTheme.Primary}
+          size={UserButtonSize.Medium} />
         <Nav />
       </div>
       <div class="sidebar__bottom">
