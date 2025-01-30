@@ -1,7 +1,8 @@
 ---
-import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
-import { Nav } from "../../../components/nav/nav.tsx";
+import { DEFAULT_TEST_ID } from "../../../../features/testIds";
 import { NavSize, NavTheme } from "../../../components/nav/nav";
+import { Nav } from "../../../components/nav/nav.tsx";
+import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 ---
 
 <StorybookPage title="Nav">
@@ -17,7 +18,11 @@ import { NavSize, NavTheme } from "../../../components/nav/nav";
 
       <span class="rhead">Medium</span>
 
-      <Nav theme={NavTheme.Primary} size={NavSize.Medium} />
+      <Nav
+        theme={NavTheme.Primary}
+        size={NavSize.Medium}
+        testId={DEFAULT_TEST_ID}
+      />
     </div>
   </div>
 </StorybookPage>

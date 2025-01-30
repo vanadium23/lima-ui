@@ -1,6 +1,7 @@
 import { type Component } from "solid-js";
 import {
   ADD_GROUP_BUTTON,
+  DEFAULT_TEST_ID,
   PRO_VERSION_BUTTON,
 } from "../../../features/testIds.ts";
 import {
@@ -15,7 +16,6 @@ import {
   IconButtonTheme,
 } from "../../components/iconButton/iconButton.tsx";
 import { Nav, NavSize, NavTheme } from "../../components/nav/nav.tsx";
-import { ProfileButton } from "../../components/profileButton/profileButton.tsx";
 import { UserButton, UserButtonSize, UserButtonTheme } from "../../components/userButton/userButton.tsx";
 import "./sidebar.css";
 
@@ -27,11 +27,10 @@ export const Sidebar: Component = () => {
           userName="Ефросинья_Мыловареная"
           theme={UserButtonTheme.Primary}
           size={UserButtonSize.Medium} />
-        <Nav theme={NavTheme.Primary} size={NavSize.Medium} />
+        <Nav theme={NavTheme.Primary} size={NavSize.Medium} testId={DEFAULT_TEST_ID}/>
       </div>
       <div class="sidebar__bottom">
         <div class="sidebar__profile">
-          <ProfileButton text={"et"} url={"https://ya.ru"} />
           <IconButton
             iconName={IconName.User}
             theme={IconButtonTheme.Primary}

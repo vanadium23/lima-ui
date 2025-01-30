@@ -1,16 +1,15 @@
 import {
-  type Component,
   createEffect,
   createSignal,
-  mergeProps,
+  mergeProps
 } from "solid-js";
-import "./listItemInput.css";
-import type { Testable } from "../utilities/testable.ts";
 import {
   CharCounter,
   CharCounterSize,
   CharCounterTheme,
 } from "../charCounter/charCounter.tsx";
+import type { Testable } from "../utilities/testable.ts";
+import "./listItemInput.css";
 
 export enum ListItemInputTheme {
   Primary = "primary",
@@ -32,9 +31,7 @@ type ListItemInputProps = {
   dataId?: string;
 };
 
-export const ListItemInput: Component<Testable<ListItemInputProps>> = (
-  props,
-) => {
+export const ListItemInput = (props: Testable<ListItemInputProps>) => {
   const mProps: Testable<Required<ListItemInputProps>> = mergeProps(
     {
       isDisabled: false,

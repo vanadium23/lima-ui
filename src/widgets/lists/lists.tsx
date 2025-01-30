@@ -116,6 +116,7 @@ export const Lists: Component<ListsProps> = (props) => {
                   listPurpose={list.purpose}
                   staticOnRemoveSuccess={removingListInStore}
                   staticOnRemoveError={setRemoveError}
+                  testId={DEFAULT_TEST_ID}
                 />
               </li>
             )}

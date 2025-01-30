@@ -1,8 +1,8 @@
-import { type Component, mergeProps, Show } from "solid-js";
-import "./textButton.css";
-import type { Testable } from "../utilities/testable.ts";
-import { prepareARIALabel } from "../utilities/prepareARIALabel.ts";
+import { mergeProps, Show } from "solid-js";
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
+import { prepareARIALabel } from "../utilities/prepareARIALabel.ts";
+import type { Testable } from "../utilities/testable.ts";
+import "./textButton.css";
 
 export enum TextButtonTheme {
   Primary = "primary",
@@ -38,7 +38,7 @@ type TextButtonProps = {
   handleClick?: () => void;
 };
 
-export const TextButton: Component<Testable<TextButtonProps>> = (props) => {
+export const TextButton = (props: Testable<TextButtonProps>) => {
   const mProps: Testable<Required<TextButtonProps>> = mergeProps(
     {
       componentType: TextButtonComponentType.Button,
@@ -47,7 +47,7 @@ export const TextButton: Component<Testable<TextButtonProps>> = (props) => {
       isLoading: false,
       ariaLabel: "",
       link: "",
-      handleClick: () => {},
+      handleClick: () => { },
     },
     props,
   );

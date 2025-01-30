@@ -1,7 +1,9 @@
-import { type Component, mergeProps } from "solid-js";
-import "./nav.css";
+import { mergeProps } from "solid-js";
+import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import { IconName } from "../icon/icon.tsx";
 import { NavItem, NavItemSize, NavItemTheme } from "../navItem/navItem.tsx";
+import type { Testable } from "../utilities/testable.ts";
+import "./nav.css";
 
 export enum NavTheme {
   Primary = "primary",
@@ -24,8 +26,8 @@ const navItemSize = {
   [NavSize.Large]: NavItemSize.Large,
 };
 
-export const Nav: Component<NavProps> = (props) => {
-  const mProps: Required<NavProps> = mergeProps(props);
+export const Nav = (props: Testable<NavProps>) => {
+  const mProps: Testable<Required<NavProps>> = mergeProps(props);
 
   return (
     <nav class="nav">
@@ -37,6 +39,7 @@ export const Nav: Component<NavProps> = (props) => {
             size={navItemSize[mProps.size]}
             text="Новый список"
             icon={IconName.ListPlus}
+            testId={DEFAULT_TEST_ID}
           />
         </li>
         <li role="none">
@@ -46,6 +49,7 @@ export const Nav: Component<NavProps> = (props) => {
             size={navItemSize[mProps.size]}
             text="Мои списки"
             icon={IconName.List}
+            testId={DEFAULT_TEST_ID}
           />
         </li>
         <li role="none">
@@ -55,6 +59,7 @@ export const Nav: Component<NavProps> = (props) => {
             size={navItemSize[mProps.size]}
             text="Мои чек-листы"
             icon={IconName.ListChecks}
+            testId={DEFAULT_TEST_ID}
           />
         </li>
       </ul>

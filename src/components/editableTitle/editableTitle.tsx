@@ -1,16 +1,15 @@
 import {
-  type Component,
   createEffect,
   createSignal,
-  mergeProps,
+  mergeProps
 } from "solid-js";
-import "./editableTitle.css";
-import type { Testable } from "../utilities/testable.ts";
 import {
   CharCounter,
   CharCounterSize,
   CharCounterTheme,
 } from "../charCounter/charCounter.tsx";
+import type { Testable } from "../utilities/testable.ts";
+import "./editableTitle.css";
 
 export enum EditableTitleTheme {
   Primary = "primary",
@@ -32,9 +31,7 @@ type EditableTitleProps = {
   dataId?: string;
 };
 
-export const EditableTitle: Component<Testable<EditableTitleProps>> = (
-  props,
-) => {
+export const EditableTitle = (props: Testable<EditableTitleProps>) => {
   const mProps: Testable<Required<EditableTitleProps>> = mergeProps(
     {
       isDisabled: false,

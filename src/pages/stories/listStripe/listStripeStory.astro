@@ -1,10 +1,11 @@
 ---
-import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
+import { DEFAULT_TEST_ID } from "../../../../features/testIds";
 import {
   ListStripe,
   ListStripeSize,
   ListStripeTheme,
 } from "../../../components/listStripe/listStripe.tsx";
+import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 ---
 
 <StorybookPage title="List Stripe">
@@ -30,6 +31,7 @@ import {
         editLink="https://ya.ru"
         staticOnRemoveSuccess={() => {}}
         staticOnRemoveError={() => {}}
+        testId={DEFAULT_TEST_ID}
       />
 
       <span class="rhead">Removing</span>
@@ -45,6 +47,7 @@ import {
         isRemoving={true}
         staticOnRemoveSuccess={() => {}}
         staticOnRemoveError={() => {}}
+        testId={DEFAULT_TEST_ID}
       />
     </div>
   </div>

@@ -1,10 +1,11 @@
 ---
-import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
+import { DEFAULT_TEST_ID } from "../../../../features/testIds";
 import {
   ListItem,
   ListItemSize,
   ListItemTheme,
 } from "../../../components/listItem/listItem.tsx";
+import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 ---
 
 <StorybookPage title="List Item">
@@ -28,6 +29,7 @@ import {
         isChecked={false}
         defaultListItemId="111"
         name="Пункт"
+        testId={DEFAULT_TEST_ID}
       />
 
       <span class="rhead">Checklist</span>
@@ -40,6 +42,7 @@ import {
         isChecked={false}
         defaultListItemId="111"
         name="Пункт"
+        testId={DEFAULT_TEST_ID}
       />
     </div>
   </div>

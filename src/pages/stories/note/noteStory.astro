@@ -1,6 +1,7 @@
 ---
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 import {Note, NoteSize, NoteTheme} from "../../../components/note/note.tsx";
+import { DEFAULT_TEST_ID } from "../../../../features/testIds";
 
 const themes = Object.values(NoteTheme);
 const sizes = Object.values(NoteSize);
@@ -18,8 +19,8 @@ const sizes = Object.values(NoteSize);
 
             {sizes.map((size) => (
               <span class="rhead">{size}</span>
-              <Note client:only="solid-js" theme={theme} size={size} title="Заметка" name="" />
-              <Note client:only="solid-js" theme={theme} size={size} title="Заметка" isDisabled={true} name="" />
+              <Note client:only="solid-js" theme={theme} size={size} title="Заметка" name="" testId={DEFAULT_TEST_ID}/>
+              <Note client:only="solid-js" theme={theme} size={size} title="Заметка" isDisabled={true} name="" testId={DEFAULT_TEST_ID}/>
             ))}
 
         </div>

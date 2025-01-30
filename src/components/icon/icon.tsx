@@ -1,7 +1,6 @@
-import { type Component } from "solid-js";
+import { Dynamic } from "solid-js/web";
 import "./icon.css";
 import * as icons from "./sprite.tsx";
-import { Dynamic } from "solid-js/web";
 
 export enum IconName {
   Acorn = "AcornIcon",
@@ -1528,7 +1527,7 @@ type IconProps = {
   size: IconSize;
 };
 
-export const Icon: Component<IconProps> = (props) => {
+export const Icon = (props: IconProps) => {
   return (
     <Dynamic
       component={icons[props.name]}

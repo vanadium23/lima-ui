@@ -1,7 +1,7 @@
-import { type Component, mergeProps, Show } from "solid-js";
-import "./button.css";
-import type { Testable } from "../utilities/testable.ts";
+import { mergeProps, Show } from "solid-js";
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
+import type { Testable } from "../utilities/testable.ts";
+import "./button.css";
 
 export enum ButtonTheme {
   Primary = "primary",
@@ -40,7 +40,7 @@ type ButtonProps = {
   openInNewTab?: boolean;
 };
 
-export const Button: Component<Testable<ButtonProps>> = (props) => {
+export const Button = (props: Testable<ButtonProps>) => {
   const mProps: Testable<Required<ButtonProps>> = mergeProps(
     {
       componentType: ButtonComponentType.Button,
@@ -49,7 +49,7 @@ export const Button: Component<Testable<ButtonProps>> = (props) => {
       isLoading: false,
       link: "",
       openInNewTab: false,
-      handleClick: () => {},
+      handleClick: () => { },
     },
     props,
   );

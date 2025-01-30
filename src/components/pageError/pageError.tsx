@@ -1,6 +1,6 @@
-import { type Component, type JSX, mergeProps } from "solid-js";
-import "./pageError.css";
+import { type JSX, mergeProps } from "solid-js";
 import type { Testable } from "../utilities/testable.ts";
+import "./pageError.css";
 export enum PageErrorTheme {
   Dangerous = "dangerous",
 }
@@ -15,7 +15,7 @@ type PageErrorProps = {
   size: PageErrorSize;
 };
 
-export const PageError: Component<Testable<PageErrorProps>> = (props) => {
+export const PageError = (props: Testable<PageErrorProps>) => {
   const mProps: Testable<Required<PageErrorProps>> = mergeProps(props);
 
   return (

@@ -1,7 +1,6 @@
-import { type Component } from "solid-js";
-import "./charCounter.css";
-import type { Testable } from "../utilities/testable.ts";
 import { buildInputCounterTestId } from "../../../features/testIds.ts";
+import type { Testable } from "../utilities/testable.ts";
+import "./charCounter.css";
 
 export enum CharCounterTheme {
   Primary = "primary",
@@ -20,7 +19,7 @@ type CharCounterProps = {
   value: number;
 };
 
-export const CharCounter: Component<Testable<CharCounterProps>> = (props) => {
+export const CharCounter = (props: Testable<CharCounterProps>) => {
   return (
     <span
       class={`charCounter charCounter_${props.theme} charCounter_${props.size}`}
