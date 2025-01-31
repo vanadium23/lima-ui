@@ -21,9 +21,9 @@ export enum DialogSize {
 }
 
 type DialogProps = {
-  size: DialogSize;
+  theme?: DialogTheme;
+  size?: DialogSize;
   children: JSX.Element;
-  theme: DialogTheme;
   onConfirm?: () => void;
   onCancel?: () => void;
   isOpen: boolean;
@@ -33,6 +33,8 @@ type DialogProps = {
 export const Dialog = (props: Testable<DialogProps>) => {
   const mProps: Testable<Required<DialogProps>> = mergeProps(
     {
+      theme: DialogTheme.Primary,
+      size: DialogSize.Medium,
       isOpen: false,
       onConfirm: () => { },
       onCancel: () => { },

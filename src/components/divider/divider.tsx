@@ -16,14 +16,16 @@ export enum DividerOrientation {
 }
 
 type DividerProps = {
+  theme?: DividerTheme;
+  size?: DividerSize;
   orientation?: DividerOrientation;
-  theme: DividerTheme;
-  size: DividerSize;
 };
 
 export const Divider = (props: Testable<DividerProps>) => {
   const mProps: Testable<Required<DividerProps>> = mergeProps(
     {
+      theme: DividerTheme.Primary,
+      size: DividerSize.Medium,
       orientation: DividerOrientation.Horizontal,
     },
     props,

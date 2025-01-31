@@ -12,11 +12,11 @@ export enum ToggleIconButtonSize {
 }
 
 type ToggleIconButtonProps = {
+  theme?: ToggleIconButtonTheme;
+  size?: ToggleIconButtonSize;
   iconName: IconName;
   isDisabled?: boolean;
   ariaLabel: string;
-  theme: ToggleIconButtonTheme;
-  size: ToggleIconButtonSize;
   defaultIsToggled?: boolean;
   setGlobalToggled: (isToggled: boolean) => void;
 };
@@ -24,6 +24,8 @@ type ToggleIconButtonProps = {
 export const ToggleIconButton = (props: Testable<ToggleIconButtonProps>) => {
   const mProps: Testable<Required<ToggleIconButtonProps>> = mergeProps(
     {
+      theme: ToggleIconButtonTheme.Secondary,
+      size: ToggleIconButtonSize.Medium,
       isDisabled: false,
       defaultIsToggled: false,
     },

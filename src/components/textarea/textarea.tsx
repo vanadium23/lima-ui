@@ -19,8 +19,8 @@ export enum TextareaSize {
 }
 
 type TextareaProps = {
-  theme: TextareaTheme;
-  size: TextareaSize;
+  theme?: TextareaTheme;
+  size?: TextareaSize;
   isError?: boolean;
   isDisabled?: boolean;
   placeholder: string;
@@ -33,6 +33,8 @@ type TextareaProps = {
 export const Textarea = (props: Testable<TextareaProps>) => {
   const mProps: Testable<Required<TextareaProps>> = mergeProps(
     {
+      theme: TextareaTheme.Primary,
+      size: TextareaSize.Medium,
       isDisabled: false,
       isError: false,
       isRequired: false,

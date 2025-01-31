@@ -14,9 +14,9 @@ export enum NavItemSize {
 }
 
 type NavItemProps = {
+  theme?: NavItemTheme;
+  size?: NavItemSize;
   text: string;
-  theme: NavItemTheme;
-  size: NavItemSize;
   url: string;
   icon: IconName;
   isCurrent?: boolean;
@@ -31,6 +31,8 @@ const iconSize = {
 export const NavItem = (props: Testable<NavItemProps>) => {
   const mProps: Testable<Required<NavItemProps>> = mergeProps(
     {
+      theme: NavItemTheme.Primary,
+      size: NavItemSize.Medium,
       isCurrent: false,
     },
     props,

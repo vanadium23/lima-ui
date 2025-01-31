@@ -28,13 +28,13 @@ export enum ButtonComponentType {
 }
 
 type ButtonProps = {
+  theme?: ButtonTheme;
+  size?: ButtonSize;
   componentType?: ButtonComponentType;
   link?: string;
   type?: ButtonType; //GERMAN - Подумать Герману как это сделать получше (может Union type)
   isDisabled?: boolean;
   text: string;
-  theme: ButtonTheme;
-  size: ButtonSize;
   isLoading?: boolean;
   handleClick?: () => void;
   openInNewTab?: boolean;
@@ -43,6 +43,8 @@ type ButtonProps = {
 export const Button = (props: Testable<ButtonProps>) => {
   const mProps: Testable<Required<ButtonProps>> = mergeProps(
     {
+      theme: ButtonTheme.Primary,
+      size: ButtonSize.Medium,
       componentType: ButtonComponentType.Button,
       type: ButtonType.Button,
       isDisabled: false,

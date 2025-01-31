@@ -1,3 +1,4 @@
+import { mergeProps } from "solid-js";
 import { Dynamic } from "solid-js/web";
 import "./icon.css";
 import * as icons from "./sprite.tsx";
@@ -1524,14 +1525,20 @@ export enum IconSize {
 
 type IconProps = {
   name: IconName;
-  size: IconSize;
+  size?: IconSize;
 };
 
 export const Icon = (props: IconProps) => {
+  const mProps: Required<IconProps> = mergeProps(
+    {
+      size: IconSize.Medium,
+    },
+    props,
+  );
   return (
     <Dynamic
       component={icons[props.name]}
-      size={props.size}
+      size={mProps.size}
       ariaHidden={true}
     />
   );

@@ -1,15 +1,9 @@
 import { type Component, For, mergeProps, Show } from "solid-js";
 import "./lists.css";
-import {
-  ListStripe,
-  ListStripeSize,
-  ListStripeTheme,
-} from "../../components/listStripe/listStripe";
+import { ListStripe } from "../../components/listStripe/listStripe";
 import {
   Button,
   ButtonComponentType,
-  ButtonSize,
-  ButtonTheme,
 } from "../../components/button/button.tsx";
 import {
   CREATE_LIST_BUTTON,
@@ -19,14 +13,10 @@ import {
   NETWORK_ERROR,
   NO_SAVED_LISTS_MESSAGE,
 } from "../../../features/testIds.ts";
-import {
-  PageError,
-  PageErrorSize,
-  PageErrorTheme,
-} from "../../components/pageError/pageError.tsx";
+import { PageError } from "../../components/pageError/pageError.tsx";
 import { createStore } from "solid-js/store";
 import { LISTS_LIMIT } from "../../../configuration.ts";
-import { Title, TitleSize, TitleTheme } from "../../components/title/title.tsx";
+import { Title } from "../../components/title/title.tsx";
 
 type ListsProps = {
   defaultLists: Array<{ name: string; id: string; purpose: string }>;
@@ -58,13 +48,7 @@ export const Lists: Component<ListsProps> = (props) => {
   return (
     <div slot="mainContent" class="lists">
       <div class="lists__title">
-        <Title
-          size={TitleSize.Medium}
-          theme={TitleTheme.Primary}
-          testId={DEFAULT_TEST_ID}
-        >
-          Мои списки
-        </Title>
+        <Title testId={DEFAULT_TEST_ID}>Мои списки</Title>
       </div>
       <Show when={store.lists.length === 0 && !mProps.listsRequestError}>
         <span class="lists__emptyWarning" data-test-id={NO_SAVED_LISTS_MESSAGE}>
@@ -72,20 +56,12 @@ export const Lists: Component<ListsProps> = (props) => {
         </span>
       </Show>
       <Show when={checkListsLimitReached()}>
-        <PageError
-          size={PageErrorSize.Medium}
-          theme={PageErrorTheme.Dangerous}
-          testId={LISTS_LIMIT_REACHED_WARNING}
-        >
+        <PageError testId={LISTS_LIMIT_REACHED_WARNING}>
           Вы использовали лимит в {LISTS_LIMIT} списков
         </PageError>
       </Show>
       <Show when={store.removeError}>
-        <PageError
-          size={PageErrorSize.Medium}
-          theme={PageErrorTheme.Dangerous}
-          testId={LIST_REMOVAL_ERROR}
-        >
+        <PageError testId={LIST_REMOVAL_ERROR}>
           Не удалось удалить список. Попробуйте ещё раз.
         </PageError>
       </Show>
@@ -93,11 +69,7 @@ export const Lists: Component<ListsProps> = (props) => {
       <Show
         when={!mProps.listsRequestError}
         fallback={
-          <PageError
-            size={PageErrorSize.Medium}
-            theme={PageErrorTheme.Dangerous}
-            testId={NETWORK_ERROR}
-          >
+          <PageError testId={NETWORK_ERROR}>
             Произошла ошибка соединения с сервером, попробуйте еще раз
           </PageError>
         }
@@ -108,8 +80,6 @@ export const Lists: Component<ListsProps> = (props) => {
               <li class="lists__item">
                 <ListStripe
                   defaultListId={list.id}
-                  theme={ListStripeTheme.Primary}
-                  size={ListStripeSize.Medium}
                   link={`./${list.id}`}
                   editLink={`./${list.id}/edit`}
                   listTitle={list.name}
@@ -129,8 +99,6 @@ export const Lists: Component<ListsProps> = (props) => {
           componentType={ButtonComponentType.Link}
           link={"/lists/create"}
           text="Создать"
-          size={ButtonSize.Medium}
-          theme={ButtonTheme.Primary}
           testId={CREATE_LIST_BUTTON}
           isDisabled={checkListsLimitReached()}
         />

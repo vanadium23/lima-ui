@@ -1,23 +1,21 @@
 ---
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 import {
-  ListItemInput,
-  ListItemInputTheme,
-  ListItemInputSize,
-} from "../../../components/listItemInput/listItemInput.tsx";
+  ItemInput,
+  ItemInputTheme,
+  ItemInputSize,
+} from "../../../components/itemInput/itemInput.tsx";
 import { DEFAULT_TEST_ID } from "../../../../features/testIds";
 
-const themes = Object.values(ListItemInputTheme);
-const sizes = Object.values(ListItemInputSize);
+const themes = Object.values(ItemInputTheme);
+const sizes = Object.values(ItemInputSize);
 ---
 
 <StorybookPage title="List Item Input">
   {
     themes.map((theme) => (
       <div class="demoThemeWrapper">
-        <h3 style="font-size: 24px; margin-bottom: 10px; text-transform: capitalize;">
-          {theme}
-        </h3>
+        <h3 class="demoThemeWrapper__title">{theme}</h3>
         <div class="grid grid_4Col">
           <span class="chead" />
           <span class="chead">Default</span>
@@ -29,7 +27,7 @@ const sizes = Object.values(ListItemInputSize);
             <>
               <span class="rhead">{size}</span>
 
-              <ListItemInput
+              <ItemInput
                 client:only="solid-js"
                 theme={theme}
                 size={size}
@@ -37,8 +35,9 @@ const sizes = Object.values(ListItemInputSize);
                 isRequired={true}
                 name="Some-text"
                 testId={DEFAULT_TEST_ID}
+                placeholder="Введите текст"
               />
-              <ListItemInput
+              <ItemInput
                 client:only="solid-js"
                 theme={theme}
                 size={size}
@@ -47,8 +46,9 @@ const sizes = Object.values(ListItemInputSize);
                 name="Some-text"
                 isRequired={true}
                 testId={DEFAULT_TEST_ID}
+                placeholder="Введите текст"
               />
-              <ListItemInput
+              <ItemInput
                 client:only="solid-js"
                 theme={theme}
                 size={size}
@@ -56,9 +56,10 @@ const sizes = Object.values(ListItemInputSize);
                 name="Some-text"
                 isRequired={true}
                 testId={DEFAULT_TEST_ID}
+                placeholder="Введите текст"
                 isDisabled={true}
               />
-              <ListItemInput
+              <ItemInput
                 client:only="solid-js"
                 theme={theme}
                 size={size}
@@ -67,6 +68,7 @@ const sizes = Object.values(ListItemInputSize);
                 isRequired={true}
                 defaultValue={"Text"}
                 testId={DEFAULT_TEST_ID}
+                placeholder="Введите текст"
                 isDisabled={true}
               />
             </>

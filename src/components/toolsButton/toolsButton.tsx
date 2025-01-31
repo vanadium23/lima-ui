@@ -18,11 +18,11 @@ export enum ToolsButtonComponentType {
 }
 
 type ToolsButtonProps = {
+  theme?: ToolsButtonTheme;
+  size?: ToolsButtonSize;
   componentType?: ToolsButtonComponentType;
   iconName: IconName;
   isDisabled?: boolean;
-  theme: ToolsButtonTheme;
-  size: ToolsButtonSize;
   handleClick?: () => void;
   text: string;
   openInNewTab?: boolean;
@@ -32,6 +32,8 @@ type ToolsButtonProps = {
 export const ToolsButton = (props: Testable<ToolsButtonProps>) => {
   const mProps: Testable<Required<ToolsButtonProps>> = mergeProps(
     {
+      theme: ToolsButtonTheme.Primary,
+      size: ToolsButtonSize.Medium,
       componentType: ToolsButtonComponentType.Button,
       isDisabled: false,
       openInNewTab: false,

@@ -14,10 +14,10 @@ import {
   IconButtonTheme,
 } from "../iconButton/iconButton.tsx";
 import {
-  ListItemInput,
-  ListItemInputSize,
-  ListItemInputTheme,
-} from "../listItemInput/listItemInput.tsx";
+  ItemInput,
+  ItemInputSize,
+  ItemInputTheme,
+} from "../itemInput/itemInput.tsx";
 import type { Testable } from "../utilities/testable.ts";
 import "./listItem.css";
 
@@ -30,8 +30,8 @@ export enum ListItemSize {
 }
 
 type ListItemProps = {
-  theme: ListItemTheme;
-  size: ListItemSize;
+  theme?: ListItemTheme;
+  size?: ListItemSize;
   removeItem: (defaultListId: string) => void;
   defaultListItemId: string;
   isDisabled?: boolean;
@@ -46,6 +46,8 @@ type ListItemProps = {
 export const ListItem = (props: Testable<ListItemProps>) => {
   const mProps: Testable<Required<ListItemProps>> = mergeProps(
     {
+      theme: ListItemTheme.Primary,
+      size: ListItemSize.Medium,
       isLastItem: false,
       isDisabled: false,
       defaultValue: "",
@@ -74,14 +76,15 @@ export const ListItem = (props: Testable<ListItemProps>) => {
         </div>
       </Show>
       <div class="listItem__inner">
-        <ListItemInput
-          theme={ListItemInputTheme.Primary}
-          size={ListItemInputSize.Medium}
+        <ItemInput
+          theme={ItemInputTheme.Primary}
+          size={ItemInputSize.Medium}
           maxLength={EDIT_LIST_INPUT_LIMIT}
           name={mProps.name}
           testId={DEFAULT_TEST_ID}
           dataId={mProps.dataId}
           isDisabled={mProps.isDisabled}
+          placeholder={"Пункт списка"}
           defaultValue={mProps.defaultValue}
           isRequired={true}
         />

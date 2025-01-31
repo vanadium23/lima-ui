@@ -25,9 +25,9 @@ export enum NoteSize {
 }
 
 type NoteProps = {
-  theme: NoteTheme;
+  theme?: NoteTheme;
+  size?: NoteSize;
   isDisabled?: boolean;
-  size: NoteSize;
   title?: string;
   name?: string;
   defaultValue?: string;
@@ -36,6 +36,8 @@ type NoteProps = {
 export const Note = (props: Testable<NoteProps>) => {
   const mProps: Testable<Required<NoteProps>> = mergeProps(
     {
+      theme: NoteTheme.Primary,
+      size: NoteSize.Medium,
       title: "Заметка",
       name: "Note",
       isDisabled: false,

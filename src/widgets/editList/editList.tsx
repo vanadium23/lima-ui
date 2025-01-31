@@ -1,10 +1,7 @@
 import { type Component, For, mergeProps, Show } from "solid-js";
 import { createStore } from "solid-js/store";
-import {
-  ITEMS_LIMIT,
-  LIST_PURPOSE_INPUT_LIMIT,
-  LIST_TITLE_INPUT_LIMIT,
-} from "../../../configuration.ts";
+import "./editList.css";
+import { Button, ButtonType } from "../../components/button/button.tsx";
 import {
   CREATE_LIST_BUTTON,
   DEFAULT_TEST_ID,
@@ -14,53 +11,38 @@ import {
   LIST_PURPOSE_INPUT,
   LIST_TITLE_INPUT,
   NETWORK_ERROR,
-  PAGE_TITLE,
 } from "../../../features/testIds.ts";
 import {
-  Button,
-  ButtonSize,
-  ButtonTheme,
-  ButtonType,
-} from "../../components/button/button.tsx";
-import {
-  Divider,
-  DividerSize,
-  DividerTheme,
-} from "../../components/divider/divider.tsx";
-import { IconName } from "../../components/icon/icon.tsx";
-import { Input, InputSize, InputTheme } from "../../components/input/input.tsx";
-import {
-  ListItem,
-  ListItemSize,
-  ListItemTheme,
-} from "../../components/listItem/listItem.tsx";
-import { Note, NoteSize, NoteTheme } from "../../components/note/note.tsx";
-import {
-  PageError,
-  PageErrorSize,
-  PageErrorTheme,
-} from "../../components/pageError/pageError.tsx";
-import {
-  Switch,
-  SwitchSize,
-  SwitchTheme,
-} from "../../components/switch/switch.tsx";
-import {
-  ToolsButton,
-  ToolsButtonComponentType,
-  ToolsButtonSize,
-  ToolsButtonTheme,
-} from "../../components/toolsButton/toolsButton.tsx";
+  ITEMS_LIMIT,
+  LIST_PURPOSE_INPUT_LIMIT,
+  LIST_TITLE_INPUT_LIMIT,
+} from "../../../configuration.ts";
+import { Note } from "../../components/note/note.tsx";
+import { soften } from "./utilities/soften.ts";
+import { PageError } from "../../components/pageError/pageError.tsx";
+import { createList } from "../../services/createList.ts";
+import { ListItem } from "../../components/listItem/listItem.tsx";
 import {
   ToolsPanel,
   ToolsPanelSize,
   ToolsPanelTheme,
 } from "../../organisms/toolsPanel/toolsPanel.tsx";
-import { createList } from "../../services/createList.ts";
-import { updateList } from "../../services/updateList.ts";
+import { Switch } from "../../components/switch/switch.tsx";
 import type { BackendList, NewList, UpdatedList } from "../../types.ts";
-import "./editList.css";
-import { soften } from "./utilities/soften.ts";
+import { updateList } from "../../services/updateList.ts";
+import { Divider } from "../../components/divider/divider.tsx";
+import {
+  ToolsButton,
+  ToolsButtonComponentType,
+  ToolsButtonTheme,
+} from "../../components/toolsButton/toolsButton.tsx";
+import { IconName } from "../../components/icon/icon.tsx";
+import { EditableTitle } from "../../components/editableTitle/editableTitle.tsx";
+import {
+  ItemInput,
+  ItemInputSize,
+  ItemInputTheme,
+} from "../../components/itemInput/itemInput.tsx";
 
 type EditListProps = {
   defaultList?: BackendList;
@@ -222,9 +204,6 @@ export const EditList: Component<EditListProps> = (props) => {
   return (
     <div class="editList">
       <div class="editList__main">
-        <h1 class="editList__pageTitle" data-test-id={PAGE_TITLE}>
-          Создание списка
-        </h1>
         <form
           class="editList__form"
           method="post"
@@ -233,10 +212,7 @@ export const EditList: Component<EditListProps> = (props) => {
           <div class="editList__wrapper">
             <div class="editList__listHeader">
               <div class="editList__title">
-                <Input
-                  theme={InputTheme.Secondary}
-                  size={InputSize.Medium}
-                  placeholder="Название списка"
+                <EditableTitle
                   maxLength={LIST_TITLE_INPUT_LIMIT}
                   name={EditListFormNames.ListTitle}
                   testId={LIST_TITLE_INPUT}
@@ -246,10 +222,10 @@ export const EditList: Component<EditListProps> = (props) => {
                 />
               </div>
               <div class="editList__input">
-                <Input
-                  theme={InputTheme.Primary}
-                  size={InputSize.Medium}
-                  placeholder="Назначение списка"
+                <ItemInput
+                  theme={ItemInputTheme.Primary}
+                  size={ItemInputSize.Medium}
+                  placeholder="Цель списка"
                   maxLength={LIST_PURPOSE_INPUT_LIMIT}
                   name={EditListFormNames.ListPurpose}
                   testId={LIST_PURPOSE_INPUT}
@@ -259,8 +235,6 @@ export const EditList: Component<EditListProps> = (props) => {
               </div>
               <div class="editList__input">
                 <Note
-                  theme={NoteTheme.Primary}
-                  size={NoteSize.Medium}
                   title="Заметка"
                   name={EditListFormNames.ListNote}
                   isDisabled={store.sendingNow}
@@ -276,8 +250,6 @@ export const EditList: Component<EditListProps> = (props) => {
                   <For each={store.items}>
                     {(item, getIndex) => (
                       <ListItem
-                        theme={ListItemTheme.Primary}
-                        size={ListItemSize.Medium}
                         removeItem={() => removeItem(getIndex())}
                         isDisabled={store.sendingNow}
                         isLastItem={isLastItem()}
@@ -295,20 +267,12 @@ export const EditList: Component<EditListProps> = (props) => {
                 </div>
               </div>
               <Show when={store.error}>
-                <PageError
-                  size={PageErrorSize.Medium}
-                  theme={PageErrorTheme.Dangerous}
-                  testId={NETWORK_ERROR}
-                >
+                <PageError testId={NETWORK_ERROR}>
                   Произошла ошибка соединения с сервером, попробуйте еще раз
                 </PageError>
               </Show>
               <Show when={checkItemsLimitReached()}>
-                <PageError
-                  size={PageErrorSize.Medium}
-                  theme={PageErrorTheme.Dangerous}
-                  testId={ITEMS_LIMIT_REACHED_WARNING}
-                >
+                <PageError testId={ITEMS_LIMIT_REACHED_WARNING}>
                   Вы использовали лимит в {ITEMS_LIMIT} пунктов
                 </PageError>
               </Show>
@@ -316,8 +280,6 @@ export const EditList: Component<EditListProps> = (props) => {
               <div class="editList__controls">
                 <Button
                   type={ButtonType.Submit}
-                  theme={ButtonTheme.Primary}
-                  size={ButtonSize.Medium}
                   text="Сохранить"
                   isLoading={store.sendingNow}
                   testId={CREATE_LIST_BUTTON}
@@ -337,8 +299,6 @@ export const EditList: Component<EditListProps> = (props) => {
             <ToolsButton
               componentType={ToolsButtonComponentType.Button}
               iconName={IconName.RowsPlusBottom}
-              theme={ToolsButtonTheme.Primary}
-              size={ToolsButtonSize.Medium}
               handleClick={addItem}
               isDisabled={checkItemsLimitReached() || store.sendingNow}
               text={"Добавить пункт"}
@@ -347,8 +307,6 @@ export const EditList: Component<EditListProps> = (props) => {
             <ToolsButton
               componentType={ToolsButtonComponentType.Button}
               iconName={IconName.CopySimple}
-              theme={ToolsButtonTheme.Primary}
-              size={ToolsButtonSize.Medium}
               text={"Копировать пункты"}
               testId={DEFAULT_TEST_ID}
             />
@@ -356,36 +314,20 @@ export const EditList: Component<EditListProps> = (props) => {
               componentType={ToolsButtonComponentType.Button}
               iconName={IconName.Trash}
               theme={ToolsButtonTheme.Dangerous}
-              size={ToolsButtonSize.Medium}
               text={"Удалить список"}
               testId={DEFAULT_TEST_ID}
             />
           </div>
-          <Divider
-            theme={DividerTheme.Primary}
-            size={DividerSize.Medium}
-            testId={DEFAULT_TEST_ID}
-          />
+          <Divider testId={DEFAULT_TEST_ID} />
           <div class="toolsPanel__verticalSection">
-            <Switch
-              size={SwitchSize.Medium}
-              theme={SwitchTheme.Primary}
-              testId={DEFAULT_TEST_ID}
-              text="Чек-лист"
-            />
+            <Switch testId={DEFAULT_TEST_ID} text="Чек-лист" />
           </div>
-          <Divider
-            theme={DividerTheme.Primary}
-            size={DividerSize.Medium}
-            testId={DEFAULT_TEST_ID}
-          />
+          <Divider testId={DEFAULT_TEST_ID} />
           <div class="toolsPanel__horizontalSection">
             <ToolsButton
               componentType={ToolsButtonComponentType.Link}
               iconName={IconName.Printer}
               link={`./${list.id}/print`}
-              theme={ToolsButtonTheme.Primary}
-              size={ToolsButtonSize.Medium}
               text={"Напечатать список"}
               testId={DEFAULT_TEST_ID}
               openInNewTab={true}

@@ -1,6 +1,5 @@
 ---
 import AppPage from "../../layouts/app/app.astro";
-import { PAGE_TITLE } from "../../../features/testIds";
 import { Lists } from "../../widgets/lists/lists";
 
 let lists: Array<{ name: string; id: string; purpose: string }> = [];
@@ -19,11 +18,6 @@ try {
 ---
 
 <AppPage>
-  <div class="headerChecklist" slot="header">
-    <h1 class="headerChecklist__title" data-test-id={PAGE_TITLE}>Мои списки</h1>
-    <div class="headerChecklist__search"></div>
-  </div>
-
   <Lists
     client:only="solid-js"
     defaultLists={lists}

@@ -12,11 +12,11 @@ export enum SwitchSize {
 }
 
 type SwitchProps = {
+  theme?: SwitchTheme;
+  size?: SwitchSize;
   isDisabled?: boolean;
   ariaLabel?: string;
   text?: string;
-  theme: SwitchTheme;
-  size: SwitchSize;
   handleClick?: () => void;
   isChecked?: boolean;
 };
@@ -24,6 +24,8 @@ type SwitchProps = {
 export const Switch = (props: Testable<SwitchProps>) => {
   const mProps: Testable<Required<SwitchProps>> = mergeProps(
     {
+      theme: SwitchTheme.Primary,
+      size: SwitchSize.Medium,
       isDisabled: false,
       ariaLabel: "",
       handleClick: () => { },

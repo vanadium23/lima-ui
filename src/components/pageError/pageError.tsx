@@ -1,6 +1,7 @@
 import { type JSX, mergeProps } from "solid-js";
 import type { Testable } from "../utilities/testable.ts";
 import "./pageError.css";
+
 export enum PageErrorTheme {
   Dangerous = "dangerous",
 }
@@ -10,13 +11,19 @@ export enum PageErrorSize {
 }
 
 type PageErrorProps = {
+  theme?: PageErrorTheme;
+  size?: PageErrorSize;
   children: JSX.Element;
-  theme: PageErrorTheme;
-  size: PageErrorSize;
 };
 
 export const PageError = (props: Testable<PageErrorProps>) => {
-  const mProps: Testable<Required<PageErrorProps>> = mergeProps(props);
+  const mProps: Testable<Required<PageErrorProps>> = mergeProps(
+    {
+      theme: PageErrorTheme.Dangerous,
+      size: PageErrorSize.Medium,
+    },
+    props,
+  );
 
   return (
     <div

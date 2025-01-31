@@ -12,6 +12,7 @@
       {
         "message": "Expected CSS-class to follow camelCase BEM variant: .blockName__elementName_modificatorName."
       }
-    ]
+    ],
+    "unit-disallowed-list": ["px"]
   }
 }
