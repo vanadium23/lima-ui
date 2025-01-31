@@ -1,10 +1,6 @@
-import { type Component, For, mergeProps, Show } from "solid-js";
-import "./lists.css";
-import { ListStripe } from "../../components/listStripe/listStripe";
-import {
-  Button,
-  ButtonComponentType,
-} from "../../components/button/button.tsx";
+import { For, mergeProps, Show } from "solid-js";
+import { createStore } from "solid-js/store";
+import { LISTS_LIMIT } from "../../../configuration.ts";
 import {
   CREATE_LIST_BUTTON,
   DEFAULT_TEST_ID,
@@ -13,17 +9,21 @@ import {
   NETWORK_ERROR,
   NO_SAVED_LISTS_MESSAGE,
 } from "../../../features/testIds.ts";
+import {
+  Button,
+  ButtonComponentType,
+} from "../../components/button/button.tsx";
+import { ListStripe } from "../../components/listStripe/listStripe";
 import { PageError } from "../../components/pageError/pageError.tsx";
-import { createStore } from "solid-js/store";
-import { LISTS_LIMIT } from "../../../configuration.ts";
 import { Title } from "../../components/title/title.tsx";
+import "./lists.css";
 
 type ListsProps = {
   defaultLists: Array<{ name: string; id: string; purpose: string }>;
   listsRequestError: boolean;
 };
 
-export const Lists: Component<ListsProps> = (props) => {
+export const Lists = (props: ListsProps) => {
   const mProps: Required<ListsProps> = mergeProps(props);
 
   const [store, setStore] = createStore({

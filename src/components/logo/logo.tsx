@@ -1,7 +1,6 @@
-import { type Component } from "solid-js";
 import "./logo.css";
 
-export const Logo: Component = () => {
+export const Logo = () => {
   return (
     <a href="/" class="logo">
       <svg
