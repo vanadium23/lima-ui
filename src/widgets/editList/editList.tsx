@@ -1,4 +1,4 @@
-import { type Component, For, mergeProps, Show } from "solid-js";
+import { type Component, createSignal, For, mergeProps, Show } from "solid-js";
 import { createStore } from "solid-js/store";
 import "./editList.css";
 import { Button, ButtonType } from "../../components/button/button.tsx";
@@ -88,6 +88,8 @@ export const EditList: Component<EditListProps> = (props) => {
     sendingNow: false,
     error: false,
   });
+
+  const [getCheckable, setIsCheckable] = createSignal(false);
 
   function addItem() {
     if (store.items.length < ITEMS_LIMIT) {
@@ -252,7 +254,7 @@ export const EditList: Component<EditListProps> = (props) => {
                         removeItem={() => removeItem(getIndex())}
                         isDisabled={store.sendingNow}
                         isLastItem={isLastItem()}
-                        isCheckable={false}
+                        isCheckable={getCheckable()}
                         isChecked={false}
                         defaultValue={item.content}
                         name={`${EditListFormNames.ListItem} ${getIndex() + 1}`}
@@ -319,7 +321,12 @@ export const EditList: Component<EditListProps> = (props) => {
           </div>
           <Divider testId={DEFAULT_TEST_ID} />
           <div class="toolsPanel__verticalSection">
-            <Switch testId={DEFAULT_TEST_ID} text="Чек-лист" />
+            <Switch
+              testId={DEFAULT_TEST_ID}
+              text="Чек-лист"
+              isChecked={getCheckable()}
+              onChange={setIsCheckable}
+            />
           </div>
           <Divider testId={DEFAULT_TEST_ID} />
           <div class="toolsPanel__horizontalSection">

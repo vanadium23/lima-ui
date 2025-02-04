@@ -17,7 +17,7 @@ type SwitchProps = {
   isDisabled?: boolean;
   ariaLabel?: string;
   text?: string;
-  handleClick?: () => void;
+  onChange?: (checked: boolean) => void;
   isChecked?: boolean;
 };
 
@@ -28,7 +28,7 @@ export const Switch: Component<Testable<SwitchProps>> = (props) => {
       size: SwitchSize.Medium,
       isDisabled: false,
       ariaLabel: "",
-      handleClick: () => {},
+      onChange: () => {},
       isChecked: false,
       text: "",
     },
@@ -48,8 +48,8 @@ export const Switch: Component<Testable<SwitchProps>> = (props) => {
         class="switch__input"
         disabled={mProps.isDisabled}
         checked={mProps.isChecked}
-        onClick={() => {
-          mProps.handleClick();
+        onChange={(e) => {
+          mProps.onChange?.(e.currentTarget.checked);
         }}
         {...prepareARIALabel(mProps.ariaLabel)}
       />
