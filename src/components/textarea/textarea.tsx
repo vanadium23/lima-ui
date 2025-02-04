@@ -28,6 +28,7 @@ type TextareaProps = {
   maxLength: number;
   isRequired?: boolean;
   defaultValue?: string;
+  onChange?: (value: string) => void;
 };
 
 export const Textarea: Component<Testable<TextareaProps>> = (props) => {
@@ -39,6 +40,7 @@ export const Textarea: Component<Testable<TextareaProps>> = (props) => {
       isError: false,
       isRequired: false,
       defaultValue: "",
+      onChange: () => {},
     },
     props,
   );
@@ -60,7 +62,11 @@ export const Textarea: Component<Testable<TextareaProps>> = (props) => {
         maxlength={mProps.maxLength}
         placeholder={mProps.placeholder}
         required={mProps.isRequired}
-        onInput={(event) => setCounter(event.target.value.length)}
+        onInput={(event) => {
+          const value = event.currentTarget.value;
+          setCounter(value.length);
+          mProps.onChange?.(value);
+        }}
         data-test-id={mProps.testId}
       >
         {mProps.defaultValue}

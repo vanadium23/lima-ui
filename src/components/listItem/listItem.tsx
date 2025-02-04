@@ -40,6 +40,7 @@ type ListItemProps = {
   name: string;
   dataId?: string;
   isLastItem?: boolean;
+  onChange?: (value: string) => void;
 };
 
 export const ListItem: Component<ListItemProps> = (props) => {
@@ -51,6 +52,7 @@ export const ListItem: Component<ListItemProps> = (props) => {
       isDisabled: false,
       defaultValue: "",
       dataId: "",
+      onChange: () => {},
     },
     props,
   );
@@ -86,6 +88,7 @@ export const ListItem: Component<ListItemProps> = (props) => {
           placeholder={"Пункт списка"}
           defaultValue={mProps.defaultValue}
           isRequired={true}
+          onChange={(value) => mProps.onChange?.(value)}
         />
         <div class="listItem__controls">
           <IconButton

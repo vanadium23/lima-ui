@@ -79,12 +79,20 @@ export const EditList: Component<EditListProps> = (props) => {
 
   type EditListStore = {
     items: UpdatedList["items"];
+    itemsCount: number;
+    name: string;
+    purpose: string;
+    note: string;
     sendingNow: boolean;
     error: boolean;
   };
 
   const [store, setStore] = createStore<EditListStore>({
     items: list.items,
+    itemsCount: list.items.length,
+    name: list.name,
+    purpose: list.purpose,
+    note: list.note,
     sendingNow: false,
     error: false,
   });
@@ -94,6 +102,7 @@ export const EditList: Component<EditListProps> = (props) => {
   function addItem() {
     if (store.items.length < ITEMS_LIMIT) {
       setStore("items", [...store.items, { content: "", id: "" }]);
+      checkChanges();
     }
   }
 
@@ -109,6 +118,40 @@ export const EditList: Component<EditListProps> = (props) => {
     setStore("items", (items) =>
       items.filter((_item, index) => index !== indexToRemove),
     );
+    checkChanges();
+  }
+
+  const [isChanged, setIsChanged] = createSignal(false);
+
+  const initialData = {
+    items: JSON.stringify(list.items),
+    itemsCount: list.items.length,
+    name: list.name,
+    purpose: list.purpose,
+    note: list.note,
+  };
+
+  function checkChanges() {
+    const currentData = {
+      items: JSON.stringify(store.items),
+      itemsCount: store.items.length,
+      name: store.name,
+      purpose: store.purpose,
+      note: store.note,
+    };
+
+    setIsChanged(
+      currentData.items !== initialData.items ||
+        currentData.itemsCount !== initialData.itemsCount || // Проверяем количество
+        currentData.name !== initialData.name ||
+        currentData.purpose !== initialData.purpose ||
+        currentData.note !== initialData.note,
+    );
+  }
+
+  function handleInputChange(key: keyof typeof initialData, value: string) {
+    setStore(key, value);
+    checkChanges();
   }
 
   function prepareAndSendListData(event: SubmitEvent) {
@@ -165,6 +208,14 @@ export const EditList: Component<EditListProps> = (props) => {
         soften(() => {
           history.pushState({}, "", `/lists/${list.id}`);
           setSendingNow(false);
+
+          initialData.items = JSON.stringify(store.items);
+          initialData.itemsCount = store.items.length;
+          initialData.name = store.name;
+          initialData.purpose = store.purpose;
+          initialData.note = store.note;
+
+          checkChanges();
         });
       })
       .catch((error) => {
@@ -188,6 +239,14 @@ export const EditList: Component<EditListProps> = (props) => {
       .then(() => {
         soften(() => {
           setSendingNow(false);
+
+          initialData.items = JSON.stringify(store.items);
+          initialData.itemsCount = store.items.length;
+          initialData.name = store.name;
+          initialData.purpose = store.purpose;
+          initialData.note = store.note;
+
+          checkChanges();
         });
       })
       .catch((error) => {
@@ -221,6 +280,7 @@ export const EditList: Component<EditListProps> = (props) => {
                   isRequired={true}
                   isDisabled={store.sendingNow}
                   defaultValue={list.name}
+                  onChange={(value) => handleInputChange("name", value)}
                 />
               </div>
               <div class="editList__input">
@@ -233,6 +293,7 @@ export const EditList: Component<EditListProps> = (props) => {
                   testId={LIST_PURPOSE_INPUT}
                   isDisabled={store.sendingNow}
                   defaultValue={list.purpose}
+                  onChange={(value) => handleInputChange("purpose", value)}
                 />
               </div>
               <div class="editList__input">
@@ -241,6 +302,7 @@ export const EditList: Component<EditListProps> = (props) => {
                   name={EditListFormNames.ListNote}
                   isDisabled={store.sendingNow}
                   defaultValue={list.note}
+                  onChange={(value) => handleInputChange("note", value)}
                 />
               </div>
             </div>
@@ -262,6 +324,10 @@ export const EditList: Component<EditListProps> = (props) => {
                         defaultListItemId={String(getIndex())}
                         data-test-id={ITEM_INPUT_CONTAINER}
                         data-test-sub-id={getIndex()}
+                        onChange={(value) => {
+                          setStore("items", getIndex(), "content", value);
+                          checkChanges();
+                        }}
                       />
                     )}
                   </For>
@@ -283,6 +349,7 @@ export const EditList: Component<EditListProps> = (props) => {
                   type={ButtonType.Submit}
                   text="Сохранить"
                   isLoading={store.sendingNow}
+                  isDisabled={!isChanged()}
                   testId={CREATE_LIST_BUTTON}
                 />
               </div>
