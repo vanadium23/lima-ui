@@ -283,7 +283,7 @@ export const EditList: Component<EditListProps> = (props) => {
                   onChange={(value) => handleInputChange("name", value)}
                 />
               </div>
-              <div class="editList__input">
+              <div class="editList__listHeaderInner">
                 <ItemInput
                   theme={ItemInputTheme.Primary}
                   size={ItemInputSize.Medium}
@@ -295,8 +295,6 @@ export const EditList: Component<EditListProps> = (props) => {
                   defaultValue={list.purpose}
                   onChange={(value) => handleInputChange("purpose", value)}
                 />
-              </div>
-              <div class="editList__input">
                 <Note
                   title="Заметка"
                   name={EditListFormNames.ListNote}
