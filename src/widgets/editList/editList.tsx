@@ -331,6 +331,7 @@ export const EditList = (props: EditListProps) => {
                 <Button
                   type={ButtonType.Submit}
                   text="Сохранить"
+                  isDisabled={isChanged()}
                   isLoading={store.sendingNow}
                   testId={CREATE_LIST_BUTTON}
                 />
