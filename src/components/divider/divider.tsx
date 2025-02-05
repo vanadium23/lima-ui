@@ -1,6 +1,6 @@
-import { type Component, mergeProps } from "solid-js";
-import "./divider.css";
+import { mergeProps } from "solid-js";
 import type { Testable } from "../utilities/testable.ts";
+import "./divider.css";
 
 export enum DividerTheme {
   Primary = "primary",
@@ -21,7 +21,7 @@ type DividerProps = {
   orientation?: DividerOrientation;
 };
 
-export const Divider: Component<Testable<DividerProps>> = (props) => {
+export const Divider = (props: Testable<DividerProps>) => {
   const mProps: Testable<Required<DividerProps>> = mergeProps(
     {
       theme: DividerTheme.Primary,

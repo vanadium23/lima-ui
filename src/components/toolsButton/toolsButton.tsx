@@ -1,7 +1,7 @@
-import { type Component, mergeProps, Show } from "solid-js";
-import "./toolsButton.css";
+import { mergeProps, Show } from "solid-js";
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
 import type { Testable } from "../utilities/testable.ts";
+import "./toolsButton.css";
 
 export enum ToolsButtonTheme {
   Primary = "primary",
@@ -29,7 +29,7 @@ type ToolsButtonProps = {
   link?: string;
 };
 
-export const ToolsButton: Component<Testable<ToolsButtonProps>> = (props) => {
+export const ToolsButton = (props: Testable<ToolsButtonProps>) => {
   const mProps: Testable<Required<ToolsButtonProps>> = mergeProps(
     {
       theme: ToolsButtonTheme.Primary,
@@ -38,7 +38,7 @@ export const ToolsButton: Component<Testable<ToolsButtonProps>> = (props) => {
       isDisabled: false,
       openInNewTab: false,
       link: "",
-      handleClick: () => {},
+      handleClick: () => { },
     },
     props,
   );

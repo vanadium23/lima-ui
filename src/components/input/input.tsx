@@ -1,11 +1,11 @@
-import { type Component, createSignal, mergeProps, Show } from "solid-js";
-import "./input.css";
-import type { Testable } from "../utilities/testable.ts";
+import { createSignal, mergeProps, Show } from "solid-js";
 import {
   CharCounter,
   CharCounterSize,
   CharCounterTheme,
 } from "../charCounter/charCounter.tsx";
+import type { Testable } from "../utilities/testable.ts";
+import "./input.css";
 
 export enum InputTheme {
   Primary = "primary",
@@ -45,7 +45,7 @@ type InputProps = {
   label?: string;
 };
 
-export const Input: Component<Testable<InputProps>> = (props) => {
+export const Input = (props: Testable<InputProps>) => {
   const mProps: Testable<Required<InputProps>> = mergeProps(
     {
       theme: InputTheme.Primary,

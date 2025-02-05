@@ -2,6 +2,7 @@
 import StorybookPage from '../../../layouts/storybook/storybookPage.astro';
 import {NavItem, NavItemSize, NavItemTheme} from '../../../components/navItem/navItem.tsx';
 import {IconName} from "../../../components/icon/icon";
+import { DEFAULT_TEST_ID } from '../../../../features/testIds';
 
 const themes = Object.values(NavItemTheme);
 const sizes = Object.values(NavItemSize);
@@ -21,9 +22,8 @@ const sizes = Object.values(NavItemSize);
                     {sizes.map((size) => (
                             <span class="rhead">{size}</span>
 
-                            <NavItem url="https://ya.ru" theme={theme} size={size} text="Text" icon={IconName.CircleNotch}/>
-                            <NavItem url="https://ya.ru" theme={theme} size={size} text="Text" icon={IconName.CircleNotch}
-                                    isCurrent={true}/>
+                            <NavItem url="https://ya.ru" theme={theme} size={size} text="Text" icon={IconName.CircleNotch} testId={DEFAULT_TEST_ID}/>
+                            <NavItem url="https://ya.ru" theme={theme} size={size} text="Text" icon={IconName.CircleNotch} isCurrent={true} testId={DEFAULT_TEST_ID}/>
                     ))}
 
                 </div>

@@ -1,5 +1,6 @@
-import { type Component, mergeProps } from "solid-js";
-import "./note.css";
+import { mergeProps } from "solid-js";
+import { NOTE_TEXT_AREA_LIMIT } from "../../../configuration.ts";
+import { NOTE_ACCORDION, NOTE_TEXT_AREA } from "../../../features/testIds.ts";
 import {
   Accordion,
   AccordionSize,
@@ -10,8 +11,8 @@ import {
   TextareaSize,
   TextareaTheme,
 } from "../textarea/textarea.tsx";
-import { NOTE_ACCORDION, NOTE_TEXT_AREA } from "../../../features/testIds.ts";
-import { NOTE_TEXT_AREA_LIMIT } from "../../../configuration.ts";
+import type { Testable } from "../utilities/testable.ts";
+import "./note.css";
 
 export enum NoteTheme {
   Primary = "primary",
@@ -33,8 +34,8 @@ type NoteProps = {
   onChange?: (value: string) => void;
 };
 
-export const Note: Component<NoteProps> = (props) => {
-  const mProps: Required<NoteProps> = mergeProps(
+export const Note = (props: Testable<NoteProps>) => {
+  const mProps: Testable<Required<NoteProps>> = mergeProps(
     {
       theme: NoteTheme.Primary,
       size: NoteSize.Medium,

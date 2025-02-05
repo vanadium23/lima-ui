@@ -1,18 +1,17 @@
-import { type Component } from "solid-js";
-import "./header.css";
-import { Logo } from "../../components/logo/logo.tsx";
-import { Input, InputTheme } from "../../components/input/input.tsx";
 import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import {
   IconButton,
   IconButtonTheme,
 } from "../../components/iconButton/iconButton.tsx";
+import { Input, InputTheme } from "../../components/input/input.tsx";
+import { Logo } from "../../components/logo/logo.tsx";
 import { ToggleIconButton } from "../../components/toggleIconButton/toggleIconButton.tsx";
+import "./header.css";
 
 import { IconName } from "../../components/icon/icon.tsx";
 import { isHidden, setIsHidden } from "../../state/toolsPanelState.ts";
 
-export const Header: Component = () => {
+export const Header = () => {
   return (
     <header class="header">
       <div class="header__logo">

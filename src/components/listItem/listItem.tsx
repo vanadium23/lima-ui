@@ -1,5 +1,11 @@
-import { type Component, mergeProps, Show } from "solid-js";
-import "./listItem.css";
+import { mergeProps, Show } from "solid-js";
+import { EDIT_LIST_INPUT_LIMIT } from "../../../configuration.ts";
+import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
+import {
+  Checkbox,
+  CheckboxSize,
+  CheckboxTheme,
+} from "../checkbox/checkbox.tsx";
 import { IconName } from "../icon/icon.tsx";
 import {
   IconButton,
@@ -7,18 +13,13 @@ import {
   IconButtonSize,
   IconButtonTheme,
 } from "../iconButton/iconButton.tsx";
-import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import {
   ItemInput,
   ItemInputSize,
   ItemInputTheme,
 } from "../itemInput/itemInput.tsx";
-import {
-  Checkbox,
-  CheckboxSize,
-  CheckboxTheme,
-} from "../checkbox/checkbox.tsx";
-import { EDIT_LIST_INPUT_LIMIT } from "../../../configuration.ts";
+import type { Testable } from "../utilities/testable.ts";
+import "./listItem.css";
 
 export enum ListItemTheme {
   Primary = "primary",
@@ -43,8 +44,8 @@ type ListItemProps = {
   onChange?: (value: string) => void;
 };
 
-export const ListItem: Component<ListItemProps> = (props) => {
-  const mProps: Required<ListItemProps> = mergeProps(
+export const ListItem = (props: Testable<ListItemProps>) => {
+  const mProps: Testable<Required<ListItemProps>> = mergeProps(
     {
       theme: ListItemTheme.Primary,
       size: ListItemSize.Medium,

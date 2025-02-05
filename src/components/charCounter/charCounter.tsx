@@ -1,7 +1,7 @@
 import { mergeProps } from "solid-js";
-import "./charCounter.css";
-import type { Testable } from "../utilities/testable.ts";
 import { buildInputCounterTestId } from "../../../features/testIds.ts";
+import type { Testable } from "../utilities/testable.ts";
+import "./charCounter.css";
 
 export enum CharCounterTheme {
   Primary = "primary",

@@ -1,6 +1,5 @@
-import { type Component } from "solid-js";
 import "./pasteContent.css";
 
-export const PasteContent: Component = () => {
+export const PasteContent = () => {
   return <div class="pasteContent">Paste Content</div>;
 };

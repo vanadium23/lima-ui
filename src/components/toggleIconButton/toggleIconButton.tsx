@@ -1,7 +1,7 @@
-import { type Component, createSignal, mergeProps } from "solid-js";
-import "./toggleIconButton.css";
+import { createSignal, mergeProps } from "solid-js";
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
 import type { Testable } from "../utilities/testable.ts";
+import "./toggleIconButton.css";
 
 export enum ToggleIconButtonTheme {
   Secondary = "secondary",
@@ -21,9 +21,7 @@ type ToggleIconButtonProps = {
   setGlobalToggled: (isToggled: boolean) => void;
 };
 
-export const ToggleIconButton: Component<Testable<ToggleIconButtonProps>> = (
-  props,
-) => {
+export const ToggleIconButton = (props: Testable<ToggleIconButtonProps>) => {
   const mProps: Testable<Required<ToggleIconButtonProps>> = mergeProps(
     {
       theme: ToggleIconButtonTheme.Secondary,

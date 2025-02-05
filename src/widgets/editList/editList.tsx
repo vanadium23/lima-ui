@@ -1,7 +1,10 @@
-import { type Component, createSignal, For, mergeProps, Show } from "solid-js";
+import { createSignal, For, mergeProps, Show } from "solid-js";
 import { createStore } from "solid-js/store";
-import "./editList.css";
-import { Button, ButtonType } from "../../components/button/button.tsx";
+import {
+  ITEMS_LIMIT,
+  LIST_PURPOSE_INPUT_LIMIT,
+  LIST_TITLE_INPUT_LIMIT,
+} from "../../../configuration.ts";
 import {
   CREATE_LIST_BUTTON,
   DEFAULT_TEST_ID,
@@ -12,37 +15,34 @@ import {
   LIST_TITLE_INPUT,
   NETWORK_ERROR,
 } from "../../../features/testIds.ts";
-import {
-  ITEMS_LIMIT,
-  LIST_PURPOSE_INPUT_LIMIT,
-  LIST_TITLE_INPUT_LIMIT,
-} from "../../../configuration.ts";
-import { Note } from "../../components/note/note.tsx";
-import { soften } from "./utilities/soften.ts";
-import { PageError } from "../../components/pageError/pageError.tsx";
-import { createList } from "../../services/createList.ts";
-import { ListItem } from "../../components/listItem/listItem.tsx";
-import {
-  ToolsPanel,
-  ToolsPanelSize,
-  ToolsPanelTheme,
-} from "../../organisms/toolsPanel/toolsPanel.tsx";
-import { Switch } from "../../components/switch/switch.tsx";
-import type { BackendList, NewList, UpdatedList } from "../../types.ts";
-import { updateList } from "../../services/updateList.ts";
+import { Button, ButtonType } from "../../components/button/button.tsx";
 import { Divider } from "../../components/divider/divider.tsx";
-import {
-  ToolsButton,
-  ToolsButtonComponentType,
-  ToolsButtonTheme,
-} from "../../components/toolsButton/toolsButton.tsx";
-import { IconName } from "../../components/icon/icon.tsx";
 import { EditableTitle } from "../../components/editableTitle/editableTitle.tsx";
+import { IconName } from "../../components/icon/icon.tsx";
 import {
   ItemInput,
   ItemInputSize,
   ItemInputTheme,
 } from "../../components/itemInput/itemInput.tsx";
+import { ListItem } from "../../components/listItem/listItem.tsx";
+import { Note } from "../../components/note/note.tsx";
+import { PageError } from "../../components/pageError/pageError.tsx";
+import { Switch } from "../../components/switch/switch.tsx";
+import {
+  ToolsButton,
+  ToolsButtonComponentType,
+  ToolsButtonTheme,
+} from "../../components/toolsButton/toolsButton.tsx";
+import {
+  ToolsPanel,
+  ToolsPanelSize,
+  ToolsPanelTheme,
+} from "../../organisms/toolsPanel/toolsPanel.tsx";
+import { createList } from "../../services/createList.ts";
+import { updateList } from "../../services/updateList.ts";
+import type { BackendList, NewList, UpdatedList } from "../../types.ts";
+import "./editList.css";
+import { soften } from "./utilities/soften.ts";
 
 type EditListProps = {
   defaultList?: BackendList;
@@ -61,7 +61,7 @@ type EditListForm = {
   [EditListFormNames.ListNote]: HTMLInputElement;
 };
 
-export const EditList: Component<EditListProps> = (props) => {
+export const EditList = (props: EditListProps) => {
   const mProps: Required<EditListProps> = mergeProps(
     {
       defaultList: {
@@ -285,6 +285,7 @@ export const EditList: Component<EditListProps> = (props) => {
                   isDisabled={store.sendingNow}
                   defaultValue={list.note}
                   onChange={(value) => handleInputChange("note", value)}
+                  testId={DEFAULT_TEST_ID}
                 />
               </div>
             </div>
@@ -304,12 +305,12 @@ export const EditList: Component<EditListProps> = (props) => {
                         name={`${EditListFormNames.ListItem} ${getIndex() + 1}`}
                         dataId={"id" in item ? item.id : ""}
                         defaultListItemId={String(getIndex())}
-                        data-test-id={ITEM_INPUT_CONTAINER}
-                        data-test-sub-id={getIndex()}
                         onChange={(value) => {
                           setStore("items", getIndex(), "content", value);
                           checkChanges();
                         }}
+                        testId={ITEM_INPUT_CONTAINER}
+                        testSubId={getIndex()}
                       />
                     )}
                   </For>
@@ -331,7 +332,6 @@ export const EditList: Component<EditListProps> = (props) => {
                   type={ButtonType.Submit}
                   text="Сохранить"
                   isLoading={store.sendingNow}
-                  isDisabled={!isChanged()}
                   testId={CREATE_LIST_BUTTON}
                 />
               </div>

@@ -1,7 +1,7 @@
-import { type Component, type JSX, mergeProps } from "solid-js";
-import "./toolsPanel.css";
+import { type JSX, mergeProps } from "solid-js";
 import type { Testable } from "../../components/utilities/testable.ts";
 import { isHidden } from "../../state/toolsPanelState.ts";
+import "./toolsPanel.css";
 
 export enum ToolsPanelTheme {
   Primary = "primary",
@@ -17,7 +17,7 @@ type ToolsPanelProps = {
   children: JSX.Element;
 };
 
-export const ToolsPanel: Component<Testable<ToolsPanelProps>> = (props) => {
+export const ToolsPanel = (props: Testable<ToolsPanelProps>) => {
   const mProps: Testable<Required<ToolsPanelProps>> = mergeProps(
     { theme: ToolsPanelTheme.Primary, size: ToolsPanelSize.Medium },
     props,

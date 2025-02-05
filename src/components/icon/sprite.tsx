@@ -1,4 +1,3 @@
-import { type Component } from "solid-js";
 import { IconSize } from "./icon.tsx";
 
 type SpriteProps = {
@@ -6,7 +5,7 @@ type SpriteProps = {
   ariaHidden: boolean;
 };
 
-export const AcornIcon: Component<SpriteProps> = (props) => {
+export const AcornIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +20,7 @@ export const AcornIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AddressBookTabsIcon: Component<SpriteProps> = (props) => {
+export const AddressBookTabsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +35,7 @@ export const AddressBookTabsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AddressBookIcon: Component<SpriteProps> = (props) => {
+export const AddressBookIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -51,7 +50,7 @@ export const AddressBookIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AirTrafficControlIcon: Component<SpriteProps> = (props) => {
+export const AirTrafficControlIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +65,7 @@ export const AirTrafficControlIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AirplaneInFlightIcon: Component<SpriteProps> = (props) => {
+export const AirplaneInFlightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -81,7 +80,7 @@ export const AirplaneInFlightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AirplaneLandingIcon: Component<SpriteProps> = (props) => {
+export const AirplaneLandingIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +95,7 @@ export const AirplaneLandingIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AirplaneTakeoffIcon: Component<SpriteProps> = (props) => {
+export const AirplaneTakeoffIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -111,7 +110,7 @@ export const AirplaneTakeoffIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AirplaneTaxiingIcon: Component<SpriteProps> = (props) => {
+export const AirplaneTaxiingIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -126,7 +125,7 @@ export const AirplaneTaxiingIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AirplaneTiltIcon: Component<SpriteProps> = (props) => {
+export const AirplaneTiltIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -141,7 +140,7 @@ export const AirplaneTiltIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AirplaneIcon: Component<SpriteProps> = (props) => {
+export const AirplaneIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -156,7 +155,7 @@ export const AirplaneIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AirplayIcon: Component<SpriteProps> = (props) => {
+export const AirplayIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -171,7 +170,7 @@ export const AirplayIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AlarmIcon: Component<SpriteProps> = (props) => {
+export const AlarmIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -186,7 +185,7 @@ export const AlarmIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AlienIcon: Component<SpriteProps> = (props) => {
+export const AlienIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -201,7 +200,7 @@ export const AlienIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AlignBottomSimpleIcon: Component<SpriteProps> = (props) => {
+export const AlignBottomSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -216,7 +215,7 @@ export const AlignBottomSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AlignBottomIcon: Component<SpriteProps> = (props) => {
+export const AlignBottomIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -231,9 +230,7 @@ export const AlignBottomIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AlignCenterHorizontalSimpleIcon: Component<SpriteProps> = (
-  props,
-) => {
+export const AlignCenterHorizontalSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -248,7 +245,7 @@ export const AlignCenterHorizontalSimpleIcon: Component<SpriteProps> = (
   );
 };
 
-export const AlignCenterHorizontalIcon: Component<SpriteProps> = (props) => {
+export const AlignCenterHorizontalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -263,9 +260,7 @@ export const AlignCenterHorizontalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AlignCenterVerticalSimpleIcon: Component<SpriteProps> = (
-  props,
-) => {
+export const AlignCenterVerticalSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -280,7 +275,7 @@ export const AlignCenterVerticalSimpleIcon: Component<SpriteProps> = (
   );
 };
 
-export const AlignCenterVerticalIcon: Component<SpriteProps> = (props) => {
+export const AlignCenterVerticalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -295,7 +290,7 @@ export const AlignCenterVerticalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AlignLeftSimpleIcon: Component<SpriteProps> = (props) => {
+export const AlignLeftSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -310,7 +305,7 @@ export const AlignLeftSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AlignLeftIcon: Component<SpriteProps> = (props) => {
+export const AlignLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -325,7 +320,7 @@ export const AlignLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AlignRightSimpleIcon: Component<SpriteProps> = (props) => {
+export const AlignRightSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -340,7 +335,7 @@ export const AlignRightSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AlignRightIcon: Component<SpriteProps> = (props) => {
+export const AlignRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -355,7 +350,7 @@ export const AlignRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AlignTopSimpleIcon: Component<SpriteProps> = (props) => {
+export const AlignTopSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -370,7 +365,7 @@ export const AlignTopSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AlignTopIcon: Component<SpriteProps> = (props) => {
+export const AlignTopIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -385,7 +380,7 @@ export const AlignTopIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AmazonLogoIcon: Component<SpriteProps> = (props) => {
+export const AmazonLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -400,7 +395,7 @@ export const AmazonLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AmbulanceIcon: Component<SpriteProps> = (props) => {
+export const AmbulanceIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -415,7 +410,7 @@ export const AmbulanceIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AnchorSimpleIcon: Component<SpriteProps> = (props) => {
+export const AnchorSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -430,7 +425,7 @@ export const AnchorSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AnchorIcon: Component<SpriteProps> = (props) => {
+export const AnchorIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -445,7 +440,7 @@ export const AnchorIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AndroidLogoIcon: Component<SpriteProps> = (props) => {
+export const AndroidLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -460,7 +455,7 @@ export const AndroidLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AngleIcon: Component<SpriteProps> = (props) => {
+export const AngleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -475,7 +470,7 @@ export const AngleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AngularLogoIcon: Component<SpriteProps> = (props) => {
+export const AngularLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -490,7 +485,7 @@ export const AngularLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ApertureIcon: Component<SpriteProps> = (props) => {
+export const ApertureIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -505,7 +500,7 @@ export const ApertureIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AppStoreLogoIcon: Component<SpriteProps> = (props) => {
+export const AppStoreLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -520,7 +515,7 @@ export const AppStoreLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AppWindowIcon: Component<SpriteProps> = (props) => {
+export const AppWindowIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -535,7 +530,7 @@ export const AppWindowIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AppleLogoIcon: Component<SpriteProps> = (props) => {
+export const AppleLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -550,7 +545,7 @@ export const AppleLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ApplePodcastsLogoIcon: Component<SpriteProps> = (props) => {
+export const ApplePodcastsLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -565,7 +560,7 @@ export const ApplePodcastsLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ApproximateEqualsIcon: Component<SpriteProps> = (props) => {
+export const ApproximateEqualsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -580,7 +575,7 @@ export const ApproximateEqualsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArchiveIcon: Component<SpriteProps> = (props) => {
+export const ArchiveIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -595,7 +590,7 @@ export const ArchiveIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArmchairIcon: Component<SpriteProps> = (props) => {
+export const ArmchairIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -610,7 +605,7 @@ export const ArmchairIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowArcLeftIcon: Component<SpriteProps> = (props) => {
+export const ArrowArcLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -625,7 +620,7 @@ export const ArrowArcLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowArcRightIcon: Component<SpriteProps> = (props) => {
+export const ArrowArcRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -640,7 +635,7 @@ export const ArrowArcRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowBendDoubleUpLeftIcon: Component<SpriteProps> = (props) => {
+export const ArrowBendDoubleUpLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -655,7 +650,7 @@ export const ArrowBendDoubleUpLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowBendDoubleUpRightIcon: Component<SpriteProps> = (props) => {
+export const ArrowBendDoubleUpRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -670,7 +665,7 @@ export const ArrowBendDoubleUpRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowBendDownLeftIcon: Component<SpriteProps> = (props) => {
+export const ArrowBendDownLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -685,7 +680,7 @@ export const ArrowBendDownLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowBendDownRightIcon: Component<SpriteProps> = (props) => {
+export const ArrowBendDownRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -700,7 +695,7 @@ export const ArrowBendDownRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowBendLeftDownIcon: Component<SpriteProps> = (props) => {
+export const ArrowBendLeftDownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -715,7 +710,7 @@ export const ArrowBendLeftDownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowBendLeftUpIcon: Component<SpriteProps> = (props) => {
+export const ArrowBendLeftUpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -730,7 +725,7 @@ export const ArrowBendLeftUpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowBendRightDownIcon: Component<SpriteProps> = (props) => {
+export const ArrowBendRightDownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -745,7 +740,7 @@ export const ArrowBendRightDownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowBendRightUpIcon: Component<SpriteProps> = (props) => {
+export const ArrowBendRightUpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -760,7 +755,7 @@ export const ArrowBendRightUpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowBendUpLeftIcon: Component<SpriteProps> = (props) => {
+export const ArrowBendUpLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -775,7 +770,7 @@ export const ArrowBendUpLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowBendUpRightIcon: Component<SpriteProps> = (props) => {
+export const ArrowBendUpRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -790,7 +785,7 @@ export const ArrowBendUpRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowCircleDownLeftIcon: Component<SpriteProps> = (props) => {
+export const ArrowCircleDownLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -805,7 +800,7 @@ export const ArrowCircleDownLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowCircleDownRightIcon: Component<SpriteProps> = (props) => {
+export const ArrowCircleDownRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -820,7 +815,7 @@ export const ArrowCircleDownRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowCircleDownIcon: Component<SpriteProps> = (props) => {
+export const ArrowCircleDownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -835,7 +830,7 @@ export const ArrowCircleDownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowCircleLeftIcon: Component<SpriteProps> = (props) => {
+export const ArrowCircleLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -850,7 +845,7 @@ export const ArrowCircleLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowCircleRightIcon: Component<SpriteProps> = (props) => {
+export const ArrowCircleRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -865,7 +860,7 @@ export const ArrowCircleRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowCircleUpLeftIcon: Component<SpriteProps> = (props) => {
+export const ArrowCircleUpLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -880,7 +875,7 @@ export const ArrowCircleUpLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowCircleUpRightIcon: Component<SpriteProps> = (props) => {
+export const ArrowCircleUpRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -895,7 +890,7 @@ export const ArrowCircleUpRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowCircleUpIcon: Component<SpriteProps> = (props) => {
+export const ArrowCircleUpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -910,7 +905,7 @@ export const ArrowCircleUpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowClockwiseIcon: Component<SpriteProps> = (props) => {
+export const ArrowClockwiseIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -925,7 +920,7 @@ export const ArrowClockwiseIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowCounterClockwiseIcon: Component<SpriteProps> = (props) => {
+export const ArrowCounterClockwiseIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -940,7 +935,7 @@ export const ArrowCounterClockwiseIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowDownLeftIcon: Component<SpriteProps> = (props) => {
+export const ArrowDownLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -955,7 +950,7 @@ export const ArrowDownLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowDownRightIcon: Component<SpriteProps> = (props) => {
+export const ArrowDownRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -970,7 +965,7 @@ export const ArrowDownRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowDownIcon: Component<SpriteProps> = (props) => {
+export const ArrowDownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -985,7 +980,7 @@ export const ArrowDownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowElbowDownLeftIcon: Component<SpriteProps> = (props) => {
+export const ArrowElbowDownLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1000,7 +995,7 @@ export const ArrowElbowDownLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowElbowDownRightIcon: Component<SpriteProps> = (props) => {
+export const ArrowElbowDownRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1015,7 +1010,7 @@ export const ArrowElbowDownRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowElbowLeftDownIcon: Component<SpriteProps> = (props) => {
+export const ArrowElbowLeftDownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1030,7 +1025,7 @@ export const ArrowElbowLeftDownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowElbowLeftUpIcon: Component<SpriteProps> = (props) => {
+export const ArrowElbowLeftUpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1045,7 +1040,7 @@ export const ArrowElbowLeftUpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowElbowLeftIcon: Component<SpriteProps> = (props) => {
+export const ArrowElbowLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1060,7 +1055,7 @@ export const ArrowElbowLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowElbowRightDownIcon: Component<SpriteProps> = (props) => {
+export const ArrowElbowRightDownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1075,7 +1070,7 @@ export const ArrowElbowRightDownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowElbowRightUpIcon: Component<SpriteProps> = (props) => {
+export const ArrowElbowRightUpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1090,7 +1085,7 @@ export const ArrowElbowRightUpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowElbowRightIcon: Component<SpriteProps> = (props) => {
+export const ArrowElbowRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1105,7 +1100,7 @@ export const ArrowElbowRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowElbowUpLeftIcon: Component<SpriteProps> = (props) => {
+export const ArrowElbowUpLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1120,7 +1115,7 @@ export const ArrowElbowUpLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowElbowUpRightIcon: Component<SpriteProps> = (props) => {
+export const ArrowElbowUpRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1135,7 +1130,7 @@ export const ArrowElbowUpRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowFatDownIcon: Component<SpriteProps> = (props) => {
+export const ArrowFatDownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1150,7 +1145,7 @@ export const ArrowFatDownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowFatLeftIcon: Component<SpriteProps> = (props) => {
+export const ArrowFatLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1165,7 +1160,7 @@ export const ArrowFatLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowFatLineDownIcon: Component<SpriteProps> = (props) => {
+export const ArrowFatLineDownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1180,7 +1175,7 @@ export const ArrowFatLineDownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowFatLineLeftIcon: Component<SpriteProps> = (props) => {
+export const ArrowFatLineLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1195,7 +1190,7 @@ export const ArrowFatLineLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowFatLineRightIcon: Component<SpriteProps> = (props) => {
+export const ArrowFatLineRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1210,7 +1205,7 @@ export const ArrowFatLineRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowFatLineUpIcon: Component<SpriteProps> = (props) => {
+export const ArrowFatLineUpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1225,7 +1220,7 @@ export const ArrowFatLineUpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowFatLinesDownIcon: Component<SpriteProps> = (props) => {
+export const ArrowFatLinesDownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1240,7 +1235,7 @@ export const ArrowFatLinesDownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowFatLinesLeftIcon: Component<SpriteProps> = (props) => {
+export const ArrowFatLinesLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1255,7 +1250,7 @@ export const ArrowFatLinesLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowFatLinesRightIcon: Component<SpriteProps> = (props) => {
+export const ArrowFatLinesRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1270,7 +1265,7 @@ export const ArrowFatLinesRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowFatLinesUpIcon: Component<SpriteProps> = (props) => {
+export const ArrowFatLinesUpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1285,7 +1280,7 @@ export const ArrowFatLinesUpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowFatRightIcon: Component<SpriteProps> = (props) => {
+export const ArrowFatRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1300,7 +1295,7 @@ export const ArrowFatRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowFatUpIcon: Component<SpriteProps> = (props) => {
+export const ArrowFatUpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1315,7 +1310,7 @@ export const ArrowFatUpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowLeftIcon: Component<SpriteProps> = (props) => {
+export const ArrowLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1330,7 +1325,7 @@ export const ArrowLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowLineDownLeftIcon: Component<SpriteProps> = (props) => {
+export const ArrowLineDownLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1345,7 +1340,7 @@ export const ArrowLineDownLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowLineDownRightIcon: Component<SpriteProps> = (props) => {
+export const ArrowLineDownRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1360,7 +1355,7 @@ export const ArrowLineDownRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowLineDownIcon: Component<SpriteProps> = (props) => {
+export const ArrowLineDownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1375,7 +1370,7 @@ export const ArrowLineDownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowLineLeftIcon: Component<SpriteProps> = (props) => {
+export const ArrowLineLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1390,7 +1385,7 @@ export const ArrowLineLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowLineRightIcon: Component<SpriteProps> = (props) => {
+export const ArrowLineRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1405,7 +1400,7 @@ export const ArrowLineRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowLineUpLeftIcon: Component<SpriteProps> = (props) => {
+export const ArrowLineUpLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1420,7 +1415,7 @@ export const ArrowLineUpLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowLineUpRightIcon: Component<SpriteProps> = (props) => {
+export const ArrowLineUpRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1435,7 +1430,7 @@ export const ArrowLineUpRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowLineUpIcon: Component<SpriteProps> = (props) => {
+export const ArrowLineUpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1450,7 +1445,7 @@ export const ArrowLineUpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowRightIcon: Component<SpriteProps> = (props) => {
+export const ArrowRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1465,7 +1460,7 @@ export const ArrowRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowSquareDownLeftIcon: Component<SpriteProps> = (props) => {
+export const ArrowSquareDownLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1480,7 +1475,7 @@ export const ArrowSquareDownLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowSquareDownRightIcon: Component<SpriteProps> = (props) => {
+export const ArrowSquareDownRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1495,7 +1490,7 @@ export const ArrowSquareDownRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowSquareDownIcon: Component<SpriteProps> = (props) => {
+export const ArrowSquareDownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1510,7 +1505,7 @@ export const ArrowSquareDownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowSquareInIcon: Component<SpriteProps> = (props) => {
+export const ArrowSquareInIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1525,7 +1520,7 @@ export const ArrowSquareInIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowSquareLeftIcon: Component<SpriteProps> = (props) => {
+export const ArrowSquareLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1540,7 +1535,7 @@ export const ArrowSquareLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowSquareOutIcon: Component<SpriteProps> = (props) => {
+export const ArrowSquareOutIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1555,7 +1550,7 @@ export const ArrowSquareOutIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowSquareRightIcon: Component<SpriteProps> = (props) => {
+export const ArrowSquareRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1570,7 +1565,7 @@ export const ArrowSquareRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowSquareUpLeftIcon: Component<SpriteProps> = (props) => {
+export const ArrowSquareUpLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1585,7 +1580,7 @@ export const ArrowSquareUpLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowSquareUpRightIcon: Component<SpriteProps> = (props) => {
+export const ArrowSquareUpRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1600,7 +1595,7 @@ export const ArrowSquareUpRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowSquareUpIcon: Component<SpriteProps> = (props) => {
+export const ArrowSquareUpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1615,7 +1610,7 @@ export const ArrowSquareUpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowUDownLeftIcon: Component<SpriteProps> = (props) => {
+export const ArrowUDownLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1630,7 +1625,7 @@ export const ArrowUDownLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowUDownRightIcon: Component<SpriteProps> = (props) => {
+export const ArrowUDownRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1645,7 +1640,7 @@ export const ArrowUDownRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowULeftDownIcon: Component<SpriteProps> = (props) => {
+export const ArrowULeftDownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1660,7 +1655,7 @@ export const ArrowULeftDownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowULeftUpIcon: Component<SpriteProps> = (props) => {
+export const ArrowULeftUpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1675,7 +1670,7 @@ export const ArrowULeftUpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowURightDownIcon: Component<SpriteProps> = (props) => {
+export const ArrowURightDownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1690,7 +1685,7 @@ export const ArrowURightDownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowURightUpIcon: Component<SpriteProps> = (props) => {
+export const ArrowURightUpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1705,7 +1700,7 @@ export const ArrowURightUpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowUUpLeftIcon: Component<SpriteProps> = (props) => {
+export const ArrowUUpLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1720,7 +1715,7 @@ export const ArrowUUpLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowUUpRightIcon: Component<SpriteProps> = (props) => {
+export const ArrowUUpRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1735,7 +1730,7 @@ export const ArrowUUpRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowUpLeftIcon: Component<SpriteProps> = (props) => {
+export const ArrowUpLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1750,7 +1745,7 @@ export const ArrowUpLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowUpRightIcon: Component<SpriteProps> = (props) => {
+export const ArrowUpRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1765,7 +1760,7 @@ export const ArrowUpRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowUpIcon: Component<SpriteProps> = (props) => {
+export const ArrowUpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1780,7 +1775,7 @@ export const ArrowUpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowsClockwiseIcon: Component<SpriteProps> = (props) => {
+export const ArrowsClockwiseIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1795,7 +1790,7 @@ export const ArrowsClockwiseIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowsCounterClockwiseIcon: Component<SpriteProps> = (props) => {
+export const ArrowsCounterClockwiseIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1810,7 +1805,7 @@ export const ArrowsCounterClockwiseIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowsDownUpIcon: Component<SpriteProps> = (props) => {
+export const ArrowsDownUpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1825,7 +1820,7 @@ export const ArrowsDownUpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowsHorizontalIcon: Component<SpriteProps> = (props) => {
+export const ArrowsHorizontalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1840,7 +1835,7 @@ export const ArrowsHorizontalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowsInCardinalIcon: Component<SpriteProps> = (props) => {
+export const ArrowsInCardinalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1855,7 +1850,7 @@ export const ArrowsInCardinalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowsInLineHorizontalIcon: Component<SpriteProps> = (props) => {
+export const ArrowsInLineHorizontalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1870,7 +1865,7 @@ export const ArrowsInLineHorizontalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowsInLineVerticalIcon: Component<SpriteProps> = (props) => {
+export const ArrowsInLineVerticalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1885,7 +1880,7 @@ export const ArrowsInLineVerticalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowsInSimpleIcon: Component<SpriteProps> = (props) => {
+export const ArrowsInSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1900,7 +1895,7 @@ export const ArrowsInSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowsInIcon: Component<SpriteProps> = (props) => {
+export const ArrowsInIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1915,7 +1910,7 @@ export const ArrowsInIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowsLeftRightIcon: Component<SpriteProps> = (props) => {
+export const ArrowsLeftRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1930,7 +1925,7 @@ export const ArrowsLeftRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowsMergeIcon: Component<SpriteProps> = (props) => {
+export const ArrowsMergeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1945,7 +1940,7 @@ export const ArrowsMergeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowsOutCardinalIcon: Component<SpriteProps> = (props) => {
+export const ArrowsOutCardinalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1960,7 +1955,7 @@ export const ArrowsOutCardinalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowsOutLineHorizontalIcon: Component<SpriteProps> = (props) => {
+export const ArrowsOutLineHorizontalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1975,7 +1970,7 @@ export const ArrowsOutLineHorizontalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowsOutLineVerticalIcon: Component<SpriteProps> = (props) => {
+export const ArrowsOutLineVerticalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -1990,7 +1985,7 @@ export const ArrowsOutLineVerticalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowsOutSimpleIcon: Component<SpriteProps> = (props) => {
+export const ArrowsOutSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2005,7 +2000,7 @@ export const ArrowsOutSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowsOutIcon: Component<SpriteProps> = (props) => {
+export const ArrowsOutIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2020,7 +2015,7 @@ export const ArrowsOutIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowsSplitIcon: Component<SpriteProps> = (props) => {
+export const ArrowsSplitIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2035,7 +2030,7 @@ export const ArrowsSplitIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArrowsVerticalIcon: Component<SpriteProps> = (props) => {
+export const ArrowsVerticalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2050,7 +2045,7 @@ export const ArrowsVerticalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArticleMediumIcon: Component<SpriteProps> = (props) => {
+export const ArticleMediumIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2065,7 +2060,7 @@ export const ArticleMediumIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArticleNyTimesIcon: Component<SpriteProps> = (props) => {
+export const ArticleNyTimesIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2080,7 +2075,7 @@ export const ArticleNyTimesIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ArticleIcon: Component<SpriteProps> = (props) => {
+export const ArticleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2095,7 +2090,7 @@ export const ArticleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AsclepiusIcon: Component<SpriteProps> = (props) => {
+export const AsclepiusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2110,7 +2105,7 @@ export const AsclepiusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AsteriskSimpleIcon: Component<SpriteProps> = (props) => {
+export const AsteriskSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2125,7 +2120,7 @@ export const AsteriskSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AsteriskIcon: Component<SpriteProps> = (props) => {
+export const AsteriskIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2140,7 +2135,7 @@ export const AsteriskIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AtIcon: Component<SpriteProps> = (props) => {
+export const AtIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2155,7 +2150,7 @@ export const AtIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AtomIcon: Component<SpriteProps> = (props) => {
+export const AtomIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2170,7 +2165,7 @@ export const AtomIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AvocadoIcon: Component<SpriteProps> = (props) => {
+export const AvocadoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2185,7 +2180,7 @@ export const AvocadoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const AxeIcon: Component<SpriteProps> = (props) => {
+export const AxeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2200,7 +2195,7 @@ export const AxeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BabyCarriageIcon: Component<SpriteProps> = (props) => {
+export const BabyCarriageIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2215,7 +2210,7 @@ export const BabyCarriageIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BabyIcon: Component<SpriteProps> = (props) => {
+export const BabyIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2230,7 +2225,7 @@ export const BabyIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BackpackIcon: Component<SpriteProps> = (props) => {
+export const BackpackIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2245,7 +2240,7 @@ export const BackpackIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BackspaceIcon: Component<SpriteProps> = (props) => {
+export const BackspaceIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2260,7 +2255,7 @@ export const BackspaceIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BagSimpleIcon: Component<SpriteProps> = (props) => {
+export const BagSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2275,7 +2270,7 @@ export const BagSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BagIcon: Component<SpriteProps> = (props) => {
+export const BagIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2290,7 +2285,7 @@ export const BagIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BalloonIcon: Component<SpriteProps> = (props) => {
+export const BalloonIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2305,7 +2300,7 @@ export const BalloonIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BandaidsIcon: Component<SpriteProps> = (props) => {
+export const BandaidsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2320,7 +2315,7 @@ export const BandaidsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BankIcon: Component<SpriteProps> = (props) => {
+export const BankIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2335,7 +2330,7 @@ export const BankIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BarbellIcon: Component<SpriteProps> = (props) => {
+export const BarbellIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2350,7 +2345,7 @@ export const BarbellIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BarcodeIcon: Component<SpriteProps> = (props) => {
+export const BarcodeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2365,7 +2360,7 @@ export const BarcodeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BarnIcon: Component<SpriteProps> = (props) => {
+export const BarnIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2380,7 +2375,7 @@ export const BarnIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BarricadeIcon: Component<SpriteProps> = (props) => {
+export const BarricadeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2395,7 +2390,7 @@ export const BarricadeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BaseballCapIcon: Component<SpriteProps> = (props) => {
+export const BaseballCapIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2410,7 +2405,7 @@ export const BaseballCapIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BaseballHelmetIcon: Component<SpriteProps> = (props) => {
+export const BaseballHelmetIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2425,7 +2420,7 @@ export const BaseballHelmetIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BaseballIcon: Component<SpriteProps> = (props) => {
+export const BaseballIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2440,7 +2435,7 @@ export const BaseballIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BasketIcon: Component<SpriteProps> = (props) => {
+export const BasketIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2455,7 +2450,7 @@ export const BasketIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BasketballIcon: Component<SpriteProps> = (props) => {
+export const BasketballIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2470,7 +2465,7 @@ export const BasketballIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BathtubIcon: Component<SpriteProps> = (props) => {
+export const BathtubIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2485,7 +2480,7 @@ export const BathtubIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BatteryChargingVerticalIcon: Component<SpriteProps> = (props) => {
+export const BatteryChargingVerticalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2500,7 +2495,7 @@ export const BatteryChargingVerticalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BatteryChargingIcon: Component<SpriteProps> = (props) => {
+export const BatteryChargingIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2515,7 +2510,7 @@ export const BatteryChargingIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BatteryEmptyIcon: Component<SpriteProps> = (props) => {
+export const BatteryEmptyIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2530,7 +2525,7 @@ export const BatteryEmptyIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BatteryFullIcon: Component<SpriteProps> = (props) => {
+export const BatteryFullIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2545,7 +2540,7 @@ export const BatteryFullIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BatteryHighIcon: Component<SpriteProps> = (props) => {
+export const BatteryHighIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2560,7 +2555,7 @@ export const BatteryHighIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BatteryLowIcon: Component<SpriteProps> = (props) => {
+export const BatteryLowIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2575,7 +2570,7 @@ export const BatteryLowIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BatteryMediumIcon: Component<SpriteProps> = (props) => {
+export const BatteryMediumIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2590,7 +2585,7 @@ export const BatteryMediumIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BatteryPlusVerticalIcon: Component<SpriteProps> = (props) => {
+export const BatteryPlusVerticalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2605,7 +2600,7 @@ export const BatteryPlusVerticalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BatteryPlusIcon: Component<SpriteProps> = (props) => {
+export const BatteryPlusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2620,7 +2615,7 @@ export const BatteryPlusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BatteryVerticalEmptyIcon: Component<SpriteProps> = (props) => {
+export const BatteryVerticalEmptyIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2635,7 +2630,7 @@ export const BatteryVerticalEmptyIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BatteryVerticalFullIcon: Component<SpriteProps> = (props) => {
+export const BatteryVerticalFullIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2650,7 +2645,7 @@ export const BatteryVerticalFullIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BatteryVerticalHighIcon: Component<SpriteProps> = (props) => {
+export const BatteryVerticalHighIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2665,7 +2660,7 @@ export const BatteryVerticalHighIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BatteryVerticalLowIcon: Component<SpriteProps> = (props) => {
+export const BatteryVerticalLowIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2680,7 +2675,7 @@ export const BatteryVerticalLowIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BatteryVerticalMediumIcon: Component<SpriteProps> = (props) => {
+export const BatteryVerticalMediumIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2695,7 +2690,7 @@ export const BatteryVerticalMediumIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BatteryWarningVerticalIcon: Component<SpriteProps> = (props) => {
+export const BatteryWarningVerticalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2710,7 +2705,7 @@ export const BatteryWarningVerticalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BatteryWarningIcon: Component<SpriteProps> = (props) => {
+export const BatteryWarningIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2725,7 +2720,7 @@ export const BatteryWarningIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BeachBallIcon: Component<SpriteProps> = (props) => {
+export const BeachBallIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2740,7 +2735,7 @@ export const BeachBallIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BeanieIcon: Component<SpriteProps> = (props) => {
+export const BeanieIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2755,7 +2750,7 @@ export const BeanieIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BedIcon: Component<SpriteProps> = (props) => {
+export const BedIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2770,7 +2765,7 @@ export const BedIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BeerBottleIcon: Component<SpriteProps> = (props) => {
+export const BeerBottleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2785,7 +2780,7 @@ export const BeerBottleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BeerSteinIcon: Component<SpriteProps> = (props) => {
+export const BeerSteinIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2800,7 +2795,7 @@ export const BeerSteinIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BehanceLogoIcon: Component<SpriteProps> = (props) => {
+export const BehanceLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2815,7 +2810,7 @@ export const BehanceLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BellRingingIcon: Component<SpriteProps> = (props) => {
+export const BellRingingIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2830,7 +2825,7 @@ export const BellRingingIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BellSimpleRingingIcon: Component<SpriteProps> = (props) => {
+export const BellSimpleRingingIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2845,7 +2840,7 @@ export const BellSimpleRingingIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BellSimpleSlashIcon: Component<SpriteProps> = (props) => {
+export const BellSimpleSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2860,7 +2855,7 @@ export const BellSimpleSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BellSimpleZIcon: Component<SpriteProps> = (props) => {
+export const BellSimpleZIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2875,7 +2870,7 @@ export const BellSimpleZIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BellSimpleIcon: Component<SpriteProps> = (props) => {
+export const BellSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2890,7 +2885,7 @@ export const BellSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BellSlashIcon: Component<SpriteProps> = (props) => {
+export const BellSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2905,7 +2900,7 @@ export const BellSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BellZIcon: Component<SpriteProps> = (props) => {
+export const BellZIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2920,7 +2915,7 @@ export const BellZIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BellIcon: Component<SpriteProps> = (props) => {
+export const BellIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2935,7 +2930,7 @@ export const BellIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BeltIcon: Component<SpriteProps> = (props) => {
+export const BeltIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2950,7 +2945,7 @@ export const BeltIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BezierCurveIcon: Component<SpriteProps> = (props) => {
+export const BezierCurveIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2965,7 +2960,7 @@ export const BezierCurveIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BicycleIcon: Component<SpriteProps> = (props) => {
+export const BicycleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2980,7 +2975,7 @@ export const BicycleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BinaryIcon: Component<SpriteProps> = (props) => {
+export const BinaryIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -2995,7 +2990,7 @@ export const BinaryIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BinocularsIcon: Component<SpriteProps> = (props) => {
+export const BinocularsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3010,7 +3005,7 @@ export const BinocularsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BiohazardIcon: Component<SpriteProps> = (props) => {
+export const BiohazardIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3025,7 +3020,7 @@ export const BiohazardIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BirdIcon: Component<SpriteProps> = (props) => {
+export const BirdIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3040,7 +3035,7 @@ export const BirdIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BlueprintIcon: Component<SpriteProps> = (props) => {
+export const BlueprintIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3055,7 +3050,7 @@ export const BlueprintIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BluetoothConnectedIcon: Component<SpriteProps> = (props) => {
+export const BluetoothConnectedIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3070,7 +3065,7 @@ export const BluetoothConnectedIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BluetoothSlashIcon: Component<SpriteProps> = (props) => {
+export const BluetoothSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3085,7 +3080,7 @@ export const BluetoothSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BluetoothXIcon: Component<SpriteProps> = (props) => {
+export const BluetoothXIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3100,7 +3095,7 @@ export const BluetoothXIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BluetoothIcon: Component<SpriteProps> = (props) => {
+export const BluetoothIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3115,7 +3110,7 @@ export const BluetoothIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BoatIcon: Component<SpriteProps> = (props) => {
+export const BoatIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3130,7 +3125,7 @@ export const BoatIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BombIcon: Component<SpriteProps> = (props) => {
+export const BombIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3145,7 +3140,7 @@ export const BombIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BoneIcon: Component<SpriteProps> = (props) => {
+export const BoneIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3160,7 +3155,7 @@ export const BoneIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BookBookmarkIcon: Component<SpriteProps> = (props) => {
+export const BookBookmarkIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3175,7 +3170,7 @@ export const BookBookmarkIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BookOpenTextIcon: Component<SpriteProps> = (props) => {
+export const BookOpenTextIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3190,7 +3185,7 @@ export const BookOpenTextIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BookOpenUserIcon: Component<SpriteProps> = (props) => {
+export const BookOpenUserIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3205,7 +3200,7 @@ export const BookOpenUserIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BookOpenIcon: Component<SpriteProps> = (props) => {
+export const BookOpenIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3220,7 +3215,7 @@ export const BookOpenIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BookIcon: Component<SpriteProps> = (props) => {
+export const BookIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3235,7 +3230,7 @@ export const BookIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BookmarkSimpleIcon: Component<SpriteProps> = (props) => {
+export const BookmarkSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3250,7 +3245,7 @@ export const BookmarkSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BookmarkIcon: Component<SpriteProps> = (props) => {
+export const BookmarkIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3265,7 +3260,7 @@ export const BookmarkIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BookmarksSimpleIcon: Component<SpriteProps> = (props) => {
+export const BookmarksSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3280,7 +3275,7 @@ export const BookmarksSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BookmarksIcon: Component<SpriteProps> = (props) => {
+export const BookmarksIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3295,7 +3290,7 @@ export const BookmarksIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BooksIcon: Component<SpriteProps> = (props) => {
+export const BooksIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3310,7 +3305,7 @@ export const BooksIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BootIcon: Component<SpriteProps> = (props) => {
+export const BootIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3325,7 +3320,7 @@ export const BootIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BoulesIcon: Component<SpriteProps> = (props) => {
+export const BoulesIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3340,7 +3335,7 @@ export const BoulesIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BoundingBoxIcon: Component<SpriteProps> = (props) => {
+export const BoundingBoxIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3355,7 +3350,7 @@ export const BoundingBoxIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BowlFoodIcon: Component<SpriteProps> = (props) => {
+export const BowlFoodIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3370,7 +3365,7 @@ export const BowlFoodIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BowlSteamIcon: Component<SpriteProps> = (props) => {
+export const BowlSteamIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3385,7 +3380,7 @@ export const BowlSteamIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BowlingBallIcon: Component<SpriteProps> = (props) => {
+export const BowlingBallIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3400,7 +3395,7 @@ export const BowlingBallIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BoxArrowDownIcon: Component<SpriteProps> = (props) => {
+export const BoxArrowDownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3415,7 +3410,7 @@ export const BoxArrowDownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BoxArrowUpIcon: Component<SpriteProps> = (props) => {
+export const BoxArrowUpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3430,7 +3425,7 @@ export const BoxArrowUpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BoxingGloveIcon: Component<SpriteProps> = (props) => {
+export const BoxingGloveIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3445,7 +3440,7 @@ export const BoxingGloveIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BracketsAngleIcon: Component<SpriteProps> = (props) => {
+export const BracketsAngleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3460,7 +3455,7 @@ export const BracketsAngleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BracketsCurlyIcon: Component<SpriteProps> = (props) => {
+export const BracketsCurlyIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3475,7 +3470,7 @@ export const BracketsCurlyIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BracketsRoundIcon: Component<SpriteProps> = (props) => {
+export const BracketsRoundIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3490,7 +3485,7 @@ export const BracketsRoundIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BracketsSquareIcon: Component<SpriteProps> = (props) => {
+export const BracketsSquareIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3505,7 +3500,7 @@ export const BracketsSquareIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BrainIcon: Component<SpriteProps> = (props) => {
+export const BrainIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3520,7 +3515,7 @@ export const BrainIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BrandyIcon: Component<SpriteProps> = (props) => {
+export const BrandyIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3535,7 +3530,7 @@ export const BrandyIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BreadIcon: Component<SpriteProps> = (props) => {
+export const BreadIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3550,7 +3545,7 @@ export const BreadIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BridgeIcon: Component<SpriteProps> = (props) => {
+export const BridgeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3565,7 +3560,7 @@ export const BridgeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BriefcaseMetalIcon: Component<SpriteProps> = (props) => {
+export const BriefcaseMetalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3580,7 +3575,7 @@ export const BriefcaseMetalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BriefcaseIcon: Component<SpriteProps> = (props) => {
+export const BriefcaseIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3595,7 +3590,7 @@ export const BriefcaseIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BroadcastIcon: Component<SpriteProps> = (props) => {
+export const BroadcastIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3610,7 +3605,7 @@ export const BroadcastIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BroomIcon: Component<SpriteProps> = (props) => {
+export const BroomIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3625,7 +3620,7 @@ export const BroomIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BrowserIcon: Component<SpriteProps> = (props) => {
+export const BrowserIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3640,7 +3635,7 @@ export const BrowserIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BrowsersIcon: Component<SpriteProps> = (props) => {
+export const BrowsersIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3655,7 +3650,7 @@ export const BrowsersIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BugBeetleIcon: Component<SpriteProps> = (props) => {
+export const BugBeetleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3670,7 +3665,7 @@ export const BugBeetleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BugDroidIcon: Component<SpriteProps> = (props) => {
+export const BugDroidIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3685,7 +3680,7 @@ export const BugDroidIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BugIcon: Component<SpriteProps> = (props) => {
+export const BugIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3700,7 +3695,7 @@ export const BugIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BuildingApartmentIcon: Component<SpriteProps> = (props) => {
+export const BuildingApartmentIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3715,7 +3710,7 @@ export const BuildingApartmentIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BuildingOfficeIcon: Component<SpriteProps> = (props) => {
+export const BuildingOfficeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3730,7 +3725,7 @@ export const BuildingOfficeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BuildingIcon: Component<SpriteProps> = (props) => {
+export const BuildingIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3745,7 +3740,7 @@ export const BuildingIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BuildingsIcon: Component<SpriteProps> = (props) => {
+export const BuildingsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3760,7 +3755,7 @@ export const BuildingsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BulldozerIcon: Component<SpriteProps> = (props) => {
+export const BulldozerIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3775,7 +3770,7 @@ export const BulldozerIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const BusIcon: Component<SpriteProps> = (props) => {
+export const BusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3790,7 +3785,7 @@ export const BusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ButterflyIcon: Component<SpriteProps> = (props) => {
+export const ButterflyIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3805,7 +3800,7 @@ export const ButterflyIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CableCarIcon: Component<SpriteProps> = (props) => {
+export const CableCarIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3820,7 +3815,7 @@ export const CableCarIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CactusIcon: Component<SpriteProps> = (props) => {
+export const CactusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3835,7 +3830,7 @@ export const CactusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CakeIcon: Component<SpriteProps> = (props) => {
+export const CakeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3850,7 +3845,7 @@ export const CakeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CalculatorIcon: Component<SpriteProps> = (props) => {
+export const CalculatorIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3865,7 +3860,7 @@ export const CalculatorIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CalendarBlankIcon: Component<SpriteProps> = (props) => {
+export const CalendarBlankIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3880,7 +3875,7 @@ export const CalendarBlankIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CalendarCheckIcon: Component<SpriteProps> = (props) => {
+export const CalendarCheckIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3895,7 +3890,7 @@ export const CalendarCheckIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CalendarDotIcon: Component<SpriteProps> = (props) => {
+export const CalendarDotIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3910,7 +3905,7 @@ export const CalendarDotIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CalendarDotsIcon: Component<SpriteProps> = (props) => {
+export const CalendarDotsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3925,7 +3920,7 @@ export const CalendarDotsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CalendarHeartIcon: Component<SpriteProps> = (props) => {
+export const CalendarHeartIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3940,7 +3935,7 @@ export const CalendarHeartIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CalendarMinusIcon: Component<SpriteProps> = (props) => {
+export const CalendarMinusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3955,7 +3950,7 @@ export const CalendarMinusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CalendarPlusIcon: Component<SpriteProps> = (props) => {
+export const CalendarPlusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3970,7 +3965,7 @@ export const CalendarPlusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CalendarSlashIcon: Component<SpriteProps> = (props) => {
+export const CalendarSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -3985,7 +3980,7 @@ export const CalendarSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CalendarStarIcon: Component<SpriteProps> = (props) => {
+export const CalendarStarIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4000,7 +3995,7 @@ export const CalendarStarIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CalendarXIcon: Component<SpriteProps> = (props) => {
+export const CalendarXIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4015,7 +4010,7 @@ export const CalendarXIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CalendarIcon: Component<SpriteProps> = (props) => {
+export const CalendarIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4030,7 +4025,7 @@ export const CalendarIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CallBellIcon: Component<SpriteProps> = (props) => {
+export const CallBellIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4045,7 +4040,7 @@ export const CallBellIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CameraPlusIcon: Component<SpriteProps> = (props) => {
+export const CameraPlusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4060,7 +4055,7 @@ export const CameraPlusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CameraRotateIcon: Component<SpriteProps> = (props) => {
+export const CameraRotateIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4075,7 +4070,7 @@ export const CameraRotateIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CameraSlashIcon: Component<SpriteProps> = (props) => {
+export const CameraSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4090,7 +4085,7 @@ export const CameraSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CameraIcon: Component<SpriteProps> = (props) => {
+export const CameraIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4105,7 +4100,7 @@ export const CameraIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CampfireIcon: Component<SpriteProps> = (props) => {
+export const CampfireIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4120,7 +4115,7 @@ export const CampfireIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CarBatteryIcon: Component<SpriteProps> = (props) => {
+export const CarBatteryIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4135,7 +4130,7 @@ export const CarBatteryIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CarProfileIcon: Component<SpriteProps> = (props) => {
+export const CarProfileIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4150,7 +4145,7 @@ export const CarProfileIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CarSimpleIcon: Component<SpriteProps> = (props) => {
+export const CarSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4165,7 +4160,7 @@ export const CarSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CarIcon: Component<SpriteProps> = (props) => {
+export const CarIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4180,7 +4175,7 @@ export const CarIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CardholderIcon: Component<SpriteProps> = (props) => {
+export const CardholderIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4195,7 +4190,7 @@ export const CardholderIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CardsThreeIcon: Component<SpriteProps> = (props) => {
+export const CardsThreeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4210,7 +4205,7 @@ export const CardsThreeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CardsIcon: Component<SpriteProps> = (props) => {
+export const CardsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4225,7 +4220,7 @@ export const CardsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CaretCircleDoubleDownIcon: Component<SpriteProps> = (props) => {
+export const CaretCircleDoubleDownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4240,7 +4235,7 @@ export const CaretCircleDoubleDownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CaretCircleDoubleLeftIcon: Component<SpriteProps> = (props) => {
+export const CaretCircleDoubleLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4255,7 +4250,7 @@ export const CaretCircleDoubleLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CaretCircleDoubleRightIcon: Component<SpriteProps> = (props) => {
+export const CaretCircleDoubleRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4270,7 +4265,7 @@ export const CaretCircleDoubleRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CaretCircleDoubleUpIcon: Component<SpriteProps> = (props) => {
+export const CaretCircleDoubleUpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4285,7 +4280,7 @@ export const CaretCircleDoubleUpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CaretCircleDownIcon: Component<SpriteProps> = (props) => {
+export const CaretCircleDownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4300,7 +4295,7 @@ export const CaretCircleDownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CaretCircleLeftIcon: Component<SpriteProps> = (props) => {
+export const CaretCircleLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4315,7 +4310,7 @@ export const CaretCircleLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CaretCircleRightIcon: Component<SpriteProps> = (props) => {
+export const CaretCircleRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4330,7 +4325,7 @@ export const CaretCircleRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CaretCircleUpDownIcon: Component<SpriteProps> = (props) => {
+export const CaretCircleUpDownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4345,7 +4340,7 @@ export const CaretCircleUpDownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CaretCircleUpIcon: Component<SpriteProps> = (props) => {
+export const CaretCircleUpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4360,7 +4355,7 @@ export const CaretCircleUpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CaretDoubleDownIcon: Component<SpriteProps> = (props) => {
+export const CaretDoubleDownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4375,7 +4370,7 @@ export const CaretDoubleDownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CaretDoubleLeftIcon: Component<SpriteProps> = (props) => {
+export const CaretDoubleLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4390,7 +4385,7 @@ export const CaretDoubleLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CaretDoubleRightIcon: Component<SpriteProps> = (props) => {
+export const CaretDoubleRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4405,7 +4400,7 @@ export const CaretDoubleRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CaretDoubleUpIcon: Component<SpriteProps> = (props) => {
+export const CaretDoubleUpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4420,7 +4415,7 @@ export const CaretDoubleUpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CaretDownIcon: Component<SpriteProps> = (props) => {
+export const CaretDownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4435,7 +4430,7 @@ export const CaretDownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CaretLeftIcon: Component<SpriteProps> = (props) => {
+export const CaretLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4450,7 +4445,7 @@ export const CaretLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CaretLineDownIcon: Component<SpriteProps> = (props) => {
+export const CaretLineDownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4465,7 +4460,7 @@ export const CaretLineDownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CaretLineLeftIcon: Component<SpriteProps> = (props) => {
+export const CaretLineLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4480,7 +4475,7 @@ export const CaretLineLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CaretLineRightIcon: Component<SpriteProps> = (props) => {
+export const CaretLineRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4495,7 +4490,7 @@ export const CaretLineRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CaretLineUpIcon: Component<SpriteProps> = (props) => {
+export const CaretLineUpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4510,7 +4505,7 @@ export const CaretLineUpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CaretRightIcon: Component<SpriteProps> = (props) => {
+export const CaretRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4525,7 +4520,7 @@ export const CaretRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CaretUpDownIcon: Component<SpriteProps> = (props) => {
+export const CaretUpDownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4540,7 +4535,7 @@ export const CaretUpDownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CaretUpIcon: Component<SpriteProps> = (props) => {
+export const CaretUpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4555,7 +4550,7 @@ export const CaretUpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CarrotIcon: Component<SpriteProps> = (props) => {
+export const CarrotIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4570,7 +4565,7 @@ export const CarrotIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CashRegisterIcon: Component<SpriteProps> = (props) => {
+export const CashRegisterIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4585,7 +4580,7 @@ export const CashRegisterIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CassetteTapeIcon: Component<SpriteProps> = (props) => {
+export const CassetteTapeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4600,7 +4595,7 @@ export const CassetteTapeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CastleTurretIcon: Component<SpriteProps> = (props) => {
+export const CastleTurretIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4615,7 +4610,7 @@ export const CastleTurretIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CatIcon: Component<SpriteProps> = (props) => {
+export const CatIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4630,7 +4625,7 @@ export const CatIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CellSignalFullIcon: Component<SpriteProps> = (props) => {
+export const CellSignalFullIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4645,7 +4640,7 @@ export const CellSignalFullIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CellSignalHighIcon: Component<SpriteProps> = (props) => {
+export const CellSignalHighIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4660,7 +4655,7 @@ export const CellSignalHighIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CellSignalLowIcon: Component<SpriteProps> = (props) => {
+export const CellSignalLowIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4675,7 +4670,7 @@ export const CellSignalLowIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CellSignalMediumIcon: Component<SpriteProps> = (props) => {
+export const CellSignalMediumIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4690,7 +4685,7 @@ export const CellSignalMediumIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CellSignalNoneIcon: Component<SpriteProps> = (props) => {
+export const CellSignalNoneIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4705,7 +4700,7 @@ export const CellSignalNoneIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CellSignalSlashIcon: Component<SpriteProps> = (props) => {
+export const CellSignalSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4720,7 +4715,7 @@ export const CellSignalSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CellSignalXIcon: Component<SpriteProps> = (props) => {
+export const CellSignalXIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4735,7 +4730,7 @@ export const CellSignalXIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CellTowerIcon: Component<SpriteProps> = (props) => {
+export const CellTowerIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4750,7 +4745,7 @@ export const CellTowerIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CertificateIcon: Component<SpriteProps> = (props) => {
+export const CertificateIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4765,7 +4760,7 @@ export const CertificateIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChairIcon: Component<SpriteProps> = (props) => {
+export const ChairIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4780,7 +4775,7 @@ export const ChairIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChalkboardSimpleIcon: Component<SpriteProps> = (props) => {
+export const ChalkboardSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4795,7 +4790,7 @@ export const ChalkboardSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChalkboardTeacherIcon: Component<SpriteProps> = (props) => {
+export const ChalkboardTeacherIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4810,7 +4805,7 @@ export const ChalkboardTeacherIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChalkboardIcon: Component<SpriteProps> = (props) => {
+export const ChalkboardIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4825,7 +4820,7 @@ export const ChalkboardIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChampagneIcon: Component<SpriteProps> = (props) => {
+export const ChampagneIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4840,7 +4835,7 @@ export const ChampagneIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChargingStationIcon: Component<SpriteProps> = (props) => {
+export const ChargingStationIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4855,7 +4850,7 @@ export const ChargingStationIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChartBarHorizontalIcon: Component<SpriteProps> = (props) => {
+export const ChartBarHorizontalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4870,7 +4865,7 @@ export const ChartBarHorizontalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChartBarIcon: Component<SpriteProps> = (props) => {
+export const ChartBarIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4885,7 +4880,7 @@ export const ChartBarIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChartDonutIcon: Component<SpriteProps> = (props) => {
+export const ChartDonutIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4900,7 +4895,7 @@ export const ChartDonutIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChartLineDownIcon: Component<SpriteProps> = (props) => {
+export const ChartLineDownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4915,7 +4910,7 @@ export const ChartLineDownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChartLineUpIcon: Component<SpriteProps> = (props) => {
+export const ChartLineUpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4930,7 +4925,7 @@ export const ChartLineUpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChartLineIcon: Component<SpriteProps> = (props) => {
+export const ChartLineIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4945,7 +4940,7 @@ export const ChartLineIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChartPieSliceIcon: Component<SpriteProps> = (props) => {
+export const ChartPieSliceIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4960,7 +4955,7 @@ export const ChartPieSliceIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChartPieIcon: Component<SpriteProps> = (props) => {
+export const ChartPieIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4975,7 +4970,7 @@ export const ChartPieIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChartPolarIcon: Component<SpriteProps> = (props) => {
+export const ChartPolarIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -4990,7 +4985,7 @@ export const ChartPolarIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChartScatterIcon: Component<SpriteProps> = (props) => {
+export const ChartScatterIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5005,7 +5000,7 @@ export const ChartScatterIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChatCenteredDotsIcon: Component<SpriteProps> = (props) => {
+export const ChatCenteredDotsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5020,7 +5015,7 @@ export const ChatCenteredDotsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChatCenteredSlashIcon: Component<SpriteProps> = (props) => {
+export const ChatCenteredSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5035,7 +5030,7 @@ export const ChatCenteredSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChatCenteredTextIcon: Component<SpriteProps> = (props) => {
+export const ChatCenteredTextIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5050,7 +5045,7 @@ export const ChatCenteredTextIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChatCenteredIcon: Component<SpriteProps> = (props) => {
+export const ChatCenteredIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5065,7 +5060,7 @@ export const ChatCenteredIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChatCircleDotsIcon: Component<SpriteProps> = (props) => {
+export const ChatCircleDotsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5080,7 +5075,7 @@ export const ChatCircleDotsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChatCircleSlashIcon: Component<SpriteProps> = (props) => {
+export const ChatCircleSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5095,7 +5090,7 @@ export const ChatCircleSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChatCircleTextIcon: Component<SpriteProps> = (props) => {
+export const ChatCircleTextIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5110,7 +5105,7 @@ export const ChatCircleTextIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChatCircleIcon: Component<SpriteProps> = (props) => {
+export const ChatCircleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5125,7 +5120,7 @@ export const ChatCircleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChatDotsIcon: Component<SpriteProps> = (props) => {
+export const ChatDotsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5140,7 +5135,7 @@ export const ChatDotsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChatSlashIcon: Component<SpriteProps> = (props) => {
+export const ChatSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5155,7 +5150,7 @@ export const ChatSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChatTeardropDotsIcon: Component<SpriteProps> = (props) => {
+export const ChatTeardropDotsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5170,7 +5165,7 @@ export const ChatTeardropDotsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChatTeardropSlashIcon: Component<SpriteProps> = (props) => {
+export const ChatTeardropSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5185,7 +5180,7 @@ export const ChatTeardropSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChatTeardropTextIcon: Component<SpriteProps> = (props) => {
+export const ChatTeardropTextIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5200,7 +5195,7 @@ export const ChatTeardropTextIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChatTeardropIcon: Component<SpriteProps> = (props) => {
+export const ChatTeardropIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5215,7 +5210,7 @@ export const ChatTeardropIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChatTextIcon: Component<SpriteProps> = (props) => {
+export const ChatTextIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5230,7 +5225,7 @@ export const ChatTextIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChatIcon: Component<SpriteProps> = (props) => {
+export const ChatIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5245,7 +5240,7 @@ export const ChatIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChatsCircleIcon: Component<SpriteProps> = (props) => {
+export const ChatsCircleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5260,7 +5255,7 @@ export const ChatsCircleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChatsTeardropIcon: Component<SpriteProps> = (props) => {
+export const ChatsTeardropIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5275,7 +5270,7 @@ export const ChatsTeardropIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChatsIcon: Component<SpriteProps> = (props) => {
+export const ChatsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5290,7 +5285,7 @@ export const ChatsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CheckCircleIcon: Component<SpriteProps> = (props) => {
+export const CheckCircleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5305,7 +5300,7 @@ export const CheckCircleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CheckFatIcon: Component<SpriteProps> = (props) => {
+export const CheckFatIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5320,7 +5315,7 @@ export const CheckFatIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CheckSquareOffsetIcon: Component<SpriteProps> = (props) => {
+export const CheckSquareOffsetIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5335,7 +5330,7 @@ export const CheckSquareOffsetIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CheckSquareIcon: Component<SpriteProps> = (props) => {
+export const CheckSquareIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5350,7 +5345,7 @@ export const CheckSquareIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CheckIcon: Component<SpriteProps> = (props) => {
+export const CheckIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5365,7 +5360,7 @@ export const CheckIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CheckerboardIcon: Component<SpriteProps> = (props) => {
+export const CheckerboardIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5380,7 +5375,7 @@ export const CheckerboardIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChecksIcon: Component<SpriteProps> = (props) => {
+export const ChecksIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5395,7 +5390,7 @@ export const ChecksIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CheersIcon: Component<SpriteProps> = (props) => {
+export const CheersIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5410,7 +5405,7 @@ export const CheersIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CheeseIcon: Component<SpriteProps> = (props) => {
+export const CheeseIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5425,7 +5420,7 @@ export const CheeseIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChefHatIcon: Component<SpriteProps> = (props) => {
+export const ChefHatIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5440,7 +5435,7 @@ export const ChefHatIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CherriesIcon: Component<SpriteProps> = (props) => {
+export const CherriesIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5455,7 +5450,7 @@ export const CherriesIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ChurchIcon: Component<SpriteProps> = (props) => {
+export const ChurchIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5470,7 +5465,7 @@ export const ChurchIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CigaretteSlashIcon: Component<SpriteProps> = (props) => {
+export const CigaretteSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5485,7 +5480,7 @@ export const CigaretteSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CigaretteIcon: Component<SpriteProps> = (props) => {
+export const CigaretteIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5500,7 +5495,7 @@ export const CigaretteIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CircleDashedIcon: Component<SpriteProps> = (props) => {
+export const CircleDashedIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5515,7 +5510,7 @@ export const CircleDashedIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CircleHalfTiltIcon: Component<SpriteProps> = (props) => {
+export const CircleHalfTiltIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5530,7 +5525,7 @@ export const CircleHalfTiltIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CircleHalfIcon: Component<SpriteProps> = (props) => {
+export const CircleHalfIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5545,7 +5540,7 @@ export const CircleHalfIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CircleNotchIcon: Component<SpriteProps> = (props) => {
+export const CircleNotchIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5560,7 +5555,7 @@ export const CircleNotchIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CircleIcon: Component<SpriteProps> = (props) => {
+export const CircleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5575,7 +5570,7 @@ export const CircleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CirclesFourIcon: Component<SpriteProps> = (props) => {
+export const CirclesFourIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5590,7 +5585,7 @@ export const CirclesFourIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CirclesThreePlusIcon: Component<SpriteProps> = (props) => {
+export const CirclesThreePlusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5605,7 +5600,7 @@ export const CirclesThreePlusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CirclesThreeIcon: Component<SpriteProps> = (props) => {
+export const CirclesThreeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5620,7 +5615,7 @@ export const CirclesThreeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CircuitryIcon: Component<SpriteProps> = (props) => {
+export const CircuitryIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5635,7 +5630,7 @@ export const CircuitryIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CityIcon: Component<SpriteProps> = (props) => {
+export const CityIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5650,7 +5645,7 @@ export const CityIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ClipboardTextIcon: Component<SpriteProps> = (props) => {
+export const ClipboardTextIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5665,7 +5660,7 @@ export const ClipboardTextIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ClipboardIcon: Component<SpriteProps> = (props) => {
+export const ClipboardIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5680,7 +5675,7 @@ export const ClipboardIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ClockAfternoonIcon: Component<SpriteProps> = (props) => {
+export const ClockAfternoonIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5695,7 +5690,7 @@ export const ClockAfternoonIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ClockClockwiseIcon: Component<SpriteProps> = (props) => {
+export const ClockClockwiseIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5710,7 +5705,7 @@ export const ClockClockwiseIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ClockCountdownIcon: Component<SpriteProps> = (props) => {
+export const ClockCountdownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5725,7 +5720,7 @@ export const ClockCountdownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ClockCounterClockwiseIcon: Component<SpriteProps> = (props) => {
+export const ClockCounterClockwiseIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5740,7 +5735,7 @@ export const ClockCounterClockwiseIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ClockUserIcon: Component<SpriteProps> = (props) => {
+export const ClockUserIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5755,7 +5750,7 @@ export const ClockUserIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ClockIcon: Component<SpriteProps> = (props) => {
+export const ClockIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5770,7 +5765,7 @@ export const ClockIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ClosedCaptioningIcon: Component<SpriteProps> = (props) => {
+export const ClosedCaptioningIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5785,7 +5780,7 @@ export const ClosedCaptioningIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CloudArrowDownIcon: Component<SpriteProps> = (props) => {
+export const CloudArrowDownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5800,7 +5795,7 @@ export const CloudArrowDownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CloudArrowUpIcon: Component<SpriteProps> = (props) => {
+export const CloudArrowUpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5815,7 +5810,7 @@ export const CloudArrowUpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CloudCheckIcon: Component<SpriteProps> = (props) => {
+export const CloudCheckIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5830,7 +5825,7 @@ export const CloudCheckIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CloudFogIcon: Component<SpriteProps> = (props) => {
+export const CloudFogIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5845,7 +5840,7 @@ export const CloudFogIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CloudLightningIcon: Component<SpriteProps> = (props) => {
+export const CloudLightningIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5860,7 +5855,7 @@ export const CloudLightningIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CloudMoonIcon: Component<SpriteProps> = (props) => {
+export const CloudMoonIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5875,7 +5870,7 @@ export const CloudMoonIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CloudRainIcon: Component<SpriteProps> = (props) => {
+export const CloudRainIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5890,7 +5885,7 @@ export const CloudRainIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CloudSlashIcon: Component<SpriteProps> = (props) => {
+export const CloudSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5905,7 +5900,7 @@ export const CloudSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CloudSnowIcon: Component<SpriteProps> = (props) => {
+export const CloudSnowIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5920,7 +5915,7 @@ export const CloudSnowIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CloudSunIcon: Component<SpriteProps> = (props) => {
+export const CloudSunIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5935,7 +5930,7 @@ export const CloudSunIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CloudWarningIcon: Component<SpriteProps> = (props) => {
+export const CloudWarningIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5950,7 +5945,7 @@ export const CloudWarningIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CloudXIcon: Component<SpriteProps> = (props) => {
+export const CloudXIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5965,7 +5960,7 @@ export const CloudXIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CloudIcon: Component<SpriteProps> = (props) => {
+export const CloudIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5980,7 +5975,7 @@ export const CloudIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CloverIcon: Component<SpriteProps> = (props) => {
+export const CloverIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -5995,7 +5990,7 @@ export const CloverIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ClubIcon: Component<SpriteProps> = (props) => {
+export const ClubIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6010,7 +6005,7 @@ export const ClubIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CoatHangerIcon: Component<SpriteProps> = (props) => {
+export const CoatHangerIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6025,7 +6020,7 @@ export const CoatHangerIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CodaLogoIcon: Component<SpriteProps> = (props) => {
+export const CodaLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6040,7 +6035,7 @@ export const CodaLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CodeBlockIcon: Component<SpriteProps> = (props) => {
+export const CodeBlockIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6055,7 +6050,7 @@ export const CodeBlockIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CodeSimpleIcon: Component<SpriteProps> = (props) => {
+export const CodeSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6070,7 +6065,7 @@ export const CodeSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CodeIcon: Component<SpriteProps> = (props) => {
+export const CodeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6085,7 +6080,7 @@ export const CodeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CodepenLogoIcon: Component<SpriteProps> = (props) => {
+export const CodepenLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6100,7 +6095,7 @@ export const CodepenLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CodesandboxLogoIcon: Component<SpriteProps> = (props) => {
+export const CodesandboxLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6115,7 +6110,7 @@ export const CodesandboxLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CoffeeBeanIcon: Component<SpriteProps> = (props) => {
+export const CoffeeBeanIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6130,7 +6125,7 @@ export const CoffeeBeanIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CoffeeIcon: Component<SpriteProps> = (props) => {
+export const CoffeeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6145,7 +6140,7 @@ export const CoffeeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CoinVerticalIcon: Component<SpriteProps> = (props) => {
+export const CoinVerticalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6160,7 +6155,7 @@ export const CoinVerticalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CoinIcon: Component<SpriteProps> = (props) => {
+export const CoinIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6175,7 +6170,7 @@ export const CoinIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CoinsIcon: Component<SpriteProps> = (props) => {
+export const CoinsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6190,7 +6185,7 @@ export const CoinsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ColumnsPlusLeftIcon: Component<SpriteProps> = (props) => {
+export const ColumnsPlusLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6205,7 +6200,7 @@ export const ColumnsPlusLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ColumnsPlusRightIcon: Component<SpriteProps> = (props) => {
+export const ColumnsPlusRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6220,7 +6215,7 @@ export const ColumnsPlusRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ColumnsIcon: Component<SpriteProps> = (props) => {
+export const ColumnsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6235,7 +6230,7 @@ export const ColumnsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CommandIcon: Component<SpriteProps> = (props) => {
+export const CommandIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6250,7 +6245,7 @@ export const CommandIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CompassRoseIcon: Component<SpriteProps> = (props) => {
+export const CompassRoseIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6265,7 +6260,7 @@ export const CompassRoseIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CompassToolIcon: Component<SpriteProps> = (props) => {
+export const CompassToolIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6280,7 +6275,7 @@ export const CompassToolIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CompassIcon: Component<SpriteProps> = (props) => {
+export const CompassIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6295,7 +6290,7 @@ export const CompassIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ComputerTowerIcon: Component<SpriteProps> = (props) => {
+export const ComputerTowerIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6310,7 +6305,7 @@ export const ComputerTowerIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ConfettiIcon: Component<SpriteProps> = (props) => {
+export const ConfettiIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6325,7 +6320,7 @@ export const ConfettiIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ContactlessPaymentIcon: Component<SpriteProps> = (props) => {
+export const ContactlessPaymentIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6340,7 +6335,7 @@ export const ContactlessPaymentIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ControlIcon: Component<SpriteProps> = (props) => {
+export const ControlIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6355,7 +6350,7 @@ export const ControlIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CookieIcon: Component<SpriteProps> = (props) => {
+export const CookieIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6370,7 +6365,7 @@ export const CookieIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CookingPotIcon: Component<SpriteProps> = (props) => {
+export const CookingPotIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6385,7 +6380,7 @@ export const CookingPotIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CopySimpleIcon: Component<SpriteProps> = (props) => {
+export const CopySimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6400,7 +6395,7 @@ export const CopySimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CopyIcon: Component<SpriteProps> = (props) => {
+export const CopyIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6415,7 +6410,7 @@ export const CopyIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CopyleftIcon: Component<SpriteProps> = (props) => {
+export const CopyleftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6430,7 +6425,7 @@ export const CopyleftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CopyrightIcon: Component<SpriteProps> = (props) => {
+export const CopyrightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6445,7 +6440,7 @@ export const CopyrightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CornersInIcon: Component<SpriteProps> = (props) => {
+export const CornersInIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6460,7 +6455,7 @@ export const CornersInIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CornersOutIcon: Component<SpriteProps> = (props) => {
+export const CornersOutIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6475,7 +6470,7 @@ export const CornersOutIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CouchIcon: Component<SpriteProps> = (props) => {
+export const CouchIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6490,7 +6485,7 @@ export const CouchIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CourtBasketballIcon: Component<SpriteProps> = (props) => {
+export const CourtBasketballIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6505,7 +6500,7 @@ export const CourtBasketballIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CowIcon: Component<SpriteProps> = (props) => {
+export const CowIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6520,7 +6515,7 @@ export const CowIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CowboyHatIcon: Component<SpriteProps> = (props) => {
+export const CowboyHatIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6535,7 +6530,7 @@ export const CowboyHatIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CpuIcon: Component<SpriteProps> = (props) => {
+export const CpuIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6550,7 +6545,7 @@ export const CpuIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CraneTowerIcon: Component<SpriteProps> = (props) => {
+export const CraneTowerIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6565,7 +6560,7 @@ export const CraneTowerIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CraneIcon: Component<SpriteProps> = (props) => {
+export const CraneIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6580,7 +6575,7 @@ export const CraneIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CreditCardIcon: Component<SpriteProps> = (props) => {
+export const CreditCardIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6595,7 +6590,7 @@ export const CreditCardIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CricketIcon: Component<SpriteProps> = (props) => {
+export const CricketIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6610,7 +6605,7 @@ export const CricketIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CropIcon: Component<SpriteProps> = (props) => {
+export const CropIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6625,7 +6620,7 @@ export const CropIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CrossIcon: Component<SpriteProps> = (props) => {
+export const CrossIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6640,7 +6635,7 @@ export const CrossIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CrosshairSimpleIcon: Component<SpriteProps> = (props) => {
+export const CrosshairSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6655,7 +6650,7 @@ export const CrosshairSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CrosshairIcon: Component<SpriteProps> = (props) => {
+export const CrosshairIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6670,7 +6665,7 @@ export const CrosshairIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CrownCrossIcon: Component<SpriteProps> = (props) => {
+export const CrownCrossIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6685,7 +6680,7 @@ export const CrownCrossIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CrownSimpleIcon: Component<SpriteProps> = (props) => {
+export const CrownSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6700,7 +6695,7 @@ export const CrownSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CrownIcon: Component<SpriteProps> = (props) => {
+export const CrownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6715,7 +6710,7 @@ export const CrownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CubeFocusIcon: Component<SpriteProps> = (props) => {
+export const CubeFocusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6730,7 +6725,7 @@ export const CubeFocusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CubeTransparentIcon: Component<SpriteProps> = (props) => {
+export const CubeTransparentIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6745,7 +6740,7 @@ export const CubeTransparentIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CubeIcon: Component<SpriteProps> = (props) => {
+export const CubeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6760,7 +6755,7 @@ export const CubeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CurrencyBtcIcon: Component<SpriteProps> = (props) => {
+export const CurrencyBtcIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6775,7 +6770,7 @@ export const CurrencyBtcIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CurrencyCircleDollarIcon: Component<SpriteProps> = (props) => {
+export const CurrencyCircleDollarIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6790,7 +6785,7 @@ export const CurrencyCircleDollarIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CurrencyCnyIcon: Component<SpriteProps> = (props) => {
+export const CurrencyCnyIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6805,7 +6800,7 @@ export const CurrencyCnyIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CurrencyDollarSimpleIcon: Component<SpriteProps> = (props) => {
+export const CurrencyDollarSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6820,7 +6815,7 @@ export const CurrencyDollarSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CurrencyDollarIcon: Component<SpriteProps> = (props) => {
+export const CurrencyDollarIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6835,7 +6830,7 @@ export const CurrencyDollarIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CurrencyEthIcon: Component<SpriteProps> = (props) => {
+export const CurrencyEthIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6850,7 +6845,7 @@ export const CurrencyEthIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CurrencyEurIcon: Component<SpriteProps> = (props) => {
+export const CurrencyEurIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6865,7 +6860,7 @@ export const CurrencyEurIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CurrencyGbpIcon: Component<SpriteProps> = (props) => {
+export const CurrencyGbpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6880,7 +6875,7 @@ export const CurrencyGbpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CurrencyInrIcon: Component<SpriteProps> = (props) => {
+export const CurrencyInrIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6895,7 +6890,7 @@ export const CurrencyInrIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CurrencyJpyIcon: Component<SpriteProps> = (props) => {
+export const CurrencyJpyIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6910,7 +6905,7 @@ export const CurrencyJpyIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CurrencyKrwIcon: Component<SpriteProps> = (props) => {
+export const CurrencyKrwIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6925,7 +6920,7 @@ export const CurrencyKrwIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CurrencyKztIcon: Component<SpriteProps> = (props) => {
+export const CurrencyKztIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6940,7 +6935,7 @@ export const CurrencyKztIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CurrencyNgnIcon: Component<SpriteProps> = (props) => {
+export const CurrencyNgnIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6955,7 +6950,7 @@ export const CurrencyNgnIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CurrencyRubIcon: Component<SpriteProps> = (props) => {
+export const CurrencyRubIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6970,7 +6965,7 @@ export const CurrencyRubIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CursorClickIcon: Component<SpriteProps> = (props) => {
+export const CursorClickIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6985,7 +6980,7 @@ export const CursorClickIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CursorTextIcon: Component<SpriteProps> = (props) => {
+export const CursorTextIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7000,7 +6995,7 @@ export const CursorTextIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CursorIcon: Component<SpriteProps> = (props) => {
+export const CursorIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7015,7 +7010,7 @@ export const CursorIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const CylinderIcon: Component<SpriteProps> = (props) => {
+export const CylinderIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7030,7 +7025,7 @@ export const CylinderIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DatabaseIcon: Component<SpriteProps> = (props) => {
+export const DatabaseIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7045,7 +7040,7 @@ export const DatabaseIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DeskIcon: Component<SpriteProps> = (props) => {
+export const DeskIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7060,7 +7055,7 @@ export const DeskIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DesktopTowerIcon: Component<SpriteProps> = (props) => {
+export const DesktopTowerIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7075,7 +7070,7 @@ export const DesktopTowerIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DesktopIcon: Component<SpriteProps> = (props) => {
+export const DesktopIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7090,7 +7085,7 @@ export const DesktopIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DetectiveIcon: Component<SpriteProps> = (props) => {
+export const DetectiveIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7105,7 +7100,7 @@ export const DetectiveIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DevToLogoIcon: Component<SpriteProps> = (props) => {
+export const DevToLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7120,7 +7115,7 @@ export const DevToLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DeviceMobileCameraIcon: Component<SpriteProps> = (props) => {
+export const DeviceMobileCameraIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7135,7 +7130,7 @@ export const DeviceMobileCameraIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DeviceMobileSlashIcon: Component<SpriteProps> = (props) => {
+export const DeviceMobileSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7150,7 +7145,7 @@ export const DeviceMobileSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DeviceMobileSpeakerIcon: Component<SpriteProps> = (props) => {
+export const DeviceMobileSpeakerIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7165,7 +7160,7 @@ export const DeviceMobileSpeakerIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DeviceMobileIcon: Component<SpriteProps> = (props) => {
+export const DeviceMobileIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7180,7 +7175,7 @@ export const DeviceMobileIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DeviceRotateIcon: Component<SpriteProps> = (props) => {
+export const DeviceRotateIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7195,7 +7190,7 @@ export const DeviceRotateIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DeviceTabletCameraIcon: Component<SpriteProps> = (props) => {
+export const DeviceTabletCameraIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7210,7 +7205,7 @@ export const DeviceTabletCameraIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DeviceTabletSpeakerIcon: Component<SpriteProps> = (props) => {
+export const DeviceTabletSpeakerIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7225,7 +7220,7 @@ export const DeviceTabletSpeakerIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DeviceTabletIcon: Component<SpriteProps> = (props) => {
+export const DeviceTabletIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7240,7 +7235,7 @@ export const DeviceTabletIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DevicesIcon: Component<SpriteProps> = (props) => {
+export const DevicesIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7255,7 +7250,7 @@ export const DevicesIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DiamondIcon: Component<SpriteProps> = (props) => {
+export const DiamondIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7270,7 +7265,7 @@ export const DiamondIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DiamondsFourIcon: Component<SpriteProps> = (props) => {
+export const DiamondsFourIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7285,7 +7280,7 @@ export const DiamondsFourIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DiceFiveIcon: Component<SpriteProps> = (props) => {
+export const DiceFiveIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7300,7 +7295,7 @@ export const DiceFiveIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DiceFourIcon: Component<SpriteProps> = (props) => {
+export const DiceFourIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7315,7 +7310,7 @@ export const DiceFourIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DiceOneIcon: Component<SpriteProps> = (props) => {
+export const DiceOneIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7330,7 +7325,7 @@ export const DiceOneIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DiceSixIcon: Component<SpriteProps> = (props) => {
+export const DiceSixIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7345,7 +7340,7 @@ export const DiceSixIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DiceThreeIcon: Component<SpriteProps> = (props) => {
+export const DiceThreeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7360,7 +7355,7 @@ export const DiceThreeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DiceTwoIcon: Component<SpriteProps> = (props) => {
+export const DiceTwoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7375,7 +7370,7 @@ export const DiceTwoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DiscIcon: Component<SpriteProps> = (props) => {
+export const DiscIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7390,7 +7385,7 @@ export const DiscIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DiscoBallIcon: Component<SpriteProps> = (props) => {
+export const DiscoBallIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7405,7 +7400,7 @@ export const DiscoBallIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DiscordLogoIcon: Component<SpriteProps> = (props) => {
+export const DiscordLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7420,7 +7415,7 @@ export const DiscordLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DivideIcon: Component<SpriteProps> = (props) => {
+export const DivideIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7435,7 +7430,7 @@ export const DivideIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DnaIcon: Component<SpriteProps> = (props) => {
+export const DnaIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7450,7 +7445,7 @@ export const DnaIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DogIcon: Component<SpriteProps> = (props) => {
+export const DogIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7465,7 +7460,7 @@ export const DogIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DoorOpenIcon: Component<SpriteProps> = (props) => {
+export const DoorOpenIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7480,7 +7475,7 @@ export const DoorOpenIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DoorIcon: Component<SpriteProps> = (props) => {
+export const DoorIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7495,7 +7490,7 @@ export const DoorIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DotOutlineIcon: Component<SpriteProps> = (props) => {
+export const DotOutlineIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7510,7 +7505,7 @@ export const DotOutlineIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DotIcon: Component<SpriteProps> = (props) => {
+export const DotIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7525,7 +7520,7 @@ export const DotIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DotsNineIcon: Component<SpriteProps> = (props) => {
+export const DotsNineIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7540,7 +7535,7 @@ export const DotsNineIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DotsSixVerticalIcon: Component<SpriteProps> = (props) => {
+export const DotsSixVerticalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7555,7 +7550,7 @@ export const DotsSixVerticalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DotsSixIcon: Component<SpriteProps> = (props) => {
+export const DotsSixIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7570,7 +7565,7 @@ export const DotsSixIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DotsThreeCircleVerticalIcon: Component<SpriteProps> = (props) => {
+export const DotsThreeCircleVerticalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7585,7 +7580,7 @@ export const DotsThreeCircleVerticalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DotsThreeCircleIcon: Component<SpriteProps> = (props) => {
+export const DotsThreeCircleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7600,7 +7595,7 @@ export const DotsThreeCircleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DotsThreeOutlineVerticalIcon: Component<SpriteProps> = (props) => {
+export const DotsThreeOutlineVerticalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7615,7 +7610,7 @@ export const DotsThreeOutlineVerticalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DotsThreeOutlineIcon: Component<SpriteProps> = (props) => {
+export const DotsThreeOutlineIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7630,7 +7625,7 @@ export const DotsThreeOutlineIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DotsThreeVerticalIcon: Component<SpriteProps> = (props) => {
+export const DotsThreeVerticalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7645,7 +7640,7 @@ export const DotsThreeVerticalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DotsThreeIcon: Component<SpriteProps> = (props) => {
+export const DotsThreeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7660,7 +7655,7 @@ export const DotsThreeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DownloadSimpleIcon: Component<SpriteProps> = (props) => {
+export const DownloadSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7675,7 +7670,7 @@ export const DownloadSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DownloadIcon: Component<SpriteProps> = (props) => {
+export const DownloadIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7690,7 +7685,7 @@ export const DownloadIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DressIcon: Component<SpriteProps> = (props) => {
+export const DressIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7705,7 +7700,7 @@ export const DressIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DresserIcon: Component<SpriteProps> = (props) => {
+export const DresserIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7720,7 +7715,7 @@ export const DresserIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DribbbleLogoIcon: Component<SpriteProps> = (props) => {
+export const DribbbleLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7735,7 +7730,7 @@ export const DribbbleLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DroneIcon: Component<SpriteProps> = (props) => {
+export const DroneIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7750,7 +7745,7 @@ export const DroneIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DropHalfBottomIcon: Component<SpriteProps> = (props) => {
+export const DropHalfBottomIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7765,7 +7760,7 @@ export const DropHalfBottomIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DropHalfIcon: Component<SpriteProps> = (props) => {
+export const DropHalfIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7780,7 +7775,7 @@ export const DropHalfIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DropSimpleIcon: Component<SpriteProps> = (props) => {
+export const DropSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7795,7 +7790,7 @@ export const DropSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DropSlashIcon: Component<SpriteProps> = (props) => {
+export const DropSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7810,7 +7805,7 @@ export const DropSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DropIcon: Component<SpriteProps> = (props) => {
+export const DropIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7825,7 +7820,7 @@ export const DropIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const DropboxLogoIcon: Component<SpriteProps> = (props) => {
+export const DropboxLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7840,7 +7835,7 @@ export const DropboxLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const EarSlashIcon: Component<SpriteProps> = (props) => {
+export const EarSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7855,7 +7850,7 @@ export const EarSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const EarIcon: Component<SpriteProps> = (props) => {
+export const EarIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7870,7 +7865,7 @@ export const EarIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const EggCrackIcon: Component<SpriteProps> = (props) => {
+export const EggCrackIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7885,7 +7880,7 @@ export const EggCrackIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const EggIcon: Component<SpriteProps> = (props) => {
+export const EggIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7900,7 +7895,7 @@ export const EggIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const EjectSimpleIcon: Component<SpriteProps> = (props) => {
+export const EjectSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7915,7 +7910,7 @@ export const EjectSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const EjectIcon: Component<SpriteProps> = (props) => {
+export const EjectIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7930,7 +7925,7 @@ export const EjectIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ElevatorIcon: Component<SpriteProps> = (props) => {
+export const ElevatorIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7945,7 +7940,7 @@ export const ElevatorIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const EmptyIcon: Component<SpriteProps> = (props) => {
+export const EmptyIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7960,7 +7955,7 @@ export const EmptyIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const EngineIcon: Component<SpriteProps> = (props) => {
+export const EngineIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7975,7 +7970,7 @@ export const EngineIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const EnvelopeOpenIcon: Component<SpriteProps> = (props) => {
+export const EnvelopeOpenIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7990,7 +7985,7 @@ export const EnvelopeOpenIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const EnvelopeSimpleOpenIcon: Component<SpriteProps> = (props) => {
+export const EnvelopeSimpleOpenIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8005,7 +8000,7 @@ export const EnvelopeSimpleOpenIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const EnvelopeSimpleIcon: Component<SpriteProps> = (props) => {
+export const EnvelopeSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8020,7 +8015,7 @@ export const EnvelopeSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const EnvelopeIcon: Component<SpriteProps> = (props) => {
+export const EnvelopeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8035,7 +8030,7 @@ export const EnvelopeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const EqualizerIcon: Component<SpriteProps> = (props) => {
+export const EqualizerIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8050,7 +8045,7 @@ export const EqualizerIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const EqualsIcon: Component<SpriteProps> = (props) => {
+export const EqualsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8065,7 +8060,7 @@ export const EqualsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const EraserIcon: Component<SpriteProps> = (props) => {
+export const EraserIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8080,7 +8075,7 @@ export const EraserIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const EscalatorDownIcon: Component<SpriteProps> = (props) => {
+export const EscalatorDownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8095,7 +8090,7 @@ export const EscalatorDownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const EscalatorUpIcon: Component<SpriteProps> = (props) => {
+export const EscalatorUpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8110,7 +8105,7 @@ export const EscalatorUpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ExamIcon: Component<SpriteProps> = (props) => {
+export const ExamIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8125,7 +8120,7 @@ export const ExamIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ExclamationMarkIcon: Component<SpriteProps> = (props) => {
+export const ExclamationMarkIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8140,7 +8135,7 @@ export const ExclamationMarkIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ExcludeSquareIcon: Component<SpriteProps> = (props) => {
+export const ExcludeSquareIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8155,7 +8150,7 @@ export const ExcludeSquareIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ExcludeIcon: Component<SpriteProps> = (props) => {
+export const ExcludeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8170,7 +8165,7 @@ export const ExcludeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ExportIcon: Component<SpriteProps> = (props) => {
+export const ExportIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8185,7 +8180,7 @@ export const ExportIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const EyeClosedIcon: Component<SpriteProps> = (props) => {
+export const EyeClosedIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8200,7 +8195,7 @@ export const EyeClosedIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const EyeSlashIcon: Component<SpriteProps> = (props) => {
+export const EyeSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8215,7 +8210,7 @@ export const EyeSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const EyeIcon: Component<SpriteProps> = (props) => {
+export const EyeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8230,7 +8225,7 @@ export const EyeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const EyedropperSampleIcon: Component<SpriteProps> = (props) => {
+export const EyedropperSampleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8245,7 +8240,7 @@ export const EyedropperSampleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const EyedropperIcon: Component<SpriteProps> = (props) => {
+export const EyedropperIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8260,7 +8255,7 @@ export const EyedropperIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const EyeglassesIcon: Component<SpriteProps> = (props) => {
+export const EyeglassesIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8275,7 +8270,7 @@ export const EyeglassesIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const EyesIcon: Component<SpriteProps> = (props) => {
+export const EyesIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8290,7 +8285,7 @@ export const EyesIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FaceMaskIcon: Component<SpriteProps> = (props) => {
+export const FaceMaskIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8305,7 +8300,7 @@ export const FaceMaskIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FacebookLogoIcon: Component<SpriteProps> = (props) => {
+export const FacebookLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8320,7 +8315,7 @@ export const FacebookLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FactoryIcon: Component<SpriteProps> = (props) => {
+export const FactoryIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8335,7 +8330,7 @@ export const FactoryIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FadersHorizontalIcon: Component<SpriteProps> = (props) => {
+export const FadersHorizontalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8350,7 +8345,7 @@ export const FadersHorizontalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FadersIcon: Component<SpriteProps> = (props) => {
+export const FadersIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8365,7 +8360,7 @@ export const FadersIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FalloutShelterIcon: Component<SpriteProps> = (props) => {
+export const FalloutShelterIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8380,7 +8375,7 @@ export const FalloutShelterIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FanIcon: Component<SpriteProps> = (props) => {
+export const FanIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8395,7 +8390,7 @@ export const FanIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FarmIcon: Component<SpriteProps> = (props) => {
+export const FarmIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8410,7 +8405,7 @@ export const FarmIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FastForwardCircleIcon: Component<SpriteProps> = (props) => {
+export const FastForwardCircleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8425,7 +8420,7 @@ export const FastForwardCircleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FastForwardIcon: Component<SpriteProps> = (props) => {
+export const FastForwardIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8440,7 +8435,7 @@ export const FastForwardIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FeatherIcon: Component<SpriteProps> = (props) => {
+export const FeatherIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8455,7 +8450,7 @@ export const FeatherIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FediverseLogoIcon: Component<SpriteProps> = (props) => {
+export const FediverseLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8470,7 +8465,7 @@ export const FediverseLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FigmaLogoIcon: Component<SpriteProps> = (props) => {
+export const FigmaLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8485,7 +8480,7 @@ export const FigmaLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileArchiveIcon: Component<SpriteProps> = (props) => {
+export const FileArchiveIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8500,7 +8495,7 @@ export const FileArchiveIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileArrowDownIcon: Component<SpriteProps> = (props) => {
+export const FileArrowDownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8515,7 +8510,7 @@ export const FileArrowDownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileArrowUpIcon: Component<SpriteProps> = (props) => {
+export const FileArrowUpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8530,7 +8525,7 @@ export const FileArrowUpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileAudioIcon: Component<SpriteProps> = (props) => {
+export const FileAudioIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8545,7 +8540,7 @@ export const FileAudioIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileCSharpIcon: Component<SpriteProps> = (props) => {
+export const FileCSharpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8560,7 +8555,7 @@ export const FileCSharpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileCIcon: Component<SpriteProps> = (props) => {
+export const FileCIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8575,7 +8570,7 @@ export const FileCIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileCloudIcon: Component<SpriteProps> = (props) => {
+export const FileCloudIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8590,7 +8585,7 @@ export const FileCloudIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileCodeIcon: Component<SpriteProps> = (props) => {
+export const FileCodeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8605,7 +8600,7 @@ export const FileCodeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileCppIcon: Component<SpriteProps> = (props) => {
+export const FileCppIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8620,7 +8615,7 @@ export const FileCppIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileCssIcon: Component<SpriteProps> = (props) => {
+export const FileCssIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8635,7 +8630,7 @@ export const FileCssIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileCsvIcon: Component<SpriteProps> = (props) => {
+export const FileCsvIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8650,7 +8645,7 @@ export const FileCsvIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileDashedIcon: Component<SpriteProps> = (props) => {
+export const FileDashedIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8665,7 +8660,7 @@ export const FileDashedIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileDocIcon: Component<SpriteProps> = (props) => {
+export const FileDocIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8680,7 +8675,7 @@ export const FileDocIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileHtmlIcon: Component<SpriteProps> = (props) => {
+export const FileHtmlIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8695,7 +8690,7 @@ export const FileHtmlIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileImageIcon: Component<SpriteProps> = (props) => {
+export const FileImageIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8710,7 +8705,7 @@ export const FileImageIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileIniIcon: Component<SpriteProps> = (props) => {
+export const FileIniIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8725,7 +8720,7 @@ export const FileIniIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileJpgIcon: Component<SpriteProps> = (props) => {
+export const FileJpgIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8740,7 +8735,7 @@ export const FileJpgIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileJsIcon: Component<SpriteProps> = (props) => {
+export const FileJsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8755,7 +8750,7 @@ export const FileJsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileJsxIcon: Component<SpriteProps> = (props) => {
+export const FileJsxIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8770,7 +8765,7 @@ export const FileJsxIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileLockIcon: Component<SpriteProps> = (props) => {
+export const FileLockIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8785,7 +8780,7 @@ export const FileLockIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileMagnifyingGlassIcon: Component<SpriteProps> = (props) => {
+export const FileMagnifyingGlassIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8800,7 +8795,7 @@ export const FileMagnifyingGlassIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileMdIcon: Component<SpriteProps> = (props) => {
+export const FileMdIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8815,7 +8810,7 @@ export const FileMdIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileMinusIcon: Component<SpriteProps> = (props) => {
+export const FileMinusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8830,7 +8825,7 @@ export const FileMinusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FilePdfIcon: Component<SpriteProps> = (props) => {
+export const FilePdfIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8845,7 +8840,7 @@ export const FilePdfIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FilePlusIcon: Component<SpriteProps> = (props) => {
+export const FilePlusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8860,7 +8855,7 @@ export const FilePlusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FilePngIcon: Component<SpriteProps> = (props) => {
+export const FilePngIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8875,7 +8870,7 @@ export const FilePngIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FilePptIcon: Component<SpriteProps> = (props) => {
+export const FilePptIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8890,7 +8885,7 @@ export const FilePptIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FilePyIcon: Component<SpriteProps> = (props) => {
+export const FilePyIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8905,7 +8900,7 @@ export const FilePyIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileRsIcon: Component<SpriteProps> = (props) => {
+export const FileRsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8920,7 +8915,7 @@ export const FileRsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileSqlIcon: Component<SpriteProps> = (props) => {
+export const FileSqlIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8935,7 +8930,7 @@ export const FileSqlIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileSvgIcon: Component<SpriteProps> = (props) => {
+export const FileSvgIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8950,7 +8945,7 @@ export const FileSvgIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileTextIcon: Component<SpriteProps> = (props) => {
+export const FileTextIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8965,7 +8960,7 @@ export const FileTextIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileTsIcon: Component<SpriteProps> = (props) => {
+export const FileTsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8980,7 +8975,7 @@ export const FileTsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileTsxIcon: Component<SpriteProps> = (props) => {
+export const FileTsxIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8995,7 +8990,7 @@ export const FileTsxIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileTxtIcon: Component<SpriteProps> = (props) => {
+export const FileTxtIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9010,7 +9005,7 @@ export const FileTxtIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileVideoIcon: Component<SpriteProps> = (props) => {
+export const FileVideoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9025,7 +9020,7 @@ export const FileVideoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileVueIcon: Component<SpriteProps> = (props) => {
+export const FileVueIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9040,7 +9035,7 @@ export const FileVueIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileXIcon: Component<SpriteProps> = (props) => {
+export const FileXIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9055,7 +9050,7 @@ export const FileXIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileXlsIcon: Component<SpriteProps> = (props) => {
+export const FileXlsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9070,7 +9065,7 @@ export const FileXlsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileZipIcon: Component<SpriteProps> = (props) => {
+export const FileZipIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9085,7 +9080,7 @@ export const FileZipIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FileIcon: Component<SpriteProps> = (props) => {
+export const FileIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9100,7 +9095,7 @@ export const FileIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FilesIcon: Component<SpriteProps> = (props) => {
+export const FilesIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9115,7 +9110,7 @@ export const FilesIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FilmReelIcon: Component<SpriteProps> = (props) => {
+export const FilmReelIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9130,7 +9125,7 @@ export const FilmReelIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FilmScriptIcon: Component<SpriteProps> = (props) => {
+export const FilmScriptIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9145,7 +9140,7 @@ export const FilmScriptIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FilmSlateIcon: Component<SpriteProps> = (props) => {
+export const FilmSlateIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9160,7 +9155,7 @@ export const FilmSlateIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FilmStripIcon: Component<SpriteProps> = (props) => {
+export const FilmStripIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9175,7 +9170,7 @@ export const FilmStripIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FingerprintSimpleIcon: Component<SpriteProps> = (props) => {
+export const FingerprintSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9190,7 +9185,7 @@ export const FingerprintSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FingerprintIcon: Component<SpriteProps> = (props) => {
+export const FingerprintIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9205,7 +9200,7 @@ export const FingerprintIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FinnTheHumanIcon: Component<SpriteProps> = (props) => {
+export const FinnTheHumanIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9220,7 +9215,7 @@ export const FinnTheHumanIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FireExtinguisherIcon: Component<SpriteProps> = (props) => {
+export const FireExtinguisherIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9235,7 +9230,7 @@ export const FireExtinguisherIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FireSimpleIcon: Component<SpriteProps> = (props) => {
+export const FireSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9250,7 +9245,7 @@ export const FireSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FireTruckIcon: Component<SpriteProps> = (props) => {
+export const FireTruckIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9265,7 +9260,7 @@ export const FireTruckIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FireIcon: Component<SpriteProps> = (props) => {
+export const FireIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9280,7 +9275,7 @@ export const FireIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FirstAidKitIcon: Component<SpriteProps> = (props) => {
+export const FirstAidKitIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9295,7 +9290,7 @@ export const FirstAidKitIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FirstAidIcon: Component<SpriteProps> = (props) => {
+export const FirstAidIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9310,7 +9305,7 @@ export const FirstAidIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FishSimpleIcon: Component<SpriteProps> = (props) => {
+export const FishSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9325,7 +9320,7 @@ export const FishSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FishIcon: Component<SpriteProps> = (props) => {
+export const FishIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9340,7 +9335,7 @@ export const FishIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FlagBannerFoldIcon: Component<SpriteProps> = (props) => {
+export const FlagBannerFoldIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9355,7 +9350,7 @@ export const FlagBannerFoldIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FlagBannerIcon: Component<SpriteProps> = (props) => {
+export const FlagBannerIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9370,7 +9365,7 @@ export const FlagBannerIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FlagCheckeredIcon: Component<SpriteProps> = (props) => {
+export const FlagCheckeredIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9385,7 +9380,7 @@ export const FlagCheckeredIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FlagPennantIcon: Component<SpriteProps> = (props) => {
+export const FlagPennantIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9400,7 +9395,7 @@ export const FlagPennantIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FlagIcon: Component<SpriteProps> = (props) => {
+export const FlagIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9415,7 +9410,7 @@ export const FlagIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FlameIcon: Component<SpriteProps> = (props) => {
+export const FlameIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9430,7 +9425,7 @@ export const FlameIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FlashlightIcon: Component<SpriteProps> = (props) => {
+export const FlashlightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9445,7 +9440,7 @@ export const FlashlightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FlaskIcon: Component<SpriteProps> = (props) => {
+export const FlaskIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9460,7 +9455,7 @@ export const FlaskIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FlipHorizontalIcon: Component<SpriteProps> = (props) => {
+export const FlipHorizontalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9475,7 +9470,7 @@ export const FlipHorizontalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FlipVerticalIcon: Component<SpriteProps> = (props) => {
+export const FlipVerticalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9490,7 +9485,7 @@ export const FlipVerticalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FloppyDiskBackIcon: Component<SpriteProps> = (props) => {
+export const FloppyDiskBackIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9505,7 +9500,7 @@ export const FloppyDiskBackIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FloppyDiskIcon: Component<SpriteProps> = (props) => {
+export const FloppyDiskIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9520,7 +9515,7 @@ export const FloppyDiskIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FlowArrowIcon: Component<SpriteProps> = (props) => {
+export const FlowArrowIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9535,7 +9530,7 @@ export const FlowArrowIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FlowerLotusIcon: Component<SpriteProps> = (props) => {
+export const FlowerLotusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9550,7 +9545,7 @@ export const FlowerLotusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FlowerTulipIcon: Component<SpriteProps> = (props) => {
+export const FlowerTulipIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9565,7 +9560,7 @@ export const FlowerTulipIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FlowerIcon: Component<SpriteProps> = (props) => {
+export const FlowerIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9580,7 +9575,7 @@ export const FlowerIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FlyingSaucerIcon: Component<SpriteProps> = (props) => {
+export const FlyingSaucerIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9595,7 +9590,7 @@ export const FlyingSaucerIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FolderDashedIcon: Component<SpriteProps> = (props) => {
+export const FolderDashedIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9610,7 +9605,7 @@ export const FolderDashedIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FolderLockIcon: Component<SpriteProps> = (props) => {
+export const FolderLockIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9625,7 +9620,7 @@ export const FolderLockIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FolderMinusIcon: Component<SpriteProps> = (props) => {
+export const FolderMinusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9640,7 +9635,7 @@ export const FolderMinusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FolderOpenIcon: Component<SpriteProps> = (props) => {
+export const FolderOpenIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9655,7 +9650,7 @@ export const FolderOpenIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FolderPlusIcon: Component<SpriteProps> = (props) => {
+export const FolderPlusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9670,7 +9665,7 @@ export const FolderPlusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FolderSimpleDashedIcon: Component<SpriteProps> = (props) => {
+export const FolderSimpleDashedIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9685,7 +9680,7 @@ export const FolderSimpleDashedIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FolderSimpleLockIcon: Component<SpriteProps> = (props) => {
+export const FolderSimpleLockIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9700,7 +9695,7 @@ export const FolderSimpleLockIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FolderSimpleMinusIcon: Component<SpriteProps> = (props) => {
+export const FolderSimpleMinusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9715,7 +9710,7 @@ export const FolderSimpleMinusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FolderSimplePlusIcon: Component<SpriteProps> = (props) => {
+export const FolderSimplePlusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9730,7 +9725,7 @@ export const FolderSimplePlusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FolderSimpleStarIcon: Component<SpriteProps> = (props) => {
+export const FolderSimpleStarIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9745,7 +9740,7 @@ export const FolderSimpleStarIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FolderSimpleUserIcon: Component<SpriteProps> = (props) => {
+export const FolderSimpleUserIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9760,7 +9755,7 @@ export const FolderSimpleUserIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FolderSimpleIcon: Component<SpriteProps> = (props) => {
+export const FolderSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9775,7 +9770,7 @@ export const FolderSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FolderStarIcon: Component<SpriteProps> = (props) => {
+export const FolderStarIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9790,7 +9785,7 @@ export const FolderStarIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FolderUserIcon: Component<SpriteProps> = (props) => {
+export const FolderUserIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9805,7 +9800,7 @@ export const FolderUserIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FolderIcon: Component<SpriteProps> = (props) => {
+export const FolderIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9820,7 +9815,7 @@ export const FolderIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FoldersIcon: Component<SpriteProps> = (props) => {
+export const FoldersIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9835,7 +9830,7 @@ export const FoldersIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FootballHelmetIcon: Component<SpriteProps> = (props) => {
+export const FootballHelmetIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9850,7 +9845,7 @@ export const FootballHelmetIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FootballIcon: Component<SpriteProps> = (props) => {
+export const FootballIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9865,7 +9860,7 @@ export const FootballIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FootprintsIcon: Component<SpriteProps> = (props) => {
+export const FootprintsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9880,7 +9875,7 @@ export const FootprintsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ForkKnifeIcon: Component<SpriteProps> = (props) => {
+export const ForkKnifeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9895,7 +9890,7 @@ export const ForkKnifeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FourKIcon: Component<SpriteProps> = (props) => {
+export const FourKIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9910,7 +9905,7 @@ export const FourKIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FrameCornersIcon: Component<SpriteProps> = (props) => {
+export const FrameCornersIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9925,7 +9920,7 @@ export const FrameCornersIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FramerLogoIcon: Component<SpriteProps> = (props) => {
+export const FramerLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9940,7 +9935,7 @@ export const FramerLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FunctionIcon: Component<SpriteProps> = (props) => {
+export const FunctionIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9955,7 +9950,7 @@ export const FunctionIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FunnelSimpleXIcon: Component<SpriteProps> = (props) => {
+export const FunnelSimpleXIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9970,7 +9965,7 @@ export const FunnelSimpleXIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FunnelSimpleIcon: Component<SpriteProps> = (props) => {
+export const FunnelSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -9985,7 +9980,7 @@ export const FunnelSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FunnelXIcon: Component<SpriteProps> = (props) => {
+export const FunnelXIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10000,7 +9995,7 @@ export const FunnelXIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const FunnelIcon: Component<SpriteProps> = (props) => {
+export const FunnelIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10015,7 +10010,7 @@ export const FunnelIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GameControllerIcon: Component<SpriteProps> = (props) => {
+export const GameControllerIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10030,7 +10025,7 @@ export const GameControllerIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GarageIcon: Component<SpriteProps> = (props) => {
+export const GarageIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10045,7 +10040,7 @@ export const GarageIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GasCanIcon: Component<SpriteProps> = (props) => {
+export const GasCanIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10060,7 +10055,7 @@ export const GasCanIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GasPumpIcon: Component<SpriteProps> = (props) => {
+export const GasPumpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10075,7 +10070,7 @@ export const GasPumpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GaugeIcon: Component<SpriteProps> = (props) => {
+export const GaugeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10090,7 +10085,7 @@ export const GaugeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GavelIcon: Component<SpriteProps> = (props) => {
+export const GavelIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10105,7 +10100,7 @@ export const GavelIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GearFineIcon: Component<SpriteProps> = (props) => {
+export const GearFineIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10120,7 +10115,7 @@ export const GearFineIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GearSixIcon: Component<SpriteProps> = (props) => {
+export const GearSixIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10135,7 +10130,7 @@ export const GearSixIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GearIcon: Component<SpriteProps> = (props) => {
+export const GearIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10150,7 +10145,7 @@ export const GearIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GenderFemaleIcon: Component<SpriteProps> = (props) => {
+export const GenderFemaleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10165,7 +10160,7 @@ export const GenderFemaleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GenderIntersexIcon: Component<SpriteProps> = (props) => {
+export const GenderIntersexIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10180,7 +10175,7 @@ export const GenderIntersexIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GenderMaleIcon: Component<SpriteProps> = (props) => {
+export const GenderMaleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10195,7 +10190,7 @@ export const GenderMaleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GenderNeuterIcon: Component<SpriteProps> = (props) => {
+export const GenderNeuterIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10210,7 +10205,7 @@ export const GenderNeuterIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GenderNonbinaryIcon: Component<SpriteProps> = (props) => {
+export const GenderNonbinaryIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10225,7 +10220,7 @@ export const GenderNonbinaryIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GenderTransgenderIcon: Component<SpriteProps> = (props) => {
+export const GenderTransgenderIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10240,7 +10235,7 @@ export const GenderTransgenderIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GhostIcon: Component<SpriteProps> = (props) => {
+export const GhostIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10255,7 +10250,7 @@ export const GhostIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GifIcon: Component<SpriteProps> = (props) => {
+export const GifIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10270,7 +10265,7 @@ export const GifIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GiftIcon: Component<SpriteProps> = (props) => {
+export const GiftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10285,7 +10280,7 @@ export const GiftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GitBranchIcon: Component<SpriteProps> = (props) => {
+export const GitBranchIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10300,7 +10295,7 @@ export const GitBranchIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GitCommitIcon: Component<SpriteProps> = (props) => {
+export const GitCommitIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10315,7 +10310,7 @@ export const GitCommitIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GitDiffIcon: Component<SpriteProps> = (props) => {
+export const GitDiffIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10330,7 +10325,7 @@ export const GitDiffIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GitForkIcon: Component<SpriteProps> = (props) => {
+export const GitForkIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10345,7 +10340,7 @@ export const GitForkIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GitMergeIcon: Component<SpriteProps> = (props) => {
+export const GitMergeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10360,7 +10355,7 @@ export const GitMergeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GitPullRequestIcon: Component<SpriteProps> = (props) => {
+export const GitPullRequestIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10375,7 +10370,7 @@ export const GitPullRequestIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GithubLogoIcon: Component<SpriteProps> = (props) => {
+export const GithubLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10390,7 +10385,7 @@ export const GithubLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GitlabLogoSimpleIcon: Component<SpriteProps> = (props) => {
+export const GitlabLogoSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10405,7 +10400,7 @@ export const GitlabLogoSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GitlabLogoIcon: Component<SpriteProps> = (props) => {
+export const GitlabLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10420,7 +10415,7 @@ export const GitlabLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GlobeHemisphereEastIcon: Component<SpriteProps> = (props) => {
+export const GlobeHemisphereEastIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10435,7 +10430,7 @@ export const GlobeHemisphereEastIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GlobeHemisphereWestIcon: Component<SpriteProps> = (props) => {
+export const GlobeHemisphereWestIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10450,7 +10445,7 @@ export const GlobeHemisphereWestIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GlobeSimpleXIcon: Component<SpriteProps> = (props) => {
+export const GlobeSimpleXIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10465,7 +10460,7 @@ export const GlobeSimpleXIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GlobeSimpleIcon: Component<SpriteProps> = (props) => {
+export const GlobeSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10480,7 +10475,7 @@ export const GlobeSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GlobeStandIcon: Component<SpriteProps> = (props) => {
+export const GlobeStandIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10495,7 +10490,7 @@ export const GlobeStandIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GlobeXIcon: Component<SpriteProps> = (props) => {
+export const GlobeXIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10510,7 +10505,7 @@ export const GlobeXIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GlobeIcon: Component<SpriteProps> = (props) => {
+export const GlobeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10525,7 +10520,7 @@ export const GlobeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GogglesIcon: Component<SpriteProps> = (props) => {
+export const GogglesIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10540,7 +10535,7 @@ export const GogglesIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GolfIcon: Component<SpriteProps> = (props) => {
+export const GolfIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10555,7 +10550,7 @@ export const GolfIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GoodreadsLogoIcon: Component<SpriteProps> = (props) => {
+export const GoodreadsLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10570,7 +10565,7 @@ export const GoodreadsLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GoogleCardboardLogoIcon: Component<SpriteProps> = (props) => {
+export const GoogleCardboardLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10585,7 +10580,7 @@ export const GoogleCardboardLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GoogleChromeLogoIcon: Component<SpriteProps> = (props) => {
+export const GoogleChromeLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10600,7 +10595,7 @@ export const GoogleChromeLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GoogleDriveLogoIcon: Component<SpriteProps> = (props) => {
+export const GoogleDriveLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10615,7 +10610,7 @@ export const GoogleDriveLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GoogleLogoIcon: Component<SpriteProps> = (props) => {
+export const GoogleLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10630,7 +10625,7 @@ export const GoogleLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GooglePhotosLogoIcon: Component<SpriteProps> = (props) => {
+export const GooglePhotosLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10645,7 +10640,7 @@ export const GooglePhotosLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GooglePlayLogoIcon: Component<SpriteProps> = (props) => {
+export const GooglePlayLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10660,7 +10655,7 @@ export const GooglePlayLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GooglePodcastsLogoIcon: Component<SpriteProps> = (props) => {
+export const GooglePodcastsLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10675,7 +10670,7 @@ export const GooglePodcastsLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GpsFixIcon: Component<SpriteProps> = (props) => {
+export const GpsFixIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10690,7 +10685,7 @@ export const GpsFixIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GpsSlashIcon: Component<SpriteProps> = (props) => {
+export const GpsSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10705,7 +10700,7 @@ export const GpsSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GpsIcon: Component<SpriteProps> = (props) => {
+export const GpsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10720,7 +10715,7 @@ export const GpsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GradientIcon: Component<SpriteProps> = (props) => {
+export const GradientIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10735,7 +10730,7 @@ export const GradientIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GraduationCapIcon: Component<SpriteProps> = (props) => {
+export const GraduationCapIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10750,7 +10745,7 @@ export const GraduationCapIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GrainsSlashIcon: Component<SpriteProps> = (props) => {
+export const GrainsSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10765,7 +10760,7 @@ export const GrainsSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GrainsIcon: Component<SpriteProps> = (props) => {
+export const GrainsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10780,7 +10775,7 @@ export const GrainsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GraphIcon: Component<SpriteProps> = (props) => {
+export const GraphIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10795,7 +10790,7 @@ export const GraphIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GraphicsCardIcon: Component<SpriteProps> = (props) => {
+export const GraphicsCardIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10810,7 +10805,7 @@ export const GraphicsCardIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GreaterThanOrEqualIcon: Component<SpriteProps> = (props) => {
+export const GreaterThanOrEqualIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10825,7 +10820,7 @@ export const GreaterThanOrEqualIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GreaterThanIcon: Component<SpriteProps> = (props) => {
+export const GreaterThanIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10840,7 +10835,7 @@ export const GreaterThanIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GridFourIcon: Component<SpriteProps> = (props) => {
+export const GridFourIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10855,7 +10850,7 @@ export const GridFourIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GridNineIcon: Component<SpriteProps> = (props) => {
+export const GridNineIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10870,7 +10865,7 @@ export const GridNineIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const GuitarIcon: Component<SpriteProps> = (props) => {
+export const GuitarIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10885,7 +10880,7 @@ export const GuitarIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HairDryerIcon: Component<SpriteProps> = (props) => {
+export const HairDryerIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10900,7 +10895,7 @@ export const HairDryerIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HamburgerIcon: Component<SpriteProps> = (props) => {
+export const HamburgerIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10915,7 +10910,7 @@ export const HamburgerIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HammerIcon: Component<SpriteProps> = (props) => {
+export const HammerIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10930,7 +10925,7 @@ export const HammerIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HandArrowDownIcon: Component<SpriteProps> = (props) => {
+export const HandArrowDownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10945,7 +10940,7 @@ export const HandArrowDownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HandArrowUpIcon: Component<SpriteProps> = (props) => {
+export const HandArrowUpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10960,7 +10955,7 @@ export const HandArrowUpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HandCoinsIcon: Component<SpriteProps> = (props) => {
+export const HandCoinsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10975,7 +10970,7 @@ export const HandCoinsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HandDepositIcon: Component<SpriteProps> = (props) => {
+export const HandDepositIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -10990,7 +10985,7 @@ export const HandDepositIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HandEyeIcon: Component<SpriteProps> = (props) => {
+export const HandEyeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11005,7 +11000,7 @@ export const HandEyeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HandFistIcon: Component<SpriteProps> = (props) => {
+export const HandFistIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11020,7 +11015,7 @@ export const HandFistIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HandGrabbingIcon: Component<SpriteProps> = (props) => {
+export const HandGrabbingIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11035,7 +11030,7 @@ export const HandGrabbingIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HandHeartIcon: Component<SpriteProps> = (props) => {
+export const HandHeartIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11050,7 +11045,7 @@ export const HandHeartIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HandPalmIcon: Component<SpriteProps> = (props) => {
+export const HandPalmIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11065,7 +11060,7 @@ export const HandPalmIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HandPeaceIcon: Component<SpriteProps> = (props) => {
+export const HandPeaceIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11080,7 +11075,7 @@ export const HandPeaceIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HandPointingIcon: Component<SpriteProps> = (props) => {
+export const HandPointingIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11095,7 +11090,7 @@ export const HandPointingIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HandSoapIcon: Component<SpriteProps> = (props) => {
+export const HandSoapIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11110,7 +11105,7 @@ export const HandSoapIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HandSwipeLeftIcon: Component<SpriteProps> = (props) => {
+export const HandSwipeLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11125,7 +11120,7 @@ export const HandSwipeLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HandSwipeRightIcon: Component<SpriteProps> = (props) => {
+export const HandSwipeRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11140,7 +11135,7 @@ export const HandSwipeRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HandTapIcon: Component<SpriteProps> = (props) => {
+export const HandTapIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11155,7 +11150,7 @@ export const HandTapIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HandWavingIcon: Component<SpriteProps> = (props) => {
+export const HandWavingIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11170,7 +11165,7 @@ export const HandWavingIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HandWithdrawIcon: Component<SpriteProps> = (props) => {
+export const HandWithdrawIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11185,7 +11180,7 @@ export const HandWithdrawIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HandIcon: Component<SpriteProps> = (props) => {
+export const HandIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11200,7 +11195,7 @@ export const HandIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HandbagSimpleIcon: Component<SpriteProps> = (props) => {
+export const HandbagSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11215,7 +11210,7 @@ export const HandbagSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HandbagIcon: Component<SpriteProps> = (props) => {
+export const HandbagIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11230,7 +11225,7 @@ export const HandbagIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HandsClappingIcon: Component<SpriteProps> = (props) => {
+export const HandsClappingIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11245,7 +11240,7 @@ export const HandsClappingIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HandsPrayingIcon: Component<SpriteProps> = (props) => {
+export const HandsPrayingIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11260,7 +11255,7 @@ export const HandsPrayingIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HandshakeIcon: Component<SpriteProps> = (props) => {
+export const HandshakeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11275,7 +11270,7 @@ export const HandshakeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HardDriveIcon: Component<SpriteProps> = (props) => {
+export const HardDriveIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11290,7 +11285,7 @@ export const HardDriveIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HardDrivesIcon: Component<SpriteProps> = (props) => {
+export const HardDrivesIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11305,7 +11300,7 @@ export const HardDrivesIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HardHatIcon: Component<SpriteProps> = (props) => {
+export const HardHatIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11320,7 +11315,7 @@ export const HardHatIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HashStraightIcon: Component<SpriteProps> = (props) => {
+export const HashStraightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11335,7 +11330,7 @@ export const HashStraightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HashIcon: Component<SpriteProps> = (props) => {
+export const HashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11350,7 +11345,7 @@ export const HashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HeadCircuitIcon: Component<SpriteProps> = (props) => {
+export const HeadCircuitIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11365,7 +11360,7 @@ export const HeadCircuitIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HeadlightsIcon: Component<SpriteProps> = (props) => {
+export const HeadlightsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11380,7 +11375,7 @@ export const HeadlightsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HeadphonesIcon: Component<SpriteProps> = (props) => {
+export const HeadphonesIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11395,7 +11390,7 @@ export const HeadphonesIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HeadsetIcon: Component<SpriteProps> = (props) => {
+export const HeadsetIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11410,7 +11405,7 @@ export const HeadsetIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HeartBreakIcon: Component<SpriteProps> = (props) => {
+export const HeartBreakIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11425,7 +11420,7 @@ export const HeartBreakIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HeartHalfIcon: Component<SpriteProps> = (props) => {
+export const HeartHalfIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11440,7 +11435,7 @@ export const HeartHalfIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HeartStraightBreakIcon: Component<SpriteProps> = (props) => {
+export const HeartStraightBreakIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11455,7 +11450,7 @@ export const HeartStraightBreakIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HeartStraightIcon: Component<SpriteProps> = (props) => {
+export const HeartStraightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11470,7 +11465,7 @@ export const HeartStraightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HeartIcon: Component<SpriteProps> = (props) => {
+export const HeartIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11485,7 +11480,7 @@ export const HeartIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HeartbeatIcon: Component<SpriteProps> = (props) => {
+export const HeartbeatIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11500,7 +11495,7 @@ export const HeartbeatIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HexagonIcon: Component<SpriteProps> = (props) => {
+export const HexagonIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11515,7 +11510,7 @@ export const HexagonIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HighDefinitionIcon: Component<SpriteProps> = (props) => {
+export const HighDefinitionIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11530,7 +11525,7 @@ export const HighDefinitionIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HighHeelIcon: Component<SpriteProps> = (props) => {
+export const HighHeelIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11545,7 +11540,7 @@ export const HighHeelIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HighlighterCircleIcon: Component<SpriteProps> = (props) => {
+export const HighlighterCircleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11560,7 +11555,7 @@ export const HighlighterCircleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HighlighterIcon: Component<SpriteProps> = (props) => {
+export const HighlighterIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11575,7 +11570,7 @@ export const HighlighterIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HockeyIcon: Component<SpriteProps> = (props) => {
+export const HockeyIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11590,7 +11585,7 @@ export const HockeyIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HoodieIcon: Component<SpriteProps> = (props) => {
+export const HoodieIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11605,7 +11600,7 @@ export const HoodieIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HorseIcon: Component<SpriteProps> = (props) => {
+export const HorseIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11620,7 +11615,7 @@ export const HorseIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HospitalIcon: Component<SpriteProps> = (props) => {
+export const HospitalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11635,7 +11630,7 @@ export const HospitalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HourglassHighIcon: Component<SpriteProps> = (props) => {
+export const HourglassHighIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11650,7 +11645,7 @@ export const HourglassHighIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HourglassLowIcon: Component<SpriteProps> = (props) => {
+export const HourglassLowIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11665,7 +11660,7 @@ export const HourglassLowIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HourglassMediumIcon: Component<SpriteProps> = (props) => {
+export const HourglassMediumIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11680,7 +11675,7 @@ export const HourglassMediumIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HourglassSimpleHighIcon: Component<SpriteProps> = (props) => {
+export const HourglassSimpleHighIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11695,7 +11690,7 @@ export const HourglassSimpleHighIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HourglassSimpleLowIcon: Component<SpriteProps> = (props) => {
+export const HourglassSimpleLowIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11710,7 +11705,7 @@ export const HourglassSimpleLowIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HourglassSimpleMediumIcon: Component<SpriteProps> = (props) => {
+export const HourglassSimpleMediumIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11725,7 +11720,7 @@ export const HourglassSimpleMediumIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HourglassSimpleIcon: Component<SpriteProps> = (props) => {
+export const HourglassSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11740,7 +11735,7 @@ export const HourglassSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HourglassIcon: Component<SpriteProps> = (props) => {
+export const HourglassIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11755,7 +11750,7 @@ export const HourglassIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HouseLineIcon: Component<SpriteProps> = (props) => {
+export const HouseLineIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11770,7 +11765,7 @@ export const HouseLineIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HouseSimpleIcon: Component<SpriteProps> = (props) => {
+export const HouseSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11785,7 +11780,7 @@ export const HouseSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HouseIcon: Component<SpriteProps> = (props) => {
+export const HouseIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11800,7 +11795,7 @@ export const HouseIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const HurricaneIcon: Component<SpriteProps> = (props) => {
+export const HurricaneIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11815,7 +11810,7 @@ export const HurricaneIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const IceCreamIcon: Component<SpriteProps> = (props) => {
+export const IceCreamIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11830,7 +11825,7 @@ export const IceCreamIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const IdentificationBadgeIcon: Component<SpriteProps> = (props) => {
+export const IdentificationBadgeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11845,7 +11840,7 @@ export const IdentificationBadgeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const IdentificationCardIcon: Component<SpriteProps> = (props) => {
+export const IdentificationCardIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11860,7 +11855,7 @@ export const IdentificationCardIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ImageBrokenIcon: Component<SpriteProps> = (props) => {
+export const ImageBrokenIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11875,7 +11870,7 @@ export const ImageBrokenIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ImageSquareIcon: Component<SpriteProps> = (props) => {
+export const ImageSquareIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11890,7 +11885,7 @@ export const ImageSquareIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ImageIcon: Component<SpriteProps> = (props) => {
+export const ImageIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11905,7 +11900,7 @@ export const ImageIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ImagesSquareIcon: Component<SpriteProps> = (props) => {
+export const ImagesSquareIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11920,7 +11915,7 @@ export const ImagesSquareIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ImagesIcon: Component<SpriteProps> = (props) => {
+export const ImagesIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11935,7 +11930,7 @@ export const ImagesIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const InfinityIcon: Component<SpriteProps> = (props) => {
+export const InfinityIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11950,7 +11945,7 @@ export const InfinityIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const InfoIcon: Component<SpriteProps> = (props) => {
+export const InfoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11965,7 +11960,7 @@ export const InfoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const InstagramLogoIcon: Component<SpriteProps> = (props) => {
+export const InstagramLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11980,7 +11975,7 @@ export const InstagramLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const IntersectSquareIcon: Component<SpriteProps> = (props) => {
+export const IntersectSquareIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11995,7 +11990,7 @@ export const IntersectSquareIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const IntersectThreeIcon: Component<SpriteProps> = (props) => {
+export const IntersectThreeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12010,7 +12005,7 @@ export const IntersectThreeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const IntersectIcon: Component<SpriteProps> = (props) => {
+export const IntersectIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12025,7 +12020,7 @@ export const IntersectIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const IntersectionIcon: Component<SpriteProps> = (props) => {
+export const IntersectionIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12040,7 +12035,7 @@ export const IntersectionIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const InvoiceIcon: Component<SpriteProps> = (props) => {
+export const InvoiceIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12055,7 +12050,7 @@ export const InvoiceIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const IslandIcon: Component<SpriteProps> = (props) => {
+export const IslandIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12070,7 +12065,7 @@ export const IslandIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const JarLabelIcon: Component<SpriteProps> = (props) => {
+export const JarLabelIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12085,7 +12080,7 @@ export const JarLabelIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const JarIcon: Component<SpriteProps> = (props) => {
+export const JarIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12100,7 +12095,7 @@ export const JarIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const JeepIcon: Component<SpriteProps> = (props) => {
+export const JeepIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12115,7 +12110,7 @@ export const JeepIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const JoystickIcon: Component<SpriteProps> = (props) => {
+export const JoystickIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12130,7 +12125,7 @@ export const JoystickIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const KanbanIcon: Component<SpriteProps> = (props) => {
+export const KanbanIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12145,7 +12140,7 @@ export const KanbanIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const KeyReturnIcon: Component<SpriteProps> = (props) => {
+export const KeyReturnIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12160,7 +12155,7 @@ export const KeyReturnIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const KeyIcon: Component<SpriteProps> = (props) => {
+export const KeyIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12175,7 +12170,7 @@ export const KeyIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const KeyboardIcon: Component<SpriteProps> = (props) => {
+export const KeyboardIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12190,7 +12185,7 @@ export const KeyboardIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const KeyholeIcon: Component<SpriteProps> = (props) => {
+export const KeyholeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12205,7 +12200,7 @@ export const KeyholeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const KnifeIcon: Component<SpriteProps> = (props) => {
+export const KnifeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12220,7 +12215,7 @@ export const KnifeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LadderSimpleIcon: Component<SpriteProps> = (props) => {
+export const LadderSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12235,7 +12230,7 @@ export const LadderSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LadderIcon: Component<SpriteProps> = (props) => {
+export const LadderIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12250,7 +12245,7 @@ export const LadderIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LampPendantIcon: Component<SpriteProps> = (props) => {
+export const LampPendantIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12265,7 +12260,7 @@ export const LampPendantIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LampIcon: Component<SpriteProps> = (props) => {
+export const LampIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12280,7 +12275,7 @@ export const LampIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LaptopIcon: Component<SpriteProps> = (props) => {
+export const LaptopIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12295,7 +12290,7 @@ export const LaptopIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LassoIcon: Component<SpriteProps> = (props) => {
+export const LassoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12310,7 +12305,7 @@ export const LassoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LastfmLogoIcon: Component<SpriteProps> = (props) => {
+export const LastfmLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12325,7 +12320,7 @@ export const LastfmLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LayoutIcon: Component<SpriteProps> = (props) => {
+export const LayoutIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12340,7 +12335,7 @@ export const LayoutIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LeafIcon: Component<SpriteProps> = (props) => {
+export const LeafIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12355,7 +12350,7 @@ export const LeafIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LecternIcon: Component<SpriteProps> = (props) => {
+export const LecternIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12370,7 +12365,7 @@ export const LecternIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LegoSmileyIcon: Component<SpriteProps> = (props) => {
+export const LegoSmileyIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12385,7 +12380,7 @@ export const LegoSmileyIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LegoIcon: Component<SpriteProps> = (props) => {
+export const LegoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12400,7 +12395,7 @@ export const LegoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LessThanOrEqualIcon: Component<SpriteProps> = (props) => {
+export const LessThanOrEqualIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12415,7 +12410,7 @@ export const LessThanOrEqualIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LessThanIcon: Component<SpriteProps> = (props) => {
+export const LessThanIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12430,7 +12425,7 @@ export const LessThanIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LetterCircleHIcon: Component<SpriteProps> = (props) => {
+export const LetterCircleHIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12445,7 +12440,7 @@ export const LetterCircleHIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LetterCirclePIcon: Component<SpriteProps> = (props) => {
+export const LetterCirclePIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12460,7 +12455,7 @@ export const LetterCirclePIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LetterCircleVIcon: Component<SpriteProps> = (props) => {
+export const LetterCircleVIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12475,7 +12470,7 @@ export const LetterCircleVIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LifebuoyIcon: Component<SpriteProps> = (props) => {
+export const LifebuoyIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12490,7 +12485,7 @@ export const LifebuoyIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LightbulbFilamentIcon: Component<SpriteProps> = (props) => {
+export const LightbulbFilamentIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12505,7 +12500,7 @@ export const LightbulbFilamentIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LightbulbIcon: Component<SpriteProps> = (props) => {
+export const LightbulbIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12520,7 +12515,7 @@ export const LightbulbIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LighthouseIcon: Component<SpriteProps> = (props) => {
+export const LighthouseIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12535,7 +12530,7 @@ export const LighthouseIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LightningAIcon: Component<SpriteProps> = (props) => {
+export const LightningAIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12550,7 +12545,7 @@ export const LightningAIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LightningSlashIcon: Component<SpriteProps> = (props) => {
+export const LightningSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12565,7 +12560,7 @@ export const LightningSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LightningIcon: Component<SpriteProps> = (props) => {
+export const LightningIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12580,7 +12575,7 @@ export const LightningIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LineSegmentIcon: Component<SpriteProps> = (props) => {
+export const LineSegmentIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12595,7 +12590,7 @@ export const LineSegmentIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LineSegmentsIcon: Component<SpriteProps> = (props) => {
+export const LineSegmentsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12610,7 +12605,7 @@ export const LineSegmentsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LineVerticalIcon: Component<SpriteProps> = (props) => {
+export const LineVerticalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12625,7 +12620,7 @@ export const LineVerticalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LinkBreakIcon: Component<SpriteProps> = (props) => {
+export const LinkBreakIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12640,7 +12635,7 @@ export const LinkBreakIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LinkSimpleBreakIcon: Component<SpriteProps> = (props) => {
+export const LinkSimpleBreakIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12655,9 +12650,7 @@ export const LinkSimpleBreakIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LinkSimpleHorizontalBreakIcon: Component<SpriteProps> = (
-  props,
-) => {
+export const LinkSimpleHorizontalBreakIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12672,7 +12665,7 @@ export const LinkSimpleHorizontalBreakIcon: Component<SpriteProps> = (
   );
 };
 
-export const LinkSimpleHorizontalIcon: Component<SpriteProps> = (props) => {
+export const LinkSimpleHorizontalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12687,7 +12680,7 @@ export const LinkSimpleHorizontalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LinkSimpleIcon: Component<SpriteProps> = (props) => {
+export const LinkSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12702,7 +12695,7 @@ export const LinkSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LinkIcon: Component<SpriteProps> = (props) => {
+export const LinkIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12717,7 +12710,7 @@ export const LinkIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LinkedinLogoIcon: Component<SpriteProps> = (props) => {
+export const LinkedinLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12732,7 +12725,7 @@ export const LinkedinLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LinktreeLogoIcon: Component<SpriteProps> = (props) => {
+export const LinktreeLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12747,7 +12740,7 @@ export const LinktreeLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LinuxLogoIcon: Component<SpriteProps> = (props) => {
+export const LinuxLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12762,7 +12755,7 @@ export const LinuxLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ListBulletsIcon: Component<SpriteProps> = (props) => {
+export const ListBulletsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12777,7 +12770,7 @@ export const ListBulletsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ListChecksIcon: Component<SpriteProps> = (props) => {
+export const ListChecksIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12792,7 +12785,7 @@ export const ListChecksIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ListDashesIcon: Component<SpriteProps> = (props) => {
+export const ListDashesIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12807,7 +12800,7 @@ export const ListDashesIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ListHeartIcon: Component<SpriteProps> = (props) => {
+export const ListHeartIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12822,7 +12815,7 @@ export const ListHeartIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ListMagnifyingGlassIcon: Component<SpriteProps> = (props) => {
+export const ListMagnifyingGlassIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12837,7 +12830,7 @@ export const ListMagnifyingGlassIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ListNumbersIcon: Component<SpriteProps> = (props) => {
+export const ListNumbersIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12852,7 +12845,7 @@ export const ListNumbersIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ListPlusIcon: Component<SpriteProps> = (props) => {
+export const ListPlusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12867,7 +12860,7 @@ export const ListPlusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ListStarIcon: Component<SpriteProps> = (props) => {
+export const ListStarIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12882,7 +12875,7 @@ export const ListStarIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ListIcon: Component<SpriteProps> = (props) => {
+export const ListIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12897,7 +12890,7 @@ export const ListIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LockKeyOpenIcon: Component<SpriteProps> = (props) => {
+export const LockKeyOpenIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12912,7 +12905,7 @@ export const LockKeyOpenIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LockKeyIcon: Component<SpriteProps> = (props) => {
+export const LockKeyIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12927,7 +12920,7 @@ export const LockKeyIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LockLaminatedOpenIcon: Component<SpriteProps> = (props) => {
+export const LockLaminatedOpenIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12942,7 +12935,7 @@ export const LockLaminatedOpenIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LockLaminatedIcon: Component<SpriteProps> = (props) => {
+export const LockLaminatedIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12957,7 +12950,7 @@ export const LockLaminatedIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LockOpenIcon: Component<SpriteProps> = (props) => {
+export const LockOpenIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12972,7 +12965,7 @@ export const LockOpenIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LockSimpleOpenIcon: Component<SpriteProps> = (props) => {
+export const LockSimpleOpenIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -12987,7 +12980,7 @@ export const LockSimpleOpenIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LockSimpleIcon: Component<SpriteProps> = (props) => {
+export const LockSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13002,7 +12995,7 @@ export const LockSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LockIcon: Component<SpriteProps> = (props) => {
+export const LockIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13017,7 +13010,7 @@ export const LockIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LockersIcon: Component<SpriteProps> = (props) => {
+export const LockersIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13032,7 +13025,7 @@ export const LockersIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const LogIcon: Component<SpriteProps> = (props) => {
+export const LogIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13047,7 +13040,7 @@ export const LogIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MagicWandIcon: Component<SpriteProps> = (props) => {
+export const MagicWandIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13062,7 +13055,7 @@ export const MagicWandIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MagnetStraightIcon: Component<SpriteProps> = (props) => {
+export const MagnetStraightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13077,7 +13070,7 @@ export const MagnetStraightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MagnetIcon: Component<SpriteProps> = (props) => {
+export const MagnetIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13092,7 +13085,7 @@ export const MagnetIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MagnifyingGlassMinusIcon: Component<SpriteProps> = (props) => {
+export const MagnifyingGlassMinusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13107,7 +13100,7 @@ export const MagnifyingGlassMinusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MagnifyingGlassPlusIcon: Component<SpriteProps> = (props) => {
+export const MagnifyingGlassPlusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13122,7 +13115,7 @@ export const MagnifyingGlassPlusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MagnifyingGlassIcon: Component<SpriteProps> = (props) => {
+export const MagnifyingGlassIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13137,7 +13130,7 @@ export const MagnifyingGlassIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MailboxIcon: Component<SpriteProps> = (props) => {
+export const MailboxIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13152,7 +13145,7 @@ export const MailboxIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MapPinAreaIcon: Component<SpriteProps> = (props) => {
+export const MapPinAreaIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13167,7 +13160,7 @@ export const MapPinAreaIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MapPinLineIcon: Component<SpriteProps> = (props) => {
+export const MapPinLineIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13182,7 +13175,7 @@ export const MapPinLineIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MapPinPlusIcon: Component<SpriteProps> = (props) => {
+export const MapPinPlusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13197,7 +13190,7 @@ export const MapPinPlusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MapPinSimpleAreaIcon: Component<SpriteProps> = (props) => {
+export const MapPinSimpleAreaIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13212,7 +13205,7 @@ export const MapPinSimpleAreaIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MapPinSimpleLineIcon: Component<SpriteProps> = (props) => {
+export const MapPinSimpleLineIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13227,7 +13220,7 @@ export const MapPinSimpleLineIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MapPinSimpleIcon: Component<SpriteProps> = (props) => {
+export const MapPinSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13242,7 +13235,7 @@ export const MapPinSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MapPinIcon: Component<SpriteProps> = (props) => {
+export const MapPinIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13257,7 +13250,7 @@ export const MapPinIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MapTrifoldIcon: Component<SpriteProps> = (props) => {
+export const MapTrifoldIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13272,7 +13265,7 @@ export const MapTrifoldIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MarkdownLogoIcon: Component<SpriteProps> = (props) => {
+export const MarkdownLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13287,7 +13280,7 @@ export const MarkdownLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MarkerCircleIcon: Component<SpriteProps> = (props) => {
+export const MarkerCircleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13302,7 +13295,7 @@ export const MarkerCircleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MartiniIcon: Component<SpriteProps> = (props) => {
+export const MartiniIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13317,7 +13310,7 @@ export const MartiniIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MaskHappyIcon: Component<SpriteProps> = (props) => {
+export const MaskHappyIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13332,7 +13325,7 @@ export const MaskHappyIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MaskSadIcon: Component<SpriteProps> = (props) => {
+export const MaskSadIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13347,7 +13340,7 @@ export const MaskSadIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MastodonLogoIcon: Component<SpriteProps> = (props) => {
+export const MastodonLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13362,7 +13355,7 @@ export const MastodonLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MathOperationsIcon: Component<SpriteProps> = (props) => {
+export const MathOperationsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13377,7 +13370,7 @@ export const MathOperationsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MatrixLogoIcon: Component<SpriteProps> = (props) => {
+export const MatrixLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13392,7 +13385,7 @@ export const MatrixLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MedalMilitaryIcon: Component<SpriteProps> = (props) => {
+export const MedalMilitaryIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13407,7 +13400,7 @@ export const MedalMilitaryIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MedalIcon: Component<SpriteProps> = (props) => {
+export const MedalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13422,7 +13415,7 @@ export const MedalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MediumLogoIcon: Component<SpriteProps> = (props) => {
+export const MediumLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13437,7 +13430,7 @@ export const MediumLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MegaphoneSimpleIcon: Component<SpriteProps> = (props) => {
+export const MegaphoneSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13452,7 +13445,7 @@ export const MegaphoneSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MegaphoneIcon: Component<SpriteProps> = (props) => {
+export const MegaphoneIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13467,7 +13460,7 @@ export const MegaphoneIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MemberOfIcon: Component<SpriteProps> = (props) => {
+export const MemberOfIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13482,7 +13475,7 @@ export const MemberOfIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MemoryIcon: Component<SpriteProps> = (props) => {
+export const MemoryIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13497,7 +13490,7 @@ export const MemoryIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MessengerLogoIcon: Component<SpriteProps> = (props) => {
+export const MessengerLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13512,7 +13505,7 @@ export const MessengerLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MetaLogoIcon: Component<SpriteProps> = (props) => {
+export const MetaLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13527,7 +13520,7 @@ export const MetaLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MeteorIcon: Component<SpriteProps> = (props) => {
+export const MeteorIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13542,7 +13535,7 @@ export const MeteorIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MetronomeIcon: Component<SpriteProps> = (props) => {
+export const MetronomeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13557,7 +13550,7 @@ export const MetronomeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MicrophoneSlashIcon: Component<SpriteProps> = (props) => {
+export const MicrophoneSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13572,7 +13565,7 @@ export const MicrophoneSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MicrophoneStageIcon: Component<SpriteProps> = (props) => {
+export const MicrophoneStageIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13587,7 +13580,7 @@ export const MicrophoneStageIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MicrophoneIcon: Component<SpriteProps> = (props) => {
+export const MicrophoneIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13602,7 +13595,7 @@ export const MicrophoneIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MicroscopeIcon: Component<SpriteProps> = (props) => {
+export const MicroscopeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13617,7 +13610,7 @@ export const MicroscopeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MicrosoftExcelLogoIcon: Component<SpriteProps> = (props) => {
+export const MicrosoftExcelLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13632,7 +13625,7 @@ export const MicrosoftExcelLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MicrosoftOutlookLogoIcon: Component<SpriteProps> = (props) => {
+export const MicrosoftOutlookLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13647,7 +13640,7 @@ export const MicrosoftOutlookLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MicrosoftPowerpointLogoIcon: Component<SpriteProps> = (props) => {
+export const MicrosoftPowerpointLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13662,7 +13655,7 @@ export const MicrosoftPowerpointLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MicrosoftTeamsLogoIcon: Component<SpriteProps> = (props) => {
+export const MicrosoftTeamsLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13677,7 +13670,7 @@ export const MicrosoftTeamsLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MicrosoftWordLogoIcon: Component<SpriteProps> = (props) => {
+export const MicrosoftWordLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13692,7 +13685,7 @@ export const MicrosoftWordLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MinusCircleIcon: Component<SpriteProps> = (props) => {
+export const MinusCircleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13707,7 +13700,7 @@ export const MinusCircleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MinusSquareIcon: Component<SpriteProps> = (props) => {
+export const MinusSquareIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13722,7 +13715,7 @@ export const MinusSquareIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MinusIcon: Component<SpriteProps> = (props) => {
+export const MinusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13737,7 +13730,7 @@ export const MinusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MoneyWavyIcon: Component<SpriteProps> = (props) => {
+export const MoneyWavyIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13752,7 +13745,7 @@ export const MoneyWavyIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MoneyIcon: Component<SpriteProps> = (props) => {
+export const MoneyIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13767,7 +13760,7 @@ export const MoneyIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MonitorArrowUpIcon: Component<SpriteProps> = (props) => {
+export const MonitorArrowUpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13782,7 +13775,7 @@ export const MonitorArrowUpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MonitorPlayIcon: Component<SpriteProps> = (props) => {
+export const MonitorPlayIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13797,7 +13790,7 @@ export const MonitorPlayIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MonitorIcon: Component<SpriteProps> = (props) => {
+export const MonitorIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13812,7 +13805,7 @@ export const MonitorIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MoonStarsIcon: Component<SpriteProps> = (props) => {
+export const MoonStarsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13827,7 +13820,7 @@ export const MoonStarsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MoonIcon: Component<SpriteProps> = (props) => {
+export const MoonIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13842,7 +13835,7 @@ export const MoonIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MopedFrontIcon: Component<SpriteProps> = (props) => {
+export const MopedFrontIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13857,7 +13850,7 @@ export const MopedFrontIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MopedIcon: Component<SpriteProps> = (props) => {
+export const MopedIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13872,7 +13865,7 @@ export const MopedIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MosqueIcon: Component<SpriteProps> = (props) => {
+export const MosqueIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13887,7 +13880,7 @@ export const MosqueIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MotorcycleIcon: Component<SpriteProps> = (props) => {
+export const MotorcycleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13902,7 +13895,7 @@ export const MotorcycleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MountainsIcon: Component<SpriteProps> = (props) => {
+export const MountainsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13917,7 +13910,7 @@ export const MountainsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MouseLeftClickIcon: Component<SpriteProps> = (props) => {
+export const MouseLeftClickIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13932,7 +13925,7 @@ export const MouseLeftClickIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MouseMiddleClickIcon: Component<SpriteProps> = (props) => {
+export const MouseMiddleClickIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13947,7 +13940,7 @@ export const MouseMiddleClickIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MouseRightClickIcon: Component<SpriteProps> = (props) => {
+export const MouseRightClickIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13962,7 +13955,7 @@ export const MouseRightClickIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MouseScrollIcon: Component<SpriteProps> = (props) => {
+export const MouseScrollIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13977,7 +13970,7 @@ export const MouseScrollIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MouseSimpleIcon: Component<SpriteProps> = (props) => {
+export const MouseSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13992,7 +13985,7 @@ export const MouseSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MouseIcon: Component<SpriteProps> = (props) => {
+export const MouseIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14007,7 +14000,7 @@ export const MouseIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MusicNoteSimpleIcon: Component<SpriteProps> = (props) => {
+export const MusicNoteSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14022,7 +14015,7 @@ export const MusicNoteSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MusicNoteIcon: Component<SpriteProps> = (props) => {
+export const MusicNoteIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14037,7 +14030,7 @@ export const MusicNoteIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MusicNotesMinusIcon: Component<SpriteProps> = (props) => {
+export const MusicNotesMinusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14052,7 +14045,7 @@ export const MusicNotesMinusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MusicNotesPlusIcon: Component<SpriteProps> = (props) => {
+export const MusicNotesPlusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14067,7 +14060,7 @@ export const MusicNotesPlusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MusicNotesSimpleIcon: Component<SpriteProps> = (props) => {
+export const MusicNotesSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14082,7 +14075,7 @@ export const MusicNotesSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const MusicNotesIcon: Component<SpriteProps> = (props) => {
+export const MusicNotesIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14097,7 +14090,7 @@ export const MusicNotesIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NavigationArrowIcon: Component<SpriteProps> = (props) => {
+export const NavigationArrowIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14112,7 +14105,7 @@ export const NavigationArrowIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NeedleIcon: Component<SpriteProps> = (props) => {
+export const NeedleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14127,7 +14120,7 @@ export const NeedleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NetworkSlashIcon: Component<SpriteProps> = (props) => {
+export const NetworkSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14142,7 +14135,7 @@ export const NetworkSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NetworkXIcon: Component<SpriteProps> = (props) => {
+export const NetworkXIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14157,7 +14150,7 @@ export const NetworkXIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NetworkIcon: Component<SpriteProps> = (props) => {
+export const NetworkIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14172,7 +14165,7 @@ export const NetworkIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NewspaperClippingIcon: Component<SpriteProps> = (props) => {
+export const NewspaperClippingIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14187,7 +14180,7 @@ export const NewspaperClippingIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NewspaperIcon: Component<SpriteProps> = (props) => {
+export const NewspaperIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14202,7 +14195,7 @@ export const NewspaperIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NotEqualsIcon: Component<SpriteProps> = (props) => {
+export const NotEqualsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14217,7 +14210,7 @@ export const NotEqualsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NotMemberOfIcon: Component<SpriteProps> = (props) => {
+export const NotMemberOfIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14232,7 +14225,7 @@ export const NotMemberOfIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NotSubsetOfIcon: Component<SpriteProps> = (props) => {
+export const NotSubsetOfIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14247,7 +14240,7 @@ export const NotSubsetOfIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NotSupersetOfIcon: Component<SpriteProps> = (props) => {
+export const NotSupersetOfIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14262,7 +14255,7 @@ export const NotSupersetOfIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NotchesIcon: Component<SpriteProps> = (props) => {
+export const NotchesIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14277,7 +14270,7 @@ export const NotchesIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NoteBlankIcon: Component<SpriteProps> = (props) => {
+export const NoteBlankIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14292,7 +14285,7 @@ export const NoteBlankIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NotePencilIcon: Component<SpriteProps> = (props) => {
+export const NotePencilIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14307,7 +14300,7 @@ export const NotePencilIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NoteIcon: Component<SpriteProps> = (props) => {
+export const NoteIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14322,7 +14315,7 @@ export const NoteIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NotebookIcon: Component<SpriteProps> = (props) => {
+export const NotebookIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14337,7 +14330,7 @@ export const NotebookIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NotepadIcon: Component<SpriteProps> = (props) => {
+export const NotepadIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14352,7 +14345,7 @@ export const NotepadIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NotificationIcon: Component<SpriteProps> = (props) => {
+export const NotificationIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14367,7 +14360,7 @@ export const NotificationIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NotionLogoIcon: Component<SpriteProps> = (props) => {
+export const NotionLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14382,7 +14375,7 @@ export const NotionLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NuclearPlantIcon: Component<SpriteProps> = (props) => {
+export const NuclearPlantIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14397,7 +14390,7 @@ export const NuclearPlantIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumberCircleEightIcon: Component<SpriteProps> = (props) => {
+export const NumberCircleEightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14412,7 +14405,7 @@ export const NumberCircleEightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumberCircleFiveIcon: Component<SpriteProps> = (props) => {
+export const NumberCircleFiveIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14427,7 +14420,7 @@ export const NumberCircleFiveIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumberCircleFourIcon: Component<SpriteProps> = (props) => {
+export const NumberCircleFourIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14442,7 +14435,7 @@ export const NumberCircleFourIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumberCircleNineIcon: Component<SpriteProps> = (props) => {
+export const NumberCircleNineIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14457,7 +14450,7 @@ export const NumberCircleNineIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumberCircleOneIcon: Component<SpriteProps> = (props) => {
+export const NumberCircleOneIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14472,7 +14465,7 @@ export const NumberCircleOneIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumberCircleSevenIcon: Component<SpriteProps> = (props) => {
+export const NumberCircleSevenIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14487,7 +14480,7 @@ export const NumberCircleSevenIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumberCircleSixIcon: Component<SpriteProps> = (props) => {
+export const NumberCircleSixIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14502,7 +14495,7 @@ export const NumberCircleSixIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumberCircleThreeIcon: Component<SpriteProps> = (props) => {
+export const NumberCircleThreeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14517,7 +14510,7 @@ export const NumberCircleThreeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumberCircleTwoIcon: Component<SpriteProps> = (props) => {
+export const NumberCircleTwoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14532,7 +14525,7 @@ export const NumberCircleTwoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumberCircleZeroIcon: Component<SpriteProps> = (props) => {
+export const NumberCircleZeroIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14547,7 +14540,7 @@ export const NumberCircleZeroIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumberEightIcon: Component<SpriteProps> = (props) => {
+export const NumberEightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14562,7 +14555,7 @@ export const NumberEightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumberFiveIcon: Component<SpriteProps> = (props) => {
+export const NumberFiveIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14577,7 +14570,7 @@ export const NumberFiveIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumberFourIcon: Component<SpriteProps> = (props) => {
+export const NumberFourIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14592,7 +14585,7 @@ export const NumberFourIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumberNineIcon: Component<SpriteProps> = (props) => {
+export const NumberNineIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14607,7 +14600,7 @@ export const NumberNineIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumberOneIcon: Component<SpriteProps> = (props) => {
+export const NumberOneIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14622,7 +14615,7 @@ export const NumberOneIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumberSevenIcon: Component<SpriteProps> = (props) => {
+export const NumberSevenIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14637,7 +14630,7 @@ export const NumberSevenIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumberSixIcon: Component<SpriteProps> = (props) => {
+export const NumberSixIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14652,7 +14645,7 @@ export const NumberSixIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumberSquareEightIcon: Component<SpriteProps> = (props) => {
+export const NumberSquareEightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14667,7 +14660,7 @@ export const NumberSquareEightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumberSquareFiveIcon: Component<SpriteProps> = (props) => {
+export const NumberSquareFiveIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14682,7 +14675,7 @@ export const NumberSquareFiveIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumberSquareFourIcon: Component<SpriteProps> = (props) => {
+export const NumberSquareFourIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14697,7 +14690,7 @@ export const NumberSquareFourIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumberSquareNineIcon: Component<SpriteProps> = (props) => {
+export const NumberSquareNineIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14712,7 +14705,7 @@ export const NumberSquareNineIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumberSquareOneIcon: Component<SpriteProps> = (props) => {
+export const NumberSquareOneIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14727,7 +14720,7 @@ export const NumberSquareOneIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumberSquareSevenIcon: Component<SpriteProps> = (props) => {
+export const NumberSquareSevenIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14742,7 +14735,7 @@ export const NumberSquareSevenIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumberSquareSixIcon: Component<SpriteProps> = (props) => {
+export const NumberSquareSixIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14757,7 +14750,7 @@ export const NumberSquareSixIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumberSquareThreeIcon: Component<SpriteProps> = (props) => {
+export const NumberSquareThreeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14772,7 +14765,7 @@ export const NumberSquareThreeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumberSquareTwoIcon: Component<SpriteProps> = (props) => {
+export const NumberSquareTwoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14787,7 +14780,7 @@ export const NumberSquareTwoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumberSquareZeroIcon: Component<SpriteProps> = (props) => {
+export const NumberSquareZeroIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14802,7 +14795,7 @@ export const NumberSquareZeroIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumberThreeIcon: Component<SpriteProps> = (props) => {
+export const NumberThreeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14817,7 +14810,7 @@ export const NumberThreeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumberTwoIcon: Component<SpriteProps> = (props) => {
+export const NumberTwoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14832,7 +14825,7 @@ export const NumberTwoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumberZeroIcon: Component<SpriteProps> = (props) => {
+export const NumberZeroIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14847,7 +14840,7 @@ export const NumberZeroIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NumpadIcon: Component<SpriteProps> = (props) => {
+export const NumpadIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14862,7 +14855,7 @@ export const NumpadIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NutIcon: Component<SpriteProps> = (props) => {
+export const NutIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14877,7 +14870,7 @@ export const NutIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const NyTimesLogoIcon: Component<SpriteProps> = (props) => {
+export const NyTimesLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14892,7 +14885,7 @@ export const NyTimesLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const OctagonIcon: Component<SpriteProps> = (props) => {
+export const OctagonIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14907,7 +14900,7 @@ export const OctagonIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const OfficeChairIcon: Component<SpriteProps> = (props) => {
+export const OfficeChairIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14922,7 +14915,7 @@ export const OfficeChairIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const OnigiriIcon: Component<SpriteProps> = (props) => {
+export const OnigiriIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14937,7 +14930,7 @@ export const OnigiriIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const OpenAiLogoIcon: Component<SpriteProps> = (props) => {
+export const OpenAiLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14952,7 +14945,7 @@ export const OpenAiLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const OptionIcon: Component<SpriteProps> = (props) => {
+export const OptionIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14967,7 +14960,7 @@ export const OptionIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const OrangeSliceIcon: Component<SpriteProps> = (props) => {
+export const OrangeSliceIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14982,7 +14975,7 @@ export const OrangeSliceIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const OrangeIcon: Component<SpriteProps> = (props) => {
+export const OrangeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14997,7 +14990,7 @@ export const OrangeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const OvenIcon: Component<SpriteProps> = (props) => {
+export const OvenIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15012,7 +15005,7 @@ export const OvenIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PackageIcon: Component<SpriteProps> = (props) => {
+export const PackageIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15027,7 +15020,7 @@ export const PackageIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PaintBrushBroadIcon: Component<SpriteProps> = (props) => {
+export const PaintBrushBroadIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15042,7 +15035,7 @@ export const PaintBrushBroadIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PaintBrushHouseholdIcon: Component<SpriteProps> = (props) => {
+export const PaintBrushHouseholdIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15057,7 +15050,7 @@ export const PaintBrushHouseholdIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PaintBrushIcon: Component<SpriteProps> = (props) => {
+export const PaintBrushIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15072,7 +15065,7 @@ export const PaintBrushIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PaintBucketIcon: Component<SpriteProps> = (props) => {
+export const PaintBucketIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15087,7 +15080,7 @@ export const PaintBucketIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PaintRollerIcon: Component<SpriteProps> = (props) => {
+export const PaintRollerIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15102,7 +15095,7 @@ export const PaintRollerIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PaletteIcon: Component<SpriteProps> = (props) => {
+export const PaletteIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15117,7 +15110,7 @@ export const PaletteIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PanoramaIcon: Component<SpriteProps> = (props) => {
+export const PanoramaIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15132,7 +15125,7 @@ export const PanoramaIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PantsIcon: Component<SpriteProps> = (props) => {
+export const PantsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15147,7 +15140,7 @@ export const PantsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PaperPlaneRightIcon: Component<SpriteProps> = (props) => {
+export const PaperPlaneRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15162,7 +15155,7 @@ export const PaperPlaneRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PaperPlaneTiltIcon: Component<SpriteProps> = (props) => {
+export const PaperPlaneTiltIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15177,7 +15170,7 @@ export const PaperPlaneTiltIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PaperPlaneIcon: Component<SpriteProps> = (props) => {
+export const PaperPlaneIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15192,7 +15185,7 @@ export const PaperPlaneIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PaperclipHorizontalIcon: Component<SpriteProps> = (props) => {
+export const PaperclipHorizontalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15207,7 +15200,7 @@ export const PaperclipHorizontalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PaperclipIcon: Component<SpriteProps> = (props) => {
+export const PaperclipIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15222,7 +15215,7 @@ export const PaperclipIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ParachuteIcon: Component<SpriteProps> = (props) => {
+export const ParachuteIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15237,7 +15230,7 @@ export const ParachuteIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ParagraphIcon: Component<SpriteProps> = (props) => {
+export const ParagraphIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15252,7 +15245,7 @@ export const ParagraphIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ParallelogramIcon: Component<SpriteProps> = (props) => {
+export const ParallelogramIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15267,7 +15260,7 @@ export const ParallelogramIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ParkIcon: Component<SpriteProps> = (props) => {
+export const ParkIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15282,7 +15275,7 @@ export const ParkIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PasswordIcon: Component<SpriteProps> = (props) => {
+export const PasswordIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15297,7 +15290,7 @@ export const PasswordIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PathIcon: Component<SpriteProps> = (props) => {
+export const PathIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15312,7 +15305,7 @@ export const PathIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PatreonLogoIcon: Component<SpriteProps> = (props) => {
+export const PatreonLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15327,7 +15320,7 @@ export const PatreonLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PauseCircleIcon: Component<SpriteProps> = (props) => {
+export const PauseCircleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15342,7 +15335,7 @@ export const PauseCircleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PauseIcon: Component<SpriteProps> = (props) => {
+export const PauseIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15357,7 +15350,7 @@ export const PauseIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PawPrintIcon: Component<SpriteProps> = (props) => {
+export const PawPrintIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15372,7 +15365,7 @@ export const PawPrintIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PaypalLogoIcon: Component<SpriteProps> = (props) => {
+export const PaypalLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15387,7 +15380,7 @@ export const PaypalLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PeaceIcon: Component<SpriteProps> = (props) => {
+export const PeaceIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15402,7 +15395,7 @@ export const PeaceIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PenNibStraightIcon: Component<SpriteProps> = (props) => {
+export const PenNibStraightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15417,7 +15410,7 @@ export const PenNibStraightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PenNibIcon: Component<SpriteProps> = (props) => {
+export const PenNibIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15432,7 +15425,7 @@ export const PenNibIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PenIcon: Component<SpriteProps> = (props) => {
+export const PenIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15447,7 +15440,7 @@ export const PenIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PencilCircleIcon: Component<SpriteProps> = (props) => {
+export const PencilCircleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15462,7 +15455,7 @@ export const PencilCircleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PencilLineIcon: Component<SpriteProps> = (props) => {
+export const PencilLineIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15477,7 +15470,7 @@ export const PencilLineIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PencilRulerIcon: Component<SpriteProps> = (props) => {
+export const PencilRulerIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15492,7 +15485,7 @@ export const PencilRulerIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PencilSimpleLineIcon: Component<SpriteProps> = (props) => {
+export const PencilSimpleLineIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15507,7 +15500,7 @@ export const PencilSimpleLineIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PencilSimpleSlashIcon: Component<SpriteProps> = (props) => {
+export const PencilSimpleSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15522,7 +15515,7 @@ export const PencilSimpleSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PencilSimpleIcon: Component<SpriteProps> = (props) => {
+export const PencilSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15537,7 +15530,7 @@ export const PencilSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PencilSlashIcon: Component<SpriteProps> = (props) => {
+export const PencilSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15552,7 +15545,7 @@ export const PencilSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PencilIcon: Component<SpriteProps> = (props) => {
+export const PencilIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15567,7 +15560,7 @@ export const PencilIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PentagonIcon: Component<SpriteProps> = (props) => {
+export const PentagonIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15582,7 +15575,7 @@ export const PentagonIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PentagramIcon: Component<SpriteProps> = (props) => {
+export const PentagramIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15597,7 +15590,7 @@ export const PentagramIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PepperIcon: Component<SpriteProps> = (props) => {
+export const PepperIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15612,7 +15605,7 @@ export const PepperIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PercentIcon: Component<SpriteProps> = (props) => {
+export const PercentIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15627,7 +15620,7 @@ export const PercentIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PersonArmsSpreadIcon: Component<SpriteProps> = (props) => {
+export const PersonArmsSpreadIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15642,7 +15635,7 @@ export const PersonArmsSpreadIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PersonSimpleBikeIcon: Component<SpriteProps> = (props) => {
+export const PersonSimpleBikeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15657,7 +15650,7 @@ export const PersonSimpleBikeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PersonSimpleCircleIcon: Component<SpriteProps> = (props) => {
+export const PersonSimpleCircleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15672,7 +15665,7 @@ export const PersonSimpleCircleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PersonSimpleHikeIcon: Component<SpriteProps> = (props) => {
+export const PersonSimpleHikeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15687,7 +15680,7 @@ export const PersonSimpleHikeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PersonSimpleRunIcon: Component<SpriteProps> = (props) => {
+export const PersonSimpleRunIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15702,7 +15695,7 @@ export const PersonSimpleRunIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PersonSimpleSkiIcon: Component<SpriteProps> = (props) => {
+export const PersonSimpleSkiIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15717,7 +15710,7 @@ export const PersonSimpleSkiIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PersonSimpleSnowboardIcon: Component<SpriteProps> = (props) => {
+export const PersonSimpleSnowboardIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15732,7 +15725,7 @@ export const PersonSimpleSnowboardIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PersonSimpleSwimIcon: Component<SpriteProps> = (props) => {
+export const PersonSimpleSwimIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15747,7 +15740,7 @@ export const PersonSimpleSwimIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PersonSimpleTaiChiIcon: Component<SpriteProps> = (props) => {
+export const PersonSimpleTaiChiIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15762,7 +15755,7 @@ export const PersonSimpleTaiChiIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PersonSimpleThrowIcon: Component<SpriteProps> = (props) => {
+export const PersonSimpleThrowIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15777,7 +15770,7 @@ export const PersonSimpleThrowIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PersonSimpleWalkIcon: Component<SpriteProps> = (props) => {
+export const PersonSimpleWalkIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15792,7 +15785,7 @@ export const PersonSimpleWalkIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PersonSimpleIcon: Component<SpriteProps> = (props) => {
+export const PersonSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15807,7 +15800,7 @@ export const PersonSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PersonIcon: Component<SpriteProps> = (props) => {
+export const PersonIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15822,7 +15815,7 @@ export const PersonIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PerspectiveIcon: Component<SpriteProps> = (props) => {
+export const PerspectiveIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15837,7 +15830,7 @@ export const PerspectiveIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PhoneCallIcon: Component<SpriteProps> = (props) => {
+export const PhoneCallIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15852,7 +15845,7 @@ export const PhoneCallIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PhoneDisconnectIcon: Component<SpriteProps> = (props) => {
+export const PhoneDisconnectIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15867,7 +15860,7 @@ export const PhoneDisconnectIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PhoneIncomingIcon: Component<SpriteProps> = (props) => {
+export const PhoneIncomingIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15882,7 +15875,7 @@ export const PhoneIncomingIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PhoneListIcon: Component<SpriteProps> = (props) => {
+export const PhoneListIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15897,7 +15890,7 @@ export const PhoneListIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PhoneOutgoingIcon: Component<SpriteProps> = (props) => {
+export const PhoneOutgoingIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15912,7 +15905,7 @@ export const PhoneOutgoingIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PhonePauseIcon: Component<SpriteProps> = (props) => {
+export const PhonePauseIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15927,7 +15920,7 @@ export const PhonePauseIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PhonePlusIcon: Component<SpriteProps> = (props) => {
+export const PhonePlusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15942,7 +15935,7 @@ export const PhonePlusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PhoneSlashIcon: Component<SpriteProps> = (props) => {
+export const PhoneSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15957,7 +15950,7 @@ export const PhoneSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PhoneTransferIcon: Component<SpriteProps> = (props) => {
+export const PhoneTransferIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15972,7 +15965,7 @@ export const PhoneTransferIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PhoneXIcon: Component<SpriteProps> = (props) => {
+export const PhoneXIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15987,7 +15980,7 @@ export const PhoneXIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PhoneIcon: Component<SpriteProps> = (props) => {
+export const PhoneIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16002,7 +15995,7 @@ export const PhoneIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PhosphorLogoIcon: Component<SpriteProps> = (props) => {
+export const PhosphorLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16017,7 +16010,7 @@ export const PhosphorLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PiIcon: Component<SpriteProps> = (props) => {
+export const PiIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16032,7 +16025,7 @@ export const PiIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PianoKeysIcon: Component<SpriteProps> = (props) => {
+export const PianoKeysIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16047,7 +16040,7 @@ export const PianoKeysIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PicnicTableIcon: Component<SpriteProps> = (props) => {
+export const PicnicTableIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16062,7 +16055,7 @@ export const PicnicTableIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PictureInPictureIcon: Component<SpriteProps> = (props) => {
+export const PictureInPictureIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16077,7 +16070,7 @@ export const PictureInPictureIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PiggyBankIcon: Component<SpriteProps> = (props) => {
+export const PiggyBankIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16092,7 +16085,7 @@ export const PiggyBankIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PillIcon: Component<SpriteProps> = (props) => {
+export const PillIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16107,7 +16100,7 @@ export const PillIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PingPongIcon: Component<SpriteProps> = (props) => {
+export const PingPongIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16122,7 +16115,7 @@ export const PingPongIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PintGlassIcon: Component<SpriteProps> = (props) => {
+export const PintGlassIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16137,7 +16130,7 @@ export const PintGlassIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PinterestLogoIcon: Component<SpriteProps> = (props) => {
+export const PinterestLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16152,7 +16145,7 @@ export const PinterestLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PinwheelIcon: Component<SpriteProps> = (props) => {
+export const PinwheelIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16167,7 +16160,7 @@ export const PinwheelIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PipeWrenchIcon: Component<SpriteProps> = (props) => {
+export const PipeWrenchIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16182,7 +16175,7 @@ export const PipeWrenchIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PipeIcon: Component<SpriteProps> = (props) => {
+export const PipeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16197,7 +16190,7 @@ export const PipeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PixLogoIcon: Component<SpriteProps> = (props) => {
+export const PixLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16212,7 +16205,7 @@ export const PixLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PizzaIcon: Component<SpriteProps> = (props) => {
+export const PizzaIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16227,7 +16220,7 @@ export const PizzaIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PlaceholderIcon: Component<SpriteProps> = (props) => {
+export const PlaceholderIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16242,7 +16235,7 @@ export const PlaceholderIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PlanetIcon: Component<SpriteProps> = (props) => {
+export const PlanetIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16257,7 +16250,7 @@ export const PlanetIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PlantIcon: Component<SpriteProps> = (props) => {
+export const PlantIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16272,7 +16265,7 @@ export const PlantIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PlayCircleIcon: Component<SpriteProps> = (props) => {
+export const PlayCircleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16287,7 +16280,7 @@ export const PlayCircleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PlayPauseIcon: Component<SpriteProps> = (props) => {
+export const PlayPauseIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16302,7 +16295,7 @@ export const PlayPauseIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PlayIcon: Component<SpriteProps> = (props) => {
+export const PlayIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16317,7 +16310,7 @@ export const PlayIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PlaylistIcon: Component<SpriteProps> = (props) => {
+export const PlaylistIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16332,7 +16325,7 @@ export const PlaylistIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PlugChargingIcon: Component<SpriteProps> = (props) => {
+export const PlugChargingIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16347,7 +16340,7 @@ export const PlugChargingIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PlugIcon: Component<SpriteProps> = (props) => {
+export const PlugIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16362,7 +16355,7 @@ export const PlugIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PlugsConnectedIcon: Component<SpriteProps> = (props) => {
+export const PlugsConnectedIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16377,7 +16370,7 @@ export const PlugsConnectedIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PlugsIcon: Component<SpriteProps> = (props) => {
+export const PlugsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16392,7 +16385,7 @@ export const PlugsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PlusCircleIcon: Component<SpriteProps> = (props) => {
+export const PlusCircleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16407,7 +16400,7 @@ export const PlusCircleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PlusMinusIcon: Component<SpriteProps> = (props) => {
+export const PlusMinusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16422,7 +16415,7 @@ export const PlusMinusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PlusSquareIcon: Component<SpriteProps> = (props) => {
+export const PlusSquareIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16437,7 +16430,7 @@ export const PlusSquareIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PlusIcon: Component<SpriteProps> = (props) => {
+export const PlusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16452,7 +16445,7 @@ export const PlusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PokerChipIcon: Component<SpriteProps> = (props) => {
+export const PokerChipIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16467,7 +16460,7 @@ export const PokerChipIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PoliceCarIcon: Component<SpriteProps> = (props) => {
+export const PoliceCarIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16482,7 +16475,7 @@ export const PoliceCarIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PolygonIcon: Component<SpriteProps> = (props) => {
+export const PolygonIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16497,7 +16490,7 @@ export const PolygonIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PopcornIcon: Component<SpriteProps> = (props) => {
+export const PopcornIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16512,7 +16505,7 @@ export const PopcornIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PopsicleIcon: Component<SpriteProps> = (props) => {
+export const PopsicleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16527,7 +16520,7 @@ export const PopsicleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PottedPlantIcon: Component<SpriteProps> = (props) => {
+export const PottedPlantIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16542,7 +16535,7 @@ export const PottedPlantIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PowerIcon: Component<SpriteProps> = (props) => {
+export const PowerIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16557,7 +16550,7 @@ export const PowerIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PrescriptionIcon: Component<SpriteProps> = (props) => {
+export const PrescriptionIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16572,7 +16565,7 @@ export const PrescriptionIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PresentationChartIcon: Component<SpriteProps> = (props) => {
+export const PresentationChartIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16587,7 +16580,7 @@ export const PresentationChartIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PresentationIcon: Component<SpriteProps> = (props) => {
+export const PresentationIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16602,7 +16595,7 @@ export const PresentationIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PrinterIcon: Component<SpriteProps> = (props) => {
+export const PrinterIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16617,7 +16610,7 @@ export const PrinterIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ProhibitInsetIcon: Component<SpriteProps> = (props) => {
+export const ProhibitInsetIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16632,7 +16625,7 @@ export const ProhibitInsetIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ProhibitIcon: Component<SpriteProps> = (props) => {
+export const ProhibitIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16647,7 +16640,7 @@ export const ProhibitIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ProjectorScreenChartIcon: Component<SpriteProps> = (props) => {
+export const ProjectorScreenChartIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16662,7 +16655,7 @@ export const ProjectorScreenChartIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ProjectorScreenIcon: Component<SpriteProps> = (props) => {
+export const ProjectorScreenIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16677,7 +16670,7 @@ export const ProjectorScreenIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PulseIcon: Component<SpriteProps> = (props) => {
+export const PulseIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16692,7 +16685,7 @@ export const PulseIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PushPinSimpleSlashIcon: Component<SpriteProps> = (props) => {
+export const PushPinSimpleSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16707,7 +16700,7 @@ export const PushPinSimpleSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PushPinSimpleIcon: Component<SpriteProps> = (props) => {
+export const PushPinSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16722,7 +16715,7 @@ export const PushPinSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PushPinSlashIcon: Component<SpriteProps> = (props) => {
+export const PushPinSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16737,7 +16730,7 @@ export const PushPinSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PushPinIcon: Component<SpriteProps> = (props) => {
+export const PushPinIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16752,7 +16745,7 @@ export const PushPinIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const PuzzlePieceIcon: Component<SpriteProps> = (props) => {
+export const PuzzlePieceIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16767,7 +16760,7 @@ export const PuzzlePieceIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const QrCodeIcon: Component<SpriteProps> = (props) => {
+export const QrCodeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16782,7 +16775,7 @@ export const QrCodeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const QuestionMarkIcon: Component<SpriteProps> = (props) => {
+export const QuestionMarkIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16797,7 +16790,7 @@ export const QuestionMarkIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const QuestionIcon: Component<SpriteProps> = (props) => {
+export const QuestionIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16812,7 +16805,7 @@ export const QuestionIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const QueueIcon: Component<SpriteProps> = (props) => {
+export const QueueIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16827,7 +16820,7 @@ export const QueueIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const QuotesIcon: Component<SpriteProps> = (props) => {
+export const QuotesIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16842,7 +16835,7 @@ export const QuotesIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const RabbitIcon: Component<SpriteProps> = (props) => {
+export const RabbitIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16857,7 +16850,7 @@ export const RabbitIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const RacquetIcon: Component<SpriteProps> = (props) => {
+export const RacquetIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16872,7 +16865,7 @@ export const RacquetIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const RadicalIcon: Component<SpriteProps> = (props) => {
+export const RadicalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16887,7 +16880,7 @@ export const RadicalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const RadioButtonIcon: Component<SpriteProps> = (props) => {
+export const RadioButtonIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16902,7 +16895,7 @@ export const RadioButtonIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const RadioIcon: Component<SpriteProps> = (props) => {
+export const RadioIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16917,7 +16910,7 @@ export const RadioIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const RadioactiveIcon: Component<SpriteProps> = (props) => {
+export const RadioactiveIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16932,7 +16925,7 @@ export const RadioactiveIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const RainbowCloudIcon: Component<SpriteProps> = (props) => {
+export const RainbowCloudIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16947,7 +16940,7 @@ export const RainbowCloudIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const RainbowIcon: Component<SpriteProps> = (props) => {
+export const RainbowIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16962,7 +16955,7 @@ export const RainbowIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const RankingIcon: Component<SpriteProps> = (props) => {
+export const RankingIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16977,7 +16970,7 @@ export const RankingIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ReadCvLogoIcon: Component<SpriteProps> = (props) => {
+export const ReadCvLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16992,7 +16985,7 @@ export const ReadCvLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ReceiptXIcon: Component<SpriteProps> = (props) => {
+export const ReceiptXIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17007,7 +17000,7 @@ export const ReceiptXIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ReceiptIcon: Component<SpriteProps> = (props) => {
+export const ReceiptIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17022,7 +17015,7 @@ export const ReceiptIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const RecordIcon: Component<SpriteProps> = (props) => {
+export const RecordIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17037,7 +17030,7 @@ export const RecordIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const RectangleDashedIcon: Component<SpriteProps> = (props) => {
+export const RectangleDashedIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17052,7 +17045,7 @@ export const RectangleDashedIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const RectangleIcon: Component<SpriteProps> = (props) => {
+export const RectangleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17067,7 +17060,7 @@ export const RectangleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const RecycleIcon: Component<SpriteProps> = (props) => {
+export const RecycleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17082,7 +17075,7 @@ export const RecycleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const RedditLogoIcon: Component<SpriteProps> = (props) => {
+export const RedditLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17097,7 +17090,7 @@ export const RedditLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const RepeatOnceIcon: Component<SpriteProps> = (props) => {
+export const RepeatOnceIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17112,7 +17105,7 @@ export const RepeatOnceIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const RepeatIcon: Component<SpriteProps> = (props) => {
+export const RepeatIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17127,7 +17120,7 @@ export const RepeatIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ReplitLogoIcon: Component<SpriteProps> = (props) => {
+export const ReplitLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17142,7 +17135,7 @@ export const ReplitLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ResizeIcon: Component<SpriteProps> = (props) => {
+export const ResizeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17157,7 +17150,7 @@ export const ResizeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const RewindCircleIcon: Component<SpriteProps> = (props) => {
+export const RewindCircleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17172,7 +17165,7 @@ export const RewindCircleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const RewindIcon: Component<SpriteProps> = (props) => {
+export const RewindIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17187,7 +17180,7 @@ export const RewindIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const RoadHorizonIcon: Component<SpriteProps> = (props) => {
+export const RoadHorizonIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17202,7 +17195,7 @@ export const RoadHorizonIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const RobotIcon: Component<SpriteProps> = (props) => {
+export const RobotIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17217,7 +17210,7 @@ export const RobotIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const RocketLaunchIcon: Component<SpriteProps> = (props) => {
+export const RocketLaunchIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17232,7 +17225,7 @@ export const RocketLaunchIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const RocketIcon: Component<SpriteProps> = (props) => {
+export const RocketIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17247,7 +17240,7 @@ export const RocketIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const RowsPlusBottomIcon: Component<SpriteProps> = (props) => {
+export const RowsPlusBottomIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17262,7 +17255,7 @@ export const RowsPlusBottomIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const RowsPlusTopIcon: Component<SpriteProps> = (props) => {
+export const RowsPlusTopIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17277,7 +17270,7 @@ export const RowsPlusTopIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const RowsIcon: Component<SpriteProps> = (props) => {
+export const RowsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17292,7 +17285,7 @@ export const RowsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const RssSimpleIcon: Component<SpriteProps> = (props) => {
+export const RssSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17307,7 +17300,7 @@ export const RssSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const RssIcon: Component<SpriteProps> = (props) => {
+export const RssIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17322,7 +17315,7 @@ export const RssIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const RugIcon: Component<SpriteProps> = (props) => {
+export const RugIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17337,7 +17330,7 @@ export const RugIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const RulerIcon: Component<SpriteProps> = (props) => {
+export const RulerIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17352,7 +17345,7 @@ export const RulerIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SailboatIcon: Component<SpriteProps> = (props) => {
+export const SailboatIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17367,7 +17360,7 @@ export const SailboatIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ScalesIcon: Component<SpriteProps> = (props) => {
+export const ScalesIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17382,7 +17375,7 @@ export const ScalesIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ScanSmileyIcon: Component<SpriteProps> = (props) => {
+export const ScanSmileyIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17397,7 +17390,7 @@ export const ScanSmileyIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ScanIcon: Component<SpriteProps> = (props) => {
+export const ScanIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17412,7 +17405,7 @@ export const ScanIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ScissorsIcon: Component<SpriteProps> = (props) => {
+export const ScissorsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17427,7 +17420,7 @@ export const ScissorsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ScooterIcon: Component<SpriteProps> = (props) => {
+export const ScooterIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17442,7 +17435,7 @@ export const ScooterIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ScreencastIcon: Component<SpriteProps> = (props) => {
+export const ScreencastIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17457,7 +17450,7 @@ export const ScreencastIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ScrewdriverIcon: Component<SpriteProps> = (props) => {
+export const ScrewdriverIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17472,7 +17465,7 @@ export const ScrewdriverIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ScribbleLoopIcon: Component<SpriteProps> = (props) => {
+export const ScribbleLoopIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17487,7 +17480,7 @@ export const ScribbleLoopIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ScribbleIcon: Component<SpriteProps> = (props) => {
+export const ScribbleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17502,7 +17495,7 @@ export const ScribbleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ScrollIcon: Component<SpriteProps> = (props) => {
+export const ScrollIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17517,7 +17510,7 @@ export const ScrollIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SealCheckIcon: Component<SpriteProps> = (props) => {
+export const SealCheckIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17532,7 +17525,7 @@ export const SealCheckIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SealPercentIcon: Component<SpriteProps> = (props) => {
+export const SealPercentIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17547,7 +17540,7 @@ export const SealPercentIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SealQuestionIcon: Component<SpriteProps> = (props) => {
+export const SealQuestionIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17562,7 +17555,7 @@ export const SealQuestionIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SealWarningIcon: Component<SpriteProps> = (props) => {
+export const SealWarningIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17577,7 +17570,7 @@ export const SealWarningIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SealIcon: Component<SpriteProps> = (props) => {
+export const SealIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17592,7 +17585,7 @@ export const SealIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SeatIcon: Component<SpriteProps> = (props) => {
+export const SeatIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17607,7 +17600,7 @@ export const SeatIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SeatbeltIcon: Component<SpriteProps> = (props) => {
+export const SeatbeltIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17622,7 +17615,7 @@ export const SeatbeltIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SecurityCameraIcon: Component<SpriteProps> = (props) => {
+export const SecurityCameraIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17637,7 +17630,7 @@ export const SecurityCameraIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SelectionAllIcon: Component<SpriteProps> = (props) => {
+export const SelectionAllIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17652,7 +17645,7 @@ export const SelectionAllIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SelectionBackgroundIcon: Component<SpriteProps> = (props) => {
+export const SelectionBackgroundIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17667,7 +17660,7 @@ export const SelectionBackgroundIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SelectionForegroundIcon: Component<SpriteProps> = (props) => {
+export const SelectionForegroundIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17682,7 +17675,7 @@ export const SelectionForegroundIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SelectionInverseIcon: Component<SpriteProps> = (props) => {
+export const SelectionInverseIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17697,7 +17690,7 @@ export const SelectionInverseIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SelectionPlusIcon: Component<SpriteProps> = (props) => {
+export const SelectionPlusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17712,7 +17705,7 @@ export const SelectionPlusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SelectionSlashIcon: Component<SpriteProps> = (props) => {
+export const SelectionSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17727,7 +17720,7 @@ export const SelectionSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SelectionIcon: Component<SpriteProps> = (props) => {
+export const SelectionIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17742,7 +17735,7 @@ export const SelectionIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ShapesIcon: Component<SpriteProps> = (props) => {
+export const ShapesIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17757,7 +17750,7 @@ export const ShapesIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ShareFatIcon: Component<SpriteProps> = (props) => {
+export const ShareFatIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17772,7 +17765,7 @@ export const ShareFatIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ShareNetworkIcon: Component<SpriteProps> = (props) => {
+export const ShareNetworkIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17787,7 +17780,7 @@ export const ShareNetworkIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ShareIcon: Component<SpriteProps> = (props) => {
+export const ShareIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17802,7 +17795,7 @@ export const ShareIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ShieldCheckIcon: Component<SpriteProps> = (props) => {
+export const ShieldCheckIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17817,7 +17810,7 @@ export const ShieldCheckIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ShieldCheckeredIcon: Component<SpriteProps> = (props) => {
+export const ShieldCheckeredIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17832,7 +17825,7 @@ export const ShieldCheckeredIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ShieldChevronIcon: Component<SpriteProps> = (props) => {
+export const ShieldChevronIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17847,7 +17840,7 @@ export const ShieldChevronIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ShieldPlusIcon: Component<SpriteProps> = (props) => {
+export const ShieldPlusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17862,7 +17855,7 @@ export const ShieldPlusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ShieldSlashIcon: Component<SpriteProps> = (props) => {
+export const ShieldSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17877,7 +17870,7 @@ export const ShieldSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ShieldStarIcon: Component<SpriteProps> = (props) => {
+export const ShieldStarIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17892,7 +17885,7 @@ export const ShieldStarIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ShieldWarningIcon: Component<SpriteProps> = (props) => {
+export const ShieldWarningIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17907,7 +17900,7 @@ export const ShieldWarningIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ShieldIcon: Component<SpriteProps> = (props) => {
+export const ShieldIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17922,7 +17915,7 @@ export const ShieldIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ShippingContainerIcon: Component<SpriteProps> = (props) => {
+export const ShippingContainerIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17937,7 +17930,7 @@ export const ShippingContainerIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ShirtFoldedIcon: Component<SpriteProps> = (props) => {
+export const ShirtFoldedIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17952,7 +17945,7 @@ export const ShirtFoldedIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ShootingStarIcon: Component<SpriteProps> = (props) => {
+export const ShootingStarIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17967,7 +17960,7 @@ export const ShootingStarIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ShoppingBagOpenIcon: Component<SpriteProps> = (props) => {
+export const ShoppingBagOpenIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17982,7 +17975,7 @@ export const ShoppingBagOpenIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ShoppingBagIcon: Component<SpriteProps> = (props) => {
+export const ShoppingBagIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17997,7 +17990,7 @@ export const ShoppingBagIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ShoppingCartSimpleIcon: Component<SpriteProps> = (props) => {
+export const ShoppingCartSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18012,7 +18005,7 @@ export const ShoppingCartSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ShoppingCartIcon: Component<SpriteProps> = (props) => {
+export const ShoppingCartIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18027,7 +18020,7 @@ export const ShoppingCartIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ShovelIcon: Component<SpriteProps> = (props) => {
+export const ShovelIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18042,7 +18035,7 @@ export const ShovelIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ShowerIcon: Component<SpriteProps> = (props) => {
+export const ShowerIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18057,7 +18050,7 @@ export const ShowerIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ShrimpIcon: Component<SpriteProps> = (props) => {
+export const ShrimpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18072,7 +18065,7 @@ export const ShrimpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ShuffleAngularIcon: Component<SpriteProps> = (props) => {
+export const ShuffleAngularIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18087,7 +18080,7 @@ export const ShuffleAngularIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ShuffleSimpleIcon: Component<SpriteProps> = (props) => {
+export const ShuffleSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18102,7 +18095,7 @@ export const ShuffleSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ShuffleIcon: Component<SpriteProps> = (props) => {
+export const ShuffleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18117,7 +18110,7 @@ export const ShuffleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SidebarSimpleIcon: Component<SpriteProps> = (props) => {
+export const SidebarSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18132,7 +18125,7 @@ export const SidebarSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SidebarIcon: Component<SpriteProps> = (props) => {
+export const SidebarIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18147,7 +18140,7 @@ export const SidebarIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SigmaIcon: Component<SpriteProps> = (props) => {
+export const SigmaIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18162,7 +18155,7 @@ export const SigmaIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SignInIcon: Component<SpriteProps> = (props) => {
+export const SignInIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18177,7 +18170,7 @@ export const SignInIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SignOutIcon: Component<SpriteProps> = (props) => {
+export const SignOutIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18192,7 +18185,7 @@ export const SignOutIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SignatureIcon: Component<SpriteProps> = (props) => {
+export const SignatureIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18207,7 +18200,7 @@ export const SignatureIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SignpostIcon: Component<SpriteProps> = (props) => {
+export const SignpostIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18222,7 +18215,7 @@ export const SignpostIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SimCardIcon: Component<SpriteProps> = (props) => {
+export const SimCardIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18237,7 +18230,7 @@ export const SimCardIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SirenIcon: Component<SpriteProps> = (props) => {
+export const SirenIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18252,7 +18245,7 @@ export const SirenIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SketchLogoIcon: Component<SpriteProps> = (props) => {
+export const SketchLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18267,7 +18260,7 @@ export const SketchLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SkipBackCircleIcon: Component<SpriteProps> = (props) => {
+export const SkipBackCircleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18282,7 +18275,7 @@ export const SkipBackCircleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SkipBackIcon: Component<SpriteProps> = (props) => {
+export const SkipBackIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18297,7 +18290,7 @@ export const SkipBackIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SkipForwardCircleIcon: Component<SpriteProps> = (props) => {
+export const SkipForwardCircleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18312,7 +18305,7 @@ export const SkipForwardCircleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SkipForwardIcon: Component<SpriteProps> = (props) => {
+export const SkipForwardIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18327,7 +18320,7 @@ export const SkipForwardIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SkullIcon: Component<SpriteProps> = (props) => {
+export const SkullIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18342,7 +18335,7 @@ export const SkullIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SkypeLogoIcon: Component<SpriteProps> = (props) => {
+export const SkypeLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18357,7 +18350,7 @@ export const SkypeLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SlackLogoIcon: Component<SpriteProps> = (props) => {
+export const SlackLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18372,7 +18365,7 @@ export const SlackLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SlidersHorizontalIcon: Component<SpriteProps> = (props) => {
+export const SlidersHorizontalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18387,7 +18380,7 @@ export const SlidersHorizontalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SlidersIcon: Component<SpriteProps> = (props) => {
+export const SlidersIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18402,7 +18395,7 @@ export const SlidersIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SlideshowIcon: Component<SpriteProps> = (props) => {
+export const SlideshowIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18417,7 +18410,7 @@ export const SlideshowIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SmileyAngryIcon: Component<SpriteProps> = (props) => {
+export const SmileyAngryIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18432,7 +18425,7 @@ export const SmileyAngryIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SmileyBlankIcon: Component<SpriteProps> = (props) => {
+export const SmileyBlankIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18447,7 +18440,7 @@ export const SmileyBlankIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SmileyMehIcon: Component<SpriteProps> = (props) => {
+export const SmileyMehIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18462,7 +18455,7 @@ export const SmileyMehIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SmileyMeltingIcon: Component<SpriteProps> = (props) => {
+export const SmileyMeltingIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18477,7 +18470,7 @@ export const SmileyMeltingIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SmileyNervousIcon: Component<SpriteProps> = (props) => {
+export const SmileyNervousIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18492,7 +18485,7 @@ export const SmileyNervousIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SmileySadIcon: Component<SpriteProps> = (props) => {
+export const SmileySadIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18507,7 +18500,7 @@ export const SmileySadIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SmileyStickerIcon: Component<SpriteProps> = (props) => {
+export const SmileyStickerIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18522,7 +18515,7 @@ export const SmileyStickerIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SmileyWinkIcon: Component<SpriteProps> = (props) => {
+export const SmileyWinkIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18537,7 +18530,7 @@ export const SmileyWinkIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SmileyXEyesIcon: Component<SpriteProps> = (props) => {
+export const SmileyXEyesIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18552,7 +18545,7 @@ export const SmileyXEyesIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SmileyIcon: Component<SpriteProps> = (props) => {
+export const SmileyIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18567,7 +18560,7 @@ export const SmileyIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SnapchatLogoIcon: Component<SpriteProps> = (props) => {
+export const SnapchatLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18582,7 +18575,7 @@ export const SnapchatLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SneakerMoveIcon: Component<SpriteProps> = (props) => {
+export const SneakerMoveIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18597,7 +18590,7 @@ export const SneakerMoveIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SneakerIcon: Component<SpriteProps> = (props) => {
+export const SneakerIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18612,7 +18605,7 @@ export const SneakerIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SnowflakeIcon: Component<SpriteProps> = (props) => {
+export const SnowflakeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18627,7 +18620,7 @@ export const SnowflakeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SoccerBallIcon: Component<SpriteProps> = (props) => {
+export const SoccerBallIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18642,7 +18635,7 @@ export const SoccerBallIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SockIcon: Component<SpriteProps> = (props) => {
+export const SockIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18657,7 +18650,7 @@ export const SockIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SolarPanelIcon: Component<SpriteProps> = (props) => {
+export const SolarPanelIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18672,7 +18665,7 @@ export const SolarPanelIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SolarRoofIcon: Component<SpriteProps> = (props) => {
+export const SolarRoofIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18687,7 +18680,7 @@ export const SolarRoofIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SortAscendingIcon: Component<SpriteProps> = (props) => {
+export const SortAscendingIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18702,7 +18695,7 @@ export const SortAscendingIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SortDescendingIcon: Component<SpriteProps> = (props) => {
+export const SortDescendingIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18717,7 +18710,7 @@ export const SortDescendingIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SoundcloudLogoIcon: Component<SpriteProps> = (props) => {
+export const SoundcloudLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18732,7 +18725,7 @@ export const SoundcloudLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SpadeIcon: Component<SpriteProps> = (props) => {
+export const SpadeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18747,7 +18740,7 @@ export const SpadeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SparkleIcon: Component<SpriteProps> = (props) => {
+export const SparkleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18762,7 +18755,7 @@ export const SparkleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SpeakerHifiIcon: Component<SpriteProps> = (props) => {
+export const SpeakerHifiIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18777,7 +18770,7 @@ export const SpeakerHifiIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SpeakerHighIcon: Component<SpriteProps> = (props) => {
+export const SpeakerHighIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18792,7 +18785,7 @@ export const SpeakerHighIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SpeakerLowIcon: Component<SpriteProps> = (props) => {
+export const SpeakerLowIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18807,7 +18800,7 @@ export const SpeakerLowIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SpeakerNoneIcon: Component<SpriteProps> = (props) => {
+export const SpeakerNoneIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18822,7 +18815,7 @@ export const SpeakerNoneIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SpeakerSimpleHighIcon: Component<SpriteProps> = (props) => {
+export const SpeakerSimpleHighIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18837,7 +18830,7 @@ export const SpeakerSimpleHighIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SpeakerSimpleLowIcon: Component<SpriteProps> = (props) => {
+export const SpeakerSimpleLowIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18852,7 +18845,7 @@ export const SpeakerSimpleLowIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SpeakerSimpleNoneIcon: Component<SpriteProps> = (props) => {
+export const SpeakerSimpleNoneIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18867,7 +18860,7 @@ export const SpeakerSimpleNoneIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SpeakerSimpleSlashIcon: Component<SpriteProps> = (props) => {
+export const SpeakerSimpleSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18882,7 +18875,7 @@ export const SpeakerSimpleSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SpeakerSimpleXIcon: Component<SpriteProps> = (props) => {
+export const SpeakerSimpleXIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18897,7 +18890,7 @@ export const SpeakerSimpleXIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SpeakerSlashIcon: Component<SpriteProps> = (props) => {
+export const SpeakerSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18912,7 +18905,7 @@ export const SpeakerSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SpeakerXIcon: Component<SpriteProps> = (props) => {
+export const SpeakerXIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18927,7 +18920,7 @@ export const SpeakerXIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SpeedometerIcon: Component<SpriteProps> = (props) => {
+export const SpeedometerIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18942,7 +18935,7 @@ export const SpeedometerIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SphereIcon: Component<SpriteProps> = (props) => {
+export const SphereIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18957,7 +18950,7 @@ export const SphereIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SpinnerBallIcon: Component<SpriteProps> = (props) => {
+export const SpinnerBallIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18972,7 +18965,7 @@ export const SpinnerBallIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SpinnerGapIcon: Component<SpriteProps> = (props) => {
+export const SpinnerGapIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18987,7 +18980,7 @@ export const SpinnerGapIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SpinnerIcon: Component<SpriteProps> = (props) => {
+export const SpinnerIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19002,7 +18995,7 @@ export const SpinnerIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SpiralIcon: Component<SpriteProps> = (props) => {
+export const SpiralIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19017,7 +19010,7 @@ export const SpiralIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SplitHorizontalIcon: Component<SpriteProps> = (props) => {
+export const SplitHorizontalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19032,7 +19025,7 @@ export const SplitHorizontalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SplitVerticalIcon: Component<SpriteProps> = (props) => {
+export const SplitVerticalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19047,7 +19040,7 @@ export const SplitVerticalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SpotifyLogoIcon: Component<SpriteProps> = (props) => {
+export const SpotifyLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19062,7 +19055,7 @@ export const SpotifyLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SprayBottleIcon: Component<SpriteProps> = (props) => {
+export const SprayBottleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19077,7 +19070,7 @@ export const SprayBottleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SquareHalfBottomIcon: Component<SpriteProps> = (props) => {
+export const SquareHalfBottomIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19092,7 +19085,7 @@ export const SquareHalfBottomIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SquareHalfIcon: Component<SpriteProps> = (props) => {
+export const SquareHalfIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19107,7 +19100,7 @@ export const SquareHalfIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SquareLogoIcon: Component<SpriteProps> = (props) => {
+export const SquareLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19122,7 +19115,7 @@ export const SquareLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SquareSplitHorizontalIcon: Component<SpriteProps> = (props) => {
+export const SquareSplitHorizontalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19137,7 +19130,7 @@ export const SquareSplitHorizontalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SquareSplitVerticalIcon: Component<SpriteProps> = (props) => {
+export const SquareSplitVerticalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19152,7 +19145,7 @@ export const SquareSplitVerticalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SquareIcon: Component<SpriteProps> = (props) => {
+export const SquareIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19167,7 +19160,7 @@ export const SquareIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SquaresFourIcon: Component<SpriteProps> = (props) => {
+export const SquaresFourIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19182,7 +19175,7 @@ export const SquaresFourIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const StackMinusIcon: Component<SpriteProps> = (props) => {
+export const StackMinusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19197,7 +19190,7 @@ export const StackMinusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const StackOverflowLogoIcon: Component<SpriteProps> = (props) => {
+export const StackOverflowLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19212,7 +19205,7 @@ export const StackOverflowLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const StackPlusIcon: Component<SpriteProps> = (props) => {
+export const StackPlusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19227,7 +19220,7 @@ export const StackPlusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const StackSimpleIcon: Component<SpriteProps> = (props) => {
+export const StackSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19242,7 +19235,7 @@ export const StackSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const StackIcon: Component<SpriteProps> = (props) => {
+export const StackIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19257,7 +19250,7 @@ export const StackIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const StairsIcon: Component<SpriteProps> = (props) => {
+export const StairsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19272,7 +19265,7 @@ export const StairsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const StampIcon: Component<SpriteProps> = (props) => {
+export const StampIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19287,7 +19280,7 @@ export const StampIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const StandardDefinitionIcon: Component<SpriteProps> = (props) => {
+export const StandardDefinitionIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19302,7 +19295,7 @@ export const StandardDefinitionIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const StarAndCrescentIcon: Component<SpriteProps> = (props) => {
+export const StarAndCrescentIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19317,7 +19310,7 @@ export const StarAndCrescentIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const StarFourIcon: Component<SpriteProps> = (props) => {
+export const StarFourIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19332,7 +19325,7 @@ export const StarFourIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const StarHalfIcon: Component<SpriteProps> = (props) => {
+export const StarHalfIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19347,7 +19340,7 @@ export const StarHalfIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const StarOfDavidIcon: Component<SpriteProps> = (props) => {
+export const StarOfDavidIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19362,7 +19355,7 @@ export const StarOfDavidIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const StarIcon: Component<SpriteProps> = (props) => {
+export const StarIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19377,7 +19370,7 @@ export const StarIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SteamLogoIcon: Component<SpriteProps> = (props) => {
+export const SteamLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19392,7 +19385,7 @@ export const SteamLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SteeringWheelIcon: Component<SpriteProps> = (props) => {
+export const SteeringWheelIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19407,7 +19400,7 @@ export const SteeringWheelIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const StepsIcon: Component<SpriteProps> = (props) => {
+export const StepsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19422,7 +19415,7 @@ export const StepsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const StethoscopeIcon: Component<SpriteProps> = (props) => {
+export const StethoscopeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19437,7 +19430,7 @@ export const StethoscopeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const StickerIcon: Component<SpriteProps> = (props) => {
+export const StickerIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19452,7 +19445,7 @@ export const StickerIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const StoolIcon: Component<SpriteProps> = (props) => {
+export const StoolIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19467,7 +19460,7 @@ export const StoolIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const StopCircleIcon: Component<SpriteProps> = (props) => {
+export const StopCircleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19482,7 +19475,7 @@ export const StopCircleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const StopIcon: Component<SpriteProps> = (props) => {
+export const StopIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19497,7 +19490,7 @@ export const StopIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const StorefrontIcon: Component<SpriteProps> = (props) => {
+export const StorefrontIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19512,7 +19505,7 @@ export const StorefrontIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const StrategyIcon: Component<SpriteProps> = (props) => {
+export const StrategyIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19527,7 +19520,7 @@ export const StrategyIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const StripeLogoIcon: Component<SpriteProps> = (props) => {
+export const StripeLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19542,7 +19535,7 @@ export const StripeLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const StudentIcon: Component<SpriteProps> = (props) => {
+export const StudentIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19557,7 +19550,7 @@ export const StudentIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SubsetOfIcon: Component<SpriteProps> = (props) => {
+export const SubsetOfIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19572,7 +19565,7 @@ export const SubsetOfIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SubsetProperOfIcon: Component<SpriteProps> = (props) => {
+export const SubsetProperOfIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19587,7 +19580,7 @@ export const SubsetProperOfIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SubtitlesSlashIcon: Component<SpriteProps> = (props) => {
+export const SubtitlesSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19602,7 +19595,7 @@ export const SubtitlesSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SubtitlesIcon: Component<SpriteProps> = (props) => {
+export const SubtitlesIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19617,7 +19610,7 @@ export const SubtitlesIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SubtractSquareIcon: Component<SpriteProps> = (props) => {
+export const SubtractSquareIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19632,7 +19625,7 @@ export const SubtractSquareIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SubtractIcon: Component<SpriteProps> = (props) => {
+export const SubtractIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19647,7 +19640,7 @@ export const SubtractIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SubwayIcon: Component<SpriteProps> = (props) => {
+export const SubwayIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19662,7 +19655,7 @@ export const SubwayIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SuitcaseRollingIcon: Component<SpriteProps> = (props) => {
+export const SuitcaseRollingIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19677,7 +19670,7 @@ export const SuitcaseRollingIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SuitcaseSimpleIcon: Component<SpriteProps> = (props) => {
+export const SuitcaseSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19692,7 +19685,7 @@ export const SuitcaseSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SuitcaseIcon: Component<SpriteProps> = (props) => {
+export const SuitcaseIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19707,7 +19700,7 @@ export const SuitcaseIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SunDimIcon: Component<SpriteProps> = (props) => {
+export const SunDimIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19722,7 +19715,7 @@ export const SunDimIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SunHorizonIcon: Component<SpriteProps> = (props) => {
+export const SunHorizonIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19737,7 +19730,7 @@ export const SunHorizonIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SunIcon: Component<SpriteProps> = (props) => {
+export const SunIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19752,7 +19745,7 @@ export const SunIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SunglassesIcon: Component<SpriteProps> = (props) => {
+export const SunglassesIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19767,7 +19760,7 @@ export const SunglassesIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SupersetOfIcon: Component<SpriteProps> = (props) => {
+export const SupersetOfIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19782,7 +19775,7 @@ export const SupersetOfIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SupersetProperOfIcon: Component<SpriteProps> = (props) => {
+export const SupersetProperOfIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19797,7 +19790,7 @@ export const SupersetProperOfIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SwapIcon: Component<SpriteProps> = (props) => {
+export const SwapIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19812,7 +19805,7 @@ export const SwapIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SwatchesIcon: Component<SpriteProps> = (props) => {
+export const SwatchesIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19827,7 +19820,7 @@ export const SwatchesIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SwimmingPoolIcon: Component<SpriteProps> = (props) => {
+export const SwimmingPoolIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19842,7 +19835,7 @@ export const SwimmingPoolIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SwordIcon: Component<SpriteProps> = (props) => {
+export const SwordIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19857,7 +19850,7 @@ export const SwordIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SynagogueIcon: Component<SpriteProps> = (props) => {
+export const SynagogueIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19872,7 +19865,7 @@ export const SynagogueIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const SyringeIcon: Component<SpriteProps> = (props) => {
+export const SyringeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19887,7 +19880,7 @@ export const SyringeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TShirtIcon: Component<SpriteProps> = (props) => {
+export const TShirtIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19902,7 +19895,7 @@ export const TShirtIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TableIcon: Component<SpriteProps> = (props) => {
+export const TableIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19917,7 +19910,7 @@ export const TableIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TabsIcon: Component<SpriteProps> = (props) => {
+export const TabsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19932,7 +19925,7 @@ export const TabsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TagChevronIcon: Component<SpriteProps> = (props) => {
+export const TagChevronIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19947,7 +19940,7 @@ export const TagChevronIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TagSimpleIcon: Component<SpriteProps> = (props) => {
+export const TagSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19962,7 +19955,7 @@ export const TagSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TagIcon: Component<SpriteProps> = (props) => {
+export const TagIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19977,7 +19970,7 @@ export const TagIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TargetIcon: Component<SpriteProps> = (props) => {
+export const TargetIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19992,7 +19985,7 @@ export const TargetIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TaxiIcon: Component<SpriteProps> = (props) => {
+export const TaxiIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20007,7 +20000,7 @@ export const TaxiIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TeaBagIcon: Component<SpriteProps> = (props) => {
+export const TeaBagIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20022,7 +20015,7 @@ export const TeaBagIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TelegramLogoIcon: Component<SpriteProps> = (props) => {
+export const TelegramLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20037,7 +20030,7 @@ export const TelegramLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TelevisionSimpleIcon: Component<SpriteProps> = (props) => {
+export const TelevisionSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20052,7 +20045,7 @@ export const TelevisionSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TelevisionIcon: Component<SpriteProps> = (props) => {
+export const TelevisionIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20067,7 +20060,7 @@ export const TelevisionIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TennisBallIcon: Component<SpriteProps> = (props) => {
+export const TennisBallIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20082,7 +20075,7 @@ export const TennisBallIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TentIcon: Component<SpriteProps> = (props) => {
+export const TentIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20097,7 +20090,7 @@ export const TentIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TerminalWindowIcon: Component<SpriteProps> = (props) => {
+export const TerminalWindowIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20112,7 +20105,7 @@ export const TerminalWindowIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TerminalIcon: Component<SpriteProps> = (props) => {
+export const TerminalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20127,7 +20120,7 @@ export const TerminalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TestTubeIcon: Component<SpriteProps> = (props) => {
+export const TestTubeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20142,7 +20135,7 @@ export const TestTubeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TextAUnderlineIcon: Component<SpriteProps> = (props) => {
+export const TextAUnderlineIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20157,7 +20150,7 @@ export const TextAUnderlineIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TextAaIcon: Component<SpriteProps> = (props) => {
+export const TextAaIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20172,7 +20165,7 @@ export const TextAaIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TextAlignCenterIcon: Component<SpriteProps> = (props) => {
+export const TextAlignCenterIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20187,7 +20180,7 @@ export const TextAlignCenterIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TextAlignJustifyIcon: Component<SpriteProps> = (props) => {
+export const TextAlignJustifyIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20202,7 +20195,7 @@ export const TextAlignJustifyIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TextAlignLeftIcon: Component<SpriteProps> = (props) => {
+export const TextAlignLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20217,7 +20210,7 @@ export const TextAlignLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TextAlignRightIcon: Component<SpriteProps> = (props) => {
+export const TextAlignRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20232,7 +20225,7 @@ export const TextAlignRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TextBIcon: Component<SpriteProps> = (props) => {
+export const TextBIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20247,7 +20240,7 @@ export const TextBIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TextColumnsIcon: Component<SpriteProps> = (props) => {
+export const TextColumnsIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20262,7 +20255,7 @@ export const TextColumnsIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TextHFiveIcon: Component<SpriteProps> = (props) => {
+export const TextHFiveIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20277,7 +20270,7 @@ export const TextHFiveIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TextHFourIcon: Component<SpriteProps> = (props) => {
+export const TextHFourIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20292,7 +20285,7 @@ export const TextHFourIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TextHOneIcon: Component<SpriteProps> = (props) => {
+export const TextHOneIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20307,7 +20300,7 @@ export const TextHOneIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TextHSixIcon: Component<SpriteProps> = (props) => {
+export const TextHSixIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20322,7 +20315,7 @@ export const TextHSixIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TextHThreeIcon: Component<SpriteProps> = (props) => {
+export const TextHThreeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20337,7 +20330,7 @@ export const TextHThreeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TextHTwoIcon: Component<SpriteProps> = (props) => {
+export const TextHTwoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20352,7 +20345,7 @@ export const TextHTwoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TextHIcon: Component<SpriteProps> = (props) => {
+export const TextHIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20367,7 +20360,7 @@ export const TextHIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TextIndentIcon: Component<SpriteProps> = (props) => {
+export const TextIndentIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20382,7 +20375,7 @@ export const TextIndentIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TextItalicIcon: Component<SpriteProps> = (props) => {
+export const TextItalicIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20397,7 +20390,7 @@ export const TextItalicIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TextOutdentIcon: Component<SpriteProps> = (props) => {
+export const TextOutdentIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20412,7 +20405,7 @@ export const TextOutdentIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TextStrikethroughIcon: Component<SpriteProps> = (props) => {
+export const TextStrikethroughIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20427,7 +20420,7 @@ export const TextStrikethroughIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TextSubscriptIcon: Component<SpriteProps> = (props) => {
+export const TextSubscriptIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20442,7 +20435,7 @@ export const TextSubscriptIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TextSuperscriptIcon: Component<SpriteProps> = (props) => {
+export const TextSuperscriptIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20457,7 +20450,7 @@ export const TextSuperscriptIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TextTSlashIcon: Component<SpriteProps> = (props) => {
+export const TextTSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20472,7 +20465,7 @@ export const TextTSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TextTIcon: Component<SpriteProps> = (props) => {
+export const TextTIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20487,7 +20480,7 @@ export const TextTIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TextUnderlineIcon: Component<SpriteProps> = (props) => {
+export const TextUnderlineIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20502,7 +20495,7 @@ export const TextUnderlineIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TextboxIcon: Component<SpriteProps> = (props) => {
+export const TextboxIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20517,7 +20510,7 @@ export const TextboxIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ThermometerColdIcon: Component<SpriteProps> = (props) => {
+export const ThermometerColdIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20532,7 +20525,7 @@ export const ThermometerColdIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ThermometerHotIcon: Component<SpriteProps> = (props) => {
+export const ThermometerHotIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20547,7 +20540,7 @@ export const ThermometerHotIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ThermometerSimpleIcon: Component<SpriteProps> = (props) => {
+export const ThermometerSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20562,7 +20555,7 @@ export const ThermometerSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ThermometerIcon: Component<SpriteProps> = (props) => {
+export const ThermometerIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20577,7 +20570,7 @@ export const ThermometerIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ThreadsLogoIcon: Component<SpriteProps> = (props) => {
+export const ThreadsLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20592,7 +20585,7 @@ export const ThreadsLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ThreeDIcon: Component<SpriteProps> = (props) => {
+export const ThreeDIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20607,7 +20600,7 @@ export const ThreeDIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ThumbsDownIcon: Component<SpriteProps> = (props) => {
+export const ThumbsDownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20622,7 +20615,7 @@ export const ThumbsDownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ThumbsUpIcon: Component<SpriteProps> = (props) => {
+export const ThumbsUpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20637,7 +20630,7 @@ export const ThumbsUpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TicketIcon: Component<SpriteProps> = (props) => {
+export const TicketIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20652,7 +20645,7 @@ export const TicketIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TidalLogoIcon: Component<SpriteProps> = (props) => {
+export const TidalLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20667,7 +20660,7 @@ export const TidalLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TiktokLogoIcon: Component<SpriteProps> = (props) => {
+export const TiktokLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20682,7 +20675,7 @@ export const TiktokLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TildeIcon: Component<SpriteProps> = (props) => {
+export const TildeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20697,7 +20690,7 @@ export const TildeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TimerIcon: Component<SpriteProps> = (props) => {
+export const TimerIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20712,7 +20705,7 @@ export const TimerIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TipJarIcon: Component<SpriteProps> = (props) => {
+export const TipJarIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20727,7 +20720,7 @@ export const TipJarIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TipiIcon: Component<SpriteProps> = (props) => {
+export const TipiIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20742,7 +20735,7 @@ export const TipiIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TireIcon: Component<SpriteProps> = (props) => {
+export const TireIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20757,7 +20750,7 @@ export const TireIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ToggleLeftIcon: Component<SpriteProps> = (props) => {
+export const ToggleLeftIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20772,7 +20765,7 @@ export const ToggleLeftIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ToggleRightIcon: Component<SpriteProps> = (props) => {
+export const ToggleRightIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20787,7 +20780,7 @@ export const ToggleRightIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ToiletPaperIcon: Component<SpriteProps> = (props) => {
+export const ToiletPaperIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20802,7 +20795,7 @@ export const ToiletPaperIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ToiletIcon: Component<SpriteProps> = (props) => {
+export const ToiletIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20817,7 +20810,7 @@ export const ToiletIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ToolboxIcon: Component<SpriteProps> = (props) => {
+export const ToolboxIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20832,7 +20825,7 @@ export const ToolboxIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ToothIcon: Component<SpriteProps> = (props) => {
+export const ToothIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20847,7 +20840,7 @@ export const ToothIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TornadoIcon: Component<SpriteProps> = (props) => {
+export const TornadoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20862,7 +20855,7 @@ export const TornadoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ToteSimpleIcon: Component<SpriteProps> = (props) => {
+export const ToteSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20877,7 +20870,7 @@ export const ToteSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const ToteIcon: Component<SpriteProps> = (props) => {
+export const ToteIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20892,7 +20885,7 @@ export const ToteIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TowelIcon: Component<SpriteProps> = (props) => {
+export const TowelIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20907,7 +20900,7 @@ export const TowelIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TractorIcon: Component<SpriteProps> = (props) => {
+export const TractorIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20922,7 +20915,7 @@ export const TractorIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TrademarkRegisteredIcon: Component<SpriteProps> = (props) => {
+export const TrademarkRegisteredIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20937,7 +20930,7 @@ export const TrademarkRegisteredIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TrademarkIcon: Component<SpriteProps> = (props) => {
+export const TrademarkIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20952,7 +20945,7 @@ export const TrademarkIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TrafficConeIcon: Component<SpriteProps> = (props) => {
+export const TrafficConeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20967,7 +20960,7 @@ export const TrafficConeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TrafficSignIcon: Component<SpriteProps> = (props) => {
+export const TrafficSignIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20982,7 +20975,7 @@ export const TrafficSignIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TrafficSignalIcon: Component<SpriteProps> = (props) => {
+export const TrafficSignalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -20997,7 +20990,7 @@ export const TrafficSignalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TrainRegionalIcon: Component<SpriteProps> = (props) => {
+export const TrainRegionalIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21012,7 +21005,7 @@ export const TrainRegionalIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TrainSimpleIcon: Component<SpriteProps> = (props) => {
+export const TrainSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21027,7 +21020,7 @@ export const TrainSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TrainIcon: Component<SpriteProps> = (props) => {
+export const TrainIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21042,7 +21035,7 @@ export const TrainIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TramIcon: Component<SpriteProps> = (props) => {
+export const TramIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21057,7 +21050,7 @@ export const TramIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TranslateIcon: Component<SpriteProps> = (props) => {
+export const TranslateIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21072,7 +21065,7 @@ export const TranslateIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TrashSimpleIcon: Component<SpriteProps> = (props) => {
+export const TrashSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21087,7 +21080,7 @@ export const TrashSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TrashIcon: Component<SpriteProps> = (props) => {
+export const TrashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21102,7 +21095,7 @@ export const TrashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TrayArrowDownIcon: Component<SpriteProps> = (props) => {
+export const TrayArrowDownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21117,7 +21110,7 @@ export const TrayArrowDownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TrayArrowUpIcon: Component<SpriteProps> = (props) => {
+export const TrayArrowUpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21132,7 +21125,7 @@ export const TrayArrowUpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TrayIcon: Component<SpriteProps> = (props) => {
+export const TrayIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21147,7 +21140,7 @@ export const TrayIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TreasureChestIcon: Component<SpriteProps> = (props) => {
+export const TreasureChestIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21162,7 +21155,7 @@ export const TreasureChestIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TreeEvergreenIcon: Component<SpriteProps> = (props) => {
+export const TreeEvergreenIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21177,7 +21170,7 @@ export const TreeEvergreenIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TreePalmIcon: Component<SpriteProps> = (props) => {
+export const TreePalmIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21192,7 +21185,7 @@ export const TreePalmIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TreeStructureIcon: Component<SpriteProps> = (props) => {
+export const TreeStructureIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21207,7 +21200,7 @@ export const TreeStructureIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TreeViewIcon: Component<SpriteProps> = (props) => {
+export const TreeViewIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21222,7 +21215,7 @@ export const TreeViewIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TreeIcon: Component<SpriteProps> = (props) => {
+export const TreeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21237,7 +21230,7 @@ export const TreeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TrendDownIcon: Component<SpriteProps> = (props) => {
+export const TrendDownIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21252,7 +21245,7 @@ export const TrendDownIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TrendUpIcon: Component<SpriteProps> = (props) => {
+export const TrendUpIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21267,7 +21260,7 @@ export const TrendUpIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TriangleDashedIcon: Component<SpriteProps> = (props) => {
+export const TriangleDashedIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21282,7 +21275,7 @@ export const TriangleDashedIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TriangleIcon: Component<SpriteProps> = (props) => {
+export const TriangleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21297,7 +21290,7 @@ export const TriangleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TrolleySuitcaseIcon: Component<SpriteProps> = (props) => {
+export const TrolleySuitcaseIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21312,7 +21305,7 @@ export const TrolleySuitcaseIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TrolleyIcon: Component<SpriteProps> = (props) => {
+export const TrolleyIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21327,7 +21320,7 @@ export const TrolleyIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TrophyIcon: Component<SpriteProps> = (props) => {
+export const TrophyIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21342,7 +21335,7 @@ export const TrophyIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TruckTrailerIcon: Component<SpriteProps> = (props) => {
+export const TruckTrailerIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21357,7 +21350,7 @@ export const TruckTrailerIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TruckIcon: Component<SpriteProps> = (props) => {
+export const TruckIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21372,7 +21365,7 @@ export const TruckIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TumblrLogoIcon: Component<SpriteProps> = (props) => {
+export const TumblrLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21387,7 +21380,7 @@ export const TumblrLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TwitchLogoIcon: Component<SpriteProps> = (props) => {
+export const TwitchLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21402,7 +21395,7 @@ export const TwitchLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const TwitterLogoIcon: Component<SpriteProps> = (props) => {
+export const TwitterLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21417,7 +21410,7 @@ export const TwitterLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const UmbrellaSimpleIcon: Component<SpriteProps> = (props) => {
+export const UmbrellaSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21432,7 +21425,7 @@ export const UmbrellaSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const UmbrellaIcon: Component<SpriteProps> = (props) => {
+export const UmbrellaIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21447,7 +21440,7 @@ export const UmbrellaIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const UnionIcon: Component<SpriteProps> = (props) => {
+export const UnionIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21462,7 +21455,7 @@ export const UnionIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const UniteSquareIcon: Component<SpriteProps> = (props) => {
+export const UniteSquareIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21477,7 +21470,7 @@ export const UniteSquareIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const UniteIcon: Component<SpriteProps> = (props) => {
+export const UniteIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21492,7 +21485,7 @@ export const UniteIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const UploadSimpleIcon: Component<SpriteProps> = (props) => {
+export const UploadSimpleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21507,7 +21500,7 @@ export const UploadSimpleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const UploadIcon: Component<SpriteProps> = (props) => {
+export const UploadIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21522,7 +21515,7 @@ export const UploadIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const UsbIcon: Component<SpriteProps> = (props) => {
+export const UsbIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21537,7 +21530,7 @@ export const UsbIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const UserCheckIcon: Component<SpriteProps> = (props) => {
+export const UserCheckIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21552,7 +21545,7 @@ export const UserCheckIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const UserCircleCheckIcon: Component<SpriteProps> = (props) => {
+export const UserCircleCheckIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21567,7 +21560,7 @@ export const UserCircleCheckIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const UserCircleDashedIcon: Component<SpriteProps> = (props) => {
+export const UserCircleDashedIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21582,7 +21575,7 @@ export const UserCircleDashedIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const UserCircleGearIcon: Component<SpriteProps> = (props) => {
+export const UserCircleGearIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21597,7 +21590,7 @@ export const UserCircleGearIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const UserCircleMinusIcon: Component<SpriteProps> = (props) => {
+export const UserCircleMinusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21612,7 +21605,7 @@ export const UserCircleMinusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const UserCirclePlusIcon: Component<SpriteProps> = (props) => {
+export const UserCirclePlusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21627,7 +21620,7 @@ export const UserCirclePlusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const UserCircleIcon: Component<SpriteProps> = (props) => {
+export const UserCircleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21642,7 +21635,7 @@ export const UserCircleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const UserFocusIcon: Component<SpriteProps> = (props) => {
+export const UserFocusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21657,7 +21650,7 @@ export const UserFocusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const UserGearIcon: Component<SpriteProps> = (props) => {
+export const UserGearIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21672,7 +21665,7 @@ export const UserGearIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const UserListIcon: Component<SpriteProps> = (props) => {
+export const UserListIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21687,7 +21680,7 @@ export const UserListIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const UserMinusIcon: Component<SpriteProps> = (props) => {
+export const UserMinusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21702,7 +21695,7 @@ export const UserMinusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const UserPlusIcon: Component<SpriteProps> = (props) => {
+export const UserPlusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21717,7 +21710,7 @@ export const UserPlusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const UserRectangleIcon: Component<SpriteProps> = (props) => {
+export const UserRectangleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21732,7 +21725,7 @@ export const UserRectangleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const UserSoundIcon: Component<SpriteProps> = (props) => {
+export const UserSoundIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21747,7 +21740,7 @@ export const UserSoundIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const UserSquareIcon: Component<SpriteProps> = (props) => {
+export const UserSquareIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21762,7 +21755,7 @@ export const UserSquareIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const UserSwitchIcon: Component<SpriteProps> = (props) => {
+export const UserSwitchIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21777,7 +21770,7 @@ export const UserSwitchIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const UserIcon: Component<SpriteProps> = (props) => {
+export const UserIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21792,7 +21785,7 @@ export const UserIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const UsersFourIcon: Component<SpriteProps> = (props) => {
+export const UsersFourIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21807,7 +21800,7 @@ export const UsersFourIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const UsersThreeIcon: Component<SpriteProps> = (props) => {
+export const UsersThreeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21822,7 +21815,7 @@ export const UsersThreeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const UsersIcon: Component<SpriteProps> = (props) => {
+export const UsersIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21837,7 +21830,7 @@ export const UsersIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const VanIcon: Component<SpriteProps> = (props) => {
+export const VanIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21852,7 +21845,7 @@ export const VanIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const VaultIcon: Component<SpriteProps> = (props) => {
+export const VaultIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21867,7 +21860,7 @@ export const VaultIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const VectorThreeIcon: Component<SpriteProps> = (props) => {
+export const VectorThreeIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21882,7 +21875,7 @@ export const VectorThreeIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const VectorTwoIcon: Component<SpriteProps> = (props) => {
+export const VectorTwoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21897,7 +21890,7 @@ export const VectorTwoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const VibrateIcon: Component<SpriteProps> = (props) => {
+export const VibrateIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21912,7 +21905,7 @@ export const VibrateIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const VideoCameraSlashIcon: Component<SpriteProps> = (props) => {
+export const VideoCameraSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21927,7 +21920,7 @@ export const VideoCameraSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const VideoCameraIcon: Component<SpriteProps> = (props) => {
+export const VideoCameraIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21942,7 +21935,7 @@ export const VideoCameraIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const VideoConferenceIcon: Component<SpriteProps> = (props) => {
+export const VideoConferenceIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21957,7 +21950,7 @@ export const VideoConferenceIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const VideoIcon: Component<SpriteProps> = (props) => {
+export const VideoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21972,7 +21965,7 @@ export const VideoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const VignetteIcon: Component<SpriteProps> = (props) => {
+export const VignetteIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21987,7 +21980,7 @@ export const VignetteIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const VinylRecordIcon: Component<SpriteProps> = (props) => {
+export const VinylRecordIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22002,7 +21995,7 @@ export const VinylRecordIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const VirtualRealityIcon: Component<SpriteProps> = (props) => {
+export const VirtualRealityIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22017,7 +22010,7 @@ export const VirtualRealityIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const VirusIcon: Component<SpriteProps> = (props) => {
+export const VirusIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22032,7 +22025,7 @@ export const VirusIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const VisorIcon: Component<SpriteProps> = (props) => {
+export const VisorIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22047,7 +22040,7 @@ export const VisorIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const VoicemailIcon: Component<SpriteProps> = (props) => {
+export const VoicemailIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22062,7 +22055,7 @@ export const VoicemailIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const VolleyballIcon: Component<SpriteProps> = (props) => {
+export const VolleyballIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22077,7 +22070,7 @@ export const VolleyballIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WallIcon: Component<SpriteProps> = (props) => {
+export const WallIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22092,7 +22085,7 @@ export const WallIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WalletIcon: Component<SpriteProps> = (props) => {
+export const WalletIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22107,7 +22100,7 @@ export const WalletIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WarehouseIcon: Component<SpriteProps> = (props) => {
+export const WarehouseIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22122,7 +22115,7 @@ export const WarehouseIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WarningCircleIcon: Component<SpriteProps> = (props) => {
+export const WarningCircleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22137,7 +22130,7 @@ export const WarningCircleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WarningDiamondIcon: Component<SpriteProps> = (props) => {
+export const WarningDiamondIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22152,7 +22145,7 @@ export const WarningDiamondIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WarningOctagonIcon: Component<SpriteProps> = (props) => {
+export const WarningOctagonIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22167,7 +22160,7 @@ export const WarningOctagonIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WarningIcon: Component<SpriteProps> = (props) => {
+export const WarningIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22182,7 +22175,7 @@ export const WarningIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WashingMachineIcon: Component<SpriteProps> = (props) => {
+export const WashingMachineIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22197,7 +22190,7 @@ export const WashingMachineIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WatchIcon: Component<SpriteProps> = (props) => {
+export const WatchIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22212,7 +22205,7 @@ export const WatchIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WaveSawtoothIcon: Component<SpriteProps> = (props) => {
+export const WaveSawtoothIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22227,7 +22220,7 @@ export const WaveSawtoothIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WaveSineIcon: Component<SpriteProps> = (props) => {
+export const WaveSineIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22242,7 +22235,7 @@ export const WaveSineIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WaveSquareIcon: Component<SpriteProps> = (props) => {
+export const WaveSquareIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22257,7 +22250,7 @@ export const WaveSquareIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WaveTriangleIcon: Component<SpriteProps> = (props) => {
+export const WaveTriangleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22272,7 +22265,7 @@ export const WaveTriangleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WaveformSlashIcon: Component<SpriteProps> = (props) => {
+export const WaveformSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22287,7 +22280,7 @@ export const WaveformSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WaveformIcon: Component<SpriteProps> = (props) => {
+export const WaveformIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22302,7 +22295,7 @@ export const WaveformIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WavesIcon: Component<SpriteProps> = (props) => {
+export const WavesIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22317,7 +22310,7 @@ export const WavesIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WebcamSlashIcon: Component<SpriteProps> = (props) => {
+export const WebcamSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22332,7 +22325,7 @@ export const WebcamSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WebcamIcon: Component<SpriteProps> = (props) => {
+export const WebcamIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22347,7 +22340,7 @@ export const WebcamIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WebhooksLogoIcon: Component<SpriteProps> = (props) => {
+export const WebhooksLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22362,7 +22355,7 @@ export const WebhooksLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WechatLogoIcon: Component<SpriteProps> = (props) => {
+export const WechatLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22377,7 +22370,7 @@ export const WechatLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WhatsappLogoIcon: Component<SpriteProps> = (props) => {
+export const WhatsappLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22392,7 +22385,7 @@ export const WhatsappLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WheelchairMotionIcon: Component<SpriteProps> = (props) => {
+export const WheelchairMotionIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22407,7 +22400,7 @@ export const WheelchairMotionIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WheelchairIcon: Component<SpriteProps> = (props) => {
+export const WheelchairIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22422,7 +22415,7 @@ export const WheelchairIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WifiHighIcon: Component<SpriteProps> = (props) => {
+export const WifiHighIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22437,7 +22430,7 @@ export const WifiHighIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WifiLowIcon: Component<SpriteProps> = (props) => {
+export const WifiLowIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22452,7 +22445,7 @@ export const WifiLowIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WifiMediumIcon: Component<SpriteProps> = (props) => {
+export const WifiMediumIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22467,7 +22460,7 @@ export const WifiMediumIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WifiNoneIcon: Component<SpriteProps> = (props) => {
+export const WifiNoneIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22482,7 +22475,7 @@ export const WifiNoneIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WifiSlashIcon: Component<SpriteProps> = (props) => {
+export const WifiSlashIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22497,7 +22490,7 @@ export const WifiSlashIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WifiXIcon: Component<SpriteProps> = (props) => {
+export const WifiXIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22512,7 +22505,7 @@ export const WifiXIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WindIcon: Component<SpriteProps> = (props) => {
+export const WindIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22527,7 +22520,7 @@ export const WindIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WindmillIcon: Component<SpriteProps> = (props) => {
+export const WindmillIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22542,7 +22535,7 @@ export const WindmillIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WindowsLogoIcon: Component<SpriteProps> = (props) => {
+export const WindowsLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22557,7 +22550,7 @@ export const WindowsLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WineIcon: Component<SpriteProps> = (props) => {
+export const WineIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22572,7 +22565,7 @@ export const WineIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const WrenchIcon: Component<SpriteProps> = (props) => {
+export const WrenchIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22587,7 +22580,7 @@ export const WrenchIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const XCircleIcon: Component<SpriteProps> = (props) => {
+export const XCircleIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22602,7 +22595,7 @@ export const XCircleIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const XLogoIcon: Component<SpriteProps> = (props) => {
+export const XLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22617,7 +22610,7 @@ export const XLogoIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const XSquareIcon: Component<SpriteProps> = (props) => {
+export const XSquareIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22632,7 +22625,7 @@ export const XSquareIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const XIcon: Component<SpriteProps> = (props) => {
+export const XIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22647,7 +22640,7 @@ export const XIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const YarnIcon: Component<SpriteProps> = (props) => {
+export const YarnIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22662,7 +22655,7 @@ export const YarnIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const YinYangIcon: Component<SpriteProps> = (props) => {
+export const YinYangIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -22677,7 +22670,7 @@ export const YinYangIcon: Component<SpriteProps> = (props) => {
   );
 };
 
-export const YoutubeLogoIcon: Component<SpriteProps> = (props) => {
+export const YoutubeLogoIcon = (props: SpriteProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

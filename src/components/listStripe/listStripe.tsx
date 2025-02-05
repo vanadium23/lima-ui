@@ -1,12 +1,4 @@
-import { type Component, createSignal, mergeProps } from "solid-js";
-import "./listStripe.css";
-import { IconName } from "../icon/icon.tsx";
-import {
-  IconButton,
-  IconButtonComponentType,
-  IconButtonSize,
-  IconButtonTheme,
-} from "../iconButton/iconButton.tsx";
+import { createSignal, mergeProps } from "solid-js";
 import {
   LIST_STRIPE,
   LIST_STRIPE_EDIT_BUTTON,
@@ -14,8 +6,17 @@ import {
   LIST_STRIPE_REMOVE_BUTTON,
   REMOVE_LIST_DIALOG,
 } from "../../../features/testIds.ts";
-import { Dialog, DialogSize, DialogTheme } from "../dialog/dialog.tsx";
 import { soften } from "../../widgets/editList/utilities/soften.ts";
+import { Dialog, DialogSize, DialogTheme } from "../dialog/dialog.tsx";
+import { IconName } from "../icon/icon.tsx";
+import {
+  IconButton,
+  IconButtonComponentType,
+  IconButtonSize,
+  IconButtonTheme,
+} from "../iconButton/iconButton.tsx";
+import type { Testable } from "../utilities/testable.ts";
+import "./listStripe.css";
 
 export enum ListStripeTheme {
   Primary = "primary",
@@ -38,8 +39,8 @@ type ListStripeProps = {
   staticOnRemoveError: (removeError: boolean) => void;
 };
 
-export const ListStripe: Component<ListStripeProps> = (props) => {
-  const mProps: Required<ListStripeProps> = mergeProps(
+export const ListStripe = (props: Testable<ListStripeProps>) => {
+  const mProps: Testable<Required<ListStripeProps>> = mergeProps(
     {
       theme: ListStripeTheme.Primary,
       size: ListStripeSize.Medium,

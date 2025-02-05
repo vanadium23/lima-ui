@@ -1,16 +1,15 @@
 import {
-  type Component,
   createEffect,
   createSignal,
-  mergeProps,
+  mergeProps
 } from "solid-js";
-import "./itemInput.css";
-import type { Testable } from "../utilities/testable.ts";
 import {
   CharCounter,
   CharCounterSize,
   CharCounterTheme,
 } from "../charCounter/charCounter.tsx";
+import type { Testable } from "../utilities/testable.ts";
+import "./itemInput.css";
 
 export enum ItemInputTheme {
   Primary = "primary",
@@ -34,7 +33,7 @@ type ItemInputProps = {
   onChange?: (value: string) => void;
 };
 
-export const ItemInput: Component<Testable<ItemInputProps>> = (props) => {
+export const ItemInput = (props: Testable<ItemInputProps>) => {
   const mProps: Testable<Required<ItemInputProps>> = mergeProps(
     {
       theme: ItemInputTheme.Primary,

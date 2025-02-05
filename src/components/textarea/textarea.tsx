@@ -1,11 +1,11 @@
-import { type Component, createSignal, mergeProps } from "solid-js";
-import "./textarea.css";
+import { createSignal, mergeProps } from "solid-js";
 import {
   CharCounter,
   CharCounterSize,
   CharCounterTheme,
 } from "../charCounter/charCounter.tsx";
 import type { Testable } from "../utilities/testable.ts";
+import "./textarea.css";
 
 export enum TextareaTheme {
   Primary = "primary",
@@ -31,7 +31,7 @@ type TextareaProps = {
   onChange?: (value: string) => void;
 };
 
-export const Textarea: Component<Testable<TextareaProps>> = (props) => {
+export const Textarea = (props: Testable<TextareaProps>) => {
   const mProps: Testable<Required<TextareaProps>> = mergeProps(
     {
       theme: TextareaTheme.Primary,

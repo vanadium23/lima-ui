@@ -1,7 +1,7 @@
-import { type Component, mergeProps } from "solid-js";
+import { mergeProps } from "solid-js";
+import { Dynamic } from "solid-js/web";
 import "./icon.css";
 import * as icons from "./sprite.tsx";
-import { Dynamic } from "solid-js/web";
 
 export enum IconName {
   Acorn = "AcornIcon",
@@ -1528,7 +1528,7 @@ type IconProps = {
   size?: IconSize;
 };
 
-export const Icon: Component<IconProps> = (props) => {
+export const Icon = (props: IconProps) => {
   const mProps: Required<IconProps> = mergeProps(
     {
       size: IconSize.Medium,

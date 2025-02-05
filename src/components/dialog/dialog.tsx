@@ -1,16 +1,16 @@
-import { type Component, createEffect, type JSX, mergeProps } from "solid-js";
+import { createEffect, type JSX, mergeProps } from "solid-js";
+import {
+  DIALOG_REMOVE_BUTTON,
+  DIALOG_RETURN_BUTTON,
+} from "../../../features/testIds.ts";
 import { Button, ButtonSize, ButtonTheme } from "../button/button.tsx";
-import "./dialog.css";
 import {
   TextButton,
   TextButtonSize,
   TextButtonTheme,
 } from "../textButton/textButton.tsx";
-import {
-  DIALOG_REMOVE_BUTTON,
-  DIALOG_RETURN_BUTTON,
-} from "../../../features/testIds.ts";
 import type { Testable } from "../utilities/testable.ts";
+import "./dialog.css";
 
 export enum DialogTheme {
   Primary = "primary",
@@ -30,14 +30,14 @@ type DialogProps = {
   title: string;
 };
 
-export const Dialog: Component<Testable<DialogProps>> = (props) => {
+export const Dialog = (props: Testable<DialogProps>) => {
   const mProps: Testable<Required<DialogProps>> = mergeProps(
     {
       theme: DialogTheme.Primary,
       size: DialogSize.Medium,
       isOpen: false,
-      onConfirm: () => {},
-      onCancel: () => {},
+      onConfirm: () => { },
+      onCancel: () => { },
     },
     props,
   );

@@ -1,8 +1,8 @@
-import { type Component, mergeProps } from "solid-js";
-import "./checkbox.css";
-import type { Testable } from "../utilities/testable.ts";
-import { prepareARIALabel } from "../utilities/prepareARIALabel.ts";
+import { mergeProps } from "solid-js";
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
+import { prepareARIALabel } from "../utilities/prepareARIALabel.ts";
+import type { Testable } from "../utilities/testable.ts";
+import "./checkbox.css";
 
 export enum CheckboxTheme {
   Primary = "primary",
@@ -23,14 +23,14 @@ type CheckboxProps = {
   isChecked?: boolean;
 };
 
-export const Checkbox: Component<Testable<CheckboxProps>> = (props) => {
+export const Checkbox = (props: Testable<CheckboxProps>) => {
   const mProps: Testable<Required<CheckboxProps>> = mergeProps(
     {
       theme: CheckboxTheme.Primary,
       size: CheckboxSize.Medium,
       isDisabled: false,
       ariaLabel: "",
-      handleClick: () => {},
+      handleClick: () => { },
       isChecked: false,
     },
     props,

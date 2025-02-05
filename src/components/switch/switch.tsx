@@ -1,7 +1,7 @@
-import { type Component, mergeProps, Show } from "solid-js";
-import "./switch.css";
-import type { Testable } from "../utilities/testable.ts";
+import { mergeProps, Show } from "solid-js";
 import { prepareARIALabel } from "../utilities/prepareARIALabel.ts";
+import type { Testable } from "../utilities/testable.ts";
+import "./switch.css";
 
 export enum SwitchTheme {
   Primary = "primary",
@@ -21,7 +21,7 @@ type SwitchProps = {
   isChecked?: boolean;
 };
 
-export const Switch: Component<Testable<SwitchProps>> = (props) => {
+export const Switch = (props: Testable<SwitchProps>) => {
   const mProps: Testable<Required<SwitchProps>> = mergeProps(
     {
       theme: SwitchTheme.Primary,
