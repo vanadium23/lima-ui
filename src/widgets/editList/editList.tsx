@@ -79,7 +79,6 @@ export const EditList: Component<EditListProps> = (props) => {
 
   type EditListStore = {
     items: UpdatedList["items"];
-    itemsCount: number;
     name: string;
     purpose: string;
     note: string;
@@ -89,7 +88,6 @@ export const EditList: Component<EditListProps> = (props) => {
 
   const [store, setStore] = createStore<EditListStore>({
     items: list.items,
-    itemsCount: list.items.length,
     name: list.name,
     purpose: list.purpose,
     note: list.note,
@@ -123,26 +121,22 @@ export const EditList: Component<EditListProps> = (props) => {
 
   const [isChanged, setIsChanged] = createSignal(false);
 
-  const initialData = {
-    items: JSON.stringify(list.items),
-    itemsCount: list.items.length,
-    name: list.name,
-    purpose: list.purpose,
-    note: list.note,
-  };
+  function getComparableList(initialList: Omit<UpdatedList, "id">) {
+    return {
+      items: JSON.stringify(initialList.items),
+      name: initialList.name,
+      purpose: initialList.purpose,
+      note: initialList.note,
+    };
+  }
+
+  let initialData = getComparableList(list);
 
   function checkChanges() {
-    const currentData = {
-      items: JSON.stringify(store.items),
-      itemsCount: store.items.length,
-      name: store.name,
-      purpose: store.purpose,
-      note: store.note,
-    };
+    const currentData = getComparableList(store);
 
     setIsChanged(
       currentData.items !== initialData.items ||
-        currentData.itemsCount !== initialData.itemsCount || // Проверяем количество
         currentData.name !== initialData.name ||
         currentData.purpose !== initialData.purpose ||
         currentData.note !== initialData.note,
@@ -209,12 +203,7 @@ export const EditList: Component<EditListProps> = (props) => {
           history.pushState({}, "", `/lists/${list.id}`);
           setSendingNow(false);
 
-          initialData.items = JSON.stringify(store.items);
-          initialData.itemsCount = store.items.length;
-          initialData.name = store.name;
-          initialData.purpose = store.purpose;
-          initialData.note = store.note;
-
+          initialData = getComparableList(store);
           checkChanges();
         });
       })
@@ -240,12 +229,7 @@ export const EditList: Component<EditListProps> = (props) => {
         soften(() => {
           setSendingNow(false);
 
-          initialData.items = JSON.stringify(store.items);
-          initialData.itemsCount = store.items.length;
-          initialData.name = store.name;
-          initialData.purpose = store.purpose;
-          initialData.note = store.note;
-
+          initialData = getComparableList(store);
           checkChanges();
         });
       })

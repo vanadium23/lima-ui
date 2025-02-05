@@ -88,7 +88,7 @@ export const ListItem: Component<ListItemProps> = (props) => {
           placeholder={"Пункт списка"}
           defaultValue={mProps.defaultValue}
           isRequired={true}
-          onChange={(value) => mProps.onChange?.(value)}
+          onChange={mProps.onChange}
         />
         <div class="listItem__controls">
           <IconButton

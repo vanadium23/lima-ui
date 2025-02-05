@@ -89,10 +89,10 @@ export const EditableTitle: Component<Testable<EditableTitleProps>> = (
         data-test-sub-id={mProps.testSubId}
         rows={1}
         onInput={(event) => {
-          const value = event.currentTarget.value;
-          setCounter(event.target.value.length);
+          const value = event.target.value;
+          setCounter(value.length);
           autoGrow(event.target as HTMLTextAreaElement);
-          mProps.onChange?.(value);
+          mProps.onChange(value);
         }}
       >
         {mProps.defaultValue}

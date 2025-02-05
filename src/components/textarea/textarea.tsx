@@ -63,9 +63,9 @@ export const Textarea: Component<Testable<TextareaProps>> = (props) => {
         placeholder={mProps.placeholder}
         required={mProps.isRequired}
         onInput={(event) => {
-          const value = event.currentTarget.value;
+          const value = event.target.value;
           setCounter(value.length);
-          mProps.onChange?.(value);
+          mProps.onChange(value);
         }}
         data-test-id={mProps.testId}
       >

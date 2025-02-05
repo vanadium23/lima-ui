@@ -49,7 +49,7 @@ export const Switch: Component<Testable<SwitchProps>> = (props) => {
         disabled={mProps.isDisabled}
         checked={mProps.isChecked}
         onChange={(e) => {
-          mProps.onChange?.(e.currentTarget.checked);
+          mProps.onChange(e.currentTarget.checked);
         }}
         {...prepareARIALabel(mProps.ariaLabel)}
       />
