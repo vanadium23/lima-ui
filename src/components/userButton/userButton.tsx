@@ -1,5 +1,6 @@
 import { mergeProps } from 'solid-js';
 import { DEFAULT_TEST_ID } from '../../../features/testIds';
+import type { Testable } from '../utilities/testable';
 import './userButton.css';
 
 export enum UserButtonTheme {
@@ -16,8 +17,8 @@ type UserButtonProps = {
   size?: UserButtonSize;
 }
 
-export const UserButton = (props: UserButtonProps) => {
-  const mProps: Required<UserButtonProps> = mergeProps(
+export const UserButton = (props: Testable<UserButtonProps>) => {
+  const mProps: Testable<Required<UserButtonProps>> = mergeProps(
     {
       theme: UserButtonTheme.Primary,
       size: UserButtonSize.Medium,

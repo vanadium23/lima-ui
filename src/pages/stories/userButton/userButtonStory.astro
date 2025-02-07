@@ -1,4 +1,5 @@
 ---
+import { DEFAULT_TEST_ID } from "../../../../features/testIds";
 import { UserButton, UserButtonSize, UserButtonTheme } from "../../../components/userButton/userButton";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
@@ -15,11 +16,9 @@ const sizes = Object.values(UserButtonSize);
         <div class="grid grid_1Col">
             <span class="chead"/>
             <span class="chead">Default</span>
-            {/* <span class="chead">Loading</span>
-            <span class="chead">Disabled</span> */}
             {sizes.map((size) => (
                     <span class="rhead">{size}</span>
-                    <UserButton userName="Ефросинья_Мыловареная" />
+                    <UserButton userName="Ефросинья_Мыловареная" testId={DEFAULT_TEST_ID}/>
             ))}
         </div>
     </div>
