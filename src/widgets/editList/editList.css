@@ -10,7 +10,6 @@
   flex-direction: column;
   flex-grow: 1;
   max-width: 68rem;
-  padding: var(--size-x12) var(--size-x20);
   overflow: auto;
 }
 
@@ -24,21 +23,20 @@
 .editList__listHeader {
   display: flex;
   flex-direction: column;
-  gap: var(--size-x6);
-  padding: var(--size-x1);
+  gap: var(--size-x3);
+  padding: var(--size-x3) var(--size-x4) 0 var(--size-x20);
 }
 
-.editList__title {
+.editList__listHeaderInner {
   display: flex;
-  width: 100%;
-  gap: var(--size-x10);
-  padding: var(--size-x1);
+  flex-direction: column;
+  gap: var(--size-x4);
 }
 
 .editList__wrapper {
   display: flex;
   flex-direction: column;
-  gap: var(--size-x9);
+  gap: var(--size-x4);
   overflow: auto;
 }
 
@@ -53,13 +51,12 @@
 .editList__inner {
   display: flex;
   flex-direction: column-reverse;
-  padding: var(--size-x2) var(--size-x4) var(--size-x2) var(--size-x1);
   overflow: auto;
 }
 
 .editList__scrollWrapper {
   display: flex;
-  gap: var(--size-x8);
+  gap: var(--size-x2);
   flex-direction: column;
 }
 

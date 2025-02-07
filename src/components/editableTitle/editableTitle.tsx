@@ -29,6 +29,7 @@ type EditableTitleProps = {
   isRequired?: boolean;
   defaultValue?: string;
   dataId?: string;
+  onChange?: (value: string) => void;
 };
 
 export const EditableTitle = (props: Testable<EditableTitleProps>) => {
@@ -41,6 +42,7 @@ export const EditableTitle = (props: Testable<EditableTitleProps>) => {
       isRequired: false,
       defaultValue: "",
       dataId: "",
+      onChange: () => {},
     },
     props,
   );
@@ -84,8 +86,10 @@ export const EditableTitle = (props: Testable<EditableTitleProps>) => {
         data-test-sub-id={mProps.testSubId}
         rows={1}
         onInput={(event) => {
-          setCounter(event.target.value.length);
+          const value = event.target.value;
+          setCounter(value.length);
           autoGrow(event.target as HTMLTextAreaElement);
+          mProps.onChange(value);
         }}
       >
         {mProps.defaultValue}

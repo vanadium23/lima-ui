@@ -1,4 +1,4 @@
-import { For, mergeProps, Show } from "solid-js";
+import { createSignal, For, mergeProps, Show } from "solid-js";
 import { createStore } from "solid-js/store";
 import {
   ITEMS_LIMIT,
@@ -79,19 +79,28 @@ export const EditList = (props: EditListProps) => {
 
   type EditListStore = {
     items: UpdatedList["items"];
+    name: string;
+    purpose: string;
+    note: string;
     sendingNow: boolean;
     error: boolean;
   };
 
   const [store, setStore] = createStore<EditListStore>({
     items: list.items,
+    name: list.name,
+    purpose: list.purpose,
+    note: list.note,
     sendingNow: false,
     error: false,
   });
 
+  const [getCheckable, setIsCheckable] = createSignal(false);
+
   function addItem() {
     if (store.items.length < ITEMS_LIMIT) {
       setStore("items", [...store.items, { content: "", id: "" }]);
+      checkChanges();
     }
   }
 
@@ -107,6 +116,36 @@ export const EditList = (props: EditListProps) => {
     setStore("items", (items) =>
       items.filter((_item, index) => index !== indexToRemove),
     );
+    checkChanges();
+  }
+
+  const [isChanged, setIsChanged] = createSignal(false);
+
+  function getComparableList(initialList: Omit<UpdatedList, "id">) {
+    return {
+      items: JSON.stringify(initialList.items),
+      name: initialList.name,
+      purpose: initialList.purpose,
+      note: initialList.note,
+    };
+  }
+
+  let initialData = getComparableList(list);
+
+  function checkChanges() {
+    const currentData = getComparableList(store);
+
+    setIsChanged(
+      currentData.items !== initialData.items ||
+        currentData.name !== initialData.name ||
+        currentData.purpose !== initialData.purpose ||
+        currentData.note !== initialData.note,
+    );
+  }
+
+  function handleInputChange(key: keyof typeof initialData, value: string) {
+    setStore(key, value);
+    checkChanges();
   }
 
   function prepareAndSendListData(event: SubmitEvent) {
@@ -163,6 +202,9 @@ export const EditList = (props: EditListProps) => {
         soften(() => {
           history.pushState({}, "", `/lists/${list.id}`);
           setSendingNow(false);
+
+          initialData = getComparableList(store);
+          checkChanges();
         });
       })
       .catch((error) => {
@@ -186,6 +228,9 @@ export const EditList = (props: EditListProps) => {
       .then(() => {
         soften(() => {
           setSendingNow(false);
+
+          initialData = getComparableList(store);
+          checkChanges();
         });
       })
       .catch((error) => {
@@ -219,9 +264,10 @@ export const EditList = (props: EditListProps) => {
                   isRequired={true}
                   isDisabled={store.sendingNow}
                   defaultValue={list.name}
+                  onChange={(value) => handleInputChange("name", value)}
                 />
               </div>
-              <div class="editList__input">
+              <div class="editList__listHeaderInner">
                 <ItemInput
                   theme={ItemInputTheme.Primary}
                   size={ItemInputSize.Medium}
@@ -231,14 +277,14 @@ export const EditList = (props: EditListProps) => {
                   testId={LIST_PURPOSE_INPUT}
                   isDisabled={store.sendingNow}
                   defaultValue={list.purpose}
+                  onChange={(value) => handleInputChange("purpose", value)}
                 />
-              </div>
-              <div class="editList__input">
                 <Note
                   title="Заметка"
                   name={EditListFormNames.ListNote}
                   isDisabled={store.sendingNow}
                   defaultValue={list.note}
+                  onChange={(value) => handleInputChange("note", value)}
                   testId={DEFAULT_TEST_ID}
                 />
               </div>
@@ -253,12 +299,16 @@ export const EditList = (props: EditListProps) => {
                         removeItem={() => removeItem(getIndex())}
                         isDisabled={store.sendingNow}
                         isLastItem={isLastItem()}
-                        isCheckable={false}
+                        isCheckable={getCheckable()}
                         isChecked={false}
                         defaultValue={item.content}
                         name={`${EditListFormNames.ListItem} ${getIndex() + 1}`}
                         dataId={"id" in item ? item.id : ""}
                         defaultListItemId={String(getIndex())}
+                        onChange={(value) => {
+                          setStore("items", getIndex(), "content", value);
+                          checkChanges();
+                        }}
                         testId={ITEM_INPUT_CONTAINER}
                         testSubId={getIndex()}
                       />
@@ -281,6 +331,7 @@ export const EditList = (props: EditListProps) => {
                 <Button
                   type={ButtonType.Submit}
                   text="Сохранить"
+                  isDisabled={isChanged()}
                   isLoading={store.sendingNow}
                   testId={CREATE_LIST_BUTTON}
                 />
@@ -320,7 +371,12 @@ export const EditList = (props: EditListProps) => {
           </div>
           <Divider testId={DEFAULT_TEST_ID} />
           <div class="toolsPanel__verticalSection">
-            <Switch testId={DEFAULT_TEST_ID} text="Чек-лист" />
+            <Switch
+              testId={DEFAULT_TEST_ID}
+              text="Чек-лист"
+              isChecked={getCheckable()}
+              onChange={setIsCheckable}
+            />
           </div>
           <Divider testId={DEFAULT_TEST_ID} />
           <div class="toolsPanel__horizontalSection">

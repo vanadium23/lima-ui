@@ -30,6 +30,7 @@ type ItemInputProps = {
   defaultValue?: string;
   dataId?: string;
   placeholder: string;
+  onChange?: (value: string) => void;
 };
 
 export const ItemInput = (props: Testable<ItemInputProps>) => {
@@ -42,6 +43,7 @@ export const ItemInput = (props: Testable<ItemInputProps>) => {
       isRequired: false,
       defaultValue: "",
       dataId: "",
+      onChange: () => {},
     },
     props,
   );
@@ -89,8 +91,10 @@ export const ItemInput = (props: Testable<ItemInputProps>) => {
         data-test-sub-id={mProps.testSubId}
         rows={1}
         onInput={(event) => {
-          setCounter(event.target.value.length);
+          const value = event.target.value;
+          setCounter(value.length);
           autoGrow(event.target as HTMLTextAreaElement);
+          mProps.onChange(value);
         }}
       >
         {mProps.defaultValue}

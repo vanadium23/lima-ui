@@ -31,6 +31,7 @@ type NoteProps = {
   title?: string;
   name?: string;
   defaultValue?: string;
+  onChange?: (value: string) => void;
 };
 
 export const Note = (props: Testable<NoteProps>) => {
@@ -43,6 +44,7 @@ export const Note = (props: Testable<NoteProps>) => {
       isDisabled: false,
       isLoading: false,
       defaultValue: "",
+      onChange: () => {},
     },
     props,
   );
@@ -76,6 +78,7 @@ export const Note = (props: Testable<NoteProps>) => {
         isDisabled={mProps.isDisabled}
         testId={NOTE_TEXT_AREA}
         defaultValue={mProps.defaultValue}
+        onChange={mProps.onChange}
       />
     </Accordion>
   );
