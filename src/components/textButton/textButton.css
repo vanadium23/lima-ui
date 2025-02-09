@@ -15,7 +15,7 @@
 
 .textButton__loadingIcon {
   display: flex;
-  animation: rotate-infinite 0.7s linear infinite;
+  animation: var(--preloader)
 }
 
 .textButton_small {
@@ -78,14 +78,4 @@
 
 .textButton_loading {
   cursor: wait;
-}
-
-@keyframes rotate-infinite {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
 }

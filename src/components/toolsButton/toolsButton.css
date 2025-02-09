@@ -11,6 +11,15 @@
   text-decoration: none;
 }
 
+.toolsButton_loading {
+  cursor: wait;
+}
+
+.toolsButton_loading .toolsButton__loadingIcon {
+  display: flex;
+  animation: var(--preloader)
+}
+
 .toolsButton:focus-visible {
   outline: var(--outline-set);
   outline-offset: var(--outline-offset);
@@ -20,7 +29,7 @@
   outline: none;
 }
 
-.toolsButton:active:not(:disabled, .toolsButton_disabled) {
+.toolsButton:active:not(.toolsButton_disabled, .toolsButton_loading) {
   transform: translateY(0.1rem);
 }
 
@@ -67,11 +76,11 @@
   color: var(--text-neutral-800);
 }
 
-.toolsButton_primary:hover:not(:disabled, .toolsButton_disabled) {
+.toolsButton_primary:hover:not(.toolsButton_disabled, .toolsButton_loading) {
   background: var(--neutral-150);
 }
 
-.toolsButton_primary:active:not(:disabled, .toolsButton_disabled) {
+.toolsButton_primary:active:not(.toolsButton_disabled, .toolsButton_loading) {
   background: var(--neutral-200);
 }
 
@@ -89,11 +98,11 @@
   color: var(--text-dangerous-500);
 }
 
-.toolsButton_dangerous:hover:not(:disabled, .toolsButton_disabled) {
+.toolsButton_dangerous:hover:not(.toolsButton_disabled, .toolsButton_loading) {
   background: var(--neutral-150);
 }
 
-.toolsButton_dangerous:active:not(:disabled, .toolsButton_disabled) {
+.toolsButton_dangerous:active:not(.toolsButton_disabled, .toolsButton_loading) {
   background: var(--neutral-200);
 }
 

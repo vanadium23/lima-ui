@@ -63,6 +63,7 @@
   /* Custom-properties */
   --outline-set: 0.1rem solid var(--outline);
   --outline-offset: 0.1rem;
+  --preloader: rotate-preloader 0.7s linear infinite;
 }
 
 *,
@@ -84,4 +85,14 @@ button,
 textarea {
   appearance: none;
   padding: 0;
+}
+
+@keyframes rotate-preloader {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }

@@ -30,7 +30,7 @@
 
 .iconButton__loadingIcon {
   display: flex;
-  animation: rotate-infinite 0.7s linear infinite;
+  animation: var(--preloader)
 }
 
 /* Sizes */
@@ -118,14 +118,4 @@
 .iconButton_disabled {
   cursor: not-allowed;
   color: var(--neutral-500);
-}
-
-@keyframes rotate-infinite {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
 }

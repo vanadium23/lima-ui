@@ -23,6 +23,7 @@ type ToolsButtonProps = {
   componentType?: ToolsButtonComponentType;
   iconName: IconName;
   isDisabled?: boolean;
+  isLoading?: boolean;
   handleClick?: () => void;
   text: string;
   openInNewTab?: boolean;
@@ -36,9 +37,10 @@ export const ToolsButton = (props: Testable<ToolsButtonProps>) => {
       size: ToolsButtonSize.Medium,
       componentType: ToolsButtonComponentType.Button,
       isDisabled: false,
+      isLoading: false,
       openInNewTab: false,
       link: "",
-      handleClick: () => { },
+      handleClick: () => {},
     },
     props,
   );
@@ -53,19 +55,35 @@ export const ToolsButton = (props: Testable<ToolsButtonProps>) => {
         <button
           type="button"
           onClick={() => {
-            mProps.handleClick();
+            if (!mProps.isLoading) {
+              mProps.handleClick();
+            }
           }}
           class={`toolsButton toolsButton_${mProps.theme} toolsButton_${mProps.size}`}
           classList={{
             toolsButton_disabled: mProps.isDisabled,
+            toolsButton_loading: mProps.isLoading,
           }}
+          aria-disabled={mProps.isLoading}
           disabled={mProps.isDisabled}
           data-test-id={mProps.testId}
           data-test-sub-id={mProps.testSubId}
         >
           <div class="toolsButton__iconWrapper">
             <div class="toolsButton__icon">
-              <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
+              <Show
+                when={mProps.isLoading}
+                fallback={
+                  <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
+                }
+              >
+                <div class="toolsButton__loadingIcon">
+                  <Icon
+                    name={IconName.CircleNotch}
+                    size={iconSize[mProps.size]}
+                  />
+                </div>
+              </Show>
             </div>
           </div>
 
@@ -74,20 +92,33 @@ export const ToolsButton = (props: Testable<ToolsButtonProps>) => {
       </Show>
       <Show when={mProps.componentType === ToolsButtonComponentType.Link}>
         <a
-          href={!mProps.isDisabled ? mProps.link : "#"}
+          href={!mProps.isLoading && !mProps.isDisabled ? mProps.link : "#"}
           target={mProps.openInNewTab ? "_blank" : "_self"}
           rel={mProps.openInNewTab ? "noopener noreferrer" : ""}
           class={`toolsButton toolsButton_${mProps.theme} toolsButton_${mProps.size}`}
           classList={{
             toolsButton_disabled: mProps.isDisabled,
+            toolsButton_loading: mProps.isLoading,
           }}
-          aria-disabled={mProps.isDisabled}
+          aria-disabled={mProps.isLoading || mProps.isDisabled}
           data-test-id={mProps.testId}
           data-test-sub-id={mProps.testSubId}
         >
           <div class="toolsButton__iconWrapper">
             <div class="toolsButton__icon">
-              <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
+              <Show
+                when={mProps.isLoading}
+                fallback={
+                  <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
+                }
+              >
+                <div class="toolsButton__loadingIcon">
+                  <Icon
+                    name={IconName.CircleNotch}
+                    size={iconSize[mProps.size]}
+                  />
+                </div>
+              </Show>
             </div>
           </div>
 
