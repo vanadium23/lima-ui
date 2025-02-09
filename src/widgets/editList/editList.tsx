@@ -40,9 +40,15 @@ import {
 } from "../../organisms/toolsPanel/toolsPanel.tsx";
 import { createList } from "../../services/createList.ts";
 import { updateList } from "../../services/updateList.ts";
+import { removeList } from "../../services/removeList.ts";
 import type { BackendList, NewList, UpdatedList } from "../../types.ts";
 import "./editList.css";
 import { soften } from "./utilities/soften.ts";
+import {
+  Dialog,
+  DialogSize,
+  DialogTheme,
+} from "../../components/dialog/dialog.tsx";
 
 type EditListProps = {
   defaultList?: BackendList;
@@ -97,6 +103,16 @@ export const EditList = (props: EditListProps) => {
 
   const [getCheckable, setIsCheckable] = createSignal(false);
 
+  const [isDialogOpen, setIsDialogOpen] = createSignal(false);
+
+  const openDialog = () => {
+    setIsDialogOpen(true);
+  };
+
+  const closeDialog = () => {
+    setIsDialogOpen(false);
+  };
+
   function addItem() {
     if (store.items.length < ITEMS_LIMIT) {
       setStore("items", [...store.items, { content: "", id: "" }]);
@@ -135,12 +151,13 @@ export const EditList = (props: EditListProps) => {
   function checkChanges() {
     const currentData = getComparableList(store);
 
-    setIsChanged(
+    const hasChanges =
       currentData.items !== initialData.items ||
-        currentData.name !== initialData.name ||
-        currentData.purpose !== initialData.purpose ||
-        currentData.note !== initialData.note,
-    );
+      currentData.name !== initialData.name ||
+      currentData.purpose !== initialData.purpose ||
+      currentData.note !== initialData.note;
+
+    setIsChanged(hasChanges);
   }
 
   function handleInputChange(key: keyof typeof initialData, value: string) {
@@ -198,9 +215,15 @@ export const EditList = (props: EditListProps) => {
     setSendingNow(true);
 
     createList(data)
-      .then((list) => {
+      .then((newList: BackendList) => {
         soften(() => {
-          history.pushState({}, "", `/lists/${list.id}`);
+          history.pushState({}, "", `/lists/${newList.id}`);
+
+          setStore("items", newList.items);
+          setStore("name", newList.name);
+          setStore("purpose", newList.purpose);
+          setStore("note", newList.note);
+          list.id = newList.id;
           setSendingNow(false);
 
           initialData = getComparableList(store);
@@ -239,6 +262,29 @@ export const EditList = (props: EditListProps) => {
           error,
         );
 
+        soften(() => {
+          setStore("error", true);
+          setSendingNow(false);
+        });
+      });
+  }
+
+  function sendListRemove() {
+    if (!list.id) return;
+
+    setStore("error", false);
+    setStore("sendingNow", true);
+    setIsDialogOpen(false);
+
+    removeList(list.id)
+      .then(() => {
+        soften(() => {
+          setSendingNow(false);
+          location.href = "/lists";
+        });
+      })
+      .catch((error) => {
+        console.error("Error deleting the list:", error);
         soften(() => {
           setStore("error", true);
           setSendingNow(false);
@@ -331,7 +377,7 @@ export const EditList = (props: EditListProps) => {
                 <Button
                   type={ButtonType.Submit}
                   text="Сохранить"
-                  isDisabled={isChanged()}
+                  isDisabled={!isChanged()}
                   isLoading={store.sendingNow}
                   testId={CREATE_LIST_BUTTON}
                 />
@@ -359,6 +405,7 @@ export const EditList = (props: EditListProps) => {
               componentType={ToolsButtonComponentType.Button}
               iconName={IconName.CopySimple}
               text={"Копировать пункты"}
+              isDisabled={store.sendingNow}
               testId={DEFAULT_TEST_ID}
             />
             <ToolsButton
@@ -366,14 +413,32 @@ export const EditList = (props: EditListProps) => {
               iconName={IconName.Trash}
               theme={ToolsButtonTheme.Dangerous}
               text={"Удалить список"}
+              isLoading={store.sendingNow}
+              isDisabled={list.id === ""}
+              handleClick={openDialog}
               testId={DEFAULT_TEST_ID}
             />
+            <Dialog
+              theme={DialogTheme.Primary}
+              size={DialogSize.Medium}
+              title="Заголовок"
+              onConfirm={sendListRemove}
+              onCancel={closeDialog}
+              isOpen={isDialogOpen()}
+              testId={DEFAULT_TEST_ID}
+            >
+              <p>
+                Список <strong>{store.name}</strong> будет удален без
+                возможности восстановления.
+              </p>
+            </Dialog>
           </div>
           <Divider testId={DEFAULT_TEST_ID} />
           <div class="toolsPanel__verticalSection">
             <Switch
               testId={DEFAULT_TEST_ID}
               text="Чек-лист"
+              isDisabled={store.sendingNow}
               isChecked={getCheckable()}
               onChange={setIsCheckable}
             />
@@ -386,6 +451,7 @@ export const EditList = (props: EditListProps) => {
               link={`./${list.id}/print`}
               text={"Напечатать список"}
               testId={DEFAULT_TEST_ID}
+              isDisabled={store.sendingNow}
               openInNewTab={true}
             />
           </div>
