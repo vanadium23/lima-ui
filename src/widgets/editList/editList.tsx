@@ -44,11 +44,7 @@ import { removeList } from "../../services/removeList.ts";
 import type { BackendList, NewList, UpdatedList } from "../../types.ts";
 import "./editList.css";
 import { soften } from "./utilities/soften.ts";
-import {
-  Dialog,
-  DialogSize,
-  DialogTheme,
-} from "../../components/dialog/dialog.tsx";
+import { Dialog } from "../../components/dialog/dialog.tsx";
 
 type EditListProps = {
   defaultList?: BackendList;
@@ -222,14 +218,10 @@ export const EditList = (props: EditListProps) => {
     setSendingNow(true);
 
     createList(data)
-      .then((newList: BackendList) => {
+      .then((newList) => {
         soften(() => {
           history.pushState({}, "", `/lists/${newList.id}`);
 
-          setStore("items", newList.items);
-          setStore("name", newList.name);
-          setStore("purpose", newList.purpose);
-          setStore("note", newList.note);
           list.id = newList.id;
           setSendingNow(false);
 
@@ -287,7 +279,7 @@ export const EditList = (props: EditListProps) => {
       .then(() => {
         soften(() => {
           setSendingNow(false);
-          location.href = "/lists";
+          location.href = "/lists/";
         });
       })
       .catch((error) => {
@@ -427,9 +419,7 @@ export const EditList = (props: EditListProps) => {
               testId={DEFAULT_TEST_ID}
             />
             <Dialog
-              theme={DialogTheme.Primary}
-              size={DialogSize.Medium}
-              title="Заголовок"
+              title="Удаление списка"
               onConfirm={sendListRemove}
               onCancel={closeDialog}
               isOpen={isDialogOpen()}

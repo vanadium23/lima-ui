@@ -6,12 +6,11 @@ export async function removeList(
 
   const response = await fetch(`${backend}/lists/${id}`, {
     method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-    },
   });
 
   if (!response.ok) {
     throw new Error("Network response was not ok " + response.statusText);
   }
+
+  return await response.json();
 }
