@@ -135,6 +135,13 @@ export const EditList = (props: EditListProps) => {
     checkChanges();
   }
 
+  function copyItemsToClipboard() {
+    const textToCopy = store.items
+      .map((item) => item.content.trim())
+      .join("\n");
+    navigator.clipboard.writeText(textToCopy).catch(() => {});
+  }
+
   const [isChanged, setIsChanged] = createSignal(false);
 
   function getComparableList(initialList: Omit<UpdatedList, "id">) {
@@ -405,7 +412,8 @@ export const EditList = (props: EditListProps) => {
               componentType={ToolsButtonComponentType.Button}
               iconName={IconName.CopySimple}
               text={"Копировать пункты"}
-              isDisabled={store.sendingNow}
+              isDisabled={store.sendingNow || store.items.length === 0}
+              handleClick={copyItemsToClipboard}
               testId={DEFAULT_TEST_ID}
             />
             <ToolsButton
