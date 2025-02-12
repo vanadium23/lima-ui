@@ -1,0 +1,57 @@
+import { mergeProps } from "solid-js";
+import { Icon, IconName, IconSize } from "../icon/icon.tsx";
+import type { Testable } from "../utilities/testable.ts";
+import "./menuItem.css";
+
+export enum MenuItemTheme {
+  Primary = "primary",
+  Dangerous = "dangerous",
+}
+
+export enum MenuItemSize {
+  Medium = "medium",
+}
+
+type MenuItemProps = {
+  theme?: MenuItemTheme;
+  size?: MenuItemSize;
+  isDisabled?: boolean;
+  text: string;
+  isLoading?: boolean;
+  handleClick?: () => void;
+  icon: IconName;
+};
+
+export const MenuItem = (props: Testable<MenuItemProps>) => {
+  const mProps: Testable<Required<MenuItemProps>> = mergeProps(
+    {
+      theme: MenuItemTheme.Primary,
+      size: MenuItemSize.Medium,
+      isDisabled: false,
+      isLoading: false,
+      handleClick: () => {},
+    },
+    props,
+  );
+
+  return (
+    <li
+      role="menuitem"
+      class={`menuItem menuItem_${mProps.theme} menuItem_${mProps.size}`}
+      classList={{
+        menuItem_disabled: mProps.isDisabled,
+      }}
+      aria-disabled={mProps.isDisabled}
+      tabindex={mProps.isDisabled ? -1 : 0}
+      onClick={() => {
+        if (!mProps.isDisabled) {
+          mProps.handleClick();
+        }
+      }}
+      data-test-id={mProps.testId}
+    >
+      <Icon name={mProps.icon} size={IconSize.Medium} />
+      <span class="menuItem__text">{mProps.text}</span>
+    </li>
+  );
+};

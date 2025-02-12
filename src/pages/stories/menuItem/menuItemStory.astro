@@ -1,0 +1,34 @@
+---
+import StorybookPage from '../../../layouts/storybook/storybookPage.astro';
+import {MenuItem, MenuItemSize, MenuItemTheme} from '../../../components/menuItem/menuItem.tsx';
+import {DEFAULT_TEST_ID} from "../../../../features/testIds";
+import {IconName} from "../../../components/icon/icon";
+
+const themes = Object.values(MenuItemTheme);
+const sizes = Object.values(MenuItemSize);
+---
+
+<StorybookPage title="MenuItem">
+
+    {themes.map((theme) => (
+            <div class="demoThemeWrapper">
+                <h3 class="demoThemeWrapper__title">{theme}</h3>
+                <div class="grid grid_2Col">
+                    <span class="chead"/>
+                    <span class="chead">Default</span>
+                    <span class="chead">Disabled</span>
+
+                    {sizes.map((size) => (
+                            <span class="rhead">{size}</span>
+
+                            <MenuItem client:only="solid-js" icon={IconName.Trash} theme={theme} size={size} text="Text" testId={DEFAULT_TEST_ID}/>
+
+                            <MenuItem client:only="solid-js" icon={IconName.Trash} theme={theme} size={size} text="Text" testId={DEFAULT_TEST_ID}
+                                    isDisabled={true}/>
+                    ))}
+
+                </div>
+            </div>
+    ))}
+
+</StorybookPage>
