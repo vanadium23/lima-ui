@@ -3,22 +3,7 @@
     font-weight: 500;
 }
 
-.charCounter_extraSmall {
+.charCounter_medium {
     font-size: 1.2rem;
     line-height: 1.6rem;
-}
-
-.charCounter_small {
-    font-size: 1.4rem;
-    line-height: 1.8rem;
-}
-
-.charCounter_medium {
-    font-size: 1.6rem;
-    line-height: 2rem;
-}
-
-.charCounter_large {
-    font-size: 1.8rem;
-    line-height: 2.2rem;
 }

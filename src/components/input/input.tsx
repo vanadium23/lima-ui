@@ -1,9 +1,5 @@
 import { createSignal, mergeProps, Show } from "solid-js";
-import {
-  CharCounter,
-  CharCounterSize,
-  CharCounterTheme,
-} from "../charCounter/charCounter.tsx";
+import { CharCounter } from "../charCounter/charCounter.tsx";
 import type { Testable } from "../utilities/testable.ts";
 import "./input.css";
 
@@ -62,12 +58,6 @@ export const Input = (props: Testable<InputProps>) => {
     props,
   );
 
-  const charCounterSize = {
-    [InputSize.Small]: CharCounterSize.Small,
-    [InputSize.Medium]: CharCounterSize.Medium,
-    [InputSize.Large]: CharCounterSize.Large,
-  };
-
   const [getCounter, setCounter] = createSignal(mProps.defaultValue.length);
 
   return (
@@ -96,8 +86,6 @@ export const Input = (props: Testable<InputProps>) => {
       <div class="input__controls">
         <Show when={mProps.isCountable}>
           <CharCounter
-            theme={CharCounterTheme.Primary}
-            size={charCounterSize[mProps.size]}
             value={mProps.maxLength - getCounter()}
             testId={mProps.testId}
             testSubId={mProps.testSubId ?? ""}

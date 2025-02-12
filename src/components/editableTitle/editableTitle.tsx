@@ -1,13 +1,5 @@
-import {
-  createEffect,
-  createSignal,
-  mergeProps
-} from "solid-js";
-import {
-  CharCounter,
-  CharCounterSize,
-  CharCounterTheme,
-} from "../charCounter/charCounter.tsx";
+import { createEffect, createSignal, mergeProps } from "solid-js";
+import { CharCounter } from "../charCounter/charCounter.tsx";
 import type { Testable } from "../utilities/testable.ts";
 import "./editableTitle.css";
 
@@ -97,8 +89,6 @@ export const EditableTitle = (props: Testable<EditableTitleProps>) => {
       <div class="editableTitle__controls">
         <div class="editableTitle__counter">
           <CharCounter
-            theme={CharCounterTheme.Primary}
-            size={CharCounterSize.ExtraSmall}
             value={mProps.maxLength - getCounter()}
             testId={mProps.testId}
             testSubId={mProps.testSubId ?? ""}

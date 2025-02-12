@@ -1,9 +1,5 @@
 import { createSignal, mergeProps } from "solid-js";
-import {
-  CharCounter,
-  CharCounterSize,
-  CharCounterTheme,
-} from "../charCounter/charCounter.tsx";
+import { CharCounter } from "../charCounter/charCounter.tsx";
 import type { Testable } from "../utilities/testable.ts";
 import "./textarea.css";
 
@@ -73,8 +69,6 @@ export const Textarea = (props: Testable<TextareaProps>) => {
       </textarea>
       <div class="textarea__controls">
         <CharCounter
-          theme={CharCounterTheme.Primary}
-          size={CharCounterSize.ExtraSmall}
           value={mProps.maxLength - getCounter()}
           testId={mProps.testId}
         />

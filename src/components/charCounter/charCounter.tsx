@@ -8,10 +8,7 @@ export enum CharCounterTheme {
 }
 
 export enum CharCounterSize {
-  ExtraSmall = "extraSmall",
-  Small = "small",
   Medium = "medium",
-  Large = "large",
 }
 
 type CharCounterProps = {
