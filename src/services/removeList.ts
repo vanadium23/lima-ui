@@ -2,6 +2,10 @@ export async function removeList(
   id: string,
   backendURL?: string,
 ): Promise<void> {
+  if (!id) {
+    throw new Error("Потерялся ID списка");
+  }
+
   const backend = backendURL || import.meta.env.PUBLIC_API_URL;
 
   const response = await fetch(`${backend}/lists/${id}`, {

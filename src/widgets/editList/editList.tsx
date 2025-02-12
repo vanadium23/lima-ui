@@ -275,15 +275,13 @@ export const EditList = (props: EditListProps) => {
   }
 
   function sendListRemove() {
-    if (!list.id) return;
-
     setStore({
       error: false,
       sendingNow: "deleting",
     });
     closeDialog();
 
-    removeList(list.id)
+    removeList(store.id)
       .then(() => {
         soften(() => {
           setStore("sendingNow", false);
