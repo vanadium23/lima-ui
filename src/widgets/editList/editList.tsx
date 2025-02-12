@@ -1,4 +1,4 @@
-import { createSignal, For, mergeProps, Show } from "solid-js";
+import { For, mergeProps, Show } from "solid-js";
 import { createStore } from "solid-js/store";
 import {
   ITEMS_LIMIT,
@@ -87,6 +87,10 @@ export const EditList = (props: EditListProps) => {
     note: string;
     sendingNow: boolean;
     error: boolean;
+    isCheckable: boolean;
+    isDialogOpen: boolean;
+    isChanged: boolean;
+    isNewList: boolean;
   };
 
   const [store, setStore] = createStore<EditListStore>({
@@ -97,19 +101,15 @@ export const EditList = (props: EditListProps) => {
     note: list.note,
     sendingNow: false,
     error: false,
+    isCheckable: false,
+    isDialogOpen: false,
+    isChanged: false,
+    isNewList: list.id === "",
   });
 
-  const [getCheckable, setIsCheckable] = createSignal(false);
-
-  const [isDialogOpen, setIsDialogOpen] = createSignal(false);
-
-  const openDialog = () => {
-    setIsDialogOpen(true);
-  };
-
-  const closeDialog = () => {
-    setIsDialogOpen(false);
-  };
+  const toggleCheckable = () => setStore("isCheckable", !store.isCheckable);
+  const openDialog = () => setStore("isDialogOpen", true);
+  const closeDialog = () => setStore("isDialogOpen", false);
 
   function addItem() {
     if (store.items.length < ITEMS_LIMIT) {
@@ -140,8 +140,6 @@ export const EditList = (props: EditListProps) => {
     navigator.clipboard.writeText(textToCopy).catch(() => {});
   }
 
-  const [isChanged, setIsChanged] = createSignal(false);
-
   function getComparableList(initialList: Omit<UpdatedList, "id">) {
     return {
       items: JSON.stringify(initialList.items),
@@ -153,8 +151,6 @@ export const EditList = (props: EditListProps) => {
 
   let initialData = getComparableList(list);
 
-  const isNewList = () => store.id === "";
-
   function checkChanges() {
     const currentData = getComparableList(store);
 
@@ -164,7 +160,7 @@ export const EditList = (props: EditListProps) => {
       currentData.purpose !== initialData.purpose ||
       currentData.note !== initialData.note;
 
-    setIsChanged(hasChanges);
+    setStore("isChanged", hasChanges);
   }
 
   function handleInputChange(key: keyof typeof initialData, value: string) {
@@ -213,21 +209,22 @@ export const EditList = (props: EditListProps) => {
     }
   }
 
-  function setSendingNow(status: boolean) {
-    setStore("sendingNow", status);
-  }
-
   function sendList(data: NewList) {
-    setStore("error", false);
-    setSendingNow(true);
+    setStore({
+      error: false,
+      sendingNow: true,
+    });
 
     createList(data)
       .then((newList) => {
         soften(() => {
           history.pushState({}, "", `/lists/${newList.id}`);
 
-          setStore("id", newList.id);
-          setSendingNow(false);
+          setStore({
+            id: newList.id,
+            isNewList: false,
+            sendingNow: false,
+          });
 
           initialData = getComparableList(store);
           checkChanges();
@@ -241,20 +238,25 @@ export const EditList = (props: EditListProps) => {
 
         soften(() => {
           setStore("error", true);
-          setSendingNow(false);
+          setStore("sendingNow", false);
         });
       });
   }
 
   function sendListUpdate(data: UpdatedList) {
-    setStore("error", false);
-    setSendingNow(true);
+    setStore({
+      error: false,
+      sendingNow: true,
+    });
 
     updateList(data)
       .then(() => {
         soften(() => {
-          setStore("id", data.id);
-          setSendingNow(false);
+          setStore({
+            id: data.id,
+            isNewList: false,
+            sendingNow: false,
+          });
 
           initialData = getComparableList(store);
           checkChanges();
@@ -267,8 +269,7 @@ export const EditList = (props: EditListProps) => {
         );
 
         soften(() => {
-          setStore("error", true);
-          setSendingNow(false);
+          setStore({ error: true, sendingNow: false });
         });
       });
   }
@@ -276,22 +277,26 @@ export const EditList = (props: EditListProps) => {
   function sendListRemove() {
     if (!list.id) return;
 
-    setStore("error", false);
-    setStore("sendingNow", true);
-    setIsDialogOpen(false);
+    setStore({
+      error: false,
+      sendingNow: true,
+    });
+    closeDialog();
 
     removeList(list.id)
       .then(() => {
         soften(() => {
-          setSendingNow(false);
+          setStore("sendingNow", false);
           location.href = "/lists/";
         });
       })
       .catch((error) => {
         console.error("Error deleting the list:", error);
         soften(() => {
-          setStore("error", true);
-          setSendingNow(false);
+          setStore({
+            error: true,
+            sendingNow: false,
+          });
         });
       });
   }
@@ -349,7 +354,7 @@ export const EditList = (props: EditListProps) => {
                         removeItem={() => removeItem(getIndex())}
                         isDisabled={store.sendingNow}
                         isLastItem={isLastItem()}
-                        isCheckable={getCheckable()}
+                        isCheckable={store.isCheckable}
                         isChecked={false}
                         defaultValue={item.content}
                         name={`${EditListFormNames.ListItem} ${getIndex() + 1}`}
@@ -381,7 +386,7 @@ export const EditList = (props: EditListProps) => {
                 <Button
                   type={ButtonType.Submit}
                   text="Сохранить"
-                  isDisabled={!isChanged()}
+                  isDisabled={!store.isChanged}
                   isLoading={store.sendingNow}
                   testId={CREATE_LIST_BUTTON}
                 />
@@ -409,7 +414,7 @@ export const EditList = (props: EditListProps) => {
               componentType={ToolsButtonComponentType.Button}
               iconName={IconName.CopySimple}
               text={"Копировать пункты"}
-              isDisabled={isNewList() || store.sendingNow}
+              isDisabled={store.isNewList || store.sendingNow}
               handleClick={copyItemsToClipboard}
               testId={DEFAULT_TEST_ID}
             />
@@ -419,7 +424,7 @@ export const EditList = (props: EditListProps) => {
               theme={ToolsButtonTheme.Dangerous}
               text={"Удалить список"}
               isLoading={store.sendingNow}
-              isDisabled={isNewList()}
+              isDisabled={store.isNewList}
               handleClick={openDialog}
               testId={DEFAULT_TEST_ID}
             />
@@ -427,7 +432,7 @@ export const EditList = (props: EditListProps) => {
               title="Удаление списка"
               onConfirm={sendListRemove}
               onCancel={closeDialog}
-              isOpen={isDialogOpen()}
+              isOpen={store.isDialogOpen}
               testId={DEFAULT_TEST_ID}
             >
               <p>
@@ -442,8 +447,8 @@ export const EditList = (props: EditListProps) => {
               testId={DEFAULT_TEST_ID}
               text="Чек-лист"
               isDisabled={store.sendingNow}
-              isChecked={getCheckable()}
-              onChange={setIsCheckable}
+              isChecked={store.isCheckable}
+              onChange={toggleCheckable}
             />
           </div>
           <Divider testId={DEFAULT_TEST_ID} />
@@ -454,7 +459,7 @@ export const EditList = (props: EditListProps) => {
               link={`./${list.id}/print`}
               text={"Напечатать список"}
               testId={DEFAULT_TEST_ID}
-              isDisabled={isNewList() || store.sendingNow}
+              isDisabled={store.isNewList || store.sendingNow}
               openInNewTab={true}
             />
           </div>
