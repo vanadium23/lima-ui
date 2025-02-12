@@ -85,7 +85,7 @@ export const EditList = (props: EditListProps) => {
     name: string;
     purpose: string;
     note: string;
-    sendingNow: boolean;
+    sendingNow: false | "saving" | "deleting";
     error: boolean;
     isCheckable: boolean;
     isDialogOpen: boolean;
@@ -212,7 +212,7 @@ export const EditList = (props: EditListProps) => {
   function sendList(data: NewList) {
     setStore({
       error: false,
-      sendingNow: true,
+      sendingNow: "saving",
     });
 
     createList(data)
@@ -246,7 +246,7 @@ export const EditList = (props: EditListProps) => {
   function sendListUpdate(data: UpdatedList) {
     setStore({
       error: false,
-      sendingNow: true,
+      sendingNow: "saving",
     });
 
     updateList(data)
@@ -279,7 +279,7 @@ export const EditList = (props: EditListProps) => {
 
     setStore({
       error: false,
-      sendingNow: true,
+      sendingNow: "deleting",
     });
     closeDialog();
 
@@ -317,7 +317,7 @@ export const EditList = (props: EditListProps) => {
                   name={EditListFormNames.ListTitle}
                   testId={LIST_TITLE_INPUT}
                   isRequired={true}
-                  isDisabled={store.sendingNow}
+                  isDisabled={store.sendingNow !== false}
                   defaultValue={list.name}
                   onChange={(value) => handleInputChange("name", value)}
                 />
@@ -330,14 +330,14 @@ export const EditList = (props: EditListProps) => {
                   maxLength={LIST_PURPOSE_INPUT_LIMIT}
                   name={EditListFormNames.ListPurpose}
                   testId={LIST_PURPOSE_INPUT}
-                  isDisabled={store.sendingNow}
+                  isDisabled={store.sendingNow !== false}
                   defaultValue={list.purpose}
                   onChange={(value) => handleInputChange("purpose", value)}
                 />
                 <Note
                   title="Заметка"
                   name={EditListFormNames.ListNote}
-                  isDisabled={store.sendingNow}
+                  isDisabled={store.sendingNow !== false}
                   defaultValue={list.note}
                   onChange={(value) => handleInputChange("note", value)}
                   testId={DEFAULT_TEST_ID}
@@ -352,7 +352,7 @@ export const EditList = (props: EditListProps) => {
                     {(item, getIndex) => (
                       <ListItem
                         removeItem={() => removeItem(getIndex())}
-                        isDisabled={store.sendingNow}
+                        isDisabled={store.sendingNow !== false}
                         isLastItem={isLastItem()}
                         isCheckable={store.isCheckable}
                         isChecked={false}
@@ -386,8 +386,10 @@ export const EditList = (props: EditListProps) => {
                 <Button
                   type={ButtonType.Submit}
                   text="Сохранить"
-                  isDisabled={!store.isChanged}
-                  isLoading={store.sendingNow}
+                  isDisabled={
+                    !store.isChanged || store.sendingNow === "deleting"
+                  }
+                  isLoading={store.sendingNow === "saving"}
                   testId={CREATE_LIST_BUTTON}
                 />
               </div>
@@ -406,7 +408,9 @@ export const EditList = (props: EditListProps) => {
               componentType={ToolsButtonComponentType.Button}
               iconName={IconName.RowsPlusBottom}
               handleClick={addItem}
-              isDisabled={checkItemsLimitReached() || store.sendingNow}
+              isDisabled={
+                checkItemsLimitReached() || store.sendingNow !== false
+              }
               text={"Добавить пункт"}
               testId={DEFAULT_TEST_ID}
             />
@@ -414,7 +418,7 @@ export const EditList = (props: EditListProps) => {
               componentType={ToolsButtonComponentType.Button}
               iconName={IconName.CopySimple}
               text={"Копировать пункты"}
-              isDisabled={store.isNewList || store.sendingNow}
+              isDisabled={store.isNewList || store.sendingNow !== false}
               handleClick={copyItemsToClipboard}
               testId={DEFAULT_TEST_ID}
             />
@@ -423,8 +427,8 @@ export const EditList = (props: EditListProps) => {
               iconName={IconName.Trash}
               theme={ToolsButtonTheme.Dangerous}
               text={"Удалить список"}
-              isLoading={store.sendingNow}
-              isDisabled={store.isNewList}
+              isLoading={store.sendingNow === "deleting"}
+              isDisabled={store.isNewList || store.sendingNow === "saving"}
               handleClick={openDialog}
               testId={DEFAULT_TEST_ID}
             />
@@ -446,7 +450,7 @@ export const EditList = (props: EditListProps) => {
             <Switch
               testId={DEFAULT_TEST_ID}
               text="Чек-лист"
-              isDisabled={store.sendingNow}
+              isDisabled={store.sendingNow !== false}
               isChecked={store.isCheckable}
               onChange={toggleCheckable}
             />
@@ -459,7 +463,7 @@ export const EditList = (props: EditListProps) => {
               link={`./${list.id}/print`}
               text={"Напечатать список"}
               testId={DEFAULT_TEST_ID}
-              isDisabled={store.isNewList || store.sendingNow}
+              isDisabled={store.isNewList || store.sendingNow !== false}
               openInNewTab={true}
             />
           </div>
