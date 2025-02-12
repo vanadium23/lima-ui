@@ -51,6 +51,7 @@
 .editList__inner {
   display: flex;
   flex-direction: column-reverse;
+  padding-left: var(--size-x2);
   overflow: auto;
 }
 
@@ -67,12 +68,12 @@
 
 .editList__inner::-webkit-scrollbar-track {
   background-color: rgb(0 0 0 / 0%);
-  border-radius: 100px;
+  border-radius: 100rem;
 }
 
 .editList__inner::-webkit-scrollbar-thumb {
   background-color: rgb(83 83 83 / 30%);
-  border-radius: 100px;
+  border-radius: 100rem;
 }
 
 .editList__inner:hover::-webkit-scrollbar-thumb {

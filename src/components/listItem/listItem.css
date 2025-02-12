@@ -1,6 +1,12 @@
 .listItem {
   display: flex;
+  align-items: flex-start;
   width: 100%;
+  border-radius: var(--size-x4);
+}
+
+.listItem:active {
+  box-shadow: 0 0.2rem 1.6rem 0 rgb(0 0 0 / 15%);
 }
 
 .listItem_medium {
@@ -15,6 +21,10 @@
   opacity: 0;
 }
 
+.listItem__dragHandle {
+  visibility: hidden;
+}
+
 .listItem__checkbox {
   display: flex;
   padding: var(--size-x3) var(--size-x4) var(--size-x3) var(--size-x3);
@@ -26,7 +36,12 @@
   flex-grow: 1;
 }
 
-.listItem__inner:hover .listItem__controls,
-.listItem__inner:focus-within .listItem__controls {
+.listItem:hover .listItem__controls,
+.listItem:focus-within .listItem__controls {
   opacity: 100;
+}
+
+.listItem:hover .listItem__dragHandle,
+.listItem:focus-within .listItem__dragHandle {
+  visibility: visible;
 }

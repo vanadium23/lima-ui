@@ -20,6 +20,7 @@ import {
 } from "../itemInput/itemInput.tsx";
 import type { Testable } from "../utilities/testable.ts";
 import "./listItem.css";
+import { DragHandle } from "../dragHandle/dragHandle.tsx";
 
 export enum ListItemTheme {
   Primary = "primary",
@@ -66,6 +67,13 @@ export const ListItem = (props: Testable<ListItemProps>) => {
 
   return (
     <div class={`listItem listItem_${mProps.theme} listItem_${mProps.size}`}>
+      <div class="listItem__dragHandle">
+        <DragHandle
+          icon={IconName.DotsSixVertical}
+          isDisabled={mProps.isDisabled}
+          testId={DEFAULT_TEST_ID}
+        />
+      </div>
       <Show when={mProps.isCheckable}>
         <div class="listItem__checkbox">
           <Checkbox

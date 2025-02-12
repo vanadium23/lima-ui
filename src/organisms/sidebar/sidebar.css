@@ -6,6 +6,7 @@
   min-height: 100%;
   width: 25rem;
   padding: var(--size-x2) 0 var(--size-x10) 0;
+  border-right: 0.1rem solid var(--neutral-200);
 }
 
 .sidebar__top {
