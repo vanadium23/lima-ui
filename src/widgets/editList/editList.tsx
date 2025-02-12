@@ -80,6 +80,7 @@ export const EditList = (props: EditListProps) => {
   const list = mProps.defaultList;
 
   type EditListStore = {
+    id: string;
     items: UpdatedList["items"];
     name: string;
     purpose: string;
@@ -89,6 +90,7 @@ export const EditList = (props: EditListProps) => {
   };
 
   const [store, setStore] = createStore<EditListStore>({
+    id: list.id,
     items: list.items,
     name: list.name,
     purpose: list.purpose,
@@ -150,6 +152,8 @@ export const EditList = (props: EditListProps) => {
   }
 
   let initialData = getComparableList(list);
+
+  const isNewList = () => store.id === "";
 
   function checkChanges() {
     const currentData = getComparableList(store);
@@ -222,7 +226,7 @@ export const EditList = (props: EditListProps) => {
         soften(() => {
           history.pushState({}, "", `/lists/${newList.id}`);
 
-          list.id = newList.id;
+          setStore("id", newList.id);
           setSendingNow(false);
 
           initialData = getComparableList(store);
@@ -249,6 +253,7 @@ export const EditList = (props: EditListProps) => {
     updateList(data)
       .then(() => {
         soften(() => {
+          setStore("id", data.id);
           setSendingNow(false);
 
           initialData = getComparableList(store);
@@ -404,7 +409,7 @@ export const EditList = (props: EditListProps) => {
               componentType={ToolsButtonComponentType.Button}
               iconName={IconName.CopySimple}
               text={"Копировать пункты"}
-              isDisabled={store.sendingNow || store.items.length === 0}
+              isDisabled={isNewList() || store.sendingNow}
               handleClick={copyItemsToClipboard}
               testId={DEFAULT_TEST_ID}
             />
@@ -414,7 +419,7 @@ export const EditList = (props: EditListProps) => {
               theme={ToolsButtonTheme.Dangerous}
               text={"Удалить список"}
               isLoading={store.sendingNow}
-              isDisabled={list.id === ""}
+              isDisabled={isNewList()}
               handleClick={openDialog}
               testId={DEFAULT_TEST_ID}
             />
@@ -449,7 +454,7 @@ export const EditList = (props: EditListProps) => {
               link={`./${list.id}/print`}
               text={"Напечатать список"}
               testId={DEFAULT_TEST_ID}
-              isDisabled={store.sendingNow}
+              isDisabled={isNewList() || store.sendingNow}
               openInNewTab={true}
             />
           </div>
