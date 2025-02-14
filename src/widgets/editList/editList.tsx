@@ -253,7 +253,6 @@ export const EditList = (props: EditListProps) => {
       .then(() => {
         soften(() => {
           setStore({
-            id: data.id,
             isNewList: false,
             sendingNow: false,
           });

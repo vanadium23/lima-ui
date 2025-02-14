@@ -21,7 +21,7 @@
 }
 
 .menuItem_primary:focus-visible {
-    background-color: var(--neutral-150);
+    background-color: var(--neutral-200);
 }
 
 .menuItem_primary:hover:not(.menuItem_disabled) {
@@ -37,7 +37,7 @@
 }
 
 .menuItem_dangerous:focus-visible {
-    background-color: var(--neutral-150);
+    background-color: var(--neutral-200);
 }
 
 .menuItem_dangerous:hover:not(.menuItem_disabled) {

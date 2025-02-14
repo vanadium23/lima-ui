@@ -17,7 +17,6 @@ type MenuItemProps = {
   size?: MenuItemSize;
   isDisabled?: boolean;
   text: string;
-  isLoading?: boolean;
   handleClick?: () => void;
   icon: IconName;
 };
@@ -28,7 +27,6 @@ export const MenuItem = (props: Testable<MenuItemProps>) => {
       theme: MenuItemTheme.Primary,
       size: MenuItemSize.Medium,
       isDisabled: false,
-      isLoading: false,
       handleClick: () => {},
     },
     props,
