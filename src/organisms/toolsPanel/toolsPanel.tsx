@@ -1,6 +1,8 @@
 import { type JSX, mergeProps } from "solid-js";
+
 import type { Testable } from "../../components/utilities/testable.ts";
 import { isHidden } from "../../state/toolsPanelState.ts";
+
 import "./toolsPanel.css";
 
 export enum ToolsPanelTheme {

@@ -1,6 +1,8 @@
 import { mergeProps, Show } from "solid-js";
+
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
 import type { Testable } from "../utilities/testable.ts";
+
 import "./button.css";
 
 export enum ButtonTheme {

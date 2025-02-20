@@ -1,23 +1,25 @@
 import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
-import type { ComplexWorld } from "../context/hooks.ts";
-import {
-  COUNTER_TEST_IDS,
-  type CounterMeaning,
-  INPUT_TEST_IDS,
-  type InputMeaning,
-} from "./testIds.ts";
+
 import {
   EDIT_LIST_INPUT_LIMIT,
   LIST_PURPOSE_INPUT_LIMIT,
   LIST_TITLE_INPUT_LIMIT,
   NOTE_TEXT_AREA_LIMIT,
 } from "../../configuration.ts";
+import type { ComplexWorld } from "../context/hooks.ts";
+import { extractInputTestIdFromItsCounterTestId } from "../testIds.ts";
 import {
   getStringLongerThanLowerLimit,
   getStringUpToLimit,
 } from "../utilities/getStringOfLength.ts";
-import { extractInputTestIdFromItsCounterTestId } from "../testIds.ts";
+
+import {
+  COUNTER_TEST_IDS,
+  type CounterMeaning,
+  INPUT_TEST_IDS,
+  type InputMeaning,
+} from "./testIds.ts";
 
 Then(
   "I expect to see the {string} counter",

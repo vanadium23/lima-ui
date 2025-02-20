@@ -1,4 +1,5 @@
 import { mergeProps } from "solid-js";
+
 import { NOTE_TEXT_AREA_LIMIT } from "../../../configuration.ts";
 import { NOTE_ACCORDION, NOTE_TEXT_AREA } from "../../../features/testIds.ts";
 import {
@@ -12,6 +13,7 @@ import {
   TextareaTheme,
 } from "../textarea/textarea.tsx";
 import type { Testable } from "../utilities/testable.ts";
+
 import "./note.css";
 
 export enum NoteTheme {

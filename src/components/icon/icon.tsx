@@ -1,7 +1,8 @@
 import { mergeProps } from "solid-js";
 import { Dynamic } from "solid-js/web";
-import "./icon.css";
+
 import * as icons from "./sprite.tsx";
+import "./icon.css";
 
 export enum IconName {
   Acorn = "AcornIcon",
@@ -1535,6 +1536,7 @@ export const Icon = (props: IconProps) => {
     },
     props,
   );
+
   return (
     <Dynamic
       component={icons[props.name]}

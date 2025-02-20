@@ -1,10 +1,10 @@
-import type { SeveralTestIds } from "../testIds.ts";
 import type {
   FullTestId,
   FullTestIdParts,
   TestId,
   TestSubId,
 } from "../../src/components/utilities/testable.ts";
+import type { SeveralTestIds } from "../testIds.ts";
 
 export const TEST_ID_ATTRIBUTE = "data-test-id";
 export const TEST_SUB_ID_ATTRIBUTE = "data-test-sub-id";

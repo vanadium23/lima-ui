@@ -1,4 +1,5 @@
 import { createEffect, type JSX, mergeProps } from "solid-js";
+
 import {
   DIALOG_REMOVE_BUTTON,
   DIALOG_RETURN_BUTTON,
@@ -10,6 +11,7 @@ import {
   TextButtonTheme,
 } from "../textButton/textButton.tsx";
 import type { Testable } from "../utilities/testable.ts";
+
 import "./dialog.css";
 
 export enum DialogTheme {
@@ -61,6 +63,7 @@ export const Dialog = (props: Testable<DialogProps>) => {
     target,
   }: MouseEvent & { currentTarget: HTMLDialogElement; target: EventTarget }) {
     const isClickedOnBackDrop = target === currentTarget;
+
     if (isClickedOnBackDrop) {
       closeDialog();
       mProps.onCancel();
@@ -91,7 +94,7 @@ export const Dialog = (props: Testable<DialogProps>) => {
             }}
             testId={DIALOG_RETURN_BUTTON}
             testSubId={mProps.testSubId ?? ""}
-          ></TextButton>
+           />
           <Button
             theme={ButtonTheme.Dangerous}
             size={ButtonSize.Medium}
@@ -102,7 +105,7 @@ export const Dialog = (props: Testable<DialogProps>) => {
             }}
             testId={DIALOG_REMOVE_BUTTON}
             testSubId={mProps.testSubId ?? ""}
-          ></Button>
+           />
         </div>
       </div>
     </dialog>

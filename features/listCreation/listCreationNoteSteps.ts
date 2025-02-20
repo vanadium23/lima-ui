@@ -1,21 +1,23 @@
 import { Then, When } from "@cucumber/cucumber";
+import { expect } from "@playwright/test";
+
+import { NOTE_TEXT_AREA_LIMIT } from "../../configuration.ts";
 import type { ComplexWorld } from "../context/hooks.ts";
+import {
+  buildAccordionButtonTestId,
+  buildAccordionContentTestId,
+} from "../testIds.ts";
+import {
+  getStringLongerThanLowerLimit,
+  getStringUpToLimit,
+} from "../utilities/getStringOfLength.ts";
+
 import {
   ACCORDION_TEST_IDS,
   type AccordionMeaning,
   TEXT_AREA_TEST_IDS,
   type TextAreaMeaning,
 } from "./testIds.ts";
-import {
-  buildAccordionButtonTestId,
-  buildAccordionContentTestId,
-} from "../testIds.ts";
-import { NOTE_TEXT_AREA_LIMIT } from "../../configuration.ts";
-import {
-  getStringLongerThanLowerLimit,
-  getStringUpToLimit,
-} from "../utilities/getStringOfLength.ts";
-import { expect } from "@playwright/test";
 
 When(
   "I press on the {string} accordion",

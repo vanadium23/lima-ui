@@ -31,12 +31,12 @@
         ]
       }
     ],
-    "no-unused-vars": "warn", // подсветка неиспользуемых переменных
+    // "no-unused-vars": "warn", // подсветка неиспользуемых переменных
     "no-multiple-empty-lines": [
       "error",
       { "max": 1, "maxEOF": 0, "maxBOF": 0 }
     ], // одна пустая строка
-    "quotes": ["error", "double"], // кавычки
+    "quotes": ["error", "double"], // двойные кавычки
     "semi": ["error", "always"], // точка с запятой
     "@typescript-eslint/padding-line-between-statements": [
       "error",

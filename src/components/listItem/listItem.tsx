@@ -1,4 +1,5 @@
 import { mergeProps, Show } from "solid-js";
+
 import { EDIT_LIST_INPUT_LIMIT } from "../../../configuration.ts";
 import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import {
@@ -6,6 +7,7 @@ import {
   CheckboxSize,
   CheckboxTheme,
 } from "../checkbox/checkbox.tsx";
+import { DragHandle } from "../dragHandle/dragHandle.tsx";
 import { IconName } from "../icon/icon.tsx";
 import {
   IconButton,
@@ -19,8 +21,8 @@ import {
   ItemInputTheme,
 } from "../itemInput/itemInput.tsx";
 import type { Testable } from "../utilities/testable.ts";
+
 import "./listItem.css";
-import { DragHandle } from "../dragHandle/dragHandle.tsx";
 
 export enum ListItemTheme {
   Primary = "primary",

@@ -1,5 +1,22 @@
 import { Then, When } from "@cucumber/cucumber";
+import { expect } from "@playwright/test";
+
 import type { ComplexWorld } from "../context/hooks.ts";
+import {
+  BUTTON_TEST_IDS,
+  type ButtonMeaning,
+} from "../listCreation/testIds.ts";
+import {
+  DEFAULT_TEST_ID,
+  LIST_STRIPE,
+  type WarningMeaning,
+  WARNINGS_TEST_IDS,
+} from "../testIds.ts";
+import {
+  ADDRESSES_MEANINGS,
+  type AddressMeaning,
+} from "../utilities/addresses.ts";
+
 import {
   DIALOG_TEST_IDS,
   type DialogMeaning,
@@ -8,21 +25,6 @@ import {
   LIST_STRIPE_POSITIONS,
   type ListStripePosition,
 } from "./testIds.ts";
-import {
-  DEFAULT_TEST_ID,
-  LIST_STRIPE,
-  type WarningMeaning,
-  WARNINGS_TEST_IDS,
-} from "../testIds.ts";
-import {
-  BUTTON_TEST_IDS,
-  type ButtonMeaning,
-} from "../listCreation/testIds.ts";
-import { expect } from "@playwright/test";
-import {
-  ADDRESSES_MEANINGS,
-  type AddressMeaning,
-} from "../utilities/addresses.ts";
 
 When(
   "I hover {string} list stripe",

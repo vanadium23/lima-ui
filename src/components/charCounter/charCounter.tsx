@@ -1,6 +1,8 @@
 import { mergeProps } from "solid-js";
+
 import { buildInputCounterTestId } from "../../../features/testIds.ts";
 import type { Testable } from "../utilities/testable.ts";
+
 import "./charCounter.css";
 
 export enum CharCounterTheme {
@@ -25,6 +27,7 @@ export const CharCounter = (props: Testable<CharCounterProps>) => {
     },
     props,
   );
+
   return (
     <span
       class={`charCounter charCounter_${mProps.theme} charCounter_${mProps.size}`}

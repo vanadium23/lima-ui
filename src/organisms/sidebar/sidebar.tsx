@@ -17,6 +17,7 @@ import {
 } from "../../components/iconButton/iconButton.tsx";
 import { Nav } from "../../components/nav/nav.tsx";
 import { UserButton, UserButtonSize, UserButtonTheme } from "../../components/userButton/userButton.tsx";
+
 import "./sidebar.css";
 
 export const Sidebar = () => {

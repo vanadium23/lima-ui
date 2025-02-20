@@ -1,6 +1,8 @@
 import { createEffect, createSignal, mergeProps } from "solid-js";
+
 import { CharCounter } from "../charCounter/charCounter.tsx";
 import type { Testable } from "../utilities/testable.ts";
+
 import "./itemInput.css";
 
 export enum ItemInputTheme {

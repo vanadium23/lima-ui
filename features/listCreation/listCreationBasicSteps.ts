@@ -1,4 +1,7 @@
 import { Then, When } from "@cucumber/cucumber";
+import { expect } from "@playwright/test";
+
+import type { ComplexWorld } from "../context/hooks.ts";
 import {
   ADD_GROUP_BUTTON,
   buildAccordionButtonTestId,
@@ -10,15 +13,16 @@ import {
   PRO_VERSION_BUTTON,
   SIDEBAR,
 } from "../testIds.ts";
-import { noVerticalScroll } from "../utilities/checkScroll.ts";
-import { expect } from "@playwright/test";
-import type { ComplexWorld } from "../context/hooks.ts";
+import { LISTS_CREATE } from "../utilities/addresses.ts";
 import {
   ID_SUB_ID_SEPARATOR,
   InPlaywrightExtractAllCompleteIds,
   TEST_ID_ATTRIBUTE,
   TEST_SUB_ID_ATTRIBUTE,
 } from "../utilities/buildTestableSelector.ts";
+import { noVerticalScroll } from "../utilities/checkScroll.ts";
+import { type PageAlias, PAGES_TEST_IDS } from "../utilities/testIds.ts";
+
 import {
   ACCORDION_TEST_IDS,
   type AccordionMeaning,
@@ -27,8 +31,6 @@ import {
   INPUT_TEST_IDS,
   type InputMeaning,
 } from "./testIds.ts";
-import { LISTS_CREATE } from "../utilities/addresses.ts";
-import { type PageAlias, PAGES_TEST_IDS } from "../utilities/testIds.ts";
 
 When("I open List Creation page", async function (this: ComplexWorld) {
   await this.navigate(LISTS_CREATE);

@@ -1,12 +1,11 @@
 ---
-import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
-import {PageError, PageErrorSize, PageErrorTheme} from "../../../components/pageError/pageError.tsx";
 import {DEFAULT_TEST_ID} from "../../../../features/testIds";
+import {PageError, PageErrorSize, PageErrorTheme} from "../../../components/pageError/pageError.tsx";
+import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 const themes = Object.values(PageErrorTheme);
 const sizes = Object.values(PageErrorSize);
 ---
-
 
 <StorybookPage title="Accordion">
     {themes.map((theme) => (

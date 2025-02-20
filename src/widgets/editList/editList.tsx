@@ -1,5 +1,6 @@
 import { For, mergeProps, Show } from "solid-js";
 import { createStore } from "solid-js/store";
+
 import {
   ITEMS_LIMIT,
   LIST_PURPOSE_INPUT_LIMIT,
@@ -16,6 +17,7 @@ import {
   NETWORK_ERROR,
 } from "../../../features/testIds.ts";
 import { Button, ButtonType } from "../../components/button/button.tsx";
+import { Dialog } from "../../components/dialog/dialog.tsx";
 import { Divider } from "../../components/divider/divider.tsx";
 import { EditableTitle } from "../../components/editableTitle/editableTitle.tsx";
 import { IconName } from "../../components/icon/icon.tsx";
@@ -39,12 +41,12 @@ import {
   ToolsPanelTheme,
 } from "../../organisms/toolsPanel/toolsPanel.tsx";
 import { createList } from "../../services/createList.ts";
-import { updateList } from "../../services/updateList.ts";
 import { removeList } from "../../services/removeList.ts";
+import { updateList } from "../../services/updateList.ts";
 import type { BackendList, NewList, UpdatedList } from "../../types.ts";
-import "./editList.css";
+
 import { soften } from "./utilities/soften.ts";
-import { Dialog } from "../../components/dialog/dialog.tsx";
+import "./editList.css";
 
 type EditListProps = {
   defaultList?: BackendList;

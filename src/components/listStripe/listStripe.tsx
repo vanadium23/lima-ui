@@ -1,4 +1,5 @@
 import { createSignal, mergeProps } from "solid-js";
+
 import {
   LIST_STRIPE,
   LIST_STRIPE_EDIT_BUTTON,
@@ -16,6 +17,7 @@ import {
   IconButtonTheme,
 } from "../iconButton/iconButton.tsx";
 import type { Testable } from "../utilities/testable.ts";
+
 import "./listStripe.css";
 
 export enum ListStripeTheme {
@@ -77,6 +79,7 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
         if (!response.ok) {
           throw new Error("Network response was not ok " + response.statusText);
         }
+
         return response.json();
       })
       .then(() => {

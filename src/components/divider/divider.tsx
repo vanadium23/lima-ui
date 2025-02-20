@@ -1,5 +1,7 @@
 import { mergeProps } from "solid-js";
+
 import type { Testable } from "../utilities/testable.ts";
+
 import "./divider.css";
 
 export enum DividerTheme {

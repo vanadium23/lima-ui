@@ -1,12 +1,12 @@
 ---
-import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
+import { LIST_TITLE_INPUT_LIMIT } from "../../../../configuration";
+import { DEFAULT_TEST_ID } from "../../../../features/testIds";
 import {
   EditableTitle,
-  EditableTitleTheme,
   EditableTitleSize,
+  EditableTitleTheme,
 } from "../../../components/editableTitle/editableTitle.tsx";
-import { DEFAULT_TEST_ID } from "../../../../features/testIds";
-import { LIST_TITLE_INPUT_LIMIT } from "../../../../configuration";
+import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 const themes = Object.values(EditableTitleTheme);
 const sizes = Object.values(EditableTitleSize);

@@ -1,6 +1,8 @@
 import { mergeProps, Show } from "solid-js";
+
 import { prepareARIALabel } from "../utilities/prepareARIALabel.ts";
 import type { Testable } from "../utilities/testable.ts";
+
 import "./switch.css";
 
 export enum SwitchTheme {

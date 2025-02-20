@@ -14,19 +14,21 @@ import {
   firefox,
   type Page,
 } from "@playwright/test";
-import { accountedTesting } from "./accountedTesting.ts";
-import {
-  buildFullTestId,
-  buildTestableSelector,
-  buildTestableSubSelector,
-  destructureFullTestId,
-} from "../utilities/buildTestableSelector.ts";
+
 import type {
   FullTestId,
   TestId,
   TestSubId,
 } from "../../src/components/utilities/testable.ts";
 import type { AddressMeaning } from "../utilities/addresses.ts";
+import {
+  buildFullTestId,
+  buildTestableSelector,
+  buildTestableSubSelector,
+  destructureFullTestId,
+} from "../utilities/buildTestableSelector.ts";
+
+import { accountedTesting } from "./accountedTesting.ts";
 
 let browser: Browser;
 
@@ -75,6 +77,7 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
     const elementWithRequiredSubId = this.page.locator(
       buildTestableSubSelector(testSubId),
     );
+
     return elementWithRequiredId.and(elementWithRequiredSubId);
   }
 

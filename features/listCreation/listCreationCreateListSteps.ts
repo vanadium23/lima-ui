@@ -1,5 +1,15 @@
 import { Then, When } from "@cucumber/cucumber";
+import { expect } from "@playwright/test";
+
+import { EDIT_LIST_INPUT_LIMIT } from "../../configuration.ts";
 import type { ComplexWorld } from "../context/hooks.ts";
+import { ITEM_INPUT } from "../testIds.ts";
+import {
+  ADDRESSES_MEANINGS,
+  type AddressMeaning,
+} from "../utilities/addresses.ts";
+import { getStringUpToLimit } from "../utilities/getStringOfLength.ts";
+
 import {
   ACCORDION_TEST_IDS,
   type AccordionMeaning,
@@ -8,14 +18,6 @@ import {
   TEXT_AREA_TEST_IDS,
   type TextAreaMeaning,
 } from "./testIds.ts";
-import { expect } from "@playwright/test";
-import { ITEM_INPUT } from "../testIds.ts";
-import { getStringUpToLimit } from "../utilities/getStringOfLength.ts";
-import { EDIT_LIST_INPUT_LIMIT } from "../../configuration.ts";
-import {
-  ADDRESSES_MEANINGS,
-  type AddressMeaning,
-} from "../utilities/addresses.ts";
 
 Then(
   "I expect to see the {string} accordion disabled",
