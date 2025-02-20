@@ -15,6 +15,7 @@ import {
   PRO_VERSION_BUTTON,
   SIDEBAR,
 } from "../testIds.ts";
+
 import { buildFullTestId } from "./buildTestableSelector.ts";
 
 const PAGE_TEMPLATE_PARTS = [

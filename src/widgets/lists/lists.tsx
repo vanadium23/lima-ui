@@ -1,5 +1,6 @@
 import { For, mergeProps, Show } from "solid-js";
 import { createStore } from "solid-js/store";
+
 import { LISTS_LIMIT } from "../../../configuration.ts";
 import {
   CREATE_LIST_BUTTON,
@@ -16,6 +17,7 @@ import {
 import { ListStripe } from "../../components/listStripe/listStripe";
 import { PageError } from "../../components/pageError/pageError.tsx";
 import { Title } from "../../components/title/title.tsx";
+
 import "./lists.css";
 
 type ListsProps = {

@@ -1,3 +1,4 @@
+// npx eslint . --ext .js,.jsx,.ts,.tsx,.astro --fix применить к всем файлам этих расширений
 {
   "env": {
     "browser": true,
@@ -14,7 +15,41 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "simple-import-sort"],
+  "rules": {
+    "simple-import-sort/imports": [
+      "error",
+      {
+        "groups": [
+          ["^@?\\w"], // Библиотеки
+          ["^~"], // Алиасы
+          ["^\\.\\.(?!/?$)"], // Импорты из родительских директорий
+          [
+            "^\\./", // Импорты из текущей директории
+            "^.+\\.css$" // CSS
+          ]
+        ]
+      }
+    ],
+    // "no-unused-vars": "warn", // подсветка неиспользуемых переменных
+    "no-multiple-empty-lines": [
+      "error",
+      { "max": 1, "maxEOF": 0, "maxBOF": 0 }
+    ], // одна пустая строка
+    "quotes": ["error", "double"], // двойные кавычки
+    "semi": ["error", "always"], // точка с запятой
+    "@typescript-eslint/padding-line-between-statements": [
+      "error",
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": ["interface", "type", "block-like"]
+      },
+      { "blankLine": "always", "prev": "import", "next": "*" },
+      { "blankLine": "any", "prev": "import", "next": "import" },
+      { "blankLine": "always", "prev": "*", "next": "return" }
+    ]
+  },
   "overrides": [
     {
       "files": ["*.astro"],

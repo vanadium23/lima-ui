@@ -1,4 +1,5 @@
 import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
+import { IconName } from "../../components/icon/icon.tsx";
 import {
   IconButton,
   IconButtonTheme,
@@ -6,10 +7,9 @@ import {
 import { Input, InputTheme } from "../../components/input/input.tsx";
 import { Logo } from "../../components/logo/logo.tsx";
 import { ToggleIconButton } from "../../components/toggleIconButton/toggleIconButton.tsx";
-import "./header.css";
-
-import { IconName } from "../../components/icon/icon.tsx";
 import { isHidden, setIsHidden } from "../../state/toolsPanelState.ts";
+
+import "./header.css";
 
 export const Header = () => {
   return (

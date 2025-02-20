@@ -1,7 +1,9 @@
 import { mergeProps } from "solid-js";
+
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
 import { prepareARIALabel } from "../utilities/prepareARIALabel.ts";
 import type { Testable } from "../utilities/testable.ts";
+
 import "./checkbox.css";
 
 export enum CheckboxTheme {

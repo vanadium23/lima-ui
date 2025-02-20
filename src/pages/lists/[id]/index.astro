@@ -1,9 +1,9 @@
 ---
 import AppPage from "../../../layouts/app/app.astro";
+import type { BackendList } from "../../../types";
+import { EditList } from "../../../widgets/editList/editList";
 
 import "./style.css";
-import { EditList } from "../../../widgets/editList/editList";
-import type { BackendList } from "../../../types";
 
 const response = await fetch(
   `${import.meta.env.PUBLIC_API_URL}/lists/${Astro.params.id}`,

@@ -1,5 +1,7 @@
 import { type JSX, mergeProps } from "solid-js";
+
 import type { Testable } from "../utilities/testable.ts";
+
 import "./title.css";
 
 export enum TitleTheme {

@@ -1,13 +1,12 @@
 ---
-import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
+import {DEFAULT_TEST_ID} from "../../../../features/testIds";
 import {Accordion, AccordionSize, AccordionTheme} from "../../../components/accordion/accordion.tsx";
 import {PasteContent} from "../../../components/pasteContent/pasteContent";
-import {DEFAULT_TEST_ID} from "../../../../features/testIds";
+import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 const themes = Object.values(AccordionTheme);
 const sizes = Object.values(AccordionSize);
 ---
-
 
 <StorybookPage title="Accordion">
     {themes.map((theme) => (

@@ -1,3 +1,4 @@
+import { ITEMS_LIMIT } from "../../configuration.ts";
 import {
   ADD_ITEM_BUTTON,
   buildInputCounterTestId,
@@ -17,7 +18,6 @@ import {
   REMOVE_ITEM_BUTTON,
 } from "../testIds.ts";
 import { buildFullTestId } from "../utilities/buildTestableSelector.ts";
-import { ITEMS_LIMIT } from "../../configuration.ts";
 
 export const BUTTON_TEST_IDS = {
   create: CREATE_LIST_BUTTON,

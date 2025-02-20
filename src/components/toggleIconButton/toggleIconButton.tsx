@@ -1,6 +1,8 @@
 import { createSignal, mergeProps } from "solid-js";
+
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
 import type { Testable } from "../utilities/testable.ts";
+
 import "./toggleIconButton.css";
 
 export enum ToggleIconButtonTheme {

@@ -1,4 +1,8 @@
 import { Then, When } from "@cucumber/cucumber";
+import { expect } from "@playwright/test";
+
+import { ITEMS_LIMIT } from "../../configuration.ts";
+import type { ComplexWorld } from "../context/hooks.ts";
 import {
   ADD_ITEM_BUTTON,
   ITEM_INPUT,
@@ -8,9 +12,7 @@ import {
 } from "../testIds.ts";
 import { TEST_SUB_ID_ATTRIBUTE } from "../utilities/buildTestableSelector.ts";
 import { noVerticalScroll } from "../utilities/checkScroll.ts";
-import type { ComplexWorld } from "../context/hooks.ts";
-import { expect } from "@playwright/test";
-import { ITEMS_LIMIT } from "../../configuration.ts";
+
 import { BUTTON_TEST_IDS, type ButtonMeaning } from "./testIds.ts";
 
 Then(

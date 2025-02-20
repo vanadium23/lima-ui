@@ -1,26 +1,27 @@
 import { Then, When } from "@cucumber/cucumber";
-import type { ComplexWorld } from "../context/hooks.ts";
-import {
-  LISTS_CREATE,
-  LISTS_WITH_NETWORK_ERROR,
-  SOME_LIST,
-} from "../utilities/addresses.ts";
-import { BUTTON_TEST_IDS, INPUT_TEST_IDS } from "../listCreation/testIds.ts";
-import { getStringUpToLimit } from "../utilities/getStringOfLength.ts";
+
 import {
   EDIT_LIST_INPUT_LIMIT,
   LIST_PURPOSE_INPUT_LIMIT,
   LIST_TITLE_INPUT_LIMIT,
   LISTS_LIMIT,
 } from "../../configuration.ts";
+import { createList } from "../../src/services/createList.ts";
+import type { ComplexWorld } from "../context/hooks.ts";
+import { BUTTON_TEST_IDS, INPUT_TEST_IDS } from "../listCreation/testIds.ts";
 import {
   DEFAULT_TEST_ID,
   LIST_STRIPE,
   LIST_STRIPE_LINK_TO_VIEW,
   LISTS_LIMIT_REACHED_WARNING,
 } from "../testIds.ts";
+import {
+  LISTS_CREATE,
+  LISTS_WITH_NETWORK_ERROR,
+  SOME_LIST,
+} from "../utilities/addresses.ts";
 import { TEST_SUB_ID_ATTRIBUTE } from "../utilities/buildTestableSelector.ts";
-import { createList } from "../../src/services/createList.ts";
+import { getStringUpToLimit } from "../utilities/getStringOfLength.ts";
 
 When("I add a list", async function (this: ComplexWorld) {
   await this.navigate(LISTS_CREATE);

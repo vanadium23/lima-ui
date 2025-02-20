@@ -23,5 +23,6 @@ export async function createList(
   if (!response.ok) {
     throw new Error("Network response was not ok " + response.statusText);
   }
+
   return await response.json();
 }

@@ -1,11 +1,11 @@
 ---
-import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
+import { DEFAULT_TEST_ID } from "../../../../features/testIds";
 import {
   Textarea,
-  TextareaTheme,
   TextareaSize,
+  TextareaTheme,
 } from "../../../components/textarea/textarea";
-import { DEFAULT_TEST_ID } from "../../../../features/testIds";
+import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 const themes = Object.values(TextareaTheme);
 const sizes = Object.values(TextareaSize);

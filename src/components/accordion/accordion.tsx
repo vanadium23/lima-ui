@@ -1,10 +1,12 @@
 import { createSignal, type JSX, mergeProps } from "solid-js";
+
 import {
   buildAccordionButtonTestId,
   buildAccordionContentTestId,
 } from "../../../features/testIds.ts";
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
 import type { Testable } from "../utilities/testable.ts";
+
 import "./accordion.css";
 
 export enum AccordionTheme {

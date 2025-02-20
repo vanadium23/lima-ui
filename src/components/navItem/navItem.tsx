@@ -1,6 +1,8 @@
 import { mergeProps } from "solid-js";
+
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
 import type { Testable } from "../utilities/testable.ts";
+
 import "./navItem.css";
 
 export enum NavItemTheme {

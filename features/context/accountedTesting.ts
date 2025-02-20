@@ -1,6 +1,6 @@
+import type { TestId } from "../../src/components/utilities/testable.ts";
 import type { SeveralTestIds } from "../testIds.ts";
 import { buildFullTestId } from "../utilities/buildTestableSelector.ts";
-import type { TestId } from "../../src/components/utilities/testable.ts";
 
 interface AccountedTesting {
   testIds: SeveralTestIds;

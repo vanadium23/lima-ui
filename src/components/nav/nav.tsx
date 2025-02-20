@@ -1,8 +1,10 @@
 import { mergeProps } from "solid-js";
+
 import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import { IconName } from "../icon/icon.tsx";
 import { NavItem, NavItemSize, NavItemTheme } from "../navItem/navItem.tsx";
 import type { Testable } from "../utilities/testable.ts";
+
 import "./nav.css";
 import { location } from "../../state/locationState.ts";
 

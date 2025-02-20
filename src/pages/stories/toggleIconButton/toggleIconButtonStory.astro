@@ -1,12 +1,12 @@
 ---
-import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
+import {DEFAULT_TEST_ID} from "../../../../features/testIds";
+import {IconName} from "../../../components/icon/icon.tsx";
 import {
   ToggleIconButton,
-  ToggleIconButtonTheme,
   ToggleIconButtonSize,
+  ToggleIconButtonTheme,
 } from "../../../components/toggleIconButton/toggleIconButton.tsx";
-import {IconName} from "../../../components/icon/icon.tsx";
-import {DEFAULT_TEST_ID} from "../../../../features/testIds";
+import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 const themes = Object.values(ToggleIconButtonTheme);
 const sizes = Object.values(ToggleIconButtonSize);
