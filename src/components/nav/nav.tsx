@@ -4,6 +4,7 @@ import { IconName } from "../icon/icon.tsx";
 import { NavItem, NavItemSize, NavItemTheme } from "../navItem/navItem.tsx";
 import type { Testable } from "../utilities/testable.ts";
 import "./nav.css";
+import { location } from "../../state/locationState.ts";
 
 export enum NavTheme {
   Primary = "primary",
@@ -46,6 +47,7 @@ export const Nav = (props: Testable<NavProps>) => {
             text="Новый список"
             icon={IconName.ListPlus}
             testId={DEFAULT_TEST_ID}
+            isCurrent={location() === "/lists/create/"}
           />
         </li>
         <li role="none">
@@ -56,6 +58,9 @@ export const Nav = (props: Testable<NavProps>) => {
             text="Мои списки"
             icon={IconName.List}
             testId={DEFAULT_TEST_ID}
+            isCurrent={
+              location() === "/lists/" || location().startsWith("/lists/list-")
+            }
           />
         </li>
         <li role="none">
@@ -66,6 +71,7 @@ export const Nav = (props: Testable<NavProps>) => {
             text="Мои чек-листы"
             icon={IconName.ListChecks}
             testId={DEFAULT_TEST_ID}
+            isCurrent={location() === "/lists/"}
           />
         </li>
       </ul>

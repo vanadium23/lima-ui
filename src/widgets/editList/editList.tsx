@@ -45,6 +45,7 @@ import type { BackendList, NewList, UpdatedList } from "../../types.ts";
 import "./editList.css";
 import { soften } from "./utilities/soften.ts";
 import { Dialog } from "../../components/dialog/dialog.tsx";
+import { setLocation } from "../../state/locationState.ts";
 
 type EditListProps = {
   defaultList?: BackendList;
@@ -219,6 +220,7 @@ export const EditList = (props: EditListProps) => {
       .then((newList) => {
         soften(() => {
           history.pushState({}, "", `/lists/${newList.id}`);
+          setLocation(window.location.pathname);
 
           setStore({
             id: newList.id,
