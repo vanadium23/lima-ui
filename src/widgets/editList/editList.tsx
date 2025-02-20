@@ -43,11 +43,10 @@ import {
 import { createList } from "../../services/createList.ts";
 import { removeList } from "../../services/removeList.ts";
 import { updateList } from "../../services/updateList.ts";
+import { setLocation } from "../../state/locationState.ts";
 import type { BackendList, NewList, UpdatedList } from "../../types.ts";
 
 import { soften } from "./utilities/soften.ts";
-import { Dialog } from "../../components/dialog/dialog.tsx";
-import { setLocation } from "../../state/locationState.ts";
 
 type EditListProps = {
   defaultList?: BackendList;

@@ -26,6 +26,7 @@ import {
   UserButtonSize,
   UserButtonTheme,
 } from "../../components/userButton/userButton.tsx";
+
 import "./sidebar.css";
 
 export const Sidebar = () => {
