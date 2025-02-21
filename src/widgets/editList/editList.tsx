@@ -43,11 +43,11 @@ import {
 import { createList } from "../../services/createList.ts";
 import { removeList } from "../../services/removeList.ts";
 import { updateList } from "../../services/updateList.ts";
+import { setLocation } from "../../state/locationState.ts";
 import type { BackendList, NewList, UpdatedList } from "../../types.ts";
 
 import { soften } from "./utilities/soften.ts";
-import { Dialog } from "../../components/dialog/dialog.tsx";
-import { setLocation } from "../../state/locationState.ts";
+import "./editList.css";
 
 type EditListProps = {
   defaultList?: BackendList;
@@ -140,7 +140,7 @@ export const EditList = (props: EditListProps) => {
     const textToCopy = store.items
       .map((item) => item.content.trim())
       .join("\n");
-    navigator.clipboard.writeText(textToCopy).catch(() => {});
+    navigator.clipboard.writeText(textToCopy).catch(() => { });
   }
 
   function getComparableList(initialList: Omit<UpdatedList, "id">) {
