@@ -205,8 +205,8 @@ export const EditList = (props: EditListProps) => {
         noDocumentedReasonForLatestUpdate: true, // GERMAN надо будет потом выпилить на бекенде
       };
 
-      if (list.id) {
-        sendListUpdate({ ...data, id: list.id });
+      if (store.id) {
+        sendListUpdate({ ...data, id: store.id });
       } else {
         sendList(data);
       }
