@@ -1,7 +1,12 @@
 import { mergeProps, Show } from "solid-js";
 
 import { EDIT_LIST_INPUT_LIMIT } from "../../../configuration.ts";
-import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
+import {
+  DEFAULT_TEST_ID,
+  ITEM_INPUT,
+  ITEM_INPUT_CONTAINER,
+  REMOVE_ITEM_BUTTON,
+} from "../../../features/testIds.ts";
 import {
   Checkbox,
   CheckboxSize,
@@ -68,7 +73,11 @@ export const ListItem = (props: Testable<ListItemProps>) => {
   }
 
   return (
-    <div class={`listItem listItem_${mProps.theme} listItem_${mProps.size}`}>
+    <div
+      class={`listItem listItem_${mProps.theme} listItem_${mProps.size}`}
+      data-test-id={ITEM_INPUT_CONTAINER}
+      data-test-sub-id={mProps.testSubId}
+    >
       <div class="listItem__dragHandle">
         <DragHandle
           icon={IconName.DotsSixVertical}
@@ -93,13 +102,14 @@ export const ListItem = (props: Testable<ListItemProps>) => {
           size={ItemInputSize.Medium}
           maxLength={EDIT_LIST_INPUT_LIMIT}
           name={mProps.name}
-          testId={DEFAULT_TEST_ID}
           dataId={mProps.dataId}
           isDisabled={mProps.isDisabled}
           placeholder={"Пункт списка"}
           defaultValue={mProps.defaultValue}
           isRequired={true}
           onChange={mProps.onChange}
+          testId={ITEM_INPUT}
+          testSubId={mProps.testSubId ?? "0"}
         />
         <div class="listItem__controls">
           <IconButton
@@ -116,7 +126,8 @@ export const ListItem = (props: Testable<ListItemProps>) => {
             theme={IconButtonTheme.Dangerous}
             size={IconButtonSize.Medium}
             handleClick={removeItemIfEnabled}
-            testId={DEFAULT_TEST_ID}
+            testId={REMOVE_ITEM_BUTTON}
+            testSubId={mProps.testSubId ?? "0"}
             isDisabled={mProps.isLastItem}
           />
         </div>

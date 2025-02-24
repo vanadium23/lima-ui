@@ -7,6 +7,7 @@ import {
   LIST_TITLE_INPUT_LIMIT,
 } from "../../../configuration.ts";
 import {
+  ADD_ITEM_BUTTON,
   CREATE_LIST_BUTTON,
   DEFAULT_TEST_ID,
   ITEM_INPUT_CONTAINER,
@@ -140,7 +141,7 @@ export const EditList = (props: EditListProps) => {
     const textToCopy = store.items
       .map((item) => item.content.trim())
       .join("\n");
-    navigator.clipboard.writeText(textToCopy).catch(() => { });
+    navigator.clipboard.writeText(textToCopy).catch(() => {});
   }
 
   function getComparableList(initialList: Omit<UpdatedList, "id">) {
@@ -413,7 +414,7 @@ export const EditList = (props: EditListProps) => {
                 checkItemsLimitReached() || store.sendingNow !== false
               }
               text={"Добавить пункт"}
-              testId={DEFAULT_TEST_ID}
+              testId={ADD_ITEM_BUTTON}
             />
             <ToolsButton
               componentType={ToolsButtonComponentType.Button}
