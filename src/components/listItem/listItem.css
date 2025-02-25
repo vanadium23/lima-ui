@@ -18,8 +18,7 @@
     display: flex;
     gap: var(--size-x1);
     align-items: center;
-    visibility: hidden;
-/ / MAKSIM: Обсудить вопросик . Связано с тестами .
+    visibility: hidden; /* MAKSIM: Обсудить вопросик. Связано с тестами. */
 }
 
 .listItem__dragHandle {
@@ -39,8 +38,7 @@
 
 .listItem:hover .listItem__controls,
 .listItem:focus-within .listItem__controls {
-    visibility: visible;
-/ / MAKSIM: Обсудить вопросик . Связано с тестами .
+    visibility: visible; /* MAKSIM: Обсудить вопросик. Связано с тестами. */
 }
 
 .listItem:hover .listItem__dragHandle,
