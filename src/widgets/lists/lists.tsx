@@ -9,6 +9,7 @@ import {
   LISTS_LIMIT_REACHED_WARNING,
   NETWORK_ERROR,
   NO_SAVED_LISTS_MESSAGE,
+  PAGE_TITLE,
 } from "../../../features/testIds.ts";
 import {
   Button,
@@ -50,7 +51,7 @@ export const Lists = (props: ListsProps) => {
   return (
     <div slot="mainContent" class="lists">
       <div class="lists__title">
-        <Title testId={DEFAULT_TEST_ID}>Мои списки</Title>
+        <Title testId={PAGE_TITLE}>Мои списки</Title>
       </div>
       <Show when={store.lists.length === 0 && !mProps.listsRequestError}>
         <span class="lists__emptyWarning" data-test-id={NO_SAVED_LISTS_MESSAGE}>

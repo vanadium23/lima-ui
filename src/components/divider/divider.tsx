@@ -1,7 +1,5 @@
 import { mergeProps } from "solid-js";
 
-import type { Testable } from "../utilities/testable.ts";
-
 import "./divider.css";
 
 export enum DividerTheme {
@@ -23,8 +21,8 @@ type DividerProps = {
   orientation?: DividerOrientation;
 };
 
-export const Divider = (props: Testable<DividerProps>) => {
-  const mProps: Testable<Required<DividerProps>> = mergeProps(
+export const Divider = (props: DividerProps) => {
+  const mProps: Required<DividerProps> = mergeProps(
     {
       theme: DividerTheme.Primary,
       size: DividerSize.Medium,
@@ -38,7 +36,6 @@ export const Divider = (props: Testable<DividerProps>) => {
       role="separator"
       aria-orientation={mProps.orientation}
       class={`divider divider_${mProps.theme} divider_${mProps.size} divider_${mProps.orientation}`}
-      data-test-id={mProps.testId}
     />
   );
 };

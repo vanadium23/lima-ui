@@ -16,7 +16,6 @@ Feature: Successfully creating list with correct data
     Then I expect to see the "note" text area disabled
     Then I expect to see the "first item" input disabled
     Then I expect to see the "add item" button disabled
-    Then I expect to see the "import" button disabled
     Then I expect to see the "create" button in the loading state
 
   Scenario: All items inputs are disabled on list creation
@@ -24,13 +23,7 @@ Feature: Successfully creating list with correct data
     And I type some text to all items inputs
     And I press the "create" button
     Then I expect all items inputs disabled
-
-  Scenario: Not seeing the remove item buttons
-    When I type some text with length less or equal to the one of "first item" input limit
-    And I press the "create" button
-    And I hover "first item" input
-    Then I expect not to see the "remove first item" button
-
+    
   Scenario: "Create" button triggers list creation only once
     When I type some text with length less or equal to the one of "first item" input limit
     And I start counting the "list creation" requests

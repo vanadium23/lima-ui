@@ -1,6 +1,6 @@
 import { mergeProps } from "solid-js";
 
-import { DEFAULT_TEST_ID } from "../../../features/testIds";
+import { USER_BUTTON } from "../../../features/testIds";
 import type { Testable } from "../utilities/testable";
 
 import "./userButton.css";
@@ -17,19 +17,19 @@ type UserButtonProps = {
   userName: string;
   theme?: UserButtonTheme;
   size?: UserButtonSize;
-}
+};
 
 export const UserButton = (props: Testable<UserButtonProps>) => {
   const mProps: Testable<Required<UserButtonProps>> = mergeProps(
     {
       theme: UserButtonTheme.Primary,
       size: UserButtonSize.Medium,
-    }
-    , props
+    },
+    props,
   );
 
   return (
-    <button class='userButton' type='button' data-test-id={DEFAULT_TEST_ID}>
+    <button class="userButton" type="button" data-test-id={USER_BUTTON}>
       <span class="userButton__capital">{mProps.userName?.[0]}</span>
       <span class="userButton__userName">{mProps.userName}</span>
     </button>

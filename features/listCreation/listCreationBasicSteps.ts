@@ -6,12 +6,18 @@ import {
   ADD_GROUP_BUTTON,
   buildAccordionButtonTestId,
   buildAccordionContentTestId,
+  HEADER,
   ITEM_INPUT,
   ITEM_INPUT_CONTAINER,
   ITEMS_INPUTS,
   PAGE_TITLE,
   PRO_VERSION_BUTTON,
+  SEARCH_BUTTON,
+  SEARCH_INPUT,
   SIDEBAR,
+  TOGGLE_TOOLS_PANEL_BUTTON,
+  TOOLS_PANEL,
+  USER_BUTTON,
 } from "../testIds.ts";
 import { LISTS_CREATE } from "../utilities/addresses.ts";
 import {
@@ -41,8 +47,28 @@ Then("I expect to see sidebar", async function (this: ComplexWorld) {
     this.accounting.registerTestId(SIDEBAR),
   ).toBeInViewport();
 
+  this.accounting.registerTestId(USER_BUTTON);
   this.accounting.registerTestId(ADD_GROUP_BUTTON);
   this.accounting.registerTestId(PRO_VERSION_BUTTON);
+});
+
+Then("I expect to see header", async function () {
+  await this.expectLocated(
+    this.accounting.registerTestId(HEADER),
+  ).toBeInViewport();
+
+  this.accounting.registerTestId(SEARCH_INPUT);
+  this.accounting.registerTestId(SEARCH_BUTTON);
+});
+
+Then("I expect to see tools panel", async function () {
+  await this.expectLocated(
+    this.accounting.registerTestId(TOGGLE_TOOLS_PANEL_BUTTON),
+  ).toBeInViewport();
+
+  await this.expectLocated(
+    this.accounting.registerTestId(TOOLS_PANEL),
+  ).toBeInViewport();
 });
 
 Then(

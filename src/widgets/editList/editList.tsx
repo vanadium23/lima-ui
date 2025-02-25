@@ -8,14 +8,19 @@ import {
 } from "../../../configuration.ts";
 import {
   ADD_ITEM_BUTTON,
+  CHECKLIST_SWITCH,
   CREATE_LIST_BUTTON,
-  DEFAULT_TEST_ID,
   ITEM_INPUT_CONTAINER,
   ITEMS_INPUTS,
   ITEMS_LIMIT_REACHED_WARNING,
   LIST_PURPOSE_INPUT,
   LIST_TITLE_INPUT,
   NETWORK_ERROR,
+  REMOVE_LIST_DIALOG,
+  TOOLS_BUTTON_COPY_ITEMS,
+  TOOLS_BUTTON_PRINT_LIST,
+  TOOLS_BUTTON_REMOVE_LIST,
+  TOOLS_PANEL,
 } from "../../../features/testIds.ts";
 import { Button, ButtonType } from "../../components/button/button.tsx";
 import { Dialog } from "../../components/dialog/dialog.tsx";
@@ -342,7 +347,6 @@ export const EditList = (props: EditListProps) => {
                   isDisabled={store.sendingNow !== false}
                   defaultValue={list.note}
                   onChange={(value) => handleInputChange("note", value)}
-                  testId={DEFAULT_TEST_ID}
                 />
               </div>
             </div>
@@ -403,7 +407,7 @@ export const EditList = (props: EditListProps) => {
         <ToolsPanel
           size={ToolsPanelSize.Medium}
           theme={ToolsPanelTheme.Primary}
-          testId={DEFAULT_TEST_ID}
+          testId={TOOLS_PANEL}
         >
           <div class="toolsPanel__horizontalSection">
             <ToolsButton
@@ -422,7 +426,7 @@ export const EditList = (props: EditListProps) => {
               text={"Копировать пункты"}
               isDisabled={store.isNewList || store.sendingNow !== false}
               handleClick={copyItemsToClipboard}
-              testId={DEFAULT_TEST_ID}
+              testId={TOOLS_BUTTON_COPY_ITEMS}
             />
             <ToolsButton
               componentType={ToolsButtonComponentType.Button}
@@ -432,14 +436,14 @@ export const EditList = (props: EditListProps) => {
               isLoading={store.sendingNow === "deleting"}
               isDisabled={store.isNewList || store.sendingNow === "saving"}
               handleClick={openDialog}
-              testId={DEFAULT_TEST_ID}
+              testId={TOOLS_BUTTON_REMOVE_LIST}
             />
             <Dialog
               title="Удаление списка"
               onConfirm={sendListRemove}
               onCancel={closeDialog}
               isOpen={store.isDialogOpen}
-              testId={DEFAULT_TEST_ID}
+              testId={REMOVE_LIST_DIALOG}
             >
               <p>
                 Список <strong>{store.name}</strong> будет удален без
@@ -447,24 +451,24 @@ export const EditList = (props: EditListProps) => {
               </p>
             </Dialog>
           </div>
-          <Divider testId={DEFAULT_TEST_ID} />
+          <Divider />
           <div class="toolsPanel__verticalSection">
             <Switch
-              testId={DEFAULT_TEST_ID}
+              testId={CHECKLIST_SWITCH}
               text="Чек-лист"
               isDisabled={store.sendingNow !== false}
               isChecked={store.isCheckable}
               onChange={toggleCheckable}
             />
           </div>
-          <Divider testId={DEFAULT_TEST_ID} />
+          <Divider />
           <div class="toolsPanel__horizontalSection">
             <ToolsButton
               componentType={ToolsButtonComponentType.Link}
               iconName={IconName.Printer}
               link={`./${list.id}/print`}
               text={"Напечатать список"}
-              testId={DEFAULT_TEST_ID}
+              testId={TOOLS_BUTTON_PRINT_LIST}
               isDisabled={store.isNewList || store.sendingNow !== false}
               openInNewTab={true}
             />

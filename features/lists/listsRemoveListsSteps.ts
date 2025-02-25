@@ -25,6 +25,7 @@ import {
   LIST_STRIPE_POSITIONS,
   type ListStripePosition,
 } from "./testIds.ts";
+import { TEST_SUB_ID_ATTRIBUTE } from "../utilities/buildTestableSelector.ts";
 
 When(
   "I hover {string} list stripe",
@@ -40,7 +41,11 @@ When(
 When(
   "I press the visible {string} button",
   async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
-    await this.locateVisible(`${BUTTON_TEST_IDS[buttonMeaning]}`).click();
+    const button = this.locateVisible(`${BUTTON_TEST_IDS[buttonMeaning]}`);
+    this.data.clickedButtonTestSubId =
+      (await button.getAttribute(TEST_SUB_ID_ATTRIBUTE)) || "";
+
+    await button.click();
   },
 );
 
@@ -73,7 +78,10 @@ Then(
 When(
   "I click outside of the {string} dialog modal box",
   async function (this: ComplexWorld, dialogMeaning: DialogMeaning) {
-    await this.locate(DIALOG_TEST_IDS[dialogMeaning]).click({
+    await this.locate(
+      DIALOG_TEST_IDS[dialogMeaning],
+      this.data.clickedButtonTestSubId,
+    ).click({
       position: { x: -10, y: -10 },
     });
   },

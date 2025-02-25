@@ -1,47 +1,49 @@
 .listItem {
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-  border-radius: var(--size-x4);
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    border-radius: var(--size-x4);
 }
 
 .listItem:active {
-  box-shadow: 0 0.2rem 1.6rem 0 rgb(0 0 0 / 15%);
+    box-shadow: 0 0.2rem 1.6rem 0 rgb(0 0 0 / 15%);
 }
 
 .listItem_medium {
-  padding: var(--size-x1);
-  gap: var(--size-x1);
+    padding: var(--size-x1);
+    gap: var(--size-x1);
 }
 
 .listItem__controls {
-  display: flex;
-  gap: var(--size-x1);
-  align-items: center;
-  opacity: 0;
+    display: flex;
+    gap: var(--size-x1);
+    align-items: center;
+    visibility: hidden;
+/ / MAKSIM: Обсудить вопросик . Связано с тестами .
 }
 
 .listItem__dragHandle {
-  visibility: hidden;
+    visibility: hidden;
 }
 
 .listItem__checkbox {
-  display: flex;
-  padding: var(--size-x3) var(--size-x4) var(--size-x3) var(--size-x3);
+    display: flex;
+    padding: var(--size-x3) var(--size-x4) var(--size-x3) var(--size-x3);
 }
 
 .listItem__inner {
-  display: flex;
-  gap: var(--size-x1);
-  flex-grow: 1;
+    display: flex;
+    gap: var(--size-x1);
+    flex-grow: 1;
 }
 
 .listItem:hover .listItem__controls,
 .listItem:focus-within .listItem__controls {
-  opacity: 100;
+    visibility: visible;
+/ / MAKSIM: Обсудить вопросик . Связано с тестами .
 }
 
 .listItem:hover .listItem__dragHandle,
 .listItem:focus-within .listItem__dragHandle {
-  visibility: visible;
+    visibility: visible;
 }

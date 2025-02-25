@@ -45,6 +45,7 @@ export const DragHandle = (props: Testable<DragHandleProps>) => {
         mProps.handleClick();
       }}
       data-test-id={mProps.testId}
+      data-test-sub-id={mProps.testSubId}
       aria-label="Перетаскивание"
       title={"Перетаскивание"}
       tabIndex={-1}

@@ -15,6 +15,8 @@ import {
   type ElementMeaning,
   INPUT_TEST_IDS,
   type InputMeaning,
+  SWITCH_TEST_IDS,
+  type SwitchMeaning,
 } from "./testIds.ts";
 
 const MILLISECONDS_IN_SECOND = 1000;
@@ -117,27 +119,22 @@ When(
 );
 
 Then(
-  "I expect to see the following number of {string} buttons on the page: {int}",
-  async function (
-    this: ComplexWorld,
-    buttonMeaning: ButtonMeaning,
-    buttonsQuantity: number,
-  ) {
-    const buttons = this.locate(BUTTON_TEST_IDS[buttonMeaning]);
-    const visibleButtons = [];
-
-    for (const button of await buttons.all()) {
-      if (await button.isVisible()) visibleButtons.push(button);
-    }
-
-    expect(visibleButtons).toHaveLength(buttonsQuantity);
+  "I expect to see the {string} button disabled",
+  async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
+    await this.expectLocated(
+      this.accounting.registerTestId(BUTTON_TEST_IDS[buttonMeaning]),
+    ).toBeDisabled();
   },
 );
 
 Then(
-  "I expect to see the {string} button disabled",
-  async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
-    await this.expectLocated(BUTTON_TEST_IDS[buttonMeaning]).toBeDisabled();
+  "I expect to see the {string} switch enabled",
+  async function (this: ComplexWorld, switchMeaning: SwitchMeaning) {
+    const someSwitch = this.locate(
+      this.accounting.registerTestId(SWITCH_TEST_IDS[switchMeaning]),
+    );
+
+    await expect(someSwitch.locator("input")).toBeEnabled();
   },
 );
 

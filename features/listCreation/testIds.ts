@@ -4,10 +4,10 @@ import {
   buildInputCounterTestId,
   buildTextAreaCounterTestId,
   CANCEL_ITEM_REMOVAL_BUTTON,
+  CHECKLIST_SWITCH,
   CREATE_LIST_BUTTON,
   DIALOG_REMOVE_BUTTON,
   DIALOG_RETURN_BUTTON,
-  IMPORT_BUTTON,
   ITEM_INPUT,
   ITEM_INPUT_CONTAINER,
   LIST_PURPOSE_INPUT,
@@ -16,13 +16,15 @@ import {
   NOTE_ACCORDION,
   NOTE_TEXT_AREA,
   REMOVE_ITEM_BUTTON,
+  TOOLS_BUTTON_COPY_ITEMS,
+  TOOLS_BUTTON_PRINT_LIST,
+  TOOLS_BUTTON_REMOVE_LIST,
 } from "../testIds.ts";
 import { buildFullTestId } from "../utilities/buildTestableSelector.ts";
 
 export const BUTTON_TEST_IDS = {
   create: CREATE_LIST_BUTTON,
   "add item": ADD_ITEM_BUTTON,
-  import: IMPORT_BUTTON,
   "remove item": REMOVE_ITEM_BUTTON,
   "remove first item": buildFullTestId(REMOVE_ITEM_BUTTON, 0),
   "remove second item": buildFullTestId(REMOVE_ITEM_BUTTON, 1),
@@ -35,6 +37,9 @@ export const BUTTON_TEST_IDS = {
   "remove list": LIST_STRIPE_REMOVE_BUTTON,
   "cancel list removal": DIALOG_RETURN_BUTTON,
   "confirm list removal": DIALOG_REMOVE_BUTTON,
+  "copy items": TOOLS_BUTTON_COPY_ITEMS,
+  "remove list tools panel": TOOLS_BUTTON_REMOVE_LIST,
+  "print list": TOOLS_BUTTON_PRINT_LIST,
 };
 export type ButtonMeaning = keyof typeof BUTTON_TEST_IDS;
 
@@ -77,3 +82,8 @@ export const TEXT_AREA_TEST_IDS = {
   note: NOTE_TEXT_AREA,
 };
 export type TextAreaMeaning = keyof typeof TEXT_AREA_TEST_IDS;
+
+export const SWITCH_TEST_IDS = {
+  checklist: CHECKLIST_SWITCH,
+};
+export type SwitchMeaning = keyof typeof SWITCH_TEST_IDS;

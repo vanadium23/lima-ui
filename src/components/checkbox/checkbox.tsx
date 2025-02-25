@@ -32,7 +32,7 @@ export const Checkbox = (props: Testable<CheckboxProps>) => {
       size: CheckboxSize.Medium,
       isDisabled: false,
       ariaLabel: "",
-      handleClick: () => { },
+      handleClick: () => {},
       isChecked: false,
     },
     props,
@@ -51,6 +51,7 @@ export const Checkbox = (props: Testable<CheckboxProps>) => {
         checkbox_disabled: mProps.isDisabled,
       }}
       data-test-id={mProps.testId}
+      data-test-sub-id={mProps.testSubId}
     >
       <input
         type="checkbox"

@@ -42,7 +42,6 @@ Feature: Removing the lists on the Lists page
     Then I expect to see the visible "first" list stripe "edit list" link disabled
     Then I expect to see the visible "first" list stripe "remove list" button disabled
 
-  @under-development
   Scenario: Not seeing the dialog modal box when removal in progress
     When I add a list
     And I open Lists page

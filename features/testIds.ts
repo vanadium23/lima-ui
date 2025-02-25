@@ -5,6 +5,7 @@ export type SeveralTestIds = TestId[];
 export const DEFAULT_TEST_ID = "defaultTestId";
 
 export const SIDEBAR = "sidebar";
+export const HEADER = "header";
 export const ADD_GROUP_BUTTON = "addGroupButton";
 export const PRO_VERSION_BUTTON = "proVersionButton";
 export const PAGE_TITLE = "pageTitle";
@@ -13,11 +14,13 @@ export const LIST_PURPOSE_INPUT = "listPurposeInput";
 export const ITEMS_INPUTS = "itemsInputs";
 export const ITEM_INPUT_CONTAINER = "itemInputContainer";
 export const ITEM_INPUT = "itemInput";
+export const SEARCH_INPUT = "searchInput";
 export const CREATE_LIST_BUTTON = "createListButton";
 export const ADD_ITEM_BUTTON = "addItemButton";
-export const IMPORT_BUTTON = "importButton";
 export const REMOVE_ITEM_BUTTON = "removeItemButton";
 export const CANCEL_ITEM_REMOVAL_BUTTON = "cancelItemRemovalButton";
+export const SEARCH_BUTTON = "searchButton";
+export const USER_BUTTON = "userButton";
 
 const COUNTER_SUFFIX = "Counter";
 
@@ -71,3 +74,17 @@ export const LIST_STRIPE_REMOVE_BUTTON = "listStripeRemoveButton";
 export const REMOVE_LIST_DIALOG = "removeListDialog";
 export const DIALOG_RETURN_BUTTON = "dialogReturnButton";
 export const DIALOG_REMOVE_BUTTON = "dialogRemoveButton";
+
+export const DRAG_HANDLE = "dragHandle";
+
+export const CHECKLIST_SWITCH = "checklistSwitch";
+export const CHECKBOX = "checkbox";
+
+export const DROPDOWN_MENU_BUTTON = "dropDownMenuButton";
+
+export const TOGGLE_TOOLS_PANEL_BUTTON = "toggleToolsPanelButton";
+
+export const TOOLS_PANEL = "toolsPanel";
+export const TOOLS_BUTTON_COPY_ITEMS = "toolsButtonCopyItems";
+export const TOOLS_BUTTON_REMOVE_LIST = "toolsButtonRemoveList";
+export const TOOLS_BUTTON_PRINT_LIST = "toolsButtonPrintList";

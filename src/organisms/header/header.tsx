@@ -1,4 +1,9 @@
-import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
+import {
+  HEADER,
+  SEARCH_BUTTON,
+  SEARCH_INPUT,
+  TOGGLE_TOOLS_PANEL_BUTTON,
+} from "../../../features/testIds.ts";
 import { IconName } from "../../components/icon/icon.tsx";
 import {
   IconButton,
@@ -13,7 +18,7 @@ import "./header.css";
 
 export const Header = () => {
   return (
-    <header class="header">
+    <header class="header" data-test-id={HEADER}>
       <div class="header__logo">
         <Logo />
       </div>
@@ -23,13 +28,13 @@ export const Header = () => {
           name={"Search"}
           placeholder={"Поиск"}
           maxLength={80}
-          testId={DEFAULT_TEST_ID}
+          testId={SEARCH_INPUT}
           isCountable={false}
         />
         <IconButton
           iconName={IconName.MagnifyingGlass}
           ariaLabel={"Начать поиск"}
-          testId={DEFAULT_TEST_ID}
+          testId={SEARCH_BUTTON}
           theme={IconButtonTheme.Tertiary}
         />
       </div>
@@ -37,7 +42,7 @@ export const Header = () => {
         <ToggleIconButton
           iconName={IconName.SquareHalf}
           ariaLabel={"Переключить панель инструментов"}
-          testId={DEFAULT_TEST_ID}
+          testId={TOGGLE_TOOLS_PANEL_BUTTON}
           defaultIsToggled={!isHidden()}
           setGlobalToggled={(toggled) => setIsHidden(!toggled)}
         />

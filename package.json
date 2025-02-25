@@ -21,8 +21,8 @@
     "typescript": "^5.2.2"
   },
   "devDependencies": {
-    "@cucumber/cucumber": "^10.2.1",
-    "@playwright/test": "^1.40.1",
+    "@cucumber/cucumber": "^11.2.0",
+    "@playwright/test": "^1.50.1",
     "@types/node": "^20.10.7",
     "@typescript-eslint/eslint-plugin": "^6.12.0",
     "@typescript-eslint/parser": "^6.12.0",

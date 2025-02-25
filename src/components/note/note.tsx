@@ -12,7 +12,6 @@ import {
   TextareaSize,
   TextareaTheme,
 } from "../textarea/textarea.tsx";
-import type { Testable } from "../utilities/testable.ts";
 
 import "./note.css";
 
@@ -36,8 +35,8 @@ type NoteProps = {
   onChange?: (value: string) => void;
 };
 
-export const Note = (props: Testable<NoteProps>) => {
-  const mProps: Testable<Required<NoteProps>> = mergeProps(
+export const Note = (props: NoteProps) => {
+  const mProps: Required<NoteProps> = mergeProps(
     {
       theme: NoteTheme.Primary,
       size: NoteSize.Medium,

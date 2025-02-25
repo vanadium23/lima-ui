@@ -45,7 +45,6 @@ export const Sidebar = () => {
           theme={DividerTheme.Primary}
           size={DividerSize.Medium}
           orientation={DividerOrientation.Horizontal}
-          testId={DEFAULT_TEST_ID}
         />
         <Nav testId={DEFAULT_TEST_ID} />
       </div>

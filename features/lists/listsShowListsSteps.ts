@@ -95,10 +95,11 @@ When("I add lists to their limit", async function (this: ComplexWorld) {
   for (let i = 0; i < LISTS_LIMIT; i++) {
     const listData = {
       name: `Здесь был Максим + ${i + 1}`,
-      purpose: "Назначение", // TODO Добавлено потому что была ошибка TS ниже в await createList(listData
-      note: "Заметка", // TODO Добавлено потому что была ошибка TS ниже в await createList(listData
+      purpose: "",
+      note: "",
       items: [{ content: getStringUpToLimit(10) }],
     };
+
     await createList(listData, this.BACKEND_ADDRESS);
   }
 });

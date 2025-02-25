@@ -4,6 +4,7 @@ import {
   Before,
   BeforeAll,
   type IWorldOptions,
+  setDefaultTimeout,
   setWorldConstructor,
   World,
 } from "@cucumber/cucumber";
@@ -110,6 +111,8 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
   }
 }
 
+const MORE_THAN_IN_PLAYWRIGHT = 6000;
+setDefaultTimeout(MORE_THAN_IN_PLAYWRIGHT);
 setWorldConstructor(ComplexWorld);
 
 const debugging = false; // HINT DEBUGGING

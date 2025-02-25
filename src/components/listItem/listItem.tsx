@@ -2,7 +2,9 @@ import { mergeProps, Show } from "solid-js";
 
 import { EDIT_LIST_INPUT_LIMIT } from "../../../configuration.ts";
 import {
-  DEFAULT_TEST_ID,
+  CHECKBOX,
+  DRAG_HANDLE,
+  DROPDOWN_MENU_BUTTON,
   ITEM_INPUT,
   ITEM_INPUT_CONTAINER,
   REMOVE_ITEM_BUTTON,
@@ -82,7 +84,8 @@ export const ListItem = (props: Testable<ListItemProps>) => {
         <DragHandle
           icon={IconName.DotsSixVertical}
           isDisabled={mProps.isDisabled}
-          testId={DEFAULT_TEST_ID}
+          testId={DRAG_HANDLE}
+          testSubId={mProps.testSubId ?? "0"}
         />
       </div>
       <Show when={mProps.isCheckable}>
@@ -90,7 +93,8 @@ export const ListItem = (props: Testable<ListItemProps>) => {
           <Checkbox
             theme={CheckboxTheme.Primary}
             size={CheckboxSize.Medium}
-            testId={DEFAULT_TEST_ID}
+            testId={CHECKBOX}
+            testSubId={mProps.testSubId ?? "0"}
             isDisabled={mProps.isDisabled}
             isChecked={mProps.isChecked}
           />
@@ -118,7 +122,8 @@ export const ListItem = (props: Testable<ListItemProps>) => {
             theme={IconButtonTheme.Primary}
             size={IconButtonSize.Medium}
             componentType={IconButtonComponentType.Button}
-            testId={DEFAULT_TEST_ID}
+            testId={DROPDOWN_MENU_BUTTON}
+            testSubId={mProps.testSubId ?? "0"}
           />
           <IconButton
             iconName={IconName.Trash}
