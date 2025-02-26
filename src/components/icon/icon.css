@@ -7,6 +7,11 @@
   height: var(--size-x9);
 }
 
+.icon_mediumEmbedded {
+  width: var(--size-x9);
+  height: var(--size-x9);
+}
+
 .icon_medium {
   width: var(--size-x10);
   height: var(--size-x10);
