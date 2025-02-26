@@ -1,4 +1,4 @@
-import { For, mergeProps, Show } from "solid-js";
+import { For, mergeProps, onCleanup, onMount, Show } from "solid-js";
 import { createStore } from "solid-js/store";
 
 import {
@@ -114,6 +114,25 @@ export const EditList = (props: EditListProps) => {
     isDialogOpen: false,
     isChanged: false,
     isNewList: list.id === "",
+  });
+
+  onMount(() => {
+    const handleLeave = (event: BeforeUnloadEvent) => {
+      if (store.isChanged) {
+        const message = "Вы уверены, что хотите покинуть страницу?";
+        event.returnValue = message;
+
+        return message;
+      }
+
+      return;
+    };
+
+    window.addEventListener("beforeunload", handleLeave);
+
+    onCleanup(() => {
+      window.removeEventListener("beforeunload", handleLeave);
+    });
   });
 
   const toggleCheckable = () => setStore("isCheckable", !store.isCheckable);
