@@ -72,7 +72,7 @@ Then("I expect to see tools panel", async function () {
 });
 
 Then(
-  "I expect to see header with the following title: {string}",
+  "I expect to see the following title: {string}",
   async function (this: ComplexWorld, pageTitleText: string) {
     const expectPageTitle = this.expectLocated(
       this.accounting.registerTestId(PAGE_TITLE),
