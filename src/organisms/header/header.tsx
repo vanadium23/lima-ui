@@ -20,10 +20,10 @@ import { isHidden, setIsHidden } from "../../state/toolsPanelState.ts";
 import "./header.css";
 
 export const Header = () => {
-  const currentlocation: string = location();
-  console.log(currentlocation);
-
+  
   const showToggleIconButton = (): boolean => {
+    const currentlocation: string = location();
+
     return currentlocation !== "/lists/" && currentlocation !== "/lists";
   };
 
