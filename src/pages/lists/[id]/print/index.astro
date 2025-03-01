@@ -1,4 +1,5 @@
 ---
+import { PRINT_LIST_TITLE, PRINT_LIST_PURPOSE, PRINT_LIST_NOTE, PRINT_LIST_ITEM } from "../../../../../features/testIds";
 import "./style.css";
 import "normalize.css";
 
@@ -38,10 +39,10 @@ const list: List = await response.json();
     <div class="print">
       <div class="print__header">
         <div class="print__headerInner">
-          <span class="print__headerTitle">{list.name}</span>
+          <span class="print__headerTitle" data-test-id={PRINT_LIST_TITLE}>{list.name}</span>
           {
             list.purpose && (
-              <span class="print__headerPurpose">{list.purpose}</span>
+              <span class="print__headerPurpose" data-test-id={PRINT_LIST_PURPOSE}>{list.purpose}</span>
             )
           }
         </div>
@@ -52,15 +53,15 @@ const list: List = await response.json();
           list.note && (
             <div class="print__note">
               <div class="print_noteTitle">Заметка:</div>
-              <div class="print_noteText">{list.note}</div>
+              <div class="print_noteText" data-test-id={PRINT_LIST_NOTE}>{list.note}</div>
             </div>
           )
         }
 
         <ul class="print__list">
           {
-            list.items.map((item) => (
-              <li class="print__item">{item.content}</li>
+            list.items.map((item, index) => (
+              <li class="print__item" data-test-id={PRINT_LIST_ITEM} data-test-sub-id={index}>{item.content}</li>
             ))
           }
         </ul>

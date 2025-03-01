@@ -57,7 +57,7 @@ export const COUNTER_TEST_IDS = {
   "list title input": buildInputCounterTestId(LIST_TITLE_INPUT),
   "list purpose input": buildInputCounterTestId(LIST_PURPOSE_INPUT),
   "first item input": buildFullTestId(buildInputCounterTestId(ITEM_INPUT), 0),
-  "note text area": buildTextAreaCounterTestId(NOTE_TEXT_AREA),
+  "list note text area": buildTextAreaCounterTestId(NOTE_TEXT_AREA),
 };
 export type CounterMeaning = keyof typeof COUNTER_TEST_IDS;
 
@@ -74,12 +74,12 @@ export const ELEMENT_TEST_IDS = {
 export type ElementMeaning = keyof typeof ELEMENT_TEST_IDS;
 
 export const ACCORDION_TEST_IDS = {
-  note: NOTE_ACCORDION,
+  "list note": NOTE_ACCORDION,
 };
 export type AccordionMeaning = keyof typeof ACCORDION_TEST_IDS;
 
 export const TEXT_AREA_TEST_IDS = {
-  note: NOTE_TEXT_AREA,
+  "list note": NOTE_TEXT_AREA,
 };
 export type TextAreaMeaning = keyof typeof TEXT_AREA_TEST_IDS;
 

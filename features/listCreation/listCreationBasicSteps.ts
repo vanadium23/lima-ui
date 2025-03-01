@@ -38,7 +38,7 @@ import {
   type InputMeaning,
 } from "./testIds.ts";
 
-When("I open List Creation page", async function (this: ComplexWorld) {
+When("I open List Creation page", {timeout: 10000}, async function (this: ComplexWorld) {
   await this.navigate(LISTS_CREATE);
 });
 

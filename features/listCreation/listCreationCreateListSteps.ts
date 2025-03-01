@@ -6,6 +6,7 @@ import type { ComplexWorld } from "../context/hooks.ts";
 import { ITEM_INPUT } from "../testIds.ts";
 import {
   ADDRESSES_MEANINGS,
+  SOME_LIST,
   type AddressMeaning,
 } from "../utilities/addresses.ts";
 import { getStringUpToLimit } from "../utilities/getStringOfLength.ts";
@@ -108,5 +109,12 @@ When(
     await this.locateByFullId(BUTTON_TEST_IDS[buttonMeaning]).click({
       force: true,
     });
+  },
+);
+
+When(
+  "I wait for the list to create",
+  async function (this: ComplexWorld) {
+    await this.page.waitForURL(`**/${SOME_LIST}`);
   },
 );

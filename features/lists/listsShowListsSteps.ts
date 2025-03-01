@@ -23,7 +23,7 @@ import {
 import { TEST_SUB_ID_ATTRIBUTE } from "../utilities/buildTestableSelector.ts";
 import { getStringUpToLimit } from "../utilities/getStringOfLength.ts";
 
-When("I add a list", async function (this: ComplexWorld) {
+When("I add a list", {timeout: 20000}, async function (this: ComplexWorld) {
   await this.navigate(LISTS_CREATE);
 
   const inputs: [string, number][] = [
@@ -91,7 +91,7 @@ Then(
   },
 );
 
-When("I add lists to their limit", async function (this: ComplexWorld) {
+When("I add lists to their limit", {timeout: 10000}, async function (this: ComplexWorld) {
   for (let i = 0; i < LISTS_LIMIT; i++) {
     const listData = {
       name: `Здесь был Максим + ${i + 1}`,

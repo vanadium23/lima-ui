@@ -50,17 +50,19 @@ Then(
 );
 
 const TEXT_AREA_LIMIT_RELATION = {
-  note: NOTE_TEXT_AREA_LIMIT,
+  "list note": NOTE_TEXT_AREA_LIMIT,
 };
 
 When(
   "I type some text with length less or equal to the one of {string} text area limit",
   async function (this: ComplexWorld, textAreaMeaning: TextAreaMeaning) {
     const textAreaLimit = TEXT_AREA_LIMIT_RELATION[textAreaMeaning];
-
-    await this.locateByFullId(TEXT_AREA_TEST_IDS[textAreaMeaning]).fill(
-      getStringUpToLimit(textAreaLimit),
-    );
+    
+    const text = getStringUpToLimit(textAreaLimit);
+    
+    this.data[textAreaMeaning] = text;
+    
+    await this.locateByFullId(TEXT_AREA_TEST_IDS[textAreaMeaning]).fill(text);
   },
 );
 

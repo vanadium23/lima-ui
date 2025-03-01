@@ -88,3 +88,8 @@ export const TOOLS_PANEL = "toolsPanel";
 export const TOOLS_BUTTON_COPY_ITEMS = "toolsButtonCopyItems";
 export const TOOLS_BUTTON_REMOVE_LIST = "toolsButtonRemoveList";
 export const TOOLS_BUTTON_PRINT_LIST = "toolsButtonPrintList";
+
+export const PRINT_LIST_TITLE = "printListTitle";
+export const PRINT_LIST_PURPOSE = "printListPurpose";
+export const PRINT_LIST_NOTE = "printListNote";
+export const PRINT_LIST_ITEM = "printListItem";

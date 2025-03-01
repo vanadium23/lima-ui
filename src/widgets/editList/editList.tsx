@@ -86,8 +86,6 @@ export const EditList = (props: EditListProps) => {
     props,
   );
 
-  const list = mProps.defaultList;
-
   type EditListStore = {
     id: string;
     items: UpdatedList["items"];
@@ -101,6 +99,8 @@ export const EditList = (props: EditListProps) => {
     isChanged: boolean;
     isNewList: boolean;
   };
+
+  const list = mProps.defaultList;
 
   const [store, setStore] = createStore<EditListStore>({
     id: list.id,
@@ -344,7 +344,7 @@ export const EditList = (props: EditListProps) => {
                   testId={LIST_TITLE_INPUT}
                   isRequired={true}
                   isDisabled={store.sendingNow !== false}
-                  defaultValue={list.name}
+                  defaultValue={store.name}
                   onChange={(value) => handleInputChange("name", value)}
                 />
               </div>
@@ -357,14 +357,14 @@ export const EditList = (props: EditListProps) => {
                   name={EditListFormNames.ListPurpose}
                   testId={LIST_PURPOSE_INPUT}
                   isDisabled={store.sendingNow !== false}
-                  defaultValue={list.purpose}
+                  defaultValue={store.purpose}
                   onChange={(value) => handleInputChange("purpose", value)}
                 />
                 <Note
                   title="Заметка"
                   name={EditListFormNames.ListNote}
                   isDisabled={store.sendingNow !== false}
-                  defaultValue={list.note}
+                  defaultValue={store.note}
                   onChange={(value) => handleInputChange("note", value)}
                 />
               </div>
@@ -485,7 +485,7 @@ export const EditList = (props: EditListProps) => {
             <ToolsButton
               componentType={ToolsButtonComponentType.Link}
               iconName={IconName.Printer}
-              link={`./${list.id}/print`}
+              link={`./${store.id}/print`}
               text={"Напечатать список"}
               testId={TOOLS_BUTTON_PRINT_LIST}
               isDisabled={store.isNewList || store.sendingNow !== false}

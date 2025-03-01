@@ -32,7 +32,7 @@ const COUNTER_LIMITS = {
   "list title input": LIST_TITLE_INPUT_LIMIT,
   "list purpose input": LIST_PURPOSE_INPUT_LIMIT,
   "first item input": EDIT_LIST_INPUT_LIMIT,
-  "note text area": NOTE_TEXT_AREA_LIMIT,
+  "list note text area": NOTE_TEXT_AREA_LIMIT,
 };
 
 Then(
@@ -58,9 +58,11 @@ When(
   async function (this: ComplexWorld, inputMeaning: InputMeaning) {
     const inputLimit = INPUT_LIMIT_RELATION[inputMeaning];
 
-    await this.locateByFullId(INPUT_TEST_IDS[inputMeaning]).fill(
-      getStringUpToLimit(inputLimit),
-    );
+    const text = getStringUpToLimit(inputLimit);
+
+    this.data[inputMeaning] = text;
+
+    await this.locateByFullId(INPUT_TEST_IDS[inputMeaning]).fill(text);
   },
 );
 

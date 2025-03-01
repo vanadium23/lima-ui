@@ -17,6 +17,6 @@ Feature: Seeing the basis of List Creation page
     Then I expect to see the "remove list tools panel" button disabled
     Then I expect to see the "checklist" switch enabled
     Then I expect to see the "print list" button disabled
-    Then I expect to fully see the collapsed "note" accordion ready for expanding
+    Then I expect to fully see the collapsed "list note" accordion ready for expanding
     Then All elements expected to be on the "List Creation" page
     Then I expect to see no other elements
