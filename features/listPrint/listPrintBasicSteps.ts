@@ -24,10 +24,17 @@ When(
 
 Then(
   "I expect to see the {string} text",
-  async function (this: ComplexWorld, textMeaning: PrintElementMeaning) {
-    const expectText = this.expectLocated(PRINT_ELEMENT_TEST_IDS[textMeaning]);
+  async function (this: ComplexWorld, printElementMeaning: PrintElementMeaning) {
+    const expectText = this.expectLocated(PRINT_ELEMENT_TEST_IDS[printElementMeaning]);
 
     await expectText.toBeInViewport();
-    await expectText.toHaveText(this.data[textMeaning] || "");
+    await expectText.toHaveText(this.data[printElementMeaning] || "");
+  },
+);
+
+Then(
+  "I expect not to see the {string} text",
+  async function (this: ComplexWorld, printElementMeaning: PrintElementMeaning) {
+    await this.expectLocated(PRINT_ELEMENT_TEST_IDS[printElementMeaning]).not.toBeInViewport();
   },
 );
