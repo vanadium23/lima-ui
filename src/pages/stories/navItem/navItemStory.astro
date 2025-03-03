@@ -14,16 +14,18 @@ const sizes = Object.values(NavItemSize);
     {themes.map((theme) => (
             <div class="demoThemeWrapper">
                 <h3 class="demoThemeWrapper__title">{theme}</h3>
-                <div class="grid grid_2Col">
+                <div class="grid grid_3Col">
                     <span class="chead"/>
                     <span class="chead">Default</span>
                     <span class="chead">Current</span>
+                    <span class="chead">Disabled</span>
 
                     {sizes.map((size) => (
                             <span class="rhead">{size}</span>
 
                             <NavItem url="https://ya.ru" theme={theme} size={size} text="Text" icon={IconName.CircleNotch} testId={DEFAULT_TEST_ID}/>
                             <NavItem url="https://ya.ru" theme={theme} size={size} text="Text" icon={IconName.CircleNotch} isCurrent={true} testId={DEFAULT_TEST_ID}/>
+                            <NavItem url="https://ya.ru" theme={theme} size={size} text="Text" icon={IconName.CircleNotch} isDisabled={true} testId={DEFAULT_TEST_ID}/>
                     ))}
 
                 </div>

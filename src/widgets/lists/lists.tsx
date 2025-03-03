@@ -18,6 +18,10 @@ import {
 import { ListStripe } from "../../components/listStripe/listStripe";
 import { PageError } from "../../components/pageError/pageError.tsx";
 import { Title } from "../../components/title/title.tsx";
+import {
+  isLimitReached,
+  setIsLimitReached,
+} from "../../state/reachListsLimit.ts";
 
 import "./lists.css";
 
@@ -46,7 +50,10 @@ export const Lists = (props: ListsProps) => {
     setStore("lists", (lists) =>
       lists.filter((item) => item.id !== listIdToRemove),
     );
+    setIsLimitReached(checkListsLimitReached());
   }
+
+  setIsLimitReached(checkListsLimitReached());
 
   return (
     <div slot="mainContent" class="lists">
@@ -58,7 +65,7 @@ export const Lists = (props: ListsProps) => {
           У вас еще нет сохраненных списков
         </span>
       </Show>
-      <Show when={checkListsLimitReached()}>
+      <Show when={isLimitReached()}>
         <PageError testId={LISTS_LIMIT_REACHED_WARNING}>
           Вы использовали лимит в {LISTS_LIMIT} списков
         </PageError>

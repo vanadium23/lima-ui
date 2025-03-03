@@ -36,12 +36,12 @@
   font-weight: 600;
 }
 
-.navItem_primary:hover {
+.navItem_primary:hover:not(.navItem_disabled) {
   background: var(--neutral-200);
   color: var(--text-neutral-700);
 }
 
-.navItem_primary:active {
+.navItem_primary:active:not(.navItem_disabled) {
   background: var(--neutral-200);
 }
 
@@ -53,4 +53,9 @@
 
 .navItem:focus:not(:focus-visible) {
   outline: none;
+}
+
+.navItem_disabled {
+  color: var(--text-neutral-500);
+  cursor: not-allowed;
 }
