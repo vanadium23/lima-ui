@@ -50,7 +50,8 @@ type ListItemProps = {
   defaultValue?: string;
   name: string;
   dataId?: string;
-  isLastItem?: boolean;
+  isOnlyOneItem?: boolean;
+  isRequired?: boolean;
   onChange?: (value: string) => void;
 };
 
@@ -59,8 +60,9 @@ export const ListItem = (props: Testable<ListItemProps>) => {
     {
       theme: ListItemTheme.Primary,
       size: ListItemSize.Medium,
-      isLastItem: false,
+      isOnlyOneItem: false,
       isDisabled: false,
+      isRequired: true,
       defaultValue: "",
       dataId: "",
       onChange: () => {},
@@ -110,7 +112,7 @@ export const ListItem = (props: Testable<ListItemProps>) => {
           isDisabled={mProps.isDisabled}
           placeholder={"Пункт списка"}
           defaultValue={mProps.defaultValue}
-          isRequired={true}
+          isRequired={mProps.isRequired}
           onChange={mProps.onChange}
           testId={ITEM_INPUT}
           testSubId={mProps.testSubId ?? "0"}
@@ -133,7 +135,7 @@ export const ListItem = (props: Testable<ListItemProps>) => {
             handleClick={removeItemIfEnabled}
             testId={REMOVE_ITEM_BUTTON}
             testSubId={mProps.testSubId ?? "0"}
-            isDisabled={mProps.isLastItem}
+            isDisabled={mProps.isOnlyOneItem}
           />
         </div>
       </div>

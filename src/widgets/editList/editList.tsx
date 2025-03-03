@@ -1,4 +1,11 @@
-import { For, mergeProps, onCleanup, onMount, Show } from "solid-js";
+import {
+  createMemo,
+  For,
+  mergeProps,
+  onCleanup,
+  onMount,
+  Show,
+} from "solid-js";
 import { createStore } from "solid-js/store";
 
 import {
@@ -120,15 +127,22 @@ export const EditList = (props: EditListProps) => {
     const handleLeave = (event: BeforeUnloadEvent) => {
       if (store.isChanged) {
         const message = "Вы уверены, что хотите покинуть страницу?";
-        event.returnValue = message;
+        event.preventDefault();
 
         return message;
       }
 
-      return;
+      return undefined;
     };
 
     window.addEventListener("beforeunload", handleLeave);
+
+    if (
+      store.items.length === 0 ||
+      store.items[store.items.length - 1]?.content?.trim() !== ""
+    ) {
+      addItem();
+    }
 
     onCleanup(() => {
       window.removeEventListener("beforeunload", handleLeave);
@@ -146,11 +160,34 @@ export const EditList = (props: EditListProps) => {
     }
   }
 
+  function handleItemChange(index: number, value: string) {
+    setStore("items", index, "content", value);
+    checkChanges();
+
+    const isLastItem = index === store.items.length - 1;
+
+    if (isLastItem && value.trim() !== "" && store.items.length < ITEMS_LIMIT) {
+      addItem();
+    }
+
+    const lastIndex = store.items.length - 1;
+    const beforeLastIndex = lastIndex - 1;
+
+    if (
+      store.items.length > 1 &&
+      index === beforeLastIndex &&
+      store.items[lastIndex]?.content?.trim() === "" &&
+      store.items[beforeLastIndex]?.content?.trim() === ""
+    ) {
+      removeItem(lastIndex);
+    }
+  }
+
   function checkItemsLimitReached() {
     return store.items.length >= ITEMS_LIMIT;
   }
 
-  function isLastItem() {
+  function isOnlyOneItem() {
     return store.items.length === 1;
   }
 
@@ -208,25 +245,24 @@ export const EditList = (props: EditListProps) => {
         return element.name.startsWith(EditListFormNames.ListItem);
       });
 
-      const inputsValues = itemsInputs.map((itemInput) => {
-        if (itemInput.dataset.id) {
-          return {
-            content: itemInput.value,
-            id: itemInput.dataset.id,
-          };
-        } else {
-          return {
-            content: itemInput.value,
-          };
-        }
-      });
+      const inputsValues = itemsInputs
+        .map((itemInput) => {
+          const content = itemInput.value.trim();
+          const id = itemInput.dataset.id?.trim();
+
+          return id ? { id, content } : { content };
+        })
+        .filter(
+          (item, index) =>
+            item.content !== "" || index < store.items.length - 1,
+        );
 
       const data = {
         name: target[EditListFormNames.ListTitle].value,
         purpose: target[EditListFormNames.ListPurpose].value,
         items: inputsValues,
         note: target[EditListFormNames.ListNote].value,
-        noDocumentedReasonForLatestUpdate: true, // GERMAN надо будет потом выпилить на бекенде
+        noDocumentedReasonForLatestUpdate: true,
       };
 
       if (store.id) {
@@ -374,25 +410,33 @@ export const EditList = (props: EditListProps) => {
               <div class="editList__inner" data-test-id={ITEMS_INPUTS}>
                 <div class="editList__scrollWrapper">
                   <For each={store.items}>
-                    {(item, getIndex) => (
-                      <ListItem
-                        removeItem={() => removeItem(getIndex())}
-                        isDisabled={store.sendingNow !== false}
-                        isLastItem={isLastItem()}
-                        isCheckable={store.isCheckable}
-                        isChecked={false}
-                        defaultValue={item.content}
-                        name={`${EditListFormNames.ListItem} ${getIndex() + 1}`}
-                        dataId={"id" in item ? item.id : ""}
-                        defaultListItemId={String(getIndex())}
-                        onChange={(value) => {
-                          setStore("items", getIndex(), "content", value);
-                          checkChanges();
-                        }}
-                        testId={ITEM_INPUT_CONTAINER}
-                        testSubId={getIndex()}
-                      />
-                    )}
+                    {(item, getIndex) => {
+                      const index = createMemo(() => getIndex());
+                      const isLastItem = createMemo(
+                        () => index() === store.items.length - 1,
+                      );
+                      const isRequired = createMemo(
+                        () => !isLastItem() || isOnlyOneItem(),
+                      );
+
+                      return (
+                        <ListItem
+                          removeItem={() => removeItem(index())}
+                          isDisabled={store.sendingNow !== false}
+                          isOnlyOneItem={isOnlyOneItem()}
+                          isCheckable={store.isCheckable}
+                          isChecked={false}
+                          defaultValue={item.content}
+                          name={`${EditListFormNames.ListItem} ${index() + 1}`}
+                          dataId={"id" in item ? item.id : ""}
+                          defaultListItemId={String(index)}
+                          onChange={(value) => handleItemChange(index(), value)}
+                          testId={ITEM_INPUT_CONTAINER}
+                          testSubId={index()}
+                          isRequired={isRequired()}
+                        />
+                      );
+                    }}
                   </For>
                 </div>
               </div>
