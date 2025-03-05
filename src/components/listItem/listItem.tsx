@@ -42,8 +42,7 @@ export enum ListItemSize {
 type ListItemProps = {
   theme?: ListItemTheme;
   size?: ListItemSize;
-  removeItem: (defaultListId: string) => void;
-  defaultListItemId: string;
+  removeItem: () => void;
   isDisabled?: boolean;
   isCheckable: boolean;
   isChecked: boolean;
@@ -72,7 +71,7 @@ export const ListItem = (props: Testable<ListItemProps>) => {
 
   function removeItemIfEnabled() {
     if (!mProps.isDisabled) {
-      mProps.removeItem(mProps.defaultListItemId);
+      mProps.removeItem();
     }
   }
 
@@ -84,7 +83,6 @@ export const ListItem = (props: Testable<ListItemProps>) => {
     >
       <div class="listItem__dragHandle">
         <DragHandle
-          icon={IconName.DotsSixVertical}
           isDisabled={mProps.isDisabled}
           testId={DRAG_HANDLE}
           testSubId={mProps.testSubId ?? "0"}

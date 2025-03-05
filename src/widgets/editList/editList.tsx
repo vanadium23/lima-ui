@@ -126,20 +126,19 @@ export const EditList = (props: EditListProps) => {
   onMount(() => {
     const handleLeave = (event: BeforeUnloadEvent) => {
       if (store.isChanged) {
-        const message = "Вы уверены, что хотите покинуть страницу?";
         event.preventDefault();
 
-        return message;
+        return "Вы уверены, что хотите покинуть страницу?";
       }
 
-      return undefined;
+      return;
     };
 
     window.addEventListener("beforeunload", handleLeave);
 
     if (
       store.items.length === 0 ||
-      store.items[store.items.length - 1]?.content?.trim() !== ""
+      store.items[store.items.length - 1]?.content.trim() !== ""
     ) {
       addItem();
     }
@@ -174,10 +173,10 @@ export const EditList = (props: EditListProps) => {
     const beforeLastIndex = lastIndex - 1;
 
     if (
-      store.items.length > 1 &&
+      !isOnlyOneItem() &&
       index === beforeLastIndex &&
-      store.items[lastIndex]?.content?.trim() === "" &&
-      store.items[beforeLastIndex]?.content?.trim() === ""
+      store.items[lastIndex]?.content.trim() === "" &&
+      store.items[beforeLastIndex]?.content.trim() === ""
     ) {
       removeItem(lastIndex);
     }
@@ -429,7 +428,6 @@ export const EditList = (props: EditListProps) => {
                           defaultValue={item.content}
                           name={`${EditListFormNames.ListItem} ${index() + 1}`}
                           dataId={"id" in item ? item.id : ""}
-                          defaultListItemId={String(index)}
                           onChange={(value) => handleItemChange(index(), value)}
                           testId={ITEM_INPUT_CONTAINER}
                           testSubId={index()}

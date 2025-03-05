@@ -18,7 +18,6 @@ type DragHandleProps = {
   size?: DragHandleSize;
   isDisabled?: boolean;
   handleClick?: () => void;
-  icon: IconName;
 };
 
 export const DragHandle = (props: Testable<DragHandleProps>) => {
@@ -27,7 +26,6 @@ export const DragHandle = (props: Testable<DragHandleProps>) => {
       theme: DragHandleTheme.Primary,
       size: DragHandleSize.Medium,
       isDisabled: false,
-      isLoading: false,
       handleClick: () => {},
     },
     props,
@@ -50,7 +48,7 @@ export const DragHandle = (props: Testable<DragHandleProps>) => {
       title={"Перетаскивание"}
       tabIndex={-1}
     >
-      <Icon name={mProps.icon} size={IconSize.Medium} />
+      <Icon name={IconName.DotsSixVertical} size={IconSize.Medium} />
     </button>
   );
 };

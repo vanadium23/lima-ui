@@ -1,7 +1,6 @@
 ---
 import {DEFAULT_TEST_ID} from "../../../../features/testIds";
 import {DragHandle, DragHandleSize, DragHandleTheme} from "../../../components/dragHandle/dragHandle.tsx";
-import {IconName} from "../../../components/icon/icon";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 const themes = Object.values(DragHandleTheme);
@@ -21,9 +20,9 @@ const sizes = Object.values(DragHandleSize);
                     {sizes.map((size) => (
                             <span class="rhead">{size}</span>
 
-                            <DragHandle client:only="solid-js" icon={IconName.DotsSixVertical} theme={theme} size={size} testId={DEFAULT_TEST_ID}/>
+                            <DragHandle client:only="solid-js" theme={theme} size={size} testId={DEFAULT_TEST_ID}/>
 
-                            <DragHandle client:only="solid-js" icon={IconName.DotsSixVertical} theme={theme} size={size} testId={DEFAULT_TEST_ID}
+                            <DragHandle client:only="solid-js" theme={theme} size={size} testId={DEFAULT_TEST_ID}
                                     isDisabled={true}/>
                     ))}
 
