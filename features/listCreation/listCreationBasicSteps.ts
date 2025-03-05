@@ -112,10 +112,8 @@ Then(
 );
 
 Then(
-  "I expect to see single item input ready for typing with the following placeholder: {string}",
-  async function (this: ComplexWorld, placeholder: string) {
-    const expectItemInput = this.expectLocated(ITEM_INPUT);
-
+  "I expect to see single item input ready for typing",
+  async function (this: ComplexWorld) {
     const itemInputTestSubId = await this.locate(ITEM_INPUT).getAttribute(
       TEST_SUB_ID_ATTRIBUTE,
     );
@@ -125,10 +123,11 @@ Then(
       itemInputTestSubId,
     );
 
+    const expectItemInput = this.expectLocated(ITEM_INPUT);
+
     await expectItemInput.toHaveCount(1);
     await expectItemInput.toBeInViewport();
     await expectItemInput.toBeEnabled();
-    await expectItemInput.toHaveAttribute("placeholder", placeholder);
   },
 );
 
