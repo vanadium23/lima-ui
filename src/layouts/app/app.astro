@@ -6,6 +6,15 @@ import { Sidebar } from "../../organisms/sidebar/sidebar";
 import "normalize.css";
 import "../main.css";
 import "./app.css";
+
+interface Props {
+  titleName?: string
+}
+
+const { titleName } = Astro.props;
+
+const defaultTitleName = "Lima App";
+
 ---
 
 <!doctype html>
@@ -19,7 +28,8 @@ import "./app.css";
       name="msapplication-TileImage"
     />
     <meta content="#ffffff" name="theme-color" />
-    <title>Svernik APP</title>
+
+    <title>{titleName ? `${titleName} | Lima` : defaultTitleName}</title>
   </head>
   <body>
     <Header client:only="solid-js" />

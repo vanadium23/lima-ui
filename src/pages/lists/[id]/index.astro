@@ -12,6 +12,6 @@ const response = await fetch(
 const list: BackendList = await response.json();
 ---
 
-<AppPage>
+<AppPage titleName={list.name} >
   <EditList client:only="solid-js" slot="mainContent" defaultList={list} />
 </AppPage>
