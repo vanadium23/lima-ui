@@ -1,10 +1,11 @@
-import { Then } from "@cucumber/cucumber";
+import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
 import type { ComplexWorld } from "../context/hooks.ts";
 import { INPUT_TEST_IDS, type InputMeaning, SWITCH_TEST_IDS, type SwitchMeaning } from "../listCreation/testIds.ts";
-import { ITEM_INPUT, ITEM_INPUT_CONTAINER } from "../testIds.ts";
+import { ITEM_INPUT, ITEM_INPUT_CONTAINER, LIST_STRIPE } from "../testIds.ts";
 import { TEST_SUB_ID_ATTRIBUTE } from "../utilities/buildTestableSelector.ts";
+import { LIST_STRIPE_POSITIONS, type ListStripePosition } from "../lists/testIds.ts";
 
 Then("I expect to see {string} input enabled", async function (this: ComplexWorld, inputMeaning: InputMeaning) {
   const expectInput = this.expectLocated(
@@ -45,4 +46,29 @@ Then(
       await expect(itemInput).toBeEnabled();
     }
   },
+);
+
+Then(
+  "I expect to see the {string} input",
+  async function (this: ComplexWorld, inputMeaning: InputMeaning) {
+    await this.expectLocated(INPUT_TEST_IDS[inputMeaning]).toBeInViewport();
+  }
+);
+
+Then(
+  "I expect not to see the last item input",
+  async function (this: ComplexWorld) {
+    await expect(this.locate(ITEM_INPUT).last()).not.toBeInViewport();
+  }
+);
+
+When(
+  "I press on the {string} list stripe",
+  async function (this: ComplexWorld, listStripePosition: ListStripePosition) {
+    const listStripe = this.locate(LIST_STRIPE).nth(
+      LIST_STRIPE_POSITIONS[listStripePosition],
+    );
+
+    await listStripe.click();
+  }
 );

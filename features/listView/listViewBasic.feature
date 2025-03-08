@@ -19,3 +19,19 @@ Feature: Seeing the basis of List view page
     Then I expect to see the "print list" button enabled
     Then All elements expected to be on the "List View" page
     Then I expect to see no other elements
+
+  Scenario: First item is visible when opening a list with many items
+    When I clear all data
+    When I open List Creation page
+    And I type some text with length less or equal to the one of "list title" input limit
+    And I type some text with length less or equal to the one of "list purpose" input limit
+    And I type some text with length less or equal to the one of "first item" input limit
+    And I add items inputs till scroll appears plus one item input
+    And I type some text to all items inputs
+    And I press the "create" button
+    And I wait for the list to create
+    And I open Lists page
+    And I press on the "first" list stripe
+    And I wait for the page to load
+    Then I expect to see the "first item" input
+    Then I expect not to see the last item input

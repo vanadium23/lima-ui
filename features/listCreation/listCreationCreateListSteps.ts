@@ -84,10 +84,13 @@ When(
 
     this.page.on("request", (data) => {
       const { address, method } = ADDRESSES_MEANINGS[requestMeaning];
+      const urlEndsWithAddress = data.url().endsWith(address) || data.url().endsWith(address.replace("/", ""));
 
-      if (data.url().endsWith(address) && data.method() === method) {
-        if (this.counters[requestMeaning] !== undefined) {
+      if (urlEndsWithAddress && data.method() === method) {
+        if (this.counters[requestMeaning]) {
           this.counters[requestMeaning]++;
+        } else {
+          this.counters[requestMeaning] = 1;
         }
       }
     });
