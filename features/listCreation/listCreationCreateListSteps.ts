@@ -16,6 +16,8 @@ import {
   type AccordionMeaning,
   BUTTON_TEST_IDS,
   type ButtonMeaning,
+  INPUT_TEST_IDS,
+  type InputMeaning,
   TEXT_AREA_TEST_IDS,
   type TextAreaMeaning,
 } from "./testIds.ts";
@@ -84,7 +86,9 @@ When(
       const { address, method } = ADDRESSES_MEANINGS[requestMeaning];
 
       if (data.url().endsWith(address) && data.method() === method) {
-        this.counters[requestMeaning]++;
+        if (this.counters[requestMeaning] !== undefined) {
+          this.counters[requestMeaning]++;
+        }
       }
     });
   },
@@ -117,4 +121,34 @@ When(
   async function (this: ComplexWorld) {
     await this.page.waitForURL(`**/${SOME_LIST}`);
   },
+);
+
+Then(
+  "I expect to see {string} input with the text I provided",
+  async function (this: ComplexWorld, inputMeaning: InputMeaning) {
+    const expectedText = this.data[inputMeaning] || "";
+    await this.expectLocated(INPUT_TEST_IDS[inputMeaning]).toHaveValue(expectedText);
+  }
+);
+
+Then(
+  "I expect to see {string} text area with the text I provided",
+  async function (this: ComplexWorld, textAreaMeaning: TextAreaMeaning) {
+    const expectedText = this.data[textAreaMeaning] || "";
+    await this.expectLocated(TEXT_AREA_TEST_IDS[textAreaMeaning]).toHaveValue(expectedText);
+  }
+);
+
+When(
+  "I refresh the page",
+  async function (this: ComplexWorld) {
+    await this.page.reload();
+  }
+);
+
+When(
+  "I wait for the page to load",
+  async function (this: ComplexWorld) {
+    await this.page.waitForLoadState("networkidle");
+  }
 );

@@ -33,3 +33,31 @@ Feature: Successfully creating list with correct data
     And I forcefully press the "create" button
     And I wait for "all requests to happen" for the following number of seconds: 1
     Then I expect to see the following number of "list creation" request: 1
+
+  Scenario: Created list contains all data provided during creation
+    When I type some text with length less or equal to the one of "first item" input limit
+    And I press the "add item" button
+    And I type some text with length less or equal to the one of "second item" input limit
+    And I press the "create" button
+    And I wait for the list to create
+    Then I expect to see "list title" input with the text I provided
+    Then I expect to see "list purpose" input with the text I provided
+    Then I expect to see "first item" input with the text I provided
+    Then I expect to see "second item" input with the text I provided
+    Then I press on the "list note" accordion
+    Then I expect to see "list note" text area with the text I provided
+
+  Scenario: Created list data persists after page refresh
+    When I type some text with length less or equal to the one of "first item" input limit
+    And I press the "add item" button
+    And I type some text with length less or equal to the one of "second item" input limit
+    And I press the "create" button
+    And I wait for the list to create
+    And I refresh the page
+    And I wait for the page to load
+    Then I expect to see "list title" input with the text I provided
+    Then I expect to see "list purpose" input with the text I provided
+    Then I expect to see "first item" input with the text I provided
+    Then I expect to see "second item" input with the text I provided
+    Then I press on the "list note" accordion
+    Then I expect to see "list note" text area with the text I provided
