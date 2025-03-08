@@ -13,7 +13,7 @@ Feature: Seeing the basis of List Creation page
     Then I expect to see items inputs area without scroll
     Then I expect to see single item input ready for typing
     Then I expect to see the "create" button "disabled" with the following text: "Сохранить"
-    Then I expect to see the "add item" button ready for clicking
+    Then I expect to see the "add item" button enabled
     Then I expect to see the "copy items" button disabled
     Then I expect to see the "remove list tools panel" button disabled
     Then I expect to see the "checklist" switch enabled

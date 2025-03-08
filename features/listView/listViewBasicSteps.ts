@@ -15,7 +15,7 @@ Then("I expect to see {string} input enabled", async function (this: ComplexWorl
   await expectInput.toBeEnabled();
 });
 
-Then("I expect to see the {string} switch ready for clicking", async function (this: ComplexWorld, switchMeaning: SwitchMeaning) {
+Then("I expect to see the {string} switch enabled", async function (this: ComplexWorld, switchMeaning: SwitchMeaning) {
   const switchElement = this.locate(
     this.accounting.registerTestId(SWITCH_TEST_IDS[switchMeaning])
   );

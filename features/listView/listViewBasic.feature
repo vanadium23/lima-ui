@@ -12,10 +12,10 @@ Feature: Seeing the basis of List view page
     Then I expect to see items inputs area without scroll
     Then I expect to see 2 item inputs ready for typing
     Then I expect to see the "create" button "disabled" with the following text: "Сохранить"
-    Then I expect to see the "add item" button ready for clicking
-    Then I expect to see the "copy items" button ready for clicking
-    Then I expect to see the "remove list tools panel" button ready for clicking
-    Then I expect to see the "checklist" switch ready for clicking
-    Then I expect to see the "print list" button ready for clicking
+    Then I expect to see the "add item" button enabled
+    Then I expect to see the "copy items" button enabled
+    Then I expect to see the "remove list tools panel" button enabled
+    Then I expect to see the "checklist" switch enabled
+    Then I expect to see the "print list" button enabled
     Then All elements expected to be on the "List View" page
     Then I expect to see no other elements

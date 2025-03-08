@@ -15,8 +15,6 @@ import {
   type ElementMeaning,
   INPUT_TEST_IDS,
   type InputMeaning,
-  SWITCH_TEST_IDS,
-  type SwitchMeaning,
 } from "./testIds.ts";
 
 const MILLISECONDS_IN_SECOND = 1000;
@@ -124,17 +122,6 @@ Then(
     await this.expectLocated(
       this.accounting.registerTestId(BUTTON_TEST_IDS[buttonMeaning]),
     ).toBeDisabled();
-  },
-);
-
-Then(
-  "I expect to see the {string} switch enabled",
-  async function (this: ComplexWorld, switchMeaning: SwitchMeaning) {
-    const someSwitch = this.locate(
-      this.accounting.registerTestId(SWITCH_TEST_IDS[switchMeaning]),
-    );
-
-    await expect(someSwitch.locator("input")).toBeEnabled();
   },
 );
 

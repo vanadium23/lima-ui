@@ -187,7 +187,7 @@ Then(
 );
 
 Then(
-  "I expect to see the {string} button ready for clicking",
+  "I expect to see the {string} button enabled",
   async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
     const expectButton = this.expectLocated(
       this.accounting.registerTestId(BUTTON_TEST_IDS[buttonMeaning]),

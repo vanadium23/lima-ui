@@ -9,7 +9,7 @@ Feature: Basic list printing functionality
     And I type some text with length less or equal to the one of "first item" input limit
     And I press the "create" button
     And I wait for the list to create
-    Then I expect to see the "print list" button ready for clicking
+    Then I expect to see the "print list" button enabled
 
   Scenario: List data is visible on the print page
     When I type some text with length less or equal to the one of "list title" input limit
