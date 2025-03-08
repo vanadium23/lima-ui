@@ -1,7 +1,9 @@
 Feature: Seeing the basis of List view page
 
-  Scenario: Seeing list on List view page
+  Background:
     When I clear all data
+
+  Scenario: Seeing list on List view page
     When I add a list
     Then I expect to see sidebar
     Then I expect to see header
@@ -22,7 +24,6 @@ Feature: Seeing the basis of List view page
 
   @needs-fixing
   Scenario: First item is visible when opening a list with many items
-    When I clear all data
     When I open List Creation page
     And I type some text with length less or equal to the one of "list title" input limit
     And I type some text with length less or equal to the one of "list purpose" input limit
@@ -36,3 +37,22 @@ Feature: Seeing the basis of List view page
     And I wait for the page to load
     Then I expect to see the "first item" input
     Then I expect not to see the last item input
+
+  @needs-fixing
+  Scenario: List view page with list loading error
+    When I add a list
+    And I open Lists page
+    And I press on the "first" list stripe
+    But Error happens while loading
+    Then I expect to see sidebar
+    Then I expect to see header
+    Then I expect to see tools panel
+    Then I expect to see the "connection" error
+    Then I expect not to see the "create" button
+    Then I expect to see the "add item" button disabled
+    Then I expect to see the "copy items" button disabled
+    Then I expect to see the "remove list tools panel" button disabled
+    Then I expect to see the "checklist" switch disabled
+    Then I expect to see the "print list" button disabled
+    Then All elements expected to be on the "List View with Error" page
+    Then I expect to see no other elements

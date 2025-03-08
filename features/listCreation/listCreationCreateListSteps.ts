@@ -3,13 +3,14 @@ import { expect } from "@playwright/test";
 
 import { EDIT_LIST_INPUT_LIMIT } from "../../configuration.ts";
 import type { ComplexWorld } from "../context/hooks.ts";
-import { ITEM_INPUT } from "../testIds.ts";
+import { buildAccordionButtonTestId, buildAccordionContentTestId, ITEM_INPUT } from "../testIds.ts";
 import {
   ADDRESSES_MEANINGS,
   SOME_LIST,
   type AddressMeaning,
 } from "../utilities/addresses.ts";
 import { getStringUpToLimit } from "../utilities/getStringOfLength.ts";
+import { registerItem } from "../utilities/registerItem.ts";
 
 import {
   ACCORDION_TEST_IDS,
@@ -25,9 +26,21 @@ import {
 Then(
   "I expect to see the {string} accordion disabled",
   async function (this: ComplexWorld, accordionMeaning: AccordionMeaning) {
+    const accordionTestId = ACCORDION_TEST_IDS[accordionMeaning];
+    
     await expect(
-      this.locate(ACCORDION_TEST_IDS[accordionMeaning]).locator("button"),
+      this.locate(
+        this.accounting.registerTestId(accordionTestId),
+      ).locator("button"),
     ).toBeDisabled();
+
+    this.accounting.registerTestId(
+      buildAccordionButtonTestId(accordionTestId),
+    );
+    
+    this.accounting.registerTestId(
+      buildAccordionContentTestId(accordionTestId),
+    );
   },
 );
 
@@ -35,7 +48,7 @@ Then(
   "I expect to see the {string} text area disabled",
   async function (this: ComplexWorld, textAreaMeaning: TextAreaMeaning) {
     await this.expectLocated(
-      TEXT_AREA_TEST_IDS[textAreaMeaning],
+      this.accounting.registerTestId(TEXT_AREA_TEST_IDS[textAreaMeaning]),
     ).toBeDisabled();
   },
 );
@@ -44,7 +57,9 @@ Then(
   "I expect to see the {string} button in the loading state",
   async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
     await expect(
-      this.locate(BUTTON_TEST_IDS[buttonMeaning]).locator("svg"),
+      this.locate(
+        this.accounting.registerTestId(BUTTON_TEST_IDS[buttonMeaning]),
+      ).locator("svg"),
     ).toBeInViewport();
   },
 );
@@ -153,5 +168,26 @@ When(
   "I wait for the page to load",
   async function (this: ComplexWorld) {
     await this.page.waitForLoadState("networkidle");
+  }
+);
+
+Then(
+  "I expect to see the {string} item input disabled",
+  async function (this: ComplexWorld, itemPosition: string) {
+    let itemIndex = 0;
+    
+    if (itemPosition === "first") {
+      itemIndex = 0;
+    } else if (itemPosition === "second") {
+      itemIndex = 1;
+    } else {
+      throw new Error(`Unknown item position: ${itemPosition}`);
+    }
+    
+    const itemInput = this.locate(ITEM_INPUT).nth(itemIndex);
+    await registerItem.call(this, itemInput);
+    
+    await expect(itemInput).toBeInViewport();
+    await expect(itemInput).toBeDisabled();
   }
 );

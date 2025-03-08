@@ -16,7 +16,6 @@ export const ITEM_INPUT_CONTAINER = "itemInputContainer";
 export const ITEM_INPUT = "itemInput";
 export const SEARCH_INPUT = "searchInput";
 export const CREATE_LIST_BUTTON = "createListButton";
-export const ADD_ITEM_BUTTON = "addItemButton";
 export const REMOVE_ITEM_BUTTON = "removeItemButton";
 export const CANCEL_ITEM_REMOVAL_BUTTON = "cancelItemRemovalButton";
 export const SEARCH_BUTTON = "searchButton";
@@ -85,6 +84,7 @@ export const DROPDOWN_MENU_BUTTON = "dropDownMenuButton";
 export const TOGGLE_TOOLS_PANEL_BUTTON = "toggleToolsPanelButton";
 
 export const TOOLS_PANEL = "toolsPanel";
+export const TOOLS_PANEL_ADD_ITEM_BUTTON = "toolsPanelAddItemButton";
 export const TOOLS_BUTTON_COPY_ITEMS = "toolsButtonCopyItems";
 export const TOOLS_BUTTON_REMOVE_LIST = "toolsButtonRemoveList";
 export const TOOLS_BUTTON_PRINT_LIST = "toolsButtonPrintList";

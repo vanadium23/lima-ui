@@ -1,7 +1,8 @@
 export const LISTS = "lists/";
 export const LISTS_CREATE = `${LISTS}create`;
 export const SOME_LIST = `${LISTS}list-*`;
-export const LISTS_WITH_NETWORK_ERROR = `${LISTS}?error=true`;
+export const ERROR_SIGN = "?error=true";
+export const LISTS_WITH_NETWORK_ERROR = `${LISTS}${ERROR_SIGN}`;
 
 export const ADDRESSES_MEANINGS = {
   "list creation": { address: LISTS, method: "POST" },

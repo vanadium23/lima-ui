@@ -1,6 +1,5 @@
 import { ITEMS_LIMIT } from "../../configuration.ts";
 import {
-  ADD_ITEM_BUTTON,
   buildInputCounterTestId,
   buildTextAreaCounterTestId,
   CANCEL_ITEM_REMOVAL_BUTTON,
@@ -19,12 +18,13 @@ import {
   TOOLS_BUTTON_COPY_ITEMS,
   TOOLS_BUTTON_PRINT_LIST,
   TOOLS_BUTTON_REMOVE_LIST,
+  TOOLS_PANEL_ADD_ITEM_BUTTON,
 } from "../testIds.ts";
 import { buildFullTestId } from "../utilities/buildTestableSelector.ts";
 
 export const BUTTON_TEST_IDS = {
   create: CREATE_LIST_BUTTON,
-  "add item": ADD_ITEM_BUTTON,
+  "add item": TOOLS_PANEL_ADD_ITEM_BUTTON,
   "remove item": REMOVE_ITEM_BUTTON,
   "remove first item": buildFullTestId(REMOVE_ITEM_BUTTON, 0),
   "remove second item": buildFullTestId(REMOVE_ITEM_BUTTON, 1),

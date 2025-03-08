@@ -3,9 +3,10 @@ import { expect } from "@playwright/test";
 
 import type { ComplexWorld } from "../context/hooks.ts";
 import { INPUT_TEST_IDS, type InputMeaning, SWITCH_TEST_IDS, type SwitchMeaning } from "../listCreation/testIds.ts";
-import { ITEM_INPUT, ITEM_INPUT_CONTAINER, LIST_STRIPE } from "../testIds.ts";
-import { TEST_SUB_ID_ATTRIBUTE } from "../utilities/buildTestableSelector.ts";
+import { ITEM_INPUT, LIST_STRIPE } from "../testIds.ts";
 import { LIST_STRIPE_POSITIONS, type ListStripePosition } from "../lists/testIds.ts";
+import { ERROR_SIGN } from "../utilities/addresses.ts";
+import { registerItem } from "../utilities/registerItem.ts";
 
 Then("I expect to see {string} input enabled", async function (this: ComplexWorld, inputMeaning: InputMeaning) {
   const expectInput = this.expectLocated(
@@ -25,6 +26,15 @@ Then("I expect to see the {string} switch enabled", async function (this: Comple
   await expect(switchElement.locator("input")).toBeEnabled();
 });
 
+Then("I expect to see the {string} switch disabled", async function (this: ComplexWorld, switchMeaning: SwitchMeaning) {
+  const switchElement = this.locate(
+    this.accounting.registerTestId(SWITCH_TEST_IDS[switchMeaning])
+  );
+  
+  await expect(switchElement).toBeInViewport();
+  await expect(switchElement.locator("input")).toBeDisabled();
+});
+
 Then(
   "I expect to see {int} item inputs ready for typing",
   async function (this: ComplexWorld, count: number) {
@@ -33,14 +43,7 @@ Then(
     expect(itemInputs).toHaveCount(count);
 
     for (const itemInput of await itemInputs.all()) {
-      const itemInputTestSubId = await itemInput.getAttribute(
-        TEST_SUB_ID_ATTRIBUTE,
-      );
-      this.accounting.registerTestIdAndSubId(ITEM_INPUT, itemInputTestSubId);
-      this.accounting.registerTestIdAndSubId(
-        ITEM_INPUT_CONTAINER,
-        itemInputTestSubId,
-      );
+      await registerItem.call(this, itemInput);
 
       await expect(itemInput).toBeInViewport();
       await expect(itemInput).toBeEnabled();
@@ -70,5 +73,13 @@ When(
     );
 
     await listStripe.click();
+  }
+);
+
+When(
+  "Error happens while loading",
+  async function (this: ComplexWorld) {
+    const currentUrl = this.page.url();
+    await this.page.goto(currentUrl + ERROR_SIGN);
   }
 );

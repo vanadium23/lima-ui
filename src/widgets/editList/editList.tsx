@@ -8,13 +8,12 @@ import {
 } from "solid-js";
 import { createStore } from "solid-js/store";
 
-import {
+import {  
   ITEMS_LIMIT,
   LIST_PURPOSE_INPUT_LIMIT,
   LIST_TITLE_INPUT_LIMIT,
 } from "../../../configuration.ts";
 import {
-  ADD_ITEM_BUTTON,
   CHECKLIST_SWITCH,
   CREATE_LIST_BUTTON,
   ITEM_INPUT_CONTAINER,
@@ -28,6 +27,7 @@ import {
   TOOLS_BUTTON_PRINT_LIST,
   TOOLS_BUTTON_REMOVE_LIST,
   TOOLS_PANEL,
+  TOOLS_PANEL_ADD_ITEM_BUTTON,
 } from "../../../features/testIds.ts";
 import { Button, ButtonType } from "../../components/button/button.tsx";
 import { Dialog } from "../../components/dialog/dialog.tsx";
@@ -479,7 +479,7 @@ export const EditList = (props: EditListProps) => {
                 checkItemsLimitReached() || store.sendingNow !== false
               }
               text={"Добавить пункт"}
-              testId={ADD_ITEM_BUTTON}
+              testId={TOOLS_PANEL_ADD_ITEM_BUTTON}
             />
             <ToolsButton
               componentType={ToolsButtonComponentType.Button}

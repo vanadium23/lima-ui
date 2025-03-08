@@ -4,7 +4,7 @@ import { expect } from "@playwright/test";
 import { ITEMS_LIMIT } from "../../configuration.ts";
 import type { ComplexWorld } from "../context/hooks.ts";
 import {
-  ADD_ITEM_BUTTON,
+  TOOLS_PANEL_ADD_ITEM_BUTTON,
   ITEM_INPUT,
   ITEM_INPUT_CONTAINER,
   ITEMS_INPUTS,
@@ -47,7 +47,7 @@ Then(
 When(
   "I add items inputs till scroll appears plus one item input",
   async function (this: ComplexWorld) {
-    const addItemButton = this.locate(ADD_ITEM_BUTTON);
+    const addItemButton = this.locate(TOOLS_PANEL_ADD_ITEM_BUTTON);
     const itemsInputs = this.locate(ITEMS_INPUTS);
 
     while (
@@ -78,7 +78,7 @@ When(
   "I add items inputs to their limit",
   { timeout: 60000 },
   async function (this: ComplexWorld) {
-    const addItemButton = this.locate(ADD_ITEM_BUTTON);
+    const addItemButton = this.locate(TOOLS_PANEL_ADD_ITEM_BUTTON);
 
     for (let i = 1; i <= ITEMS_LIMIT - 1; i++) {
       await addItemButton.click();

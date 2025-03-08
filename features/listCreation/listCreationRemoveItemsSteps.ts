@@ -35,7 +35,9 @@ When(
 Then(
   "I expect to see the {string} input disabled",
   async function (this: ComplexWorld, inputMeaning: InputMeaning) {
-    await this.expectLocated(INPUT_TEST_IDS[inputMeaning]).toBeDisabled();
+    await this.expectLocated(
+      this.accounting.registerTestId(INPUT_TEST_IDS[inputMeaning]),
+    ).toBeDisabled();
   },
 );
 
@@ -119,9 +121,14 @@ When(
 Then(
   "I expect to see the {string} button disabled",
   async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
-    await this.expectLocated(
-      this.accounting.registerTestId(BUTTON_TEST_IDS[buttonMeaning]),
-    ).toBeDisabled();
+    const element = this.locateByFullId(this.accounting.registerTestId(BUTTON_TEST_IDS[buttonMeaning]));
+    const isButton = await element.evaluate(el => el.tagName.toLowerCase() === 'button');
+    
+    if (isButton) {
+      await expect(element).toBeDisabled();
+    } else {
+      await expect(element).toHaveAttribute('href', '#');
+    }
   },
 );
 

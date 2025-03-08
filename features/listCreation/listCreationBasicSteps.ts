@@ -8,7 +8,6 @@ import {
   buildAccordionContentTestId,
   HEADER,
   ITEM_INPUT,
-  ITEM_INPUT_CONTAINER,
   ITEMS_INPUTS,
   PAGE_TITLE,
   PRO_VERSION_BUTTON,
@@ -37,6 +36,7 @@ import {
   INPUT_TEST_IDS,
   type InputMeaning,
 } from "./testIds.ts";
+import { registerItem } from "../utilities/registerItem.ts";
 
 When("I open List Creation page", {timeout: 10000}, async function (this: ComplexWorld) {
   await this.navigate(LISTS_CREATE);
@@ -114,14 +114,7 @@ Then(
 Then(
   "I expect to see single item input ready for typing",
   async function (this: ComplexWorld) {
-    const itemInputTestSubId = await this.locate(ITEM_INPUT).getAttribute(
-      TEST_SUB_ID_ATTRIBUTE,
-    );
-    this.accounting.registerTestIdAndSubId(ITEM_INPUT, itemInputTestSubId);
-    this.accounting.registerTestIdAndSubId(
-      ITEM_INPUT_CONTAINER,
-      itemInputTestSubId,
-    );
+    await registerItem.call(this, this.locate(ITEM_INPUT));
 
     const expectItemInput = this.expectLocated(ITEM_INPUT);
 
