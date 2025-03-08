@@ -9,7 +9,9 @@
     "preview": "astro preview",
     "astro": "astro",
     "test": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" cucumber-js",
-    "test-current": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" cucumber-js --tags \"@under-development\""
+    "test-current": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" cucumber-js --tags \"@under-development\"",
+    "test-fixing": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" cucumber-js --tags \"@needs-fixing\"",
+    "test-working": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" cucumber-js --tags \"not @needs-fixing\""
   },
   "dependencies": {
     "@astrojs/check": "^0.5.6",

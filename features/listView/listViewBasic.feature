@@ -20,6 +20,7 @@ Feature: Seeing the basis of List view page
     Then All elements expected to be on the "List View" page
     Then I expect to see no other elements
 
+  @needs-fixing
   Scenario: First item is visible when opening a list with many items
     When I clear all data
     When I open List Creation page
