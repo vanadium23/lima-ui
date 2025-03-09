@@ -8,7 +8,11 @@ function getStringOfLength(length: number): string {
 export function getStringUpToLimit(limit: number): string {
   const stringLength = Math.ceil(Math.random() * limit);
 
-  return getStringOfLength(stringLength);
+  const string = getStringOfLength(stringLength);
+
+  const endingSpacesCount = string.match(/\s+$/)?.[0].length ?? 0;
+
+  return string.replace(/\s+$/g, ".".repeat(endingSpacesCount));
 }
 
 export function getStringLongerThanLowerLimit(limit: number): string {
