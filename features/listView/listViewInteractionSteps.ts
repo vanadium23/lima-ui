@@ -46,3 +46,15 @@ Then(
     }
   },
 );
+
+Then(
+  "I expect not to see checkboxes for any list item",
+  async function (this: ComplexWorld) {
+    const itemInputs = this.locate(ITEM_INPUT_CONTAINER);
+
+    for (const itemInput of await itemInputs.all()) {
+      const checkbox = itemInput.locator(buildTestableSelector(CHECKBOX));
+      await expect(checkbox).not.toBeVisible();
+    }
+  },
+);
