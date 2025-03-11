@@ -21,7 +21,7 @@ import type {
   TestId,
   TestSubId,
 } from "../../src/components/utilities/testable.ts";
-import type { AddressMeaning } from "../utilities/addresses.ts";
+import type { AddressMeaning } from "../../utilities/addresses.ts";
 import {
   buildFullTestId,
   buildTestableSelector,
@@ -59,11 +59,11 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
   }
 
   async navigate(address: string) {
-    await this.page.goto(`${this.FRONTEND_ADDRESS}/${address}`);
+    await this.page.goto(`${this.FRONTEND_ADDRESS}${address}`);
   }
 
   async request(address: string, method: string) {
-    return fetch(`${this.BACKEND_ADDRESS}/${address}`, {
+    return fetch(`${this.BACKEND_ADDRESS}${address}`, {
       method,
     });
   }

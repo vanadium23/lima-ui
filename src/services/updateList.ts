@@ -1,3 +1,4 @@
+import { BACKEND_LISTS } from "../../utilities/addresses.ts";
 import type { BackendList, UpdatedList } from "../types.ts";
 
 export async function updateList(
@@ -12,7 +13,7 @@ export async function updateList(
     backend = import.meta.env.PUBLIC_API_URL;
   }
 
-  const response = await fetch(`${backend}/lists/${data.id}`, {
+  const response = await fetch(`${backend}${BACKEND_LISTS}${data.id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",

@@ -18,7 +18,7 @@ import {
   TOOLS_PANEL,
   USER_BUTTON,
 } from "../testIds.ts";
-import { LISTS_CREATE } from "../utilities/addresses.ts";
+import { LISTS_CREATE } from "../../utilities/addresses.ts";
 import {
   ID_SUB_ID_SEPARATOR,
   InPlaywrightExtractAllCompleteIds,
@@ -38,9 +38,13 @@ import {
 } from "./testIds.ts";
 import { registerItem } from "../utilities/registerItem.ts";
 
-When("I open List Creation page", {timeout: 10000}, async function (this: ComplexWorld) {
-  await this.navigate(LISTS_CREATE);
-});
+When(
+  "I open List Creation page",
+  { timeout: 10000 },
+  async function (this: ComplexWorld) {
+    await this.navigate(LISTS_CREATE);
+  },
+);
 
 Then("I expect to see sidebar", async function (this: ComplexWorld) {
   await this.expectLocated(

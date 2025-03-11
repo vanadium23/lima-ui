@@ -6,6 +6,7 @@ import {
   SEARCH_INPUT,
   TOGGLE_TOOLS_PANEL_BUTTON,
 } from "../../../features/testIds.ts";
+import { LISTS } from "../../../utilities/addresses.ts";
 import { IconName } from "../../components/icon/icon.tsx";
 import {
   IconButton,
@@ -20,11 +21,10 @@ import { isHidden, setIsHidden } from "../../state/toolsPanelState.ts";
 import "./header.css";
 
 export const Header = () => {
-  
   const showToggleIconButton = (): boolean => {
     const currentlocation: string = location();
 
-    return currentlocation !== "/lists/" && currentlocation !== "/lists";
+    return currentlocation !== LISTS && currentlocation !== LISTS.slice(0, -1);
   };
 
   return (

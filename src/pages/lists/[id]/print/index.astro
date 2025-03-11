@@ -1,10 +1,12 @@
 ---
-import { PRINT_LIST_TITLE, PRINT_LIST_PURPOSE, PRINT_LIST_NOTE, PRINT_LIST_ITEM } from "../../../../../features/testIds";
+import { PRINT_LIST_ITEM,PRINT_LIST_NOTE, PRINT_LIST_PURPOSE, PRINT_LIST_TITLE } from "../../../../../features/testIds";
+import { LISTS } from "../../../../../utilities/addresses";
+
 import "./style.css";
 import "normalize.css";
 
 const response = await fetch(
-  `${import.meta.env.PUBLIC_API_URL}/lists/${Astro.params.id}`,
+  `${import.meta.env.PUBLIC_API_URL}${LISTS}${Astro.params.id}`,
 );
 
 type Item = {

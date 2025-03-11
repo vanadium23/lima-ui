@@ -11,6 +11,7 @@ import {
   NO_SAVED_LISTS_MESSAGE,
   PAGE_TITLE,
 } from "../../../features/testIds.ts";
+import { LISTS_CREATE } from "../../../utilities/addresses.ts";
 import {
   Button,
   ButtonComponentType,
@@ -107,7 +108,7 @@ export const Lists = (props: ListsProps) => {
       <div class="lists__new">
         <Button
           componentType={ButtonComponentType.Link}
-          link={"/lists/create"}
+          link={LISTS_CREATE}
           text="Создать"
           testId={CREATE_LIST_BUTTON}
           isDisabled={checkListsLimitReached()}

@@ -8,7 +8,7 @@ import {
 } from "solid-js";
 import { createStore } from "solid-js/store";
 
-import {  
+import {
   ITEMS_LIMIT,
   LIST_PURPOSE_INPUT_LIMIT,
   LIST_TITLE_INPUT_LIMIT,
@@ -29,6 +29,7 @@ import {
   TOOLS_PANEL,
   TOOLS_PANEL_ADD_ITEM_BUTTON,
 } from "../../../features/testIds.ts";
+import { LISTS } from "../../../utilities/addresses.ts";
 import { Button, ButtonType } from "../../components/button/button.tsx";
 import { Dialog } from "../../components/dialog/dialog.tsx";
 import { Divider } from "../../components/divider/divider.tsx";
@@ -281,7 +282,7 @@ export const EditList = (props: EditListProps) => {
     createList(data)
       .then((newList) => {
         soften(() => {
-          history.pushState({}, "", `/lists/${newList.id}`);
+          history.pushState({}, "", `${LISTS}${newList.id}`);
           setLocation(window.location.pathname);
 
           setStore({

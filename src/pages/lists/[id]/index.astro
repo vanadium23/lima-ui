@@ -1,4 +1,5 @@
 ---
+import { LISTS } from "../../../../utilities/addresses";
 import AppPage from "../../../layouts/app/app.astro";
 import type { BackendList } from "../../../types";
 import { EditList } from "../../../widgets/editList/editList";
@@ -6,7 +7,7 @@ import { EditList } from "../../../widgets/editList/editList";
 import "./style.css";
 
 const response = await fetch(
-  `${import.meta.env.PUBLIC_API_URL}/lists/${Astro.params.id}`,
+  `${import.meta.env.PUBLIC_API_URL}${LISTS}${Astro.params.id}`,
 );
 
 const list: BackendList = await response.json();

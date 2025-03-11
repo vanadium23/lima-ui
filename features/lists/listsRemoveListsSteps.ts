@@ -15,7 +15,7 @@ import {
 import {
   ADDRESSES_MEANINGS,
   type AddressMeaning,
-} from "../utilities/addresses.ts";
+} from "../../utilities/addresses.ts";
 
 import {
   DIALOG_TEST_IDS,

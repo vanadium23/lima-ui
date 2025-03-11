@@ -1,3 +1,5 @@
+import { BACKEND_LISTS } from "../../utilities/addresses";
+
 export async function removeList(
   id: string,
   backendURL?: string,
@@ -8,7 +10,7 @@ export async function removeList(
 
   const backend = backendURL || import.meta.env.PUBLIC_API_URL;
 
-  const response = await fetch(`${backend}/lists/${id}`, {
+  const response = await fetch(`${backend}${BACKEND_LISTS}${id}`, {
     method: "DELETE",
   });
 

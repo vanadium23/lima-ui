@@ -1,11 +1,5 @@
 ---
-import AppPage from "../layouts/app/app.astro";
----
+import { LISTS } from "../../utilities/addresses.ts";
 
-<AppPage>
-  <div slot="mainContent">
-    <a href="/lists/create/">Создание списка</a>
-    <a href="/lists/">Списьки</a>
-    <a href="/stories/button/buttonStory">Сторибук</a>
-  </div>
-</AppPage>
+return Astro.redirect(LISTS);
+---

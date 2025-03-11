@@ -7,6 +7,11 @@ import {
   LISTS_LIMIT,
 } from "../../configuration.ts";
 import { createList } from "../../src/services/createList.ts";
+import {
+  LISTS_CREATE,
+  LISTS_WITH_NETWORK_ERROR,
+  SOME_LIST,
+} from "../../utilities/addresses.ts";
 import type { ComplexWorld } from "../context/hooks.ts";
 import { BUTTON_TEST_IDS, INPUT_TEST_IDS } from "../listCreation/testIds.ts";
 import {
@@ -15,15 +20,10 @@ import {
   LIST_STRIPE_LINK_TO_VIEW,
   LISTS_LIMIT_REACHED_WARNING,
 } from "../testIds.ts";
-import {
-  LISTS_CREATE,
-  LISTS_WITH_NETWORK_ERROR,
-  SOME_LIST,
-} from "../utilities/addresses.ts";
 import { TEST_SUB_ID_ATTRIBUTE } from "../utilities/buildTestableSelector.ts";
 import { getStringUpToLimit } from "../utilities/getStringOfLength.ts";
 
-When("I add a list", {timeout: 20000}, async function (this: ComplexWorld) {
+When("I add a list", { timeout: 20000 }, async function (this: ComplexWorld) {
   await this.navigate(LISTS_CREATE);
 
   const inputs: [string, number][] = [
@@ -91,18 +91,22 @@ Then(
   },
 );
 
-When("I add lists to their limit", {timeout: 10000}, async function (this: ComplexWorld) {
-  for (let i = 0; i < LISTS_LIMIT; i++) {
-    const listData = {
-      name: `Здесь был Максим + ${i + 1}`,
-      purpose: "",
-      note: "",
-      items: [{ content: getStringUpToLimit(10) }],
-    };
+When(
+  "I add lists to their limit",
+  { timeout: 10000 },
+  async function (this: ComplexWorld) {
+    for (let i = 0; i < LISTS_LIMIT; i++) {
+      const listData = {
+        name: `Здесь был Максим + ${i + 1}`,
+        purpose: "",
+        note: "",
+        items: [{ content: getStringUpToLimit(10) }],
+      };
 
-    await createList(listData, this.BACKEND_ADDRESS);
-  }
-});
+      await createList(listData, this.BACKEND_ADDRESS);
+    }
+  },
+);
 
 Then(
   "I expect to see the warning about lists limit reached",

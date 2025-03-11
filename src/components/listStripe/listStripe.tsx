@@ -7,6 +7,7 @@ import {
   LIST_STRIPE_REMOVE_BUTTON,
   REMOVE_LIST_DIALOG,
 } from "../../../features/testIds.ts";
+import { LISTS } from "../../../utilities/addresses.ts";
 import { soften } from "../../widgets/editList/utilities/soften.ts";
 import { Dialog, DialogSize, DialogTheme } from "../dialog/dialog.tsx";
 import { IconName } from "../icon/icon.tsx";
@@ -71,8 +72,7 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
     mProps.staticOnRemoveError(false);
     setIsRemoving(true);
     setIsDialogOpen(false);
-
-    fetch(`${import.meta.env.PUBLIC_API_URL}/lists/${mProps.defaultListId}`, {
+    fetch(`${import.meta.env.PUBLIC_API_URL}${LISTS}${mProps.defaultListId}`, {
       method: "DELETE", // или 'PUT', 'DELETE', и т.д.
     })
       .then((response) => {

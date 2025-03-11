@@ -1,11 +1,11 @@
 import { Then, When } from "@cucumber/cucumber";
 
+import { LISTS } from "../../utilities/addresses.ts";
 import type { ComplexWorld } from "../context/hooks.ts";
 import { NO_SAVED_LISTS_MESSAGE } from "../testIds.ts";
-import { LISTS } from "../utilities/addresses.ts";
 
 When("I clear all data", async function (this: ComplexWorld) {
-  await this.request("clear-database", "POST");
+  await this.request("/clear-database", "POST");
 });
 
 When("I open Lists page", async function (this: ComplexWorld) {
