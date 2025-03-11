@@ -50,7 +50,7 @@
 
 .editList__inner {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   padding-left: var(--size-x2);
   overflow: auto;
 }
