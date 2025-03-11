@@ -207,7 +207,13 @@ export const EditList = (props: EditListProps) => {
 
   function getComparableList(initialList: Omit<UpdatedList, "id">) {
     return {
-      items: JSON.stringify(initialList.items),
+      items: JSON.stringify(
+        initialList.items.filter(
+          (item, index) =>
+            index !== initialList.items.length - 1 ||
+            item.content.trim() !== "",
+        ),
+      ),
       name: initialList.name,
       purpose: initialList.purpose,
       note: initialList.note,
