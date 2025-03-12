@@ -147,12 +147,6 @@ export const EditList = (props: EditListProps) => {
     onCleanup(() => {
       window.removeEventListener("beforeunload", handleLeave);
     });
-
-    const params = new URLSearchParams(window.location.search);
-
-    if (params.get("error") === "true") {
-      setStore("error", true);
-    }
   });
 
   const toggleCheckable = () => setStore("isCheckable", !store.isCheckable);
