@@ -172,7 +172,7 @@ export const EditList = (props: EditListProps) => {
 
     const isLastItem = index === store.items.length - 1;
 
-    if (isLastItem && value.trim() !== "" && store.items.length < ITEMS_LIMIT) {
+    if (isLastItem && value.trim() !== "") {
       addItem();
     }
 
