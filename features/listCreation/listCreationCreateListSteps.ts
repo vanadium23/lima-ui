@@ -2,17 +2,17 @@ import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
 import { EDIT_LIST_INPUT_LIMIT } from "../../configuration.ts";
+import {
+  ADDRESSES_MEANINGS,
+  type AddressMeaning,
+  SOME_LIST,
+} from "../../utilities/addresses.ts";
 import type { ComplexWorld } from "../context/hooks.ts";
 import {
   buildAccordionButtonTestId,
   buildAccordionContentTestId,
   ITEM_INPUT,
 } from "../testIds.ts";
-import {
-  ADDRESSES_MEANINGS,
-  SOME_LIST,
-  type AddressMeaning,
-} from "../../utilities/addresses.ts";
 import { getStringUpToLimit } from "../utilities/getStringOfLength.ts";
 import { registerItem } from "../utilities/registerItem.ts";
 
@@ -103,7 +103,7 @@ When(
       const { address, method } = ADDRESSES_MEANINGS[requestMeaning];
       const urlEndsWithAddress =
         data.url().endsWith(address) ||
-        data.url().endsWith(address.replace("/", ""));
+        data.url().endsWith(address.replaceAll("/", ""));
 
       if (urlEndsWithAddress && data.method() === method) {
         if (this.counters[requestMeaning]) {
@@ -139,7 +139,7 @@ When(
 );
 
 When("I wait for the list to create", async function (this: ComplexWorld) {
-  await this.page.waitForURL(`**/${SOME_LIST}`);
+  await this.page.waitForURL(`**${SOME_LIST}`);
 });
 
 Then(
