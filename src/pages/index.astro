@@ -1,5 +1,4 @@
 ---
-import { LISTS } from "../../utilities/addresses";
-
-return Astro.redirect(LISTS);
+// пытались использовать переменную LISTS, но Astro выдает ошибку
+return Astro.redirect("/lists/");
 ---
