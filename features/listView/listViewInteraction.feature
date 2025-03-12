@@ -39,3 +39,13 @@ Feature: Interacting with the List view page
     And I check a random checkbox
     Then I expect the checked checkbox to be checked
     And I expect other checkboxes not to be checked
+
+  Scenario: Unchecking checkboxes when pressing them again
+    When I add a list
+    And I type some text with length less or equal to the one of "first item" input limit
+    And I press the "add item" button
+    And I type some text with length less or equal to the one of "second item" input limit
+    And I press the "checklist" switch
+    And I check a random checkbox
+    And I uncheck the checked checkbox
+    Then I expect all checkboxes not to be checked

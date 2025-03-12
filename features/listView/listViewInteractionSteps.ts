@@ -110,3 +110,32 @@ Then(
     }
   }
 );
+
+When(
+  "I uncheck the checked checkbox",
+  async function (this: ComplexWorld) {
+    const itemInputs = this.locate(ITEM_INPUT_CONTAINER);
+    
+    const checkedIndex = this.numbers.checkedCheckboxIndex;
+    
+    if (checkedIndex === undefined) {
+      throw new Error("No checked checkbox index found");
+    } else {
+      const checkbox = itemInputs.nth(checkedIndex).locator(buildTestableSelector(CHECKBOX));
+      await checkbox.click();
+    }
+  }
+);
+
+Then(
+  "I expect all checkboxes not to be checked",
+  async function (this: ComplexWorld) {
+    const itemInputs = this.locate(ITEM_INPUT_CONTAINER);
+    const allItemInputs = await itemInputs.all();
+    
+    for (const itemInput of allItemInputs) {
+      const checkbox = itemInput.locator(buildTestableSelector(CHECKBOX));
+      await expect(checkbox).not.toBeChecked();
+    }
+  }
+);
