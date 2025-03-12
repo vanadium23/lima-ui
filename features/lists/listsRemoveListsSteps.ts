@@ -1,6 +1,10 @@
 import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
+import {
+  ADDRESSES_MEANINGS,
+  type AddressMeaning,
+} from "../../utilities/addresses.ts";
 import type { ComplexWorld } from "../context/hooks.ts";
 import {
   BUTTON_TEST_IDS,
@@ -12,10 +16,7 @@ import {
   type WarningMeaning,
   WARNINGS_TEST_IDS,
 } from "../testIds.ts";
-import {
-  ADDRESSES_MEANINGS,
-  type AddressMeaning,
-} from "../../utilities/addresses.ts";
+import { TEST_SUB_ID_ATTRIBUTE } from "../utilities/buildTestableSelector.ts";
 
 import {
   DIALOG_TEST_IDS,
@@ -25,7 +26,6 @@ import {
   LIST_STRIPE_POSITIONS,
   type ListStripePosition,
 } from "./testIds.ts";
-import { TEST_SUB_ID_ATTRIBUTE } from "../utilities/buildTestableSelector.ts";
 
 When(
   "I hover {string} list stripe",
@@ -155,7 +155,7 @@ When(
   "I start waiting for the {string} request to happen",
   async function (this: ComplexWorld, addressMeaning: AddressMeaning) {
     this.responsesToWait[addressMeaning] = this.page.waitForResponse(
-      `**/${ADDRESSES_MEANINGS[addressMeaning].address}`,
+      `**${ADDRESSES_MEANINGS[addressMeaning].address}`,
     );
   },
 );
