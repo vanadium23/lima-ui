@@ -97,7 +97,7 @@ Then(
 When(
   "I start counting the {string} requests",
   async function (this: ComplexWorld, requestMeaning: AddressMeaning) {
-    this.counters[requestMeaning] = 0;
+    this.numbers[requestMeaning] = 0;
 
     this.page.on("request", (data) => {
       const { address, method } = ADDRESSES_MEANINGS[requestMeaning];
@@ -106,10 +106,10 @@ When(
         data.url().endsWith(address.replaceAll("/", ""));
 
       if (urlEndsWithAddress && data.method() === method) {
-        if (this.counters[requestMeaning]) {
-          this.counters[requestMeaning]++;
+        if (this.numbers[requestMeaning]) {
+          this.numbers[requestMeaning]++;
         } else {
-          this.counters[requestMeaning] = 1;
+          this.numbers[requestMeaning] = 1;
         }
       }
     });
@@ -123,7 +123,7 @@ When(
     requestMeaning: string,
     expectedListCreationRequestsNumber: number,
   ) {
-    expect(this.counters[requestMeaning]).toBe(
+    expect(this.numbers[requestMeaning]).toBe(
       expectedListCreationRequestsNumber,
     );
   },
