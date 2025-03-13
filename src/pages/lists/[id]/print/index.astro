@@ -22,6 +22,8 @@ export type List = {
 };
 
 const list: List = await response.json();
+
+const isCheckableParam = Astro.url.searchParams.get("checkable") === "true";
 ---
 
 <!doctype html>
@@ -59,21 +61,18 @@ const list: List = await response.json();
             </div>
           )
         }
-
-        <ul class="print__list">
+        <ul class=`print__items ${isCheckableParam ? "print__items_checklist" : "print__items_list"}`>
           {
             list.items.map((item, index) => (
-              <li class="print__item" data-test-id={PRINT_LIST_ITEM} data-test-sub-id={index}>{item.content}</li>
+              <li class="print__item" data-test-id={PRINT_LIST_ITEM} data-test-sub-id={index}>
+                {item.content}
+              </li>
             ))
           }
         </ul>
       </div>
     </div>
-
-    <!--<pre>{JSON.stringify(list, null, 2)}</pre>-->
-
     <script>
-      // Ожидание полной загрузки страницы и вызов печати
       window.addEventListener("load", () => {
         window.print();
       });
