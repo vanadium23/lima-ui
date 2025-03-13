@@ -40,7 +40,7 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
   page!: Page;
   accounting = accountedTesting;
   data: Record<string, string> = {};
-  counters: Record<string, number> = {};
+  numbers: Record<string, number> = {};
   listIds: TestId[] = [];
   responsesToWait: Partial<
     Record<AddressMeaning, ReturnType<Page["waitForResponse"]>>
