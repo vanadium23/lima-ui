@@ -14,8 +14,6 @@ export default defineConfig({
     enabled: false
   },
   vite: {
-    // To fix the Vite loading issue as recommended in https://github.com/vitejs/vite/discussions/13910#discussioncomment-8377145.
-    base: "/",
     build: {
       // To fix the SVG after build Vite issue as described in https://github.com/withastro/astro/issues/10296#issuecomment-1976825322.
       assetsInlineLimit: 0,
