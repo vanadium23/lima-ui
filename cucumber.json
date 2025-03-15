@@ -3,8 +3,19 @@
     "formatOptions": {
       "snippetInterface": "async-await"
     },
-    "paths": ["features"],
-    "requireModule": ["ts-node/register"],
-    "import": ["features/**/*.ts"]
+    "format": [
+      "progress",
+      "html:features/reports/cucumber-report.html",
+      "json:features/reports/cucumber-report.json"
+    ],
+    "paths": [
+      "features"
+    ],
+    "requireModule": [
+      "ts-node/register"
+    ],
+    "import": [
+      "features/**/*.ts"
+    ]
   }
 }
