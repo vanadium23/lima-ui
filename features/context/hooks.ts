@@ -146,9 +146,9 @@ After(async function (this: ComplexWorld, scenario: ITestCaseHookParameter) {
 
     try {
       await this.page.screenshot({ path: screenshotPath, fullPage: true });
-      console.log(`Screenshot saved to: ${screenshotPath}`);
+      console.log(`\nScreenshot saved to: ${screenshotPath}`);
     } catch (error) {
-      console.error(`Failed to take screenshot: ${error}`);
+      console.error(`\nFailed to take screenshot: ${error}`);
     }
   }
 });
