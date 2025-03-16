@@ -1,6 +1,7 @@
 import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
+import { LISTS_CREATE } from "../../utilities/addresses.ts";
 import type { ComplexWorld } from "../context/hooks.ts";
 import {
   ADD_GROUP_BUTTON,
@@ -18,7 +19,6 @@ import {
   TOOLS_PANEL,
   USER_BUTTON,
 } from "../testIds.ts";
-import { LISTS_CREATE } from "../../utilities/addresses.ts";
 import {
   ID_SUB_ID_SEPARATOR,
   InPlaywrightExtractAllCompleteIds,
@@ -26,6 +26,7 @@ import {
   TEST_SUB_ID_ATTRIBUTE,
 } from "../utilities/buildTestableSelector.ts";
 import { noVerticalScroll } from "../utilities/checkScroll.ts";
+import { registerItem } from "../utilities/registerItem.ts";
 import { type PageAlias, PAGES_TEST_IDS } from "../utilities/testIds.ts";
 
 import {
@@ -36,7 +37,6 @@ import {
   INPUT_TEST_IDS,
   type InputMeaning,
 } from "./testIds.ts";
-import { registerItem } from "../utilities/registerItem.ts";
 
 When(
   "I open List Creation page",
@@ -56,7 +56,7 @@ Then("I expect to see sidebar", async function (this: ComplexWorld) {
   this.accounting.registerTestId(PRO_VERSION_BUTTON);
 });
 
-Then("I expect to see header", async function () {
+Then("I expect to see header", async function (this: ComplexWorld) {
   await this.expectLocated(
     this.accounting.registerTestId(HEADER),
   ).toBeInViewport();
@@ -65,7 +65,7 @@ Then("I expect to see header", async function () {
   this.accounting.registerTestId(SEARCH_BUTTON);
 });
 
-Then("I expect to see tools panel", async function () {
+Then("I expect to see tools panel", async function (this: ComplexWorld) {
   await this.expectLocated(
     this.accounting.registerTestId(TOGGLE_TOOLS_PANEL_BUTTON),
   ).toBeInViewport();
@@ -73,6 +73,16 @@ Then("I expect to see tools panel", async function () {
   await this.expectLocated(
     this.accounting.registerTestId(TOOLS_PANEL),
   ).toBeInViewport();
+});
+
+Then("I expect not to see tools panel", async function (this: ComplexWorld) {
+  await this.expectLocated(
+    this.accounting.registerTestId(TOGGLE_TOOLS_PANEL_BUTTON),
+  ).not.toBeInViewport();
+
+  await this.expectLocated(
+    this.accounting.registerTestId(TOOLS_PANEL),
+  ).not.toBeInViewport();
 });
 
 Then(
