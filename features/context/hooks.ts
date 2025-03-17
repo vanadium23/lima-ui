@@ -3,6 +3,7 @@ import {
   AfterAll,
   Before,
   BeforeAll,
+  type ITestCaseHookParameter,
   type IWorldOptions,
   setDefaultTimeout,
   setWorldConstructor,
@@ -15,6 +16,8 @@ import {
   firefox,
   type Page,
 } from "@playwright/test";
+import * as fs from "fs";
+import * as path from "path";
 
 import type {
   FullTestId,
@@ -33,14 +36,14 @@ import { accountedTesting } from "./accountedTesting.ts";
 
 let browser: Browser;
 
-interface ComplexWorldParameters {}
+interface ComplexWorldParameters { }
 
 export class ComplexWorld extends World<ComplexWorldParameters> {
   context!: BrowserContext;
   page!: Page;
   accounting = accountedTesting;
   data: Record<string, string> = {};
-  counters: Record<string, number> = {};
+  numbers: Record<string, number> = {};
   listIds: TestId[] = [];
   responsesToWait: Partial<
     Record<AddressMeaning, ReturnType<Page["waitForResponse"]>>
@@ -128,7 +131,30 @@ Before(async function (this: ComplexWorld) {
   this.accounting.clearTestIds();
 });
 
-After(async function (this: ComplexWorld) {
+const screenshotsDir = path.join(process.cwd(), "features", "screenshots");
+
+if (!fs.existsSync(screenshotsDir)) {
+  fs.mkdirSync(screenshotsDir, { recursive: true });
+}
+
+// Take screenshot when a test fails - this needs to run BEFORE closing the page
+After(async function (this: ComplexWorld, scenario: ITestCaseHookParameter) {
+  if (scenario.result?.status === "FAILED") {
+    const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+    const scenarioName = scenario.pickle.name.replace(/[^a-zA-Z0-9]/g, "_");
+    const screenshotPath = path.join(screenshotsDir, `${scenarioName}_${timestamp}.png`);
+
+    try {
+      await this.page.screenshot({ path: screenshotPath, fullPage: true });
+      console.log(`\nScreenshot saved to: ${screenshotPath}`);
+    } catch (error) {
+      console.error(`\nFailed to take screenshot: ${error}`);
+    }
+  }
+});
+
+// This After hook should run AFTER the screenshot hook
+After("@last", async function (this: ComplexWorld) {
   debugging || (await this.context.close());
 });
 

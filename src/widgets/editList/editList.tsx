@@ -547,7 +547,7 @@ export const EditList = (props: EditListProps) => {
             <ToolsButton
               componentType={ToolsButtonComponentType.Link}
               iconName={IconName.Printer}
-              link={`./${store.id}/print`}
+              link={`./${store.id}/print?checkable=${store.isCheckable}`}
               text={"Напечатать список"}
               testId={TOOLS_BUTTON_PRINT_LIST}
               isDisabled={store.isNewList || store.sendingNow !== false}

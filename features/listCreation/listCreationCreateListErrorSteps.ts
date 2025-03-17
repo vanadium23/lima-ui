@@ -12,7 +12,9 @@ Given("There is no internet connection", async function (this: ComplexWorld) {
 Then(
   "I expect to see the {string} error",
   async function (this: ComplexWorld, errorMeaning: ErrorMeaning) {
-    await this.expectLocated(ERRORS_TEST_IDS[errorMeaning]).toBeInViewport();
+    await this.expectLocated(
+      this.accounting.registerTestId(ERRORS_TEST_IDS[errorMeaning]),
+    ).toBeInViewport();
   },
 );
 
@@ -26,7 +28,7 @@ Then(
   "I expect not to see the {string} error",
   async function (this: ComplexWorld, errorMeaning: ErrorMeaning) {
     await this.expectLocated(
-      ERRORS_TEST_IDS[errorMeaning],
+      this.accounting.registerTestId(ERRORS_TEST_IDS[errorMeaning]),
     ).not.toBeInViewport();
   },
 );

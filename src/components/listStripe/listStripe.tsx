@@ -2,7 +2,6 @@ import { createSignal, mergeProps } from "solid-js";
 
 import {
   LIST_STRIPE,
-  LIST_STRIPE_EDIT_BUTTON,
   LIST_STRIPE_LINK_TO_VIEW,
   LIST_STRIPE_REMOVE_BUTTON,
   REMOVE_LIST_DIALOG,
@@ -13,7 +12,6 @@ import { Dialog, DialogSize, DialogTheme } from "../dialog/dialog.tsx";
 import { IconName } from "../icon/icon.tsx";
 import {
   IconButton,
-  IconButtonComponentType,
   IconButtonSize,
   IconButtonTheme,
 } from "../iconButton/iconButton.tsx";
@@ -122,17 +120,6 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
       </a>
       {/* MAKSIM: Скрываются в состоянии Loading, когда нет Hover'а. */}
       <div class="listStripe__controls">
-        <IconButton
-          iconName={IconName.DotsThreeCircle}
-          ariaLabel={`Выпадающее меню для списка ${mProps.listTitle}`}
-          theme={IconButtonTheme.Primary}
-          size={IconButtonSize.Medium}
-          link={mProps.editLink}
-          componentType={IconButtonComponentType.Link}
-          isDisabled={listStripeIsRemoving()}
-          testId={LIST_STRIPE_EDIT_BUTTON}
-          testSubId={mProps.defaultListId}
-        />
         <IconButton
           iconName={IconName.Trash}
           ariaLabel={`Удалить список ${mProps.listTitle}`}

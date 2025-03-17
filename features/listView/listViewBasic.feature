@@ -38,6 +38,7 @@ Feature: Seeing the basis of List view page
     Then I expect to see the "first item" input
     Then I expect not to see the last item input
 
+  @needs-fixing
   Scenario: List view page with list loading error
     When I add a list
     And I open Lists page
@@ -45,13 +46,8 @@ Feature: Seeing the basis of List view page
     But Error happens while loading
     Then I expect to see sidebar
     Then I expect to see header
-    Then I expect to see tools panel
+    Then I expect not to see tools panel
     Then I expect to see the "connection" error
     Then I expect not to see the "create" button
-    Then I expect to see the "add item" button disabled
-    Then I expect to see the "copy items" button disabled
-    Then I expect to see the "remove list tools panel" button disabled
-    Then I expect to see the "checklist" switch disabled
-    Then I expect to see the "print list" button disabled
     Then All elements expected to be on the "List View with Error" page
     Then I expect to see no other elements

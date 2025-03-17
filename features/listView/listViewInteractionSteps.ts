@@ -58,3 +58,84 @@ Then(
     }
   },
 );
+
+When(
+  "I check a random checkbox",
+  async function (this: ComplexWorld) {
+    const itemInputs = this.locate(ITEM_INPUT_CONTAINER);
+    const allItemInputs = await itemInputs.all();
+    
+    const randomIndex = Math.floor(Math.random() * allItemInputs.length);
+    
+    this.numbers.checkedCheckboxIndex = randomIndex;
+    
+    const checkbox = itemInputs.nth(randomIndex).locator(buildTestableSelector(CHECKBOX));
+    await checkbox.click();
+  }
+);
+
+Then(
+  "I expect the checked checkbox to be checked",
+  async function (this: ComplexWorld) {
+    const itemInputs = this.locate(ITEM_INPUT_CONTAINER);
+    
+    const checkedIndex = this.numbers.checkedCheckboxIndex;
+    
+    if (checkedIndex === undefined) {
+      throw new Error("No checked checkbox index found");
+    } else {
+      const checkbox = itemInputs.nth(checkedIndex).locator(buildTestableSelector(CHECKBOX));
+      await expect(checkbox).toBeChecked();
+    }
+  }
+);
+
+Then(
+  "I expect other checkboxes not to be checked",
+  async function (this: ComplexWorld) {
+    const itemInputs = this.locate(ITEM_INPUT_CONTAINER);
+    const allItemInputs = await itemInputs.all();
+    
+    const checkedIndex = this.numbers.checkedCheckboxIndex;
+    
+    if (checkedIndex === undefined) {
+      throw new Error("No checked checkbox index found");
+    } else {
+      for (let i = 0; i < allItemInputs.length; i++) {
+        if (i !== checkedIndex) {
+          const checkbox = itemInputs.nth(i).locator(buildTestableSelector(CHECKBOX));
+          await expect(checkbox).not.toBeChecked();
+        }
+      }
+    }
+  }
+);
+
+When(
+  "I uncheck the checked checkbox",
+  async function (this: ComplexWorld) {
+    const itemInputs = this.locate(ITEM_INPUT_CONTAINER);
+    
+    const checkedIndex = this.numbers.checkedCheckboxIndex;
+    
+    if (checkedIndex === undefined) {
+      throw new Error("No checked checkbox index found");
+    } else {
+      const checkbox = itemInputs.nth(checkedIndex).locator(buildTestableSelector(CHECKBOX));
+      await checkbox.click();
+    }
+  }
+);
+
+Then(
+  "I expect all checkboxes not to be checked",
+  async function (this: ComplexWorld) {
+    const itemInputs = this.locate(ITEM_INPUT_CONTAINER);
+    const allItemInputs = await itemInputs.all();
+    
+    for (const itemInput of allItemInputs) {
+      const checkbox = itemInput.locator(buildTestableSelector(CHECKBOX));
+      await expect(checkbox).not.toBeChecked();
+    }
+  }
+);

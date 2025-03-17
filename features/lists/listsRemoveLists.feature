@@ -39,7 +39,6 @@ Feature: Removing the lists on the Lists page
     And I press the visible "confirm list removal" button
     Then I expect not to see the "remove list" dialog modal box
     Then I expect to see the visible "first" list stripe "view list" link disabled
-    Then I expect to see the visible "first" list stripe "edit list" link disabled
     Then I expect to see the visible "first" list stripe "remove list" button disabled
 
   Scenario: Not seeing the dialog modal box when removal in progress
