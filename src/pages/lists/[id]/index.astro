@@ -47,7 +47,7 @@ try {
 }
 ---
 
-<AppPage titleName={list.name}>
+<AppPage titleName={list.name} list404={listRequestError}>
   {
     listRequestError ? (
       <div class="listPageError">

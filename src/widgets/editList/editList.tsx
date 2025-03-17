@@ -94,6 +94,14 @@ export const EditList = (props: EditListProps) => {
     props,
   );
 
+  let scrollContainer: HTMLDivElement | undefined = undefined;
+
+  function scrollToBottom() {
+    if (scrollContainer) {
+      scrollContainer.scrollTop = scrollContainer.scrollHeight;
+    }
+  }
+
   type EditListStore = {
     id: string;
     items: UpdatedList["items"];
@@ -157,6 +165,7 @@ export const EditList = (props: EditListProps) => {
     if (store.items.length < ITEMS_LIMIT) {
       setStore("items", [...store.items, { content: "", id: "" }]);
       checkChanges();
+      requestAnimationFrame(scrollToBottom);
     }
   }
 
@@ -413,8 +422,12 @@ export const EditList = (props: EditListProps) => {
             </div>
 
             <div class="editList__container">
-              <div class="editList__inner" data-test-id={ITEMS_INPUTS}>
-                <div class="editList__scrollWrapper">
+              <div
+                class="editList__scrollContainer"
+                ref={(el) => (scrollContainer = el)}
+                data-test-id={ITEMS_INPUTS}
+              >
+                <div class="editList__inner">
                   <For each={store.items}>
                     {(item, getIndex) => {
                       const index = createMemo(() => getIndex());

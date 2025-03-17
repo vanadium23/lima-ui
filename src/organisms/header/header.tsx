@@ -20,11 +20,19 @@ import { isHidden, setIsHidden } from "../../state/toolsPanelState.ts";
 
 import "./header.css";
 
-export const Header = () => {
-  const showToggleIconButton = (): boolean => {
-    const currentlocation: string = location();
+type HeaderProps = {
+  list404?: boolean;
+};
 
-    return currentlocation !== LISTS && currentlocation !== LISTS.slice(0, -1);
+export const Header = (props: HeaderProps) => {
+  const showToggleIconButton = (): boolean => {
+    const currentLocation: string = location();
+
+    return (
+      !props.list404 &&
+      currentLocation !== LISTS &&
+      currentLocation !== LISTS.slice(0, -1)
+    );
   };
 
   return (

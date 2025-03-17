@@ -8,13 +8,9 @@ import "../main.css";
 import "./app.css";
 
 interface Props {
-  titleName?: string
+  titleName?: string;
+  list404?: boolean;
 }
-
-const { titleName } = Astro.props;
-
-const defaultTitleName = "Lima App";
-
 ---
 
 <!doctype html>
@@ -29,14 +25,16 @@ const defaultTitleName = "Lima App";
     />
     <meta content="#ffffff" name="theme-color" />
 
-    <title>{titleName ? `${titleName} | Lima` : defaultTitleName}</title>
+    <title>
+      {Astro.props.titleName ? `${Astro.props.titleName} | Lima` : "Lima App"}
+    </title>
   </head>
   <body>
-    <Header client:only="solid-js" />
+    <Header client:only="solid-js" list404={Astro.props.list404} />
 
     <div class="appContainer">
       <aside data-test-id={SIDEBAR}>
-        <Sidebar client:only="solid-js"/>
+        <Sidebar client:only="solid-js" />
       </aside>
 
       <main class="main">
