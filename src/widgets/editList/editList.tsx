@@ -165,8 +165,12 @@ export const EditList = (props: EditListProps) => {
     if (store.items.length < ITEMS_LIMIT) {
       setStore("items", [...store.items, { content: "", id: "" }]);
       checkChanges();
-      requestAnimationFrame(scrollToBottom);
     }
+  }
+
+  function addItemAndScrollToBottom() {
+    addItem();
+    requestAnimationFrame(scrollToBottom);
   }
 
   function handleItemChange(index: number, value: string) {
@@ -176,7 +180,7 @@ export const EditList = (props: EditListProps) => {
     const isLastItem = index === store.items.length - 1;
 
     if (isLastItem && value.trim() !== "" && store.items.length < ITEMS_LIMIT) {
-      addItem();
+      addItemAndScrollToBottom();
     }
 
     const lastIndex = store.items.length - 1;
@@ -494,7 +498,7 @@ export const EditList = (props: EditListProps) => {
             <ToolsButton
               componentType={ToolsButtonComponentType.Button}
               iconName={IconName.RowsPlusBottom}
-              handleClick={addItem}
+              handleClick={addItemAndScrollToBottom}
               isDisabled={
                 checkItemsLimitReached() || store.sendingNow !== false
               }

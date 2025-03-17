@@ -70,9 +70,13 @@ When(
   "I type some text to all items inputs",
   async function (this: ComplexWorld) {
     const allItemsInputs = await this.locate(ITEM_INPUT).all();
+    let count = 0;
 
     for (const itemInput of allItemsInputs) {
-      await itemInput.fill(getStringUpToLimit(EDIT_LIST_INPUT_LIMIT));
+      count++;
+      await itemInput.fill(
+        `${count} ${getStringUpToLimit(EDIT_LIST_INPUT_LIMIT - count.toString().length - 1)}`,
+      );
     }
   },
 );
