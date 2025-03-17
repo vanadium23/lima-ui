@@ -37,7 +37,6 @@ Feature: Seeing the basis of List view page
     Then I expect to see the "first item" input
     Then I expect not to see the last item input
 
-  @needs-fixing
   Scenario: List view page with list loading error
     When I add a list
     And I open Lists page

@@ -77,11 +77,11 @@ Then("I expect to see tools panel", async function (this: ComplexWorld) {
 
 Then("I expect not to see tools panel", async function (this: ComplexWorld) {
   await this.expectLocated(
-    this.accounting.registerTestId(TOGGLE_TOOLS_PANEL_BUTTON),
+    TOGGLE_TOOLS_PANEL_BUTTON,
   ).not.toBeInViewport();
 
   await this.expectLocated(
-    this.accounting.registerTestId(TOOLS_PANEL),
+    TOOLS_PANEL,
   ).not.toBeInViewport();
 });
 

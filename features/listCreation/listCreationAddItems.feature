@@ -10,7 +10,6 @@ Feature: Adding items on the List Creation page
     Then I expect to see second item input ready for typing with the following placeholder: "Пункт списка"
     Then I expect to see no other elements
 
-  @needs-fixing
   Scenario: Adding items inputs more than fit into screen
     When I add items inputs till scroll appears plus one item input
     Then I expect to see the last added item input
