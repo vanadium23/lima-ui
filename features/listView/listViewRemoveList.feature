@@ -15,6 +15,13 @@ Feature: Removing a list from the List view page
     And I click outside of the "remove list" dialog modal box
     Then I expect not to see the "remove list" dialog modal box
 
+  Scenario: Not seeing the dialog modal box when removal in progress
+    When I add a list
+    And I press the "remove list tools panel" button
+    And I press the visible "confirm list removal" button
+    And I forcefully press the "remove list tools panel" button
+    Then I expect not to see the "remove list" dialog modal box
+
   Scenario: Confirming list removal leads to redirecting to Lists page
     When I add a list
     And I press the "remove list tools panel" button
