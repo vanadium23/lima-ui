@@ -32,26 +32,40 @@ Then(
   async function (this: ComplexWorld, accordionMeaning: AccordionMeaning) {
     const accordionTestId = ACCORDION_TEST_IDS[accordionMeaning];
 
+    const accordion = this.locate(this.accounting.registerTestId(accordionTestId));
+
+    await expect(accordion).toBeInViewport();
     await expect(
-      this.locate(this.accounting.registerTestId(accordionTestId)).locator(
+      accordion.locator(
         "button",
       ),
     ).toBeDisabled();
 
     this.accounting.registerTestId(buildAccordionButtonTestId(accordionTestId));
+  },
+);
 
-    this.accounting.registerTestId(
-      buildAccordionContentTestId(accordionTestId),
-    );
+Then(
+  "I expect to see the {string} accordion content expanded",
+  async function (this: ComplexWorld, accordionMeaning: AccordionMeaning) {
+    const accordionTestId = ACCORDION_TEST_IDS[accordionMeaning];
+    const accordionContentTestId = buildAccordionContentTestId(accordionTestId);
+
+    await (this.expectLocated(
+      this.accounting.registerTestId(accordionContentTestId)
+    )).toBeInViewport();
   },
 );
 
 Then(
   "I expect to see the {string} text area disabled",
   async function (this: ComplexWorld, textAreaMeaning: TextAreaMeaning) {
-    await this.expectLocated(
-      this.accounting.registerTestId(TEXT_AREA_TEST_IDS[textAreaMeaning]),
-    ).toBeDisabled();
+    const expectedTextArea = this.expectLocated(
+      this.accounting.registerTestId(TEXT_AREA_TEST_IDS[textAreaMeaning])
+    );
+
+    await expectedTextArea.toBeInViewport();
+    await expectedTextArea.toBeDisabled();
   },
 );
 

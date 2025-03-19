@@ -58,3 +58,28 @@ Feature: Removing a list from the List view page
     And I press the visible "confirm list removal" button
     Then I expect to see the warning about items inputs limit reached
     Then I expect to see the "list removal" error
+
+  Scenario: Disabling form controls when pressing the "Confirm list removal" button
+    When I add a list
+    And I press on the "list note" accordion
+    And I press the "remove list tools panel" button
+    And I press the visible "confirm list removal" button
+    Then I expect to see sidebar
+    Then I expect to see header
+    Then I expect to see tools panel
+    Then I expect to see the "list title" input disabled
+    Then I expect to see the "list purpose" input disabled
+    Then I expect to see the "list note" accordion disabled
+    Then I expect to see the "list note" accordion content expanded
+    Then I expect to see the "list note" text area disabled
+    Then I expect to see items inputs area without scroll
+    Then I expect to see the "first" item input disabled
+    Then I expect to see the "second" item input disabled
+    Then I expect to see the "add item" button disabled
+    Then I expect to see the "create" button disabled
+    Then I expect to see the "copy items" button disabled
+    Then I expect to see the "remove list tools panel" button in the loading state
+    Then I expect to see the "checklist" switch disabled
+    Then I expect to see the "print list" button disabled
+    Then All elements expected to be on the "List View During Removal" page
+    Then I expect to see no other elements
