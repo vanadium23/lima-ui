@@ -48,3 +48,13 @@ Feature: Removing a list from the List view page
     And I press the "remove list tools panel" button
     And I press the visible "confirm list removal" button
     Then I expect not to see the "list removal" error
+
+  @needs-fixing
+  Scenario: Unsuccessful list removal accompanied by reached items limit leads to error and warning at the same time
+    When I add a list
+    And I add items inputs to their limit
+    And I press the "remove list tools panel" button
+    Given Data server is not available
+    And I press the visible "confirm list removal" button
+    Then I expect to see the warning about items inputs limit reached
+    Then I expect to see the "list removal" error
