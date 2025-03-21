@@ -51,14 +51,9 @@
 .editList__scrollContainer {
   display: flex;
   flex-direction: column;
+  gap: var(--size-x2);
   padding-left: var(--size-x2);
   overflow: auto;
-}
-
-.editList__inner {
-  display: flex;
-  gap: var(--size-x2);
-  flex-direction: column;
 }
 
 .editList__scrollContainer::-webkit-scrollbar {

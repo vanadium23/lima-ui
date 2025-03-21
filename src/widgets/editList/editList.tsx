@@ -132,6 +132,10 @@ export const EditList = (props: EditListProps) => {
     isNewList: list.id === "",
   });
 
+  type AddItemOptions =
+    | { mode: "end"; scroll?: boolean }
+    | { mode: "before" | "after"; index: number };
+
   onMount(() => {
     const handleLeave = (event: BeforeUnloadEvent) => {
       if (store.isChanged) {
@@ -149,7 +153,7 @@ export const EditList = (props: EditListProps) => {
       store.items.length === 0 ||
       store.items[store.items.length - 1]?.content.trim() !== ""
     ) {
-      addItem();
+      addItem({ mode: "end" });
     }
 
     onCleanup(() => {
@@ -161,16 +165,32 @@ export const EditList = (props: EditListProps) => {
   const openDialog = () => setStore("isDialogOpen", true);
   const closeDialog = () => setStore("isDialogOpen", false);
 
-  function addItem() {
-    if (store.items.length < ITEMS_LIMIT) {
-      setStore("items", [...store.items, { content: "", id: "" }]);
-      checkChanges();
-    }
-  }
+  function addItem(options: AddItemOptions) {
+    if (store.items.length >= ITEMS_LIMIT) return;
 
-  function addItemAndScrollToBottom() {
-    addItem();
-    requestAnimationFrame(scrollToBottom);
+    const newItem = { content: "", id: "" };
+
+    if (options.mode === "end") {
+      setStore("items", [...store.items, newItem]);
+      checkChanges();
+
+      if (options.scroll) {
+        requestAnimationFrame(scrollToBottom);
+      }
+
+      return;
+    }
+
+    const insertIndex =
+      options.mode === "before" ? options.index : options.index + 1;
+
+    setStore("items", (items) => [
+      ...items.slice(0, insertIndex),
+      newItem,
+      ...items.slice(insertIndex),
+    ]);
+
+    checkChanges();
   }
 
   function handleItemChange(index: number, value: string) {
@@ -179,8 +199,8 @@ export const EditList = (props: EditListProps) => {
 
     const isLastItem = index === store.items.length - 1;
 
-    if (isLastItem && value.trim() !== "" && store.items.length < ITEMS_LIMIT) {
-      addItemAndScrollToBottom();
+    if (isLastItem && value.trim() !== "") {
+      addItem({ mode: "end", scroll: true });
     }
 
     const lastIndex = store.items.length - 1;
@@ -431,36 +451,41 @@ export const EditList = (props: EditListProps) => {
                 ref={(el) => (scrollContainer = el)}
                 data-test-id={ITEMS_INPUTS}
               >
-                <div class="editList__inner">
-                  <For each={store.items}>
-                    {(item, getIndex) => {
-                      const index = createMemo(() => getIndex());
-                      const isLastItem = createMemo(
-                        () => index() === store.items.length - 1,
-                      );
-                      const isRequired = createMemo(
-                        () => !isLastItem() || isOnlyOneItem(),
-                      );
+                <For each={store.items}>
+                  {(item, getIndex) => {
+                    const index = createMemo(() => getIndex());
+                    const isLastItem = createMemo(
+                      () => index() === store.items.length - 1,
+                    );
+                    const isRequired = createMemo(
+                      () => !isLastItem() || isOnlyOneItem(),
+                    );
 
-                      return (
-                        <ListItem
-                          removeItem={() => removeItem(index())}
-                          isDisabled={store.sendingNow !== false}
-                          isOnlyOneItem={isOnlyOneItem()}
-                          isCheckable={store.isCheckable}
-                          isChecked={false}
-                          defaultValue={item.content}
-                          name={`${EditListFormNames.ListItem} ${index() + 1}`}
-                          dataId={"id" in item ? item.id : ""}
-                          onChange={(value) => handleItemChange(index(), value)}
-                          testId={ITEM_INPUT_CONTAINER}
-                          testSubId={index()}
-                          isRequired={isRequired()}
-                        />
-                      );
-                    }}
-                  </For>
-                </div>
+                    return (
+                      <ListItem
+                        removeItem={() => removeItem(index())}
+                        isDisabled={store.sendingNow !== false}
+                        isOnlyOneItem={isOnlyOneItem()}
+                        isCheckable={store.isCheckable}
+                        isChecked={false}
+                        defaultValue={item.content}
+                        name={`${EditListFormNames.ListItem} ${index() + 1}`}
+                        dataId={"id" in item ? item.id : ""}
+                        onChange={(value) => handleItemChange(index(), value)}
+                        onAddBefore={() =>
+                          addItem({ mode: "before", index: index() })
+                        }
+                        onAddAfter={() =>
+                          addItem({ mode: "after", index: index() })
+                        }
+                        canAddMore={store.items.length < ITEMS_LIMIT}
+                        testId={ITEM_INPUT_CONTAINER}
+                        testSubId={index()}
+                        isRequired={isRequired()}
+                      />
+                    );
+                  }}
+                </For>
               </div>
               <Show when={store.error}>
                 <PageError testId={NETWORK_ERROR}>
@@ -498,7 +523,7 @@ export const EditList = (props: EditListProps) => {
             <ToolsButton
               componentType={ToolsButtonComponentType.Button}
               iconName={IconName.RowsPlusBottom}
-              handleClick={addItemAndScrollToBottom}
+              handleClick={() => addItem({ mode: "end", scroll: true })}
               isDisabled={
                 checkItemsLimitReached() || store.sendingNow !== false
               }

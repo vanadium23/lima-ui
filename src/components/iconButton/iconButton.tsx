@@ -1,4 +1,4 @@
-import { mergeProps, Show } from "solid-js";
+import { mergeProps, type Ref, Show } from "solid-js";
 
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
 import type { Testable } from "../utilities/testable.ts";
@@ -35,6 +35,7 @@ type IconButtonProps = {
   ariaLabel: string;
   isLoading?: boolean;
   handleClick?: () => void;
+  ref?: Ref<HTMLButtonElement>;
 };
 
 export const IconButton = (props: Testable<IconButtonProps>) => {
@@ -44,9 +45,10 @@ export const IconButton = (props: Testable<IconButtonProps>) => {
       size: IconButtonSize.Medium,
       isDisabled: false,
       isLoading: false,
-      handleClick: () => { },
+      handleClick: () => {},
       componentType: IconButtonComponentType.Button,
       link: "",
+      ref: () => {},
     },
     props,
   );
@@ -96,10 +98,13 @@ export const IconButton = (props: Testable<IconButtonProps>) => {
         aria-label={mProps.ariaLabel}
         data-test-id={mProps.testId}
         data-test-sub-id={mProps.testSubId}
+        ref={mProps.ref}
       >
         <Show
           when={mProps.isLoading}
-          fallback={<Icon name={mProps.iconName} size={iconSize[mProps.size]} />}
+          fallback={
+            <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
+          }
         >
           <div class="iconButton__loadingIcon">
             <Icon name={IconName.CircleNotch} size={iconSize[mProps.size]} />
