@@ -17,8 +17,8 @@ type DropdownMenuProps = {
   theme?: DropdownMenuTheme;
   size?: DropdownMenuSize;
   children: JSX.Element;
-  ref: Ref<HTMLUListElement>;
-  floatingStyles: UseFloatingResult;
+  ref?: Ref<HTMLUListElement>;
+  floatingStyles?: UseFloatingResult | null;
 };
 
 export const DropdownMenu = (props: Testable<DropdownMenuProps>) => {
@@ -28,6 +28,8 @@ export const DropdownMenu = (props: Testable<DropdownMenuProps>) => {
       size: DropdownMenuSize.Medium,
       isDisabled: false,
       handleClick: () => {},
+      ref: () => {},
+      floatingStyles: null,
     },
     props,
   );
@@ -36,14 +38,19 @@ export const DropdownMenu = (props: Testable<DropdownMenuProps>) => {
     <ul
       role="menu"
       class={`dropdownMenu dropdownMenu_${mProps.theme} dropdownMenu_${mProps.size}`}
-      style={{
-        position: mProps.floatingStyles.strategy,
-        top: `${(mProps.floatingStyles.y ?? 0) / 10}rem`,
-        left: `${(mProps.floatingStyles.x ?? 0) / 10}rem`,
-        display: mProps.floatingStyles.middlewareData.hide?.referenceHidden
-          ? "none"
-          : "flex",
-      }}
+      style={
+        mProps.floatingStyles
+          ? {
+              position: mProps.floatingStyles.strategy,
+              top: `${(mProps.floatingStyles.y ?? 0) / 10}rem`,
+              left: `${(mProps.floatingStyles.x ?? 0) / 10}rem`,
+              display: mProps.floatingStyles.middlewareData.hide
+                ?.referenceHidden
+                ? "none"
+                : "flex",
+            }
+          : {}
+      }
       ref={mProps.ref}
     >
       {mProps.children}

@@ -1,8 +1,4 @@
 ---
-import {autoUpdate, flip, hide, shift} from "@floating-ui/dom";
-import {useFloating} from "solid-floating-ui";
-import {createSignal} from "solid-js";
-
 import {DEFAULT_TEST_ID, REMOVE_ITEM_BUTTON} from "../../../../features/testIds";
 import {DropdownMenu, DropdownMenuSize, DropdownMenuTheme} from "../../../components/dropdownMenu/dropdownMenu";
 import {IconName} from "../../../components/icon/icon";
@@ -11,18 +7,6 @@ import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 const themes = Object.values(DropdownMenuTheme);
 const sizes = Object.values(DropdownMenuSize);
-
-const [reference, setReference] = createSignal<HTMLElement>();
-const [floating, setFloating] = createSignal<HTMLElement>();
-
-const floatingPosition = useFloating(reference, floating, {
-  placement: "bottom",
-  whileElementsMounted: (reference, floating, update) =>
-    autoUpdate(reference, floating, update, {
-      animationFrame: true,
-    }),
-  middleware: [shift(), flip(), hide()], //TODO Подумать нужно ли Shift оставлять когда будет разработка под 320px
-});
 ---
 
 <StorybookPage title="DropdownMenu">
@@ -37,9 +21,7 @@ const floatingPosition = useFloating(reference, floating, {
         {sizes.map((size) => (
           <span class="rhead">{size}</span>
 
-          <DropdownMenu client:only="solid-js" theme={theme} size={size} ref={setFloating}
-                        floatingStyles={floatingPosition}
-                        testId={DEFAULT_TEST_ID}>
+          <DropdownMenu testId={DEFAULT_TEST_ID}>
             <MenuItem
               text={"Добавить пункт выше"}
               icon={IconName.Plus}
@@ -57,7 +39,6 @@ const floatingPosition = useFloating(reference, floating, {
               testId={REMOVE_ITEM_BUTTON}
             />
           </DropdownMenu>
-
         ))}
 
       </div>
