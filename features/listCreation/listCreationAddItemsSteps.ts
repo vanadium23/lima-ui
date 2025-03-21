@@ -80,7 +80,10 @@ When(
   async function (this: ComplexWorld) {
     const addItemButton = this.locate(TOOLS_PANEL_ADD_ITEM_BUTTON);
 
-    for (let i = 1; i <= ITEMS_LIMIT - 1; i++) {
+    const itemsInputs = this.locate(ITEM_INPUT);
+    const currentItemCount = await itemsInputs.count();
+
+    for (let i = currentItemCount; i < ITEMS_LIMIT; i++) {
       await addItemButton.click();
     }
   },

@@ -120,7 +120,11 @@ setWorldConstructor(ComplexWorld);
 
 const debugging = false; // HINT DEBUGGING
 
+const screenshotsFolder = path.join(process.cwd(), "features", "screenshots");
+
 BeforeAll(async function () {
+  prepareEmptyScreenshotsFolder();
+
   const BROWSER_OPTIONS = { headless: !debugging };
 
   browser = await firefox.launch(BROWSER_OPTIONS);
@@ -131,18 +135,12 @@ Before(async function (this: ComplexWorld) {
   this.accounting.clearTestIds();
 });
 
-const screenshotsDir = path.join(process.cwd(), "features", "screenshots");
-
-if (!fs.existsSync(screenshotsDir)) {
-  fs.mkdirSync(screenshotsDir, { recursive: true });
-}
-
 // Take screenshot when a test fails - this needs to run BEFORE closing the page
 After(async function (this: ComplexWorld, scenario: ITestCaseHookParameter) {
   if (scenario.result?.status === "FAILED") {
     const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
     const scenarioName = scenario.pickle.name.replace(/[^a-zA-Z0-9]/g, "_");
-    const screenshotPath = path.join(screenshotsDir, `${scenarioName}_${timestamp}.png`);
+    const screenshotPath = path.join(screenshotsFolder, `${timestamp}_${scenarioName}.png`);
 
     try {
       await this.page.screenshot({ path: screenshotPath, fullPage: true });
@@ -161,3 +159,16 @@ After("@last", async function (this: ComplexWorld) {
 AfterAll(async function () {
   debugging || (await browser.close());
 });
+
+function prepareEmptyScreenshotsFolder() {
+  if (fs.existsSync(screenshotsFolder)) {
+    const files = fs.readdirSync(screenshotsFolder);
+
+    for (const file of files) {
+      fs.unlinkSync(path.join(screenshotsFolder, file));
+    }
+    console.log(`\nCleared ${files.length} screenshots from: ${screenshotsFolder}`);
+  } else {
+    fs.mkdirSync(screenshotsFolder, { recursive: true });
+  }
+}

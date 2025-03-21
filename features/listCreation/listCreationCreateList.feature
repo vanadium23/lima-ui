@@ -16,6 +16,7 @@ Feature: Successfully creating list with correct data
     Then I expect to see the "list title" input disabled
     Then I expect to see the "list purpose" input disabled
     Then I expect to see the "list note" accordion disabled
+    Then I expect to see the "list note" accordion content expanded
     Then I expect to see the "list note" text area disabled
     Then I expect to see items inputs area without scroll
     Then I expect to see the "first" item input disabled
@@ -34,7 +35,7 @@ Feature: Successfully creating list with correct data
     And I type some text to all items inputs
     And I press the "create" button
     Then I expect all items inputs disabled
-    
+
   Scenario: "Create" button triggers list creation only once
     When I type some text with length less or equal to the one of "first item" input limit
     And I start counting the "list creation" requests
