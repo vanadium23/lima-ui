@@ -36,7 +36,7 @@ import { accountedTesting } from "./accountedTesting.ts";
 
 let browser: Browser;
 
-interface ComplexWorldParameters { }
+interface ComplexWorldParameters {}
 
 export class ComplexWorld extends World<ComplexWorldParameters> {
   context!: BrowserContext;
@@ -140,7 +140,10 @@ After(async function (this: ComplexWorld, scenario: ITestCaseHookParameter) {
   if (scenario.result?.status === "FAILED") {
     const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
     const scenarioName = scenario.pickle.name.replace(/[^a-zA-Z0-9]/g, "_");
-    const screenshotPath = path.join(screenshotsFolder, `${timestamp}_${scenarioName}.png`);
+    const screenshotPath = path.join(
+      screenshotsFolder,
+      `${timestamp}_${scenarioName}.png`,
+    );
 
     try {
       await this.page.screenshot({ path: screenshotPath, fullPage: true });
@@ -167,7 +170,9 @@ function prepareEmptyScreenshotsFolder() {
     for (const file of files) {
       fs.unlinkSync(path.join(screenshotsFolder, file));
     }
-    console.log(`\nCleared ${files.length} screenshots from: ${screenshotsFolder}`);
+    console.log(
+      `\nCleared ${files.length} screenshots from: ${screenshotsFolder}`,
+    );
   } else {
     fs.mkdirSync(screenshotsFolder, { recursive: true });
   }

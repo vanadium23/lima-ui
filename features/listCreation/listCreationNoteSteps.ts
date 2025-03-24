@@ -57,11 +57,11 @@ When(
   "I type some text with length less or equal to the one of {string} text area limit",
   async function (this: ComplexWorld, textAreaMeaning: TextAreaMeaning) {
     const textAreaLimit = TEXT_AREA_LIMIT_RELATION[textAreaMeaning];
-    
+
     const text = getStringUpToLimit(textAreaLimit);
-    
+
     this.data[textAreaMeaning] = text;
-    
+
     await this.locateByFullId(TEXT_AREA_TEST_IDS[textAreaMeaning]).fill(text);
   },
 );
