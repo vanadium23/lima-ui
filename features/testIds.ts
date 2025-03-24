@@ -11,13 +11,14 @@ export const PRO_VERSION_BUTTON = "proVersionButton";
 export const PAGE_TITLE = "pageTitle";
 export const LIST_TITLE_INPUT = "listTitleInput";
 export const LIST_PURPOSE_INPUT = "listPurposeInput";
-export const ITEMS_INPUTS = "itemsInputs";
-export const ITEM_INPUT_CONTAINER = "itemInputContainer";
-export const ITEM_INPUT = "itemInput";
+export const LIST_ITEMS = "listItems";
+export const LIST_ITEM = "listItem";
+export const LIST_ITEM_INPUT = "listItemInput";
 export const SEARCH_INPUT = "searchInput";
 export const CREATE_LIST_BUTTON = "createListButton";
-export const REMOVE_ITEM_BUTTON = "removeItemButton";
-export const CANCEL_ITEM_REMOVAL_BUTTON = "cancelItemRemovalButton";
+export const OPEN_DROPDOWN_MENU_LIST_ITEM_BUTTON =
+  "openDropdownMenuListItemButton";
+export const REMOVE_ITEM_MENUITEM = "removeItemMenuitem";
 export const SEARCH_BUTTON = "searchButton";
 export const USER_BUTTON = "userButton";
 
@@ -78,8 +79,6 @@ export const DRAG_HANDLE = "dragHandle";
 
 export const CHECKLIST_SWITCH = "checklistSwitch";
 export const CHECKBOX = "checkbox";
-
-export const DROPDOWN_MENU_BUTTON = "dropDownMenuButton";
 
 export const TOGGLE_TOOLS_PANEL_BUTTON = "toggleToolsPanelButton";
 

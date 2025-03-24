@@ -2,19 +2,19 @@ import { ITEMS_LIMIT } from "../../configuration.ts";
 import {
   buildInputCounterTestId,
   buildTextAreaCounterTestId,
-  CANCEL_ITEM_REMOVAL_BUTTON,
   CHECKLIST_SWITCH,
   CREATE_LIST_BUTTON,
   DIALOG_REMOVE_BUTTON,
   DIALOG_RETURN_BUTTON,
-  ITEM_INPUT,
-  ITEM_INPUT_CONTAINER,
+  LIST_ITEM,
+  LIST_ITEM_INPUT,
   LIST_PURPOSE_INPUT,
   LIST_STRIPE_REMOVE_BUTTON,
   LIST_TITLE_INPUT,
   NOTE_ACCORDION,
   NOTE_TEXT_AREA,
-  REMOVE_ITEM_BUTTON,
+  OPEN_DROPDOWN_MENU_LIST_ITEM_BUTTON,
+  REMOVE_ITEM_MENUITEM,
   TOOLS_BUTTON_COPY_ITEMS,
   TOOLS_BUTTON_PRINT_LIST,
   TOOLS_BUTTON_REMOVE_LIST,
@@ -24,16 +24,20 @@ import { buildFullTestId } from "../utilities/buildTestableSelector.ts";
 
 export const BUTTON_TEST_IDS = {
   create: CREATE_LIST_BUTTON,
-  "add item": TOOLS_PANEL_ADD_ITEM_BUTTON,
-  "remove item": REMOVE_ITEM_BUTTON,
-  "remove first item": buildFullTestId(REMOVE_ITEM_BUTTON, 0),
-  "remove second item": buildFullTestId(REMOVE_ITEM_BUTTON, 1),
-  "remove third item": buildFullTestId(REMOVE_ITEM_BUTTON, 2),
-  "remove forth item": buildFullTestId(REMOVE_ITEM_BUTTON, 3),
-  "remove on limit item": buildFullTestId(REMOVE_ITEM_BUTTON, ITEMS_LIMIT - 1),
-  "cancel item removal": CANCEL_ITEM_REMOVAL_BUTTON,
-  "cancel second item removal": buildFullTestId(CANCEL_ITEM_REMOVAL_BUTTON, 1),
-  "cancel third item removal": buildFullTestId(CANCEL_ITEM_REMOVAL_BUTTON, 2),
+  "add list item": TOOLS_PANEL_ADD_ITEM_BUTTON,
+  "remove item": REMOVE_ITEM_MENUITEM,
+  "open dropdown menu first item": buildFullTestId(
+    OPEN_DROPDOWN_MENU_LIST_ITEM_BUTTON,
+    0,
+  ),
+  "open dropdown menu second item": buildFullTestId(
+    OPEN_DROPDOWN_MENU_LIST_ITEM_BUTTON,
+    1,
+  ),
+  "open dropdown menu for last list item of the limit": buildFullTestId(
+    OPEN_DROPDOWN_MENU_LIST_ITEM_BUTTON,
+    ITEMS_LIMIT - 1,
+  ),
   "remove list": LIST_STRIPE_REMOVE_BUTTON,
   "cancel list removal": DIALOG_RETURN_BUTTON,
   "confirm list removal": DIALOG_REMOVE_BUTTON,
@@ -43,31 +47,42 @@ export const BUTTON_TEST_IDS = {
 };
 export type ButtonMeaning = keyof typeof BUTTON_TEST_IDS;
 
+export const MENUITEM_TEST_IDS = {
+  "remove first list item": buildFullTestId(REMOVE_ITEM_MENUITEM, 0),
+  "remove second list item": buildFullTestId(REMOVE_ITEM_MENUITEM, 1),
+  "remove on the last list item of the limit": buildFullTestId(
+    REMOVE_ITEM_MENUITEM,
+    ITEMS_LIMIT - 1,
+  ),
+};
+export type MenuitemMeaning = keyof typeof MENUITEM_TEST_IDS;
+
 export const INPUT_TEST_IDS = {
   "list title": LIST_TITLE_INPUT,
   "list purpose": LIST_PURPOSE_INPUT,
-  "first item": buildFullTestId(ITEM_INPUT, 0),
-  "second item": buildFullTestId(ITEM_INPUT, 1),
-  "third item": buildFullTestId(ITEM_INPUT, 2),
-  "forth item": buildFullTestId(ITEM_INPUT, 3),
+  "first item": buildFullTestId(LIST_ITEM_INPUT, 0),
+  "second item": buildFullTestId(LIST_ITEM_INPUT, 1),
+  "third item": buildFullTestId(LIST_ITEM_INPUT, 2),
+  "forth item": buildFullTestId(LIST_ITEM_INPUT, 3),
 };
 export type InputMeaning = keyof typeof INPUT_TEST_IDS;
 
 export const COUNTER_TEST_IDS = {
   "list title input": buildInputCounterTestId(LIST_TITLE_INPUT),
   "list purpose input": buildInputCounterTestId(LIST_PURPOSE_INPUT),
-  "first item input": buildFullTestId(buildInputCounterTestId(ITEM_INPUT), 0),
+  "first item input": buildFullTestId(
+    buildInputCounterTestId(LIST_ITEM_INPUT),
+    0,
+  ),
   "list note text area": buildTextAreaCounterTestId(NOTE_TEXT_AREA),
 };
 export type CounterMeaning = keyof typeof COUNTER_TEST_IDS;
 
 export const ELEMENT_TEST_IDS = {
-  "first item container": buildFullTestId(ITEM_INPUT_CONTAINER, 0),
-  "second item container": buildFullTestId(ITEM_INPUT_CONTAINER, 1),
-  "third item container": buildFullTestId(ITEM_INPUT_CONTAINER, 2),
-  "forth item container": buildFullTestId(ITEM_INPUT_CONTAINER, 3),
-  "on limit item container": buildFullTestId(
-    ITEM_INPUT_CONTAINER,
+  "first list item": buildFullTestId(LIST_ITEM, 0),
+  "second list item": buildFullTestId(LIST_ITEM, 1),
+  "on the last list item of the limit": buildFullTestId(
+    LIST_ITEM,
     ITEMS_LIMIT - 1,
   ),
 };

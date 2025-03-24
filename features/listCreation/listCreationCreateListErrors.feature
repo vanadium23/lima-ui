@@ -45,7 +45,7 @@ Feature: Failing to create a new list
     Then I expect to see the following number of "list creation" request: 0
 
   Scenario: Hidden empty item input is shown when attempting to create a new list
-    When I add items inputs till scroll appears plus one item input
+    When I add list items till scroll appears plus one item input
     And I type some text with length less or equal to the one of "list title" input limit
     And I type some text with length less or equal to the one of "list purpose" input limit
     And I start counting the "list creation" requests

@@ -3,9 +3,9 @@ import { expect } from "@playwright/test";
 
 import type { ComplexWorld } from "../context/hooks.ts";
 import {
-  ITEM_INPUT,
   ITEMS_LIMIT_REACHED_WARNING,
-  REMOVE_ITEM_BUTTON,
+  LIST_ITEM,
+  LIST_ITEM_INPUT,
 } from "../testIds.ts";
 
 import {
@@ -42,31 +42,16 @@ Then(
 );
 
 Then(
-  "I expect to see the only one item input left on the page",
+  "I expect to see the only one list item left on the page",
   async function (this: ComplexWorld) {
-    await expect(this.locate(REMOVE_ITEM_BUTTON)).toHaveCount(1);
-  },
-);
-
-When(
-  "I press the {string} button {int} times",
-  async function (
-    this: ComplexWorld,
-    buttonMeaning: ButtonMeaning,
-    repeatTimes: number,
-  ) {
-    const button = this.locateByFullId(BUTTON_TEST_IDS[buttonMeaning]);
-
-    for (let i = 0; i < repeatTimes; i++) {
-      await button.click();
-    }
+    await expect(this.locate(LIST_ITEM)).toHaveCount(1);
   },
 );
 
 Then(
   "I expect to see {int} items inputs ready for typing",
   async function (this: ComplexWorld, itemsInputsQuantity: number) {
-    const itemsInputs = this.locate(ITEM_INPUT);
+    const itemsInputs = this.locate(LIST_ITEM_INPUT);
 
     await expect(itemsInputs).toHaveCount(itemsInputsQuantity);
 
@@ -83,20 +68,6 @@ When(
   },
 );
 
-Then(
-  "I expect to see the {string} button",
-  async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
-    await this.expectLocated(BUTTON_TEST_IDS[buttonMeaning]).toBeInViewport();
-  },
-);
-
-When(
-  "I hover {string} button",
-  async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
-    await this.locateByFullId(BUTTON_TEST_IDS[buttonMeaning]).hover();
-  },
-);
-
 When(
   "I hover {string}",
   async function (this: ComplexWorld, elementMeaning: ElementMeaning) {
@@ -108,27 +79,6 @@ When(
   "I focus {string} input",
   async function (this: ComplexWorld, inputMeaning: InputMeaning) {
     await this.locateByFullId(INPUT_TEST_IDS[inputMeaning]).focus();
-  },
-);
-
-When(
-  "I focus {string} button",
-  async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
-    await this.locateByFullId(BUTTON_TEST_IDS[buttonMeaning]).focus();
-  },
-);
-
-Then(
-  "I expect to see the {string} button disabled",
-  async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
-    const element = this.locateByFullId(this.accounting.registerTestId(BUTTON_TEST_IDS[buttonMeaning]));
-    const isButton = await element.evaluate(el => el.tagName.toLowerCase() === 'button');
-    
-    if (isButton) {
-      await expect(element).toBeDisabled();
-    } else {
-      await expect(element).toHaveAttribute('href', '#');
-    }
   },
 );
 

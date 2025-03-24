@@ -1,5 +1,5 @@
 ---
-import {DEFAULT_TEST_ID, REMOVE_ITEM_BUTTON} from "../../../../features/testIds";
+import {DEFAULT_TEST_ID, REMOVE_ITEM_MENUITEM} from "../../../../features/testIds";
 import {DropdownMenu, DropdownMenuSize, DropdownMenuTheme} from "../../../components/dropdownMenu/dropdownMenu";
 import {IconName} from "../../../components/icon/icon";
 import {MenuItem, MenuItemTheme} from "../../../components/menuItem/menuItem";
@@ -36,7 +36,7 @@ const sizes = Object.values(DropdownMenuSize);
               text={"Удалить пункт"}
               theme={MenuItemTheme.Dangerous}
               icon={IconName.Trash}
-              testId={REMOVE_ITEM_BUTTON}
+              testId={REMOVE_ITEM_MENUITEM}
             />
           </DropdownMenu>
         ))}

@@ -6,9 +6,9 @@ Feature: Interacting with the List view page
   Scenario: Copying items to clipboard
     When I add a list
     And I type some text with length less or equal to the one of "first item" input limit
-    And I press the "add item" button
+    And I press the "add list item" button
     And I type some text with length less or equal to the one of "second item" input limit
-    And I press the "add item" button
+    And I press the "add list item" button
     And I type some text with length less or equal to the one of "third item" input limit
     And I press the "copy items" button
     And I expect clipboard to contain items content
@@ -16,7 +16,7 @@ Feature: Interacting with the List view page
   Scenario: Displaying checkboxes when pressing the checklist switch
     When I add a list
     And I type some text with length less or equal to the one of "first item" input limit
-    And I press the "add item" button
+    And I press the "add list item" button
     And I type some text with length less or equal to the one of "second item" input limit
     And I press the "checklist" switch
     Then I expect to see checkboxes for all list items
@@ -24,7 +24,7 @@ Feature: Interacting with the List view page
   Scenario: Hiding checkboxes when pressing the checklist switch again
     When I add a list
     And I type some text with length less or equal to the one of "first item" input limit
-    And I press the "add item" button
+    And I press the "add list item" button
     And I type some text with length less or equal to the one of "second item" input limit
     And I press the "checklist" switch
     And I press the "checklist" switch
@@ -33,7 +33,7 @@ Feature: Interacting with the List view page
   Scenario: Checking checkboxes when pressing them
     When I add a list
     And I type some text with length less or equal to the one of "first item" input limit
-    And I press the "add item" button
+    And I press the "add list item" button
     And I type some text with length less or equal to the one of "second item" input limit
     And I press the "checklist" switch
     And I check a random checkbox
@@ -43,7 +43,7 @@ Feature: Interacting with the List view page
   Scenario: Unchecking checkboxes when pressing them again
     When I add a list
     And I type some text with length less or equal to the one of "first item" input limit
-    And I press the "add item" button
+    And I press the "add list item" button
     And I type some text with length less or equal to the one of "second item" input limit
     And I press the "checklist" switch
     And I check a random checkbox

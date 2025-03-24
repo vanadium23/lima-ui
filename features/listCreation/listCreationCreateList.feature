@@ -21,7 +21,7 @@ Feature: Successfully creating list with correct data
     Then I expect to see items inputs area without scroll
     Then I expect to see the "first" item input disabled
     Then I expect to see the "second" item input disabled
-    Then I expect to see the "add item" button disabled
+    Then I expect to see the "add list item" button disabled
     Then I expect to see the "create" button in the loading state
     Then I expect to see the "copy items" button disabled
     Then I expect to see the "remove list tools panel" button disabled
@@ -31,7 +31,7 @@ Feature: Successfully creating list with correct data
     Then I expect to see no other elements
 
   Scenario: All items inputs are disabled on list creation
-    When I add items inputs till scroll appears plus one item input
+    When I add list items till scroll appears plus one item input
     And I type some text to all items inputs
     And I press the "create" button
     Then I expect all items inputs disabled
@@ -48,7 +48,7 @@ Feature: Successfully creating list with correct data
 
   Scenario: Created list contains all data provided during creation
     When I type some text with length less or equal to the one of "first item" input limit
-    And I press the "add item" button
+    And I press the "add list item" button
     And I type some text with length less or equal to the one of "second item" input limit
     And I press the "create" button
     And I wait for the list to create
@@ -61,7 +61,7 @@ Feature: Successfully creating list with correct data
 
   Scenario: Created list data persists after page refresh
     When I type some text with length less or equal to the one of "first item" input limit
-    And I press the "add item" button
+    And I press the "add list item" button
     And I type some text with length less or equal to the one of "second item" input limit
     And I press the "create" button
     And I wait for the list to create

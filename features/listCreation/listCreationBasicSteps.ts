@@ -8,8 +8,8 @@ import {
   buildAccordionButtonTestId,
   buildAccordionContentTestId,
   HEADER,
-  ITEM_INPUT,
-  ITEMS_INPUTS,
+  LIST_ITEM_INPUT,
+  LIST_ITEMS,
   PAGE_TITLE,
   PRO_VERSION_BUTTON,
   SEARCH_BUTTON,
@@ -76,13 +76,9 @@ Then("I expect to see tools panel", async function (this: ComplexWorld) {
 });
 
 Then("I expect not to see tools panel", async function (this: ComplexWorld) {
-  await this.expectLocated(
-    TOGGLE_TOOLS_PANEL_BUTTON,
-  ).not.toBeInViewport();
+  await this.expectLocated(TOGGLE_TOOLS_PANEL_BUTTON).not.toBeInViewport();
 
-  await this.expectLocated(
-    TOOLS_PANEL,
-  ).not.toBeInViewport();
+  await this.expectLocated(TOOLS_PANEL).not.toBeInViewport();
 });
 
 Then(
@@ -118,7 +114,7 @@ Then(
   "I expect to see items inputs area without scroll",
   async function (this: ComplexWorld) {
     expect(
-      await this.locate(this.accounting.registerTestId(ITEMS_INPUTS)).evaluate(
+      await this.locate(this.accounting.registerTestId(LIST_ITEMS)).evaluate(
         noVerticalScroll,
       ),
     ).toBe(true);
@@ -128,9 +124,9 @@ Then(
 Then(
   "I expect to see single item input ready for typing",
   async function (this: ComplexWorld) {
-    await registerItem.call(this, this.locate(ITEM_INPUT));
+    await registerItem.call(this, this.locate(LIST_ITEM_INPUT));
 
-    const expectItemInput = this.expectLocated(ITEM_INPUT);
+    const expectItemInput = this.expectLocated(LIST_ITEM_INPUT);
 
     await expectItemInput.toHaveCount(1);
     await expectItemInput.toBeInViewport();

@@ -13,10 +13,10 @@ import {
   CHECKBOX,
   DEFAULT_TEST_ID,
   DRAG_HANDLE,
-  DROPDOWN_MENU_BUTTON,
-  ITEM_INPUT,
-  ITEM_INPUT_CONTAINER,
-  REMOVE_ITEM_BUTTON,
+  LIST_ITEM,
+  LIST_ITEM_INPUT,
+  OPEN_DROPDOWN_MENU_LIST_ITEM_BUTTON,
+  REMOVE_ITEM_MENUITEM,
 } from "../../../features/testIds.ts";
 import {
   Checkbox,
@@ -133,7 +133,7 @@ export const ListItem = (props: Testable<ListItemProps>) => {
       classList={{
         listItem_menuOpened: isMenuOpen(),
       }}
-      data-test-id={ITEM_INPUT_CONTAINER}
+      data-test-id={LIST_ITEM}
       data-test-sub-id={mProps.testSubId}
     >
       <div class="listItem__dragHandle">
@@ -167,7 +167,7 @@ export const ListItem = (props: Testable<ListItemProps>) => {
           defaultValue={mProps.defaultValue}
           isRequired={mProps.isRequired}
           onChange={mProps.onChange}
-          testId={ITEM_INPUT}
+          testId={LIST_ITEM_INPUT}
           testSubId={mProps.testSubId ?? "0"}
         />
         <div class="listItem__controls">
@@ -177,7 +177,7 @@ export const ListItem = (props: Testable<ListItemProps>) => {
             theme={IconButtonTheme.Primary}
             size={IconButtonSize.Medium}
             componentType={IconButtonComponentType.Button}
-            testId={DROPDOWN_MENU_BUTTON}
+            testId={OPEN_DROPDOWN_MENU_LIST_ITEM_BUTTON}
             testSubId={mProps.testSubId ?? "0"}
             ref={setMenuButtonRef}
             handleClick={() => setIsMenuOpen((prev) => !prev)}
@@ -217,7 +217,7 @@ export const ListItem = (props: Testable<ListItemProps>) => {
                 theme={MenuItemTheme.Dangerous}
                 icon={IconName.Trash}
                 handleClick={removeItemIfEnabled}
-                testId={REMOVE_ITEM_BUTTON}
+                testId={REMOVE_ITEM_MENUITEM}
                 testSubId={mProps.testSubId ?? "0"}
                 isDisabled={mProps.isOnlyOneItem}
               />

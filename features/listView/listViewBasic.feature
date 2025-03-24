@@ -14,7 +14,7 @@ Feature: Seeing the basis of List view page
     Then I expect to see items inputs area without scroll
     Then I expect to see 2 item inputs ready for typing
     Then I expect to see the "create" button "disabled" with the following text: "Сохранить"
-    Then I expect to see the "add item" button enabled
+    Then I expect to see the "add list item" button enabled
     Then I expect to see the "copy items" button enabled
     Then I expect to see the "remove list tools panel" button enabled
     Then I expect to see the "checklist" switch enabled
@@ -27,7 +27,7 @@ Feature: Seeing the basis of List view page
     And I type some text with length less or equal to the one of "list title" input limit
     And I type some text with length less or equal to the one of "list purpose" input limit
     And I type some text with length less or equal to the one of "first item" input limit
-    And I add items inputs till scroll appears plus one item input
+    And I add list items till scroll appears plus one item input
     And I type some text to all items inputs
     And I press the "create" button
     And I wait for the list to create

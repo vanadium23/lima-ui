@@ -4,37 +4,28 @@ import { expect } from "@playwright/test";
 import { ITEMS_LIMIT } from "../../configuration.ts";
 import type { ComplexWorld } from "../context/hooks.ts";
 import {
-  TOOLS_PANEL_ADD_ITEM_BUTTON,
-  ITEM_INPUT,
-  ITEM_INPUT_CONTAINER,
-  ITEMS_INPUTS,
   ITEMS_LIMIT_REACHED_WARNING,
+  LIST_ITEM,
+  LIST_ITEM_INPUT,
+  LIST_ITEMS,
+  TOOLS_PANEL_ADD_ITEM_BUTTON,
 } from "../testIds.ts";
 import { TEST_SUB_ID_ATTRIBUTE } from "../utilities/buildTestableSelector.ts";
 import { noVerticalScroll } from "../utilities/checkScroll.ts";
 
-import { BUTTON_TEST_IDS, type ButtonMeaning } from "./testIds.ts";
-
-Then(
-  "I press the {string} button",
-  async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
-    await this.locateByFullId(BUTTON_TEST_IDS[buttonMeaning]).click();
-  },
-);
-
 Then(
   "I expect to see second item input ready for typing with the following placeholder: {string}",
   async function (this: ComplexWorld, placeholder: string) {
-    const secondItemInput = this.locate(ITEM_INPUT).nth(1);
+    const secondItemInput = this.locate(LIST_ITEM_INPUT).nth(1);
 
     const secondItemTestSubId = await secondItemInput.getAttribute(
       TEST_SUB_ID_ATTRIBUTE,
     );
-    this.accounting.registerTestIdAndSubId(ITEM_INPUT, secondItemTestSubId);
     this.accounting.registerTestIdAndSubId(
-      ITEM_INPUT_CONTAINER,
+      LIST_ITEM_INPUT,
       secondItemTestSubId,
     );
+    this.accounting.registerTestIdAndSubId(LIST_ITEM, secondItemTestSubId);
 
     const expectSecondItemInput = expect(secondItemInput);
 
@@ -45,10 +36,10 @@ Then(
 );
 
 When(
-  "I add items inputs till scroll appears plus one item input",
+  "I add list items till scroll appears plus one item input",
   async function (this: ComplexWorld) {
     const addItemButton = this.locate(TOOLS_PANEL_ADD_ITEM_BUTTON);
-    const itemsInputs = this.locate(ITEMS_INPUTS);
+    const itemsInputs = this.locate(LIST_ITEMS);
 
     while (
       (await itemsInputs.evaluate(noVerticalScroll)) &&
@@ -66,21 +57,21 @@ When(
 Then(
   "I expect to see the last added item input",
   async function (this: ComplexWorld) {
-    await expect(this.locate(ITEM_INPUT).last()).toBeInViewport();
+    await expect(this.locate(LIST_ITEM_INPUT).last()).toBeInViewport();
   },
 );
 
 Then("I expect not to see the first item input", async function () {
-  await expect(this.locate(ITEM_INPUT).first()).not.toBeInViewport();
+  await expect(this.locate(LIST_ITEM_INPUT).first()).not.toBeInViewport();
 });
 
 When(
-  "I add items inputs to their limit",
+  "I add list items to their limit",
   { timeout: 60000 },
   async function (this: ComplexWorld) {
     const addItemButton = this.locate(TOOLS_PANEL_ADD_ITEM_BUTTON);
 
-    const itemsInputs = this.locate(ITEM_INPUT);
+    const itemsInputs = this.locate(LIST_ITEM_INPUT);
     const currentItemCount = await itemsInputs.count();
 
     for (let i = currentItemCount; i < ITEMS_LIMIT; i++) {

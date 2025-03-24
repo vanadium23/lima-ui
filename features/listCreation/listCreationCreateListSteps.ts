@@ -11,7 +11,7 @@ import type { ComplexWorld } from "../context/hooks.ts";
 import {
   buildAccordionButtonTestId,
   buildAccordionContentTestId,
-  ITEM_INPUT,
+  LIST_ITEM_INPUT,
 } from "../testIds.ts";
 import { getStringUpToLimit } from "../utilities/getStringOfLength.ts";
 import { registerItem } from "../utilities/registerItem.ts";
@@ -32,14 +32,12 @@ Then(
   async function (this: ComplexWorld, accordionMeaning: AccordionMeaning) {
     const accordionTestId = ACCORDION_TEST_IDS[accordionMeaning];
 
-    const accordion = this.locate(this.accounting.registerTestId(accordionTestId));
+    const accordion = this.locate(
+      this.accounting.registerTestId(accordionTestId),
+    );
 
     await expect(accordion).toBeInViewport();
-    await expect(
-      accordion.locator(
-        "button",
-      ),
-    ).toBeDisabled();
+    await expect(accordion.locator("button")).toBeDisabled();
 
     this.accounting.registerTestId(buildAccordionButtonTestId(accordionTestId));
   },
@@ -51,9 +49,9 @@ Then(
     const accordionTestId = ACCORDION_TEST_IDS[accordionMeaning];
     const accordionContentTestId = buildAccordionContentTestId(accordionTestId);
 
-    await (this.expectLocated(
-      this.accounting.registerTestId(accordionContentTestId)
-    )).toBeInViewport();
+    await this.expectLocated(
+      this.accounting.registerTestId(accordionContentTestId),
+    ).toBeInViewport();
   },
 );
 
@@ -61,7 +59,7 @@ Then(
   "I expect to see the {string} text area disabled",
   async function (this: ComplexWorld, textAreaMeaning: TextAreaMeaning) {
     const expectedTextArea = this.expectLocated(
-      this.accounting.registerTestId(TEXT_AREA_TEST_IDS[textAreaMeaning])
+      this.accounting.registerTestId(TEXT_AREA_TEST_IDS[textAreaMeaning]),
     );
 
     await expectedTextArea.toBeInViewport();
@@ -83,7 +81,7 @@ Then(
 When(
   "I type some text to all items inputs",
   async function (this: ComplexWorld) {
-    const allItemsInputs = await this.locate(ITEM_INPUT).all();
+    const allItemsInputs = await this.locate(LIST_ITEM_INPUT).all();
     let count = 0;
 
     for (const itemInput of allItemsInputs) {
@@ -96,7 +94,7 @@ When(
 );
 
 Then("I expect all items inputs disabled", async function (this: ComplexWorld) {
-  const allItemsInputs = await this.locate(ITEM_INPUT).all();
+  const allItemsInputs = await this.locate(LIST_ITEM_INPUT).all();
 
   for (const itemInput of allItemsInputs) {
     await expect(itemInput).toBeDisabled();
@@ -201,10 +199,10 @@ Then(
       throw new Error(`Unknown item position: ${itemPosition}`);
     }
 
-    const itemInput = this.locate(ITEM_INPUT).nth(itemIndex);
-    await registerItem.call(this, itemInput);
+    const listItemInput = this.locate(LIST_ITEM_INPUT).nth(itemIndex);
+    await registerItem.call(this, listItemInput);
 
-    await expect(itemInput).toBeInViewport();
-    await expect(itemInput).toBeDisabled();
+    await expect(listItemInput).toBeInViewport();
+    await expect(listItemInput).toBeDisabled();
   },
 );

@@ -1,6 +1,7 @@
 import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
+import { ERROR_SIGN } from "../../utilities/addresses.ts";
 import type { ComplexWorld } from "../context/hooks.ts";
 import {
   INPUT_TEST_IDS,
@@ -8,12 +9,11 @@ import {
   SWITCH_TEST_IDS,
   type SwitchMeaning,
 } from "../listCreation/testIds.ts";
-import { ITEM_INPUT, LIST_STRIPE } from "../testIds.ts";
 import {
   LIST_STRIPE_POSITIONS,
   type ListStripePosition,
 } from "../lists/testIds.ts";
-import { ERROR_SIGN } from "../../utilities/addresses.ts";
+import { LIST_ITEM_INPUT, LIST_STRIPE } from "../testIds.ts";
 import { registerItem } from "../utilities/registerItem.ts";
 
 Then(
@@ -55,11 +55,11 @@ Then(
 Then(
   "I expect to see {int} item inputs ready for typing",
   async function (this: ComplexWorld, count: number) {
-    const itemInputs = this.locate(ITEM_INPUT);
+    const listItemInputs = this.locate(LIST_ITEM_INPUT);
 
-    expect(itemInputs).toHaveCount(count);
+    await expect(listItemInputs).toHaveCount(count);
 
-    for (const itemInput of await itemInputs.all()) {
+    for (const itemInput of await listItemInputs.all()) {
       await registerItem.call(this, itemInput);
 
       await expect(itemInput).toBeInViewport();
@@ -78,7 +78,7 @@ Then(
 Then(
   "I expect not to see the last item input",
   async function (this: ComplexWorld) {
-    await expect(this.locate(ITEM_INPUT).last()).not.toBeInViewport();
+    await expect(this.locate(LIST_ITEM_INPUT).last()).not.toBeInViewport();
   },
 );
 

@@ -16,9 +16,9 @@ import {
 import {
   CHECKLIST_SWITCH,
   CREATE_LIST_BUTTON,
-  ITEM_INPUT_CONTAINER,
-  ITEMS_INPUTS,
   ITEMS_LIMIT_REACHED_WARNING,
+  LIST_ITEM,
+  LIST_ITEMS,
   LIST_PURPOSE_INPUT,
   LIST_TITLE_INPUT,
   NETWORK_ERROR,
@@ -449,7 +449,7 @@ export const EditList = (props: EditListProps) => {
               <div
                 class="editList__scrollContainer"
                 ref={(el) => (scrollContainer = el)}
-                data-test-id={ITEMS_INPUTS}
+                data-test-id={LIST_ITEMS}
               >
                 <For each={store.items}>
                   {(item, getIndex) => {
@@ -479,7 +479,7 @@ export const EditList = (props: EditListProps) => {
                           addItem({ mode: "after", index: index() })
                         }
                         canAddMore={store.items.length < ITEMS_LIMIT}
-                        testId={ITEM_INPUT_CONTAINER}
+                        testId={LIST_ITEM}
                         testSubId={index()}
                         isRequired={isRequired()}
                       />

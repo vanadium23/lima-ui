@@ -52,7 +52,7 @@ Feature: Removing a list from the List view page
   @needs-fixing
   Scenario: Unsuccessful list removal accompanied by reached items limit leads to error and warning at the same time
     When I add a list
-    And I add items inputs to their limit
+    And I add list items to their limit
     And I press the "remove list tools panel" button
     Given Data server is not available
     And I press the visible "confirm list removal" button
@@ -75,7 +75,7 @@ Feature: Removing a list from the List view page
     Then I expect to see items inputs area without scroll
     Then I expect to see the "first" item input disabled
     Then I expect to see the "second" item input disabled
-    Then I expect to see the "add item" button disabled
+    Then I expect to see the "add list item" button disabled
     Then I expect to see the "create" button disabled
     Then I expect to see the "copy items" button disabled
     Then I expect to see the "remove list tools panel" button in the loading state
