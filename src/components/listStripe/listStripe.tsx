@@ -1,20 +1,27 @@
-import { createSignal, mergeProps } from "solid-js";
+import { autoUpdate, flip, hide, shift } from "@floating-ui/dom";
+import { useFloating } from "solid-floating-ui";
+import {
+  createEffect,
+  createSignal,
+  mergeProps,
+  onCleanup,
+  Show,
+} from "solid-js";
 
 import {
+  DEFAULT_TEST_ID,
   LIST_STRIPE,
   LIST_STRIPE_LINK_TO_VIEW,
-  LIST_STRIPE_REMOVE_BUTTON,
+  REMOVE_ITEM_MENUITEM,
   REMOVE_LIST_DIALOG,
 } from "../../../features/testIds.ts";
 import { LISTS } from "../../../utilities/addresses.ts";
 import { soften } from "../../widgets/editList/utilities/soften.ts";
 import { Dialog, DialogSize, DialogTheme } from "../dialog/dialog.tsx";
+import { DropdownMenu } from "../dropdownMenu/dropdownMenu.tsx";
 import { IconName } from "../icon/icon.tsx";
-import {
-  IconButton,
-  IconButtonSize,
-  IconButtonTheme,
-} from "../iconButton/iconButton.tsx";
+import { IconButton } from "../iconButton/iconButton.tsx";
+import { MenuItem, MenuItemTheme } from "../menuItem/menuItem.tsx";
 import type { Testable } from "../utilities/testable.ts";
 
 import "./listStripe.css";
@@ -54,6 +61,13 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
 
   const [isRemoving, setIsRemoving] = createSignal(false);
 
+  //для работы дропдауна
+  const [isMenuOpen, setIsMenuOpen] = createSignal(false);
+
+  const [menuButtonRef, setMenuButtonRef] = createSignal<HTMLElement>();
+
+  const [menuRef, setMenuRef] = createSignal<HTMLElement>();
+
   const openDialog = () => {
     setIsDialogOpen(true);
   };
@@ -62,9 +76,40 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
     setIsDialogOpen(false);
   };
 
+  createEffect(() => {
+    if (!isMenuOpen()) return;
+
+    const handleClickOutside = (event: MouseEvent) => {
+      const menuButtonEl = menuButtonRef();
+      const menuEl = menuRef();
+
+      if (
+        menuEl &&
+        menuButtonEl &&
+        !menuEl.contains(event.target as Node) &&
+        !menuButtonEl.contains(event.target as Node)
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    onCleanup(() => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    });
+  });
+
   function listStripeIsRemoving() {
     return isRemoving() || mProps.isRemoving;
   }
+  const floatingPosition = useFloating(menuButtonRef, menuRef, {
+    placement: "bottom-start",
+    whileElementsMounted: (reference, floating, update) =>
+      autoUpdate(reference, floating, update, {
+        animationFrame: true,
+      }),
+    middleware: [shift(), flip(), hide()], //TODO Подумать нужно ли Shift оставлять когда будет разработка под 320px
+  });
 
   function removeList() {
     mProps.staticOnRemoveError(false);
@@ -121,15 +166,30 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
       {/* MAKSIM: Скрываются в состоянии Loading, когда нет Hover'а. */}
       <div class="listStripe__controls">
         <IconButton
-          iconName={IconName.Trash}
-          ariaLabel={`Удалить список ${mProps.listTitle}`}
-          theme={IconButtonTheme.Dangerous}
-          size={IconButtonSize.Medium}
-          handleClick={openDialog}
+          iconName={IconName.DotsThreeVertical}
+          ariaLabel={"Выпадающее меню"}
+          testId={DEFAULT_TEST_ID}
+          testSubId={mProps.testSubId ?? "0"}
+          ref={setMenuButtonRef}
+          handleClick={() => setIsMenuOpen((prev) => !prev)}
           isLoading={listStripeIsRemoving()}
-          testId={LIST_STRIPE_REMOVE_BUTTON}
-          testSubId={mProps.defaultListId}
         />
+        <Show when={isMenuOpen()}>
+          <DropdownMenu
+            ref={setMenuRef}
+            floatingStyles={floatingPosition}
+            testId={DEFAULT_TEST_ID}
+          >
+            <MenuItem
+              text={"Удалить"}
+              theme={MenuItemTheme.Dangerous}
+              icon={IconName.Trash}
+              handleClick={openDialog}
+              testId={REMOVE_ITEM_MENUITEM}
+              testSubId={mProps.testSubId ?? "0"}
+            />
+          </DropdownMenu>
+        </Show>
       </div>
 
       <Dialog

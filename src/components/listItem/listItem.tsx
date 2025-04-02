@@ -208,7 +208,7 @@ export const ListItem = (props: Testable<ListItemProps>) => {
                 testId={DEFAULT_TEST_ID}
               />
               <MenuItem
-                text={"Импортировать пункт нише"}
+                text={"Импортировать пункт ниже"}
                 icon={IconName.SortAscending}
                 testId={DEFAULT_TEST_ID}
               />
