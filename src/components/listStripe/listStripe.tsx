@@ -1,12 +1,4 @@
-import { autoUpdate, flip, hide, shift } from "@floating-ui/dom";
-import { useFloating } from "solid-floating-ui";
-import {
-  createEffect,
-  createSignal,
-  mergeProps,
-  onCleanup,
-  Show,
-} from "solid-js";
+import { createSignal, mergeProps, Show } from "solid-js";
 
 import {
   DEFAULT_TEST_ID,
@@ -22,6 +14,7 @@ import { DropdownMenu } from "../dropdownMenu/dropdownMenu.tsx";
 import { IconName } from "../icon/icon.tsx";
 import { IconButton } from "../iconButton/iconButton.tsx";
 import { MenuItem, MenuItemTheme } from "../menuItem/menuItem.tsx";
+import { createDroppable } from "../utilities/createDroppable.ts";
 import type { Testable } from "../utilities/testable.ts";
 
 import "./listStripe.css";
@@ -57,16 +50,17 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
     props,
   );
 
+  const [
+    isMenuOpen,
+    setIsMenuOpen,
+    setMenuButtonRef,
+    setMenuRef,
+    floatingPosition,
+  ] = createDroppable();
+
   const [isDialogOpen, setIsDialogOpen] = createSignal(false);
 
   const [isRemoving, setIsRemoving] = createSignal(false);
-
-  //для работы дропдауна
-  const [isMenuOpen, setIsMenuOpen] = createSignal(false);
-
-  const [menuButtonRef, setMenuButtonRef] = createSignal<HTMLElement>();
-
-  const [menuRef, setMenuRef] = createSignal<HTMLElement>();
 
   const openDialog = () => {
     setIsDialogOpen(true);
@@ -76,40 +70,9 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
     setIsDialogOpen(false);
   };
 
-  createEffect(() => {
-    if (!isMenuOpen()) return;
-
-    const handleClickOutside = (event: MouseEvent) => {
-      const menuButtonEl = menuButtonRef();
-      const menuEl = menuRef();
-
-      if (
-        menuEl &&
-        menuButtonEl &&
-        !menuEl.contains(event.target as Node) &&
-        !menuButtonEl.contains(event.target as Node)
-      ) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    onCleanup(() => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    });
-  });
-
   function listStripeIsRemoving() {
     return isRemoving() || mProps.isRemoving;
   }
-  const floatingPosition = useFloating(menuButtonRef, menuRef, {
-    placement: "bottom-start",
-    whileElementsMounted: (reference, floating, update) =>
-      autoUpdate(reference, floating, update, {
-        animationFrame: true,
-      }),
-    middleware: [shift(), flip(), hide()], //TODO Подумать нужно ли Shift оставлять когда будет разработка под 320px
-  });
 
   function removeList() {
     mProps.staticOnRemoveError(false);
