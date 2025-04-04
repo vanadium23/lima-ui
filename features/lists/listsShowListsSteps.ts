@@ -6,7 +6,7 @@ import {
   LIST_TITLE_INPUT_LIMIT,
   LISTS_LIMIT,
 } from "../../configuration.ts";
-import { createList } from "../../src/services/createList.ts";
+import { createList } from "../../src/widgets/editList/services/createList.ts";
 import {
   LISTS_CREATE,
   LISTS_WITH_NETWORK_ERROR,
@@ -100,7 +100,7 @@ When(
         name: `Здесь был Максим + ${i + 1}`,
         purpose: "",
         note: "",
-        items: [{ content: getStringUpToLimit(10) }],
+        items: [{ id: "", content: getStringUpToLimit(10) }],
       };
 
       await createList(listData, this.BACKEND_ADDRESS);

@@ -1,4 +1,4 @@
-import { BACKEND_LISTS } from "../../utilities/addresses";
+import { BACKEND_LISTS } from "../../../../utilities/addresses.ts";
 
 export async function removeList(
   id: string,

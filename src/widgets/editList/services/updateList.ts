@@ -1,11 +1,11 @@
-import { BACKEND_LISTS } from "../../utilities/addresses.ts";
-import type { BackendList, UpdatedList } from "../types.ts";
+import { BACKEND_LISTS } from "../../../../utilities/addresses.ts";
+import type { List } from "../types.ts";
 
 export async function updateList(
-  data: UpdatedList,
+  data: List,
   backendURL?: string,
-): Promise<BackendList> {
-  let backend = "";
+): Promise<List> {
+  let backend: string;
 
   if (backendURL) {
     backend = backendURL;
@@ -13,12 +13,23 @@ export async function updateList(
     backend = import.meta.env.PUBLIC_API_URL;
   }
 
+  const listData = {
+    ...data,
+    items: data.items.map((item) => {
+      if (item.id) {
+        return item;
+      } else {
+        return { content: item.content };
+      }
+    }),
+  };
+
   const response = await fetch(`${backend}${BACKEND_LISTS}${data.id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify(listData),
   });
 
   if (!response.ok) {

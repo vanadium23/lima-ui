@@ -3,13 +3,13 @@ import { NETWORK_ERROR } from "../../../../features/testIds";
 import { LISTS } from "../../../../utilities/addresses";
 import { PageError } from "../../../components/pageError/pageError";
 import AppPage from "../../../layouts/app/app.astro";
-import type { BackendList } from "../../../types";
 import { EditList } from "../../../widgets/editList/editList";
+import type { List } from "../../../widgets/editList/types";
 
 import "./style.css";
 
 let listRequestError = false;
-let list: BackendList;
+let list: List;
 let errorText: string = "";
 
 function urlParamError() {

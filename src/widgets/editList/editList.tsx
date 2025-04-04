@@ -1,4 +1,15 @@
 import {
+  closestCenter,
+  createSortable,
+  DragDropProvider,
+  DragDropSensors,
+  type DragEvent,
+  DragOverlay,
+  SortableProvider,
+  transformStyle,
+  useDragDropContext,
+} from "@thisbeyond/solid-dnd";
+import {
   createMemo,
   For,
   mergeProps,
@@ -16,6 +27,7 @@ import {
 import {
   CHECKLIST_SWITCH,
   CREATE_LIST_BUTTON,
+  DEFAULT_TEST_ID,
   ITEMS_LIMIT_REACHED_WARNING,
   LIST_ITEM,
   LIST_ITEMS,
@@ -54,25 +66,33 @@ import {
   ToolsPanelSize,
   ToolsPanelTheme,
 } from "../../organisms/toolsPanel/toolsPanel.tsx";
-import { createList } from "../../services/createList.ts";
-import { removeList } from "../../services/removeList.ts";
-import { updateList } from "../../services/updateList.ts";
 import { setLocation } from "../../state/locationState.ts";
-import type { BackendList, NewList, UpdatedList } from "../../types.ts";
 
+import { createList } from "./services/createList.ts";
+import { removeList } from "./services/removeList.ts";
+import { updateList } from "./services/updateList.ts";
+import {
+  EditListFormNames,
+  type EditListStore,
+  type List,
+  type NewList,
+  type ScrollContainer,
+} from "./types.ts";
+import { checkChanges } from "./utilities/checkChages.ts";
+import { copyItemsToClipboard } from "./utilities/copyItemsToClipboard.ts";
+import {
+  createDefaultItem,
+  createDragId,
+} from "./utilities/createDefaultItem.ts";
+import { getComparableList } from "./utilities/getComparableList.ts";
+import { getDataListItemInputs } from "./utilities/getDataListItemInputs.ts";
+import { isOnlyOneItem } from "./utilities/isOnlyOneItem.ts";
 import { soften } from "./utilities/soften.ts";
 import "./editList.css";
 
 type EditListProps = {
-  defaultList?: BackendList;
+  defaultList?: List;
 };
-
-enum EditListFormNames {
-  ListTitle = "List Title",
-  ListPurpose = "List Purpose",
-  ListNote = "List Note",
-  ListItem = "List Item",
-}
 
 type EditListForm = {
   [EditListFormNames.ListTitle]: HTMLInputElement;
@@ -94,7 +114,11 @@ export const EditList = (props: EditListProps) => {
     props,
   );
 
-  let scrollContainer: HTMLDivElement | undefined = undefined;
+  let scrollContainer: ScrollContainer = undefined;
+
+  const list = mProps.defaultList;
+
+  let initialData = getComparableList(list);
 
   function scrollToBottom() {
     if (scrollContainer) {
@@ -102,25 +126,12 @@ export const EditList = (props: EditListProps) => {
     }
   }
 
-  type EditListStore = {
-    id: string;
-    items: UpdatedList["items"];
-    name: string;
-    purpose: string;
-    note: string;
-    sendingNow: false | "saving" | "deleting";
-    error: boolean;
-    isCheckable: boolean;
-    isDialogOpen: boolean;
-    isChanged: boolean;
-    isNewList: boolean;
-  };
-
-  const list = mProps.defaultList;
-
   const [store, setStore] = createStore<EditListStore>({
     id: list.id,
-    items: list.items,
+    items: list.items.map((item) => ({
+      ...item,
+      dragId: item.id || createDragId(),
+    })),
     name: list.name,
     purpose: list.purpose,
     note: list.note,
@@ -130,6 +141,7 @@ export const EditList = (props: EditListProps) => {
     isDialogOpen: false,
     isChanged: false,
     isNewList: list.id === "",
+    activeItem: "",
   });
 
   type AddItemOptions =
@@ -168,11 +180,11 @@ export const EditList = (props: EditListProps) => {
   function addItem(options: AddItemOptions) {
     if (store.items.length >= ITEMS_LIMIT) return;
 
-    const newItem = { content: "", id: "" };
+    const newItem = createDefaultItem();
 
     if (options.mode === "end") {
       setStore("items", [...store.items, newItem]);
-      checkChanges();
+      checkChanges(initialData, store, setStore);
 
       if (options.scroll) {
         requestAnimationFrame(scrollToBottom);
@@ -190,12 +202,12 @@ export const EditList = (props: EditListProps) => {
       ...items.slice(insertIndex),
     ]);
 
-    checkChanges();
+    checkChanges(initialData, store, setStore);
   }
 
   function handleItemChange(index: number, value: string) {
     setStore("items", index, "content", value);
-    checkChanges();
+    checkChanges(initialData, store, setStore);
 
     const isLastItem = index === store.items.length - 1;
 
@@ -207,7 +219,7 @@ export const EditList = (props: EditListProps) => {
     const beforeLastIndex = lastIndex - 1;
 
     if (
-      !isOnlyOneItem() &&
+      !isOnlyOneItem(store.items) &&
       index === beforeLastIndex &&
       store.items[lastIndex]?.content.trim() === "" &&
       store.items[beforeLastIndex]?.content.trim() === ""
@@ -220,56 +232,16 @@ export const EditList = (props: EditListProps) => {
     return store.items.length >= ITEMS_LIMIT;
   }
 
-  function isOnlyOneItem() {
-    return store.items.length === 1;
-  }
-
   function removeItem(indexToRemove: number) {
     setStore("items", (items) =>
       items.filter((_item, index) => index !== indexToRemove),
     );
-    checkChanges();
-  }
-
-  function copyItemsToClipboard() {
-    const textToCopy = store.items
-      .map((item) => item.content.trim())
-      .join("\n");
-    navigator.clipboard.writeText(textToCopy).catch(() => {});
-  }
-
-  function getComparableList(initialList: Omit<UpdatedList, "id">) {
-    return {
-      items: JSON.stringify(
-        initialList.items.filter(
-          (item, index) =>
-            index !== initialList.items.length - 1 ||
-            item.content.trim() !== "",
-        ),
-      ),
-      name: initialList.name,
-      purpose: initialList.purpose,
-      note: initialList.note,
-    };
-  }
-
-  let initialData = getComparableList(list);
-
-  function checkChanges() {
-    const currentData = getComparableList(store);
-
-    const hasChanges =
-      currentData.items !== initialData.items ||
-      currentData.name !== initialData.name ||
-      currentData.purpose !== initialData.purpose ||
-      currentData.note !== initialData.note;
-
-    setStore("isChanged", hasChanges);
+    checkChanges(initialData, store, setStore);
   }
 
   function handleInputChange(key: keyof typeof initialData, value: string) {
     setStore(key, value);
-    checkChanges();
+    checkChanges(initialData, store, setStore);
   }
 
   function prepareAndSendListData(event: SubmitEvent) {
@@ -279,23 +251,7 @@ export const EditList = (props: EditListProps) => {
       const target = event.target as HTMLFormElement & EditListForm;
 
       const elements = Array.from(target.elements) as HTMLInputElement[];
-
-      const itemsInputs = elements.filter((element) => {
-        return element.name.startsWith(EditListFormNames.ListItem);
-      });
-
-      const inputsValues = itemsInputs
-        .map((itemInput) => {
-          const content = itemInput.value.trim();
-          const id = itemInput.dataset.id?.trim();
-
-          return id ? { id, content } : { content };
-        })
-        .filter(
-          (item, index) =>
-            item.content !== "" || index < store.items.length - 1,
-        );
-
+      const inputsValues = getDataListItemInputs(elements, store);
       const data = {
         name: target[EditListFormNames.ListTitle].value,
         purpose: target[EditListFormNames.ListPurpose].value,
@@ -305,14 +261,14 @@ export const EditList = (props: EditListProps) => {
       };
 
       if (store.id) {
-        sendListUpdate({ ...data, id: store.id });
+        sendUpdatedList({ ...data, id: store.id });
       } else {
-        sendList(data);
+        sendNewList(data);
       }
     }
   }
 
-  function sendList(data: NewList) {
+  function sendNewList(data: NewList) {
     setStore({
       error: false,
       sendingNow: "saving",
@@ -331,7 +287,7 @@ export const EditList = (props: EditListProps) => {
           });
 
           initialData = getComparableList(store);
-          checkChanges();
+          checkChanges(initialData, store, setStore);
         });
       })
       .catch((error) => {
@@ -347,7 +303,7 @@ export const EditList = (props: EditListProps) => {
       });
   }
 
-  function sendListUpdate(data: UpdatedList) {
+  function sendUpdatedList(data: List) {
     setStore({
       error: false,
       sendingNow: "saving",
@@ -362,7 +318,7 @@ export const EditList = (props: EditListProps) => {
           });
 
           initialData = getComparableList(store);
-          checkChanges();
+          checkChanges(initialData, store, setStore);
         });
       })
       .catch((error) => {
@@ -401,6 +357,34 @@ export const EditList = (props: EditListProps) => {
         });
       });
   }
+
+  const activeItemData = () =>
+    store.items.find((item) => item.dragId === store.activeItem) ||
+    createDefaultItem();
+  const ids = () => store.items.map((item) => item.dragId);
+
+  const onDragStart = ({ draggable }: DragEvent) => {
+    setStore("activeItem", String(draggable.id));
+  };
+
+  const onDragEnd = ({ draggable, droppable }: DragEvent) => {
+    if (draggable && droppable) {
+      const currentItems = [...store.items];
+      const fromIndex = currentItems.findIndex(
+        (item) => item.dragId === draggable.id,
+      );
+      const toIndex = currentItems.findIndex(
+        (item) => item.dragId === droppable.id,
+      );
+
+      if (fromIndex !== -1 && toIndex !== -1 && fromIndex !== toIndex) {
+        const updatedItems = [...currentItems];
+        updatedItems.splice(toIndex, 0, ...updatedItems.splice(fromIndex, 1));
+        setStore("items", updatedItems);
+        checkChanges(initialData, store, setStore);
+      }
+    }
+  };
 
   return (
     <div class="editList">
@@ -451,41 +435,73 @@ export const EditList = (props: EditListProps) => {
                 ref={(el) => (scrollContainer = el)}
                 data-test-id={LIST_ITEMS}
               >
-                <For each={store.items}>
-                  {(item, getIndex) => {
-                    const index = createMemo(() => getIndex());
-                    const isLastItem = createMemo(
-                      () => index() === store.items.length - 1,
-                    );
-                    const isRequired = createMemo(
-                      () => !isLastItem() || isOnlyOneItem(),
-                    );
+                <DragDropProvider
+                  onDragStart={onDragStart}
+                  onDragEnd={onDragEnd}
+                  collisionDetector={closestCenter}
+                >
+                  <DragDropSensors />
+                  <SortableProvider ids={ids()}>
+                    <For each={store.items}>
+                      {(item, getIndex) => {
+                        const index = createMemo(() => getIndex());
+                        const isLastItem = createMemo(
+                          () => index() === store.items.length - 1,
+                        );
+                        const isRequired = createMemo(
+                          () => !isLastItem() || isOnlyOneItem(store.items),
+                        );
 
-                    return (
-                      <ListItem
-                        removeItem={() => removeItem(index())}
-                        isDisabled={store.sendingNow !== false}
-                        isOnlyOneItem={isOnlyOneItem()}
-                        isCheckable={store.isCheckable}
-                        isChecked={false}
-                        defaultValue={item.content}
-                        name={`${EditListFormNames.ListItem} ${index() + 1}`}
-                        dataId={"id" in item ? item.id : ""}
-                        onChange={(value) => handleItemChange(index(), value)}
-                        onAddBefore={() =>
-                          addItem({ mode: "before", index: index() })
-                        }
-                        onAddAfter={() =>
-                          addItem({ mode: "after", index: index() })
-                        }
-                        canAddMore={store.items.length < ITEMS_LIMIT}
-                        testId={LIST_ITEM}
-                        testSubId={index()}
-                        isRequired={isRequired()}
-                      />
-                    );
-                  }}
-                </For>
+                        const dragData = createSortable(item.dragId);
+
+                        return (
+                          <ListItem
+                            removeItem={() => removeItem(index())}
+                            isDisabled={store.sendingNow !== false}
+                            isOnlyOneItem={isOnlyOneItem(store.items)}
+                            isCheckable={store.isCheckable}
+                            isChecked={false}
+                            defaultValue={item.content}
+                            name={`${EditListFormNames.ListItem} ${index() + 1}`}
+                            dataId={item.id}
+                            onChange={(value) =>
+                              handleItemChange(index(), value)
+                            }
+                            onAddBefore={() =>
+                              addItem({ mode: "before", index: index() })
+                            }
+                            onAddAfter={() =>
+                              addItem({ mode: "after", index: index() })
+                            }
+                            canAddMore={store.items.length < ITEMS_LIMIT}
+                            testId={LIST_ITEM}
+                            testSubId={index()}
+                            isRequired={isRequired()}
+                            dragSettings={{
+                              dragData,
+                              dragProps: {
+                                ref: dragData.ref,
+                                style: transformStyle(dragData.transform),
+                              },
+                              dragState: useDragDropContext()?.[0] || null,
+                            }}
+                          />
+                        );
+                      }}
+                    </For>
+                  </SortableProvider>
+                  <DragOverlay>
+                    <ListItem
+                      isCheckable={store.isCheckable}
+                      isChecked={false}
+                      defaultValue={activeItemData().content}
+                      dataId={activeItemData().dragId}
+                      canAddMore={true}
+                      testId={DEFAULT_TEST_ID}
+                      isDraggingOverlay={true}
+                    />
+                  </DragOverlay>
+                </DragDropProvider>
               </div>
               <Show when={store.error}>
                 <PageError testId={NETWORK_ERROR}>
@@ -535,7 +551,7 @@ export const EditList = (props: EditListProps) => {
               iconName={IconName.CopySimple}
               text={"Копировать пункты"}
               isDisabled={store.isNewList || store.sendingNow !== false}
-              handleClick={copyItemsToClipboard}
+              handleClick={() => copyItemsToClipboard(store.items)}
               testId={TOOLS_BUTTON_COPY_ITEMS}
             />
             <ToolsButton

@@ -1,5 +1,6 @@
 import { mergeProps } from "solid-js";
 
+import type { Sortable } from "../../widgets/editList/types.ts";
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
 import type { Testable } from "../utilities/testable.ts";
 
@@ -18,6 +19,7 @@ type DragHandleProps = {
   size?: DragHandleSize;
   isDisabled?: boolean;
   handleClick?: () => void;
+  dragHandle?: Sortable | null;
 };
 
 export const DragHandle = (props: Testable<DragHandleProps>) => {
@@ -27,6 +29,7 @@ export const DragHandle = (props: Testable<DragHandleProps>) => {
       size: DragHandleSize.Medium,
       isDisabled: false,
       handleClick: () => {},
+      dragHandle: null,
     },
     props,
   );
@@ -47,6 +50,7 @@ export const DragHandle = (props: Testable<DragHandleProps>) => {
       aria-label="Перетаскивание"
       title={"Перетаскивание"}
       tabIndex={-1}
+      {...mProps.dragHandle?.dragActivators}
     >
       <Icon name={IconName.DotsSixVertical} size={IconSize.Medium} />
     </button>

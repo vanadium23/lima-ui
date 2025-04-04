@@ -8,6 +8,12 @@ export default {
         parser: "astro",
       },
     },
+    {
+      files: "*.md",
+      options: {
+        proseWrap: "never",
+      },
+    },
   ],
-  singleQuote: false, // Двойные кавычки
+  singleQuote: false,
 };

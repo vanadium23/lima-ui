@@ -18,6 +18,7 @@ import {
   OPEN_DROPDOWN_MENU_LIST_ITEM_BUTTON,
   REMOVE_ITEM_MENUITEM,
 } from "../../../features/testIds.ts";
+import type { DragSettings } from "../../widgets/editList/types.ts";
 import {
   Checkbox,
   CheckboxSize,
@@ -53,19 +54,21 @@ export enum ListItemSize {
 type ListItemProps = {
   theme?: ListItemTheme;
   size?: ListItemSize;
-  removeItem: () => void;
+  removeItem?: () => void;
   isDisabled?: boolean;
   isCheckable: boolean;
   isChecked: boolean;
   defaultValue?: string;
-  name: string;
+  name?: string;
   dataId?: string;
   isOnlyOneItem?: boolean;
   isRequired?: boolean;
   onChange?: (value: string) => void;
-  onAddBefore: () => void;
-  onAddAfter: () => void;
+  onAddBefore?: () => void;
+  onAddAfter?: () => void;
   canAddMore: boolean;
+  dragSettings?: DragSettings;
+  isDraggingOverlay?: boolean;
 };
 
 export const ListItem = (props: Testable<ListItemProps>) => {
@@ -73,12 +76,23 @@ export const ListItem = (props: Testable<ListItemProps>) => {
     {
       theme: ListItemTheme.Primary,
       size: ListItemSize.Medium,
+      name: "",
       isOnlyOneItem: false,
       isDisabled: false,
       isRequired: true,
       defaultValue: "",
       dataId: "",
       onChange: () => {},
+      onAddBefore: () => {},
+      onAddAfter: () => {},
+      removeItem: () => {},
+      isDraggingOverlay: false,
+      dragId: "",
+      dragSettings: {
+        dragData: null,
+        dragProps: {},
+        dragState: null,
+      },
     },
     props,
   );
@@ -124,14 +138,17 @@ export const ListItem = (props: Testable<ListItemProps>) => {
       autoUpdate(reference, floating, update, {
         animationFrame: true,
       }),
-    middleware: [shift(), flip(), hide()], //TODO Подумать нужно ли Shift оставлять когда будет разработка под 320px
+    middleware: [shift(), flip(), hide()],
   });
 
   return (
     <div
+      {...mProps.dragSettings.dragProps}
       class={`listItem listItem_${mProps.theme} listItem_${mProps.size}`}
       classList={{
         listItem_menuOpened: isMenuOpen(),
+        listItem_dragging: mProps.isDraggingOverlay,
+        listItem_transition: !!mProps.dragSettings.dragState?.active.draggable,
       }}
       data-test-id={LIST_ITEM}
       data-test-sub-id={mProps.testSubId}
@@ -141,6 +158,7 @@ export const ListItem = (props: Testable<ListItemProps>) => {
           isDisabled={mProps.isDisabled}
           testId={DRAG_HANDLE}
           testSubId={mProps.testSubId ?? "0"}
+          dragHandle={mProps.dragSettings.dragData}
         />
       </div>
       <Show when={mProps.isCheckable}>

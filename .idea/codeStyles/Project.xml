@@ -4,12 +4,19 @@
       <option name="FORCE_SEMICOLON_STYLE" value="true" />
       <option name="FORCE_QUOTE_STYlE" value="true" />
     </JSCodeStyleSettings>
+    <Markdown>
+      <option name="WRAP_TEXT_IF_LONG" value="false" />
+      <option name="KEEP_LINE_BREAKS_INSIDE_TEXT_BLOCKS" value="false" />
+    </Markdown>
     <TypeScriptCodeStyleSettings version="0">
       <option name="FORCE_SEMICOLON_STYLE" value="true" />
       <option name="FORCE_QUOTE_STYlE" value="true" />
     </TypeScriptCodeStyleSettings>
     <codeStyleSettings language="JavaScript">
       <option name="KEEP_BLANK_LINES_IN_CODE" value="1" />
+    </codeStyleSettings>
+    <codeStyleSettings language="Markdown">
+      <option name="RIGHT_MARGIN" value="120" />
     </codeStyleSettings>
     <codeStyleSettings language="TypeScript">
       <option name="KEEP_BLANK_LINES_IN_CODE" value="1" />

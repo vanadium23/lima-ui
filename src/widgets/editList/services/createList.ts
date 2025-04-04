@@ -1,11 +1,11 @@
-import { BACKEND_LISTS } from "../../utilities/addresses.ts";
-import type { BackendList, NewList } from "../types.ts";
+import { BACKEND_LISTS } from "../../../../utilities/addresses.ts";
+import type { List, NewList } from "../types.ts";
 
 export async function createList(
   data: NewList,
   backendURL?: string,
-): Promise<BackendList> {
-  let backend = "";
+): Promise<List> {
+  let backend: string;
 
   if (backendURL) {
     backend = backendURL;
@@ -13,12 +13,19 @@ export async function createList(
     backend = import.meta.env.PUBLIC_API_URL;
   }
 
+  const listData = {
+    ...data,
+    items: data.items.map((item) => {
+      return { content: item.content };
+    }),
+  };
+
   const response = await fetch(backend + BACKEND_LISTS.slice(0, -1), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(data), // преобразование объекта данных в JSON строку
+    body: JSON.stringify(listData),
   });
 
   if (!response.ok) {

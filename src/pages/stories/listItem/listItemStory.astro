@@ -4,7 +4,7 @@ import {
   ListItem,
   ListItemSize,
   ListItemTheme,
-} from "../../../components/listItem/listItem.tsx";
+} from "../../../components/listItem/listItem";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 ---
 
@@ -20,11 +20,11 @@ import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
         client:only="solid-js"
         theme={ListItemTheme.Primary}
         size={ListItemSize.Medium}
-        removeItem={() => {}}
         isCheckable={false}
         isChecked={false}
         name="Пункт"
         testId={DEFAULT_TEST_ID}
+        canAddMore={false}
       />
 
       <span class="rhead">Checklist</span>
@@ -32,11 +32,11 @@ import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
         client:only="solid-js"
         theme={ListItemTheme.Primary}
         size={ListItemSize.Medium}
-        removeItem={() => {}}
         isCheckable={true}
         isChecked={false}
         name="Пункт"
         testId={DEFAULT_TEST_ID}
+        canAddMore={false}
       />
     </div>
   </div>
