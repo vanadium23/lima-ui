@@ -15,5 +15,6 @@ export default {
       },
     },
   ],
-  singleQuote: false,
+  singleQuote: false, // Двойные кавычки
+  bracketSpacing: true, // пробелы внутри фигурных скобок
 };

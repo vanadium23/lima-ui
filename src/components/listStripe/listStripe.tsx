@@ -1,20 +1,20 @@
-import { createSignal, mergeProps } from "solid-js";
+import { createSignal, mergeProps, Show } from "solid-js";
 
 import {
+  DEFAULT_TEST_ID,
   LIST_STRIPE,
   LIST_STRIPE_LINK_TO_VIEW,
-  LIST_STRIPE_REMOVE_BUTTON,
+  REMOVE_ITEM_MENUITEM,
   REMOVE_LIST_DIALOG,
 } from "../../../features/testIds.ts";
 import { LISTS } from "../../../utilities/addresses.ts";
 import { soften } from "../../widgets/editList/utilities/soften.ts";
 import { Dialog, DialogSize, DialogTheme } from "../dialog/dialog.tsx";
+import { DropdownMenu } from "../dropdownMenu/dropdownMenu.tsx";
 import { IconName } from "../icon/icon.tsx";
-import {
-  IconButton,
-  IconButtonSize,
-  IconButtonTheme,
-} from "../iconButton/iconButton.tsx";
+import { IconButton } from "../iconButton/iconButton.tsx";
+import { MenuItem, MenuItemTheme } from "../menuItem/menuItem.tsx";
+import { createDroppable } from "../utilities/createDroppable.ts";
 import type { Testable } from "../utilities/testable.ts";
 
 import "./listStripe.css";
@@ -49,6 +49,14 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
     },
     props,
   );
+
+  const [
+    isMenuOpen,
+    setIsMenuOpen,
+    setMenuButtonRef,
+    setMenuRef,
+    floatingPosition,
+  ] = createDroppable();
 
   const [isDialogOpen, setIsDialogOpen] = createSignal(false);
 
@@ -121,15 +129,30 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
       {/* MAKSIM: Скрываются в состоянии Loading, когда нет Hover'а. */}
       <div class="listStripe__controls">
         <IconButton
-          iconName={IconName.Trash}
-          ariaLabel={`Удалить список ${mProps.listTitle}`}
-          theme={IconButtonTheme.Dangerous}
-          size={IconButtonSize.Medium}
-          handleClick={openDialog}
+          iconName={IconName.DotsThreeVertical}
+          ariaLabel={"Выпадающее меню"}
+          testId={DEFAULT_TEST_ID}
+          testSubId={mProps.testSubId ?? "0"}
+          ref={setMenuButtonRef}
+          handleClick={() => setIsMenuOpen((prev) => !prev)}
           isLoading={listStripeIsRemoving()}
-          testId={LIST_STRIPE_REMOVE_BUTTON}
-          testSubId={mProps.defaultListId}
         />
+        <Show when={isMenuOpen()}>
+          <DropdownMenu
+            ref={setMenuRef}
+            floatingStyles={floatingPosition}
+            testId={DEFAULT_TEST_ID}
+          >
+            <MenuItem
+              text={"Удалить"}
+              theme={MenuItemTheme.Dangerous}
+              icon={IconName.Trash}
+              handleClick={openDialog}
+              testId={REMOVE_ITEM_MENUITEM}
+              testSubId={mProps.testSubId ?? "0"}
+            />
+          </DropdownMenu>
+        </Show>
       </div>
 
       <Dialog

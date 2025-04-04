@@ -1,12 +1,4 @@
-import { autoUpdate, flip, hide, shift } from "@floating-ui/dom";
-import { useFloating } from "solid-floating-ui";
-import {
-  createEffect,
-  createSignal,
-  mergeProps,
-  onCleanup,
-  Show,
-} from "solid-js";
+import { mergeProps, Show } from "solid-js";
 
 import { EDIT_LIST_INPUT_LIMIT } from "../../../configuration.ts";
 import {
@@ -39,6 +31,7 @@ import {
   ItemInputTheme,
 } from "../itemInput/itemInput.tsx";
 import { MenuItem, MenuItemTheme } from "../menuItem/menuItem.tsx";
+import { createDroppable } from "../utilities/createDroppable.ts";
 import type { Testable } from "../utilities/testable.ts";
 
 import "./listItem.css";
@@ -97,49 +90,19 @@ export const ListItem = (props: Testable<ListItemProps>) => {
     props,
   );
 
+  const [
+    isMenuOpen,
+    setIsMenuOpen,
+    setMenuButtonRef,
+    setMenuRef,
+    floatingPosition,
+  ] = createDroppable();
+
   function removeItemIfEnabled() {
     if (!mProps.isDisabled) {
       mProps.removeItem();
     }
   }
-
-  const [isMenuOpen, setIsMenuOpen] = createSignal(false);
-
-  const [menuButtonRef, setMenuButtonRef] = createSignal<HTMLElement>();
-  const [menuRef, setMenuRef] = createSignal<HTMLElement>();
-
-  createEffect(() => {
-    if (!isMenuOpen()) return;
-
-    const handleClickOutside = (event: MouseEvent) => {
-      const menuButtonEl = menuButtonRef();
-      const menuEl = menuRef();
-
-      if (
-        menuEl &&
-        menuButtonEl &&
-        !menuEl.contains(event.target as Node) &&
-        !menuButtonEl.contains(event.target as Node)
-      ) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-
-    onCleanup(() => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    });
-  });
-
-  const floatingPosition = useFloating(menuButtonRef, menuRef, {
-    placement: "bottom-start",
-    whileElementsMounted: (reference, floating, update) =>
-      autoUpdate(reference, floating, update, {
-        animationFrame: true,
-      }),
-    middleware: [shift(), flip(), hide()],
-  });
 
   return (
     <div
@@ -226,7 +189,7 @@ export const ListItem = (props: Testable<ListItemProps>) => {
                 testId={DEFAULT_TEST_ID}
               />
               <MenuItem
-                text={"Импортировать пункт нише"}
+                text={"Импортировать пункт ниже"}
                 icon={IconName.SortAscending}
                 testId={DEFAULT_TEST_ID}
               />

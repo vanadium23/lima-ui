@@ -1,7 +1,7 @@
 .listStripe {
   display: flex;
   width: 100%;
-  gap: var(--size-x8);
+  gap: var(--size-x1);
 }
 
 .listStripe__link {
@@ -34,7 +34,7 @@
 .listStripe__controls {
   display: flex;
   align-items: center;
-  visibility: hidden;
+  visibility: visible;
 }
 
 .listStripe__title {
@@ -45,7 +45,8 @@
   font-weight: 500;
 }
 
-.listStripe__title, .listStripe__purpose {
+.listStripe__title,
+.listStripe__purpose {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -65,7 +66,7 @@
   line-height: 1.8rem;
 }
 
-.listStripe_primary.listStripe_removing .listStripe__link{
+.listStripe_primary.listStripe_removing .listStripe__link {
   background: var(--neutral-200);
 }
 
@@ -85,7 +86,7 @@
   color: var(--text-neutral-800);
 }
 
-.listStripe_primary.listStripe_removing .listStripe__title{
+.listStripe_primary.listStripe_removing .listStripe__title {
   color: var(--text-neutral-500);
 }
 
@@ -93,7 +94,7 @@
   color: var(--text-neutral-800);
 }
 
-.listStripe_primary.listStripe_removing .listStripe__purpose{
+.listStripe_primary.listStripe_removing .listStripe__purpose {
   color: var(--text-neutral-500);
 }
 
@@ -103,4 +104,28 @@
 
 .listStripe:focus-within .listStripe__controls {
   visibility: visible;
+}
+
+/*TODO проработь медиа запросы для тачскринов*/
+
+@media screen and (width >= 768px) {
+  .listStripe__controls {
+    visibility: hidden;
+  }
+}
+
+@media screen and (width <= 1023px) {
+  .listStripe_medium .listStripe__title {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+  }
+
+  .listStripe_medium .listStripe__link {
+    padding: var(--size-x3) var(--size-x4);
+    min-width: 50rem;
+  }
+
+  .listStripe {
+    gap: var(--size-x2);
+  }
 }
