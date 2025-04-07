@@ -1,5 +1,4 @@
 import {
-  closestCenter,
   createSortable,
   DragDropProvider,
   DragDropSensors,
@@ -78,6 +77,10 @@ import {
   type NewList,
   type ScrollContainer,
 } from "./types.ts";
+import {
+  createAutoScroll,
+  createScrollableCollisionsDetector,
+} from "./utilities/autoScroll.ts";
 import { checkChanges } from "./utilities/checkChages.ts";
 import { copyItemsToClipboard } from "./utilities/copyItemsToClipboard.ts";
 import {
@@ -141,12 +144,17 @@ export const EditList = (props: EditListProps) => {
     isDialogOpen: false,
     isChanged: false,
     isNewList: list.id === "",
-    activeItem: "",
+    draggedItem: "",
+    itemsScrollStartPosition: 0,
   });
 
   type AddItemOptions =
     | { mode: "end"; scroll?: boolean }
     | { mode: "before" | "after"; index: number };
+
+  const autoScroll = createAutoScroll({
+    isActive: () => !!store.draggedItem,
+  });
 
   onMount(() => {
     const handleLeave = (event: BeforeUnloadEvent) => {
@@ -358,16 +366,23 @@ export const EditList = (props: EditListProps) => {
       });
   }
 
-  const activeItemData = () =>
-    store.items.find((item) => item.dragId === store.activeItem) ||
+  const draggedItemData = () =>
+    store.items.find((item) => item.dragId === store.draggedItem) ||
     createDefaultItem();
   const ids = () => store.items.map((item) => item.dragId);
 
   const onDragStart = ({ draggable }: DragEvent) => {
-    setStore("activeItem", String(draggable.id));
+    setStore({
+      draggedItem: String(draggable.id),
+      itemsScrollStartPosition: scrollContainer?.scrollTop || 0,
+    });
+
+    autoScroll.startListening(scrollContainer);
   };
 
   const onDragEnd = ({ draggable, droppable }: DragEvent) => {
+    autoScroll.stopListening();
+
     if (draggable && droppable) {
       const currentItems = [...store.items];
       const fromIndex = currentItems.findIndex(
@@ -384,6 +399,8 @@ export const EditList = (props: EditListProps) => {
         checkChanges(initialData, store, setStore);
       }
     }
+
+    setStore({ draggedItem: "", itemsScrollStartPosition: 0 });
   };
 
   return (
@@ -438,7 +455,10 @@ export const EditList = (props: EditListProps) => {
                 <DragDropProvider
                   onDragStart={onDragStart}
                   onDragEnd={onDragEnd}
-                  collisionDetector={closestCenter}
+                  collisionDetector={createScrollableCollisionsDetector(
+                    scrollContainer,
+                    store,
+                  )}
                 >
                   <DragDropSensors />
                   <SortableProvider ids={ids()}>
@@ -494,8 +514,8 @@ export const EditList = (props: EditListProps) => {
                     <ListItem
                       isCheckable={store.isCheckable}
                       isChecked={false}
-                      defaultValue={activeItemData().content}
-                      dataId={activeItemData().dragId}
+                      defaultValue={draggedItemData().content}
+                      dataId={draggedItemData().dragId}
                       canAddMore={true}
                       testId={DEFAULT_TEST_ID}
                       isDraggingOverlay={true}

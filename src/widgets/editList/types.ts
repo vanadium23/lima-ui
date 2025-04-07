@@ -50,7 +50,8 @@ export type EditListStore = DragList & {
   isDialogOpen: boolean;
   isChanged: boolean;
   isNewList: boolean;
-  activeItem: string;
+  draggedItem: string;
+  itemsScrollStartPosition: number;
 };
 
 export enum EditListFormNames {
