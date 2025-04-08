@@ -13,7 +13,8 @@ import {
   LIST_TITLE_INPUT,
   NOTE_ACCORDION,
   NOTE_TEXT_AREA,
-  OPEN_DROPDOWN_MENU_LIST_ITEM_BUTTON,
+  OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
+  OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
   REMOVE_ITEM_MENUITEM,
   TOOLS_BUTTON_COPY_ITEMS,
   TOOLS_BUTTON_PRINT_LIST,
@@ -26,16 +27,16 @@ export const BUTTON_TEST_IDS = {
   create: CREATE_LIST_BUTTON,
   "add list item": TOOLS_PANEL_ADD_ITEM_BUTTON,
   "remove item": REMOVE_ITEM_MENUITEM,
-  "open dropdown menu first item": buildFullTestId(
-    OPEN_DROPDOWN_MENU_LIST_ITEM_BUTTON,
+  "open context menu first item": buildFullTestId(
+    OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
     0,
   ),
-  "open dropdown menu second item": buildFullTestId(
-    OPEN_DROPDOWN_MENU_LIST_ITEM_BUTTON,
+  "open context menu second item": buildFullTestId(
+    OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
     1,
   ),
-  "open dropdown menu for last list item of the limit": buildFullTestId(
-    OPEN_DROPDOWN_MENU_LIST_ITEM_BUTTON,
+  "open context menu for last list item of the limit": buildFullTestId(
+    OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
     ITEMS_LIMIT - 1,
   ),
   "remove list": LIST_STRIPE_REMOVE_BUTTON,
@@ -44,6 +45,7 @@ export const BUTTON_TEST_IDS = {
   "copy items": TOOLS_BUTTON_COPY_ITEMS,
   "remove list tools panel": TOOLS_BUTTON_REMOVE_LIST,
   "print list": TOOLS_BUTTON_PRINT_LIST,
+  "open context menu list stripe": OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
 };
 export type ButtonMeaning = keyof typeof BUTTON_TEST_IDS;
 

@@ -501,7 +501,7 @@ export const EditList = (props: EditListProps) => {
                               dragData,
                               dragProps: {
                                 ref: dragData.ref,
-                                style: transformStyle(dragData.transform),
+                                style: store.draggedItem ? transformStyle(dragData.transform) : {},
                               },
                               dragState: useDragDropContext()?.[0] || null,
                             }}

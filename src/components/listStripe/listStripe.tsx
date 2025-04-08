@@ -4,7 +4,8 @@ import {
   DEFAULT_TEST_ID,
   LIST_STRIPE,
   LIST_STRIPE_LINK_TO_VIEW,
-  REMOVE_ITEM_MENUITEM,
+  LIST_STRIPE_REMOVE_BUTTON,
+  OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
   REMOVE_LIST_DIALOG,
 } from "../../../features/testIds.ts";
 import { LISTS } from "../../../utilities/addresses.ts";
@@ -131,8 +132,8 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
         <IconButton
           iconName={IconName.DotsThreeVertical}
           ariaLabel={"Выпадающее меню"}
-          testId={DEFAULT_TEST_ID}
-          testSubId={mProps.testSubId ?? "0"}
+          testId={OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON}
+          testSubId={mProps.defaultListId}
           ref={setMenuButtonRef}
           handleClick={() => setIsMenuOpen((prev) => !prev)}
           isLoading={listStripeIsRemoving()}
@@ -148,8 +149,8 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
               theme={MenuItemTheme.Dangerous}
               icon={IconName.Trash}
               handleClick={openDialog}
-              testId={REMOVE_ITEM_MENUITEM}
-              testSubId={mProps.testSubId ?? "0"}
+              testId={LIST_STRIPE_REMOVE_BUTTON}
+              testSubId={mProps.defaultListId}
             />
           </DropdownMenu>
         </Show>

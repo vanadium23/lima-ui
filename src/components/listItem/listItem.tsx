@@ -7,7 +7,7 @@ import {
   DRAG_HANDLE,
   LIST_ITEM,
   LIST_ITEM_INPUT,
-  OPEN_DROPDOWN_MENU_LIST_ITEM_BUTTON,
+  OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
   REMOVE_ITEM_MENUITEM,
 } from "../../../features/testIds.ts";
 import type { DragSettings } from "../../widgets/editList/types.ts";
@@ -158,7 +158,7 @@ export const ListItem = (props: Testable<ListItemProps>) => {
             theme={IconButtonTheme.Primary}
             size={IconButtonSize.Medium}
             componentType={IconButtonComponentType.Button}
-            testId={OPEN_DROPDOWN_MENU_LIST_ITEM_BUTTON}
+            testId={OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON}
             testSubId={mProps.testSubId ?? "0"}
             ref={setMenuButtonRef}
             handleClick={() => setIsMenuOpen((prev) => !prev)}

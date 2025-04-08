@@ -16,8 +16,10 @@ export const LIST_ITEM = "listItem";
 export const LIST_ITEM_INPUT = "listItemInput";
 export const SEARCH_INPUT = "searchInput";
 export const CREATE_LIST_BUTTON = "createListButton";
-export const OPEN_DROPDOWN_MENU_LIST_ITEM_BUTTON =
-  "openDropdownMenuListItemButton";
+export const OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON =
+  "openContextMenuListItemButton";
+export const OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON =
+  "openContextMenuListStripeButton";
 export const REMOVE_ITEM_MENUITEM = "removeItemMenuitem";
 export const SEARCH_BUTTON = "searchButton";
 export const USER_BUTTON = "userButton";
