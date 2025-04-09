@@ -117,7 +117,7 @@ Feature: Removing the lists on the Lists page
     Then I expect to see the "list removal" error
     Then I expect to see the warning about lists limit reached
 
-  Scenario: Successful list removal accompanied by reached lists limit leads to hiding the warning and enabling the "Create" button
+  Scenario: Successful list removal accompanied by reached lists limit leads to hiding the warning and enabling the "Save" button
     When I add lists to their limit
     And I open Lists page
     And I hover "first" list stripe
@@ -125,4 +125,4 @@ Feature: Removing the lists on the Lists page
     And I press the visible "remove list" button
     And I press the visible "confirm list removal" button
     Then I expect not to see the "lists limit reached" warning
-    Then I expect to see the "create" button "enabled" with the following text: "Создать"
+    Then I expect to see the "save" button "enabled" with the following text: "Создать"

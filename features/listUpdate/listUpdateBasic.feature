@@ -7,8 +7,8 @@ Feature: Updating list
 
   Scenario: Updating list title
     When I type some text with length less or equal to the one of "list title" input limit
-    Then I expect to see the "create" button enabled
-    When I press the "create" button
+    Then I expect to see the "save" button enabled
+    When I press the "save" button
     And I wait for the list update to complete
     Then I expect to see "list title" input with the text I provided
     When I refresh the page
@@ -17,8 +17,8 @@ Feature: Updating list
 
   Scenario: Updating list purpose
     When I type some text with length less or equal to the one of "list purpose" input limit
-    Then I expect to see the "create" button enabled
-    When I press the "create" button
+    Then I expect to see the "save" button enabled
+    When I press the "save" button
     And I wait for the list update to complete
     Then I expect to see "list purpose" input with the text I provided
     When I refresh the page
@@ -28,8 +28,8 @@ Feature: Updating list
   Scenario: Updating list note
     When I press on the "list note" accordion
     And I type some text with length less or equal to the one of "list note" text area limit
-    Then I expect to see the "create" button enabled
-    When I press the "create" button
+    Then I expect to see the "save" button enabled
+    When I press the "save" button
     And I wait for the list update to complete
     And I expect to see "list note" text area with the text I provided
     When I refresh the page

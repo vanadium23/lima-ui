@@ -7,9 +7,9 @@ Feature: Successfully creating list with correct data
     And I press on the "list note" accordion
     And I type some text with length less or equal to the one of "list note" text area limit
 
-  Scenario: Disabling form controls when pressing the "Create" button
+  Scenario: Disabling form controls when pressing the "Save" button
     When I type some text with length less or equal to the one of "first item" input limit
-    And I press the "create" button
+    And I press the "save" button
     Then I expect to see sidebar
     Then I expect to see header
     Then I expect to see tools panel
@@ -22,7 +22,7 @@ Feature: Successfully creating list with correct data
     Then I expect to see the "first" item input disabled
     Then I expect to see the "second" item input disabled
     Then I expect to see the "add list item" button disabled
-    Then I expect to see the "create" button in the loading state
+    Then I expect to see the "save" button in the loading state
     Then I expect to see the "copy items" button disabled
     Then I expect to see the "remove list tools panel" button disabled
     Then I expect to see the "checklist" switch disabled
@@ -33,16 +33,16 @@ Feature: Successfully creating list with correct data
   Scenario: All items inputs are disabled on list creation
     When I add list items till scroll appears plus one item input
     And I type some text to all items inputs
-    And I press the "create" button
+    And I press the "save" button
     Then I expect all items inputs disabled
 
-  Scenario: "Create" button triggers list creation only once
+  Scenario: "Save" button triggers list creation only once
     When I type some text with length less or equal to the one of "first item" input limit
     And I start counting the "list creation" requests
-    And I press the "create" button
-    And I forcefully press the "create" button
-    And I forcefully press the "create" button
-    And I forcefully press the "create" button
+    And I press the "save" button
+    And I forcefully press the "save" button
+    And I forcefully press the "save" button
+    And I forcefully press the "save" button
     And I wait for "all requests to happen" for the following number of seconds: 1
     Then I expect to see the following number of "list creation" request: 1
 
@@ -50,7 +50,7 @@ Feature: Successfully creating list with correct data
     When I type some text with length less or equal to the one of "first item" input limit
     And I press the "add list item" button
     And I type some text with length less or equal to the one of "second item" input limit
-    And I press the "create" button
+    And I press the "save" button
     And I wait for the list to create
     Then I expect to see "list title" input with the text I provided
     Then I expect to see "list purpose" input with the text I provided
@@ -63,7 +63,7 @@ Feature: Successfully creating list with correct data
     When I type some text with length less or equal to the one of "first item" input limit
     And I press the "add list item" button
     And I type some text with length less or equal to the one of "second item" input limit
-    And I press the "create" button
+    And I press the "save" button
     And I wait for the list to create
     And I refresh the page
     And I wait for the page to load

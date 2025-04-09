@@ -13,7 +13,7 @@ Feature: Seeing the basis of List view page
     Then I expect to fully see the collapsed "list note" accordion ready for expanding
     Then I expect to see items inputs area without scroll
     Then I expect to see 2 item inputs ready for typing
-    Then I expect to see the "create" button "disabled" with the following text: "Сохранить"
+    Then I expect to see the "save" button "disabled" with the following text: "Сохранить"
     Then I expect to see the "add list item" button enabled
     Then I expect to see the "copy items" button enabled
     Then I expect to see the "remove list tools panel" button enabled
@@ -29,7 +29,7 @@ Feature: Seeing the basis of List view page
     And I type some text with length less or equal to the one of "first item" input limit
     And I add list items till scroll appears plus one item input
     And I type some text to all items inputs
-    And I press the "create" button
+    And I press the "save" button
     And I wait for the list to create
     And I open Lists page
     And I press on the "first" list stripe
@@ -46,6 +46,6 @@ Feature: Seeing the basis of List view page
     Then I expect to see header
     Then I expect not to see tools panel
     Then I expect to see the "connection" error
-    Then I expect not to see the "create" button
+    Then I expect not to see the "save" button
     Then All elements expected to be on the "List View with Error" page
     Then I expect to see no other elements

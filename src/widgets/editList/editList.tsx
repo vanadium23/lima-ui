@@ -25,7 +25,7 @@ import {
 } from "../../../configuration.ts";
 import {
   CHECKLIST_SWITCH,
-  CREATE_LIST_BUTTON,
+  SAVE_LIST_BUTTON,
   DEFAULT_TEST_ID,
   ITEMS_LIMIT_REACHED_WARNING,
   LIST_ITEM,
@@ -542,7 +542,7 @@ export const EditList = (props: EditListProps) => {
                     !store.isChanged || store.sendingNow === "deleting"
                   }
                   isLoading={store.sendingNow === "saving"}
-                  testId={CREATE_LIST_BUTTON}
+                  testId={SAVE_LIST_BUTTON}
                 />
               </div>
             </div>

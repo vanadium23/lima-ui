@@ -16,7 +16,7 @@ Feature: Adding items on the List Creation page
     Then I expect not to see the first item input
     Then I expect to see "list title" input ready for typing with the following placeholder: "Название списка"
     Then I expect to see "list purpose" input ready for typing with the following placeholder: "Цель списка"
-    Then I expect to see the "create" button enabled
+    Then I expect to see the "save" button enabled
     Then I expect to see the "add list item" button enabled
 
   Scenario: Adding items inputs to the limit

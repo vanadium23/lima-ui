@@ -117,11 +117,27 @@ When(
 
     this.page.on("request", (data) => {
       const { address, method } = ADDRESSES_MEANINGS[requestMeaning];
-      const urlEndsWithAddress =
-        data.url().endsWith(address) ||
-        data.url().endsWith(address.replaceAll("/", ""));
+      const url = data.url();
+      const requestMethod = data.method();
 
-      if (urlEndsWithAddress && data.method() === method) {
+      const urlPath = url.replace(/^https?:\/\/[^\/]+/, "");
+
+      let isMatch = false;
+
+      if (address.includes("*")) {
+        const patternBase = address.replace(/\*/g, "[^/]+");
+        const pattern = patternBase.endsWith("/")
+          ? patternBase.slice(0, -1)
+          : patternBase;
+        const regex = new RegExp(pattern.replace(/\//g, "\\/"));
+        isMatch = regex.test(urlPath);
+      } else {
+        isMatch =
+          urlPath.endsWith(address) ||
+          urlPath.endsWith(address.replaceAll("/", ""));
+      }
+
+      if (isMatch && requestMethod === method) {
         if (this.numbers[requestMeaning]) {
           this.numbers[requestMeaning]++;
         } else {
