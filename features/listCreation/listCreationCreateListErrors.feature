@@ -25,6 +25,7 @@ Feature: Failing to create a new list
     And I type some text with length less or equal to the one of "list purpose" input limit
     And I type some text with length less or equal to the one of "first item" input limit
     And I press the "save" button
+    And I wait for the page to load
     And I press the "save" button
     Then I expect not to see the "connection" error
 

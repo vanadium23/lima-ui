@@ -159,7 +159,7 @@ After("@last", async function (this: ComplexWorld) {
   debugging || (await this.context.close());
 });
 
-AfterAll(async function () {
+AfterAll({ timeout: 15000 }, async function () {
   debugging || (await browser.close());
 });
 

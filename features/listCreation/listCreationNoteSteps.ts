@@ -29,7 +29,7 @@ When(
 );
 
 Then(
-  "I expect to see the {string} text area ready for typing",
+  "I expect to see the {string} text area enabled",
   async function (this: ComplexWorld, textAreaMeaning: TextAreaMeaning) {
     const expectNoteTextArea = this.expectLocated(
       TEXT_AREA_TEST_IDS[textAreaMeaning],

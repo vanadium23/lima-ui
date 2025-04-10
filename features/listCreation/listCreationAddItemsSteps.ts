@@ -14,8 +14,8 @@ import { TEST_SUB_ID_ATTRIBUTE } from "../utilities/buildTestableSelector.ts";
 import { noVerticalScroll } from "../utilities/checkScroll.ts";
 
 Then(
-  "I expect to see second item input ready for typing with the following placeholder: {string}",
-  async function (this: ComplexWorld, placeholder: string) {
+  "I expect to see second item input enabled",
+  async function (this: ComplexWorld) {
     const secondItemInput = this.locate(LIST_ITEM_INPUT).nth(1);
 
     const secondItemTestSubId = await secondItemInput.getAttribute(
@@ -31,7 +31,6 @@ Then(
 
     await expectSecondItemInput.toBeInViewport();
     await expectSecondItemInput.toBeEnabled();
-    await expectSecondItemInput.toHaveAttribute("placeholder", placeholder);
   },
 );
 

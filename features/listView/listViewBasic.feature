@@ -12,7 +12,7 @@ Feature: Seeing the basis of List view page
     Then I expect to see "list purpose" input enabled
     Then I expect to fully see the collapsed "list note" accordion ready for expanding
     Then I expect to see items inputs area without scroll
-    Then I expect to see 2 item inputs ready for typing
+    Then I expect to see 2 item inputs enabled
     Then I expect to see the "save" button "disabled" with the following text: "Сохранить"
     Then I expect to see the "add list item" button enabled
     Then I expect to see the "copy items" button enabled

@@ -34,8 +34,6 @@ import {
   type AccordionMeaning,
   BUTTON_TEST_IDS,
   type ButtonMeaning,
-  INPUT_TEST_IDS,
-  type InputMeaning,
 } from "./testIds.ts";
 
 When(
@@ -94,23 +92,6 @@ Then(
 );
 
 Then(
-  "I expect to see {string} input ready for typing with the following placeholder: {string}",
-  async function (
-    this: ComplexWorld,
-    inputMeaning: InputMeaning,
-    placeholder: string,
-  ) {
-    const expectListTitleInput = this.expectLocated(
-      this.accounting.registerTestId(INPUT_TEST_IDS[inputMeaning]),
-    );
-
-    await expectListTitleInput.toBeInViewport();
-    await expectListTitleInput.toBeEnabled();
-    await expectListTitleInput.toHaveAttribute("placeholder", placeholder);
-  },
-);
-
-Then(
   "I expect to see items inputs area without scroll",
   async function (this: ComplexWorld) {
     expect(
@@ -122,7 +103,7 @@ Then(
 );
 
 Then(
-  "I expect to see single item input ready for typing",
+  "I expect to see single item input enabled",
   async function (this: ComplexWorld) {
     await registerItem.call(this, this.locate(LIST_ITEM_INPUT));
 

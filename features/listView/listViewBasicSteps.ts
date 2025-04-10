@@ -53,7 +53,7 @@ Then(
 );
 
 Then(
-  "I expect to see {int} item inputs ready for typing",
+  "I expect to see {int} item inputs enabled",
   async function (this: ComplexWorld, count: number) {
     const listItemInputs = this.locate(LIST_ITEM_INPUT);
 

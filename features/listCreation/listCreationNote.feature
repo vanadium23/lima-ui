@@ -5,7 +5,7 @@ Feature: Note on the List Creation page
 
   Scenario: Expanding Note accordion and seeing Note text area
     When I press on the "list note" accordion
-    Then I expect to see the "list note" text area ready for typing
+    Then I expect to see the "list note" text area enabled
 
   Scenario: Expanding and collapsing Note accordion and not seeing Note text area
     When I press on the "list note" accordion
