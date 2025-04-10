@@ -10,6 +10,7 @@ Feature: Updating list
     Then I expect to see the "save" button enabled
     When I press the "save" button
     And I wait for the list update to complete
+    Then I expect to see the "save" button disabled
     Then I expect to see "list title" input with the text I provided
     When I refresh the page
     And I wait for the page to load
@@ -20,6 +21,7 @@ Feature: Updating list
     Then I expect to see the "save" button enabled
     When I press the "save" button
     And I wait for the list update to complete
+    Then I expect to see the "save" button disabled
     Then I expect to see "list purpose" input with the text I provided
     When I refresh the page
     And I wait for the page to load
@@ -31,7 +33,8 @@ Feature: Updating list
     Then I expect to see the "save" button enabled
     When I press the "save" button
     And I wait for the list update to complete
-    And I expect to see "list note" text area with the text I provided
+    Then I expect to see the "save" button disabled
+    Then I expect to see "list note" text area with the text I provided
     When I refresh the page
     And I wait for the page to load
     Then I press on the "list note" accordion
