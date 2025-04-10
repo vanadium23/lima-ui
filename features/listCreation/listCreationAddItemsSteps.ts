@@ -85,3 +85,16 @@ Then(
     await this.expectLocated(ITEMS_LIMIT_REACHED_WARNING).toBeInViewport();
   },
 );
+
+When(
+  "I fill all items inputs with their index",
+  async function (this: ComplexWorld) {
+    const itemInputs = this.locate(LIST_ITEM_INPUT);
+    const count = await itemInputs.count();
+    
+    for (let i = 0; i < count; i++) {
+      const input = itemInputs.nth(i);
+      await input.fill(`Item ${i + 1}`);
+    }
+  },
+);
