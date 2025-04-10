@@ -53,3 +53,32 @@ Feature: Failing to create a new list
     And I press the "save" button
     Then I expect to be focused on the "first item" input
     Then I expect to see the following number of "list creation" request: 0
+
+  Scenario: All controls are enabled after connection error during list creation
+    Given There is no internet connection
+    And I type some text with length less or equal to the one of "list title" input limit
+    And I type some text with length less or equal to the one of "list purpose" input limit
+    And I press on the "list note" accordion
+    And I type some text with length less or equal to the one of "list note" text area limit
+    And I type some text with length less or equal to the one of "first item" input limit
+    And I press the "save" button
+    And I wait for the page to load
+    Then I expect to see sidebar
+    Then I expect to see header
+    Then I expect to see tools panel
+    Then I expect to see the "list title" input enabled
+    Then I expect to see the "list purpose" input enabled
+    Then I expect to fully see the expanded "list note" accordion ready for collapsing
+    Then I expect to see the "list note" text area enabled
+    Then I expect to see items inputs area without scroll
+    Then I expect to see the "first" item input enabled
+    Then I expect to see the "second" item input enabled
+    Then I expect to see the "save" button enabled
+    Then I expect to see the "add list item" button enabled
+    Then I expect to see the "copy items" button disabled
+    Then I expect to see the "remove list tools panel" button disabled
+    Then I expect to see the "checklist" switch enabled
+    Then I expect to see the "print list" button disabled
+    Then I expect to see the "connection" error
+    Then All elements expected to be on the "List Creation Item Added, Note Expanded, Connection Error" page
+    Then I expect to see no other elements
