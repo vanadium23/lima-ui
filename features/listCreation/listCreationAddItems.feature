@@ -14,8 +14,8 @@ Feature: Adding items on the List Creation page
     When I add list items till scroll appears plus one item input
     Then I expect to see the last added item input
     Then I expect not to see the first item input
-    Then I expect to see "list title" input enabled
-    Then I expect to see "list purpose" input enabled
+    Then I expect to see the "list title" input enabled
+    Then I expect to see the "list purpose" input enabled
     Then I expect to see the "save" button enabled
     Then I expect to see the "add list item" button enabled
 

@@ -185,13 +185,13 @@ Then(
 Then(
   "All elements expected to be on the {string} page",
   async function (this: ComplexWorld, pageAlias: PageAlias) {
-    const testIds = this.accounting.getTestIds();
-    const expectedPageIds = PAGES_TEST_IDS[pageAlias];
+    const pageTestIds = this.accounting.getTestIds();
+    const expectedPageTestIds = PAGES_TEST_IDS[pageAlias];
 
-    if (testIds.length) {
-      expect(testIds).toEqual(expectedPageIds);
+    if (pageTestIds.length) {
+      expect(pageTestIds).toEqual(expectedPageTestIds);
     } else {
-      this.accounting.registerSeveralTestIds(expectedPageIds);
+      this.accounting.registerSeveralTestIds(expectedPageTestIds);
     }
   },
 );

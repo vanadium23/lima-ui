@@ -17,7 +17,7 @@ import { LIST_ITEM_INPUT, LIST_STRIPE } from "../testIds.ts";
 import { registerItem } from "../utilities/registerItem.ts";
 
 Then(
-  "I expect to see {string} input enabled",
+  "I expect to see the {string} input enabled",
   async function (this: ComplexWorld, inputMeaning: InputMeaning) {
     const expectInput = this.expectLocated(
       this.accounting.registerTestId(INPUT_TEST_IDS[inputMeaning]),

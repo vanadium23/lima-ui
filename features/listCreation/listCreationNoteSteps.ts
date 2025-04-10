@@ -32,7 +32,7 @@ Then(
   "I expect to see the {string} text area enabled",
   async function (this: ComplexWorld, textAreaMeaning: TextAreaMeaning) {
     const expectNoteTextArea = this.expectLocated(
-      TEXT_AREA_TEST_IDS[textAreaMeaning],
+      this.accounting.registerTestId(TEXT_AREA_TEST_IDS[textAreaMeaning]),
     );
 
     await expectNoteTextArea.toBeInViewport();
@@ -102,7 +102,9 @@ Then(
     await expectAccordionButton.toBeEnabled();
 
     const expectAccordionContent = this.expectLocated(
-      buildAccordionContentTestId(accordionTestId),
+      this.accounting.registerTestId(
+        buildAccordionContentTestId(accordionTestId),
+      ),
     );
     await expectAccordionContent.toBeInViewport();
   },

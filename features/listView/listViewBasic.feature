@@ -8,8 +8,8 @@ Feature: Seeing the basis of List view page
     Then I expect to see sidebar
     Then I expect to see header
     Then I expect to see tools panel
-    Then I expect to see "list title" input enabled
-    Then I expect to see "list purpose" input enabled
+    Then I expect to see the "list title" input enabled
+    Then I expect to see the "list purpose" input enabled
     Then I expect to fully see the collapsed "list note" accordion ready for expanding
     Then I expect to see items inputs area without scroll
     Then I expect to see 2 item inputs enabled

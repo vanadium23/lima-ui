@@ -11,10 +11,10 @@ Feature: Updating list
     When I press the "save" button
     And I wait for the list update to complete
     Then I expect to see the "save" button disabled
-    Then I expect to see "list title" input with the text I provided
+    Then I expect to see the "list title" input with the text I provided
     When I refresh the page
     And I wait for the page to load
-    Then I expect to see "list title" input with the text I provided
+    Then I expect to see the "list title" input with the text I provided
 
   Scenario: Updating list purpose
     When I type some text with length less or equal to the one of "list purpose" input limit
@@ -22,10 +22,10 @@ Feature: Updating list
     When I press the "save" button
     And I wait for the list update to complete
     Then I expect to see the "save" button disabled
-    Then I expect to see "list purpose" input with the text I provided
+    Then I expect to see the "list purpose" input with the text I provided
     When I refresh the page
     And I wait for the page to load
-    Then I expect to see "list purpose" input with the text I provided
+    Then I expect to see the "list purpose" input with the text I provided
 
   Scenario: Updating list note
     When I press on the "list note" accordion
@@ -34,9 +34,8 @@ Feature: Updating list
     When I press the "save" button
     And I wait for the list update to complete
     Then I expect to see the "save" button disabled
-    Then I expect to see "list note" text area with the text I provided
+    Then I expect to see the "list note" text area with the text I provided
     When I refresh the page
     And I wait for the page to load
     Then I press on the "list note" accordion
-    And I expect to see "list note" text area with the text I provided
-    
+    And I expect to see the "list note" text area with the text I provided
