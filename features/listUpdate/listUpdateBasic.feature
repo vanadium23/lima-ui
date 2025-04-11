@@ -39,3 +39,15 @@ Feature: Updating list
     And I wait for the page to load
     Then I press on the "list note" accordion
     And I expect to see the "list note" text area with the text I provided
+
+  @needs-fixing
+  Scenario: Updating an existing list item
+    When I type some text with length less or equal to the one of "first item" input limit
+    Then I expect to see the "save" button enabled
+    When I press the "save" button
+    And I wait for the list update to complete
+    Then I expect to see the "save" button disabled
+    Then I expect to see the "first item" input with the text I provided
+    When I refresh the page
+    And I wait for the page to load
+    Then I expect to see the "first item" input with the text I provided
