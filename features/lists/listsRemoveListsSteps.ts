@@ -19,6 +19,8 @@ import {
 import { TEST_SUB_ID_ATTRIBUTE } from "../utilities/buildTestableSelector.ts";
 
 import {
+  CONTEXT_MENU_TEST_IDS,
+  type ContextMenuMeaning,
   DIALOG_TEST_IDS,
   type DialogMeaning,
   LINK_TEST_IDS,
@@ -172,6 +174,15 @@ Then(
   async function (this: ComplexWorld, warningMeaning: WarningMeaning) {
     await this.expectLocated(
       WARNINGS_TEST_IDS[warningMeaning],
+    ).not.toBeInViewport();
+  },
+);
+
+Then(
+  "I expect not to see the {string} context menu",
+  async function (this: ComplexWorld, contextMenuMeaning: ContextMenuMeaning) {
+    await this.expectLocated(
+      CONTEXT_MENU_TEST_IDS[contextMenuMeaning],
     ).not.toBeInViewport();
   },
 );

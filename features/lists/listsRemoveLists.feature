@@ -33,6 +33,7 @@ Feature: Removing the lists on the Lists page
     And I click outside of the "remove list" dialog modal box
     Then I expect not to see the "remove list" dialog modal box
 
+  @under-development
   @needs-fixing
   Scenario: Confirming list removal leads to the loading state of a list stripe
     When I add a list
@@ -46,7 +47,6 @@ Feature: Removing the lists on the Lists page
     Then I expect to see the visible "first" list stripe "view list" link disabled
     Then I expect to see the visible "first" list stripe "open context menu list stripe" button disabled
 
-  @needs-fixing
   Scenario: Not seeing the dialog modal box when removal in progress
     When I add a list
     And I open Lists page
@@ -55,7 +55,7 @@ Feature: Removing the lists on the Lists page
     And I press the visible "remove list" button
     And I press the visible "confirm list removal" button
     And I forcefully press the "first" list stripe "open context menu list stripe" button
-    Then I expect not to see the "remove list" dialog modal box
+    Then I expect not to see the "list stripe" context menu
 
   Scenario: Successful list removal leads to list stripe's disappearance
     When I add a list
@@ -91,6 +91,7 @@ Feature: Removing the lists on the Lists page
     And I press the visible "confirm list removal" button
     Then I expect to see the "list removal" error
 
+  @under-development
   @needs-fixing
   Scenario: Consequent removal attempt leads to error message disappearance
     When I add a list

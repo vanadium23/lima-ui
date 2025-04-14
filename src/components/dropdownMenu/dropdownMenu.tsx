@@ -52,6 +52,7 @@ export const DropdownMenu = (props: Testable<DropdownMenuProps>) => {
           : {}
       }
       ref={mProps.ref}
+      data-test-id={mProps.testId}
     >
       {mProps.children}
     </ul>

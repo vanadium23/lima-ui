@@ -72,6 +72,7 @@ export const LIST_STRIPE = "listStripe";
 export const LIST_STRIPE_LINK_TO_VIEW = "listStripeLinkToView";
 export const LIST_STRIPE_EDIT_BUTTON = "listStripeEditButton";
 export const LIST_STRIPE_REMOVE_BUTTON = "listStripeRemoveButton";
+export const LIST_STRIPE_CONTEXT_MENU = "listStripeContextMenu";
 
 export const REMOVE_LIST_DIALOG = "removeListDialog";
 export const DIALOG_RETURN_BUTTON = "dialogReturnButton";
