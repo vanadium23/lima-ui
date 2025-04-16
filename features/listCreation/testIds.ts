@@ -85,6 +85,8 @@ export type CounterMeaning = keyof typeof COUNTER_TEST_IDS;
 export const ELEMENT_TEST_IDS = {
   "first list item": buildFullTestId(LIST_ITEM, 0),
   "second list item": buildFullTestId(LIST_ITEM, 1),
+  "third list item": buildFullTestId(LIST_ITEM, 2),
+  "forth list item": buildFullTestId(LIST_ITEM, 3),
   "on the last list item of the limit": buildFullTestId(
     LIST_ITEM,
     ITEMS_LIMIT - 1,
