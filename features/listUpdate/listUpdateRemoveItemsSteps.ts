@@ -3,6 +3,8 @@ import { expect } from "@playwright/test";
 
 import type { ComplexWorld } from "../context/hooks.ts";
 import {
+  ELEMENT_TEST_IDS,
+  type ElementMeaning,
   INPUT_TEST_IDS,
   type InputMeaning,
   MENUITEM_TEST_IDS,
@@ -43,5 +45,14 @@ When(
     const textToType = this.data[inputMeaning] || "";
 
     await inputLocator.fill(textToType);
+  },
+);
+
+When(
+  "I scroll to the {string}",
+  async function (this: ComplexWorld, elementMeaning: ElementMeaning) {
+    const element = this.locateByFullId(ELEMENT_TEST_IDS[elementMeaning]);
+
+    await element.scrollIntoViewIfNeeded();
   },
 );

@@ -75,3 +75,31 @@ Feature: Removing items from an existing list
     And I hover "first list item"
     And I press the visible "open context menu list item" button
     Then I expect to see the "remove list item" menu item disabled
+
+  @needs-fixing
+  Scenario: Adding list items to the limit and then deleting one list item leads to limit warning disappear and buttons enablement
+    When I add list items to their limit
+    And I fill all items inputs with their index
+    And I press the "save" button
+    And I wait for the list update to complete
+    # TODO: Нужно определённо избавиться от этого шага.
+    #  Сейчас он необходим для того, чтобы список успел обновиться.
+    #  Есть подозрение, что база не успевает произвести запись, и игнорирует её
+    #  в угоду чтению.
+    And I wait for "ensuring that the huge list was created" for the following number of seconds: 3
+    And I refresh the page
+    Then I expect to see the warning about items inputs limit reached
+    And I scroll to the "on the last list item of the limit"
+    And I hover "on the last list item of the limit"
+    And I press the visible "open context menu list item" button
+    And I press the visible "remove list item" menu item
+    Then I expect not to see the warning about items inputs limit reached
+    And I expect to see the "add list item" button enabled
+    When I press the "save" button
+    And I wait for the list update to complete
+    And I refresh the page
+    # TODO: Этот шаг валится. Нужно починить интерфейс.
+    #  Здесь появляется автопункт и вновь отображает сообщение о лимите.
+    #  Видится, что при наличии автопункта сообщение показываться не должно.
+    Then I expect not to see the warning about items inputs limit reached
+    And I expect to see the "add list item" button enabled
