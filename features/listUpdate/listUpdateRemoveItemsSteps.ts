@@ -35,3 +35,13 @@ Then(
     }
   },
 );
+
+When(
+  "I type the text that was in the removed {string} input",
+  async function (this: ComplexWorld, inputMeaning: InputMeaning) {
+    const inputLocator = this.locateByFullId(INPUT_TEST_IDS[inputMeaning]);
+    const textToType = this.data[inputMeaning] || "";
+
+    await inputLocator.fill(textToType);
+  },
+);

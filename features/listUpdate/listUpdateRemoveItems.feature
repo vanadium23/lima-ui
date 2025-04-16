@@ -54,3 +54,17 @@ Feature: Removing items from an existing list
     Then I expect not to see the "second item" input with the text I provided
     And I expect not to see the "third item" input with the text I provided
     And I expect not to see the "forth item" input with the text I provided
+
+  @needs-fixing
+  Scenario: Imitating a removed list item should not disable the save button
+    When I press the "add list item" button
+    And I type some text with length less or equal to the one of "second item" input limit
+    And I press the "save" button
+    And I wait for the list update to complete
+    And I hover "second list item"
+    And I press the visible "open context menu list item" button
+    And I press the visible "remove list item" menu item
+    When I press the "add list item" button
+    And I type the text that was in the removed "second item" input
+    Then I expect to see the "save" button enabled
+
