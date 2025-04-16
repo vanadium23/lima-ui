@@ -68,3 +68,10 @@ Feature: Removing items from an existing list
     And I type the text that was in the removed "second item" input
     Then I expect to see the "save" button enabled
 
+  Scenario: Seeing remove item menu item disabled for the only one list item in an existing list
+    And I hover "second list item"
+    And I press the visible "open context menu list item" button
+    And I press the visible "remove list item" menu item
+    And I hover "first list item"
+    And I press the visible "open context menu list item" button
+    Then I expect to see the "remove list item" menu item disabled
