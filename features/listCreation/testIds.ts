@@ -27,6 +27,7 @@ export const BUTTON_TEST_IDS = {
   save: SAVE_LIST_BUTTON,
   "add list item": TOOLS_PANEL_ADD_ITEM_BUTTON,
   "remove item": REMOVE_ITEM_MENUITEM,
+  "open context menu list item": OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
   "open context menu first item": buildFullTestId(
     OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
     0,
@@ -50,6 +51,7 @@ export const BUTTON_TEST_IDS = {
 export type ButtonMeaning = keyof typeof BUTTON_TEST_IDS;
 
 export const MENUITEM_TEST_IDS = {
+  "remove list item": REMOVE_ITEM_MENUITEM,
   "remove first list item": buildFullTestId(REMOVE_ITEM_MENUITEM, 0),
   "remove second list item": buildFullTestId(REMOVE_ITEM_MENUITEM, 1),
   "remove on the last list item of the limit": buildFullTestId(

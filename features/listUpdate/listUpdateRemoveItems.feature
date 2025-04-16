@@ -12,8 +12,8 @@ Feature: Removing items from an existing list
     And I wait for the list update to complete
     And I refresh the page
     And I hover "second list item"
-    And I press the "open context menu second item" button
-    And I press the "remove second list item" menuitem
+    And I press the visible "open context menu list item" button
+    And I press the visible "remove list item" menu item
     Then I expect to see the "save" button enabled
     When I press the "save" button
     And I wait for the list update to complete
