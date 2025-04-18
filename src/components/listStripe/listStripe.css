@@ -16,6 +16,7 @@
 .listStripe_medium .listStripe__link {
   padding: var(--size-x6);
   min-width: 50rem;
+  background: var(--neutral-100);
 }
 
 .listStripe__link:focus-visible {

@@ -76,7 +76,7 @@ Feature: Removing a list from the List view page
     Then I expect to see the "first" item input disabled
     Then I expect to see the "second" item input disabled
     Then I expect to see the "add list item" button disabled
-    Then I expect to see the "create" button disabled
+    Then I expect to see the "save" button disabled
     Then I expect to see the "copy items" button disabled
     Then I expect to see the "remove list tools panel" button in the loading state
     Then I expect to see the "checklist" switch disabled

@@ -3,7 +3,7 @@ import { createStore } from "solid-js/store";
 
 import { LISTS_LIMIT } from "../../../configuration.ts";
 import {
-  CREATE_LIST_BUTTON,
+  SAVE_LIST_BUTTON,
   DEFAULT_TEST_ID,
   LIST_REMOVAL_ERROR,
   LISTS_LIMIT_REACHED_WARNING,
@@ -110,7 +110,7 @@ export const Lists = (props: ListsProps) => {
           componentType={ButtonComponentType.Link}
           link={LISTS_CREATE}
           text="Создать"
-          testId={CREATE_LIST_BUTTON}
+          testId={SAVE_LIST_BUTTON}
           isDisabled={checkListsLimitReached()}
         />
       </div>

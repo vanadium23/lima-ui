@@ -2,6 +2,7 @@ import { createSignal, mergeProps } from "solid-js";
 
 import {
   LIST_STRIPE,
+  LIST_STRIPE_CONTEXT_MENU,
   LIST_STRIPE_LINK_TO_VIEW,
   LIST_STRIPE_REMOVE_BUTTON,
   OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,

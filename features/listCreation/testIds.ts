@@ -3,7 +3,6 @@ import {
   buildInputCounterTestId,
   buildTextAreaCounterTestId,
   CHECKLIST_SWITCH,
-  CREATE_LIST_BUTTON,
   DIALOG_REMOVE_BUTTON,
   DIALOG_RETURN_BUTTON,
   LIST_ITEM,
@@ -16,6 +15,7 @@ import {
   OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
   OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
   REMOVE_ITEM_MENUITEM,
+  SAVE_LIST_BUTTON,
   TOOLS_BUTTON_COPY_ITEMS,
   TOOLS_BUTTON_PRINT_LIST,
   TOOLS_BUTTON_REMOVE_LIST,
@@ -24,9 +24,10 @@ import {
 import { buildFullTestId } from "../utilities/buildTestableSelector.ts";
 
 export const BUTTON_TEST_IDS = {
-  create: CREATE_LIST_BUTTON,
+  save: SAVE_LIST_BUTTON,
   "add list item": TOOLS_PANEL_ADD_ITEM_BUTTON,
   "remove item": REMOVE_ITEM_MENUITEM,
+  "open context menu list item": OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
   "open context menu first item": buildFullTestId(
     OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
     0,
@@ -50,6 +51,7 @@ export const BUTTON_TEST_IDS = {
 export type ButtonMeaning = keyof typeof BUTTON_TEST_IDS;
 
 export const MENUITEM_TEST_IDS = {
+  "remove list item": REMOVE_ITEM_MENUITEM,
   "remove first list item": buildFullTestId(REMOVE_ITEM_MENUITEM, 0),
   "remove second list item": buildFullTestId(REMOVE_ITEM_MENUITEM, 1),
   "remove on the last list item of the limit": buildFullTestId(
@@ -83,6 +85,8 @@ export type CounterMeaning = keyof typeof COUNTER_TEST_IDS;
 export const ELEMENT_TEST_IDS = {
   "first list item": buildFullTestId(LIST_ITEM, 0),
   "second list item": buildFullTestId(LIST_ITEM, 1),
+  "third list item": buildFullTestId(LIST_ITEM, 2),
+  "forth list item": buildFullTestId(LIST_ITEM, 3),
   "on the last list item of the limit": buildFullTestId(
     LIST_ITEM,
     ITEMS_LIMIT - 1,

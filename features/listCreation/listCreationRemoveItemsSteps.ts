@@ -2,11 +2,7 @@ import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
 import type { ComplexWorld } from "../context/hooks.ts";
-import {
-  ITEMS_LIMIT_REACHED_WARNING,
-  LIST_ITEM,
-  LIST_ITEM_INPUT,
-} from "../testIds.ts";
+import { ITEMS_LIMIT_REACHED_WARNING, LIST_ITEM } from "../testIds.ts";
 
 import {
   BUTTON_TEST_IDS,
@@ -45,19 +41,6 @@ Then(
   "I expect to see the only one list item left on the page",
   async function (this: ComplexWorld) {
     await expect(this.locate(LIST_ITEM)).toHaveCount(1);
-  },
-);
-
-Then(
-  "I expect to see {int} items inputs ready for typing",
-  async function (this: ComplexWorld, itemsInputsQuantity: number) {
-    const itemsInputs = this.locate(LIST_ITEM_INPUT);
-
-    await expect(itemsInputs).toHaveCount(itemsInputsQuantity);
-
-    for (const itemInput of await itemsInputs.all()) {
-      await expect(itemInput).toBeEnabled();
-    }
   },
 );
 

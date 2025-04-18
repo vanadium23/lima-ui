@@ -34,8 +34,6 @@ import {
   type AccordionMeaning,
   BUTTON_TEST_IDS,
   type ButtonMeaning,
-  INPUT_TEST_IDS,
-  type InputMeaning,
 } from "./testIds.ts";
 
 When(
@@ -94,23 +92,6 @@ Then(
 );
 
 Then(
-  "I expect to see {string} input ready for typing with the following placeholder: {string}",
-  async function (
-    this: ComplexWorld,
-    inputMeaning: InputMeaning,
-    placeholder: string,
-  ) {
-    const expectListTitleInput = this.expectLocated(
-      this.accounting.registerTestId(INPUT_TEST_IDS[inputMeaning]),
-    );
-
-    await expectListTitleInput.toBeInViewport();
-    await expectListTitleInput.toBeEnabled();
-    await expectListTitleInput.toHaveAttribute("placeholder", placeholder);
-  },
-);
-
-Then(
   "I expect to see items inputs area without scroll",
   async function (this: ComplexWorld) {
     expect(
@@ -122,7 +103,7 @@ Then(
 );
 
 Then(
-  "I expect to see single item input ready for typing",
+  "I expect to see single item input enabled",
   async function (this: ComplexWorld) {
     await registerItem.call(this, this.locate(LIST_ITEM_INPUT));
 
@@ -204,13 +185,13 @@ Then(
 Then(
   "All elements expected to be on the {string} page",
   async function (this: ComplexWorld, pageAlias: PageAlias) {
-    const testIds = this.accounting.getTestIds();
-    const expectedPageIds = PAGES_TEST_IDS[pageAlias];
+    const pageTestIds = this.accounting.getTestIds();
+    const expectedPageTestIds = PAGES_TEST_IDS[pageAlias];
 
-    if (testIds.length) {
-      expect(testIds).toEqual(expectedPageIds);
+    if (pageTestIds.length) {
+      expect(pageTestIds).toEqual(expectedPageTestIds);
     } else {
-      this.accounting.registerSeveralTestIds(expectedPageIds);
+      this.accounting.registerSeveralTestIds(expectedPageTestIds);
     }
   },
 );

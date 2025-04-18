@@ -117,11 +117,27 @@ When(
 
     this.page.on("request", (data) => {
       const { address, method } = ADDRESSES_MEANINGS[requestMeaning];
-      const urlEndsWithAddress =
-        data.url().endsWith(address) ||
-        data.url().endsWith(address.replaceAll("/", ""));
+      const url = data.url();
+      const requestMethod = data.method();
 
-      if (urlEndsWithAddress && data.method() === method) {
+      const urlPath = url.replace(/^https?:\/\/[^\/]+/, "");
+
+      let isMatch = false;
+
+      if (address.includes("*")) {
+        const patternBase = address.replace(/\*/g, "[^/]+");
+        const pattern = patternBase.endsWith("/")
+          ? patternBase.slice(0, -1)
+          : patternBase;
+        const regex = new RegExp(pattern.replace(/\//g, "\\/"));
+        isMatch = regex.test(urlPath);
+      } else {
+        isMatch =
+          urlPath.endsWith(address) ||
+          urlPath.endsWith(address.replaceAll("/", ""));
+      }
+
+      if (isMatch && requestMethod === method) {
         if (this.numbers[requestMeaning]) {
           this.numbers[requestMeaning]++;
         } else {
@@ -159,7 +175,7 @@ When("I wait for the list to create", async function (this: ComplexWorld) {
 });
 
 Then(
-  "I expect to see {string} input with the text I provided",
+  "I expect to see the {string} input with the text I provided",
   async function (this: ComplexWorld, inputMeaning: InputMeaning) {
     const expectedText = this.data[inputMeaning] || "";
     await this.expectLocated(INPUT_TEST_IDS[inputMeaning]).toHaveValue(
@@ -169,7 +185,7 @@ Then(
 );
 
 Then(
-  "I expect to see {string} text area with the text I provided",
+  "I expect to see the {string} text area with the text I provided",
   async function (this: ComplexWorld, textAreaMeaning: TextAreaMeaning) {
     const expectedText = this.data[textAreaMeaning] || "";
     await this.expectLocated(TEXT_AREA_TEST_IDS[textAreaMeaning]).toHaveValue(
@@ -204,5 +220,26 @@ Then(
 
     await expect(listItemInput).toBeInViewport();
     await expect(listItemInput).toBeDisabled();
+  },
+);
+
+Then(
+  "I expect to see the {string} item input enabled",
+  async function (this: ComplexWorld, itemPosition: string) {
+    let itemIndex = 0;
+
+    if (itemPosition === "first") {
+      itemIndex = 0;
+    } else if (itemPosition === "second") {
+      itemIndex = 1;
+    } else {
+      throw new Error(`Unknown item position: ${itemPosition}`);
+    }
+
+    const listItemInput = this.locate(LIST_ITEM_INPUT).nth(itemIndex);
+    await registerItem.call(this, listItemInput);
+
+    await expect(listItemInput).toBeInViewport();
+    await expect(listItemInput).toBeEnabled();
   },
 );

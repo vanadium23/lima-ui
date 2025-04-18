@@ -38,7 +38,7 @@ When("I add a list", { timeout: 20000 }, async function (this: ComplexWorld) {
     await this.locateByFullId(input).fill(inputText);
   }
 
-  await this.locateByFullId(BUTTON_TEST_IDS.create).click();
+  await this.locateByFullId(BUTTON_TEST_IDS.save).click();
   await this.page.waitForURL(`**${SOME_LIST}`);
 
   this.listIds.unshift(

@@ -9,6 +9,7 @@ export const BACKEND_LISTS = "/lists/";
 export const ADDRESSES_MEANINGS = {
   "list creation": { address: LISTS, method: "POST" },
   "list removal": { address: SOME_LIST, method: "DELETE" },
+  "list update": { address: SOME_LIST, method: "PATCH" },
 };
 
 export type AddressMeaning = keyof typeof ADDRESSES_MEANINGS;

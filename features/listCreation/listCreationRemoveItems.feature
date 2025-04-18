@@ -15,7 +15,7 @@ Feature: Removing items on the List Creation page
     And I press the "open context menu first item" button
     Then I expect to see the "remove first list item" menu item disabled
 
-  Scenario: Adding list item to the limit and then deleting one list item leads to limit error disappear and buttons enablement
+  Scenario: Adding list item to the limit and then deleting one list item leads to limit warning disappear and buttons enablement
     When I add list items to their limit
     And I hover "on the last list item of the limit"
     And I press the "open context menu for last list item of the limit" button

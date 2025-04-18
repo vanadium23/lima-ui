@@ -45,6 +45,7 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
   data: Record<string, string> = {};
   numbers: Record<string, number> = {};
   listIds: TestId[] = [];
+  itemsValues: string[] = [];
   responsesToWait: Partial<
     Record<AddressMeaning, ReturnType<Page["waitForResponse"]>>
   > = {};
@@ -159,7 +160,7 @@ After("@last", async function (this: ComplexWorld) {
   debugging || (await this.context.close());
 });
 
-AfterAll(async function () {
+AfterAll({ timeout: 15000 }, async function () {
   debugging || (await browser.close());
 });
 

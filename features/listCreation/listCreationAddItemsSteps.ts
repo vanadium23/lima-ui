@@ -5,35 +5,11 @@ import { ITEMS_LIMIT } from "../../configuration.ts";
 import type { ComplexWorld } from "../context/hooks.ts";
 import {
   ITEMS_LIMIT_REACHED_WARNING,
-  LIST_ITEM,
   LIST_ITEM_INPUT,
   LIST_ITEMS,
   TOOLS_PANEL_ADD_ITEM_BUTTON,
 } from "../testIds.ts";
-import { TEST_SUB_ID_ATTRIBUTE } from "../utilities/buildTestableSelector.ts";
 import { noVerticalScroll } from "../utilities/checkScroll.ts";
-
-Then(
-  "I expect to see second item input ready for typing with the following placeholder: {string}",
-  async function (this: ComplexWorld, placeholder: string) {
-    const secondItemInput = this.locate(LIST_ITEM_INPUT).nth(1);
-
-    const secondItemTestSubId = await secondItemInput.getAttribute(
-      TEST_SUB_ID_ATTRIBUTE,
-    );
-    this.accounting.registerTestIdAndSubId(
-      LIST_ITEM_INPUT,
-      secondItemTestSubId,
-    );
-    this.accounting.registerTestIdAndSubId(LIST_ITEM, secondItemTestSubId);
-
-    const expectSecondItemInput = expect(secondItemInput);
-
-    await expectSecondItemInput.toBeInViewport();
-    await expectSecondItemInput.toBeEnabled();
-    await expectSecondItemInput.toHaveAttribute("placeholder", placeholder);
-  },
-);
 
 When(
   "I add list items till scroll appears plus one item input",
@@ -84,5 +60,18 @@ Then(
   "I expect to see the warning about items inputs limit reached",
   async function (this: ComplexWorld) {
     await this.expectLocated(ITEMS_LIMIT_REACHED_WARNING).toBeInViewport();
+  },
+);
+
+When(
+  "I fill all items inputs with their index",
+  async function (this: ComplexWorld) {
+    const itemInputs = this.locate(LIST_ITEM_INPUT);
+    const count = await itemInputs.count();
+
+    for (let i = 0; i < count; i++) {
+      const input = itemInputs.nth(i);
+      await input.fill(`Item ${i + 1}`);
+    }
   },
 );
