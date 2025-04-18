@@ -1,4 +1,4 @@
-import { createEffect, createSignal, mergeProps } from "solid-js";
+import { createSignal, type JSXElement, mergeProps, onMount } from "solid-js";
 
 import { CharCounter } from "../charCounter/charCounter.tsx";
 import type { Testable } from "../utilities/testable.ts";
@@ -16,15 +16,16 @@ export enum ItemInputSize {
 type ItemInputProps = {
   theme?: ItemInputTheme;
   size?: ItemInputSize;
-  isError?: boolean;
   isDisabled?: boolean;
   name: string;
   maxLength: number;
   isRequired?: boolean;
-  defaultValue?: string;
+  textAreaValue?: string;
   dataId?: string;
   placeholder: string;
   onChange?: (value: string) => void;
+  defaultIsError?: boolean;
+  childComponent?: JSXElement,
 };
 
 export const ItemInput = (props: Testable<ItemInputProps>) => {
@@ -33,28 +34,30 @@ export const ItemInput = (props: Testable<ItemInputProps>) => {
       theme: ItemInputTheme.Primary,
       size: ItemInputSize.Medium,
       isDisabled: false,
-      isError: false,
+      defaultIsError: false,
       isRequired: false,
-      defaultValue: "",
+      textAreaValue: "",
       dataId: "",
-      onChange: () => {},
+      onChange: () => { },
+      childComponent: null,
     },
     props,
   );
 
-  const [getCounter, setCounter] = createSignal(mProps.defaultValue.length);
+  const [hasError, setHasError] = createSignal(mProps.defaultIsError);
+
+  let textareaRef: HTMLTextAreaElement | undefined;
 
   const autoGrow = (element: HTMLTextAreaElement) => {
-    element.style.height = "auto"; // Если удалить многострочный текст, то без этой строки не уменьшится высота
+    element.style.height = "auto";
     element.style.height = `${element.scrollHeight}px`;
   };
 
-  let textAreaRef: HTMLTextAreaElement | undefined; // Используем `undefined` вместо `null`
-
-  createEffect(() => {
-    if (textAreaRef) {
-      // Применяем autoGrow сразу после монтирования компонента с уже существующим контентом
-      autoGrow(textAreaRef);
+  onMount(() => {
+    if (textareaRef) {
+      requestAnimationFrame(() => {
+        autoGrow(textareaRef);
+      });
     }
   });
 
@@ -62,14 +65,12 @@ export const ItemInput = (props: Testable<ItemInputProps>) => {
     <div
       class={`itemInput itemInput_${mProps.theme} itemInput_${mProps.size}`}
       classList={{
-        itemInput_error: mProps.isError,
+        itemInput_error: hasError() && mProps.textAreaValue === "",
         itemInput_disabled: mProps.isDisabled,
       }}
     >
       <textarea
-        ref={(el) => {
-          textAreaRef = el;
-        }}
+        ref={textareaRef}
         name={mProps.name}
         class="itemInput__inner"
         disabled={mProps.isDisabled}
@@ -80,19 +81,19 @@ export const ItemInput = (props: Testable<ItemInputProps>) => {
         data-test-id={mProps.testId}
         data-test-sub-id={mProps.testSubId}
         rows={1}
+        onInvalid={() => setHasError(true)}
         onInput={(event) => {
-          const value = event.target.value;
-          setCounter(value.length);
-          autoGrow(event.target as HTMLTextAreaElement);
-          mProps.onChange(value);
+          autoGrow(event.target);
+          mProps.onChange(event.target.value);
         }}
       >
-        {mProps.defaultValue}
+        {mProps.textAreaValue}
       </textarea>
       <div class="itemInput__controls">
+        {mProps.childComponent}
         <div class="itemInput__counter">
           <CharCounter
-            value={mProps.maxLength - getCounter()}
+            value={mProps.maxLength - mProps.textAreaValue.length}
             testId={mProps.testId}
             testSubId={mProps.testSubId ?? ""}
           />

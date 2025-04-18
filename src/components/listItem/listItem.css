@@ -23,13 +23,6 @@
   gap: var(--size-x1);
 }
 
-.listItem__controls {
-  display: flex;
-  gap: var(--size-x1);
-  align-items: center;
-  visibility: hidden; /* MAKSIM: Обсудить вопросик. Связано с тестами. */
-}
-
 .listItem__dragHandle {
   visibility: hidden;
 }
@@ -43,11 +36,6 @@
   display: flex;
   gap: var(--size-x1);
   flex-grow: 1;
-}
-
-.listItem_menuOpened .listItem__controls,
-.listItem:hover .listItem__controls {
-  visibility: visible; /* MAKSIM: Обсудить вопросик. Связано с тестами. */
 }
 
 .listItem:hover .listItem__dragHandle,

@@ -14,7 +14,7 @@ export enum MenuItemSize {
   Medium = "medium",
 }
 
-type MenuItemProps = {
+export type MenuItemProps = {
   theme?: MenuItemTheme;
   size?: MenuItemSize;
   isDisabled?: boolean;
@@ -29,7 +29,7 @@ export const MenuItem = (props: Testable<MenuItemProps>) => {
       theme: MenuItemTheme.Primary,
       size: MenuItemSize.Medium,
       isDisabled: false,
-      handleClick: () => {},
+      handleClick: () => { },
     },
     props,
   );

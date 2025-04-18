@@ -8,7 +8,7 @@ import {
   LIST_ITEM,
   LIST_ITEM_INPUT,
   OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
-  REMOVE_ITEM_MENUITEM,
+  REMOVE_ITEM_MENUITEM
 } from "../../../features/testIds.ts";
 import type { DragSettings } from "../../widgets/editList/types.ts";
 import {
@@ -17,21 +17,15 @@ import {
   CheckboxTheme,
 } from "../checkbox/checkbox.tsx";
 import { DragHandle } from "../dragHandle/dragHandle.tsx";
-import { DropdownMenu } from "../dropdownMenu/dropdownMenu.tsx";
+import { DropdownMenuWrapper } from "../dropdownMenuWrapper/dropdownMenuWrapper.tsx";
 import { IconName } from "../icon/icon.tsx";
-import {
-  IconButton,
-  IconButtonComponentType,
-  IconButtonSize,
-  IconButtonTheme,
-} from "../iconButton/iconButton.tsx";
+import { IconButtonSize } from "../iconButton/iconButton.tsx";
 import {
   ItemInput,
   ItemInputSize,
   ItemInputTheme,
 } from "../itemInput/itemInput.tsx";
-import { MenuItem, MenuItemTheme } from "../menuItem/menuItem.tsx";
-import { createDroppable } from "../utilities/createDroppable.ts";
+import { MenuItemTheme } from "../menuItem/menuItem.tsx";
 import type { Testable } from "../utilities/testable.ts";
 
 import "./listItem.css";
@@ -75,10 +69,10 @@ export const ListItem = (props: Testable<ListItemProps>) => {
       isRequired: true,
       defaultValue: "",
       dataId: "",
-      onChange: () => {},
-      onAddBefore: () => {},
-      onAddAfter: () => {},
-      removeItem: () => {},
+      onChange: () => { },
+      onAddBefore: () => { },
+      onAddAfter: () => { },
+      removeItem: () => { },
       isDraggingOverlay: false,
       dragId: "",
       dragSettings: {
@@ -90,26 +84,47 @@ export const ListItem = (props: Testable<ListItemProps>) => {
     props,
   );
 
-  const [
-    isMenuOpen,
-    setIsMenuOpen,
-    setMenuButtonRef,
-    setMenuRef,
-    floatingPosition,
-  ] = createDroppable();
-
-  function removeItemIfEnabled() {
-    if (!mProps.isDisabled) {
-      mProps.removeItem();
-    }
-  }
+  const dropdownItems = () => [
+    {
+      text: "Добавить пункт выше",
+      icon: IconName.Plus,
+      handleClick: mProps.onAddBefore,
+      testId: DEFAULT_TEST_ID,
+      isDisabled: !mProps.canAddMore,
+    },
+    {
+      text: "Добавить пункт ниже",
+      icon: IconName.Plus,
+      handleClick: mProps.onAddAfter,
+      testId: DEFAULT_TEST_ID,
+      isDisabled: !mProps.canAddMore,
+    },
+    {
+      text: "Импортировать пункт выше",
+      icon: IconName.SortDescending,
+      testId: DEFAULT_TEST_ID,
+    },
+    {
+      text: "Импортировать пункт ниже",
+      icon: IconName.SortAscending,
+      testId: DEFAULT_TEST_ID
+    },
+    {
+      text: "Удалить пункт",
+      icon: IconName.Trash,
+      handleClick: mProps.removeItem,
+      isDisabled: mProps.isOnlyOneItem,
+      theme: MenuItemTheme.Dangerous,
+      testId: REMOVE_ITEM_MENUITEM,
+      testSubId: mProps.testSubId ?? "0"
+    },
+  ];
 
   return (
     <div
       {...mProps.dragSettings.dragProps}
       class={`listItem listItem_${mProps.theme} listItem_${mProps.size}`}
       classList={{
-        listItem_menuOpened: isMenuOpen(),
         listItem_dragging: mProps.isDraggingOverlay,
         listItem_transition: !!mProps.dragSettings.dragState?.active.draggable,
       }}
@@ -145,66 +160,20 @@ export const ListItem = (props: Testable<ListItemProps>) => {
           dataId={mProps.dataId}
           isDisabled={mProps.isDisabled}
           placeholder={"Пункт списка"}
-          defaultValue={mProps.defaultValue}
+          textAreaValue={mProps.defaultValue}
           isRequired={mProps.isRequired}
           onChange={mProps.onChange}
           testId={LIST_ITEM_INPUT}
           testSubId={mProps.testSubId ?? "0"}
+          childComponent={
+            <DropdownMenuWrapper
+              iconSize={IconButtonSize.MediumEmbedded}
+              iconName={IconName.DotsThreeCircle}
+              testId={OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON}
+              testSubId={mProps.testSubId ?? "0"}
+              listOfButtons={dropdownItems()}
+              isDisabled={mProps.isDisabled} />}
         />
-        <div class="listItem__controls">
-          <IconButton
-            iconName={IconName.DotsThreeCircle}
-            ariaLabel={"Выпадающее меню"}
-            theme={IconButtonTheme.Primary}
-            size={IconButtonSize.Medium}
-            componentType={IconButtonComponentType.Button}
-            testId={OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON}
-            testSubId={mProps.testSubId ?? "0"}
-            ref={setMenuButtonRef}
-            handleClick={() => setIsMenuOpen((prev) => !prev)}
-          />
-          <Show when={isMenuOpen()}>
-            <DropdownMenu
-              ref={setMenuRef}
-              floatingStyles={floatingPosition}
-              testId={DEFAULT_TEST_ID}
-            >
-              <MenuItem
-                text={"Добавить пункт выше"}
-                icon={IconName.Plus}
-                testId={DEFAULT_TEST_ID}
-                handleClick={mProps.onAddBefore}
-                isDisabled={!mProps.canAddMore}
-              />
-              <MenuItem
-                text={"Добавить пункт ниже"}
-                icon={IconName.Plus}
-                testId={DEFAULT_TEST_ID}
-                handleClick={mProps.onAddAfter}
-                isDisabled={!mProps.canAddMore}
-              />
-              <MenuItem
-                text={"Импортировать пункт выше"}
-                icon={IconName.SortDescending}
-                testId={DEFAULT_TEST_ID}
-              />
-              <MenuItem
-                text={"Импортировать пункт ниже"}
-                icon={IconName.SortAscending}
-                testId={DEFAULT_TEST_ID}
-              />
-              <MenuItem
-                text={"Удалить пункт"}
-                theme={MenuItemTheme.Dangerous}
-                icon={IconName.Trash}
-                handleClick={removeItemIfEnabled}
-                testId={REMOVE_ITEM_MENUITEM}
-                testSubId={mProps.testSubId ?? "0"}
-                isDisabled={mProps.isOnlyOneItem}
-              />
-            </DropdownMenu>
-          </Show>
-        </div>
       </div>
     </div>
   );

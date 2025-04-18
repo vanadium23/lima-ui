@@ -32,7 +32,6 @@
 
 .itemInput__controls {
   display: flex;
-  flex-direction: column;
   min-height: 100%;
   justify-content: flex-end;
   visibility: hidden;
@@ -95,7 +94,9 @@
   background: var(--neutral-100);
 }
 
-.itemInput_primary:not(.itemInput_error, .itemInput_disabled):has(.itemInput__inner:placeholder-shown) {
+.itemInput_primary:not(.itemInput_error, .itemInput_disabled):has(
+    .itemInput__inner:placeholder-shown
+  ) {
   border-color: var(--neutral-500);
   background: var(--neutral-100);
 }
@@ -120,10 +121,13 @@
   background: var(--neutral-200);
 }
 
-.itemInput:has(.itemInput__inner:focus) .itemInput__controls {
-  visibility: visible;
+.itemInput_primary:hover:not(.itemInput_disabled):has(
+    .itemInput__inner:placeholder-shown
+  ) {
+  border-color: var(--neutral-700);
 }
 
-.itemInput_primary:hover:not(.itemInput_disabled):has(.itemInput__inner:placeholder-shown) {
-  border-color: var(--neutral-700);
+.itemInput:hover .itemInput__controls,
+.itemInput:focus-within .itemInput__controls {
+  visibility: visible;
 }

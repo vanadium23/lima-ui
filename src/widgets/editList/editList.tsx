@@ -433,7 +433,7 @@ export const EditList = (props: EditListProps) => {
                   name={EditListFormNames.ListPurpose}
                   testId={LIST_PURPOSE_INPUT}
                   isDisabled={store.sendingNow !== false}
-                  defaultValue={store.purpose}
+                  textAreaValue={store.purpose}
                   onChange={(value) => handleInputChange("purpose", value)}
                 />
                 <Note

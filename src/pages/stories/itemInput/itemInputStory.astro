@@ -1,9 +1,9 @@
 ---
 import { DEFAULT_TEST_ID } from "../../../../features/testIds";
 import {
-  ItemInput,
-  ItemInputSize,
-  ItemInputTheme,
+ItemInput,
+ItemInputSize,
+ItemInputTheme,
 } from "../../../components/itemInput/itemInput.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
@@ -41,7 +41,7 @@ const sizes = Object.values(ItemInputSize);
                 client:only="solid-js"
                 theme={theme}
                 size={size}
-                isError={true}
+                defaultIsError={true}
                 maxLength={200}
                 name="Some-text"
                 isRequired={true}
@@ -66,7 +66,7 @@ const sizes = Object.values(ItemInputSize);
                 maxLength={200}
                 name="Some-text"
                 isRequired={true}
-                defaultValue={"Text"}
+                textAreaValue={"Text"}
                 testId={DEFAULT_TEST_ID}
                 placeholder="Введите текст"
                 isDisabled={true}
