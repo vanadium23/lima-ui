@@ -51,3 +51,12 @@ Feature: Updating list
     When I refresh the page
     And I wait for the page to load
     Then I expect to see the "first item" input with the text I provided
+
+  Scenario: List is not duplicated after update without refresh
+    Given I clear all data
+    And I add a list
+    When I type some text with length less or equal to the one of "list title" input limit
+    When I press the "save" button
+    And I wait for the list update to complete
+    And I open Lists page
+    Then I expect to see the following number of list stripes: 1
