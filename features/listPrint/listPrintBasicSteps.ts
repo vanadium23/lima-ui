@@ -8,14 +8,12 @@ import { PRINT_ELEMENT_TEST_IDS, type PrintElementMeaning } from "./testIds.ts";
 When(
   "I press the print list button and wait for the new tab",
   async function (this: ComplexWorld) {
-    // Wait for a new page to open when clicking the print button.
-    const [newPage] = await Promise.all([
-      this.context.waitForEvent("page"),
-      this.locate(TOOLS_BUTTON_PRINT_LIST).click(),
-    ]);
+    await this.locate(TOOLS_BUTTON_PRINT_LIST).click();
+
+    const newPage = await this.context.waitForEvent("page");
 
     // Print dialog is not closable in Playwright. This is why we need to disable it.
-    newPage.evaluate("window.print = () => {}");
+    await newPage.evaluate("window.print = () => {}");
 
     await newPage.waitForLoadState("networkidle");
 

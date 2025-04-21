@@ -66,3 +66,15 @@ Feature: Basic list printing functionality
     Then I expect not to see the "list purpose" text
     Then I expect not to see the "list note" text
     Then I expect to see the "first item" text
+
+  Scenario: Checklist printing displays checkboxes instead of bullets
+    When I type some text with length less or equal to the one of "list title" input limit
+    And I type some text with length less or equal to the one of "list purpose" input limit
+    And I type some text with length less or equal to the one of "first item" input limit
+    And I press the "add list item" button
+    And I type some text with length less or equal to the one of "second item" input limit
+    And I press the "save" button
+    And I wait for the list to create
+    And I press the "checklist" switch
+    And I press the print list button and wait for the new tab
+    Then I expect to see checkboxes for all list items on the print page
