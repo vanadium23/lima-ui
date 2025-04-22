@@ -23,7 +23,7 @@ Feature: Basic list printing functionality
     And I type some text with length less or equal to the one of "third item" input limit
     And I press the "save" button
     And I wait for the list to create
-    And I press the print list button and wait for the new tab
+    And I press the print list button and wait for the new tab with printing stub
     Then I expect to see the "list title" text
     Then I expect to see the "list purpose" text
     Then I expect to see the "list note" text
@@ -38,7 +38,7 @@ Feature: Basic list printing functionality
     And I type some text with length less or equal to the one of "first item" input limit
     And I press the "save" button
     And I wait for the list to create
-    And I press the print list button and wait for the new tab
+    And I press the print list button and wait for the new tab with printing stub
     Then I expect to see the "list title" text
     Then I expect not to see the "list purpose" text
     Then I expect to see the "list note" text
@@ -50,7 +50,7 @@ Feature: Basic list printing functionality
     And I type some text with length less or equal to the one of "first item" input limit
     And I press the "save" button
     And I wait for the list to create
-    And I press the print list button and wait for the new tab
+    And I press the print list button and wait for the new tab with printing stub
     Then I expect to see the "list title" text
     Then I expect to see the "list purpose" text
     Then I expect not to see the "list note" text
@@ -61,7 +61,7 @@ Feature: Basic list printing functionality
     And I type some text with length less or equal to the one of "first item" input limit
     And I press the "save" button
     And I wait for the list to create
-    And I press the print list button and wait for the new tab
+    And I press the print list button and wait for the new tab with printing stub
     Then I expect to see the "list title" text
     Then I expect not to see the "list purpose" text
     Then I expect not to see the "list note" text
@@ -76,5 +76,13 @@ Feature: Basic list printing functionality
     And I press the "save" button
     And I wait for the list to create
     And I press the "checklist" switch
-    And I press the print list button and wait for the new tab
+    And I press the print list button and wait for the new tab with printing stub
     Then I expect to see checkboxes for all list items on the print page
+
+  Scenario: System print dialog appears when print page is opened
+    When I type some text with length less or equal to the one of "list title" input limit
+    And I type some text with length less or equal to the one of "first item" input limit
+    And I press the "save" button
+    And I wait for the list to create
+    And I press the print list button and check for system print dialog
+    Then I expect the system print dialog to be triggered
