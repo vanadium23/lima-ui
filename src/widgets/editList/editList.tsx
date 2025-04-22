@@ -8,14 +8,7 @@ import {
   transformStyle,
   useDragDropContext,
 } from "@thisbeyond/solid-dnd";
-import {
-  createMemo,
-  For,
-  mergeProps,
-  onCleanup,
-  onMount,
-  Show,
-} from "solid-js";
+import { For, mergeProps, onCleanup, onMount, Show } from "solid-js";
 import { createStore } from "solid-js/store";
 
 import {
@@ -25,7 +18,6 @@ import {
 } from "../../../configuration.ts";
 import {
   CHECKLIST_SWITCH,
-  SAVE_LIST_BUTTON,
   DEFAULT_TEST_ID,
   ITEMS_LIMIT_REACHED_WARNING,
   LIST_ITEM,
@@ -34,6 +26,7 @@ import {
   LIST_TITLE_INPUT,
   NETWORK_ERROR,
   REMOVE_LIST_DIALOG,
+  SAVE_LIST_BUTTON,
   TOOLS_BUTTON_COPY_ITEMS,
   TOOLS_BUTTON_PRINT_LIST,
   TOOLS_BUTTON_REMOVE_LIST,
@@ -463,14 +456,11 @@ export const EditList = (props: EditListProps) => {
                   <DragDropSensors />
                   <SortableProvider ids={ids()}>
                     <For each={store.items}>
-                      {(item, getIndex) => {
-                        const index = createMemo(() => getIndex());
-                        const isLastItem = createMemo(
-                          () => index() === store.items.length - 1,
-                        );
-                        const isRequired = createMemo(
-                          () => !isLastItem() || isOnlyOneItem(store.items),
-                        );
+                      {(item, index) => {
+                        const isLastItem = () =>
+                          index() === store.items.length - 1;
+                        const isRequired = () =>
+                          !isLastItem() || isOnlyOneItem(store.items);
 
                         const dragData = createSortable(item.dragId);
 
@@ -501,7 +491,9 @@ export const EditList = (props: EditListProps) => {
                               dragData,
                               dragProps: {
                                 ref: dragData.ref,
-                                style: store.draggedItem ? transformStyle(dragData.transform) : {},
+                                style: store.draggedItem
+                                  ? transformStyle(dragData.transform)
+                                  : {},
                               },
                               dragState: useDragDropContext()?.[0] || null,
                             }}

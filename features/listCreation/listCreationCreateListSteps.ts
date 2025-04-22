@@ -9,6 +9,10 @@ import {
 } from "../../utilities/addresses.ts";
 import type { ComplexWorld } from "../context/hooks.ts";
 import {
+  ITEM_INPUT_TEST_IDS,
+  type ItemInputMeaning,
+} from "../listAutoItem/testIds.ts";
+import {
   buildAccordionButtonTestId,
   buildAccordionContentTestId,
   LIST_ITEM_INPUT,
@@ -204,18 +208,10 @@ When("I wait for the page to load", async function (this: ComplexWorld) {
 
 Then(
   "I expect to see the {string} item input disabled",
-  async function (this: ComplexWorld, itemPosition: string) {
-    let itemIndex = 0;
-
-    if (itemPosition === "first") {
-      itemIndex = 0;
-    } else if (itemPosition === "second") {
-      itemIndex = 1;
-    } else {
-      throw new Error(`Unknown item position: ${itemPosition}`);
-    }
-
-    const listItemInput = this.locate(LIST_ITEM_INPUT).nth(itemIndex);
+  async function (this: ComplexWorld, itemInputMeaning: ItemInputMeaning) {
+    const listItemInput = this.locateByFullId(
+      ITEM_INPUT_TEST_IDS[itemInputMeaning],
+    );
     await registerItem.call(this, listItemInput);
 
     await expect(listItemInput).toBeInViewport();
@@ -225,18 +221,10 @@ Then(
 
 Then(
   "I expect to see the {string} item input enabled",
-  async function (this: ComplexWorld, itemPosition: string) {
-    let itemIndex = 0;
-
-    if (itemPosition === "first") {
-      itemIndex = 0;
-    } else if (itemPosition === "second") {
-      itemIndex = 1;
-    } else {
-      throw new Error(`Unknown item position: ${itemPosition}`);
-    }
-
-    const listItemInput = this.locate(LIST_ITEM_INPUT).nth(itemIndex);
+  async function (this: ComplexWorld, itemInputMeaning: ItemInputMeaning) {
+    const listItemInput = this.locateByFullId(
+      ITEM_INPUT_TEST_IDS[itemInputMeaning],
+    );
     await registerItem.call(this, listItemInput);
 
     await expect(listItemInput).toBeInViewport();
