@@ -13,7 +13,7 @@ Then(
   "I expect to see the {string} error",
   async function (this: ComplexWorld, errorMeaning: ErrorMeaning) {
     await this.expectLocated(
-      this.accounting.registerTestId(ERRORS_TEST_IDS[errorMeaning]),
+      this.accounting.elements.registerTestId(ERRORS_TEST_IDS[errorMeaning]),
     ).toBeInViewport();
   },
 );
@@ -28,7 +28,7 @@ Then(
   "I expect not to see the {string} error",
   async function (this: ComplexWorld, errorMeaning: ErrorMeaning) {
     await this.expectLocated(
-      this.accounting.registerTestId(ERRORS_TEST_IDS[errorMeaning]),
+      this.accounting.elements.registerTestId(ERRORS_TEST_IDS[errorMeaning]),
     ).not.toBeInViewport();
   },
 );

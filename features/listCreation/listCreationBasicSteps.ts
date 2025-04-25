@@ -17,6 +17,7 @@ import {
   SIDEBAR,
   TOGGLE_TOOLS_PANEL_BUTTON,
   TOOLS_PANEL,
+  TOOLS_PANEL_ADD_ITEM_BUTTON,
   USER_BUTTON,
 } from "../testIds.ts";
 import {
@@ -46,30 +47,30 @@ When(
 
 Then("I expect to see sidebar", async function (this: ComplexWorld) {
   await this.expectLocated(
-    this.accounting.registerTestId(SIDEBAR),
+    this.accounting.elements.registerTestId(SIDEBAR),
   ).toBeInViewport();
 
-  this.accounting.registerTestId(USER_BUTTON);
-  this.accounting.registerTestId(ADD_GROUP_BUTTON);
-  this.accounting.registerTestId(PRO_VERSION_BUTTON);
+  this.accounting.elements.registerTestId(USER_BUTTON);
+  this.accounting.elements.registerTestId(ADD_GROUP_BUTTON);
+  this.accounting.elements.registerTestId(PRO_VERSION_BUTTON);
 });
 
 Then("I expect to see header", async function (this: ComplexWorld) {
   await this.expectLocated(
-    this.accounting.registerTestId(HEADER),
+    this.accounting.elements.registerTestId(HEADER),
   ).toBeInViewport();
 
-  this.accounting.registerTestId(SEARCH_INPUT);
-  this.accounting.registerTestId(SEARCH_BUTTON);
+  this.accounting.elements.registerTestId(SEARCH_INPUT);
+  this.accounting.elements.registerTestId(SEARCH_BUTTON);
 });
 
 Then("I expect to see tools panel", async function (this: ComplexWorld) {
   await this.expectLocated(
-    this.accounting.registerTestId(TOGGLE_TOOLS_PANEL_BUTTON),
+    this.accounting.elements.registerTestId(TOGGLE_TOOLS_PANEL_BUTTON),
   ).toBeInViewport();
 
   await this.expectLocated(
-    this.accounting.registerTestId(TOOLS_PANEL),
+    this.accounting.elements.registerTestId(TOOLS_PANEL),
   ).toBeInViewport();
 });
 
@@ -83,7 +84,7 @@ Then(
   "I expect to see the following title: {string}",
   async function (this: ComplexWorld, pageTitleText: string) {
     const expectPageTitle = this.expectLocated(
-      this.accounting.registerTestId(PAGE_TITLE),
+      this.accounting.elements.registerTestId(PAGE_TITLE),
     );
 
     await expectPageTitle.toBeInViewport();
@@ -95,9 +96,9 @@ Then(
   "I expect to see items inputs area without scroll",
   async function (this: ComplexWorld) {
     expect(
-      await this.locate(this.accounting.registerTestId(LIST_ITEMS)).evaluate(
-        noVerticalScroll,
-      ),
+      await this.locate(
+        this.accounting.elements.registerTestId(LIST_ITEMS),
+      ).evaluate(noVerticalScroll),
     ).toBe(true);
   },
 );
@@ -124,9 +125,14 @@ Then(
     buttonText: string,
   ) {
     // Находим локатор по тестовому ID
+    const buttonFullTestId = BUTTON_TEST_IDS[buttonMeaning];
     const buttonLocator = this.locate(
-      this.accounting.registerTestId(BUTTON_TEST_IDS[buttonMeaning]),
+      this.accounting.elements.registerTestId(buttonFullTestId),
     );
+
+    if (buttonFullTestId === TOOLS_PANEL_ADD_ITEM_BUTTON) {
+      this.accounting.itemAdders.registerTestId(buttonFullTestId);
+    }
 
     await expect(buttonLocator).toBeInViewport();
 
@@ -174,7 +180,7 @@ Then(
   "I expect to see the {string} button enabled",
   async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
     const expectButton = this.expectLocated(
-      this.accounting.registerTestId(BUTTON_TEST_IDS[buttonMeaning]),
+      this.accounting.elements.registerTestId(BUTTON_TEST_IDS[buttonMeaning]),
     );
 
     await expectButton.toBeInViewport();
@@ -185,13 +191,13 @@ Then(
 Then(
   "All elements expected to be on the {string} page",
   async function (this: ComplexWorld, pageAlias: PageAlias) {
-    const pageTestIds = this.accounting.getTestIds();
+    const pageTestIds = this.accounting.elements.getTestIds();
     const expectedPageTestIds = PAGES_TEST_IDS[pageAlias];
 
     if (pageTestIds.length) {
       expect(pageTestIds).toEqual(expectedPageTestIds);
     } else {
-      this.accounting.registerSeveralTestIds(expectedPageTestIds);
+      this.accounting.elements.registerSeveralTestIds(expectedPageTestIds);
     }
   },
 );
@@ -208,7 +214,7 @@ Then("I expect to see no other elements", async function (this: ComplexWorld) {
     )
   ).sort();
 
-  const accountedTestIds = this.accounting.getTestIds();
+  const accountedTestIds = this.accounting.elements.getTestIds();
   const excessiveIds = allCompleteIds.filter(
     (id) => !accountedTestIds.includes(id),
   );
@@ -223,12 +229,12 @@ Then(
     const accordionTestId = ACCORDION_TEST_IDS[accordionMeaning];
 
     const expectAccordion = this.expectLocated(
-      this.accounting.registerTestId(accordionTestId),
+      this.accounting.elements.registerTestId(accordionTestId),
     );
     await expectAccordion.toBeInViewport({ ratio: 1 });
 
     const expectAccordionButton = this.expectLocated(
-      this.accounting.registerTestId(
+      this.accounting.elements.registerTestId(
         buildAccordionButtonTestId(accordionTestId),
       ),
     );

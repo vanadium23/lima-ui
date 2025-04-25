@@ -37,13 +37,15 @@ Then(
     const accordionTestId = ACCORDION_TEST_IDS[accordionMeaning];
 
     const accordion = this.locate(
-      this.accounting.registerTestId(accordionTestId),
+      this.accounting.elements.registerTestId(accordionTestId),
     );
 
     await expect(accordion).toBeInViewport();
     await expect(accordion.locator("button")).toBeDisabled();
 
-    this.accounting.registerTestId(buildAccordionButtonTestId(accordionTestId));
+    this.accounting.elements.registerTestId(
+      buildAccordionButtonTestId(accordionTestId),
+    );
   },
 );
 
@@ -54,7 +56,7 @@ Then(
     const accordionContentTestId = buildAccordionContentTestId(accordionTestId);
 
     await this.expectLocated(
-      this.accounting.registerTestId(accordionContentTestId),
+      this.accounting.elements.registerTestId(accordionContentTestId),
     ).toBeInViewport();
   },
 );
@@ -63,7 +65,9 @@ Then(
   "I expect to see the {string} text area disabled",
   async function (this: ComplexWorld, textAreaMeaning: TextAreaMeaning) {
     const expectedTextArea = this.expectLocated(
-      this.accounting.registerTestId(TEXT_AREA_TEST_IDS[textAreaMeaning]),
+      this.accounting.elements.registerTestId(
+        TEXT_AREA_TEST_IDS[textAreaMeaning],
+      ),
     );
 
     await expectedTextArea.toBeInViewport();
@@ -76,7 +80,7 @@ Then(
   async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
     await expect(
       this.locate(
-        this.accounting.registerTestId(BUTTON_TEST_IDS[buttonMeaning]),
+        this.accounting.elements.registerTestId(BUTTON_TEST_IDS[buttonMeaning]),
       ).locator("svg"),
     ).toBeInViewport();
   },

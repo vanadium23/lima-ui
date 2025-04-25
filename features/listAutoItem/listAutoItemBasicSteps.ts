@@ -5,14 +5,20 @@ import { ITEMS_LIMIT } from "../../configuration.ts";
 import type { ComplexWorld } from "../context/hooks.ts";
 import { AUTO_LIST_ITEM_INPUT, LIST_ITEM_INPUT } from "../testIds.ts";
 
-import { ITEM_INPUT_TEST_IDS, type ItemInputMeaning } from "./testIds.ts";
+import {
+  ITEM_ADDERS,
+  ITEM_INPUT_TEST_IDS,
+  type ItemInputMeaning,
+} from "./testIds.ts";
 
 Then(
   "I expect not to see the {string} item input",
   async function (this: ComplexWorld, itemInputMeaning: ItemInputMeaning) {
-    await expect(
-      this.locateByFullId(ITEM_INPUT_TEST_IDS[itemInputMeaning]),
-    ).not.toBeInViewport();
+    const itemInputFullTestId = this.accounting.itemAdders.registerTestId(
+      ITEM_INPUT_TEST_IDS[itemInputMeaning],
+    );
+
+    await expect(this.locateByFullId(itemInputFullTestId)).not.toBeInViewport();
   },
 );
 
@@ -25,5 +31,14 @@ When(
     for (let i = 1; i < ITEMS_LIMIT; i++) {
       await this.locate(AUTO_LIST_ITEM_INPUT).fill(`${i}`);
     }
+  },
+);
+
+When(
+  "I reviewed all item addition method of the list page",
+  async function (this: ComplexWorld) {
+    const accountedTestIds = this.accounting.itemAdders.getTestIds();
+
+    expect(accountedTestIds).toEqual(ITEM_ADDERS);
   },
 );

@@ -19,7 +19,7 @@ Then(
   "I expect to see the {string} input enabled",
   async function (this: ComplexWorld, inputMeaning: InputMeaning) {
     const expectInput = this.expectLocated(
-      this.accounting.registerTestId(INPUT_TEST_IDS[inputMeaning]),
+      this.accounting.elements.registerTestId(INPUT_TEST_IDS[inputMeaning]),
     );
 
     await expectInput.toBeInViewport();
@@ -31,7 +31,7 @@ Then(
   "I expect to see the {string} switch enabled",
   async function (this: ComplexWorld, switchMeaning: SwitchMeaning) {
     const switchElement = this.locate(
-      this.accounting.registerTestId(SWITCH_TEST_IDS[switchMeaning]),
+      this.accounting.elements.registerTestId(SWITCH_TEST_IDS[switchMeaning]),
     );
 
     await expect(switchElement).toBeInViewport();
@@ -43,7 +43,7 @@ Then(
   "I expect to see the {string} switch disabled",
   async function (this: ComplexWorld, switchMeaning: SwitchMeaning) {
     const switchElement = this.locate(
-      this.accounting.registerTestId(SWITCH_TEST_IDS[switchMeaning]),
+      this.accounting.elements.registerTestId(SWITCH_TEST_IDS[switchMeaning]),
     );
 
     await expect(switchElement).toBeInViewport();

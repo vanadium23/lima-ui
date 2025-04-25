@@ -22,7 +22,9 @@ Then(
   "I expect to see the {string} menu item disabled",
   async function (this: ComplexWorld, menuItemMeaning: MenuitemMeaning) {
     const element = this.locateByFullId(
-      this.accounting.registerTestId(MENUITEM_TEST_IDS[menuItemMeaning]),
+      this.accounting.elements.registerTestId(
+        MENUITEM_TEST_IDS[menuItemMeaning],
+      ),
     );
 
     await expect(element).toHaveAttribute("aria-disabled", "true");

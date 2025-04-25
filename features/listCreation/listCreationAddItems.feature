@@ -21,5 +21,9 @@ Feature: Adding items on the List Creation page
 
   Scenario: Adding items inputs to the limit
     When I add list items to their limit
+    And I type some text with length less or equal to the one of "automatic item" input limit
     Then I expect to see the warning about items inputs limit reached
     Then I expect to see the "add list item" button "disabled" with the following text: "Добавить пункт"
+    Then I expect not to see the "automatic" item input
+    Then I reviewed all item addition method of the list page
+

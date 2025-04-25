@@ -1,7 +1,10 @@
 import type { Locator } from "@playwright/test";
 
 import type { ComplexWorld } from "../context/hooks.ts";
-import { extractListItemTestIdFromItsInputTestId } from "../testIds.ts";
+import {
+  AUTO_LIST_ITEM_INPUT,
+  extractListItemTestIdFromItsInputTestId,
+} from "../testIds.ts";
 
 import {
   TEST_ID_ATTRIBUTE,
@@ -15,8 +18,15 @@ export async function registerItem(this: ComplexWorld, itemInput: Locator) {
   const itemInputTestId =
     (await itemInput.getAttribute(TEST_ID_ATTRIBUTE)) || "";
 
-  this.accounting.registerTestIdAndSubId(itemInputTestId, itemInputTestSubId);
-  this.accounting.registerTestIdAndSubId(
+  if (itemInputTestId === AUTO_LIST_ITEM_INPUT) {
+    this.accounting.itemAdders.registerTestId(itemInputTestId);
+  }
+
+  this.accounting.elements.registerTestIdAndSubId(
+    itemInputTestId,
+    itemInputTestSubId,
+  );
+  this.accounting.elements.registerTestIdAndSubId(
     extractListItemTestIdFromItsInputTestId(itemInputTestId),
     itemInputTestSubId,
   );

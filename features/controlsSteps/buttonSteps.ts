@@ -6,6 +6,7 @@ import {
   BUTTON_TEST_IDS,
   type ButtonMeaning,
 } from "../listCreation/testIds.ts";
+import { TOOLS_PANEL_ADD_ITEM_BUTTON } from "../testIds.ts";
 
 /* Basic actions */
 
@@ -44,9 +45,15 @@ Then(
 Then(
   "I expect to see the {string} button disabled",
   async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
-    const element = this.locateByFullId(
-      this.accounting.registerTestId(BUTTON_TEST_IDS[buttonMeaning]),
+    const buttonFullTestId = this.accounting.elements.registerTestId(
+      BUTTON_TEST_IDS[buttonMeaning],
     );
+
+    if (buttonFullTestId === TOOLS_PANEL_ADD_ITEM_BUTTON) {
+      this.accounting.itemAdders.registerTestId(TOOLS_PANEL_ADD_ITEM_BUTTON);
+    }
+
+    const element = this.locateByFullId(buttonFullTestId);
     const isButton = await element.evaluate(
       (el) => el.tagName.toLowerCase() === "button",
     );

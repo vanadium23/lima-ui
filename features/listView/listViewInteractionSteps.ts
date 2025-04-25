@@ -28,7 +28,7 @@ When(
   "I press the {string} switch",
   async function (this: ComplexWorld, switchMeaning: SwitchMeaning) {
     const switchElement = this.locate(
-      this.accounting.registerTestId(SWITCH_TEST_IDS[switchMeaning]),
+      this.accounting.elements.registerTestId(SWITCH_TEST_IDS[switchMeaning]),
     );
 
     await switchElement.click();

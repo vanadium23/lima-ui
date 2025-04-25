@@ -32,7 +32,7 @@ Then(
   "I expect to see the {string} input disabled",
   async function (this: ComplexWorld, inputMeaning: InputMeaning) {
     await this.expectLocated(
-      this.accounting.registerTestId(INPUT_TEST_IDS[inputMeaning]),
+      this.accounting.elements.registerTestId(INPUT_TEST_IDS[inputMeaning]),
     ).toBeDisabled();
   },
 );

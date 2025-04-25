@@ -16,7 +16,7 @@ Then(
   "I expect to see the message about lists absence",
   async function (this: ComplexWorld) {
     await this.expectLocated(
-      this.accounting.registerTestId(NO_SAVED_LISTS_MESSAGE),
+      this.accounting.elements.registerTestId(NO_SAVED_LISTS_MESSAGE),
     ).toBeInViewport();
   },
 );

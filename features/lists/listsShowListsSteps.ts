@@ -52,10 +52,10 @@ Then("I expect to see created list", async function (this: ComplexWorld) {
   const createdListId = this.listIds[0] || DEFAULT_TEST_ID;
 
   await this.expectLocated(
-    this.accounting.registerTestIdAndSubId(LIST_STRIPE, createdListId),
+    this.accounting.elements.registerTestIdAndSubId(LIST_STRIPE, createdListId),
   ).toBeInViewport();
 
-  this.accounting.registerTestIdAndSubId(
+  this.accounting.elements.registerTestIdAndSubId(
     LIST_STRIPE_LINK_TO_VIEW,
     createdListId,
   );
@@ -80,8 +80,11 @@ Then(
     );
 
     for (const listId of listsIds) {
-      this.accounting.registerTestIdAndSubId(LIST_STRIPE, await listId);
-      this.accounting.registerTestIdAndSubId(
+      this.accounting.elements.registerTestIdAndSubId(
+        LIST_STRIPE,
+        await listId,
+      );
+      this.accounting.elements.registerTestIdAndSubId(
         LIST_STRIPE_LINK_TO_VIEW,
         await listId,
       );
