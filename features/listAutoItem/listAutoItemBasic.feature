@@ -18,3 +18,13 @@ Feature: Seeing the basis of the automatically added item
     Then I expect to see the warning about items inputs limit reached
     Then I expect to see the "add list item" button "disabled" with the following text: "Добавить пункт"
     Then I expect not to see the "exceeding limit" item input
+
+  Scenario: Restoring automatically added item after its removal
+    And I type some text with length less or equal to the one of "first item" input limit
+    And I hover "automatic list item"
+    And I press the "open context menu second item" button
+    And I press the "remove second list item" menuitem
+    Then I expect not to see the "automatic" item input
+    And I type some text with length less or equal to the one of "first item" input limit
+    Then I expect to see the "automatic" item input enabled
+
