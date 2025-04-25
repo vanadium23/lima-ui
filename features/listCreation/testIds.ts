@@ -1,6 +1,7 @@
 import { ITEMS_LIMIT } from "../../configuration.ts";
 import {
   AUTO_LIST_ITEM,
+  AUTO_LIST_ITEM_INPUT,
   buildInputCounterTestId,
   buildTextAreaCounterTestId,
   CHECKLIST_SWITCH,
@@ -37,6 +38,10 @@ export const BUTTON_TEST_IDS = {
     OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
     1,
   ),
+  "open context menu third item": buildFullTestId(
+    OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
+    2,
+  ),
   "open context menu for last list item of the limit": buildFullTestId(
     OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
     ITEMS_LIMIT - 1,
@@ -55,6 +60,7 @@ export const MENUITEM_TEST_IDS = {
   "remove list item": REMOVE_ITEM_MENUITEM,
   "remove first list item": buildFullTestId(REMOVE_ITEM_MENUITEM, 0),
   "remove second list item": buildFullTestId(REMOVE_ITEM_MENUITEM, 1),
+  "remove third list item": buildFullTestId(REMOVE_ITEM_MENUITEM, 2),
   "remove on the last list item of the limit": buildFullTestId(
     REMOVE_ITEM_MENUITEM,
     ITEMS_LIMIT - 1,
@@ -69,6 +75,7 @@ export const INPUT_TEST_IDS = {
   "second item": buildFullTestId(LIST_ITEM_INPUT, 1),
   "third item": buildFullTestId(LIST_ITEM_INPUT, 2),
   "forth item": buildFullTestId(LIST_ITEM_INPUT, 3),
+  "automatic item": AUTO_LIST_ITEM_INPUT,
 };
 export type InputMeaning = keyof typeof INPUT_TEST_IDS;
 

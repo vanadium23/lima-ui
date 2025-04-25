@@ -28,3 +28,11 @@ Feature: Seeing the basis of the automatically added item
     And I type some text with length less or equal to the one of "first item" input limit
     Then I expect to see the "automatic" item input enabled
 
+  Scenario: Automatically added item is not restored when modifying the not last list item
+    And I type some text with length less or equal to the one of "first item" input limit
+    And I type some text with length less or equal to the one of "automatic item" input limit
+    And I hover "automatic list item"
+    And I press the "open context menu third item" button
+    And I press the "remove third list item" menuitem
+    And I type some text with length less or equal to the one of "first item" input limit
+    Then I expect not to see the "automatic" item input

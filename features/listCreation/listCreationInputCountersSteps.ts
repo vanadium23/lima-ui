@@ -51,6 +51,7 @@ const INPUT_LIMIT_RELATION = {
   "second item": EDIT_LIST_INPUT_LIMIT,
   "third item": EDIT_LIST_INPUT_LIMIT,
   "forth item": EDIT_LIST_INPUT_LIMIT,
+  "automatic item": EDIT_LIST_INPUT_LIMIT,
 };
 
 When(
