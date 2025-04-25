@@ -1,5 +1,6 @@
 import { ITEMS_LIMIT } from "../../configuration.ts";
 import {
+  AUTO_LIST_ITEM,
   buildInputCounterTestId,
   buildTextAreaCounterTestId,
   CHECKLIST_SWITCH,
@@ -91,6 +92,7 @@ export const ELEMENT_TEST_IDS = {
     LIST_ITEM,
     ITEMS_LIMIT - 1,
   ),
+  "automatic list item": AUTO_LIST_ITEM,
 };
 export type ElementMeaning = keyof typeof ELEMENT_TEST_IDS;
 

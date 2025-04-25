@@ -2,7 +2,7 @@ import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
 import type { ComplexWorld } from "../context/hooks.ts";
-import { LIST_ITEM_INPUT } from "../testIds.ts";
+import { LIST_ITEM, LIST_ITEM_INPUT } from "../testIds.ts";
 
 When(
   "I fill empty items inputs with their index",
@@ -47,10 +47,8 @@ When(
 Then(
   "I expect the number of items to remain the same",
   async function (this: ComplexWorld) {
-    const itemInputs = this.locate(LIST_ITEM_INPUT);
-    const currentCount = await itemInputs.count();
-    const AUTOITEM_COUNT = 1;
+    const items = this.locate(LIST_ITEM);
 
-    expect(currentCount - AUTOITEM_COUNT).toEqual(this.itemsValues.length);
+    expect(await items.count()).toEqual(this.itemsValues.length);
   },
 );

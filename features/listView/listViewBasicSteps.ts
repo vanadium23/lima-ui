@@ -14,7 +14,6 @@ import {
   type ListStripePosition,
 } from "../lists/testIds.ts";
 import { LIST_ITEM_INPUT, LIST_STRIPE } from "../testIds.ts";
-import { registerItem } from "../utilities/registerItem.ts";
 
 Then(
   "I expect to see the {string} input enabled",
@@ -49,22 +48,6 @@ Then(
 
     await expect(switchElement).toBeInViewport();
     await expect(switchElement.locator("input")).toBeDisabled();
-  },
-);
-
-Then(
-  "I expect to see {int} item inputs enabled",
-  async function (this: ComplexWorld, count: number) {
-    const listItemInputs = this.locate(LIST_ITEM_INPUT);
-
-    await expect(listItemInputs).toHaveCount(count);
-
-    for (const itemInput of await listItemInputs.all()) {
-      await registerItem.call(this, itemInput);
-
-      await expect(itemInput).toBeInViewport();
-      await expect(itemInput).toBeEnabled();
-    }
   },
 );
 

@@ -17,6 +17,7 @@ import {
   LIST_TITLE_INPUT_LIMIT,
 } from "../../../configuration.ts";
 import {
+  AUTO_LIST_ITEM,
   CHECKLIST_SWITCH,
   DEFAULT_TEST_ID,
   ITEMS_LIMIT_REACHED_WARNING,
@@ -459,8 +460,10 @@ export const EditList = (props: EditListProps) => {
                       {(item, index) => {
                         const isLastItem = () =>
                           index() === store.items.length - 1;
-                        const isRequired = () =>
-                          !isLastItem() || isOnlyOneItem(store.items);
+                        const isNotAutoItem = () =>
+                          !isLastItem() ||
+                          isOnlyOneItem(store.items) ||
+                          !!item.content;
 
                         const dragData = createSortable(item.dragId);
 
@@ -484,9 +487,11 @@ export const EditList = (props: EditListProps) => {
                               addItem({ mode: "after", index: index() })
                             }
                             canAddMore={store.items.length < ITEMS_LIMIT}
-                            testId={LIST_ITEM}
+                            testId={
+                              isNotAutoItem() ? LIST_ITEM : AUTO_LIST_ITEM
+                            }
                             testSubId={index()}
-                            isRequired={isRequired()}
+                            isRequired={isNotAutoItem()}
                             dragSettings={{
                               dragData,
                               dragProps: {

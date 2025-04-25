@@ -72,7 +72,7 @@ Feature: Failing to create a new list
     Then I expect to see the "list note" text area enabled
     Then I expect to see items inputs area without scroll
     Then I expect to see the "first" item input enabled
-    Then I expect to see the "second" item input enabled
+    Then I expect to see the "automatic" item input enabled
     Then I expect to see the "save" button enabled
     Then I expect to see the "add list item" button enabled
     Then I expect to see the "copy items" button disabled

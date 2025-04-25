@@ -46,7 +46,7 @@ Feature: Removing the lists on the Lists page
     Then I expect to see the visible "first" list stripe "view list" link disabled
     Then I expect to see the visible "first" list stripe "open context menu list stripe" button disabled
 
-  Scenario: Not seeing the dialog modal box when removal in progress
+  Scenario: Not seeing the dialog modal box when removal in progress on "My Lists" page
     When I add a list
     And I open Lists page
     And I hover "first" list stripe

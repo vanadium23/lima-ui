@@ -5,13 +5,13 @@ Feature: Seeing the basis of the automatically added item
 
   Scenario: Seeing the new item automatically added
     And I type some text with length less or equal to the one of "first item" input limit
-    Then I expect to see the "second item" input enabled
+    Then I expect to see the "automatic" item input enabled
 
   Scenario: Seeing the automatically added item removed when the previous is cleared
     And I type some text with length less or equal to the one of "first item" input limit
-    Then I expect to see the "second item" input enabled
+    Then I expect to see the "automatic" item input enabled
     And I clear the "first item" input
-    Then I expect not to see the "second" item input
+    Then I expect not to see the "automatic" item input
 
   Scenario: Reaching limit via the automatically added item
     And I add list items to their limit via automatically added item

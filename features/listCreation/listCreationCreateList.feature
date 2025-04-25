@@ -20,7 +20,7 @@ Feature: Successfully creating list with correct data
     Then I expect to see the "list note" text area disabled
     Then I expect to see items inputs area without scroll
     Then I expect to see the "first" item input disabled
-    Then I expect to see the "second" item input disabled
+    Then I expect to see the "automatic" item input disabled
     Then I expect to see the "add list item" button disabled
     Then I expect to see the "save" button in the loading state
     Then I expect to see the "copy items" button disabled
@@ -30,7 +30,7 @@ Feature: Successfully creating list with correct data
     Then All elements expected to be on the "List Creation Item Added, Note Expanded" page
     Then I expect to see no other elements
 
-  Scenario: All controls are active after successful list creation
+  Scenario: All controls are enabled after successful list creation
     When I type some text with length less or equal to the one of "first item" input limit
     And I press the "save" button
     And I wait for the list to create
@@ -43,7 +43,7 @@ Feature: Successfully creating list with correct data
     Then I expect to see the "list note" text area enabled
     Then I expect to see items inputs area without scroll
     Then I expect to see the "first" item input enabled
-    Then I expect to see the "second" item input enabled
+    Then I expect to see the "automatic" item input enabled
     Then I expect to see the "save" button disabled
     Then I expect to see the "add list item" button enabled
     Then I expect to see the "copy items" button enabled

@@ -74,7 +74,7 @@ Feature: Removing a list from the List view page
     Then I expect to see the "list note" text area disabled
     Then I expect to see items inputs area without scroll
     Then I expect to see the "first" item input disabled
-    Then I expect to see the "second" item input disabled
+    Then I expect to see the "automatic" item input disabled
     Then I expect to see the "add list item" button disabled
     Then I expect to see the "save" button disabled
     Then I expect to see the "copy items" button disabled

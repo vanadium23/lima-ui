@@ -12,8 +12,24 @@ export const PAGE_TITLE = "pageTitle";
 export const LIST_TITLE_INPUT = "listTitleInput";
 export const LIST_PURPOSE_INPUT = "listPurposeInput";
 export const LIST_ITEMS = "listItems";
+
+const LIST_ITEM_INPUT_SUFFIX = "Input";
 export const LIST_ITEM = "listItem";
-export const LIST_ITEM_INPUT = "listItemInput";
+export const LIST_ITEM_INPUT = buildListItemInputTestId(LIST_ITEM);
+
+export function buildListItemInputTestId(listItemTestId: TestId): TestId {
+  return `${listItemTestId}${LIST_ITEM_INPUT_SUFFIX}`;
+}
+
+export function extractListItemTestIdFromItsInputTestId(
+  listItemInoutTestId: TestId,
+): TestId {
+  return listItemInoutTestId.replace(LIST_ITEM_INPUT_SUFFIX, "");
+}
+
+export const AUTO_LIST_ITEM = "autoListItem";
+export const AUTO_LIST_ITEM_INPUT = buildListItemInputTestId(AUTO_LIST_ITEM);
+
 export const SEARCH_INPUT = "searchInput";
 export const SAVE_LIST_BUTTON = "saveListButton";
 export const OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON =

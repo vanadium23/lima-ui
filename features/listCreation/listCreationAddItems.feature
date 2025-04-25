@@ -7,7 +7,7 @@ Feature: Adding items on the List Creation page
     Then All elements expected to be on the "List Creation" page
     And I press the "add list item" button
     And I hover "list title" input
-    Then I expect to see the "second" item input enabled
+    Then I expect to see the "automatic" item input enabled
     Then I expect to see no other elements
 
   Scenario: Adding items inputs more than fit into screen

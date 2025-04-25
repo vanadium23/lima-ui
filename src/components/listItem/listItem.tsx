@@ -2,13 +2,12 @@ import { mergeProps, Show } from "solid-js";
 
 import { EDIT_LIST_INPUT_LIMIT } from "../../../configuration.ts";
 import {
+  buildListItemInputTestId,
   CHECKBOX,
   DEFAULT_TEST_ID,
   DRAG_HANDLE,
-  LIST_ITEM,
-  LIST_ITEM_INPUT,
   OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
-  REMOVE_ITEM_MENUITEM
+  REMOVE_ITEM_MENUITEM,
 } from "../../../features/testIds.ts";
 import type { DragSettings } from "../../widgets/editList/types.ts";
 import {
@@ -69,10 +68,10 @@ export const ListItem = (props: Testable<ListItemProps>) => {
       isRequired: true,
       defaultValue: "",
       dataId: "",
-      onChange: () => { },
-      onAddBefore: () => { },
-      onAddAfter: () => { },
-      removeItem: () => { },
+      onChange: () => {},
+      onAddBefore: () => {},
+      onAddAfter: () => {},
+      removeItem: () => {},
       isDraggingOverlay: false,
       dragId: "",
       dragSettings: {
@@ -107,7 +106,7 @@ export const ListItem = (props: Testable<ListItemProps>) => {
     {
       text: "Импортировать пункт ниже",
       icon: IconName.SortAscending,
-      testId: DEFAULT_TEST_ID
+      testId: DEFAULT_TEST_ID,
     },
     {
       text: "Удалить пункт",
@@ -116,7 +115,7 @@ export const ListItem = (props: Testable<ListItemProps>) => {
       isDisabled: mProps.isOnlyOneItem,
       theme: MenuItemTheme.Dangerous,
       testId: REMOVE_ITEM_MENUITEM,
-      testSubId: mProps.testSubId ?? "0"
+      testSubId: mProps.testSubId ?? "0",
     },
   ];
 
@@ -128,7 +127,7 @@ export const ListItem = (props: Testable<ListItemProps>) => {
         listItem_dragging: mProps.isDraggingOverlay,
         listItem_transition: !!mProps.dragSettings.dragState?.active.draggable,
       }}
-      data-test-id={LIST_ITEM}
+      data-test-id={mProps.testId}
       data-test-sub-id={mProps.testSubId}
     >
       <div class="listItem__dragHandle">
@@ -163,7 +162,7 @@ export const ListItem = (props: Testable<ListItemProps>) => {
           textAreaValue={mProps.defaultValue}
           isRequired={mProps.isRequired}
           onChange={mProps.onChange}
-          testId={LIST_ITEM_INPUT}
+          testId={buildListItemInputTestId(mProps.testId)}
           testSubId={mProps.testSubId ?? "0"}
           childComponent={
             <DropdownMenuWrapper
@@ -172,7 +171,9 @@ export const ListItem = (props: Testable<ListItemProps>) => {
               testId={OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON}
               testSubId={mProps.testSubId ?? "0"}
               listOfButtons={dropdownItems()}
-              isDisabled={mProps.isDisabled} />}
+              isDisabled={mProps.isDisabled}
+            />
+          }
         />
       </div>
     </div>
