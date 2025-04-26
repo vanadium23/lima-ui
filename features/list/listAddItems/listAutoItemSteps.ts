@@ -1,9 +1,9 @@
 import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
-import { ITEMS_LIMIT } from "../../configuration.ts";
-import type { ComplexWorld } from "../context/hooks.ts";
-import { AUTO_LIST_ITEM_INPUT, LIST_ITEM_INPUT } from "../testIds.ts";
+import { ITEMS_LIMIT } from "../../../configuration.ts";
+import type { ComplexWorld } from "../../context/hooks.ts";
+import { AUTO_LIST_ITEM_INPUT, LIST_ITEM_INPUT } from "../../testIds.ts";
 
 import {
   ITEM_ADDERS,

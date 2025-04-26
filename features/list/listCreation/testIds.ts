@@ -1,5 +1,7 @@
-import { ITEMS_LIMIT } from "../../configuration.ts";
+import { ITEMS_LIMIT } from "../../../configuration.ts";
 import {
+  ADD_ITEM_ABOVE_MENUITEM,
+  ADD_ITEM_BELOW_MENUITEM,
   AUTO_LIST_ITEM,
   AUTO_LIST_ITEM_INPUT,
   buildInputCounterTestId,
@@ -22,8 +24,8 @@ import {
   TOOLS_BUTTON_PRINT_LIST,
   TOOLS_BUTTON_REMOVE_LIST,
   TOOLS_PANEL_ADD_ITEM_BUTTON,
-} from "../testIds.ts";
-import { buildFullTestId } from "../utilities/buildTestableSelector.ts";
+} from "../../testIds.ts";
+import { buildFullTestId } from "../../utilities/buildTestableSelector.ts";
 
 export const BUTTON_TEST_IDS = {
   save: SAVE_LIST_BUTTON,
@@ -65,6 +67,8 @@ export const MENUITEM_TEST_IDS = {
     REMOVE_ITEM_MENUITEM,
     ITEMS_LIMIT - 1,
   ),
+  "add item above": ADD_ITEM_ABOVE_MENUITEM,
+  "add item below": ADD_ITEM_BELOW_MENUITEM,
 };
 export type MenuitemMeaning = keyof typeof MENUITEM_TEST_IDS;
 

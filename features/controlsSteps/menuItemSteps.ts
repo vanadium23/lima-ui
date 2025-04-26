@@ -5,12 +5,12 @@ import type { ComplexWorld } from "../context/hooks.ts";
 import {
   MENUITEM_TEST_IDS,
   type MenuitemMeaning,
-} from "../listCreation/testIds.ts";
+} from "../list/listCreation/testIds.ts";
 
 /* Basic actions */
 
 Then(
-  "I press the {string} menuitem",
+  "I press the {string} menu item",
   async function (this: ComplexWorld, menuItemMeaning: MenuitemMeaning) {
     await this.locateByFullId(MENUITEM_TEST_IDS[menuItemMeaning]).click();
   },

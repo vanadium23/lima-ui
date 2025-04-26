@@ -1,8 +1,8 @@
 import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
-import type { ComplexWorld } from "../context/hooks.ts";
-import { ITEMS_LIMIT_REACHED_WARNING, LIST_ITEM } from "../testIds.ts";
+import type { ComplexWorld } from "../../context/hooks.ts";
+import { ITEMS_LIMIT_REACHED_WARNING, LIST_ITEM } from "../../testIds.ts";
 
 import {
   BUTTON_TEST_IDS,

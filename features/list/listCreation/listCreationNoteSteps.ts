@@ -1,16 +1,16 @@
 import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
-import { NOTE_TEXT_AREA_LIMIT } from "../../configuration.ts";
-import type { ComplexWorld } from "../context/hooks.ts";
+import { NOTE_TEXT_AREA_LIMIT } from "../../../configuration.ts";
+import type { ComplexWorld } from "../../context/hooks.ts";
 import {
   buildAccordionButtonTestId,
   buildAccordionContentTestId,
-} from "../testIds.ts";
+} from "../../testIds.ts";
 import {
   getStringLongerThanLowerLimit,
   getStringUpToLimit,
-} from "../utilities/getStringOfLength.ts";
+} from "../../utilities/getStringOfLength.ts";
 
 import {
   ACCORDION_TEST_IDS,

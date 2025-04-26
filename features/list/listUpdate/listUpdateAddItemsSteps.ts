@@ -1,8 +1,8 @@
 import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
-import type { ComplexWorld } from "../context/hooks.ts";
-import { LIST_ITEM, LIST_ITEM_INPUT } from "../testIds.ts";
+import type { ComplexWorld } from "../../context/hooks.ts";
+import { LIST_ITEM, LIST_ITEM_INPUT } from "../../testIds.ts";
 
 When(
   "I fill empty items inputs with their index",

@@ -1,6 +1,6 @@
 import { When } from "@cucumber/cucumber";
 
-import type { ComplexWorld } from "../context/hooks.ts";
+import type { ComplexWorld } from "../../context/hooks.ts";
 import { INPUT_TEST_IDS, type InputMeaning } from "../listCreation/testIds.ts";
 
 When(

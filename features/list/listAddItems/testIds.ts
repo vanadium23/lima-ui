@@ -1,10 +1,10 @@
-import { ITEMS_LIMIT } from "../../configuration.ts";
+import { ITEMS_LIMIT } from "../../../configuration.ts";
 import {
   AUTO_LIST_ITEM_INPUT,
   LIST_ITEM_INPUT,
   TOOLS_PANEL_ADD_ITEM_BUTTON,
-} from "../testIds.ts";
-import { buildFullTestId } from "../utilities/buildTestableSelector.ts";
+} from "../../testIds.ts";
+import { buildFullTestId } from "../../utilities/buildTestableSelector.ts";
 
 export const ITEM_INPUT_TEST_IDS = {
   first: buildFullTestId(LIST_ITEM_INPUT, 0),

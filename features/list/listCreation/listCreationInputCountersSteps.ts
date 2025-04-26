@@ -6,13 +6,13 @@ import {
   LIST_PURPOSE_INPUT_LIMIT,
   LIST_TITLE_INPUT_LIMIT,
   NOTE_TEXT_AREA_LIMIT,
-} from "../../configuration.ts";
-import type { ComplexWorld } from "../context/hooks.ts";
-import { extractInputTestIdFromItsCounterTestId } from "../testIds.ts";
+} from "../../../configuration.ts";
+import type { ComplexWorld } from "../../context/hooks.ts";
+import { extractInputTestIdFromItsCounterTestId } from "../../testIds.ts";
 import {
   getStringLongerThanLowerLimit,
   getStringUpToLimit,
-} from "../utilities/getStringOfLength.ts";
+} from "../../utilities/getStringOfLength.ts";
 
 import {
   COUNTER_TEST_IDS,

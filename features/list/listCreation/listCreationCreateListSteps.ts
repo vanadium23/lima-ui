@@ -1,24 +1,24 @@
 import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
-import { EDIT_LIST_INPUT_LIMIT } from "../../configuration.ts";
+import { EDIT_LIST_INPUT_LIMIT } from "../../../configuration.ts";
 import {
   ADDRESSES_MEANINGS,
   type AddressMeaning,
   SOME_LIST,
-} from "../../utilities/addresses.ts";
-import type { ComplexWorld } from "../context/hooks.ts";
-import {
-  ITEM_INPUT_TEST_IDS,
-  type ItemInputMeaning,
-} from "../listAutoItem/testIds.ts";
+} from "../../../utilities/addresses.ts";
+import type { ComplexWorld } from "../../context/hooks.ts";
 import {
   buildAccordionButtonTestId,
   buildAccordionContentTestId,
   LIST_ITEM_INPUT,
-} from "../testIds.ts";
-import { getStringUpToLimit } from "../utilities/getStringOfLength.ts";
-import { registerItem } from "../utilities/registerItem.ts";
+} from "../../testIds.ts";
+import { getStringUpToLimit } from "../../utilities/getStringOfLength.ts";
+import { registerItem } from "../../utilities/registerItem.ts";
+import {
+  ITEM_INPUT_TEST_IDS,
+  type ItemInputMeaning,
+} from "../listAddItems/testIds.ts";
 
 import {
   ACCORDION_TEST_IDS,

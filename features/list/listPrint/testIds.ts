@@ -3,8 +3,8 @@ import {
   PRINT_LIST_NOTE,
   PRINT_LIST_PURPOSE,
   PRINT_LIST_TITLE,
-} from "../testIds.ts";
-import { buildFullTestId } from "../utilities/buildTestableSelector.ts";
+} from "../../testIds.ts";
+import { buildFullTestId } from "../../utilities/buildTestableSelector.ts";
 
 export const PRINT_ELEMENT_TEST_IDS = {
   "list title": PRINT_LIST_TITLE,

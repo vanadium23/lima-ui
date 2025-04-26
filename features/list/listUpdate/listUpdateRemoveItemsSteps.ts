@@ -1,7 +1,7 @@
 import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
-import type { ComplexWorld } from "../context/hooks.ts";
+import type { ComplexWorld } from "../../context/hooks.ts";
 import {
   ELEMENT_TEST_IDS,
   type ElementMeaning,
@@ -14,10 +14,7 @@ import {
 When(
   "I press the visible {string} menu item",
   async function (this: ComplexWorld, menuItemMeaning: MenuitemMeaning) {
-    const menuItem = this.locateVisible(
-      `${MENUITEM_TEST_IDS[menuItemMeaning]}`,
-    );
-    await menuItem.click();
+    await this.locateVisible(MENUITEM_TEST_IDS[menuItemMeaning]).click();
   },
 );
 

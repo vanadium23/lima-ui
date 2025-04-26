@@ -1,19 +1,19 @@
 import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
-import { ERROR_SIGN } from "../../utilities/addresses.ts";
-import type { ComplexWorld } from "../context/hooks.ts";
+import { ERROR_SIGN } from "../../../utilities/addresses.ts";
+import type { ComplexWorld } from "../../context/hooks.ts";
+import {
+  LIST_STRIPE_POSITIONS,
+  type ListStripePosition,
+} from "../../myLists/testIds.ts";
+import { LIST_ITEM_INPUT, LIST_STRIPE } from "../../testIds.ts";
 import {
   INPUT_TEST_IDS,
   type InputMeaning,
   SWITCH_TEST_IDS,
   type SwitchMeaning,
 } from "../listCreation/testIds.ts";
-import {
-  LIST_STRIPE_POSITIONS,
-  type ListStripePosition,
-} from "../lists/testIds.ts";
-import { LIST_ITEM_INPUT, LIST_STRIPE } from "../testIds.ts";
 
 Then(
   "I expect to see the {string} input enabled",

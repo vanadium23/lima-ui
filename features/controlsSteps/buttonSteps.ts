@@ -5,7 +5,7 @@ import type { ComplexWorld } from "../context/hooks.ts";
 import {
   BUTTON_TEST_IDS,
   type ButtonMeaning,
-} from "../listCreation/testIds.ts";
+} from "../list/listCreation/testIds.ts";
 import { TOOLS_PANEL_ADD_ITEM_BUTTON } from "../testIds.ts";
 
 /* Basic actions */

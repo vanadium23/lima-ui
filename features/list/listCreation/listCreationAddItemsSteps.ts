@@ -1,8 +1,8 @@
 import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
-import { ITEMS_LIMIT } from "../../configuration.ts";
-import type { ComplexWorld } from "../context/hooks.ts";
+import { ITEMS_LIMIT } from "../../../configuration.ts";
+import type { ComplexWorld } from "../../context/hooks.ts";
 import {
   AUTO_LIST_ITEM,
   ITEMS_LIMIT_REACHED_WARNING,
@@ -10,8 +10,8 @@ import {
   LIST_ITEM_INPUT,
   LIST_ITEMS,
   TOOLS_PANEL_ADD_ITEM_BUTTON,
-} from "../testIds.ts";
-import { noVerticalScroll } from "../utilities/checkScroll.ts";
+} from "../../testIds.ts";
+import { noVerticalScroll } from "../../utilities/checkScroll.ts";
 
 When(
   "I add list items till scroll appears plus one item input",

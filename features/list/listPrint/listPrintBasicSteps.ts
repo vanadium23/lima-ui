@@ -1,8 +1,8 @@
 import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
-import type { ComplexWorld } from "../context/hooks.ts";
-import { PRINT_LIST_ITEM, TOOLS_BUTTON_PRINT_LIST } from "../testIds.ts";
+import type { ComplexWorld } from "../../context/hooks.ts";
+import { PRINT_LIST_ITEM, TOOLS_BUTTON_PRINT_LIST } from "../../testIds.ts";
 
 import { PRINT_ELEMENT_TEST_IDS, type PrintElementMeaning } from "./testIds.ts";
 

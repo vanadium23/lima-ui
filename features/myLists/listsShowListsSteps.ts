@@ -13,7 +13,10 @@ import {
   SOME_LIST,
 } from "../../utilities/addresses.ts";
 import type { ComplexWorld } from "../context/hooks.ts";
-import { BUTTON_TEST_IDS, INPUT_TEST_IDS } from "../listCreation/testIds.ts";
+import {
+  BUTTON_TEST_IDS,
+  INPUT_TEST_IDS,
+} from "../list/listCreation/testIds.ts";
 import {
   DEFAULT_TEST_ID,
   LIST_STRIPE,

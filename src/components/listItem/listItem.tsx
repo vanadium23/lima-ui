@@ -2,10 +2,13 @@ import { mergeProps, Show } from "solid-js";
 
 import { EDIT_LIST_INPUT_LIMIT } from "../../../configuration.ts";
 import {
+  ADD_ITEM_ABOVE_MENUITEM,
+  ADD_ITEM_BELOW_MENUITEM,
   buildListItemInputTestId,
   CHECKBOX,
   DEFAULT_TEST_ID,
   DRAG_HANDLE,
+  LIST_ITEM_CONTEXT_MENU,
   OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
   REMOVE_ITEM_MENUITEM,
 } from "../../../features/testIds.ts";
@@ -88,14 +91,14 @@ export const ListItem = (props: Testable<ListItemProps>) => {
       text: "Добавить пункт выше",
       icon: IconName.Plus,
       handleClick: mProps.onAddBefore,
-      testId: DEFAULT_TEST_ID,
+      testId: ADD_ITEM_ABOVE_MENUITEM,
       isDisabled: !mProps.canAddMore,
     },
     {
       text: "Добавить пункт ниже",
       icon: IconName.Plus,
       handleClick: mProps.onAddAfter,
-      testId: DEFAULT_TEST_ID,
+      testId: ADD_ITEM_BELOW_MENUITEM,
       isDisabled: !mProps.canAddMore,
     },
     {
@@ -170,6 +173,7 @@ export const ListItem = (props: Testable<ListItemProps>) => {
               iconName={IconName.DotsThreeCircle}
               testId={OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON}
               testSubId={mProps.testSubId ?? "0"}
+              dropDownMenuTestId={LIST_ITEM_CONTEXT_MENU}
               listOfButtons={dropdownItems()}
               isDisabled={mProps.isDisabled}
             />

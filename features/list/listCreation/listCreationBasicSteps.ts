@@ -1,8 +1,8 @@
 import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
-import { LISTS_CREATE } from "../../utilities/addresses.ts";
-import type { ComplexWorld } from "../context/hooks.ts";
+import { LISTS_CREATE } from "../../../utilities/addresses.ts";
+import type { ComplexWorld } from "../../context/hooks.ts";
 import {
   ADD_GROUP_BUTTON,
   buildAccordionButtonTestId,
@@ -19,16 +19,16 @@ import {
   TOOLS_PANEL,
   TOOLS_PANEL_ADD_ITEM_BUTTON,
   USER_BUTTON,
-} from "../testIds.ts";
+} from "../../testIds.ts";
 import {
   ID_SUB_ID_SEPARATOR,
   InPlaywrightExtractAllCompleteIds,
   TEST_ID_ATTRIBUTE,
   TEST_SUB_ID_ATTRIBUTE,
-} from "../utilities/buildTestableSelector.ts";
-import { noVerticalScroll } from "../utilities/checkScroll.ts";
-import { registerItem } from "../utilities/registerItem.ts";
-import { type PageAlias, PAGES_TEST_IDS } from "../utilities/testIds.ts";
+} from "../../utilities/buildTestableSelector.ts";
+import { noVerticalScroll } from "../../utilities/checkScroll.ts";
+import { registerItem } from "../../utilities/registerItem.ts";
+import { type PageAlias, PAGES_TEST_IDS } from "../../utilities/testIds.ts";
 
 import {
   ACCORDION_TEST_IDS,

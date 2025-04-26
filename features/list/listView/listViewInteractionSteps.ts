@@ -1,13 +1,13 @@
 import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
-import type { ComplexWorld } from "../context/hooks.ts";
+import type { ComplexWorld } from "../../context/hooks.ts";
+import { CHECKBOX, LIST_ITEM } from "../../testIds.ts";
+import { buildTestableSelector } from "../../utilities/buildTestableSelector.ts";
 import {
   SWITCH_TEST_IDS,
   type SwitchMeaning,
 } from "../listCreation/testIds.ts";
-import { CHECKBOX, LIST_ITEM } from "../testIds.ts";
-import { buildTestableSelector } from "../utilities/buildTestableSelector.ts";
 
 Then(
   "I expect clipboard to contain items content",

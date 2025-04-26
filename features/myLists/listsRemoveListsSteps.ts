@@ -9,7 +9,7 @@ import type { ComplexWorld } from "../context/hooks.ts";
 import {
   BUTTON_TEST_IDS,
   type ButtonMeaning,
-} from "../listCreation/testIds.ts";
+} from "../list/listCreation/testIds.ts";
 import {
   DEFAULT_TEST_ID,
   LIST_STRIPE,
