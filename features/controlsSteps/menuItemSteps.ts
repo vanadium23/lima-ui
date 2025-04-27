@@ -22,7 +22,7 @@ Then(
   "I expect to see the {string} menu item disabled",
   async function (this: ComplexWorld, menuItemMeaning: MenuitemMeaning) {
     const element = this.locateByFullId(
-      this.accounting.elements.registerTestId(
+      this.accounting.itemAdders.registerTestId(
         MENUITEM_TEST_IDS[menuItemMeaning],
       ),
     );

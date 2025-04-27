@@ -25,5 +25,9 @@ Feature: Adding items on the List Creation page
     Then I expect to see the warning about items inputs limit reached
     Then I expect to see the "add list item" button "disabled" with the following text: "Добавить пункт"
     Then I expect not to see the "automatic" item input
+    And I focus some list item input
+    And I press the visible "open context menu list item" button
+    Then I expect to see the "add item above" menu item disabled
+    Then I expect to see the "add item below" menu item disabled
     Then I reviewed all item addition method of the list page
 

@@ -26,7 +26,7 @@ When(
   "I add list items to their limit via automatically added item",
   { timeout: 60000 },
   async function (this: ComplexWorld) {
-    await this.locate(LIST_ITEM_INPUT).nth(0).fill(`${0}`);
+    await this.locate(LIST_ITEM_INPUT).fill("0");
 
     for (let i = 1; i < ITEMS_LIMIT; i++) {
       await this.locate(AUTO_LIST_ITEM_INPUT).fill(`${i}`);

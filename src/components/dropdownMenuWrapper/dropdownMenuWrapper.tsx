@@ -64,6 +64,10 @@ export const DropdownMenuWrapper = (props: Testable<DropdownMenuWrapper>) => {
                 testId={DEFAULT_TEST_ID}
                 testSubId={mProps.testSubId || "0"}
                 {...button}
+                handleClick={() => {
+                  button.handleClick?.();
+                  setIsMenuOpen(false);
+                }}
                 isDisabled={button.isDisabled || mProps.isDisabled}
               />
             )}
