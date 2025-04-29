@@ -63,6 +63,7 @@ Feature: Failing to create a new list
     And I type some text with length less or equal to the one of "first item" input limit
     And I press the "save" button
     And I wait for the page to load
+    Then I expect to see the following suffixed tab title: "Новый список"
     Then I expect to see sidebar
     Then I expect to see header
     Then I expect to see tools panel
@@ -80,7 +81,7 @@ Feature: Failing to create a new list
     Then I expect to see the "checklist" switch enabled
     Then I expect to see the "print list" button disabled
     Then I expect to see the "connection" error
-    Then All elements expected to be on the "List Creation Item Added, Note Expanded, Connection Error" page
+    Then All necessary elements are on the "List Creation Item Added, Note Expanded, Connection Error" page
     Then I expect to see no other elements
 
   Scenario: List creation with items at limit and connection error shows both problems

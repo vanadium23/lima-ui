@@ -29,16 +29,16 @@ import { getStringUpToLimit } from "../utilities/getStringOfLength.ts";
 When("I add a list", { timeout: 20000 }, async function (this: ComplexWorld) {
   await this.navigate(LISTS_CREATE);
 
-  const inputs: [string, number][] = [
-    [INPUT_TEST_IDS["list title"], LIST_TITLE_INPUT_LIMIT],
-    [INPUT_TEST_IDS["list purpose"], LIST_PURPOSE_INPUT_LIMIT],
-    [INPUT_TEST_IDS["first item"], EDIT_LIST_INPUT_LIMIT],
+  const inputs: [keyof typeof INPUT_TEST_IDS, number][] = [
+    ["list title", LIST_TITLE_INPUT_LIMIT],
+    ["list purpose", LIST_PURPOSE_INPUT_LIMIT],
+    ["first item", EDIT_LIST_INPUT_LIMIT],
   ];
 
   for (const [input, limit] of inputs) {
     const inputText = getStringUpToLimit(limit);
     this.data[input] = inputText;
-    await this.locateByFullId(input).fill(inputText);
+    await this.locateByFullId(INPUT_TEST_IDS[input]).fill(inputText);
   }
 
   await this.locateByFullId(BUTTON_TEST_IDS.save).click();

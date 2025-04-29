@@ -4,6 +4,7 @@ Feature: Seeing the basis of List Creation page
     When I open List Creation page
 
   Scenario: Opening List Creation page
+    Then I expect to see the following suffixed tab title: "Новый список"
     Then I expect to see sidebar
     Then I expect to see header
     Then I expect to see tools panel
@@ -18,5 +19,5 @@ Feature: Seeing the basis of List Creation page
     Then I expect to see the "remove list tools panel" button disabled
     Then I expect to see the "checklist" switch enabled
     Then I expect to see the "print list" button disabled
-    Then All elements expected to be on the "List Creation" page
+    Then All necessary elements are on the "List Creation" page
     Then I expect to see no other elements

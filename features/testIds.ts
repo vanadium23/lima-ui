@@ -4,6 +4,8 @@ export type SeveralTestIds = TestId[];
 
 export const DEFAULT_TEST_ID = "defaultTestId";
 
+export const PAGE_TAB_TITLE = "pageTabTitle";
+
 export const SIDEBAR = "sidebar";
 export const HEADER = "header";
 export const ADD_GROUP_BUTTON = "addGroupButton";

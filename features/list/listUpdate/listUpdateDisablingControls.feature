@@ -11,6 +11,7 @@ Feature: Disabling controls when list is being updated
     And I press on the "list note" accordion
     And I type some text with length less or equal to the one of "list note" text area limit
     And I press the "save" button
+    Then I expect to see the previous suffixed list title as tab title
     Then I expect to see sidebar
     Then I expect to see header
     Then I expect to see tools panel
@@ -28,7 +29,7 @@ Feature: Disabling controls when list is being updated
     Then I expect to see the "remove list tools panel" button disabled
     Then I expect to see the "checklist" switch disabled
     Then I expect to see the "print list" button disabled
-    Then All elements expected to be on the "List Creation Item Added, Note Expanded" page
+    Then All necessary elements are on the "List Creation Item Added, Note Expanded" page
     Then I expect to see no other elements
 
   Scenario: All items inputs are disabled on list update

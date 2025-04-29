@@ -4,7 +4,7 @@ Feature: Adding items on the List Creation page
     When I open List Creation page
 
   Scenario: Adding single item input
-    Then All elements expected to be on the "List Creation" page
+    Then All necessary elements are on the "List Creation" page
     And I press the "add list item" button
     And I hover "list title" input
     Then I expect to see the "automatic" item input enabled

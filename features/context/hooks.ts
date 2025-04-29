@@ -45,6 +45,7 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
     itemAdders: createAccountedTesting(),
   };
   data: Record<string, string> = {};
+  oldData: Record<string, string> = {};
   numbers: Record<string, number> = {};
   listIds: TestId[] = [];
   itemsValues: string[] = [];

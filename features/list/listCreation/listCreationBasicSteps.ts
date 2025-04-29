@@ -189,7 +189,7 @@ Then(
 );
 
 Then(
-  "All elements expected to be on the {string} page",
+  "All necessary elements are on the {string} page",
   async function (this: ComplexWorld, pageAlias: PageAlias) {
     const pageTestIds = this.accounting.elements.getTestIds();
     const expectedPageTestIds = PAGES_TEST_IDS[pageAlias];

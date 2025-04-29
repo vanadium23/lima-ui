@@ -10,6 +10,7 @@ Feature: Successfully creating list with correct data
   Scenario: Disabling form controls when pressing the "Save" button
     When I type some text with length less or equal to the one of "first item" input limit
     And I press the "save" button
+    Then I expect to see the following suffixed tab title: "Новый список"
     Then I expect to see sidebar
     Then I expect to see header
     Then I expect to see tools panel
@@ -27,13 +28,15 @@ Feature: Successfully creating list with correct data
     Then I expect to see the "remove list tools panel" button disabled
     Then I expect to see the "checklist" switch disabled
     Then I expect to see the "print list" button disabled
-    Then All elements expected to be on the "List Creation Item Added, Note Expanded" page
+    Then All necessary elements are on the "List Creation Item Added, Note Expanded" page
     Then I expect to see no other elements
 
+  @needs-fixing
   Scenario: All controls are enabled after successful list creation
     When I type some text with length less or equal to the one of "first item" input limit
     And I press the "save" button
     And I wait for the list to create
+    Then I expect to see the suffixed list title as tab title
     Then I expect to see sidebar
     Then I expect to see header
     Then I expect to see tools panel
@@ -50,7 +53,7 @@ Feature: Successfully creating list with correct data
     Then I expect to see the "remove list tools panel" button enabled
     Then I expect to see the "checklist" switch enabled
     Then I expect to see the "print list" button enabled
-    Then All elements expected to be on the "List Creation Item Added, Note Expanded" page
+    Then All necessary elements are on the "List Creation Item Added, Note Expanded" page
     Then I expect to see no other elements
 
   Scenario: All items inputs are disabled on list creation

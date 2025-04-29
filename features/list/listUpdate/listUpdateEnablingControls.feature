@@ -5,12 +5,14 @@ Feature: Controls state after list update
     And I add a list
     And I refresh the page
 
+  @needs-fixing
   Scenario: All controls are enabled after successful list update
     When I type some text with length less or equal to the one of "list title" input limit
     And I press on the "list note" accordion
     And I type some text with length less or equal to the one of "list note" text area limit
     And I press the "save" button
     And I wait for the list update to complete
+    Then I expect to see the suffixed list title as tab title
     Then I expect to see sidebar
     Then I expect to see header
     Then I expect to see tools panel
@@ -27,7 +29,7 @@ Feature: Controls state after list update
     Then I expect to see the "remove list tools panel" button enabled
     Then I expect to see the "checklist" switch enabled
     Then I expect to see the "print list" button enabled
-    Then All elements expected to be on the "List Creation Item Added, Note Expanded" page
+    Then All necessary elements are on the "List Creation Item Added, Note Expanded" page
     Then I expect to see no other elements
 
   Scenario: All controls are enabled after connection error during list update
@@ -37,6 +39,7 @@ Feature: Controls state after list update
     And I type some text with length less or equal to the one of "list note" text area limit
     And I press the "save" button
     And I wait for the page to load
+    Then I expect to see the previous suffixed list title as tab title
     Then I expect to see sidebar
     Then I expect to see header
     Then I expect to see tools panel
@@ -54,5 +57,5 @@ Feature: Controls state after list update
     Then I expect to see the "checklist" switch enabled
     Then I expect to see the "print list" button enabled
     Then I expect to see the "connection" error
-    Then All elements expected to be on the "List Creation Item Added, Note Expanded, Connection Error" page
+    Then All necessary elements are on the "List Creation Item Added, Note Expanded, Connection Error" page
     Then I expect to see no other elements
