@@ -99,6 +99,11 @@ const ALL_ELEMENTS_OF_LISTS_PAGE_BASIS = [
   NO_SAVED_LISTS_MESSAGE,
 ];
 
+const ALL_ELEMENTS_OF_LISTS_PAGE_WITH_ERROR = [
+  ...ALL_ELEMENTS_OF_LISTS_PAGE_DESPITE_LISTS_NUMBER,
+  NETWORK_ERROR,
+];
+
 export const PAGES_TEST_IDS = {
   "List Creation": ALL_ELEMENTS_OF_LIST_CREATION_PAGE_BASIS.sort(),
   "List Creation Item Added, Note Expanded":
@@ -110,7 +115,8 @@ export const PAGES_TEST_IDS = {
   "List View": ALL_ELEMENTS_OF_LIST_VIEW_PAGE_BASIS.sort(),
   "List View with Error": ALL_ELEMENTS_OF_LIST_VIEW_PAGE_WITH_ERROR.sort(),
   Lists: ALL_ELEMENTS_OF_LISTS_PAGE_BASIS.sort(),
-  "Lists despite lists number":
+  "Lists with Error": ALL_ELEMENTS_OF_LISTS_PAGE_WITH_ERROR.sort(),
+  "Lists Despite Lists Number":
     ALL_ELEMENTS_OF_LISTS_PAGE_DESPITE_LISTS_NUMBER.sort(),
 };
 
