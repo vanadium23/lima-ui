@@ -114,7 +114,6 @@ export const createScrollableCollisionsDetector: ScrollableCollisionDetectorCrea
     let distanceToDroppable = Infinity;
     let droppable: Droppable | null = null;
 
-    // Using for...of instead of forEach to allow breaking out of the loop
     for (const droppableCandidate of droppables) {
       const nodeCenter = {
         ...droppableCandidate.layout.center,
@@ -126,13 +125,9 @@ export const createScrollableCollisionsDetector: ScrollableCollisionDetectorCrea
         nodeCenter,
       );
 
-      // If we find a closer droppable, update our tracking variables
       if (distanceToDroppableCandidate < distanceToDroppable) {
         distanceToDroppable = distanceToDroppableCandidate;
         droppable = droppableCandidate;
-      } else {
-        // Optimizing distances calculation. Once growing, it’s not needed to continue.
-        break;
       }
     }
 
