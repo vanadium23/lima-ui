@@ -22,22 +22,24 @@ export function createAutoScroll(options: AutoScrollOptions) {
     }
   }
 
-  function handleMouseMoveForScroll(event: MouseEvent) {
+  function handlePointerMoveForScroll(event: MouseEvent | TouchEvent) {
     const { isActive } = options;
     if (!scrollContainer || !isActive()) return;
 
     const containerRect = scrollContainer.getBoundingClientRect();
-    const mouseY = event.clientY;
+    const clientY =
+      "touches" in event ? event.touches[0]?.clientY || 0 : event.clientY;
 
     clearAutoScrollInterval();
 
-    const isMouseAtTheBottom = mouseY > containerRect.bottom - SCROLL_THRESHOLD;
-    const isMouseAtTheTop = mouseY < containerRect.top + SCROLL_THRESHOLD;
+    const isPointerAtTheBottom =
+      clientY > containerRect.bottom - SCROLL_THRESHOLD;
+    const isPointerAtTheTop = clientY < containerRect.top + SCROLL_THRESHOLD;
 
-    if (isMouseAtTheTop) {
+    if (isPointerAtTheTop) {
       const scrollSpeed = Math.max(
         1,
-        SCROLL_SPEED * (1 - (mouseY - containerRect.top) / SCROLL_THRESHOLD),
+        SCROLL_SPEED * (1 - (clientY - containerRect.top) / SCROLL_THRESHOLD),
       );
 
       autoScrollInterval = setInterval(() => {
@@ -48,10 +50,11 @@ export function createAutoScroll(options: AutoScrollOptions) {
           scrollContainer.scrollTop - scrollSpeed,
         );
       }, MILLISECONDS_PER_FRAME);
-    } else if (isMouseAtTheBottom) {
+    } else if (isPointerAtTheBottom) {
       const scrollSpeed = Math.max(
         1,
-        SCROLL_SPEED * (1 - (containerRect.bottom - mouseY) / SCROLL_THRESHOLD),
+        SCROLL_SPEED *
+          (1 - (containerRect.bottom - clientY) / SCROLL_THRESHOLD),
       );
 
       autoScrollInterval = setInterval(() => {
@@ -67,13 +70,15 @@ export function createAutoScroll(options: AutoScrollOptions) {
 
   function startListening(scrollableParent: ScrollContainer) {
     scrollContainer = scrollableParent;
-    document.addEventListener("mousemove", handleMouseMoveForScroll);
+    document.addEventListener("mousemove", handlePointerMoveForScroll);
+    document.addEventListener("touchmove", handlePointerMoveForScroll);
   }
 
   function stopListening() {
     clearAutoScrollInterval();
     scrollContainer = undefined;
-    document.removeEventListener("mousemove", handleMouseMoveForScroll);
+    document.removeEventListener("mousemove", handlePointerMoveForScroll);
+    document.removeEventListener("touchmove", handlePointerMoveForScroll);
   }
 
   onCleanup(() => {

@@ -71,16 +71,16 @@ import {
   type NewList,
   type ScrollContainer,
 } from "./types.ts";
-import {
-  createAutoScroll,
-  createScrollableCollisionsDetector,
-} from "./utilities/autoScroll.ts";
 import { checkChanges } from "./utilities/checkChages.ts";
 import { copyItemsToClipboard } from "./utilities/copyItemsToClipboard.ts";
 import {
   createDefaultItem,
   createDragId,
 } from "./utilities/createDefaultItem.ts";
+import {
+  createAutoScroll,
+  createScrollableCollisionsDetector,
+} from "./utilities/dragAndDrop.ts";
 import { getComparableList } from "./utilities/getComparableList.ts";
 import { getDataListItemInputs } from "./utilities/getDataListItemInputs.ts";
 import { isOnlyOneItem } from "./utilities/isOnlyOneItem.ts";
