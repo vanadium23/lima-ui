@@ -7,6 +7,8 @@ ItemInputTheme,
 } from "../../../components/itemInput/itemInput.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
+import {ItemInputWrapper} from "./itemInputWrapper";
+
 const themes = Object.values(ItemInputTheme);
 const sizes = Object.values(ItemInputSize);
 ---
@@ -16,12 +18,13 @@ const sizes = Object.values(ItemInputSize);
     themes.map((theme) => (
       <div class="demoThemeWrapper">
         <h3 class="demoThemeWrapper__title">{theme}</h3>
-        <div class="grid grid_4Col">
+        <div class="grid grid_5Col">
           <span class="chead" />
           <span class="chead">Default</span>
           <span class="chead">Error</span>
           <span class="chead">Disabled</span>
           <span class="chead">Disabled Typed</span>
+          <span class="chead">With Dropdown Menu</span>
 
           {sizes.map((size) => (
             <>
@@ -70,6 +73,9 @@ const sizes = Object.values(ItemInputSize);
                 testId={DEFAULT_TEST_ID}
                 placeholder="Введите текст"
                 isDisabled={true}
+              />
+              <ItemInputWrapper
+                client:only="solid-js"
               />
             </>
           ))}
