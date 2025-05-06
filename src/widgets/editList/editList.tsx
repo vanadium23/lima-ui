@@ -8,14 +8,7 @@ import {
   transformStyle,
   useDragDropContext,
 } from "@thisbeyond/solid-dnd";
-import {
-  createMemo,
-  For,
-  mergeProps,
-  onCleanup,
-  onMount,
-  Show,
-} from "solid-js";
+import { For, mergeProps, onCleanup, onMount, Show } from "solid-js";
 import { createStore } from "solid-js/store";
 
 import {
@@ -24,8 +17,8 @@ import {
   LIST_TITLE_INPUT_LIMIT,
 } from "../../../configuration.ts";
 import {
+  AUTO_LIST_ITEM,
   CHECKLIST_SWITCH,
-  SAVE_LIST_BUTTON,
   DEFAULT_TEST_ID,
   ITEMS_LIMIT_REACHED_WARNING,
   LIST_ITEM,
@@ -34,6 +27,7 @@ import {
   LIST_TITLE_INPUT,
   NETWORK_ERROR,
   REMOVE_LIST_DIALOG,
+  SAVE_LIST_BUTTON,
   TOOLS_BUTTON_COPY_ITEMS,
   TOOLS_BUTTON_PRINT_LIST,
   TOOLS_BUTTON_REMOVE_LIST,
@@ -77,16 +71,16 @@ import {
   type NewList,
   type ScrollContainer,
 } from "./types.ts";
-import {
-  createAutoScroll,
-  createScrollableCollisionsDetector,
-} from "./utilities/autoScroll.ts";
 import { checkChanges } from "./utilities/checkChages.ts";
 import { copyItemsToClipboard } from "./utilities/copyItemsToClipboard.ts";
 import {
   createDefaultItem,
   createDragId,
 } from "./utilities/createDefaultItem.ts";
+import {
+  createAutoScroll,
+  createScrollableCollisionsDetector,
+} from "./utilities/dragAndDrop.ts";
 import { getComparableList } from "./utilities/getComparableList.ts";
 import { getDataListItemInputs } from "./utilities/getDataListItemInputs.ts";
 import { isOnlyOneItem } from "./utilities/isOnlyOneItem.ts";
@@ -463,14 +457,13 @@ export const EditList = (props: EditListProps) => {
                   <DragDropSensors />
                   <SortableProvider ids={ids()}>
                     <For each={store.items}>
-                      {(item, getIndex) => {
-                        const index = createMemo(() => getIndex());
-                        const isLastItem = createMemo(
-                          () => index() === store.items.length - 1,
-                        );
-                        const isRequired = createMemo(
-                          () => !isLastItem() || isOnlyOneItem(store.items),
-                        );
+                      {(item, index) => {
+                        const isLastItem = () =>
+                          index() === store.items.length - 1;
+                        const isNotAutoItem = () =>
+                          !isLastItem() ||
+                          isOnlyOneItem(store.items) ||
+                          !!item.content;
 
                         const dragData = createSortable(item.dragId);
 
@@ -494,14 +487,18 @@ export const EditList = (props: EditListProps) => {
                               addItem({ mode: "after", index: index() })
                             }
                             canAddMore={store.items.length < ITEMS_LIMIT}
-                            testId={LIST_ITEM}
+                            testId={
+                              isNotAutoItem() ? LIST_ITEM : AUTO_LIST_ITEM
+                            }
                             testSubId={index()}
-                            isRequired={isRequired()}
+                            isRequired={isNotAutoItem()}
                             dragSettings={{
                               dragData,
                               dragProps: {
                                 ref: dragData.ref,
-                                style: store.draggedItem ? transformStyle(dragData.transform) : {},
+                                style: store.draggedItem
+                                  ? transformStyle(dragData.transform)
+                                  : {},
                               },
                               dragState: useDragDropContext()?.[0] || null,
                             }}

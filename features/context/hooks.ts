@@ -26,13 +26,12 @@ import type {
 } from "../../src/components/utilities/testable.ts";
 import type { AddressMeaning } from "../../utilities/addresses.ts";
 import {
-  buildFullTestId,
   buildTestableSelector,
   buildTestableSubSelector,
   destructureFullTestId,
 } from "../utilities/buildTestableSelector.ts";
 
-import { accountedTesting } from "./accountedTesting.ts";
+import { createAccountedTesting } from "./createAccountedTesting.ts";
 
 let browser: Browser;
 
@@ -41,8 +40,12 @@ interface ComplexWorldParameters {}
 export class ComplexWorld extends World<ComplexWorldParameters> {
   context!: BrowserContext;
   page!: Page;
-  accounting = accountedTesting;
+  accounting = {
+    elements: createAccountedTesting(),
+    itemAdders: createAccountedTesting(),
+  };
   data: Record<string, string> = {};
+  oldData: Record<string, string> = {};
   numbers: Record<string, number> = {};
   listIds: TestId[] = [];
   itemsValues: string[] = [];
@@ -109,10 +112,6 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
   expectLocatedVisible(fullTestId: FullTestId) {
     return expect(this.locateVisible(fullTestId));
   }
-
-  expectLocatedByIdParts(testId: TestId, testSubId: TestSubId) {
-    return this.expectLocated(buildFullTestId(testId, testSubId));
-  }
 }
 
 const MORE_THAN_IN_PLAYWRIGHT = 6000;
@@ -133,7 +132,7 @@ BeforeAll(async function () {
 
 Before(async function (this: ComplexWorld) {
   await this.setContextAndPage();
-  this.accounting.clearTestIds();
+  this.accounting.elements.clearTestIds();
 });
 
 // Take screenshot when a test fails - this needs to run BEFORE closing the page

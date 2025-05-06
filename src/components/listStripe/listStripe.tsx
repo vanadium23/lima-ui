@@ -1,12 +1,12 @@
 import { createSignal, mergeProps } from "solid-js";
 
 import {
+  LIST_ITEM_CONTEXT_MENU,
   LIST_STRIPE,
-  LIST_STRIPE_CONTEXT_MENU,
   LIST_STRIPE_LINK_TO_VIEW,
   LIST_STRIPE_REMOVE_BUTTON,
   OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
-  REMOVE_LIST_DIALOG
+  REMOVE_LIST_DIALOG,
 } from "../../../features/testIds.ts";
 import { LISTS } from "../../../utilities/addresses.ts";
 import { soften } from "../../widgets/editList/utilities/soften.ts";
@@ -134,10 +134,12 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
         <DropdownMenuWrapper
           iconSize={IconButtonSize.Medium}
           testId={OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON}
-          iconName={IconName.DotsThreeVertical}
           testSubId={mProps.defaultListId}
+          dropDownMenuTestId={LIST_ITEM_CONTEXT_MENU}
+          iconName={IconName.DotsThreeVertical}
           listOfButtons={dropdownMenuItems()}
-          isLoading={listStripeIsRemoving()} />
+          isLoading={listStripeIsRemoving()}
+        />
       </div>
 
       <Dialog

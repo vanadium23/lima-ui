@@ -1,35 +1,34 @@
 import { For, mergeProps, Show } from "solid-js";
 
-import {
-  DEFAULT_TEST_ID
-} from "../../../features/testIds";
+import { DEFAULT_TEST_ID } from "../../../features/testIds";
 import { DropdownMenu } from "../dropdownMenu/dropdownMenu";
 import { IconName } from "../icon/icon";
 import {
   IconButton,
   IconButtonComponentType,
-  IconButtonSize
+  IconButtonSize,
 } from "../iconButton/iconButton";
 import type { MenuItemProps } from "../menuItem/menuItem";
 import { MenuItem } from "../menuItem/menuItem";
 import { createDroppable } from "../utilities/createDroppable";
-import type { Testable } from "../utilities/testable";
+import type { Testable, TestId } from "../utilities/testable";
 
 type DropdownMenuWrapper = {
   iconName: IconName;
   listOfButtons: MenuItemProps[];
   iconSize: IconButtonSize;
+  dropDownMenuTestId: TestId;
   isDisabled?: boolean;
   isLoading?: boolean;
-}
+};
 
 export const DropdownMenuWrapper = (props: Testable<DropdownMenuWrapper>) => {
   const mProps: Testable<Required<DropdownMenuWrapper>> = mergeProps(
     {
       isDisabled: false,
-      isLoading: false
+      isLoading: false,
     },
-    props
+    props,
   );
 
   const [
@@ -57,7 +56,7 @@ export const DropdownMenuWrapper = (props: Testable<DropdownMenuWrapper>) => {
         <DropdownMenu
           ref={setMenuRef}
           floatingStyles={floatingPosition}
-          testId={DEFAULT_TEST_ID}
+          testId={mProps.dropDownMenuTestId}
         >
           <For each={mProps.listOfButtons}>
             {(button) => (
@@ -65,6 +64,10 @@ export const DropdownMenuWrapper = (props: Testable<DropdownMenuWrapper>) => {
                 testId={DEFAULT_TEST_ID}
                 testSubId={mProps.testSubId || "0"}
                 {...button}
+                handleClick={() => {
+                  button.handleClick?.();
+                  setIsMenuOpen(false);
+                }}
                 isDisabled={button.isDisabled || mProps.isDisabled}
               />
             )}
