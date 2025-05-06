@@ -70,6 +70,7 @@ import {
   type List,
   type NewList,
   type ScrollContainer,
+  type UpdatedList,
 } from "./types.ts";
 import { checkChanges } from "./utilities/checkChages.ts";
 import { copyItemsToClipboard } from "./utilities/copyItemsToClipboard.ts";
@@ -82,8 +83,8 @@ import {
   createScrollableCollisionsDetector,
 } from "./utilities/dragAndDrop.ts";
 import { getComparableList } from "./utilities/getComparableList.ts";
-import { getDataListItemInputs } from "./utilities/getDataListItemInputs.ts";
 import { isOnlyOneItem } from "./utilities/isOnlyOneItem.ts";
+import { prepareListItemsDataForSending } from "./utilities/prepareListItemsDataForSending.ts";
 import { soften } from "./utilities/soften.ts";
 import "./editList.css";
 
@@ -132,6 +133,7 @@ export const EditList = (props: EditListProps) => {
     name: list.name,
     purpose: list.purpose,
     note: list.note,
+    initialList: list,
     sendingNow: false,
     error: false,
     isCheckable: false,
@@ -253,7 +255,7 @@ export const EditList = (props: EditListProps) => {
       const target = event.target as HTMLFormElement & EditListForm;
 
       const elements = Array.from(target.elements) as HTMLInputElement[];
-      const inputsValues = getDataListItemInputs(elements, store);
+      const inputsValues = prepareListItemsDataForSending(elements, store);
       const data = {
         name: target[EditListFormNames.ListTitle].value,
         purpose: target[EditListFormNames.ListPurpose].value,
@@ -305,7 +307,7 @@ export const EditList = (props: EditListProps) => {
       });
   }
 
-  function sendUpdatedList(data: List) {
+  function sendUpdatedList(data: UpdatedList) {
     setStore({
       error: false,
       sendingNow: "saving",

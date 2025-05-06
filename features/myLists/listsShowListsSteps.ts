@@ -106,7 +106,7 @@ When(
         name: `Здесь был Максим + ${i + 1}`,
         purpose: "",
         note: "",
-        items: [{ id: "", content: getStringUpToLimit(10) }],
+        items: [{ content: getStringUpToLimit(10) }],
       };
 
       await createList(listData, this.BACKEND_ADDRESS);
