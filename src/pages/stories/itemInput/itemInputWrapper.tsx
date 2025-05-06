@@ -27,6 +27,7 @@ export function ItemInputWrapper() {
           iconName={IconName.DotsThreeCircle}
           testId={OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON}
           testSubId="0"
+          dropDownMenuTestId={DEFAULT_TEST_ID}
           listOfButtons={dropdownItems()}
           isDisabled={false}
         />
