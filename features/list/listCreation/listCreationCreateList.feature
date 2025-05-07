@@ -31,7 +31,6 @@ Feature: Successfully creating list with correct data
     Then All necessary elements are on the "List Creation Item Added, Note Expanded" page
     Then I expect to see no other elements
 
-  @needs-fixing
   Scenario: All controls are enabled after successful list creation
     When I type some text with length less or equal to the one of "first item" input limit
     And I press the "save" button

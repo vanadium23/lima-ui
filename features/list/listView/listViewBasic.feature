@@ -3,7 +3,6 @@ Feature: Seeing the basis of List view page
   Background:
     When I clear all data
 
-  @needs-fixing
   Scenario: Seeing list on List view page
     When I add a list
     Then I expect to see the suffixed list title as tab title

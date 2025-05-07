@@ -5,7 +5,6 @@ Feature: Controls state after list update
     And I add a list
     And I refresh the page
 
-  @needs-fixing
   Scenario: All controls are enabled after successful list update
     When I type some text with length less or equal to the one of "list title" input limit
     And I press on the "list note" accordion

@@ -35,6 +35,7 @@ import {
   TOOLS_PANEL_ADD_ITEM_BUTTON,
 } from "../../../features/testIds.ts";
 import { LISTS } from "../../../utilities/addresses.ts";
+import { suffixTabTitle } from "../../../utilities/tabTitle.ts";
 import { Button, ButtonType } from "../../components/button/button.tsx";
 import { Dialog } from "../../components/dialog/dialog.tsx";
 import { Divider } from "../../components/divider/divider.tsx";
@@ -269,6 +270,7 @@ export const EditList = (props: EditListProps) => {
         soften(() => {
           history.pushState({}, "", `${LISTS}${newList.id}`);
           setLocation(window.location.pathname);
+          document.title = suffixTabTitle(newList.name);
 
           setStore({
             id: newList.id,
@@ -302,6 +304,8 @@ export const EditList = (props: EditListProps) => {
     updateList(data)
       .then((updatedList) => {
         soften(() => {
+          document.title = suffixTabTitle(updatedList.name);
+
           setStore({
             isNewList: false,
             sendingNow: false,
