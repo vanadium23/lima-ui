@@ -118,7 +118,7 @@ const MORE_THAN_IN_PLAYWRIGHT = 6000;
 setDefaultTimeout(MORE_THAN_IN_PLAYWRIGHT);
 setWorldConstructor(ComplexWorld);
 
-const debugging = false; // HINT DEBUGGING
+const debugging = false;
 
 const screenshotsFolder = path.join(process.cwd(), "features", "screenshots");
 

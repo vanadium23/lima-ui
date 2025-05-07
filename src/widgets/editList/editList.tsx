@@ -72,17 +72,15 @@ import {
   type ScrollContainer,
   type UpdatedList,
 } from "./types.ts";
-import { checkChanges } from "./utilities/checkChages.ts";
+import { addAutoItemIfNeeded } from "./utilities/addAutoItemIfNeeded.ts";
+import { checkChanges } from "./utilities/checkChanges.ts";
 import { copyItemsToClipboard } from "./utilities/copyItemsToClipboard.ts";
+import { createDefaultItem } from "./utilities/createDefaultItem.ts";
 import {
-  createDefaultItem,
-  createDragId,
-} from "./utilities/createDefaultItem.ts";
-import {
+  convertItemsToDragItems,
   createAutoScroll,
   createScrollableCollisionsDetector,
 } from "./utilities/dragAndDrop.ts";
-import { getComparableList } from "./utilities/getComparableList.ts";
 import { isOnlyOneItem } from "./utilities/isOnlyOneItem.ts";
 import { prepareListItemsDataForSending } from "./utilities/prepareListItemsDataForSending.ts";
 import { soften } from "./utilities/soften.ts";
@@ -114,22 +112,17 @@ export const EditList = (props: EditListProps) => {
 
   let scrollContainer: ScrollContainer = undefined;
 
-  const list = mProps.defaultList;
-
-  let initialData = getComparableList(list);
-
   function scrollToBottom() {
     if (scrollContainer) {
       scrollContainer.scrollTop = scrollContainer.scrollHeight;
     }
   }
 
+  const list = mProps.defaultList;
+
   const [store, setStore] = createStore<EditListStore>({
     id: list.id,
-    items: list.items.map((item) => ({
-      ...item,
-      dragId: item.id || createDragId(),
-    })),
+    items: addAutoItemIfNeeded(convertItemsToDragItems(list)),
     name: list.name,
     purpose: list.purpose,
     note: list.note,
@@ -165,13 +158,6 @@ export const EditList = (props: EditListProps) => {
 
     window.addEventListener("beforeunload", handleLeave);
 
-    if (
-      store.items.length === 0 ||
-      store.items[store.items.length - 1]?.content.trim() !== ""
-    ) {
-      addItem({ mode: "end" });
-    }
-
     onCleanup(() => {
       window.removeEventListener("beforeunload", handleLeave);
     });
@@ -188,7 +174,7 @@ export const EditList = (props: EditListProps) => {
 
     if (options.mode === "end") {
       setStore("items", [...store.items, newItem]);
-      checkChanges(initialData, store, setStore);
+      checkChanges(store, setStore);
 
       if (options.scroll) {
         requestAnimationFrame(scrollToBottom);
@@ -206,12 +192,12 @@ export const EditList = (props: EditListProps) => {
       ...items.slice(insertIndex),
     ]);
 
-    checkChanges(initialData, store, setStore);
+    checkChanges(store, setStore);
   }
 
   function handleItemChange(index: number, value: string) {
     setStore("items", index, "content", value);
-    checkChanges(initialData, store, setStore);
+    checkChanges(store, setStore);
 
     const isLastItem = index === store.items.length - 1;
 
@@ -240,12 +226,12 @@ export const EditList = (props: EditListProps) => {
     setStore("items", (items) =>
       items.filter((_item, index) => index !== indexToRemove),
     );
-    checkChanges(initialData, store, setStore);
+    checkChanges(store, setStore);
   }
 
-  function handleInputChange(key: keyof typeof initialData, value: string) {
+  function handleInputChange(key: keyof List, value: string) {
     setStore(key, value);
-    checkChanges(initialData, store, setStore);
+    checkChanges(store, setStore);
   }
 
   function prepareAndSendListData(event: SubmitEvent) {
@@ -288,10 +274,11 @@ export const EditList = (props: EditListProps) => {
             id: newList.id,
             isNewList: false,
             sendingNow: false,
+            items: addAutoItemIfNeeded(convertItemsToDragItems(newList)),
+            initialList: newList,
           });
 
-          initialData = getComparableList(store);
-          checkChanges(initialData, store, setStore);
+          checkChanges(store, setStore);
         });
       })
       .catch((error) => {
@@ -301,8 +288,7 @@ export const EditList = (props: EditListProps) => {
         );
 
         soften(() => {
-          setStore("error", true);
-          setStore("sendingNow", false);
+          setStore({ error: true, sendingNow: false });
         });
       });
   }
@@ -314,15 +300,16 @@ export const EditList = (props: EditListProps) => {
     });
 
     updateList(data)
-      .then(() => {
+      .then((updatedList) => {
         soften(() => {
           setStore({
             isNewList: false,
             sendingNow: false,
+            items: addAutoItemIfNeeded(convertItemsToDragItems(updatedList)),
+            initialList: updatedList,
           });
 
-          initialData = getComparableList(store);
-          checkChanges(initialData, store, setStore);
+          checkChanges(store, setStore);
         });
       })
       .catch((error) => {
@@ -392,7 +379,7 @@ export const EditList = (props: EditListProps) => {
         const updatedItems = [...currentItems];
         updatedItems.splice(toIndex, 0, ...updatedItems.splice(fromIndex, 1));
         setStore("items", updatedItems);
-        checkChanges(initialData, store, setStore);
+        checkChanges(store, setStore);
       }
     }
 

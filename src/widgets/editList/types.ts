@@ -6,8 +6,10 @@ export type Item = {
   id: string;
 };
 
+export type Items = Item[];
+
 export type List = {
-  items: Item[];
+  items: Items;
   id: string;
   name: string;
   purpose: string;
@@ -20,8 +22,10 @@ export type DragItem = {
   id: string;
 };
 
+export type DragItems = DragItem[];
+
 export type DragList = {
-  items: DragItem[];
+  items: DragItems;
   id: string;
   name: string;
   purpose: string;
@@ -53,6 +57,7 @@ export type ComparableList = {
   purpose: string;
   note: string;
 };
+
 export type EditListStore = DragList & {
   initialList: List;
   sendingNow: false | "saving" | "deleting";
