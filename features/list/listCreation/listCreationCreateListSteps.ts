@@ -36,7 +36,7 @@ Then(
   async function (this: ComplexWorld, accordionMeaning: AccordionMeaning) {
     const accordionTestId = ACCORDION_TEST_IDS[accordionMeaning];
 
-    const accordion = this.locate(
+    const accordion = this.locateByIdParts(
       this.accounting.elements.registerTestId(accordionTestId),
     );
 
@@ -79,7 +79,7 @@ Then(
   "I expect to see the {string} button in the loading state",
   async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
     await expect(
-      this.locate(
+      this.locateByIdParts(
         this.accounting.elements.registerTestId(BUTTON_TEST_IDS[buttonMeaning]),
       ).locator("svg"),
     ).toBeInViewport();
@@ -89,7 +89,7 @@ Then(
 When(
   "I type some text to all items inputs",
   async function (this: ComplexWorld) {
-    const allItemsInputs = await this.locate(LIST_ITEM_INPUT).all();
+    const allItemsInputs = await this.locateByIdParts(LIST_ITEM_INPUT).all();
     let count = 0;
 
     for (const itemInput of allItemsInputs) {
@@ -102,7 +102,7 @@ When(
 );
 
 Then("I expect all items inputs disabled", async function (this: ComplexWorld) {
-  const allItemsInputs = await this.locate(LIST_ITEM_INPUT).all();
+  const allItemsInputs = await this.locateByIdParts(LIST_ITEM_INPUT).all();
 
   for (const itemInput of allItemsInputs) {
     await expect(itemInput).toBeDisabled();

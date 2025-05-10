@@ -96,7 +96,7 @@ Then(
   "I expect to see items inputs area without scroll",
   async function (this: ComplexWorld) {
     expect(
-      await this.locate(
+      await this.locateByIdParts(
         this.accounting.elements.registerTestId(LIST_ITEMS),
       ).evaluate(noVerticalScroll),
     ).toBe(true);
@@ -106,7 +106,7 @@ Then(
 Then(
   "I expect to see single item input enabled",
   async function (this: ComplexWorld) {
-    await registerItem.call(this, this.locate(LIST_ITEM_INPUT));
+    await registerItem.call(this, this.locateByIdParts(LIST_ITEM_INPUT));
 
     const expectItemInput = this.expectLocated(LIST_ITEM_INPUT);
 
@@ -126,7 +126,7 @@ Then(
   ) {
     // Находим локатор по тестовому ID
     const buttonFullTestId = BUTTON_TEST_IDS[buttonMeaning];
-    const buttonLocator = this.locate(
+    const buttonLocator = this.locateByIdParts(
       this.accounting.elements.registerTestId(buttonFullTestId),
     );
 

@@ -19,7 +19,7 @@ import {
 import {
   AUTO_LIST_ITEM,
   CHECKLIST_SWITCH,
-  DEFAULT_TEST_ID,
+  DRAGGED_LIST_ITEM,
   ITEMS_LIMIT_REACHED_WARNING,
   LIST_ITEM,
   LIST_ITEMS,
@@ -507,7 +507,7 @@ export const EditList = (props: EditListProps) => {
                       defaultValue={draggedItemData().content}
                       dataId={draggedItemData().dragId}
                       canAddMore={true}
-                      testId={DEFAULT_TEST_ID}
+                      testId={DRAGGED_LIST_ITEM}
                       isDraggingOverlay={true}
                     />
                   </DragOverlay>

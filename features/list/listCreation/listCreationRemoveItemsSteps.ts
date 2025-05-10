@@ -40,7 +40,7 @@ Then(
 Then(
   "I expect to see the only one list item left on the page",
   async function (this: ComplexWorld) {
-    await expect(this.locate(LIST_ITEM)).toHaveCount(1);
+    await expect(this.locateByIdParts(LIST_ITEM)).toHaveCount(1);
   },
 );
 

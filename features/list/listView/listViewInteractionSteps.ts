@@ -27,7 +27,7 @@ Then(
 When(
   "I press the {string} switch",
   async function (this: ComplexWorld, switchMeaning: SwitchMeaning) {
-    const switchElement = this.locate(
+    const switchElement = this.locateByIdParts(
       this.accounting.elements.registerTestId(SWITCH_TEST_IDS[switchMeaning]),
     );
 
@@ -38,7 +38,7 @@ When(
 Then(
   "I expect to see checkboxes for all list items",
   async function (this: ComplexWorld) {
-    const itemInputs = this.locate(LIST_ITEM);
+    const itemInputs = this.locateByIdParts(LIST_ITEM);
 
     for (const itemInput of await itemInputs.all()) {
       const checkbox = itemInput.locator(buildTestableSelector(CHECKBOX));
@@ -50,7 +50,7 @@ Then(
 Then(
   "I expect not to see checkboxes for any list item",
   async function (this: ComplexWorld) {
-    const itemInputs = this.locate(LIST_ITEM);
+    const itemInputs = this.locateByIdParts(LIST_ITEM);
 
     for (const itemInput of await itemInputs.all()) {
       const checkbox = itemInput.locator(buildTestableSelector(CHECKBOX));
@@ -60,7 +60,7 @@ Then(
 );
 
 When("I check a random checkbox", async function (this: ComplexWorld) {
-  const itemInputs = this.locate(LIST_ITEM);
+  const itemInputs = this.locateByIdParts(LIST_ITEM);
   const allItemInputs = await itemInputs.all();
 
   const randomIndex = Math.floor(Math.random() * allItemInputs.length);
@@ -76,7 +76,7 @@ When("I check a random checkbox", async function (this: ComplexWorld) {
 Then(
   "I expect the checked checkbox to be checked",
   async function (this: ComplexWorld) {
-    const itemInputs = this.locate(LIST_ITEM);
+    const itemInputs = this.locateByIdParts(LIST_ITEM);
 
     const checkedIndex = this.numbers.checkedCheckboxIndex;
 
@@ -94,7 +94,7 @@ Then(
 Then(
   "I expect other checkboxes not to be checked",
   async function (this: ComplexWorld) {
-    const itemInputs = this.locate(LIST_ITEM);
+    const itemInputs = this.locateByIdParts(LIST_ITEM);
     const allItemInputs = await itemInputs.all();
 
     const checkedIndex = this.numbers.checkedCheckboxIndex;
@@ -115,7 +115,7 @@ Then(
 );
 
 When("I uncheck the checked checkbox", async function (this: ComplexWorld) {
-  const itemInputs = this.locate(LIST_ITEM);
+  const itemInputs = this.locateByIdParts(LIST_ITEM);
 
   const checkedIndex = this.numbers.checkedCheckboxIndex;
 
@@ -132,7 +132,7 @@ When("I uncheck the checked checkbox", async function (this: ComplexWorld) {
 Then(
   "I expect all checkboxes not to be checked",
   async function (this: ComplexWorld) {
-    const itemInputs = this.locate(LIST_ITEM);
+    const itemInputs = this.locateByIdParts(LIST_ITEM);
     const allItemInputs = await itemInputs.all();
 
     for (const itemInput of allItemInputs) {

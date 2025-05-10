@@ -1,0 +1,4 @@
+Rules for creating new Cucumber scenarios in the `feature` folder:
+  - Use the existing steps as much as possible. In case there are no relevant, create the corresponding *Steps.ts file and write the implementation there.
+  - Don’t create the corresponding *Steps.ts file if no new implementations are needed.
+  - To test every new scenario add the @under-development tag, and then run the `npm run test-current` command.
