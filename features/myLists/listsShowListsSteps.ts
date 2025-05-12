@@ -76,7 +76,7 @@ Then(
 Then(
   "I expect to see the following number of list stripes: {int}",
   async function (this: ComplexWorld, listStripesQuantity: number) {
-    const listStripes = this.locate(LIST_STRIPE);
+    const listStripes = this.locateByIdParts(LIST_STRIPE);
 
     const listsIds = (await listStripes.all()).map((listStripe) =>
       listStripe.getAttribute(TEST_SUB_ID_ATTRIBUTE),
@@ -106,7 +106,7 @@ When(
         name: `Здесь был Максим + ${i + 1}`,
         purpose: "",
         note: "",
-        items: [{ id: "", content: getStringUpToLimit(10) }],
+        items: [{ content: getStringUpToLimit(10) }],
       };
 
       await createList(listData, this.BACKEND_ADDRESS);

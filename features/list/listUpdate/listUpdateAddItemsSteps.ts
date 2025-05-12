@@ -7,7 +7,7 @@ import { LIST_ITEM, LIST_ITEM_INPUT } from "../../testIds.ts";
 When(
   "I fill empty items inputs with their index",
   async function (this: ComplexWorld) {
-    const itemInputs = this.locate(LIST_ITEM_INPUT);
+    const itemInputs = this.locateByIdParts(LIST_ITEM_INPUT);
     const count = await itemInputs.count();
 
     this.itemsValues = [];
@@ -29,7 +29,7 @@ When(
 When(
   "I expect all items inputs to have the same text after saving",
   async function (this: ComplexWorld) {
-    const itemInputs = this.locate(LIST_ITEM_INPUT);
+    const itemInputs = this.locateByIdParts(LIST_ITEM_INPUT);
     const count = await itemInputs.count();
 
     const verificationCount = Math.min(count, this.itemsValues.length);
@@ -47,7 +47,7 @@ When(
 Then(
   "I expect the number of items to remain the same",
   async function (this: ComplexWorld) {
-    const items = this.locate(LIST_ITEM);
+    const items = this.locateByIdParts(LIST_ITEM);
 
     expect(await items.count()).toEqual(this.itemsValues.length);
   },

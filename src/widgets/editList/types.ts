@@ -6,17 +6,12 @@ export type Item = {
   id: string;
 };
 
+export type Items = Item[];
+
 export type List = {
-  items: Item[];
+  items: Items;
   id: string;
   name: string;
-  purpose: string;
-  note: string;
-};
-
-export type NewList = {
-  name: string;
-  items: Item[];
   purpose: string;
   note: string;
 };
@@ -27,12 +22,31 @@ export type DragItem = {
   id: string;
 };
 
+export type DragItems = DragItem[];
+
 export type DragList = {
-  items: DragItem[];
+  items: DragItems;
   id: string;
   name: string;
   purpose: string;
   note: string;
+};
+
+export type ItemToSend = Item | { id: string } | { content: string };
+
+export type NewList = {
+  name: string;
+  purpose: string;
+  note: string;
+  items: ItemToSend[];
+};
+
+export type UpdatedList = {
+  id: string;
+  name: string;
+  purpose: string;
+  note: string;
+  items: ItemToSend[];
 };
 
 export type ScrollContainer = HTMLDivElement | undefined;
@@ -43,7 +57,9 @@ export type ComparableList = {
   purpose: string;
   note: string;
 };
+
 export type EditListStore = DragList & {
+  initialList: List;
   sendingNow: false | "saving" | "deleting";
   error: boolean;
   isCheckable: boolean;

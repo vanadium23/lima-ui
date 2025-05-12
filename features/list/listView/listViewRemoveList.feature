@@ -59,7 +59,6 @@ Feature: Removing a list from the List view page
     Then I expect to see the warning about items inputs limit reached
     Then I expect to see the "list removal" error
 
-  @needs-fixing
   Scenario: Disabling form controls when pressing the "Confirm list removal" button
     When I add a list
     And I press on the "list note" accordion

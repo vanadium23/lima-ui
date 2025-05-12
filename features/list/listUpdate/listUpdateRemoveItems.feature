@@ -55,7 +55,6 @@ Feature: Removing items from an existing list
     And I expect not to see the "third item" input with the text I provided
     And I expect not to see the "forth item" input with the text I provided
 
-  @needs-fixing
   Scenario: Imitating a removed list item should not disable the save button
     When I press the "add list item" button
     And I type some text with length less or equal to the one of "second item" input limit

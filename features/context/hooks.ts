@@ -75,7 +75,7 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
     });
   }
 
-  locate(testId: TestId, testSubId?: TestSubId) {
+  locateByIdParts(testId: TestId, testSubId?: TestSubId) {
     const elementWithRequiredId = this.page.locator(
       buildTestableSelector(testId),
     );
@@ -90,15 +90,15 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
   }
 
   locateVisible(testId: TestId, testSubId?: TestSubId) {
-    return this.locate(testId, testSubId).locator("visible=true");
+    return this.locateByIdParts(testId, testSubId).locator("visible=true");
   }
 
   locateByFullId(fullTestId: FullTestId) {
     const { testId, testSubId } = destructureFullTestId(fullTestId);
 
-    if (testSubId) return this.locate(testId, testSubId);
+    if (testSubId) return this.locateByIdParts(testId, testSubId);
 
-    return this.locate(testId);
+    return this.locateByIdParts(testId);
   }
 
   locateAllTestable() {
@@ -118,7 +118,7 @@ const MORE_THAN_IN_PLAYWRIGHT = 6000;
 setDefaultTimeout(MORE_THAN_IN_PLAYWRIGHT);
 setWorldConstructor(ComplexWorld);
 
-const debugging = false; // HINT DEBUGGING
+const debugging = false;
 
 const screenshotsFolder = path.join(process.cwd(), "features", "screenshots");
 
@@ -159,7 +159,7 @@ After("@last", async function (this: ComplexWorld) {
   debugging || (await this.context.close());
 });
 
-AfterAll({ timeout: 15000 }, async function () {
+AfterAll({ timeout: 60000 }, async function () {
   debugging || (await browser.close());
 });
 
