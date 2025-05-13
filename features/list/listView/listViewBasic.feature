@@ -5,6 +5,7 @@ Feature: Seeing the basis of List view page
 
   Scenario: Seeing list on List view page
     When I add a list
+    Then I expect to see the suffixed list title as tab title
     Then I expect to see sidebar
     Then I expect to see header
     Then I expect to see tools panel
@@ -20,7 +21,29 @@ Feature: Seeing the basis of List view page
     Then I expect to see the "remove list tools panel" button enabled
     Then I expect to see the "checklist" switch enabled
     Then I expect to see the "print list" button enabled
-    Then All elements expected to be on the "List View" page
+    Then All necessary elements are on the "List View" page
+    Then I expect to see no other elements
+
+  Scenario: Seeing list on List view page after page refresh
+    When I add a list
+    And I refresh the page
+    Then I expect to see the suffixed list title as tab title
+    Then I expect to see sidebar
+    Then I expect to see header
+    Then I expect to see tools panel
+    Then I expect to see the "list title" input enabled
+    Then I expect to see the "list purpose" input enabled
+    Then I expect to fully see the collapsed "list note" accordion ready for expanding
+    Then I expect to see items inputs area without scroll
+    Then I expect to see the "first" item input enabled
+    Then I expect to see the "automatic" item input enabled
+    Then I expect to see the "save" button "disabled" with the following text: "Сохранить"
+    Then I expect to see the "add list item" button enabled
+    Then I expect to see the "copy items" button enabled
+    Then I expect to see the "remove list tools panel" button enabled
+    Then I expect to see the "checklist" switch enabled
+    Then I expect to see the "print list" button enabled
+    Then All necessary elements are on the "List View" page
     Then I expect to see no other elements
 
   Scenario: First item is visible when opening a list with many items
@@ -43,10 +66,11 @@ Feature: Seeing the basis of List view page
     And I open Lists page
     And I press on the "first" list stripe
     But Error happens while loading
+    Then I expect to see the default tab title
     Then I expect to see sidebar
     Then I expect to see header
     Then I expect not to see tools panel
     Then I expect to see the "connection" error
     Then I expect not to see the "save" button
-    Then All elements expected to be on the "List View with Error" page
+    Then All necessary elements are on the "List View with Error" page
     Then I expect to see no other elements

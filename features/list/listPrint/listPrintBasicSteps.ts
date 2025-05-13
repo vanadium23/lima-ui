@@ -9,7 +9,7 @@ import { PRINT_ELEMENT_TEST_IDS, type PrintElementMeaning } from "./testIds.ts";
 When(
   "I press the print list button and wait for the new tab with printing stub",
   async function (this: ComplexWorld) {
-    await this.locate(TOOLS_BUTTON_PRINT_LIST).click();
+    await this.locateByIdParts(TOOLS_BUTTON_PRINT_LIST).click();
 
     const newPage = await this.context.waitForEvent("page");
 
@@ -52,7 +52,7 @@ Then(
 Then(
   "I expect to see checkboxes for all list items on the print page",
   async function (this: ComplexWorld) {
-    const listItems = this.locate(PRINT_LIST_ITEM);
+    const listItems = this.locateByIdParts(PRINT_LIST_ITEM);
 
     expect(await listItems.count()).toBeGreaterThan(0);
 
@@ -75,7 +75,7 @@ Then(
 When(
   "I press the print list button and check for system print dialog",
   async function (this: ComplexWorld) {
-    await this.locate(TOOLS_BUTTON_PRINT_LIST).click();
+    await this.locateByIdParts(TOOLS_BUTTON_PRINT_LIST).click();
 
     const newPage = await this.context.waitForEvent("page");
 

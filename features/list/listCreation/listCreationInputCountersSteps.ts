@@ -61,6 +61,7 @@ When(
 
     const text = getStringUpToLimit(inputLimit);
 
+    this.oldData[inputMeaning] = this.data[inputMeaning] || "";
     this.data[inputMeaning] = text;
 
     await this.locateByFullId(INPUT_TEST_IDS[inputMeaning]).fill(text);

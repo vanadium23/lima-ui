@@ -7,6 +7,9 @@ ItemInputTheme,
 } from "../../../components/itemInput/itemInput.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
+import { dropdownItems } from "./itemInputMenu";
+import { ItemInputWrapper } from "./itemInputWrapper.tsx";
+
 const themes = Object.values(ItemInputTheme);
 const sizes = Object.values(ItemInputSize);
 ---
@@ -16,37 +19,24 @@ const sizes = Object.values(ItemInputSize);
     themes.map((theme) => (
       <div class="demoThemeWrapper">
         <h3 class="demoThemeWrapper__title">{theme}</h3>
-        <div class="grid grid_4Col">
+        <div class="grid grid_5Col">
           <span class="chead" />
           <span class="chead">Default</span>
           <span class="chead">Error</span>
           <span class="chead">Disabled</span>
           <span class="chead">Disabled Typed</span>
+          <span class="chead">With Dropdown Menu</span>
 
           {sizes.map((size) => (
             <>
               <span class="rhead">{size}</span>
 
-              <ItemInput
+              <ItemInputWrapper
                 client:only="solid-js"
-                theme={theme}
-                size={size}
-                maxLength={200}
-                isRequired={true}
-                name="Some-text"
-                testId={DEFAULT_TEST_ID}
-                placeholder="Введите текст"
               />
-              <ItemInput
+              <ItemInputWrapper
                 client:only="solid-js"
-                theme={theme}
-                size={size}
-                defaultIsError={true}
-                maxLength={200}
-                name="Some-text"
-                isRequired={true}
-                testId={DEFAULT_TEST_ID}
-                placeholder="Введите текст"
+                isError={true}
               />
               <ItemInput
                 client:only="solid-js"
@@ -70,6 +60,10 @@ const sizes = Object.values(ItemInputSize);
                 testId={DEFAULT_TEST_ID}
                 placeholder="Введите текст"
                 isDisabled={true}
+              />
+              <ItemInputWrapper
+                client:only="solid-js"
+                listOfButtons={dropdownItems()}
               />
             </>
           ))}

@@ -4,6 +4,8 @@ export type SeveralTestIds = TestId[];
 
 export const DEFAULT_TEST_ID = "defaultTestId";
 
+export const PAGE_TAB_TITLE = "pageTabTitle";
+
 export const SIDEBAR = "sidebar";
 export const HEADER = "header";
 export const ADD_GROUP_BUTTON = "addGroupButton";
@@ -16,6 +18,9 @@ export const LIST_ITEMS = "listItems";
 const LIST_ITEM_INPUT_SUFFIX = "Input";
 export const LIST_ITEM = "listItem";
 export const LIST_ITEM_INPUT = buildListItemInputTestId(LIST_ITEM);
+export const DRAGGED_LIST_ITEM = "draggedListItem";
+export const DRAGGED_LIST_ITEM_INPUT =
+  buildListItemInputTestId(DRAGGED_LIST_ITEM);
 
 export function buildListItemInputTestId(listItemTestId: TestId): TestId {
   return `${listItemTestId}${LIST_ITEM_INPUT_SUFFIX}`;

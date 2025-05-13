@@ -1,4 +1,6 @@
 ---
+import { suffixTabTitle } from "../../../utilities/tabTitle";
+
 import "normalize.css";
 import "./storybookPage.css";
 import "../main.css";
@@ -21,14 +23,14 @@ const { title } = Astro.props;
       name="msapplication-TileImage"
     />
     <meta content="#ffffff" name="theme-color" />
-    <title>Svernik - {title}</title>
+    <title>{suffixTabTitle(title)}</title>
   </head>
   <body>
     <header></header>
 
     <div class="wrapper">
       <aside class="storybookSidebar">
-        <h1 hidden>Svernik</h1>
+        <h1 hidden>Lima</h1>
         <div class="storybookLogo">
           <svg
             width="33"
@@ -68,7 +70,7 @@ const { title } = Astro.props;
               d="M24.6158 0.211814C23.7654 0.555482 23.0134 1.70388 23.0134 2.65888C23.0134 3.31912 23.2261 3.7408 23.8984 4.41309C24.6938 5.20854 24.8862 5.28429 25.7993 5.16188C27.0077 4.99958 27.6627 4.46677 28.0334 3.3437C28.4295 2.14287 27.8287 0.818375 26.6678 0.333227C25.6827 -0.0784217 25.3787 -0.0964831 24.6158 0.211814ZM20.0107 5.79929C19.67 5.97514 19.224 6.41714 19.0196 6.78138C18.5412 7.63327 18.7833 7.94508 21.0545 9.40253C21.9776 9.9948 22.8526 10.703 22.9986 10.9759C23.1559 11.2696 23.2642 13.2238 23.2642 15.7656C23.2642 21.101 23.5236 21.8054 25.4798 21.7821C25.8478 21.7778 26.3281 21.6366 26.5471 21.4685C27.4065 20.8085 27.5287 20.0999 27.5287 15.7697C27.5287 13.225 27.6371 11.2696 27.7944 10.9759C27.9404 10.703 28.8153 9.9948 29.7385 9.40253C31.9793 7.9644 32.1765 7.71079 31.748 6.817C31.2243 5.72404 30.2913 5.39643 28.6643 5.73407C27.9158 5.8896 26.8788 6.30476 26.3597 6.65696C25.6167 7.16117 25.3345 7.23668 25.0302 7.01166C23.5211 5.89738 21.0008 5.28856 20.0107 5.79929Z"
               fill="#18C229"></path>
           </svg>
-          <span class="storybookLogo__text">Svernik</span>
+          <span class="storybookLogo__text">Lima</span>
         </div>
         <div class="storybookSidebar__navWrapper">
           <div class="storybookSidebar__nav">

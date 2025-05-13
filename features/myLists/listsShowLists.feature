@@ -7,7 +7,7 @@ Feature: Seeing the added lists on the Lists page
     When I add a list
     And I hover away from anything actionable
     And I open Lists page
-    Then All elements expected to be on the "Lists despite lists number" page
+    Then All necessary elements are on the "Lists Despite Lists Number" page
     Then I expect to see created list
     Then I expect to see no other elements
 
@@ -17,7 +17,7 @@ Feature: Seeing the added lists on the Lists page
     And I add a list
     And I hover away from anything actionable
     And I open Lists page
-    Then All elements expected to be on the "Lists despite lists number" page
+    Then All necessary elements are on the "Lists Despite Lists Number" page
     Then I expect to see the following number of list stripes: 3
     Then I expect to see no other elements
 
@@ -29,5 +29,12 @@ Feature: Seeing the added lists on the Lists page
 
   Scenario: Lists page with lists loading error
     When I open Lists page with failed lists loading
+    Then I expect to see the following suffixed tab title: "Мои списки"
+    Then I expect to see sidebar
+    Then I expect to see header
+    Then I expect to see the following title: "Мои списки"
     Then I expect to see the "connection" error
-    Then I expect to see the "save" button "enabled" with the following text: "Создать"
+    Then I expect to see the "save" button enabled
+    Then All necessary elements are on the "Lists with Error" page
+    Then I expect to see no other elements
+

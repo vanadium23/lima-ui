@@ -15,8 +15,8 @@ import { calculateCurrentItemsCount } from "../utilities/calculateCurrentItemsCo
 When(
   "I add list items till scroll appears plus one item input",
   async function (this: ComplexWorld) {
-    const addItemButton = this.locate(TOOLS_PANEL_ADD_ITEM_BUTTON);
-    const itemsInputs = this.locate(LIST_ITEMS);
+    const addItemButton = this.locateByIdParts(TOOLS_PANEL_ADD_ITEM_BUTTON);
+    const itemsInputs = this.locateByIdParts(LIST_ITEMS);
 
     while (
       (await itemsInputs.evaluate(noVerticalScroll)) &&
@@ -34,19 +34,21 @@ When(
 Then(
   "I expect to see the last added item input",
   async function (this: ComplexWorld) {
-    await expect(this.locate(LIST_ITEM_INPUT).last()).toBeInViewport();
+    await expect(this.locateByIdParts(LIST_ITEM_INPUT).last()).toBeInViewport();
   },
 );
 
 Then("I expect not to see the first item input", async function () {
-  await expect(this.locate(LIST_ITEM_INPUT).first()).not.toBeInViewport();
+  await expect(
+    this.locateByIdParts(LIST_ITEM_INPUT).first(),
+  ).not.toBeInViewport();
 });
 
 When(
   "I add list items to their limit",
   { timeout: 60000 },
   async function (this: ComplexWorld) {
-    const addItemButton = this.locate(TOOLS_PANEL_ADD_ITEM_BUTTON);
+    const addItemButton = this.locateByIdParts(TOOLS_PANEL_ADD_ITEM_BUTTON);
 
     for (let i = await calculateCurrentItemsCount(this); i < ITEMS_LIMIT; i++) {
       await addItemButton.click();
@@ -64,7 +66,7 @@ Then(
 When(
   "I fill all items inputs with their index",
   async function (this: ComplexWorld) {
-    const itemInputs = this.locate(LIST_ITEM_INPUT);
+    const itemInputs = this.locateByIdParts(LIST_ITEM_INPUT);
     const count = await itemInputs.count();
 
     for (let i = 0; i < count; i++) {

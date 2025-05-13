@@ -62,6 +62,7 @@ When(
 
     const text = getStringUpToLimit(textAreaLimit);
 
+    this.oldData[textAreaMeaning] = this.data[textAreaMeaning] || "";
     this.data[textAreaMeaning] = text;
 
     await this.locateByFullId(TEXT_AREA_TEST_IDS[textAreaMeaning]).fill(text);

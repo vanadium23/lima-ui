@@ -30,7 +30,7 @@ Then(
 Then(
   "I expect to see the {string} switch enabled",
   async function (this: ComplexWorld, switchMeaning: SwitchMeaning) {
-    const switchElement = this.locate(
+    const switchElement = this.locateByIdParts(
       this.accounting.elements.registerTestId(SWITCH_TEST_IDS[switchMeaning]),
     );
 
@@ -42,7 +42,7 @@ Then(
 Then(
   "I expect to see the {string} switch disabled",
   async function (this: ComplexWorld, switchMeaning: SwitchMeaning) {
-    const switchElement = this.locate(
+    const switchElement = this.locateByIdParts(
       this.accounting.elements.registerTestId(SWITCH_TEST_IDS[switchMeaning]),
     );
 
@@ -61,14 +61,16 @@ Then(
 Then(
   "I expect not to see the last item input",
   async function (this: ComplexWorld) {
-    await expect(this.locate(LIST_ITEM_INPUT).last()).not.toBeInViewport();
+    await expect(
+      this.locateByIdParts(LIST_ITEM_INPUT).last(),
+    ).not.toBeInViewport();
   },
 );
 
 When(
   "I press on the {string} list stripe",
   async function (this: ComplexWorld, listStripePosition: ListStripePosition) {
-    const listStripe = this.locate(LIST_STRIPE).nth(
+    const listStripe = this.locateByIdParts(LIST_STRIPE).nth(
       LIST_STRIPE_POSITIONS[listStripePosition],
     );
 

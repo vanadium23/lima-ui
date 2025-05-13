@@ -1,5 +1,6 @@
 ---
 import { SIDEBAR } from "../../../features/testIds";
+import { DEFAULT_TAB_TITLE, suffixTabTitle } from "../../../utilities/tabTitle";
 import { Header } from "../../organisms/header/header";
 import { Sidebar } from "../../organisms/sidebar/sidebar";
 
@@ -26,7 +27,11 @@ interface Props {
     <meta content="#ffffff" name="theme-color" />
 
     <title>
-      {Astro.props.titleName ? `${Astro.props.titleName} | Lima` : "Lima App"}
+      {
+        Astro.props.titleName
+          ? `${suffixTabTitle(Astro.props.titleName)}`
+          : DEFAULT_TAB_TITLE
+      }
     </title>
   </head>
   <body>

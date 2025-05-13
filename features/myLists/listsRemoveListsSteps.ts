@@ -32,7 +32,7 @@ import {
 When(
   "I hover {string} list stripe",
   async function (this: ComplexWorld, listStripePosition: ListStripePosition) {
-    const listStripe = this.locate(LIST_STRIPE).nth(
+    const listStripe = this.locateByIdParts(LIST_STRIPE).nth(
       LIST_STRIPE_POSITIONS[listStripePosition],
     );
 
@@ -69,7 +69,7 @@ Then(
   "I expect not to see the {string} dialog modal box",
   { timeout: 500 },
   async function (this: ComplexWorld, dialogMeaning: DialogMeaning) {
-    const dialogs = this.locate(DIALOG_TEST_IDS[dialogMeaning]);
+    const dialogs = this.locateByIdParts(DIALOG_TEST_IDS[dialogMeaning]);
 
     for (const dialog of await dialogs.all()) {
       await expect(dialog).not.toBeInViewport();
@@ -80,7 +80,7 @@ Then(
 When(
   "I click outside of the {string} dialog modal box",
   async function (this: ComplexWorld, dialogMeaning: DialogMeaning) {
-    await this.locate(
+    await this.locateByIdParts(
       DIALOG_TEST_IDS[dialogMeaning],
       this.data.clickedButtonTestSubId,
     ).click({

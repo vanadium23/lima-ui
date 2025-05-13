@@ -13,19 +13,12 @@ export async function createList(
     backend = import.meta.env.PUBLIC_API_URL;
   }
 
-  const listData = {
-    ...data,
-    items: data.items.map((item) => {
-      return { content: item.content };
-    }),
-  };
-
   const response = await fetch(backend + BACKEND_LISTS.slice(0, -1), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(listData),
+    body: JSON.stringify(data),
   });
 
   if (!response.ok) {

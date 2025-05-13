@@ -8,10 +8,8 @@ Feature: Seeing the amount of symbols left for typing in the inputs on the List 
     Then I expect to see the <counter name> counter
     Then I expect <counter name> counter to show the correct limit
     Examples:
-      | input name     | counter name         |
-      | "list title"   | "list title input"   |
-      | "list purpose" | "list purpose input" |
-      | "first item"   | "first item input"   |
+      | input name   | counter name       |
+      | "list title" | "list title input" |
 
   Scenario Outline: Seeing the correct counter remainder with some text in the input
     And I focus <input name> input

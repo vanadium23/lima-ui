@@ -1,7 +1,9 @@
 import type { CollisionDetector, Droppable } from "@thisbeyond/solid-dnd";
 import { onCleanup } from "solid-js";
 
-import type { EditListStore, ScrollContainer } from "../types";
+import type { EditListStore, List, ScrollContainer } from "../types";
+
+import { createDragId } from "./createDefaultItem.ts";
 
 const SCROLL_SPEED = 10; // Base scrolling speed
 const SCROLL_THRESHOLD = 100; // Pixels from edge to trigger scrolling
@@ -22,22 +24,24 @@ export function createAutoScroll(options: AutoScrollOptions) {
     }
   }
 
-  function handleMouseMoveForScroll(event: MouseEvent) {
+  function handlePointerMoveForScroll(event: MouseEvent | TouchEvent) {
     const { isActive } = options;
     if (!scrollContainer || !isActive()) return;
 
     const containerRect = scrollContainer.getBoundingClientRect();
-    const mouseY = event.clientY;
+    const clientY =
+      "touches" in event ? event.touches[0]?.clientY || 0 : event.clientY;
 
     clearAutoScrollInterval();
 
-    const isMouseAtTheBottom = mouseY > containerRect.bottom - SCROLL_THRESHOLD;
-    const isMouseAtTheTop = mouseY < containerRect.top + SCROLL_THRESHOLD;
+    const isPointerAtTheBottom =
+      clientY > containerRect.bottom - SCROLL_THRESHOLD;
+    const isPointerAtTheTop = clientY < containerRect.top + SCROLL_THRESHOLD;
 
-    if (isMouseAtTheTop) {
+    if (isPointerAtTheTop) {
       const scrollSpeed = Math.max(
         1,
-        SCROLL_SPEED * (1 - (mouseY - containerRect.top) / SCROLL_THRESHOLD),
+        SCROLL_SPEED * (1 - (clientY - containerRect.top) / SCROLL_THRESHOLD),
       );
 
       autoScrollInterval = setInterval(() => {
@@ -48,10 +52,11 @@ export function createAutoScroll(options: AutoScrollOptions) {
           scrollContainer.scrollTop - scrollSpeed,
         );
       }, MILLISECONDS_PER_FRAME);
-    } else if (isMouseAtTheBottom) {
+    } else if (isPointerAtTheBottom) {
       const scrollSpeed = Math.max(
         1,
-        SCROLL_SPEED * (1 - (containerRect.bottom - mouseY) / SCROLL_THRESHOLD),
+        SCROLL_SPEED *
+          (1 - (containerRect.bottom - clientY) / SCROLL_THRESHOLD),
       );
 
       autoScrollInterval = setInterval(() => {
@@ -67,13 +72,15 @@ export function createAutoScroll(options: AutoScrollOptions) {
 
   function startListening(scrollableParent: ScrollContainer) {
     scrollContainer = scrollableParent;
-    document.addEventListener("mousemove", handleMouseMoveForScroll);
+    document.addEventListener("mousemove", handlePointerMoveForScroll);
+    document.addEventListener("touchmove", handlePointerMoveForScroll);
   }
 
   function stopListening() {
     clearAutoScrollInterval();
     scrollContainer = undefined;
-    document.removeEventListener("mousemove", handleMouseMoveForScroll);
+    document.removeEventListener("mousemove", handlePointerMoveForScroll);
+    document.removeEventListener("touchmove", handlePointerMoveForScroll);
   }
 
   onCleanup(() => {
@@ -114,7 +121,6 @@ export const createScrollableCollisionsDetector: ScrollableCollisionDetectorCrea
     let distanceToDroppable = Infinity;
     let droppable: Droppable | null = null;
 
-    // Using for...of instead of forEach to allow breaking out of the loop
     for (const droppableCandidate of droppables) {
       const nodeCenter = {
         ...droppableCandidate.layout.center,
@@ -126,15 +132,18 @@ export const createScrollableCollisionsDetector: ScrollableCollisionDetectorCrea
         nodeCenter,
       );
 
-      // If we find a closer droppable, update our tracking variables
       if (distanceToDroppableCandidate < distanceToDroppable) {
         distanceToDroppable = distanceToDroppableCandidate;
         droppable = droppableCandidate;
-      } else {
-        // Optimizing distances calculation. Once growing, it’s not needed to continue.
-        break;
       }
     }
 
     return droppable;
   };
+
+export function convertItemsToDragItems(list: List) {
+  return list.items.map((item) => ({
+    ...item,
+    dragId: item.id || createDragId(),
+  }));
+}

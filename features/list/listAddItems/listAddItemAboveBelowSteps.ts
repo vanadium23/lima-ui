@@ -28,7 +28,7 @@ Then(
 );
 
 When("I hover the last added item input", async function (this: ComplexWorld) {
-  const lastItemInput = this.locate(LIST_ITEM_INPUT).last();
+  const lastItemInput = this.locateByIdParts(LIST_ITEM_INPUT).last();
 
   await lastItemInput.hover();
 
@@ -39,7 +39,7 @@ When("I hover the last added item input", async function (this: ComplexWorld) {
 
 Then("I expect to see the new last item", async function (this: ComplexWorld) {
   const lastItemInputIndex = parseInt(
-    (await this.locate(LIST_ITEM_INPUT)
+    (await this.locateByIdParts(LIST_ITEM_INPUT)
       .last()
       .getAttribute(TEST_SUB_ID_ATTRIBUTE)) || "-1",
   );
@@ -54,7 +54,7 @@ When(
     const AUTO_ITEM_COUNT = 1;
 
     for (let i = await calculateCurrentItemsCount(this); i < ITEMS_LIMIT; i++) {
-      await this.locate(LIST_ITEM)
+      await this.locateByIdParts(LIST_ITEM)
         .nth(getRandomInt(i - AUTO_ITEM_COUNT))
         .hover();
       await this.locateVisible(OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON).click();
@@ -69,7 +69,7 @@ When(
 );
 
 When("I focus some list item input", async function (this: ComplexWorld) {
-  await this.locate(LIST_ITEM_INPUT)
-    .nth(getRandomInt(await this.locate(LIST_ITEM_INPUT).count()))
+  await this.locateByIdParts(LIST_ITEM_INPUT)
+    .nth(getRandomInt(await this.locateByIdParts(LIST_ITEM_INPUT).count()))
     .focus();
 });

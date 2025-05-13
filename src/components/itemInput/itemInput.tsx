@@ -53,6 +53,8 @@ export const ItemInput = (props: Testable<ItemInputProps>) => {
     element.style.height = `${element.scrollHeight}px`;
   };
 
+  const remainingChars = () => mProps.maxLength - mProps.textAreaValue.length;
+
   onMount(() => {
     if (textareaRef) {
       requestAnimationFrame(() => {
@@ -91,9 +93,10 @@ export const ItemInput = (props: Testable<ItemInputProps>) => {
       </textarea>
       <div class="itemInput__controls">
         {mProps.childComponent}
-        <div class="itemInput__counter">
+        <div class="itemInput__counter"
+          classList={{ itemInput__counter_visible: remainingChars() <= 10 }}>
           <CharCounter
-            value={mProps.maxLength - mProps.textAreaValue.length}
+            value={remainingChars()}
             testId={mProps.testId}
             testSubId={mProps.testSubId ?? ""}
           />
