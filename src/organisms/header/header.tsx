@@ -1,6 +1,7 @@
 import { Show } from "solid-js";
 
 import {
+  DEFAULT_TEST_ID,
   HEADER,
   SEARCH_BUTTON,
   SEARCH_INPUT,
@@ -16,7 +17,7 @@ import { Input, InputTheme } from "../../components/input/input.tsx";
 import { Logo } from "../../components/logo/logo.tsx";
 import { ToggleIconButton } from "../../components/toggleIconButton/toggleIconButton.tsx";
 import { location } from "../../state/locationState.ts";
-import { isHidden, setIsHidden } from "../../state/toolsPanelState.ts";
+import { panelState } from "../../state/sidebarsStateManager.ts";
 
 import "./header.css";
 
@@ -37,8 +38,19 @@ export const Header = (props: HeaderProps) => {
 
   return (
     <header class="header" data-test-id={HEADER}>
-      <div class="header__logo">
-        <Logo />
+      <div class="header__inner">
+        <div class="header__burger">
+          <ToggleIconButton
+            iconName={IconName.List}
+            testId={DEFAULT_TEST_ID}
+            ariaLabel={"Переключить меню"}
+            isToggled={!panelState.isSidebarHidden()}
+            setGlobalToggled={panelState.toggleSidebar}
+          />
+        </div>
+        <div class="header__logo">
+          <Logo />
+        </div>
       </div>
       <div class="header__search">
         <Input
@@ -62,8 +74,8 @@ export const Header = (props: HeaderProps) => {
             iconName={IconName.SquareHalf}
             ariaLabel={"Переключить панель инструментов"}
             testId={TOGGLE_TOOLS_PANEL_BUTTON}
-            defaultIsToggled={!isHidden()}
-            setGlobalToggled={(toggled) => setIsHidden(!toggled)}
+            isToggled={!panelState.isToolsPanelHidden()}
+            setGlobalToggled={panelState.toggleToolsPanel}
           />
         </Show>
       </div>

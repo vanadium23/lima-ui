@@ -26,12 +26,18 @@ import {
   UserButtonSize,
   UserButtonTheme,
 } from "../../components/userButton/userButton.tsx";
+import { panelState } from "../../state/sidebarsStateManager.ts";
 
 import "./sidebar.css";
 
 export const Sidebar = () => {
   return (
-    <div class="sidebar">
+    <div
+      class="sidebar"
+      classList={{
+        sidebar_hidden: panelState.isSidebarHidden(),
+      }}
+    >
       <div class="sidebar__top">
         <div class="sidebar__user">
           <UserButton

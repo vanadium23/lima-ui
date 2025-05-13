@@ -1,7 +1,7 @@
 import { type JSX, mergeProps } from "solid-js";
 
 import type { Testable } from "../../components/utilities/testable.ts";
-import { isHidden } from "../../state/toolsPanelState.ts";
+import { panelState } from "../../state/sidebarsStateManager.ts";
 
 import "./toolsPanel.css";
 
@@ -29,7 +29,7 @@ export const ToolsPanel = (props: Testable<ToolsPanelProps>) => {
     <div
       class={`toolsPanel toolsPanel_${mProps.theme} toolsPanel_${mProps.size}`}
       classList={{
-        toolsPanel_hidden: isHidden(),
+        toolsPanel_hidden: panelState.isToolsPanelHidden(),
       }}
       data-test-id={mProps.testId}
     >
