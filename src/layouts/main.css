@@ -14,11 +14,17 @@
   --size-x10: 2rem;
   --size-x11: 2.2rem;
   --size-x12: 2.4rem;
+  --size-x13: 2.6rem;
   --size-x15: 3rem;
   --size-x16: 3.2rem;
   --size-x17: 3.4rem;
+  --size-x18: 3.6rem;
   --size-x19: 3.8rem;
   --size-x20: 4rem;
+  --size-x21: 4.2rem;
+  --size-x23: 4.6rem;
+  --size-x26: 5.2rem;
+  --size-x40: 8rem;
 
   /* Colors */
   --neutral-100: #fff;
@@ -51,9 +57,9 @@
   --primary-500: #0285f1;
   --primary-600: #0d7fdc;
   --primary-700: #03457b;
-  --text-primary-400: #41A6F8;
+  --text-primary-400: #41a6f8;
   --text-primary-500: #0285f1;
-  --text-primary-600: #083AEC;
+  --text-primary-600: #083aec;
   --secondary-400: #daf098;
   --secondary-500: #cef55a;
   --secondary-600: #a6db09;

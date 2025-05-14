@@ -15,7 +15,7 @@
 
 .button__loadingIcon {
   display: flex;
-  animation: var(--preloader)
+  animation: var(--preloader);
 }
 
 .button_small {

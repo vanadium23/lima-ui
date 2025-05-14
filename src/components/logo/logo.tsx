@@ -49,7 +49,7 @@ export const Logo = () => {
         />
       </svg>
 
-      <span class="logo__text">CheckerSave</span>
+      <span class="logo__text">Lima</span>
     </a>
   );
 };

@@ -9,35 +9,40 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  max-width: 68rem;
-  overflow: auto;
+  height: 100%;
+  padding: var(--size-x3) var(--size-x2) var(--size-x8) 0;
 }
 
 .editList__form {
   display: flex;
   flex-direction: column;
   gap: var(--size-x4);
-  overflow: auto;
+  height: 100%;
+  max-width: 75rem;
 }
 
 .editList__listHeader {
   display: flex;
   flex-direction: column;
   gap: var(--size-x3);
-  padding: var(--size-x3) var(--size-x4) 0 var(--size-x20);
+}
+
+.editList__title {
+  padding: 0 var(--size-x8) 0 var(--size-x18);
 }
 
 .editList__listHeaderInner {
   display: flex;
   flex-direction: column;
   gap: var(--size-x4);
+  padding: 0 var(--size-x8) 0 var(--size-x18);
 }
 
 .editList__wrapper {
   display: flex;
   flex-direction: column;
   gap: var(--size-x4);
-  overflow: auto;
+  height: 100%;
 }
 
 .editList__container {
@@ -52,8 +57,9 @@
   display: flex;
   flex-direction: column;
   gap: var(--size-x2);
-  padding-left: var(--size-x2);
   overflow: auto;
+  scrollbar-gutter: stable;
+  padding-right: var(--size-x3);
 }
 
 .editList__scrollContainer::-webkit-scrollbar {
@@ -84,9 +90,16 @@
   display: flex;
   justify-content: flex-end;
   gap: var(--size-x6);
-  padding: 0 0 var(--size-x2) var(--size-x1);
+  padding-right: var(--size-x8);
 }
 
 .editList__itemControls {
   display: none;
+}
+
+@media screen and (width <= 767px) {
+  .editList__controls {
+    justify-content: center;
+    padding: 0;
+  }
 }

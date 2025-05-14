@@ -38,7 +38,7 @@ interface Props {
     <Header client:only="solid-js" list404={Astro.props.list404} />
 
     <div class="appContainer">
-      <aside data-test-id={SIDEBAR}>
+      <aside class="appContainer__nav" data-test-id={SIDEBAR}>
         <Sidebar client:only="solid-js" />
       </aside>
 

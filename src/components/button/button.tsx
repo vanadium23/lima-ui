@@ -53,7 +53,7 @@ export const Button = (props: Testable<ButtonProps>) => {
       isLoading: false,
       link: "",
       openInNewTab: false,
-      handleClick: () => { },
+      handleClick: () => {},
     },
     props,
   );
@@ -75,7 +75,7 @@ export const Button = (props: Testable<ButtonProps>) => {
             button_loading: mProps.isLoading,
           }}
           disabled={mProps.isDisabled}
-          aria-disabled={mProps.isLoading}
+          aria-disabled={mProps.isLoading ? true : undefined}
           onClick={() => {
             if (!mProps.isLoading) {
               mProps.handleClick();
@@ -105,7 +105,9 @@ export const Button = (props: Testable<ButtonProps>) => {
             button_disabled: mProps.isDisabled,
             button_loading: mProps.isLoading,
           }}
-          aria-disabled={mProps.isLoading || mProps.isDisabled}
+          aria-disabled={
+            mProps.isLoading || mProps.isDisabled ? true : undefined
+          }
           data-test-id={mProps.testId}
           data-test-sub-id={mProps.testSubId}
         >
