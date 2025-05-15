@@ -8,6 +8,7 @@
 }
 
 .itemInput__inner {
+  width: 100%;
   flex-grow: 1;
   background: transparent;
   border: none;
@@ -35,11 +36,11 @@
   flex-direction: column;
   visibility: hidden;
   gap: var(--size-x2);
-  justify-content: space-between;
 }
 
 .itemInput__counter {
   display: none;
+  margin-top: auto;
   text-align: center;
 }
 

@@ -15,7 +15,6 @@
 
 .listStripe_medium .listStripe__link {
   padding: var(--size-x6);
-  min-width: 50rem;
   background: var(--neutral-100);
 }
 
@@ -51,10 +50,6 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-}
-
-.listStripe_medium .listStripe__controls {
-  width: 6.8rem;
 }
 
 .listStripe_medium .listStripe__title {
@@ -107,9 +102,9 @@
   visibility: visible;
 }
 
-/*TODO проработь медиа запросы для тачскринов*/
+/* TODO проработь медиа запросы для тачскринов */
 
-@media screen and (width >= 768px) {
+@media screen and (width >= 1025px) {
   .listStripe__controls {
     visibility: hidden;
   }
@@ -123,7 +118,6 @@
 
   .listStripe_medium .listStripe__link {
     padding: var(--size-x3) var(--size-x4);
-    min-width: 50rem;
   }
 
   .listStripe {

@@ -7,7 +7,8 @@ ItemInputTheme,
 } from "../../../components/itemInput/itemInput.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
-import {ItemInputWrapper} from "./itemInputWrapper";
+import { dropdownItems } from "./itemInputMenu";
+import { ItemInputWrapper } from "./itemInputWrapper.tsx";
 
 const themes = Object.values(ItemInputTheme);
 const sizes = Object.values(ItemInputSize);
@@ -30,26 +31,12 @@ const sizes = Object.values(ItemInputSize);
             <>
               <span class="rhead">{size}</span>
 
-              <ItemInput
+              <ItemInputWrapper
                 client:only="solid-js"
-                theme={theme}
-                size={size}
-                maxLength={200}
-                isRequired={true}
-                name="Some-text"
-                testId={DEFAULT_TEST_ID}
-                placeholder="Введите текст"
               />
-              <ItemInput
+              <ItemInputWrapper
                 client:only="solid-js"
-                theme={theme}
-                size={size}
-                defaultIsError={true}
-                maxLength={200}
-                name="Some-text"
-                isRequired={true}
-                testId={DEFAULT_TEST_ID}
-                placeholder="Введите текст"
+                isError={true}
               />
               <ItemInput
                 client:only="solid-js"
@@ -76,6 +63,7 @@ const sizes = Object.values(ItemInputSize);
               />
               <ItemInputWrapper
                 client:only="solid-js"
+                listOfButtons={dropdownItems()}
               />
             </>
           ))}
