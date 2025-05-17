@@ -2,7 +2,12 @@ import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
 import type { ComplexWorld } from "../../context/hooks.ts";
-import { DRAG_HANDLE, DRAGGED_LIST_ITEM } from "../../testIds.ts";
+import {
+  DRAG_HANDLE,
+  DRAGGED_LIST_ITEM,
+  LIST_ITEM,
+  LIST_ITEMS,
+} from "../../testIds.ts";
 import { buildTestableSelector } from "../../utilities/buildTestableSelector.ts";
 import { getListItemValue } from "../utilities/getListItemValue.ts";
 
@@ -80,5 +85,25 @@ Then(
     );
 
     expect(itemToDragOnValue).toBe(this.data.draggedListItemValue);
+  },
+);
+
+Then(
+  "I expect to see the dragged list item last",
+  async function (this: ComplexWorld) {
+    const draggedListItemValue = await getListItemValue(
+      this.locateByIdParts(LIST_ITEM).last(),
+    );
+
+    expect(draggedListItemValue).toBe(this.data.draggedListItemValue);
+  },
+);
+
+When(
+  "I scroll to the bottom of the list items",
+  async function (this: ComplexWorld) {
+    await this.locateByIdParts(LIST_ITEMS).evaluate((element) => {
+      element.scrollTop = element.scrollHeight;
+    });
   },
 );

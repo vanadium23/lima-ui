@@ -36,3 +36,11 @@ Feature: List items drag and drop functionality
     And I drag the item on the "first" item
     And I complete the drag operation
     Then I expect to see the dragged list item on the "first" position
+
+  Scenario: Drag item to the end of a list
+    And I start dragging the "first" list item
+    And I drag the item on the "automatic" item
+    And I complete the drag operation
+    And I scroll to the bottom of the list items
+    Then I expect to see the dragged list item last
+    Then I expect not to see the "automatic" item input
