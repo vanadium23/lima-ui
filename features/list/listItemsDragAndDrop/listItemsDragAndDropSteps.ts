@@ -56,19 +56,19 @@ When("I complete the drag operation", async function (this: ComplexWorld) {
 });
 
 When(
-  "I drag the item between the first and second items",
-  async function (this: ComplexWorld) {
-    const firstItem = this.locateByFullId(LIST_ITEM_TEST_IDS.first);
-    const firstItemBox = await firstItem.boundingBox();
+  "I drag the item on the {string} item",
+  async function (this: ComplexWorld, listItemMeaning: ListItemMeaning) {
+    const itemToDragOnBox = await this.locateByFullId(
+      LIST_ITEM_TEST_IDS[listItemMeaning],
+    ).boundingBox();
 
-    if (!firstItemBox) {
+    if (!itemToDragOnBox) {
       throw new Error("Could not get bounding box for list items");
     }
 
-    const targetX = firstItemBox.x;
-    const targetY = firstItemBox.y + firstItemBox.height + 5;
-
-    await this.page.mouse.move(targetX, targetY, { steps: 10 });
+    await this.page.mouse.move(itemToDragOnBox.x, itemToDragOnBox.y, {
+      steps: 10,
+    });
   },
 );
 
