@@ -73,11 +73,12 @@ When(
 );
 
 Then(
-  "I expect to see the previously third list item on the second position",
-  async function (this: ComplexWorld) {
-    const secondItem = this.locateByFullId(LIST_ITEM_TEST_IDS.second);
-    const secondItemValue = await getListItemValue(secondItem);
+  "I expect to see the dragged list item on the {string} position",
+  async function (this: ComplexWorld, listItemMeaning: ListItemMeaning) {
+    const itemToDragOnValue = await getListItemValue(
+      this.locateByFullId(LIST_ITEM_TEST_IDS[listItemMeaning]),
+    );
 
-    expect(secondItemValue).toBe(this.data.draggedListItemValue);
+    expect(itemToDragOnValue).toBe(this.data.draggedListItemValue);
   },
 );
