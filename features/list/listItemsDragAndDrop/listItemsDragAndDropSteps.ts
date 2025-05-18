@@ -30,8 +30,23 @@ When(
 
 When(
   "I drag to {int} from left and {int} from top",
-  async function (this: ComplexWorld, x: number, y: number) {
-    await this.page.mouse.move(x, y, { steps: 10 });
+  async function (this: ComplexWorld, left: number, top: number) {
+    let leftPosition = left;
+    let topPosition = top;
+
+    if (leftPosition < 0) {
+      const windowWidth = (this.page.viewportSize() || { width: 0 }).width;
+
+      leftPosition = windowWidth + leftPosition;
+    }
+
+    if (topPosition < 0) {
+      const windowHeight = (this.page.viewportSize() || { height: 0 }).height;
+
+      topPosition = windowHeight + topPosition;
+    }
+
+    await this.page.mouse.move(leftPosition, topPosition, { steps: 10 });
   },
 );
 
@@ -71,7 +86,20 @@ When(
       throw new Error("Could not get bounding box for list items");
     }
 
-    await this.page.mouse.move(itemToDragOnBox.x, itemToDragOnBox.y, {
+    const { x, y } = itemToDragOnBox;
+
+    const viewportSize = this.page.viewportSize();
+
+    if (!viewportSize) {
+      throw new Error("Viewport size is not set");
+    }
+
+    const rect = {
+      x: Math.min(x, viewportSize.width - 1),
+      y: Math.min(y, viewportSize.height - 1),
+    };
+
+    await this.page.mouse.move(rect.x, rect.y, {
       steps: 10,
     });
   },
