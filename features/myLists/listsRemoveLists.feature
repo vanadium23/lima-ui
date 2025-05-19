@@ -33,7 +33,6 @@ Feature: Removing the lists on the Lists page
     And I click outside of the "remove list" dialog modal box
     Then I expect not to see the "remove list" dialog modal box
 
-  @needs-fixing
   Scenario: Confirming list removal leads to the loading state of a list stripe
     When I add a list
     And I add a list
@@ -100,6 +99,7 @@ Feature: Removing the lists on the Lists page
     And I press the visible "remove list" button
     Given Data server is not available
     And I press the visible "confirm list removal" button
+    And I hover "first" list stripe
     And I press the visible "open context menu list stripe" button
     And I press the visible "remove list" button
     And I press the visible "confirm list removal" button

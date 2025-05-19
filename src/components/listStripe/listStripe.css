@@ -113,6 +113,10 @@
   .listStripe__controls {
     visibility: hidden;
   }
+
+  .listStripe_removing .listStripe__controls {
+    visibility: visible;
+  }
 }
 
 @media screen and (width <= 1023px) {
