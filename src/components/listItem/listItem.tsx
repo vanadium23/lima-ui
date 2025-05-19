@@ -58,6 +58,7 @@ type ListItemProps = {
   canAddMore: boolean;
   dragSettings?: DragSettings;
   isDraggingOverlay?: boolean;
+  placeholder?: string;
 };
 
 export const ListItem = (props: Testable<ListItemProps>) => {
@@ -82,6 +83,7 @@ export const ListItem = (props: Testable<ListItemProps>) => {
         dragProps: {},
         dragState: null,
       },
+      placeholder: "Пункт списка",
     },
     props,
   );
@@ -161,7 +163,7 @@ export const ListItem = (props: Testable<ListItemProps>) => {
           name={mProps.name}
           dataId={mProps.dataId}
           isDisabled={mProps.isDisabled}
-          placeholder={"Пункт списка"}
+          placeholder={mProps.placeholder}
           textAreaValue={mProps.defaultValue}
           isRequired={mProps.isRequired}
           onChange={mProps.onChange}
