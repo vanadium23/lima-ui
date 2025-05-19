@@ -7,6 +7,7 @@ import {
   buildInputCounterTestId,
   buildTextAreaCounterTestId,
   CHECKLIST_SWITCH,
+  CREATE_LIST_BUTTON,
   DIALOG_REMOVE_BUTTON,
   DIALOG_RETURN_BUTTON,
   LIST_ITEM,
@@ -28,6 +29,7 @@ import {
 import { buildFullTestId } from "../../utilities/buildTestableSelector.ts";
 
 export const BUTTON_TEST_IDS = {
+  create: CREATE_LIST_BUTTON,
   save: SAVE_LIST_BUTTON,
   "add list item": TOOLS_PANEL_ADD_ITEM_BUTTON,
   "remove item": REMOVE_ITEM_MENUITEM,

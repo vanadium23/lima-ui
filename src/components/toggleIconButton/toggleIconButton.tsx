@@ -1,4 +1,4 @@
-import { createSignal, mergeProps } from "solid-js";
+import { mergeProps } from "solid-js";
 
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
 import type { Testable } from "../utilities/testable.ts";
@@ -19,7 +19,7 @@ type ToggleIconButtonProps = {
   iconName: IconName;
   isDisabled?: boolean;
   ariaLabel: string;
-  defaultIsToggled?: boolean;
+  isToggled: boolean;
   setGlobalToggled: (isToggled: boolean) => void;
 };
 
@@ -29,17 +29,14 @@ export const ToggleIconButton = (props: Testable<ToggleIconButtonProps>) => {
       theme: ToggleIconButtonTheme.Secondary,
       size: ToggleIconButtonSize.Medium,
       isDisabled: false,
-      defaultIsToggled: false,
     },
     props,
   );
 
-  const [getToggled, setToggled] = createSignal(mProps.defaultIsToggled);
-
   const toggleToggled = () => {
-    const isToggled = !getToggled();
-    setToggled(isToggled);
-    mProps.setGlobalToggled(isToggled);
+    if (!mProps.isDisabled) {
+      mProps.setGlobalToggled(!mProps.isToggled);
+    }
   };
 
   const iconSize = {
@@ -53,14 +50,14 @@ export const ToggleIconButton = (props: Testable<ToggleIconButtonProps>) => {
       class={`toggleIconButton toggleIconButton_${mProps.theme} toggleIconButton_${mProps.size}`}
       classList={{
         toggleIconButton_disabled: mProps.isDisabled,
-        toggleIconButton_toggled: getToggled(),
+        toggleIconButton_toggled: mProps.isToggled,
       }}
       title={mProps.ariaLabel}
       disabled={mProps.isDisabled}
       aria-label={mProps.ariaLabel}
       data-test-id={mProps.testId}
       data-test-sub-id={mProps.testSubId}
-      aria-pressed={getToggled()}
+      aria-pressed={mProps.isToggled}
     >
       <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
     </button>

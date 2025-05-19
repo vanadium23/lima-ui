@@ -49,17 +49,17 @@ export const ItemInput = (props: Testable<ItemInputProps>) => {
   let textareaRef: HTMLTextAreaElement | undefined;
 
   const autoGrow = (element: HTMLTextAreaElement) => {
-    element.style.height = "auto";
-    element.style.height = `${element.scrollHeight}px`;
+    requestAnimationFrame(() => {
+      element.style.height = "auto";
+      element.style.height = `${element.scrollHeight}px`;
+    });
   };
 
   const remainingChars = () => mProps.maxLength - mProps.textAreaValue.length;
 
   onMount(() => {
     if (textareaRef) {
-      requestAnimationFrame(() => {
-        autoGrow(textareaRef);
-      });
+      autoGrow(textareaRef);
     }
   });
 

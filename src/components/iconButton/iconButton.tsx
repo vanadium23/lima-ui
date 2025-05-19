@@ -94,7 +94,7 @@ export const IconButton = (props: Testable<IconButtonProps>) => {
         }}
         title={mProps.ariaLabel}
         disabled={mProps.isDisabled}
-        aria-disabled={mProps.isLoading}
+        aria-disabled={mProps.isLoading ? true : undefined}
         aria-label={mProps.ariaLabel}
         data-test-id={mProps.testId}
         data-test-sub-id={mProps.testSubId}

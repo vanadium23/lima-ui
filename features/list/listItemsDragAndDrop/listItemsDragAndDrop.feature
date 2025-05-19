@@ -1,11 +1,71 @@
 Feature: List items drag and drop functionality
 
-  Scenario: Display dragging overlay with correct content while dragging an item
-    When I open List Creation page
+  Background:
+    When I clear all data
+    And I add a list
     And I add list items till scroll appears plus one item input
-    And I type some text to all items inputs
+    And I fill all items inputs with their index
+    And I press the "save" button
+    And I wait for the list update to complete
     And I scroll to the "first list item"
+
+  Scenario: Display dragging overlay with correct content while dragging an item
     And I start dragging the "first" list item
+    And I drag to 50 from left and 50 from top
     Then I expect to see the dragged item overlay with item content
     Then I expect to see the drop indicator showing where the item will be placed
+
+  Scenario: Reorder list items with drag and drop
+    And I start dragging the "third" list item
+    And I drag the item on the "second" item
     And I complete the drag operation
+    Then I expect to see the dragged list item on the "second" position
+    Then I expect to see the "save" button enabled
+
+  Scenario: Restoring list items order with drag and drop
+    And I start dragging the "third" list item
+    And I drag the item on the "second" item
+    And I complete the drag operation
+    And I start dragging the "second" list item
+    And I drag the item on the "third" item
+    And I complete the drag operation
+    Then I expect to see the "save" button disabled
+
+  Scenario: Drag item to the start of a list
+    And I start dragging the "third" list item
+    And I drag the item on the "first" item
+    And I complete the drag operation
+    Then I expect to see the dragged list item on the "first" position
+
+  Scenario: Drag item after the automatic item
+    And I start dragging the "first" list item
+    And I drag the item on the "automatic" item
+    And I complete the drag operation
+    And I scroll to the bottom of the list items
+    Then I expect to see the dragged list item last
+    Then I expect not to see the "automatic" item input
+
+  Scenario: Drag first item to the end of the list with automatic scroll
+    And I press the "add list item" button
+    And I press the "add list item" button
+    And I press the "add list item" button
+    And I press the "add list item" button
+    And I press the "add list item" button
+    And I press the "add list item" button
+    And I press the "add list item" button
+    And I press the "add list item" button
+    And I press the "add list item" button
+    And I fill empty items inputs with their index
+    And I press the "save" button
+    And I wait for the list update to complete
+    And I scroll to the "first list item"
+    And I start dragging the "first" list item
+    And I drag the item on the "automatic" item
+    And I wait for "scroll completion" for the following number of seconds: 1
+    # Этот шаг необходим для того, чтобы ещё раз сработал детектор
+    # коллизий и пересчиталось положение приземления пункта.
+    # Шаг этот — костыль, но есть подозрение, что для его
+    # исправления нужно исправлять библиотеку.
+    And I drag to 250 from left and -1 from top
+    And I complete the drag operation
+    Then I expect to see the dragged list item last

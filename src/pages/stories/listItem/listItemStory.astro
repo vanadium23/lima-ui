@@ -1,11 +1,7 @@
 ---
-import { DEFAULT_TEST_ID } from "../../../../features/testIds";
-import {
-  ListItem,
-  ListItemSize,
-  ListItemTheme,
-} from "../../../components/listItem/listItem";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
+
+import { ListItemWrapper } from "./listItemWrapper";
 ---
 
 <StorybookPage title="List Item">
@@ -16,28 +12,10 @@ import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
       <span class="chead">Medium</span>
 
       <span class="rhead">List</span>
-      <ListItem
-        client:only="solid-js"
-        theme={ListItemTheme.Primary}
-        size={ListItemSize.Medium}
-        isCheckable={false}
-        isChecked={false}
-        name="Пункт"
-        testId={DEFAULT_TEST_ID}
-        canAddMore={false}
-      />
+      <ListItemWrapper client:only="solid-js" />
 
       <span class="rhead">Checklist</span>
-      <ListItem
-        client:only="solid-js"
-        theme={ListItemTheme.Primary}
-        size={ListItemSize.Medium}
-        isCheckable={true}
-        isChecked={false}
-        name="Пункт"
-        testId={DEFAULT_TEST_ID}
-        canAddMore={false}
-      />
+      <ListItemWrapper client:only="solid-js" staticIsCheckable={true} />
     </div>
   </div>
 </StorybookPage>

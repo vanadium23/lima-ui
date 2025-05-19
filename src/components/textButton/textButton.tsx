@@ -51,7 +51,7 @@ export const TextButton = (props: Testable<TextButtonProps>) => {
       isLoading: false,
       ariaLabel: "",
       link: "",
-      handleClick: () => { },
+      handleClick: () => {},
     },
     props,
   );
@@ -73,7 +73,7 @@ export const TextButton = (props: Testable<TextButtonProps>) => {
             textButton_loading: mProps.isLoading,
           }}
           disabled={mProps.isDisabled}
-          aria-disabled={mProps.isLoading}
+          aria-disabled={mProps.isLoading ? true : undefined}
           {...prepareARIALabel(mProps.ariaLabel)}
           onClick={() => {
             if (!mProps.isLoading) {
@@ -102,7 +102,7 @@ export const TextButton = (props: Testable<TextButtonProps>) => {
             textButton_disabled: mProps.isDisabled,
             textButton_loading: mProps.isLoading,
           }}
-          aria-disabled={mProps.isLoading}
+          aria-disabled={mProps.isLoading ? true : undefined}
           {...prepareARIALabel(mProps.ariaLabel)}
           data-test-id={mProps.testId}
           data-test-sub-id={mProps.testSubId}

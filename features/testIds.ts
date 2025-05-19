@@ -38,6 +38,7 @@ export const AUTO_LIST_ITEM_INPUT = buildListItemInputTestId(AUTO_LIST_ITEM);
 export const LIST_ITEM_CONTEXT_MENU = "listItemContextMenu";
 
 export const SEARCH_INPUT = "searchInput";
+export const CREATE_LIST_BUTTON = "createListButton";
 export const SAVE_LIST_BUTTON = "saveListButton";
 export const OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON =
   "openContextMenuListItemButton";

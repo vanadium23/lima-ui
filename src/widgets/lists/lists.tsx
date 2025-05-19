@@ -3,7 +3,7 @@ import { createStore } from "solid-js/store";
 
 import { LISTS_LIMIT } from "../../../configuration.ts";
 import {
-  SAVE_LIST_BUTTON,
+  CREATE_LIST_BUTTON,
   DEFAULT_TEST_ID,
   LIST_REMOVAL_ERROR,
   LISTS_LIMIT_REACHED_WARNING,
@@ -46,6 +46,8 @@ export const Lists = (props: ListsProps) => {
   function setRemoveError(removeError: boolean) {
     setStore("removeError", removeError);
   }
+
+  //TODO Подозрительная ошибка появилась
 
   function removingListInStore(listIdToRemove: string) {
     setStore("lists", (lists) =>
@@ -110,7 +112,7 @@ export const Lists = (props: ListsProps) => {
           componentType={ButtonComponentType.Link}
           link={LISTS_CREATE}
           text="Создать"
-          testId={SAVE_LIST_BUTTON}
+          testId={CREATE_LIST_BUTTON}
           isDisabled={checkListsLimitReached()}
         />
       </div>

@@ -1,26 +1,34 @@
 .header {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
   width: 100%;
-  background: linear-gradient(90deg, #0285F1 0%, #72BBF8 100%);
+  background: linear-gradient(90deg, #0285f1 0%, #72bbf8 100%);
   padding: var(--size-x3) var(--size-x5);
   gap: var(--size-x5);
 }
 
+.header__inner {
+  display: flex;
+}
+
 .header__logo {
-  width: 25rem;
   padding: var(--size-x2) var(--size-x4);
 }
 
 .header__search {
   display: flex;
-  align-items: center;
-  width: 29.6rem;
+  justify-self: center;
+  max-width: 29.6rem;
 }
 
 .header__controls {
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  width: 25rem;
+  justify-self: flex-end;
+}
+
+@media screen and (width >= 1023px) {
+  .header__burger {
+    display: none;
+  }
 }
