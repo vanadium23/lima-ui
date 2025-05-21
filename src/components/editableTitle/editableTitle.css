@@ -53,8 +53,21 @@
   line-height: 2.4rem; /* TODO Есть проблемы с line-height в Firefox высота получается по факту 21px из-за font-size 16px, но когда 15px всё норм, магия */
 }
 
+@media screen and (width <= 767px) {
+  .editableTitle_medium {
+    gap: var(--size-x5);
+    padding: var(--size-x3) var(--size-x3) var(--size-x3) var(--size-x8);
+  }
+
+  .editableTitle_medium .editableTitle__inner {
+    min-height: 2.2rem;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+  }
+}
+
 .editableTitle_primary {
-  background: transparent;
+  background: var(--neutral-100);
   border-top-color: transparent;
   border-bottom-color: transparent;
 }
@@ -67,14 +80,7 @@
 
 .editableTitle_primary:focus-within {
   border-bottom-color: var(--neutral-700);
-  background: var(--neutral-100);
-}
-
-.editableTitle_primary:hover:not(
-    .editableTitle_disabled,
-    .editableTitle_error
-  ) {
-  border-bottom-color: var(--neutral-700);
+  background: var(--neutral-150);
 }
 
 .editableTitle_primary:not(.editableTitle_error):has(
@@ -87,7 +93,7 @@
     .editableTitle__inner:placeholder-shown
   ) {
   border-bottom-color: var(--neutral-700);
-  background: var(--neutral-100);
+  background: var(--neutral-150);
 }
 
 .editableTitle_primary .editableTitle__inner {
@@ -108,10 +114,6 @@
   color: var(--text-neutral-500);
 }
 
-.editableTitle_primary.editableTitle_error:hover .editableTitle__inner {
-  color: var(--text-neutral-900);
-}
-
 .editableTitle_primary.editableTitle_disabled {
   border-bottom-color: var(--neutral-200);
   background: var(--neutral-200);
@@ -128,13 +130,27 @@
   color: var(--text-neutral-900);
 }
 
-.editableTitle:has(.editableTitle__inner:focus) .editableTitle__controls {
-  visibility: visible;
+@media (hover: hover) {
+  .editableTitle_primary:hover:not(
+      .editableTitle_disabled,
+      .editableTitle_error
+    ) {
+    border-bottom-color: var(--neutral-700);
+    background: var(--neutral-150);
+  }
+
+  .editableTitle_primary.editableTitle_error:hover .editableTitle__inner {
+    color: var(--text-neutral-900);
+  }
+
+  .editableTitle_primary:hover:not(
+      .editableTitle_disabled,
+      .editableTitle_error
+    ):has(.editableTitle__inner:placeholder-shown) {
+    border-bottom-color: var(--neutral-700);
+  }
 }
 
-.editableTitle_primary:hover:not(
-    .editableTitle_disabled,
-    .editableTitle_error
-  ):has(.editableTitle__inner:placeholder-shown) {
-  border-bottom-color: var(--neutral-700);
+.editableTitle:has(.editableTitle__inner:focus) .editableTitle__controls {
+  visibility: visible;
 }
