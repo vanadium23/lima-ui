@@ -13,7 +13,6 @@ export enum CheckboxTheme {
 export enum CheckboxSize {
   Small = "small",
   Medium = "medium",
-  Large = "large",
 }
 
 type CheckboxProps = {
@@ -41,7 +40,6 @@ export const Checkbox = (props: Testable<CheckboxProps>) => {
   const loadingIconSize = {
     [CheckboxSize.Small]: IconSize.Small,
     [CheckboxSize.Medium]: IconSize.Medium,
-    [CheckboxSize.Large]: IconSize.Large,
   };
 
   return (

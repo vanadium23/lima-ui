@@ -42,8 +42,8 @@
 }
 
 .iconButton_mediumEmbedded {
-  width: var(--size-x10);
-  height: var(--size-x10);
+  width: var(--size-x9);
+  height: var(--size-x9);
 }
 
 .iconButton_medium {

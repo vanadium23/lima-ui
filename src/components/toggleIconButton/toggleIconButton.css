@@ -26,8 +26,8 @@
 /* Sizes */
 
 .toggleIconButton_medium {
-  width: var(--size-x17);
-  height: var(--size-x17);
+  width: var(--size-x16);
+  height: var(--size-x16);
 }
 
 /* Themes */
