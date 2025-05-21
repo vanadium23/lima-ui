@@ -11,9 +11,7 @@ export enum TextareaTheme {
 }
 
 export enum TextareaSize {
-  Small = "small",
   Medium = "medium",
-  Large = "large",
 }
 
 type TextareaProps = {

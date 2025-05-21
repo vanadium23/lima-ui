@@ -15,46 +15,37 @@
 
 .textButton__loadingIcon {
   display: flex;
-  animation: var(--preloader)
-}
-
-.textButton_small {
-  font-size: 1.4rem;
-  line-height: 1.8rem;
-  min-width: 8.2rem;
-  gap: var(--size-x2);
-  height: var(--size-x12);
-  padding: var(--size-x1) var(--size-x8);
+  animation: var(--preloader);
 }
 
 .textButton_medium {
-  font-size: 1.6rem;
-  line-height: 2rem;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
   min-width: 9rem;
   gap: var(--size-x2);
-  height: var(--size-x17);
   padding: var(--size-x3) var(--size-x8);
-}
-
-.textButton_large {
-  font-size: 1.8rem;
-  line-height: 2.2rem;
-  min-width: 9.4rem;
-  gap: var(--size-x3);
-  height: var(--size-x20);
-  padding: var(--size-x4) var(--size-x8);
 }
 
 .textButton_primary {
   color: var(--text-primary-500);
 }
 
-.textButton_primary:hover:not(:disabled, .textButton_disabled, .textButton_loading) {
-  color: var(--text-primary-400);
+.textButton_primary:active:not(
+    :disabled,
+    .textButton_disabled,
+    .textButton_loading
+  ) {
+  color: var(--text-primary-600);
 }
 
-.textButton_primary:active:not(:disabled, .textButton_disabled, .textButton_loading) {
-  color: var(--text-primary-600);
+@media (hover: hover) {
+  .textButton_primary:hover:not(
+      :disabled,
+      .textButton_disabled,
+      .textButton_loading
+    ) {
+    color: var(--text-primary-400);
+  }
 }
 
 .textButton:disabled,

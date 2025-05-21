@@ -64,14 +64,6 @@
   color: var(--neutral-800);
 }
 
-.iconButton_primary:hover:not(
-    :disabled,
-    .iconButton_disabled,
-    .iconButton_loading
-  ) {
-  color: var(--neutral-700);
-}
-
 .iconButton_primary:active:not(
     :disabled,
     .iconButton_disabled,
@@ -80,16 +72,18 @@
   color: var(--neutral-900);
 }
 
-.iconButton_secondary {
-  color: var(--neutral-600);
+@media (hover: hover) {
+  .iconButton_primary:hover:not(
+      :disabled,
+      .iconButton_disabled,
+      .iconButton_loading
+    ) {
+    color: var(--neutral-700);
+  }
 }
 
-.iconButton_secondary:hover:not(
-    :disabled,
-    .iconButton_disabled,
-    .iconButton_loading
-  ) {
-  color: var(--neutral-500);
+.iconButton_secondary {
+  color: var(--neutral-600);
 }
 
 .iconButton_secondary:active:not(
@@ -100,16 +94,18 @@
   color: var(--neutral-700);
 }
 
-.iconButton_tertiary {
-  color: var(--neutral-100);
+@media (hover: hover) {
+  .iconButton_secondary:hover:not(
+      :disabled,
+      .iconButton_disabled,
+      .iconButton_loading
+    ) {
+    color: var(--neutral-500);
+  }
 }
 
-.iconButton_tertiary:hover:not(
-    :disabled,
-    .iconButton_disabled,
-    .iconButton_loading
-  ) {
-  color: var(--primary-100);
+.iconButton_tertiary {
+  color: var(--neutral-100);
 }
 
 .iconButton_tertiary:active:not(
@@ -120,15 +116,17 @@
   color: var(--primary-200);
 }
 
-.iconButton_successful {
-  color: green; /* TODO Заменить на нормальную переменную */
+@media (hover: hover) {
+  .iconButton_tertiary:hover:not(
+      :disabled,
+      .iconButton_disabled,
+      .iconButton_loading
+    ) {
+    color: var(--primary-100);
+  }
 }
 
-.iconButton_successful:hover:not(
-    :disabled,
-    .iconButton_disabled,
-    .iconButton_loading
-  ) {
+.iconButton_successful {
   color: green; /* TODO Заменить на нормальную переменную */
 }
 
@@ -140,16 +138,18 @@
   color: green; /* TODO Заменить на нормальную переменную */
 }
 
-.iconButton_dangerous {
-  color: var(--dangerous-500);
+@media (hover: hover) {
+  .iconButton_successful:hover:not(
+      :disabled,
+      .iconButton_disabled,
+      .iconButton_loading
+    ) {
+    color: green; /* TODO Заменить на нормальную переменную */
+  }
 }
 
-.iconButton_dangerous:hover:not(
-    :disabled,
-    .iconButton_disabled,
-    .iconButton_loading
-  ) {
-  color: var(--dangerous-400);
+.iconButton_dangerous {
+  color: var(--dangerous-500);
 }
 
 .iconButton_dangerous:active:not(
@@ -158,6 +158,16 @@
     .iconButton_loading
   ) {
   color: var(--dangerous-600);
+}
+
+@media (hover: hover) {
+  .iconButton_dangerous:hover:not(
+      :disabled,
+      .iconButton_disabled,
+      .iconButton_loading
+    ) {
+    color: var(--dangerous-400);
+  }
 }
 
 .iconButton_disabled {

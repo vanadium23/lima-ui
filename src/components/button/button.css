@@ -18,31 +18,12 @@
   animation: var(--preloader);
 }
 
-.button_small {
+.button_medium {
   font-size: 1.4rem;
   line-height: 1.8rem;
-  min-width: 8.2rem;
-  gap: var(--size-x2);
-  height: var(--size-x12);
-  padding: var(--size-x1) var(--size-x8);
-}
-
-.button_medium {
-  font-size: 1.6rem;
-  line-height: 2rem;
   min-width: 9rem;
   gap: var(--size-x2);
-  height: var(--size-x17);
   padding: var(--size-x3) var(--size-x8);
-}
-
-.button_large {
-  font-size: 1.8rem;
-  line-height: 2.2rem;
-  min-width: 9.4rem;
-  gap: var(--size-x3);
-  height: var(--size-x20);
-  padding: var(--size-x4) var(--size-x8);
 }
 
 .button_primary {
@@ -51,14 +32,16 @@
   background: var(--primary-500);
 }
 
-.button_primary:hover:not(:disabled, .button_disabled, .button_loading) {
-  border-color: var(--primary-400);
-  background: var(--primary-400);
-}
-
 .button_primary:active:not(:disabled, .button_disabled, .button_loading) {
   border-color: var(--primary-600);
   background: var(--primary-600);
+}
+
+@media (hover: hover) {
+  .button_primary:hover:not(:disabled, .button_disabled, .button_loading) {
+    border-color: var(--primary-400);
+    background: var(--primary-400);
+  }
 }
 
 .button_secondary {
@@ -67,12 +50,14 @@
   background: var(--neutral-100);
 }
 
-.button_secondary:hover:not(:disabled, .button_disabled, .button_loading) {
-  border-color: var(--primary-400);
-}
-
 .button_secondary:active:not(:disabled, .button_disabled, .button_loading) {
   border-color: var(--primary-600);
+}
+
+@media (hover: hover) {
+  .button_secondary:hover:not(:disabled, .button_disabled, .button_loading) {
+    border-color: var(--primary-400);
+  }
 }
 
 .button_successful {
@@ -81,14 +66,16 @@
   background: var(--secondary-500);
 }
 
-.button_successful:hover:not(:disabled, .button_disabled, .button_loading) {
-  border-color: var(--secondary-400);
-  background: var(--secondary-400);
-}
-
 .button_successful:active:not(:disabled, .button_disabled, .button_loading) {
   border-color: var(--secondary-600);
   background: var(--secondary-600);
+}
+
+@media (hover: hover) {
+  .button_successful:hover:not(:disabled, .button_disabled, .button_loading) {
+    border-color: var(--secondary-400);
+    background: var(--secondary-400);
+  }
 }
 
 .button_dangerous {
@@ -97,14 +84,16 @@
   background: var(--dangerous-500);
 }
 
-.button_dangerous:hover:not(:disabled, .button_disabled, .button_loading) {
-  border-color: var(--dangerous-400);
-  background: var(--dangerous-400);
-}
-
 .button_dangerous:active:not(:disabled, .button_disabled, .button_loading) {
   border-color: var(--dangerous-600);
   background: var(--dangerous-600);
+}
+
+@media (hover: hover) {
+  .button_dangerous:hover:not(:disabled, .button_disabled, .button_loading) {
+    border-color: var(--dangerous-400);
+    background: var(--dangerous-400);
+  }
 }
 
 .button:disabled,
