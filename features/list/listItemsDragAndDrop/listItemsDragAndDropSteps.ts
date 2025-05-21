@@ -16,7 +16,13 @@ import { LIST_ITEM_TEST_IDS, type ListItemMeaning } from "./testIds.ts";
 When(
   "I start dragging the {string} list item",
   async function (this: ComplexWorld, listItemMeaning: ListItemMeaning) {
-    const listItem = this.locateByFullId(LIST_ITEM_TEST_IDS[listItemMeaning]);
+    let listItem;
+
+    if (listItemMeaning === "last") {
+      listItem = this.locateByIdParts(LIST_ITEM).last();
+    } else {
+      listItem = this.locateByFullId(LIST_ITEM_TEST_IDS[listItemMeaning]);
+    }
 
     this.data.draggedListItemValue = await getListItemValue(listItem);
 
@@ -108,22 +114,17 @@ When(
 Then(
   "I expect to see the dragged list item on the {string} position",
   async function (this: ComplexWorld, listItemMeaning: ListItemMeaning) {
-    const itemToDragOnValue = await getListItemValue(
-      this.locateByFullId(LIST_ITEM_TEST_IDS[listItemMeaning]),
+    let itemToDragOn;
+
+    if (listItemMeaning === "last") {
+      itemToDragOn = this.locateByIdParts(LIST_ITEM).last();
+    } else {
+      itemToDragOn = this.locateByFullId(LIST_ITEM_TEST_IDS[listItemMeaning]);
+    }
+
+    expect(await getListItemValue(itemToDragOn)).toBe(
+      this.data.draggedListItemValue,
     );
-
-    expect(itemToDragOnValue).toBe(this.data.draggedListItemValue);
-  },
-);
-
-Then(
-  "I expect to see the dragged list item last",
-  async function (this: ComplexWorld) {
-    const draggedListItemValue = await getListItemValue(
-      this.locateByIdParts(LIST_ITEM).last(),
-    );
-
-    expect(draggedListItemValue).toBe(this.data.draggedListItemValue);
   },
 );
 

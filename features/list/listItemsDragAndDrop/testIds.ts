@@ -8,5 +8,6 @@ export const LIST_ITEM_TEST_IDS = {
   third: buildFullTestId(LIST_ITEM, 2),
   "exceeding limit": buildFullTestId(LIST_ITEM, ITEMS_LIMIT),
   automatic: AUTO_LIST_ITEM_INPUT,
+  last: LIST_ITEM,
 };
 export type ListItemMeaning = keyof typeof LIST_ITEM_TEST_IDS;
