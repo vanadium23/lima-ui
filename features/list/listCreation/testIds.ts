@@ -82,6 +82,7 @@ export const INPUT_TEST_IDS = {
   "third item": buildFullTestId(LIST_ITEM_INPUT, 2),
   "forth item": buildFullTestId(LIST_ITEM_INPUT, 3),
   "automatic item": AUTO_LIST_ITEM_INPUT,
+  "last item": LIST_ITEM_INPUT,
 };
 export type InputMeaning = keyof typeof INPUT_TEST_IDS;
 

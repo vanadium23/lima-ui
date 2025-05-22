@@ -52,6 +52,7 @@ const INPUT_LIMIT_RELATION = {
   "third item": EDIT_LIST_INPUT_LIMIT,
   "forth item": EDIT_LIST_INPUT_LIMIT,
   "automatic item": EDIT_LIST_INPUT_LIMIT,
+  "last item": EDIT_LIST_INPUT_LIMIT,
 };
 
 When(
@@ -64,7 +65,13 @@ When(
     this.oldData[inputMeaning] = this.data[inputMeaning] || "";
     this.data[inputMeaning] = text;
 
-    await this.locateByFullId(INPUT_TEST_IDS[inputMeaning]).fill(text);
+    let input = this.locateByFullId(INPUT_TEST_IDS[inputMeaning]);
+
+    if (inputMeaning === "last item") {
+      input = this.locateByIdParts(INPUT_TEST_IDS[inputMeaning]).last();
+    }
+
+    await input.fill(text);
   },
 );
 
