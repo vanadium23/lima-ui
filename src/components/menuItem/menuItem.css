@@ -3,6 +3,7 @@
   width: 100%;
   cursor: pointer;
   user-select: none;
+  white-space: nowrap;
 }
 
 .menuItem:focus {
@@ -10,7 +11,7 @@
 }
 
 .menuItem_medium {
-  padding: var(--size-x5) var(--size-x6) var(--size-x5) var(--size-x6);
+  padding: var(--size-x5) var(--size-x6);
   gap: var(--size-x3);
   font-size: 1.4rem;
   line-height: 1.8rem;
@@ -26,12 +27,14 @@
   background-color: var(--neutral-200);
 }
 
-.menuItem_primary:hover:not(.menuItem_disabled) {
-  background-color: var(--neutral-150);
-}
-
 .menuItem_primary:active:not(.menuItem_disabled) {
   background-color: var(--neutral-200);
+}
+
+@media (hover: hover) {
+  .menuItem_primary:hover:not(.menuItem_disabled) {
+    background-color: var(--neutral-150);
+  }
 }
 
 .menuItem_dangerous {
@@ -43,12 +46,14 @@
   background-color: var(--neutral-200);
 }
 
-.menuItem_dangerous:hover:not(.menuItem_disabled) {
-  background-color: var(--neutral-150);
-}
-
 .menuItem_dangerous:active:not(.menuItem_disabled) {
   background-color: var(--neutral-200);
+}
+
+@media (hover: hover) {
+  .menuItem_dangerous:hover:not(.menuItem_disabled) {
+    background-color: var(--neutral-150);
+  }
 }
 
 .menuItem_disabled {

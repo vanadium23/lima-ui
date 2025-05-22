@@ -19,15 +19,15 @@
   outline: none;
 }
 
-.toggleIconButton:active:not(:disabled, .toggleIconButton_disabled) {
+.toggleIconButton:active:not(.toggleIconButton_disabled) {
   transform: translateY(0.1rem);
 }
 
 /* Sizes */
 
 .toggleIconButton_medium {
-  width: var(--size-x17);
-  height: var(--size-x17);
+  width: var(--size-x16);
+  height: var(--size-x16);
 }
 
 /* Themes */
@@ -42,12 +42,12 @@
 }
 
 @media (hover: hover) {
-  .toggleIconButton_secondary:hover:not(:disabled, .toggleIconButton_disabled) {
+  .toggleIconButton_secondary:hover:not(.toggleIconButton_disabled) {
     background: var(--primary-250);
   }
 }
 
-.toggleIconButton_secondary:active:not(:disabled, .toggleIconButton_disabled) {
+.toggleIconButton_secondary:active:not(.toggleIconButton_disabled) {
   background: var(--primary-500);
 }
 

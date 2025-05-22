@@ -1,9 +1,9 @@
 ---
 import { DEFAULT_TEST_ID } from "../../../../features/testIds";
 import {
-ItemInput,
-ItemInputSize,
-ItemInputTheme,
+  ItemInput,
+  ItemInputSize,
+  ItemInputTheme,
 } from "../../../components/itemInput/itemInput.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
@@ -14,7 +14,7 @@ const themes = Object.values(ItemInputTheme);
 const sizes = Object.values(ItemInputSize);
 ---
 
-<StorybookPage title="List Item Input">
+<StorybookPage title="Item Input">
   {
     themes.map((theme) => (
       <div class="demoThemeWrapper">
@@ -31,13 +31,8 @@ const sizes = Object.values(ItemInputSize);
             <>
               <span class="rhead">{size}</span>
 
-              <ItemInputWrapper
-                client:only="solid-js"
-              />
-              <ItemInputWrapper
-                client:only="solid-js"
-                isError={true}
-              />
+              <ItemInputWrapper client:only="solid-js" />
+              <ItemInputWrapper client:only="solid-js" isError={true} />
               <ItemInput
                 client:only="solid-js"
                 theme={theme}

@@ -12,7 +12,6 @@ export enum InputTheme {
 }
 
 export enum InputSize {
-  Small = "small",
   Medium = "medium",
   Large = "large",
 }

@@ -20,9 +20,7 @@ export enum NoteTheme {
 }
 
 export enum NoteSize {
-  Small = "small",
   Medium = "medium",
-  Large = "large",
 }
 
 type NoteProps = {
@@ -51,15 +49,11 @@ export const Note = (props: NoteProps) => {
   );
 
   const accordionSize = {
-    [NoteSize.Small]: AccordionSize.Small,
     [NoteSize.Medium]: AccordionSize.Medium,
-    [NoteSize.Large]: AccordionSize.Large,
   };
 
   const textareaSize = {
-    [NoteSize.Small]: TextareaSize.Small,
     [NoteSize.Medium]: TextareaSize.Medium,
-    [NoteSize.Large]: TextareaSize.Large,
   };
 
   return (

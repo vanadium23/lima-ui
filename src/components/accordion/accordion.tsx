@@ -14,9 +14,7 @@ export enum AccordionTheme {
 }
 
 export enum AccordionSize {
-  Small = "small",
   Medium = "medium",
-  Large = "large",
 }
 
 type AccordionProps = {
@@ -44,9 +42,7 @@ export const Accordion = (props: Testable<AccordionProps>) => {
   };
 
   const iconSize = {
-    [AccordionSize.Small]: IconSize.Small,
     [AccordionSize.Medium]: IconSize.Medium,
-    [AccordionSize.Large]: IconSize.Large,
   };
 
   return (
