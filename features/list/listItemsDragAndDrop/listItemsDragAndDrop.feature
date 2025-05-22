@@ -31,6 +31,37 @@ Feature: List items drag and drop functionality
     And I complete the drag operation
     Then I expect to see the "save" button disabled
 
+  Scenario: Dragging list item several times
+    And I start dragging the "third" list item
+    And I drag the item on the "first" item
+    And I complete the drag operation
+    Then I expect to see the dragged list item on the "first" position
+    And I start dragging the "first" list item
+    And I drag the item on the "seventh" item
+    And I complete the drag operation
+    Then I expect to see the dragged list item on the "seventh" position
+    And I start dragging the "seventh" list item
+    And I drag the item on the "second" item
+    And I complete the drag operation
+    Then I expect to see the dragged list item on the "second" position
+    And I start dragging the "second" list item
+    And I drag the item on the "fifth" item
+    And I complete the drag operation
+    Then I expect to see the dragged list item on the "fifth" position
+    And I start dragging the "fifth" list item
+    And I drag the item on the "eighth" item
+    And I complete the drag operation
+    Then I expect to see the dragged list item on the "eighth" position
+    And I start dragging the "eighth" list item
+    And I drag the item on the "third" item
+    And I complete the drag operation
+    Then I expect to see the dragged list item on the "third" position
+    And I start dragging the "third" list item
+    And I drag the item on the "ninth" item
+    And I complete the drag operation
+    Then I expect to see the dragged list item on the "ninth" position
+    And I expect to see the "save" button enabled
+
   Scenario: Drag item to the start of a list
     And I start dragging the "third" list item
     And I drag the item on the "first" item
