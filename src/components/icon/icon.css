@@ -2,9 +2,14 @@
   flex-shrink: 0;
 }
 
-.icon_small {
+.icon_extraSmall {
   width: var(--size-x7);
   height: var(--size-x7);
+}
+
+.icon_small {
+  width: var(--size-x8);
+  height: var(--size-x8);
 }
 
 .icon_medium {

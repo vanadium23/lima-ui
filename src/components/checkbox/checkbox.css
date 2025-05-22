@@ -13,7 +13,6 @@
 .checkbox_small {
   width: 1.6rem;
   height: 1.6rem;
-  border-radius: var(--size-x3);
 }
 
 .checkbox_small .checkbox__inner {
@@ -23,7 +22,6 @@
 .checkbox_medium {
   width: 2rem;
   height: 2rem;
-  border-radius: var(--size-x4);
 }
 
 .checkbox_medium .checkbox__inner {

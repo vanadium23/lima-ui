@@ -3,6 +3,7 @@
   width: 100%;
   cursor: pointer;
   user-select: none;
+  white-space: nowrap;
 }
 
 .menuItem:focus {

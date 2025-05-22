@@ -67,14 +67,14 @@
   color: var(--neutral-700);
 }
 
-.accordion_disabled .accordion__headerIcon {
-  color: var(--neutral-500);
-}
-
 @media (hover: hover) {
   .accordion_primary:not(.accordion_disabled):has(.accordion__header:hover) {
     border-color: var(--neutral-700);
   }
+}
+
+.accordion_disabled .accordion__headerIcon {
+  color: var(--neutral-500);
 }
 
 .accordion__header:focus-visible {

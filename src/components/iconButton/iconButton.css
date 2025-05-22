@@ -20,7 +20,7 @@
   outline: none;
 }
 
-.iconButton:active:not(:disabled, .iconButton_disabled, .iconButton_loading) {
+.iconButton:active:not(.iconButton_disabled, .iconButton_loading) {
   transform: translateY(0.1rem);
 }
 
@@ -64,20 +64,12 @@
   color: var(--neutral-800);
 }
 
-.iconButton_primary:active:not(
-    :disabled,
-    .iconButton_disabled,
-    .iconButton_loading
-  ) {
+.iconButton_primary:active:not(.iconButton_disabled, .iconButton_loading) {
   color: var(--neutral-900);
 }
 
 @media (hover: hover) {
-  .iconButton_primary:hover:not(
-      :disabled,
-      .iconButton_disabled,
-      .iconButton_loading
-    ) {
+  .iconButton_primary:hover:not(.iconButton_disabled, .iconButton_loading) {
     color: var(--neutral-700);
   }
 }
@@ -86,20 +78,12 @@
   color: var(--neutral-600);
 }
 
-.iconButton_secondary:active:not(
-    :disabled,
-    .iconButton_disabled,
-    .iconButton_loading
-  ) {
+.iconButton_secondary:active:not(.iconButton_disabled, .iconButton_loading) {
   color: var(--neutral-700);
 }
 
 @media (hover: hover) {
-  .iconButton_secondary:hover:not(
-      :disabled,
-      .iconButton_disabled,
-      .iconButton_loading
-    ) {
+  .iconButton_secondary:hover:not(.iconButton_disabled, .iconButton_loading) {
     color: var(--neutral-500);
   }
 }
@@ -108,20 +92,12 @@
   color: var(--neutral-100);
 }
 
-.iconButton_tertiary:active:not(
-    :disabled,
-    .iconButton_disabled,
-    .iconButton_loading
-  ) {
+.iconButton_tertiary:active:not(.iconButton_disabled, .iconButton_loading) {
   color: var(--primary-200);
 }
 
 @media (hover: hover) {
-  .iconButton_tertiary:hover:not(
-      :disabled,
-      .iconButton_disabled,
-      .iconButton_loading
-    ) {
+  .iconButton_tertiary:hover:not(.iconButton_disabled, .iconButton_loading) {
     color: var(--primary-100);
   }
 }
@@ -130,20 +106,12 @@
   color: green; /* TODO Заменить на нормальную переменную */
 }
 
-.iconButton_successful:active:not(
-    :disabled,
-    .iconButton_disabled,
-    .iconButton_loading
-  ) {
+.iconButton_successful:active:not(.iconButton_disabled, .iconButton_loading) {
   color: green; /* TODO Заменить на нормальную переменную */
 }
 
 @media (hover: hover) {
-  .iconButton_successful:hover:not(
-      :disabled,
-      .iconButton_disabled,
-      .iconButton_loading
-    ) {
+  .iconButton_successful:hover:not(.iconButton_disabled, .iconButton_loading) {
     color: green; /* TODO Заменить на нормальную переменную */
   }
 }
@@ -152,20 +120,12 @@
   color: var(--dangerous-500);
 }
 
-.iconButton_dangerous:active:not(
-    :disabled,
-    .iconButton_disabled,
-    .iconButton_loading
-  ) {
+.iconButton_dangerous:active:not(.iconButton_disabled, .iconButton_loading) {
   color: var(--dangerous-600);
 }
 
 @media (hover: hover) {
-  .iconButton_dangerous:hover:not(
-      :disabled,
-      .iconButton_disabled,
-      .iconButton_loading
-    ) {
+  .iconButton_dangerous:hover:not(.iconButton_disabled, .iconButton_loading) {
     color: var(--dangerous-400);
   }
 }

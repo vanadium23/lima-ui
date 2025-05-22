@@ -32,13 +32,13 @@
   background: var(--primary-500);
 }
 
-.button_primary:active:not(:disabled, .button_disabled, .button_loading) {
+.button_primary:active:not(.button_disabled, .button_loading) {
   border-color: var(--primary-600);
   background: var(--primary-600);
 }
 
 @media (hover: hover) {
-  .button_primary:hover:not(:disabled, .button_disabled, .button_loading) {
+  .button_primary:hover:not(.button_disabled, .button_loading) {
     border-color: var(--primary-400);
     background: var(--primary-400);
   }
@@ -50,12 +50,12 @@
   background: var(--neutral-100);
 }
 
-.button_secondary:active:not(:disabled, .button_disabled, .button_loading) {
+.button_secondary:active:not(.button_disabled, .button_loading) {
   border-color: var(--primary-600);
 }
 
 @media (hover: hover) {
-  .button_secondary:hover:not(:disabled, .button_disabled, .button_loading) {
+  .button_secondary:hover:not(.button_disabled, .button_loading) {
     border-color: var(--primary-400);
   }
 }
@@ -66,13 +66,13 @@
   background: var(--secondary-500);
 }
 
-.button_successful:active:not(:disabled, .button_disabled, .button_loading) {
+.button_successful:active:not(.button_disabled, .button_loading) {
   border-color: var(--secondary-600);
   background: var(--secondary-600);
 }
 
 @media (hover: hover) {
-  .button_successful:hover:not(:disabled, .button_disabled, .button_loading) {
+  .button_successful:hover:not(.button_disabled, .button_loading) {
     border-color: var(--secondary-400);
     background: var(--secondary-400);
   }
@@ -84,13 +84,13 @@
   background: var(--dangerous-500);
 }
 
-.button_dangerous:active:not(:disabled, .button_disabled, .button_loading) {
+.button_dangerous:active:not(.button_disabled, .button_loading) {
   border-color: var(--dangerous-600);
   background: var(--dangerous-600);
 }
 
 @media (hover: hover) {
-  .button_dangerous:hover:not(:disabled, .button_disabled, .button_loading) {
+  .button_dangerous:hover:not(.button_disabled, .button_loading) {
     border-color: var(--dangerous-400);
     background: var(--dangerous-400);
   }
@@ -113,7 +113,7 @@
   outline: none;
 }
 
-.button:active:not(:disabled, .button_disabled, .button_loading) {
+.button:active:not(.button_disabled, .button_loading) {
   transform: translateY(0.1rem);
 }
 

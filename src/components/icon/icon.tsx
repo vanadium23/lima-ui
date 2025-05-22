@@ -1519,6 +1519,7 @@ export enum IconName {
 }
 
 export enum IconSize {
+  ExtraSmall = "extraSmall",
   Small = "small",
   Medium = "medium",
   Large = "large",
