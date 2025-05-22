@@ -9,7 +9,7 @@ Feature: Adding items above and below on the List page
     Then I expect to see the fully visible "list item" context menu
     And I press the visible "add item above" menu item
     Then I expect to see the "first" item input enabled
-    Then I expect to see the "automatic" item input enabled
+    Then I expect to see the "second" item input enabled
 
   Scenario: Adding an item below the last added one via context menu
     When I add list items till scroll appears plus one item input

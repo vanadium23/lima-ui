@@ -9,7 +9,7 @@ export function addAutoItemIfNeeded(items: DragItems): DragItems {
   }
 
   if (items.length === 0 || items.at(-1)?.content.trim() !== "") {
-    return [...items, createDefaultItem()];
+    return [...items, createDefaultItem(true)];
   }
 
   return items;

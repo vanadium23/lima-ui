@@ -20,6 +20,7 @@ export type DragItem = {
   dragId: string;
   content: string;
   id: string;
+  auto: boolean;
 };
 
 export type DragItems = DragItem[];

@@ -1,5 +1,5 @@
-export function createDefaultItem() {
-  return { content: "", id: "", dragId: createDragId() };
+export function createDefaultItem(auto: boolean = false) {
+  return { content: "", id: "", dragId: createDragId(), auto };
 }
 
 export function createDragId() {
