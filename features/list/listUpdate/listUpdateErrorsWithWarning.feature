@@ -1,11 +1,9 @@
 Feature: Errors and warnings during list update
 
-  Background:
+  Scenario: List update with items at limit and connection error shows both problems
     When I clear all data
     And I add a list
     And I refresh the page
-
-  Scenario: List update with items at limit and connection error shows both problems
     Given There is no internet connection
     And I add list items to their limit
     And I fill all items inputs with their index

@@ -145,5 +145,6 @@ export function convertItemsToDragItems(list: List) {
   return list.items.map((item) => ({
     ...item,
     dragId: item.id || createDragId(),
+    auto: false,
   }));
 }

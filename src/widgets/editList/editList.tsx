@@ -2,11 +2,11 @@ import {
   createSortable,
   DragDropProvider,
   DragDropSensors,
-  type DragEvent,
   DragOverlay,
   SortableProvider,
   transformStyle,
   useDragDropContext,
+  type DragEvent,
 } from "@thisbeyond/solid-dnd";
 import { For, mergeProps, onCleanup, onMount, Show } from "solid-js";
 import { createStore } from "solid-js/store";
@@ -68,6 +68,7 @@ import { removeList } from "./services/removeList.ts";
 import { updateList } from "./services/updateList.ts";
 import {
   EditListFormNames,
+  type DragItems,
   type EditListStore,
   type List,
   type NewList,
@@ -139,7 +140,7 @@ export const EditList = (props: EditListProps) => {
   });
 
   type AddItemOptions =
-    | { mode: "end"; scroll?: boolean }
+    | { mode: "end"; scroll?: boolean; auto: boolean }
     | { mode: "before" | "after"; index: number };
 
   const autoScroll = createAutoScroll({
@@ -169,41 +170,54 @@ export const EditList = (props: EditListProps) => {
   const closeDialog = () => setStore("isDialogOpen", false);
 
   function addItem(options: AddItemOptions) {
-    if (store.items.length >= ITEMS_LIMIT) return;
+    if (reachedItemsLimit()) return;
 
-    const newItem = createDefaultItem();
+    let resultingItems: DragItems = [];
 
     if (options.mode === "end") {
-      setStore("items", [...store.items, newItem]);
-      checkChanges(store, setStore);
+      const items = store.items.filter((item) => !item.auto);
+      const existingAutoItem = store.items.filter((item) => item.auto);
+
+      resultingItems = [
+        ...items,
+        createDefaultItem(options.auto),
+        ...existingAutoItem,
+      ];
 
       if (options.scroll) {
         requestAnimationFrame(scrollToBottom);
       }
-
-      return;
     }
 
-    const insertIndex =
-      options.mode === "before" ? options.index : options.index + 1;
+    if (options.mode === "before" || options.mode === "after") {
+      const insertIndex =
+        options.mode === "before" ? options.index : options.index + 1;
 
-    setStore("items", (items) => [
-      ...items.slice(0, insertIndex),
-      newItem,
-      ...items.slice(insertIndex),
-    ]);
+      resultingItems = [
+        ...store.items.slice(0, insertIndex).map((item) => ({
+          ...item,
+          auto: false,
+        })),
+        createDefaultItem(),
+        ...store.items.slice(insertIndex),
+      ];
+    }
 
+    setStore("items", resultingItems.slice(0, ITEMS_LIMIT));
     checkChanges(store, setStore);
+  }
+
+  function isLastItem(index: number) {
+    return index === store.items.length - 1;
   }
 
   function handleItemChange(index: number, value: string) {
     setStore("items", index, "content", value);
     checkChanges(store, setStore);
 
-    const isLastItem = index === store.items.length - 1;
-
-    if (isLastItem && value.trim() !== "") {
-      addItem({ mode: "end", scroll: true });
+    if (isLastItem(index) && value.trim() !== "") {
+      setStore("items", index, "auto", false);
+      addItem({ mode: "end", scroll: true, auto: true });
     }
 
     const lastIndex = store.items.length - 1;
@@ -219,8 +233,8 @@ export const EditList = (props: EditListProps) => {
     }
   }
 
-  function checkItemsLimitReached() {
-    return store.items.length >= ITEMS_LIMIT;
+  function reachedItemsLimit() {
+    return store.items.filter((item) => !item.auto).length >= ITEMS_LIMIT;
   }
 
   function removeItem(indexToRemove: number) {
@@ -381,8 +395,19 @@ export const EditList = (props: EditListProps) => {
 
       if (fromIndex !== -1 && toIndex !== -1 && fromIndex !== toIndex) {
         const updatedItems = [...currentItems];
-        updatedItems.splice(toIndex, 0, ...updatedItems.splice(fromIndex, 1));
-        setStore("items", updatedItems);
+        const [movedItem] = updatedItems.splice(fromIndex, 1);
+
+        if (!movedItem) return;
+
+        updatedItems.splice(toIndex, 0, movedItem);
+
+        setStore(
+          "items",
+          updatedItems.map((item) => ({
+            ...item,
+            auto: false,
+          })),
+        );
         checkChanges(store, setStore);
       }
     }
@@ -451,13 +476,6 @@ export const EditList = (props: EditListProps) => {
                   <SortableProvider ids={ids()}>
                     <For each={store.items}>
                       {(item, index) => {
-                        const isLastItem = () =>
-                          index() === store.items.length - 1;
-                        const isNotAutoItem = () =>
-                          !isLastItem() ||
-                          isOnlyOneItem(store.items) ||
-                          !!item.content;
-
                         const dragData = createSortable(item.dragId);
 
                         return (
@@ -479,12 +497,10 @@ export const EditList = (props: EditListProps) => {
                             onAddAfter={() =>
                               addItem({ mode: "after", index: index() })
                             }
-                            canAddMore={store.items.length < ITEMS_LIMIT}
-                            testId={
-                              isNotAutoItem() ? LIST_ITEM : AUTO_LIST_ITEM
-                            }
+                            canAddMore={!reachedItemsLimit()}
+                            testId={item.auto ? AUTO_LIST_ITEM : LIST_ITEM}
                             testSubId={index()}
-                            isRequired={isNotAutoItem()}
+                            isRequired={!item.auto}
                             dragSettings={{
                               dragData,
                               dragProps: {
@@ -495,7 +511,11 @@ export const EditList = (props: EditListProps) => {
                               },
                               dragState: useDragDropContext()?.[0] || null,
                             }}
-                            placeholder={isNotAutoItem() ? "Пункт списка" : "Добавить пункт списка"}
+                            placeholder={
+                              item.auto
+                                ? "Добавить пункт списка"
+                                : "Пункт списка"
+                            }
                           />
                         );
                       }}
@@ -507,9 +527,14 @@ export const EditList = (props: EditListProps) => {
                       isChecked={false}
                       defaultValue={draggedItemData().content}
                       dataId={draggedItemData().dragId}
-                      canAddMore={true}
+                      canAddMore={!reachedItemsLimit()}
                       testId={DRAGGED_LIST_ITEM}
                       isDraggingOverlay={true}
+                      placeholder={
+                        draggedItemData().auto
+                          ? "Добавить пункт списка"
+                          : "Пункт списка"
+                      }
                     />
                   </DragOverlay>
                 </DragDropProvider>
@@ -519,7 +544,7 @@ export const EditList = (props: EditListProps) => {
                   Ошибка соединения с сервером, попробуйте еще раз
                 </PageError>
               </Show>
-              <Show when={checkItemsLimitReached()}>
+              <Show when={reachedItemsLimit()}>
                 <PageError testId={ITEMS_LIMIT_REACHED_WARNING}>
                   Вы использовали лимит в {ITEMS_LIMIT} пунктов
                 </PageError>
@@ -550,10 +575,10 @@ export const EditList = (props: EditListProps) => {
             <ToolsButton
               componentType={ToolsButtonComponentType.Button}
               iconName={IconName.RowsPlusBottom}
-              handleClick={() => addItem({ mode: "end", scroll: true })}
-              isDisabled={
-                checkItemsLimitReached() || store.sendingNow !== false
+              handleClick={() =>
+                addItem({ mode: "end", scroll: true, auto: false })
               }
+              isDisabled={reachedItemsLimit() || store.sendingNow !== false}
               text={"Добавить пункт"}
               testId={TOOLS_PANEL_ADD_ITEM_BUTTON}
             />
