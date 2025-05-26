@@ -31,4 +31,8 @@
   .header__burger {
     display: none;
   }
+
+  .header__toggleToolsPanelButton {
+    display: none;
+  }
 }
