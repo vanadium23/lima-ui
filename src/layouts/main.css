@@ -68,7 +68,7 @@
 
   /* Custom-properties */
   --outline-set: 0.1rem solid var(--outline);
-  --outline-offset: 0.1rem;
+  --outline-offset: -0.1rem;
   --preloader: rotate-preloader 0.7s linear infinite;
 }
 

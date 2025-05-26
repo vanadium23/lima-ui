@@ -53,7 +53,7 @@
   line-height: 2.4rem;
 }
 
-@media screen and (width <= 767px) {
+@media (width <= 767px) {
   .editableTitle_medium {
     gap: var(--size-x5);
     padding: var(--size-x3) var(--size-x3) var(--size-x3) var(--size-x8);

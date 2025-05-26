@@ -7,6 +7,7 @@
 .listStripe__link {
   display: flex;
   width: 100%;
+  min-width: 0; /* Хитрый фикс для сжимания линка в мобильной версии */
   flex-direction: column;
   border: 0.1rem solid var(--neutral-200);
   border-radius: var(--size-x4);
@@ -34,14 +35,27 @@
 .listStripe__controls {
   display: flex;
   align-items: center;
-  visibility: visible;
+}
+
+@media (hover: hover) {
+  .listStripe__controls {
+    visibility: hidden;
+  }
+
+  .listStripe_removing .listStripe__controls {
+    visibility: visible;
+  }
 }
 
 .listStripe__title {
+  display: inline-block;
+  width: 100%;
   font-weight: 600;
 }
 
 .listStripe__purpose {
+  display: inline-block;
+  width: 100%;
   font-weight: 500;
 }
 
@@ -70,8 +84,10 @@
   transform: translateY(0.1rem);
 }
 
-.listStripe_primary:not(.listStripe_removing) .listStripe__link:hover {
-  background: var(--neutral-150);
+@media (hover: hover) {
+  .listStripe_primary:not(.listStripe_removing) .listStripe__link:hover {
+    background: var(--neutral-150);
+  }
 }
 
 .listStripe_primary:not(.listStripe_removing) .listStripe__link:active {
@@ -102,26 +118,19 @@
   visibility: visible;
 }
 
-/* TODO проработь медиа запросы для тачскринов */
-
-@media screen and (width >= 1025px) {
-  .listStripe__controls {
-    visibility: hidden;
-  }
-
-  .listStripe_removing .listStripe__controls {
-    visibility: visible;
-  }
-}
-
-@media screen and (width <= 1023px) {
+@media (width <= 767px) {
   .listStripe_medium .listStripe__title {
     font-size: 1.4rem;
     line-height: 1.8rem;
   }
 
+  .listStripe_medium .listStripe__purpose {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+  }
+
   .listStripe_medium .listStripe__link {
-    padding: var(--size-x3) var(--size-x4);
+    padding: var(--size-x3) 0 var(--size-x3) var(--size-x4);
   }
 
   .listStripe {
