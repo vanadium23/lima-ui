@@ -8,7 +8,6 @@
   appearance: none;
   background: transparent;
   cursor: pointer;
-  border-radius: var(--size-x4);
 }
 
 .iconButton:focus-visible {
@@ -39,23 +38,27 @@
   width: var(--size-x12);
   height: var(--size-x12);
   padding: var(--size-x1);
+  border-radius: var(--size-x4);
 }
 
 .iconButton_mediumEmbedded {
   width: var(--size-x9);
   height: var(--size-x9);
+  border-radius: var(--size-x3);
 }
 
 .iconButton_medium {
   width: var(--size-x17);
   height: var(--size-x17);
   padding: var(--size-x3);
+  border-radius: var(--size-x4);
 }
 
 .iconButton_large {
   width: var(--size-x20);
   height: var(--size-x20);
   padding: var(--size-x4);
+  border-radius: var(--size-x4);
 }
 
 /* Themes */
