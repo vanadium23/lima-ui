@@ -10,10 +10,6 @@
   padding: var(--size-x5) var(--size-x6);
 }
 
-.toolsPanel_hidden {
-  display: none;
-}
-
 .toolsPanel__horizontalSection {
   display: flex;
   justify-content: space-between;
@@ -25,14 +21,14 @@
   flex-flow: column wrap;
 }
 
-@media screen and (width <= 767px) {
+@media (width <= 767px) {
   .toolsPanel {
     box-shadow: -0.4rem 0.4rem 0.8rem 0 rgb(34 60 80 / 20%);
   }
+}
 
-  .editList__toolsPanel {
-    position: absolute;
-    right: 0;
-    height: calc(100vh - 4.8rem); /* вычитаем Header */
+@media (width <= 1023px) {
+  .toolsPanel_hidden {
+    display: none;
   }
 }

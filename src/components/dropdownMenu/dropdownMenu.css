@@ -6,6 +6,7 @@
   list-style: none;
   overflow: hidden;
   max-width: 32rem;
+  z-index: 1; /* фиксит накладывания поверх меню других элементов которые перерендериваются, например loading у кнопки удаления */
 }
 
 .dropdownMenu_medium {

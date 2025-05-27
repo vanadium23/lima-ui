@@ -68,23 +68,14 @@ export const Lists = (props: ListsProps) => {
           У вас еще нет сохраненных списков
         </span>
       </Show>
-      <Show when={isLimitReached()}>
-        <PageError testId={LISTS_LIMIT_REACHED_WARNING}>
-          Вы использовали лимит в {LISTS_LIMIT} списков
-        </PageError>
-      </Show>
-      <Show when={store.removeError}>
-        <PageError testId={LIST_REMOVAL_ERROR}>
-          Не удалось удалить список. Попробуйте ещё раз.
-        </PageError>
-      </Show>
-
       <Show
         when={!mProps.listsRequestError}
         fallback={
-          <PageError testId={NETWORK_ERROR}>
-            Произошла ошибка соединения с сервером, попробуйте еще раз
-          </PageError>
+          <div class="lists__errors">
+            <PageError testId={NETWORK_ERROR}>
+              Произошла ошибка соединения с сервером, попробуйте еще раз
+            </PageError>
+          </div>
         }
       >
         <ul class="lists__list">
@@ -105,17 +96,30 @@ export const Lists = (props: ListsProps) => {
             )}
           </For>
         </ul>
-      </Show>
 
-      <div class="lists__new">
-        <Button
-          componentType={ButtonComponentType.Link}
-          link={LISTS_CREATE}
-          text="Создать"
-          testId={CREATE_LIST_BUTTON}
-          isDisabled={checkListsLimitReached()}
-        />
-      </div>
+        <div class="lists__errors">
+          <Show when={isLimitReached()}>
+            <PageError testId={LISTS_LIMIT_REACHED_WARNING}>
+              Вы использовали лимит в {LISTS_LIMIT} списков
+            </PageError>
+          </Show>
+          <Show when={store.removeError}>
+            <PageError testId={LIST_REMOVAL_ERROR}>
+              Не удалось удалить список. Попробуйте ещё раз.
+            </PageError>
+          </Show>
+        </div>
+
+        <div class="lists__new">
+          <Button
+            componentType={ButtonComponentType.Link}
+            link={LISTS_CREATE}
+            text="Создать"
+            testId={CREATE_LIST_BUTTON}
+            isDisabled={checkListsLimitReached()}
+          />
+        </div>
+      </Show>
     </div>
   );
 };

@@ -27,8 +27,12 @@
   justify-self: flex-end;
 }
 
-@media screen and (width >= 1023px) {
+@media (width >= 1024px) {
   .header__burger {
+    display: none;
+  }
+
+  .header__toggleToolsPanelButton {
     display: none;
   }
 }

@@ -46,6 +46,7 @@ export const Header = (props: HeaderProps) => {
             ariaLabel={"Переключить меню"}
             isToggled={!panelState.isSidebarHidden()}
             setGlobalToggled={panelState.toggleSidebar}
+            id="sidebarToggle"
           />
         </div>
         <div class="header__logo">
@@ -69,15 +70,18 @@ export const Header = (props: HeaderProps) => {
         />
       </div>
       <div class="header__controls">
-        <Show when={showToggleIconButton()}>
-          <ToggleIconButton
-            iconName={IconName.SquareHalf}
-            ariaLabel={"Переключить панель инструментов"}
-            testId={TOGGLE_TOOLS_PANEL_BUTTON}
-            isToggled={!panelState.isToolsPanelHidden()}
-            setGlobalToggled={panelState.toggleToolsPanel}
-          />
-        </Show>
+        <div class="header__toggleToolsPanelButton">
+          <Show when={showToggleIconButton()}>
+            <ToggleIconButton
+              iconName={IconName.SquareHalf}
+              ariaLabel={"Переключить панель инструментов"}
+              testId={TOGGLE_TOOLS_PANEL_BUTTON}
+              isToggled={!panelState.isToolsPanelHidden()}
+              setGlobalToggled={panelState.toggleToolsPanel}
+              id="toolsPanelToggle"
+            />
+          </Show>
+        </div>
       </div>
     </header>
   );

@@ -32,13 +32,13 @@
   gap: var(--size-x2);
 }
 
-@media screen and (width <= 1023px) {
+@media (width <= 1023px) {
   .sidebar_hidden {
     display: none;
   }
 }
 
-@media screen and (width <= 767px) {
+@media (width <= 767px) {
   .sidebar {
     box-shadow: 0.4rem 0.4rem 0.8rem 0 rgb(34 60 80 / 20%);
   }

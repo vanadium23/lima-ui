@@ -10,9 +10,10 @@ body {
 .main {
   display: flex;
   flex-grow: 1;
+  width: 100%;
 }
 
-@media screen and (width <= 767px) {
+@media (width <= 767px) {
   .appContainer__nav {
     position: absolute;
     height: calc(100vh - 4.8rem);

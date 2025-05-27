@@ -21,6 +21,7 @@ type ToggleIconButtonProps = {
   ariaLabel: string;
   isToggled: boolean;
   setGlobalToggled: (isToggled: boolean) => void;
+  id?: string;
 };
 
 export const ToggleIconButton = (props: Testable<ToggleIconButtonProps>) => {
@@ -29,6 +30,7 @@ export const ToggleIconButton = (props: Testable<ToggleIconButtonProps>) => {
       theme: ToggleIconButtonTheme.Secondary,
       size: ToggleIconButtonSize.Medium,
       isDisabled: false,
+      id: "",
     },
     props,
   );
@@ -58,6 +60,7 @@ export const ToggleIconButton = (props: Testable<ToggleIconButtonProps>) => {
       data-test-id={mProps.testId}
       data-test-sub-id={mProps.testSubId}
       aria-pressed={mProps.isToggled}
+      id={mProps.id}
     >
       <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
     </button>
