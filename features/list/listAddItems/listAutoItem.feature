@@ -7,6 +7,13 @@ Feature: Seeing the basis of the automatically added item
     And I type some text with length less or equal to the one of "first item" input limit
     Then I expect to see the "automatic" item input enabled
 
+  Scenario: Not seeing the automatically added item when the first item is removed
+    And I type some text with length less or equal to the one of "first item" input limit
+    And I hover "first list item"
+    And I press the "open context menu first item" button
+    And I press the "remove first list item" menu item
+    Then I expect not to see the "automatic" item input
+
   Scenario: Seeing the automatically added item removed when the previous is cleared
     And I type some text with length less or equal to the one of "first item" input limit
     Then I expect to see the "automatic" item input enabled
