@@ -1,15 +1,12 @@
 import { createEffect, type JSX, mergeProps } from "solid-js";
 
+import { DIALOG_CLOSE_BUTTON } from "../../../features/testIds.ts";
+import { IconName } from "../icon/icon.tsx";
 import {
-  DIALOG_REMOVE_BUTTON,
-  DIALOG_RETURN_BUTTON,
-} from "../../../features/testIds.ts";
-import { Button, ButtonSize, ButtonTheme } from "../button/button.tsx";
-import {
-  TextButton,
-  TextButtonSize,
-  TextButtonTheme,
-} from "../textButton/textButton.tsx";
+  IconButton,
+  IconButtonSize,
+  IconButtonTheme,
+} from "../iconButton/iconButton.tsx";
 import type { Testable } from "../utilities/testable.ts";
 
 import "./dialog.css";
@@ -26,7 +23,7 @@ type DialogProps = {
   theme?: DialogTheme;
   size?: DialogSize;
   children: JSX.Element;
-  onConfirm?: () => void;
+  controls: JSX.Element;
   onCancel?: () => void;
   isOpen: boolean;
   title: string;
@@ -38,8 +35,7 @@ export const Dialog = (props: Testable<DialogProps>) => {
       theme: DialogTheme.Primary,
       size: DialogSize.Medium,
       isOpen: false,
-      onConfirm: () => { },
-      onCancel: () => { },
+      onCancel: () => {},
     },
     props,
   );
@@ -49,6 +45,10 @@ export const Dialog = (props: Testable<DialogProps>) => {
   createEffect(() => {
     if (mProps.isOpen && dialogRef) {
       dialogRef.showModal();
+    }
+
+    if (!mProps.isOpen && dialogRef) {
+      closeDialog();
     }
   });
 
@@ -81,32 +81,24 @@ export const Dialog = (props: Testable<DialogProps>) => {
       data-test-sub-id={mProps.testSubId}
     >
       <div class="dialog__wrapper">
-        <h2 class="dialog__title">{mProps.title}</h2>
-        <div class="dialog__content">{mProps.children}</div>
-        <div class="dialog__controls">
-          <TextButton
-            theme={TextButtonTheme.Primary}
-            size={TextButtonSize.Medium}
-            text={"Вернуться"}
+        <div class="dialog__header">
+          <h2 class="dialog__title">{mProps.title}</h2>
+          <IconButton
+            theme={IconButtonTheme.Primary}
+            size={IconButtonSize.MediumEmbedded}
+            iconName={IconName.X}
+            ariaLabel={`Закрыть диалоговое окно ${mProps.title}`}
             handleClick={() => {
               mProps.onCancel();
               closeDialog();
             }}
-            testId={DIALOG_RETURN_BUTTON}
+            testId={DIALOG_CLOSE_BUTTON}
             testSubId={mProps.testSubId ?? ""}
-           />
-          <Button
-            theme={ButtonTheme.Dangerous}
-            size={ButtonSize.Medium}
-            text={"Удалить"}
-            handleClick={() => {
-              mProps.onConfirm();
-              closeDialog();
-            }}
-            testId={DIALOG_REMOVE_BUTTON}
-            testSubId={mProps.testSubId ?? ""}
-           />
+          />
         </div>
+
+        <div class="dialog__content">{mProps.children}</div>
+        <div class="dialog__controls">{mProps.controls}</div>
       </div>
     </dialog>
   );

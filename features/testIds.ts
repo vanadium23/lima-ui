@@ -101,7 +101,7 @@ export const LIST_STRIPE_REMOVE_BUTTON = "listStripeRemoveButton";
 export const LIST_STRIPE_CONTEXT_MENU = "listStripeContextMenu";
 
 export const REMOVE_LIST_DIALOG = "removeListDialog";
-export const DIALOG_RETURN_BUTTON = "dialogReturnButton";
+export const DIALOG_CLOSE_BUTTON = "dialogCloseButton";
 export const DIALOG_REMOVE_BUTTON = "dialogRemoveButton";
 
 export const DRAG_HANDLE = "dragHandle";

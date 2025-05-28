@@ -1,6 +1,7 @@
 import { createSignal, mergeProps } from "solid-js";
 
 import {
+  DIALOG_REMOVE_BUTTON,
   LIST_ITEM_CONTEXT_MENU,
   LIST_STRIPE,
   LIST_STRIPE_LINK_TO_VIEW,
@@ -10,6 +11,7 @@ import {
 } from "../../../features/testIds.ts";
 import { LISTS } from "../../../utilities/addresses.ts";
 import { soften } from "../../widgets/editList/utilities/soften.ts";
+import { Button, ButtonSize, ButtonTheme } from "../button/button.tsx";
 import { Dialog, DialogSize, DialogTheme } from "../dialog/dialog.tsx";
 import { DropdownMenuWrapper } from "../dropdownMenuWrapper/dropdownMenuWrapper.tsx";
 import { IconName } from "../icon/icon.tsx";
@@ -145,12 +147,23 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
       <Dialog
         theme={DialogTheme.Primary}
         size={DialogSize.Medium}
-        onConfirm={removeList}
         onCancel={closeDialog}
         isOpen={isDialogOpen()}
         title={"Удаление списка"}
         testId={REMOVE_LIST_DIALOG}
-        testSubId={mProps.defaultListId}
+        controls={
+          <Button
+            theme={ButtonTheme.Dangerous}
+            size={ButtonSize.Medium}
+            text={"Подтвердить удаление"}
+            handleClick={() => {
+              removeList();
+              closeDialog();
+            }}
+            testId={DIALOG_REMOVE_BUTTON}
+            testSubId={mProps.defaultListId ?? ""}
+          />
+        }
       >
         <p>
           Список <strong>{mProps.listTitle}</strong> будет удален без
