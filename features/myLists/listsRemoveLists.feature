@@ -23,7 +23,7 @@ Feature: Removing the lists on the Lists page
     And I press the visible "cancel list removal" button
     Then I expect not to see the "remove list" dialog modal box
 
-  Scenario: Closing a dialog modal box on pressing outside of it
+  Scenario: Closing a dialog modal box on pressing outside of it on Lists page
     When I add a list
     And I hover away from anything actionable
     And I open Lists page

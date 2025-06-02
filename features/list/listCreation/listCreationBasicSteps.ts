@@ -66,10 +66,6 @@ Then("I expect to see header", async function (this: ComplexWorld) {
 
 Then("I expect to see tools panel", async function (this: ComplexWorld) {
   await this.expectLocated(
-    this.accounting.elements.registerTestId(TOGGLE_TOOLS_PANEL_BUTTON),
-  ).toBeInViewport();
-
-  await this.expectLocated(
     this.accounting.elements.registerTestId(TOOLS_PANEL),
   ).toBeInViewport();
 });

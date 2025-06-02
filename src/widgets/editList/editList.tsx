@@ -19,6 +19,7 @@ import {
 import {
   AUTO_LIST_ITEM,
   CHECKLIST_SWITCH,
+  DIALOG_REMOVE_BUTTON,
   DRAGGED_LIST_ITEM,
   ITEMS_LIMIT_REACHED_WARNING,
   LIST_ITEM,
@@ -36,7 +37,12 @@ import {
 } from "../../../features/testIds.ts";
 import { LISTS } from "../../../utilities/addresses.ts";
 import { suffixTabTitle } from "../../../utilities/tabTitle.ts";
-import { Button, ButtonType } from "../../components/button/button.tsx";
+import {
+  Button,
+  ButtonSize,
+  ButtonTheme,
+  ButtonType,
+} from "../../components/button/button.tsx";
 import { Dialog } from "../../components/dialog/dialog.tsx";
 import { Divider } from "../../components/divider/divider.tsx";
 import { EditableTitle } from "../../components/editableTitle/editableTitle.tsx";
@@ -358,8 +364,6 @@ export const EditList = (props: EditListProps) => {
       error: false,
       sendingNow: "deleting",
     });
-    closeDialog();
-
     removeList(store.id)
       .then(() => {
         soften(() => {
@@ -613,8 +617,18 @@ export const EditList = (props: EditListProps) => {
             />
             <Dialog
               title="Удаление списка"
-              onConfirm={sendListRemove}
-              onCancel={closeDialog}
+              controls={
+                <Button
+                  theme={ButtonTheme.Dangerous}
+                  size={ButtonSize.Medium}
+                  text={"Удалить"}
+                  handleClick={() => {
+                    sendListRemove();
+                    closeDialog();
+                  }}
+                  testId={DIALOG_REMOVE_BUTTON}
+                />
+              }
               isOpen={store.isDialogOpen}
               testId={REMOVE_LIST_DIALOG}
             >
