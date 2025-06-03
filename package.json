@@ -10,6 +10,7 @@
     "astro": "astro",
     "test": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" cucumber-js",
     "test-current": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" cucumber-js --tags \"@under-development\"",
+    "test-current-debug": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" PWDEBUG=\"1\" cucumber-js --tags \"@under-development\"",
     "test-fixing": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" cucumber-js --tags \"@needs-fixing\"",
     "test-working": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" cucumber-js --tags \"not @needs-fixing\""
   },

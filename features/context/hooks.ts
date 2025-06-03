@@ -114,20 +114,18 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
   }
 }
 
-const MORE_THAN_IN_PLAYWRIGHT = 6000;
+const debugging = process.env.PWDEBUG === "1";
+
+const MORE_THAN_IN_PLAYWRIGHT = debugging ? -1 : 6000;
 setDefaultTimeout(MORE_THAN_IN_PLAYWRIGHT);
 setWorldConstructor(ComplexWorld);
-
-const debugging = false;
 
 const screenshotsFolder = path.join(process.cwd(), "features", "screenshots");
 
 BeforeAll(async function () {
   prepareEmptyScreenshotsFolder();
 
-  const BROWSER_OPTIONS = { headless: !debugging };
-
-  browser = await firefox.launch(BROWSER_OPTIONS);
+  browser = await firefox.launch();
 });
 
 Before(async function (this: ComplexWorld) {
