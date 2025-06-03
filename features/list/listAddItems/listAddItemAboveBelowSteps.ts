@@ -15,6 +15,7 @@ import {
   OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
 } from "../../testIds.ts";
 import { TEST_SUB_ID_ATTRIBUTE } from "../../utilities/buildTestableSelector.ts";
+import { getTimeoutOrCancelItIfDebugging } from "../../utilities/getTimeoutOrCancelItIfDebugging.ts";
 import { calculateCurrentItemsCount } from "../utilities/calculateCurrentItemsCount.ts";
 import { getRandomInt } from "../utilities/getRandomInt.ts";
 
@@ -49,14 +50,10 @@ Then("I expect to see the new last item", async function (this: ComplexWorld) {
 
 When(
   "I add list items to their limit via adding above and below",
-  { timeout: 60000 },
+  { timeout: getTimeoutOrCancelItIfDebugging(60000) },
   async function (this: ComplexWorld) {
-    const AUTO_ITEM_COUNT = 1;
-
     for (let i = await calculateCurrentItemsCount(this); i < ITEMS_LIMIT; i++) {
-      await this.locateByIdParts(LIST_ITEM)
-        .nth(getRandomInt(i - AUTO_ITEM_COUNT))
-        .hover();
+      await this.locateByIdParts(LIST_ITEM).nth(getRandomInt(i)).hover();
       await this.locateVisible(OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON).click();
 
       if (i % 2 === 0) {

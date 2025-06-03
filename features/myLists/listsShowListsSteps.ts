@@ -25,31 +25,36 @@ import {
 } from "../testIds.ts";
 import { TEST_SUB_ID_ATTRIBUTE } from "../utilities/buildTestableSelector.ts";
 import { getStringUpToLimit } from "../utilities/getStringOfLength.ts";
+import { getTimeoutOrCancelItIfDebugging } from "../utilities/getTimeoutOrCancelItIfDebugging.ts";
 
-When("I add a list", { timeout: 20000 }, async function (this: ComplexWorld) {
-  await this.navigate(LISTS_CREATE);
+When(
+  "I add a list",
+  { timeout: getTimeoutOrCancelItIfDebugging(20000) },
+  async function (this: ComplexWorld) {
+    await this.navigate(LISTS_CREATE);
 
-  const inputs: [keyof typeof INPUT_TEST_IDS, number][] = [
-    ["list title", LIST_TITLE_INPUT_LIMIT],
-    ["list purpose", LIST_PURPOSE_INPUT_LIMIT],
-    ["first item", EDIT_LIST_INPUT_LIMIT],
-  ];
+    const inputs: [keyof typeof INPUT_TEST_IDS, number][] = [
+      ["list title", LIST_TITLE_INPUT_LIMIT],
+      ["list purpose", LIST_PURPOSE_INPUT_LIMIT],
+      ["first item", EDIT_LIST_INPUT_LIMIT],
+    ];
 
-  for (const [input, limit] of inputs) {
-    const inputText = getStringUpToLimit(limit);
-    this.data[input] = inputText;
-    await this.locateByFullId(INPUT_TEST_IDS[input]).fill(inputText);
-  }
+    for (const [input, limit] of inputs) {
+      const inputText = getStringUpToLimit(limit);
+      this.data[input] = inputText;
+      await this.locateByFullId(INPUT_TEST_IDS[input]).fill(inputText);
+    }
 
-  await this.locateByFullId(BUTTON_TEST_IDS.save).click();
-  await this.page.waitForURL(`**${SOME_LIST}`);
+    await this.locateByFullId(BUTTON_TEST_IDS.save).click();
+    await this.page.waitForURL(`**${SOME_LIST}`);
 
-  this.listIds.unshift(
-    (await this.page.evaluate(() =>
-      window.location.pathname.split("/").pop(),
-    )) || "",
-  );
-});
+    this.listIds.unshift(
+      (await this.page.evaluate(() =>
+        window.location.pathname.split("/").pop(),
+      )) || "",
+    );
+  },
+);
 
 Then("I expect to see created list", async function (this: ComplexWorld) {
   const createdListId = this.listIds[0] || DEFAULT_TEST_ID;
@@ -99,7 +104,7 @@ Then(
 
 When(
   "I add lists to their limit",
-  { timeout: 10000 },
+  { timeout: getTimeoutOrCancelItIfDebugging(10000) },
   async function (this: ComplexWorld) {
     for (let i = 0; i < LISTS_LIMIT; i++) {
       const listData = {

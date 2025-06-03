@@ -10,6 +10,7 @@ import {
   TOOLS_PANEL_ADD_ITEM_BUTTON,
 } from "../../testIds.ts";
 import { noVerticalScroll } from "../../utilities/checkScroll.ts";
+import { getTimeoutOrCancelItIfDebugging } from "../../utilities/getTimeoutOrCancelItIfDebugging.ts";
 import { calculateCurrentItemsCount } from "../utilities/calculateCurrentItemsCount.ts";
 
 When(
@@ -46,7 +47,7 @@ Then("I expect not to see the first item input", async function () {
 
 When(
   "I add list items to their limit",
-  { timeout: 60000 },
+  { timeout: getTimeoutOrCancelItIfDebugging(60000) },
   async function (this: ComplexWorld) {
     const addItemButton = this.locateByIdParts(TOOLS_PANEL_ADD_ITEM_BUTTON);
 

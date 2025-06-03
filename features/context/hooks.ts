@@ -31,6 +31,7 @@ import {
   destructureFullTestId,
 } from "../utilities/buildTestableSelector.ts";
 
+import { getTimeoutOrCancelItIfDebugging } from "../utilities/getTimeoutOrCancelItIfDebugging.ts";
 import { createAccountedTesting } from "./createAccountedTesting.ts";
 
 let browser: Browser;
@@ -116,7 +117,7 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
 
 const debugging = process.env.PWDEBUG === "1";
 
-const MORE_THAN_IN_PLAYWRIGHT = debugging ? -1 : 6000;
+const MORE_THAN_IN_PLAYWRIGHT = getTimeoutOrCancelItIfDebugging(6000);
 setDefaultTimeout(MORE_THAN_IN_PLAYWRIGHT);
 setWorldConstructor(ComplexWorld);
 

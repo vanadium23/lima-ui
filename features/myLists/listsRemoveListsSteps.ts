@@ -18,6 +18,7 @@ import {
 } from "../testIds.ts";
 import { TEST_SUB_ID_ATTRIBUTE } from "../utilities/buildTestableSelector.ts";
 
+import { getTimeoutOrCancelItIfDebugging } from "../utilities/getTimeoutOrCancelItIfDebugging.ts";
 import {
   CONTEXT_MENU_TEST_IDS,
   type ContextMenuMeaning,
@@ -67,7 +68,7 @@ Then(
 
 Then(
   "I expect not to see the {string} dialog modal box",
-  { timeout: 500 },
+  { timeout: getTimeoutOrCancelItIfDebugging(500) },
   async function (this: ComplexWorld, dialogMeaning: DialogMeaning) {
     const dialogs = this.locateByIdParts(DIALOG_TEST_IDS[dialogMeaning]);
 

@@ -27,6 +27,7 @@ import {
   TEST_SUB_ID_ATTRIBUTE,
 } from "../../utilities/buildTestableSelector.ts";
 import { noVerticalScroll } from "../../utilities/checkScroll.ts";
+import { getTimeoutOrCancelItIfDebugging } from "../../utilities/getTimeoutOrCancelItIfDebugging.ts";
 import { registerItem } from "../../utilities/registerItem.ts";
 import { type PageAlias, PAGES_TEST_IDS } from "../../utilities/testIds.ts";
 
@@ -39,7 +40,7 @@ import {
 
 When(
   "I open List Creation page",
-  { timeout: 10000 },
+  { timeout: getTimeoutOrCancelItIfDebugging(10000) },
   async function (this: ComplexWorld) {
     await this.navigate(LISTS_CREATE);
   },
