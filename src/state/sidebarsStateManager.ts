@@ -1,10 +1,18 @@
-import { createEffect, createRoot, createSignal, onCleanup } from "solid-js";
+import { createRoot, createSignal, onCleanup, onMount } from "solid-js";
 
 export const panelState = createRoot(() => {
   const [isSidebarHidden, setIsSidebarHidden] = createSignal(true);
-  const [isToolsPanelHidden, setIsToolsPanelHidden] = createSignal(
-    JSON.parse(localStorage.getItem("toolsPanelIsHidden") ?? "true"),
-  );
+  const [isToolsPanelHidden, setIsToolsPanelHidden] = createSignal(true);
+
+  onMount(() => {
+    const isMediumScreen = window.matchMedia(
+      "(min-width: 768px) and (max-width: 1023px)",
+    ).matches;
+
+    if (isMediumScreen) {
+      setIsToolsPanelHidden(false);
+    }
+  });
 
   const handleClickOutside = (event: MouseEvent) => {
     const target = event.target as HTMLElement;
@@ -46,13 +54,6 @@ export const panelState = createRoot(() => {
     setIsToolsPanelHidden(!willOpen);
     if (willOpen) setIsSidebarHidden(true);
   };
-
-  createEffect(() => {
-    localStorage.setItem(
-      "toolsPanelIsHidden",
-      JSON.stringify(isToolsPanelHidden()),
-    );
-  });
 
   return {
     isSidebarHidden,
