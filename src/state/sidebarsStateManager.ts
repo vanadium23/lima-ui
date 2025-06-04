@@ -15,6 +15,8 @@ export const panelState = createRoot(() => {
   });
 
   const handleClickOutside = (event: MouseEvent) => {
+    if (window.innerWidth >= 768) return;
+
     const target = event.target as HTMLElement;
 
     const isSidebarToggleButton = target.closest("#sidebarToggle");
