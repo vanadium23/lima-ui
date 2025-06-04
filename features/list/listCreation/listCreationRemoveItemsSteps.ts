@@ -4,6 +4,7 @@ import { expect } from "@playwright/test";
 import type { ComplexWorld } from "../../context/hooks.ts";
 import { ITEMS_LIMIT_REACHED_WARNING, LIST_ITEM } from "../../testIds.ts";
 
+import { getTimeoutOrCancelItIfDebugging } from "../../utilities/getTimeoutOrCancelItIfDebugging.ts";
 import {
   BUTTON_TEST_IDS,
   type ButtonMeaning,
@@ -17,7 +18,7 @@ const MILLISECONDS_IN_SECOND = 1000;
 
 When(
   "I wait for {string} for the following number of seconds: {int}",
-  { timeout: 10000 },
+  { timeout: getTimeoutOrCancelItIfDebugging(10000) },
   async function (this: ComplexWorld, reason: string, seconds: number) {
     const someExtraTimeToEnsure =
       Math.floor(Math.random() * MILLISECONDS_IN_SECOND) + reason.length;

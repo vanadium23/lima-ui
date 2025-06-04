@@ -151,11 +151,12 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
         isOpen={isDialogOpen()}
         title={"Удаление списка"}
         testId={REMOVE_LIST_DIALOG}
+        testSubId={mProps.defaultListId}
         controls={
           <Button
             theme={ButtonTheme.Dangerous}
             size={ButtonSize.Medium}
-            text={"Подтвердить удаление"}
+            text={"Удалить"}
             handleClick={() => {
               removeList();
               closeDialog();

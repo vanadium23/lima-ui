@@ -12,12 +12,17 @@ import {
 import {
   type Browser,
   type BrowserContext,
+  chromium,
   expect,
-  firefox,
   type Page,
 } from "@playwright/test";
 import * as fs from "fs";
 import * as path from "path";
+import {
+  DEVICE_PROFILES,
+  DeviceProfiles,
+  isDeviceProfile as isDeviceProfileName,
+} from "../config/deviceProfiles.ts";
 
 import type {
   FullTestId,
@@ -31,6 +36,7 @@ import {
   destructureFullTestId,
 } from "../utilities/buildTestableSelector.ts";
 
+import { getTimeoutOrCancelItIfDebugging } from "../utilities/getTimeoutOrCancelItIfDebugging.ts";
 import { createAccountedTesting } from "./createAccountedTesting.ts";
 
 let browser: Browser;
@@ -61,7 +67,7 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
   }
 
   async setContextAndPage() {
-    this.context = await browser.newContext();
+    this.context = await browser.newContext(getDeviceProfile());
     this.page = await this.context.newPage();
   }
 
@@ -114,20 +120,19 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
   }
 }
 
-const MORE_THAN_IN_PLAYWRIGHT = 6000;
+const debugging = process.env.PWDEBUG === "1";
+
+const MORE_THAN_IN_PLAYWRIGHT = getTimeoutOrCancelItIfDebugging(6000);
 setDefaultTimeout(MORE_THAN_IN_PLAYWRIGHT);
 setWorldConstructor(ComplexWorld);
-
-const debugging = false;
 
 const screenshotsFolder = path.join(process.cwd(), "features", "screenshots");
 
 BeforeAll(async function () {
   prepareEmptyScreenshotsFolder();
+  logDeviceInfo();
 
-  const BROWSER_OPTIONS = { headless: !debugging };
-
-  browser = await firefox.launch(BROWSER_OPTIONS);
+  browser = await chromium.launch();
 });
 
 Before(async function (this: ComplexWorld) {
@@ -140,9 +145,10 @@ After(async function (this: ComplexWorld, scenario: ITestCaseHookParameter) {
   if (scenario.result?.status === "FAILED") {
     const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
     const scenarioName = scenario.pickle.name.replace(/[^a-zA-Z0-9]/g, "_");
+    const deviceSuffix = getDeviceProfileName();
     const screenshotPath = path.join(
       screenshotsFolder,
-      `${timestamp}_${scenarioName}.png`,
+      `${timestamp}_${scenarioName}${deviceSuffix}.png`,
     );
 
     try {
@@ -163,6 +169,20 @@ AfterAll({ timeout: 60000 }, async function () {
   debugging || (await browser.close());
 });
 
+function getDeviceProfile() {
+  const deviceProfileName = getDeviceProfileName();
+
+  if (isDeviceProfileName(deviceProfileName)) {
+    return DEVICE_PROFILES[deviceProfileName];
+  } else {
+    return DEVICE_PROFILES.desktop;
+  }
+}
+
+function getDeviceProfileName() {
+  return process.env.DEVICE_PROFILE || DeviceProfiles.desktop;
+}
+
 function prepareEmptyScreenshotsFolder() {
   if (fs.existsSync(screenshotsFolder)) {
     const files = fs.readdirSync(screenshotsFolder);
@@ -176,4 +196,35 @@ function prepareEmptyScreenshotsFolder() {
   } else {
     fs.mkdirSync(screenshotsFolder, { recursive: true });
   }
+}
+
+/**
+ * Logs detailed information about the test device in a formatted way
+ */
+function logDeviceInfo() {
+  // ANSI escape codes for styling
+  const reset = "\x1b[0m";
+  const bold = "\x1b[1m";
+  const cyan = "\x1b[36m";
+  const bgBlue = "\x1b[44m";
+  const dim = "\x1b[2m";
+
+  const deviceProfile = getDeviceProfile();
+
+  const header = `${bold}${bgBlue} TEST DEVICE: ${reset}`;
+  const deviceHeader = `${bold}${cyan}${getDeviceProfileName().toUpperCase()}${reset}`;
+
+  const deviceInfo = [
+    `${dim}• Viewport:${reset} ${deviceProfile.viewport.width}x${deviceProfile.viewport.height}`,
+    `${dim}• Mobile:${reset} ${deviceProfile.isMobile ? "Yes" : "No"}`,
+    `${dim}• Touch:${reset} ${deviceProfile.hasTouch ? "Yes" : "No"}`,
+    `${dim}• Pixel Ratio:${reset} ${deviceProfile.deviceScaleFactor}`,
+  ].join("\n");
+
+  // Add some spacing and a separator line
+  console.log("\n" + "=".repeat(60));
+  console.log(header, deviceHeader);
+  console.log("\n");
+  console.log(deviceInfo);
+  console.log("=".repeat(60) + "\n");
 }

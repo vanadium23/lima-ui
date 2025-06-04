@@ -5,6 +5,7 @@ import { ITEMS_LIMIT } from "../../../configuration.ts";
 import type { ComplexWorld } from "../../context/hooks.ts";
 import { AUTO_LIST_ITEM_INPUT, LIST_ITEM_INPUT } from "../../testIds.ts";
 
+import { getTimeoutOrCancelItIfDebugging } from "../../utilities/getTimeoutOrCancelItIfDebugging.ts";
 import {
   ITEM_ADDERS,
   ITEM_INPUT_TEST_IDS,
@@ -24,7 +25,7 @@ Then(
 
 When(
   "I add list items to their limit via automatically added item",
-  { timeout: 60000 },
+  { timeout: getTimeoutOrCancelItIfDebugging(60000) },
   async function (this: ComplexWorld) {
     await this.locateByIdParts(LIST_ITEM_INPUT).fill("0");
 
