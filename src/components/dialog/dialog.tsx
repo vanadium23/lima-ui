@@ -24,7 +24,7 @@ type DialogProps = {
   size?: DialogSize;
   children: JSX.Element;
   controls: JSX.Element;
-  onCancel?: () => void;
+  onCancel: () => void;
   isOpen: boolean;
   title: string;
 };
@@ -35,7 +35,6 @@ export const Dialog = (props: Testable<DialogProps>) => {
       theme: DialogTheme.Primary,
       size: DialogSize.Medium,
       isOpen: false,
-      onCancel: () => {},
     },
     props,
   );

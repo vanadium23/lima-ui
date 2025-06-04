@@ -101,7 +101,7 @@
   .editList__toolsPanel {
     position: absolute;
     right: 0;
-    height: calc(100vh - 4.8rem); /* вычитаем Header */
+    height: calc(100dvh - 4.8rem); /* вычитаем Header */
   }
 
   .editList__controls {

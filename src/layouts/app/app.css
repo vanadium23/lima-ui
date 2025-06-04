@@ -1,10 +1,10 @@
 .appContainer {
   display: flex;
-  height: calc(100vh - 4.8rem);
+  height: calc(100dvh - 4.8rem);
 }
 
 body {
-  height: 100vh;
+  height: 100dvh;
 }
 
 .main {
@@ -16,6 +16,6 @@ body {
 @media (width <= 767px) {
   .appContainer__nav {
     position: absolute;
-    height: calc(100vh - 4.8rem);
+    height: calc(100dvh - 4.8rem);
   }
 }

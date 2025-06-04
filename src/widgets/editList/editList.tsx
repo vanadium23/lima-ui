@@ -2,11 +2,11 @@ import {
   createSortable,
   DragDropProvider,
   DragDropSensors,
+  type DragEvent,
   DragOverlay,
   SortableProvider,
   transformStyle,
   useDragDropContext,
-  type DragEvent,
 } from "@thisbeyond/solid-dnd";
 import { For, mergeProps, onCleanup, onMount, Show } from "solid-js";
 import { createStore } from "solid-js/store";
@@ -68,13 +68,12 @@ import {
 } from "../../organisms/toolsPanel/toolsPanel.tsx";
 import { setLocation } from "../../state/locationState.ts";
 
-import "./editList.css";
 import { createList } from "./services/createList.ts";
 import { removeList } from "./services/removeList.ts";
 import { updateList } from "./services/updateList.ts";
 import {
-  EditListFormNames,
   type DragItems,
+  EditListFormNames,
   type EditListStore,
   type List,
   type NewList,
@@ -93,6 +92,7 @@ import {
 import { isOnlyOneItem } from "./utilities/isOnlyOneItem.ts";
 import { prepareListItemsDataForSending } from "./utilities/prepareListItemsDataForSending.ts";
 import { soften } from "./utilities/soften.ts";
+import "./editList.css";
 
 type EditListProps = {
   defaultList?: List;
@@ -617,6 +617,7 @@ export const EditList = (props: EditListProps) => {
             />
             <Dialog
               title="Удаление списка"
+              onCancel={closeDialog}
               controls={
                 <Button
                   theme={ButtonTheme.Dangerous}
