@@ -204,6 +204,7 @@ Then(
 
 When("I refresh the page", async function (this: ComplexWorld) {
   await this.page.reload();
+  await this.page.waitForLoadState("networkidle");
 });
 
 When("I wait for the page to load", async function (this: ComplexWorld) {

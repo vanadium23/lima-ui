@@ -43,6 +43,7 @@ When(
   { timeout: getTimeoutOrCancelItIfDebugging(10000) },
   async function (this: ComplexWorld) {
     await this.navigate(LISTS_CREATE);
+    await this.page.waitForLoadState("networkidle");
   },
 );
 

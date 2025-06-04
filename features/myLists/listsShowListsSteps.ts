@@ -23,7 +23,10 @@ import {
   LIST_STRIPE_LINK_TO_VIEW,
   LISTS_LIMIT_REACHED_WARNING,
 } from "../testIds.ts";
-import { TEST_SUB_ID_ATTRIBUTE } from "../utilities/buildTestableSelector.ts";
+import {
+  buildTestableSelector,
+  TEST_SUB_ID_ATTRIBUTE,
+} from "../utilities/buildTestableSelector.ts";
 import { getStringUpToLimit } from "../utilities/getStringOfLength.ts";
 import { getTimeoutOrCancelItIfDebugging } from "../utilities/getTimeoutOrCancelItIfDebugging.ts";
 
@@ -81,6 +84,10 @@ Then(
 Then(
   "I expect to see the following number of list stripes: {int}",
   async function (this: ComplexWorld, listStripesQuantity: number) {
+    if (listStripesQuantity > 0) {
+      await this.page.waitForSelector(buildTestableSelector(LIST_STRIPE));
+    }
+
     const listStripes = this.locateByIdParts(LIST_STRIPE);
 
     const listsIds = (await listStripes.all()).map((listStripe) =>

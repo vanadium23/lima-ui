@@ -10,6 +10,7 @@ Feature: Interacting with the List view page
     And I type some text with length less or equal to the one of "second item" input limit
     And I press the "add list item" button
     And I type some text with length less or equal to the one of "third item" input limit
+    And I ensure the presence of clipboard permissions
     And I press the "copy items" button
     And I expect clipboard to contain items content
 

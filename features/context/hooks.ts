@@ -12,8 +12,8 @@ import {
 import {
   type Browser,
   type BrowserContext,
+  chromium,
   expect,
-  firefox,
   type Page,
 } from "@playwright/test";
 import * as fs from "fs";
@@ -126,7 +126,7 @@ const screenshotsFolder = path.join(process.cwd(), "features", "screenshots");
 BeforeAll(async function () {
   prepareEmptyScreenshotsFolder();
 
-  browser = await firefox.launch();
+  browser = await chromium.launch();
 });
 
 Before(async function (this: ComplexWorld) {
