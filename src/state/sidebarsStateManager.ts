@@ -1,18 +1,8 @@
-import { createRoot, createSignal, onCleanup, onMount } from "solid-js";
+import { createRoot, createSignal, onCleanup } from "solid-js";
 
 export const panelState = createRoot(() => {
   const [isSidebarHidden, setIsSidebarHidden] = createSignal(true);
   const [isToolsPanelHidden, setIsToolsPanelHidden] = createSignal(true);
-
-  onMount(() => {
-    const isMediumScreen = window.matchMedia(
-      "(min-width: 768px) and (max-width: 1023px)",
-    ).matches;
-
-    if (isMediumScreen) {
-      setIsToolsPanelHidden(false);
-    }
-  });
 
   const handleClickOutside = (event: MouseEvent) => {
     if (window.innerWidth >= 768) return;

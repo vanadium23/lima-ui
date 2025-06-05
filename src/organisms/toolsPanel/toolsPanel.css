@@ -25,9 +25,7 @@
   .toolsPanel {
     box-shadow: -0.4rem 0.4rem 0.8rem 0 rgb(34 60 80 / 20%);
   }
-}
 
-@media (width <= 1023px) {
   .toolsPanel_hidden {
     display: none;
   }
