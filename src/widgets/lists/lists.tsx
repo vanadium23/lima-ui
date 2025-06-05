@@ -47,6 +47,8 @@ export const Lists = (props: ListsProps) => {
     setStore("removeError", removeError);
   }
 
+  //TODO Подозрительная ошибка появилась
+
   function removingListInStore(listIdToRemove: string) {
     setStore("lists", (lists) =>
       lists.filter((item) => item.id !== listIdToRemove),
