@@ -21,12 +21,12 @@ import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
         theme={ListStripeTheme.Primary}
         size={ListStripeSize.Medium}
         link="https://ya.ru"
-        defaultListId="123"
+        listId="123"
         listTitle="Название списка не вмещается в одну строку и это не проблема"
         listPurpose="Цель списка не вмещается в одну строку, так и было задумано и это не проблема"
         editLink="https://ya.ru"
-        staticOnRemoveSuccess={() => {}}
-        staticOnRemoveError={() => {}}
+        onRemoveSuccess={() => {}}
+        onRemoveError={() => {}}
         testId={DEFAULT_TEST_ID}
       />
 
@@ -36,13 +36,13 @@ import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
         theme={ListStripeTheme.Primary}
         size={ListStripeSize.Medium}
         link="https://ya.ru"
-        defaultListId="123"
+        listId="123"
         listTitle="Название списка не вмещается в одну строку и это не проблема"
         listPurpose="Цель списка не вмещается в одну строку, так и было задумано и это не проблема"
         editLink="https://ya.ru"
         isRemoving={true}
-        staticOnRemoveSuccess={() => {}}
-        staticOnRemoveError={() => {}}
+        onRemoveSuccess={() => {}}
+        onRemoveError={() => {}}
         testId={DEFAULT_TEST_ID}
       />
     </div>

@@ -86,7 +86,7 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
       buildTestableSelector(testId),
     );
 
-    if (!testSubId) return elementWithRequiredId;
+    if (testSubId == null) return elementWithRequiredId;
 
     const elementWithRequiredSubId = this.page.locator(
       buildTestableSubSelector(testSubId),
@@ -148,7 +148,7 @@ After(async function (this: ComplexWorld, scenario: ITestCaseHookParameter) {
     const deviceSuffix = getDeviceProfileName();
     const screenshotPath = path.join(
       screenshotsFolder,
-      `${timestamp}_${scenarioName}${deviceSuffix}.png`,
+      `${timestamp}_${scenarioName}_${deviceSuffix}.png`,
     );
 
     try {

@@ -11,7 +11,6 @@ import {
   type ButtonMeaning,
 } from "../list/listCreation/testIds.ts";
 import {
-  DEFAULT_TEST_ID,
   LIST_STRIPE,
   type WarningMeaning,
   WARNINGS_TEST_IDS,
@@ -104,13 +103,9 @@ Then(
     listStripePosition: ListStripePosition,
     linkMeaning: LinkMeaning,
   ) {
-    const listId =
-      this.listIds[LIST_STRIPE_POSITIONS[listStripePosition]] ||
-      DEFAULT_TEST_ID;
-
     const listStripeLink = this.locateVisible(
       LINK_TEST_IDS[linkMeaning],
-      listId,
+      LIST_STRIPE_POSITIONS[listStripePosition],
     );
 
     await expect(listStripeLink).toHaveAttribute("href", "#");
@@ -124,16 +119,12 @@ Then(
     listStripePosition: ListStripePosition,
     buttonMeaning: ButtonMeaning,
   ) {
-    const listId =
-      this.listIds[LIST_STRIPE_POSITIONS[listStripePosition]] ||
-      DEFAULT_TEST_ID;
-
-    const listStripeLink = this.locateVisible(
+    const listStripeButton = this.locateVisible(
       BUTTON_TEST_IDS[buttonMeaning],
-      listId,
+      LIST_STRIPE_POSITIONS[listStripePosition],
     );
 
-    await expect(listStripeLink).toBeDisabled();
+    await expect(listStripeButton).toBeDisabled();
   },
 );
 
@@ -144,11 +135,10 @@ Then(
     listStripePosition: ListStripePosition,
     buttonMeaning: ButtonMeaning,
   ) {
-    const listId =
-      this.listIds[LIST_STRIPE_POSITIONS[listStripePosition]] ||
-      DEFAULT_TEST_ID;
-
-    await this.locateVisible(BUTTON_TEST_IDS[buttonMeaning], listId).click({
+    await this.locateVisible(
+      BUTTON_TEST_IDS[buttonMeaning],
+      LIST_STRIPE_POSITIONS[listStripePosition],
+    ).click({
       force: true,
     });
   },

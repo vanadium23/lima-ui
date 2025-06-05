@@ -18,7 +18,6 @@ import {
   INPUT_TEST_IDS,
 } from "../list/listCreation/testIds.ts";
 import {
-  DEFAULT_TEST_ID,
   LIST_STRIPE,
   LIST_STRIPE_LINK_TO_VIEW,
   LISTS_LIMIT_REACHED_WARNING,
@@ -60,15 +59,13 @@ When(
 );
 
 Then("I expect to see created list", async function (this: ComplexWorld) {
-  const createdListId = this.listIds[0] || DEFAULT_TEST_ID;
-
   await this.expectLocated(
-    this.accounting.elements.registerTestIdAndSubId(LIST_STRIPE, createdListId),
+    this.accounting.elements.registerTestIdAndSubId(LIST_STRIPE, "0"),
   ).toBeInViewport();
 
   this.accounting.elements.registerTestIdAndSubId(
     LIST_STRIPE_LINK_TO_VIEW,
-    createdListId,
+    "0",
   );
 });
 
@@ -88,20 +85,18 @@ Then(
       await this.page.waitForSelector(buildTestableSelector(LIST_STRIPE));
     }
 
-    const listStripes = this.locateByIdParts(LIST_STRIPE);
-
-    const listsIds = (await listStripes.all()).map((listStripe) =>
-      listStripe.getAttribute(TEST_SUB_ID_ATTRIBUTE),
+    const listsPositions = (await this.locateByIdParts(LIST_STRIPE).all()).map(
+      (listStripe) => listStripe.getAttribute(TEST_SUB_ID_ATTRIBUTE),
     );
 
-    for (const listId of listsIds) {
+    for (const listPosition of listsPositions) {
       this.accounting.elements.registerTestIdAndSubId(
         LIST_STRIPE,
-        await listId,
+        await listPosition,
       );
       this.accounting.elements.registerTestIdAndSubId(
         LIST_STRIPE_LINK_TO_VIEW,
-        await listId,
+        await listPosition,
       );
     }
 
