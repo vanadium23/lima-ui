@@ -25,7 +25,7 @@ type ItemInputProps = {
   placeholder: string;
   onChange?: (value: string) => void;
   defaultIsError?: boolean;
-  childComponent?: JSXElement,
+  controlElements?: JSXElement;
 };
 
 export const ItemInput = (props: Testable<ItemInputProps>) => {
@@ -38,8 +38,8 @@ export const ItemInput = (props: Testable<ItemInputProps>) => {
       isRequired: false,
       textAreaValue: "",
       dataId: "",
-      onChange: () => { },
-      childComponent: null,
+      onChange: () => {},
+      controlElements: null,
     },
     props,
   );
@@ -92,9 +92,11 @@ export const ItemInput = (props: Testable<ItemInputProps>) => {
         {mProps.textAreaValue}
       </textarea>
       <div class="itemInput__controls">
-        {mProps.childComponent}
-        <div class="itemInput__counter"
-          classList={{ itemInput__counter_visible: remainingChars() <= 10 }}>
+        {mProps.controlElements}
+        <div
+          class="itemInput__counter"
+          classList={{ itemInput__counter_visible: remainingChars() <= 10 }}
+        >
           <CharCounter
             value={remainingChars()}
             testId={mProps.testId}

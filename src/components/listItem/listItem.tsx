@@ -169,10 +169,10 @@ export const ListItem = (props: Testable<ListItemProps>) => {
           onChange={mProps.onChange}
           testId={buildListItemInputTestId(mProps.testId)}
           testSubId={mProps.testSubId ?? "0"}
-          childComponent={
+          controlElements={
             <DropdownMenuWrapper
               iconSize={IconButtonSize.MediumEmbedded}
-              iconName={IconName.DotsThreeCircle}
+              iconName={IconName.DotsThree}
               testId={OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON}
               testSubId={mProps.testSubId ?? "0"}
               dropDownMenuTestId={LIST_ITEM_CONTEXT_MENU}
