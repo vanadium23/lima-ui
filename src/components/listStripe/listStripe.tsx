@@ -138,7 +138,7 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
           testId={OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON}
           testSubId={mProps.defaultListId}
           dropDownMenuTestId={LIST_ITEM_CONTEXT_MENU}
-          iconName={IconName.DotsThreeVertical}
+          iconName={IconName.DotsThree}
           listOfButtons={dropdownMenuItems()}
           isLoading={listStripeIsRemoving()}
         />
