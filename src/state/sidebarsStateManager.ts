@@ -5,7 +5,7 @@ export const panelState = createRoot(() => {
   const [isToolsPanelHidden, setIsToolsPanelHidden] = createSignal(true);
 
   const handleClickOutside = (event: MouseEvent) => {
-    if (window.innerWidth >= 768) return;
+    if (window.innerWidth >= 1024) return;
 
     const target = event.target as HTMLElement;
 
