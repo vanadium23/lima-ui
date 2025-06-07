@@ -43,7 +43,7 @@
   visibility: visible;
 }
 
-@media (width <= 1023px), (hover: none) {
+@media (hover: none) {
   .listItem__dragHandle {
     visibility: visible;
   }

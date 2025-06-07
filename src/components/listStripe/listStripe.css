@@ -1,7 +1,9 @@
 .listStripe {
   display: flex;
   width: 100%;
-  gap: var(--size-x1);
+  border: 0.1rem solid var(--neutral-200);
+  border-radius: var(--size-x4);
+  position: relative;
 }
 
 .listStripe__link {
@@ -9,17 +11,13 @@
   width: 100%;
   min-width: 0; /* Хитрый фикс для сжимания линка в мобильной версии */
   flex-direction: column;
-  border: 0.1rem solid var(--neutral-200);
-  border-radius: var(--size-x4);
   text-decoration: none;
+  border-radius: var(--size-x4);
+  background: transparent;
+  outline: none;
 }
 
-.listStripe_medium .listStripe__link {
-  padding: var(--size-x6);
-  background: var(--neutral-100);
-}
-
-.listStripe__link:focus-visible {
+.listStripe:has(.listStripe__link:focus-visible) {
   outline: var(--outline-set);
   outline-offset: var(--outline-offset);
 }
@@ -28,13 +26,11 @@
   outline: none;
 }
 
-.listStripe.listStripe_removing .listStripe__link {
-  cursor: not-allowed;
-}
-
 .listStripe__controls {
-  display: flex;
-  align-items: center;
+  display: inline-flex;
+  position: absolute;
+  right: 0;
+  top: var(--size-x3);
 }
 
 @media (hover: hover) {
@@ -66,6 +62,10 @@
   white-space: nowrap;
 }
 
+.listStripe_medium .listStripe__link {
+  padding: var(--size-x3) var(--size-x22) var(--size-x3) var(--size-x6);
+}
+
 .listStripe_medium .listStripe__title {
   font-size: 1.6rem;
   line-height: 2rem;
@@ -80,18 +80,12 @@
   background: var(--neutral-200);
 }
 
-.listStripe:not(.listStripe_removing) .listStripe__link:active {
+.listStripe:not(.listStripe_removing):has(.listStripe__link:active) {
   transform: translateY(0.1rem);
 }
 
-@media (hover: hover) {
-  .listStripe_primary:not(.listStripe_removing) .listStripe__link:hover {
-    background: var(--neutral-150);
-  }
-}
-
-.listStripe_primary:not(.listStripe_removing) .listStripe__link:active {
-  background: var(--neutral-200);
+.listStripe_primary {
+  background: var(--neutral-100);
 }
 
 .listStripe_primary .listStripe__title {
@@ -110,12 +104,26 @@
   color: var(--text-neutral-500);
 }
 
+.listStripe_primary:not(.listStripe_removing):has(.listStripe__link:active) {
+  background: var(--neutral-200);
+}
+
+@media (hover: hover) {
+  .listStripe_primary:not(.listStripe_removing):has(.listStripe__link:hover) {
+    background: var(--neutral-150);
+  }
+}
+
 .listStripe:hover .listStripe__controls {
   visibility: visible;
 }
 
 .listStripe:focus-within .listStripe__controls {
   visibility: visible;
+}
+
+.listStripe.listStripe_removing .listStripe__link {
+  cursor: not-allowed;
 }
 
 @media (width <= 767px) {
@@ -130,10 +138,6 @@
   }
 
   .listStripe_medium .listStripe__link {
-    padding: var(--size-x3) 0 var(--size-x3) var(--size-x4);
-  }
-
-  .listStripe {
-    gap: var(--size-x2);
+    padding: var(--size-x3) var(--size-x22) var(--size-x3) var(--size-x4);
   }
 }

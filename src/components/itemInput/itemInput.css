@@ -92,10 +92,6 @@
   color: var(--text-neutral-500);
 }
 
-.itemInput_primary:hover:not(.itemInput_disabled) .itemInput__inner {
-  color: var(--text-neutral-700);
-}
-
 .itemInput_primary:focus-within:has(.itemInput__inner:placeholder-shown) {
   border-color: var(--neutral-700);
   background: var(--neutral-100);
@@ -129,6 +125,10 @@
 }
 
 @media (hover: hover) {
+  .itemInput_primary:hover:not(.itemInput_disabled) .itemInput__inner {
+    color: var(--text-neutral-700);
+  }
+
   .itemInput_primary:hover:not(.itemInput_disabled, .itemInput_error) {
     border-color: var(--neutral-700);
   }
