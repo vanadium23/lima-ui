@@ -23,6 +23,7 @@ Feature: Basic list printing functionality
     And I type some text with length less or equal to the one of "third item" input limit
     And I press the "save" button
     And I wait for the list to create
+    And I ensure the tools panel is open
     And I press the print list button and wait for the new tab with printing stub
     Then I expect to see the "list title" text
     Then I expect to see the "list purpose" text
@@ -38,6 +39,7 @@ Feature: Basic list printing functionality
     And I type some text with length less or equal to the one of "first item" input limit
     And I press the "save" button
     And I wait for the list to create
+    And I ensure the tools panel is open
     And I press the print list button and wait for the new tab with printing stub
     Then I expect to see the "list title" text
     Then I expect not to see the "list purpose" text
@@ -50,6 +52,7 @@ Feature: Basic list printing functionality
     And I type some text with length less or equal to the one of "first item" input limit
     And I press the "save" button
     And I wait for the list to create
+    And I ensure the tools panel is open
     And I press the print list button and wait for the new tab with printing stub
     Then I expect to see the "list title" text
     Then I expect to see the "list purpose" text
@@ -61,6 +64,7 @@ Feature: Basic list printing functionality
     And I type some text with length less or equal to the one of "first item" input limit
     And I press the "save" button
     And I wait for the list to create
+    And I ensure the tools panel is open
     And I press the print list button and wait for the new tab with printing stub
     Then I expect to see the "list title" text
     Then I expect not to see the "list purpose" text
@@ -75,6 +79,7 @@ Feature: Basic list printing functionality
     And I type some text with length less or equal to the one of "second item" input limit
     And I press the "save" button
     And I wait for the list to create
+    And I ensure the tools panel is open
     And I press the "checklist" switch
     And I press the print list button and wait for the new tab with printing stub
     Then I expect to see checkboxes for all list items on the print page
@@ -84,5 +89,6 @@ Feature: Basic list printing functionality
     And I type some text with length less or equal to the one of "first item" input limit
     And I press the "save" button
     And I wait for the list to create
+    And I ensure the tools panel is open
     And I press the print list button and check for system print dialog
     Then I expect the system print dialog to be triggered

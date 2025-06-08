@@ -15,7 +15,10 @@ import {
   type WarningMeaning,
   WARNINGS_TEST_IDS,
 } from "../testIds.ts";
-import { TEST_SUB_ID_ATTRIBUTE } from "../utilities/buildTestableSelector.ts";
+import {
+  buildTestableSelector,
+  TEST_SUB_ID_ATTRIBUTE,
+} from "../utilities/buildTestableSelector.ts";
 
 import { getTimeoutOrCancelItIfDebugging } from "../utilities/getTimeoutOrCancelItIfDebugging.ts";
 import {
@@ -175,5 +178,24 @@ Then(
     await this.expectLocated(
       CONTEXT_MENU_TEST_IDS[contextMenuMeaning],
     ).not.toBeInViewport();
+  },
+);
+
+When(
+  "I press the {string} list stripe {string} button",
+  async function (
+    this: ComplexWorld,
+    listStripePosition: ListStripePosition,
+    buttonMeaning: ButtonMeaning,
+  ) {
+    const listStripe = this.locateVisible(LIST_STRIPE).nth(
+      LIST_STRIPE_POSITIONS[listStripePosition],
+    );
+
+    const dropdownMenuButton = listStripe.locator(
+      buildTestableSelector(BUTTON_TEST_IDS[buttonMeaning]),
+    );
+
+    await dropdownMenuButton.click();
   },
 );

@@ -30,7 +30,7 @@ Feature: Seeing the added lists on the Lists page
   Scenario: Lists page with lists loading error
     When I open Lists page with failed lists loading
     Then I expect to see the following suffixed tab title: "Мои списки"
-    Then I expect to see sidebar
+    Then I expect to see sidebar or its button
     Then I expect to see header
     Then I expect to see the following title: "Мои списки"
     Then I expect to see the "connection" error

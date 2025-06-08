@@ -4,7 +4,7 @@ Feature: Seeing the basis of Lists page
     When I clear all data
     When I open Lists page
     Then I expect to see the following suffixed tab title: "Мои списки"
-    Then I expect to see sidebar
+    Then I expect to see sidebar or its button
     Then I expect to see header
     Then I expect to see the following title: "Мои списки"
     Then I expect to see the message about lists absence

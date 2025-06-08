@@ -11,7 +11,7 @@ Feature: Successfully creating list with correct data
     When I type some text with length less or equal to the one of "first item" input limit
     And I press the "save" button
     Then I expect to see the following suffixed tab title: "Новый список"
-    Then I expect to see sidebar
+    Then I expect to see sidebar or its button
     Then I expect to see header
     Then I expect to see tools panel
     Then I expect to see the "list title" input disabled
@@ -36,7 +36,7 @@ Feature: Successfully creating list with correct data
     And I press the "save" button
     And I wait for the list to create
     Then I expect to see the suffixed list title as tab title
-    Then I expect to see sidebar
+    Then I expect to see sidebar or its button
     Then I expect to see header
     Then I expect to see tools panel
     Then I expect to see the "list title" input enabled

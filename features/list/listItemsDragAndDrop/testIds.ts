@@ -1,8 +1,14 @@
-import { ITEMS_LIMIT } from "../../../configuration.ts";
-import { AUTO_LIST_ITEM_INPUT, LIST_ITEM } from "../../testIds.ts";
+import type { TestId } from "../../../src/components/utilities/testable.ts";
+import {
+  AUTO_LIST_ITEM,
+  DRAG_HANDLE,
+  LIST_ITEM,
+  OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
+} from "../../testIds.ts";
 import { buildFullTestId } from "../../utilities/buildTestableSelector.ts";
 
 export const LIST_ITEM_TEST_IDS = {
+  single: buildFullTestId(LIST_ITEM, 0),
   first: buildFullTestId(LIST_ITEM, 0),
   second: buildFullTestId(LIST_ITEM, 1),
   third: buildFullTestId(LIST_ITEM, 2),
@@ -12,9 +18,43 @@ export const LIST_ITEM_TEST_IDS = {
   seventh: buildFullTestId(LIST_ITEM, 6),
   eighth: buildFullTestId(LIST_ITEM, 7),
   ninth: buildFullTestId(LIST_ITEM, 8),
-  "exceeding limit": buildFullTestId(LIST_ITEM, ITEMS_LIMIT),
-  automatic: AUTO_LIST_ITEM_INPUT,
+  automatic: buildFullTestId(AUTO_LIST_ITEM, AUTO_LIST_ITEM),
   last: LIST_ITEM,
-  secondToLast: buildFullTestId(LIST_ITEM, ITEMS_LIMIT - 2),
 };
 export type ListItemMeaning = keyof typeof LIST_ITEM_TEST_IDS;
+
+export const DRAG_HANDLE_TEST_IDS: Record<ListItemMeaning, TestId> = {
+  single: buildFullTestId(DRAG_HANDLE, 0),
+  first: buildFullTestId(DRAG_HANDLE, 0),
+  second: buildFullTestId(DRAG_HANDLE, 1),
+  third: buildFullTestId(DRAG_HANDLE, 2),
+  fourth: buildFullTestId(DRAG_HANDLE, 3),
+  fifth: buildFullTestId(DRAG_HANDLE, 4),
+  sixth: buildFullTestId(DRAG_HANDLE, 5),
+  seventh: buildFullTestId(DRAG_HANDLE, 6),
+  eighth: buildFullTestId(DRAG_HANDLE, 7),
+  ninth: buildFullTestId(DRAG_HANDLE, 8),
+  automatic: buildFullTestId(DRAG_HANDLE, AUTO_LIST_ITEM),
+  last: DRAG_HANDLE,
+};
+
+export const OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON_TEST_IDS: Record<
+  ListItemMeaning,
+  TestId
+> = {
+  single: buildFullTestId(OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON, 0),
+  first: buildFullTestId(OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON, 0),
+  second: buildFullTestId(OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON, 1),
+  third: buildFullTestId(OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON, 2),
+  fourth: buildFullTestId(OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON, 3),
+  fifth: buildFullTestId(OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON, 4),
+  sixth: buildFullTestId(OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON, 5),
+  seventh: buildFullTestId(OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON, 6),
+  eighth: buildFullTestId(OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON, 7),
+  ninth: buildFullTestId(OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON, 8),
+  automatic: buildFullTestId(
+    OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
+    AUTO_LIST_ITEM,
+  ),
+  last: OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
+};

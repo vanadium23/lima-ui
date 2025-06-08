@@ -1,10 +1,10 @@
 import { Show } from "solid-js";
 
 import {
-  DEFAULT_TEST_ID,
   HEADER,
   SEARCH_BUTTON,
   SEARCH_INPUT,
+  TOGGLE_SIDEBAR_BUTTON,
   TOGGLE_TOOLS_PANEL_BUTTON,
 } from "../../../features/testIds.ts";
 import { LISTS } from "../../../utilities/addresses.ts";
@@ -42,7 +42,7 @@ export const Header = (props: HeaderProps) => {
         <div class="header__burger">
           <ToggleIconButton
             iconName={IconName.List}
-            testId={DEFAULT_TEST_ID}
+            testId={TOGGLE_SIDEBAR_BUTTON}
             ariaLabel={"Переключить меню"}
             isToggled={!panelState.isSidebarHidden()}
             setGlobalToggled={panelState.toggleSidebar}

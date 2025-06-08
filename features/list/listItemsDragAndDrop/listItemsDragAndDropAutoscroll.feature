@@ -17,7 +17,7 @@ Feature: List items drag and drop with autoscroll functionality
     # коллизий и пересчиталось положение приземления пункта.
     # Шаг этот — костыль, но есть подозрение, что для его
     # исправления нужно исправлять библиотеку.
-    And I drag to 250 from left and -1 from top
+    And I drag to 250 from left and -2 from top
     And I complete the drag operation
     Then I expect to see the dragged list item on the "last" position
 

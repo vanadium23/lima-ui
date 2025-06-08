@@ -6,7 +6,7 @@ Feature: Seeing the basis of List view page
   Scenario: Seeing list on List view page
     When I add a list
     Then I expect to see the suffixed list title as tab title
-    Then I expect to see sidebar
+    Then I expect to see sidebar or its button
     Then I expect to see header
     Then I expect to see tools panel
     Then I expect to see the "list title" input enabled
@@ -28,7 +28,7 @@ Feature: Seeing the basis of List view page
     When I add a list
     And I refresh the page
     Then I expect to see the suffixed list title as tab title
-    Then I expect to see sidebar
+    Then I expect to see sidebar or its button
     Then I expect to see header
     Then I expect to see tools panel
     Then I expect to see the "list title" input enabled
@@ -67,7 +67,7 @@ Feature: Seeing the basis of List view page
     And I press on the "first" list stripe
     But Error happens while loading
     Then I expect to see the default tab title
-    Then I expect to see sidebar
+    Then I expect to see sidebar or its button
     Then I expect to see header
     Then I expect not to see tools panel
     Then I expect to see the "connection" error

@@ -18,11 +18,6 @@ import {
 } from "@playwright/test";
 import * as fs from "fs";
 import * as path from "path";
-import {
-  DEVICE_PROFILES,
-  DeviceProfiles,
-  isDeviceProfile as isDeviceProfileName,
-} from "../config/deviceProfiles.ts";
 
 import type {
   FullTestId,
@@ -36,6 +31,10 @@ import {
   destructureFullTestId,
 } from "../utilities/buildTestableSelector.ts";
 
+import {
+  getDeviceProfile,
+  getDeviceProfileName,
+} from "../utilities/discoverDevice.ts";
 import { getTimeoutOrCancelItIfDebugging } from "../utilities/getTimeoutOrCancelItIfDebugging.ts";
 import { createAccountedTesting } from "./createAccountedTesting.ts";
 
@@ -168,20 +167,6 @@ After("@last", async function (this: ComplexWorld) {
 AfterAll({ timeout: 60000 }, async function () {
   debugging || (await browser.close());
 });
-
-function getDeviceProfile() {
-  const deviceProfileName = getDeviceProfileName();
-
-  if (isDeviceProfileName(deviceProfileName)) {
-    return DEVICE_PROFILES[deviceProfileName];
-  } else {
-    return DEVICE_PROFILES.desktop;
-  }
-}
-
-function getDeviceProfileName() {
-  return process.env.DEVICE_PROFILE || DeviceProfiles.desktop;
-}
 
 function prepareEmptyScreenshotsFolder() {
   if (fs.existsSync(screenshotsFolder)) {

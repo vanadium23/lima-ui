@@ -109,6 +109,7 @@ export const DRAG_HANDLE = "dragHandle";
 export const CHECKLIST_SWITCH = "checklistSwitch";
 export const CHECKBOX = "checkbox";
 
+export const TOGGLE_SIDEBAR_BUTTON = "toggleSidebarButton";
 export const TOGGLE_TOOLS_PANEL_BUTTON = "toggleToolsPanelButton";
 
 export const TOOLS_PANEL = "toolsPanel";

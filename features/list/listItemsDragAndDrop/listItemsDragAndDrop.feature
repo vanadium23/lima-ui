@@ -79,7 +79,7 @@ Feature: List items drag and drop functionality
   Scenario: Drag item after automatic item when last item was deleted and recreated
     When I add list items to their limit
     And I hover "on the last list item of the limit"
-    And I press the visible "open context menu list item" button
+    And I press the "open context menu for last list item of the limit" button
     And I press the visible "remove list item" menu item
     And I type some text with length less or equal to the one of "last item" input limit
     And I start dragging the "last" list item
@@ -90,8 +90,8 @@ Feature: List items drag and drop functionality
     Then I expect to see the warning about items inputs limit reached
     Then I expect to see the "add list item" button disabled
     Then I expect not to see the "automatic" item input
-    And I focus some list item input
-    And I press the visible "open context menu list item" button
+    And I focus "some item" input
+    And I open the corresponding list item context menu
     Then I expect to see the "add item above" menu item disabled
     Then I expect to see the "add item below" menu item disabled
     Then I reviewed all item addition method of the list page

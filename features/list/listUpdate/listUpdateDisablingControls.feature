@@ -12,7 +12,7 @@ Feature: Disabling controls when list is being updated
     And I type some text with length less or equal to the one of "list note" text area limit
     And I press the "save" button
     Then I expect to see the previous suffixed list title as tab title
-    Then I expect to see sidebar
+    Then I expect to see sidebar or its button
     Then I expect to see header
     Then I expect to see tools panel
     Then I expect to see the "list title" input disabled

@@ -25,8 +25,8 @@ Feature: Seeing the basis of the automatically added item
     Then I expect to see the warning about items inputs limit reached
     Then I expect to see the "add list item" button "disabled" with the following text: "Добавить пункт"
     Then I expect not to see the "automatic" item input
-    And I focus some list item input
-    And I press the visible "open context menu list item" button
+    And I focus "some item" input
+    And I open the corresponding list item context menu
     Then I expect to see the "add item above" menu item disabled
     Then I expect to see the "add item below" menu item disabled
     Then I reviewed all item addition method of the list page
@@ -34,8 +34,8 @@ Feature: Seeing the basis of the automatically added item
   Scenario: Restoring automatically added item after its removal
     And I type some text with length less or equal to the one of "first item" input limit
     And I hover "automatic list item"
-    And I press the "open context menu second item" button
-    And I press the "remove second list item" menu item
+    And I press the "open context menu for automatic list item" button
+    And I press the visible "remove list item" menu item
     Then I expect not to see the "automatic" item input
     And I type some text with length less or equal to the one of "first item" input limit
     Then I expect to see the "automatic" item input enabled
@@ -44,7 +44,7 @@ Feature: Seeing the basis of the automatically added item
     And I type some text with length less or equal to the one of "first item" input limit
     And I type some text with length less or equal to the one of "automatic item" input limit
     And I hover "automatic list item"
-    And I press the "open context menu third item" button
-    And I press the "remove third list item" menu item
+    And I press the "open context menu for automatic list item" button
+    And I press the visible "remove list item" menu item
     And I type some text with length less or equal to the one of "first item" input limit
     Then I expect not to see the "automatic" item input

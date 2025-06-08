@@ -10,9 +10,7 @@ import {
 import {
   ADD_ITEM_ABOVE_MENUITEM,
   ADD_ITEM_BELOW_MENUITEM,
-  LIST_ITEM,
   LIST_ITEM_INPUT,
-  OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
 } from "../../testIds.ts";
 import { TEST_SUB_ID_ATTRIBUTE } from "../../utilities/buildTestableSelector.ts";
 import { getTimeoutOrCancelItIfDebugging } from "../../utilities/getTimeoutOrCancelItIfDebugging.ts";
@@ -27,16 +25,6 @@ Then(
     ).toBeInViewport({ ratio: 1 });
   },
 );
-
-When("I hover the last added item input", async function (this: ComplexWorld) {
-  const lastItemInput = this.locateByIdParts(LIST_ITEM_INPUT).last();
-
-  await lastItemInput.hover();
-
-  this.numbers.lastItemIndex = parseInt(
-    (await lastItemInput.getAttribute(TEST_SUB_ID_ATTRIBUTE)) || "-1",
-  );
-});
 
 Then("I expect to see the new last item", async function (this: ComplexWorld) {
   const lastItemInputIndex = parseInt(
@@ -53,8 +41,9 @@ When(
   { timeout: getTimeoutOrCancelItIfDebugging(60000) },
   async function (this: ComplexWorld) {
     for (let i = await calculateCurrentItemsCount(this); i < ITEMS_LIMIT; i++) {
-      await this.locateByIdParts(LIST_ITEM).nth(getRandomInt(i)).hover();
-      await this.locateVisible(OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON).click();
+      await this.locateByIdParts(LIST_ITEM_INPUT).nth(getRandomInt(i)).focus();
+      await this.page.keyboard.press("Tab");
+      await this.page.keyboard.press("Space");
 
       if (i % 2 === 0) {
         await this.locateVisible(ADD_ITEM_ABOVE_MENUITEM).click();
@@ -65,8 +54,10 @@ When(
   },
 );
 
-When("I focus some list item input", async function (this: ComplexWorld) {
-  await this.locateByIdParts(LIST_ITEM_INPUT)
-    .nth(getRandomInt(await this.locateByIdParts(LIST_ITEM_INPUT).count()))
-    .focus();
-});
+When(
+  "I open the corresponding list item context menu",
+  async function (this: ComplexWorld) {
+    await this.page.keyboard.press("Tab");
+    await this.page.keyboard.press("Space");
+  },
+);

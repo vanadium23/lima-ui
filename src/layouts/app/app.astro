@@ -1,5 +1,4 @@
 ---
-import { SIDEBAR } from "../../../features/testIds";
 import { DEFAULT_TAB_TITLE, suffixTabTitle } from "../../../utilities/tabTitle";
 import { Header } from "../../organisms/header/header";
 import { Sidebar } from "../../organisms/sidebar/sidebar";
@@ -35,10 +34,10 @@ interface Props {
     </title>
   </head>
   <body>
-    <Header client:only="solid-js" list404={Astro.props.list404} />
+    <Header client:only="solid-js" list404={Astro.props.list404 ?? false} />
 
     <div class="appContainer">
-      <aside class="appContainer__nav" data-test-id={SIDEBAR}>
+      <aside class="appContainer__nav">
         <Sidebar client:only="solid-js" />
       </aside>
 

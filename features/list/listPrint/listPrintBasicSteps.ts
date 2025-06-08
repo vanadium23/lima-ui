@@ -5,7 +5,9 @@ import type { ComplexWorld } from "../../context/hooks.ts";
 import {
   PRINT_LIST_ITEM,
   PRINT_LIST_TITLE,
+  TOGGLE_TOOLS_PANEL_BUTTON,
   TOOLS_BUTTON_PRINT_LIST,
+  TOOLS_PANEL,
 } from "../../testIds.ts";
 
 import { PRINT_ELEMENT_TEST_IDS, type PrintElementMeaning } from "./testIds.ts";
@@ -98,3 +100,11 @@ Then(
     }).not.toPass();
   },
 );
+
+When("I ensure the tools panel is open", async function (this: ComplexWorld) {
+  const toolsPanel = this.locateByIdParts(TOOLS_PANEL);
+
+  if (await toolsPanel.isVisible()) return;
+
+  await this.locateByIdParts(TOGGLE_TOOLS_PANEL_BUTTON).click();
+});

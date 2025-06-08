@@ -20,6 +20,11 @@ import {
   type ItemInputMeaning,
 } from "../listAddItems/testIds.ts";
 
+import { isMobile, isTablet } from "../../utilities/discoverDevice.ts";
+import {
+  DRAG_HANDLE_TEST_IDS,
+  OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON_TEST_IDS,
+} from "../listItemsDragAndDrop/testIds.ts";
 import {
   ACCORDION_TEST_IDS,
   type AccordionMeaning,
@@ -217,7 +222,7 @@ Then(
     const listItemInput = this.locateByFullId(
       ITEM_INPUT_TEST_IDS[itemInputMeaning],
     );
-    await registerItem.call(this, listItemInput);
+    await registerItem(this, itemInputMeaning);
 
     await expect(listItemInput).toBeInViewport();
     await expect(listItemInput).toBeDisabled();
@@ -227,12 +232,30 @@ Then(
 Then(
   "I expect to see the {string} item input enabled",
   async function (this: ComplexWorld, itemInputMeaning: ItemInputMeaning) {
-    const listItemInput = this.locateByFullId(
+    await registerItem(this, itemInputMeaning);
+
+    const expectListItemInput = this.expectLocated(
       ITEM_INPUT_TEST_IDS[itemInputMeaning],
     );
-    await registerItem.call(this, listItemInput);
+    await expectListItemInput.toBeInViewport();
+    await expectListItemInput.toBeEnabled();
 
-    await expect(listItemInput).toBeInViewport();
-    await expect(listItemInput).toBeEnabled();
+    if (itemInputMeaning === "single") {
+      await expectListItemInput.toHaveCount(1);
+    }
+
+    if (isTablet() || isMobile()) {
+      const expectDragHandle = this.expectLocated(
+        DRAG_HANDLE_TEST_IDS[itemInputMeaning],
+      );
+      await expectDragHandle.toBeInViewport();
+      await expectDragHandle.toBeEnabled();
+
+      const expectOpenContextMenuListItemButton = this.expectLocated(
+        OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON_TEST_IDS[itemInputMeaning],
+      );
+      await expectOpenContextMenuListItemButton.toBeInViewport();
+      await expectOpenContextMenuListItemButton.toBeEnabled();
+    }
   },
 );

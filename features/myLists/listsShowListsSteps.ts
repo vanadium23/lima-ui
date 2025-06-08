@@ -21,11 +21,13 @@ import {
   LIST_STRIPE,
   LIST_STRIPE_LINK_TO_VIEW,
   LISTS_LIMIT_REACHED_WARNING,
+  OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
 } from "../testIds.ts";
 import {
   buildTestableSelector,
   TEST_SUB_ID_ATTRIBUTE,
 } from "../utilities/buildTestableSelector.ts";
+import { isMobile, isTablet } from "../utilities/discoverDevice.ts";
 import { getStringUpToLimit } from "../utilities/getStringOfLength.ts";
 import { getTimeoutOrCancelItIfDebugging } from "../utilities/getTimeoutOrCancelItIfDebugging.ts";
 
@@ -67,6 +69,13 @@ Then("I expect to see created list", async function (this: ComplexWorld) {
     LIST_STRIPE_LINK_TO_VIEW,
     "0",
   );
+
+  if (isTablet() || isMobile()) {
+    this.accounting.elements.registerTestIdAndSubId(
+      OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
+      "0",
+    );
+  }
 });
 
 Then(
@@ -98,6 +107,13 @@ Then(
         LIST_STRIPE_LINK_TO_VIEW,
         await listPosition,
       );
+
+      if (isTablet() || isMobile()) {
+        this.accounting.elements.registerTestIdAndSubId(
+          OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
+          await listPosition,
+        );
+      }
     }
 
     await this.expectLocated(LIST_STRIPE).toHaveCount(listStripesQuantity);

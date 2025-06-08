@@ -46,9 +46,17 @@ export const BUTTON_TEST_IDS = {
     OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
     2,
   ),
+  "open context menu forth item": buildFullTestId(
+    OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
+    3,
+  ),
   "open context menu for last list item of the limit": buildFullTestId(
     OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
     ITEMS_LIMIT - 1,
+  ),
+  "open context menu for automatic list item": buildFullTestId(
+    OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
+    AUTO_LIST_ITEM,
   ),
   "remove list": LIST_STRIPE_REMOVE_BUTTON,
   "cancel list removal": DIALOG_CLOSE_BUTTON,
@@ -57,6 +65,10 @@ export const BUTTON_TEST_IDS = {
   "remove list tools panel": TOOLS_BUTTON_REMOVE_LIST,
   "print list": TOOLS_BUTTON_PRINT_LIST,
   "open context menu list stripe": OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
+  "open context menu first list stripe": buildFullTestId(
+    OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
+    0,
+  ),
 };
 export type ButtonMeaning = keyof typeof BUTTON_TEST_IDS;
 
@@ -68,6 +80,10 @@ export const MENUITEM_TEST_IDS = {
   "remove on the last list item of the limit": buildFullTestId(
     REMOVE_ITEM_MENUITEM,
     ITEMS_LIMIT - 1,
+  ),
+  "remove automatic list item": buildFullTestId(
+    REMOVE_ITEM_MENUITEM,
+    AUTO_LIST_ITEM,
   ),
   "add item above": ADD_ITEM_ABOVE_MENUITEM,
   "add item below": ADD_ITEM_BELOW_MENUITEM,
@@ -83,6 +99,7 @@ export const INPUT_TEST_IDS = {
   "forth item": buildFullTestId(LIST_ITEM_INPUT, 3),
   "automatic item": AUTO_LIST_ITEM_INPUT,
   "last item": LIST_ITEM_INPUT,
+  "some item": LIST_ITEM_INPUT,
 };
 export type InputMeaning = keyof typeof INPUT_TEST_IDS;
 

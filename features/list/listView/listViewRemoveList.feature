@@ -65,7 +65,7 @@ Feature: Removing a list from the List view page
     And I press the "remove list tools panel" button
     And I press the visible "confirm list removal" button
     Then I expect to see the suffixed list title as tab title
-    Then I expect to see sidebar
+    Then I expect to see sidebar or its button
     Then I expect to see header
     Then I expect to see tools panel
     Then I expect to see the "list title" input disabled

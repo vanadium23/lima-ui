@@ -64,7 +64,7 @@ Feature: Failing to create a new list
     And I press the "save" button
     And I wait for the page to load
     Then I expect to see the following suffixed tab title: "Новый список"
-    Then I expect to see sidebar
+    Then I expect to see sidebar or its button
     Then I expect to see header
     Then I expect to see tools panel
     Then I expect to see the "list title" input enabled

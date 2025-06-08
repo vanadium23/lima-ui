@@ -4,7 +4,9 @@ import { expect } from "@playwright/test";
 import type { ComplexWorld } from "../../context/hooks.ts";
 import { ITEMS_LIMIT_REACHED_WARNING, LIST_ITEM } from "../../testIds.ts";
 
+import { TEST_SUB_ID_ATTRIBUTE } from "../../utilities/buildTestableSelector.ts";
 import { getTimeoutOrCancelItIfDebugging } from "../../utilities/getTimeoutOrCancelItIfDebugging.ts";
+import { getRandomInt } from "../utilities/getRandomInt.ts";
 import {
   BUTTON_TEST_IDS,
   type ButtonMeaning,
@@ -62,7 +64,24 @@ When(
 When(
   "I focus {string} input",
   async function (this: ComplexWorld, inputMeaning: InputMeaning) {
-    await this.locateByFullId(INPUT_TEST_IDS[inputMeaning]).focus();
+    const inputId = INPUT_TEST_IDS[inputMeaning];
+    let input = this.locateByFullId(inputId);
+
+    if (inputMeaning === "last item") {
+      input = this.locateByIdParts(inputId).last();
+
+      this.numbers.lastItemIndex = parseInt(
+        (await input.getAttribute(TEST_SUB_ID_ATTRIBUTE)) || "-1",
+      );
+    }
+
+    if (inputMeaning === "some item") {
+      const numberOfInputs = await this.locateByIdParts(inputId).count();
+
+      input = this.locateByIdParts(inputId).nth(getRandomInt(numberOfInputs));
+    }
+
+    await input.focus();
   },
 );
 
