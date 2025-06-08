@@ -21,10 +21,10 @@ import {
   OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
   REMOVE_ITEM_MENUITEM,
   SAVE_LIST_BUTTON,
-  TOOLS_BUTTON_COPY_ITEMS,
-  TOOLS_BUTTON_PRINT_LIST,
-  TOOLS_BUTTON_REMOVE_LIST,
   TOOLS_PANEL_ADD_ITEM_BUTTON,
+  TOOLS_PANEL_BUTTON_COPY_ITEMS,
+  TOOLS_PANEL_BUTTON_PRINT_LIST,
+  TOOLS_PANEL_BUTTON_REMOVE_LIST,
 } from "../../testIds.ts";
 import { buildFullTestId } from "../../utilities/buildTestableSelector.ts";
 
@@ -61,9 +61,9 @@ export const BUTTON_TEST_IDS = {
   "remove list": LIST_STRIPE_REMOVE_BUTTON,
   "cancel list removal": DIALOG_CLOSE_BUTTON,
   "confirm list removal": DIALOG_REMOVE_BUTTON,
-  "copy items": TOOLS_BUTTON_COPY_ITEMS,
-  "remove list tools panel": TOOLS_BUTTON_REMOVE_LIST,
-  "print list": TOOLS_BUTTON_PRINT_LIST,
+  "copy items": TOOLS_PANEL_BUTTON_COPY_ITEMS,
+  "remove list tools panel": TOOLS_PANEL_BUTTON_REMOVE_LIST,
+  "print list": TOOLS_PANEL_BUTTON_PRINT_LIST,
   "open context menu list stripe": OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
   "open context menu first list stripe": buildFullTestId(
     OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,

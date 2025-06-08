@@ -14,7 +14,7 @@ Feature: Controls state after list update
     Then I expect to see the suffixed list title as tab title
     Then I expect to see sidebar or its button
     Then I expect to see header
-    Then I expect to see tools panel
+    Then I expect to see tools panel or its button
     Then I expect to see the "list title" input enabled
     Then I expect to see the "list purpose" input enabled
     Then I expect to fully see the expanded "list note" accordion ready for collapsing
@@ -23,11 +23,13 @@ Feature: Controls state after list update
     Then I expect to see the "first" item input enabled
     Then I expect to see the "automatic" item input enabled
     Then I expect to see the "save" button disabled
+    And I ensure the tools panel is open
     Then I expect to see the "add list item" button enabled
     Then I expect to see the "copy items" button enabled
     Then I expect to see the "remove list tools panel" button enabled
     Then I expect to see the "checklist" switch enabled
     Then I expect to see the "print list" button enabled
+    And I ensure the tools panel does not disturb
     Then All necessary elements are on the "List Creation Item Added, Note Expanded" page
     Then I expect to see no other elements
 
@@ -41,7 +43,7 @@ Feature: Controls state after list update
     Then I expect to see the previous suffixed list title as tab title
     Then I expect to see sidebar or its button
     Then I expect to see header
-    Then I expect to see tools panel
+    Then I expect to see tools panel or its button
     Then I expect to see the "list title" input enabled
     Then I expect to see the "list purpose" input enabled
     Then I expect to fully see the expanded "list note" accordion ready for collapsing
@@ -50,11 +52,13 @@ Feature: Controls state after list update
     Then I expect to see the "first" item input enabled
     Then I expect to see the "automatic" item input enabled
     Then I expect to see the "save" button enabled
+    And I ensure the tools panel is open
     Then I expect to see the "add list item" button enabled
     Then I expect to see the "copy items" button enabled
     Then I expect to see the "remove list tools panel" button enabled
     Then I expect to see the "checklist" switch enabled
     Then I expect to see the "print list" button enabled
+    And I ensure the tools panel does not disturb
     Then I expect to see the "connection" error
     Then All necessary elements are on the "List Creation Item Added, Note Expanded, Connection Error" page
     Then I expect to see no other elements

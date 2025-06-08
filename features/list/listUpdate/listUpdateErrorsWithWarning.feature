@@ -5,7 +5,9 @@ Feature: Errors and warnings during list update
     And I add a list
     And I refresh the page
     Given There is no internet connection
+    And I ensure the tools panel is open
     And I add list items to their limit
+    And I ensure the tools panel does not disturb
     And I fill all items inputs with their index
     And I type some text with length less or equal to the one of "list title" input limit
     And I press the "save" button

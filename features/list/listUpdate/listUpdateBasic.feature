@@ -53,7 +53,9 @@ Feature: Updating list
 
   Scenario: Updating list items consequently
     When I type some text with length less or equal to the one of "first item" input limit
+    And I ensure the tools panel is open
     And I press the "add list item" button
+    And I ensure the tools panel does not disturb
     And I type some text with length less or equal to the one of "second item" input limit
     When I press the "save" button
     And I wait for the list update to complete

@@ -5,9 +5,7 @@ import type { ComplexWorld } from "../../context/hooks.ts";
 import {
   PRINT_LIST_ITEM,
   PRINT_LIST_TITLE,
-  TOGGLE_TOOLS_PANEL_BUTTON,
-  TOOLS_BUTTON_PRINT_LIST,
-  TOOLS_PANEL,
+  TOOLS_PANEL_BUTTON_PRINT_LIST,
 } from "../../testIds.ts";
 
 import { PRINT_ELEMENT_TEST_IDS, type PrintElementMeaning } from "./testIds.ts";
@@ -15,7 +13,7 @@ import { PRINT_ELEMENT_TEST_IDS, type PrintElementMeaning } from "./testIds.ts";
 When(
   "I press the print list button and wait for the new tab with printing stub",
   async function (this: ComplexWorld) {
-    await this.locateByIdParts(TOOLS_BUTTON_PRINT_LIST).click();
+    await this.locateByIdParts(TOOLS_PANEL_BUTTON_PRINT_LIST).click();
 
     const newPage = await this.context.waitForEvent("page");
 
@@ -81,7 +79,7 @@ Then(
 When(
   "I press the print list button and check for system print dialog",
   async function (this: ComplexWorld) {
-    await this.locateByIdParts(TOOLS_BUTTON_PRINT_LIST).click();
+    await this.locateByIdParts(TOOLS_PANEL_BUTTON_PRINT_LIST).click();
 
     const newPage = await this.context.waitForEvent("page");
 
@@ -100,11 +98,3 @@ Then(
     }).not.toPass();
   },
 );
-
-When("I ensure the tools panel is open", async function (this: ComplexWorld) {
-  const toolsPanel = this.locateByIdParts(TOOLS_PANEL);
-
-  if (await toolsPanel.isVisible()) return;
-
-  await this.locateByIdParts(TOGGLE_TOOLS_PANEL_BUTTON).click();
-});

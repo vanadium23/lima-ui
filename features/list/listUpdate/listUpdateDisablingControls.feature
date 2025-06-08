@@ -14,7 +14,7 @@ Feature: Disabling controls when list is being updated
     Then I expect to see the previous suffixed list title as tab title
     Then I expect to see sidebar or its button
     Then I expect to see header
-    Then I expect to see tools panel
+    Then I expect to see tools panel or its button
     Then I expect to see the "list title" input disabled
     Then I expect to see the "list purpose" input disabled
     Then I expect to see the "list note" accordion disabled
@@ -23,17 +23,21 @@ Feature: Disabling controls when list is being updated
     Then I expect to see items inputs area without scroll
     Then I expect to see the "first" item input disabled
     Then I expect to see the "automatic" item input disabled
-    Then I expect to see the "add list item" button disabled
     Then I expect to see the "save" button in the loading state
+    And I ensure the tools panel is open
+    Then I expect to see the "add list item" button disabled
     Then I expect to see the "copy items" button disabled
     Then I expect to see the "remove list tools panel" button disabled
     Then I expect to see the "checklist" switch disabled
     Then I expect to see the "print list" button disabled
+    And I ensure the tools panel does not disturb
     Then All necessary elements are on the "List Creation Item Added, Note Expanded" page
     Then I expect to see no other elements
 
   Scenario: All items inputs are disabled on list update
-    When I add list items till scroll appears plus one item input
+    And I ensure the tools panel is open
+    And I add list items till scroll appears plus one item input
+    And I ensure the tools panel does not disturb
     And I type some text to all items inputs
     And I press the "save" button
     Then I expect all items inputs disabled

@@ -4,7 +4,7 @@ Feature: Adding items above and below on the List page
     When I open List Creation page
 
   Scenario: Adding an item above the first one via context menu
-    And I hover "first list item"
+    When I hover "first list item"
     And I press the "open context menu first item" button
     Then I expect to see the fully visible "list item" context menu
     And I press the visible "add item above" menu item
@@ -12,7 +12,9 @@ Feature: Adding items above and below on the List page
     Then I expect to see the "second" item input enabled
 
   Scenario: Adding an item below the last added one via context menu
-    When I add list items till scroll appears plus one item input
+    When I ensure the tools panel is open
+    And I add list items till scroll appears plus one item input
+    And I ensure the tools panel does not disturb
     And I focus "last item" input
     And I open the corresponding list item context menu
     Then I expect to see the fully visible "list item" context menu
@@ -20,9 +22,11 @@ Feature: Adding items above and below on the List page
     Then I expect to see the new last item
 
   Scenario: Reaching the limit of list items via adding items above and below
-    And I add list items to their limit via adding above and below
+    When I add list items to their limit via adding above and below
     Then I expect to see the warning about items inputs limit reached
+    And I ensure the tools panel is open
     Then I expect to see the "add list item" button "disabled" with the following text: "Добавить пункт"
+    And I ensure the tools panel does not disturb
     Then I expect not to see the "automatic" item input
     And I focus "some item" input
     And I open the corresponding list item context menu

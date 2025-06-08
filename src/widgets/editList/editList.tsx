@@ -29,11 +29,11 @@ import {
   NETWORK_ERROR,
   REMOVE_LIST_DIALOG,
   SAVE_LIST_BUTTON,
-  TOOLS_BUTTON_COPY_ITEMS,
-  TOOLS_BUTTON_PRINT_LIST,
-  TOOLS_BUTTON_REMOVE_LIST,
   TOOLS_PANEL,
   TOOLS_PANEL_ADD_ITEM_BUTTON,
+  TOOLS_PANEL_BUTTON_COPY_ITEMS,
+  TOOLS_PANEL_BUTTON_PRINT_LIST,
+  TOOLS_PANEL_BUTTON_REMOVE_LIST,
 } from "../../../features/testIds.ts";
 import { LISTS } from "../../../utilities/addresses.ts";
 import { suffixTabTitle } from "../../../utilities/tabTitle.ts";
@@ -68,6 +68,7 @@ import {
 } from "../../organisms/toolsPanel/toolsPanel.tsx";
 import { setLocation } from "../../state/locationState.ts";
 
+import "./editList.css";
 import { createList } from "./services/createList.ts";
 import { removeList } from "./services/removeList.ts";
 import { updateList } from "./services/updateList.ts";
@@ -92,7 +93,6 @@ import {
 import { isOnlyOneItem } from "./utilities/isOnlyOneItem.ts";
 import { prepareListItemsDataForSending } from "./utilities/prepareListItemsDataForSending.ts";
 import { soften } from "./utilities/soften.ts";
-import "./editList.css";
 
 type EditListProps = {
   defaultList?: List;
@@ -603,7 +603,7 @@ export const EditList = (props: EditListProps) => {
               text={"Копировать пункты"}
               isDisabled={store.isNewList || store.sendingNow !== false}
               handleClick={() => copyItemsToClipboard(store.items)}
-              testId={TOOLS_BUTTON_COPY_ITEMS}
+              testId={TOOLS_PANEL_BUTTON_COPY_ITEMS}
             />
             <ToolsButton
               componentType={ToolsButtonComponentType.Button}
@@ -613,7 +613,7 @@ export const EditList = (props: EditListProps) => {
               isLoading={store.sendingNow === "deleting"}
               isDisabled={store.isNewList || store.sendingNow === "saving"}
               handleClick={openDialog}
-              testId={TOOLS_BUTTON_REMOVE_LIST}
+              testId={TOOLS_PANEL_BUTTON_REMOVE_LIST}
             />
             <Dialog
               title="Удаление списка"
@@ -656,7 +656,7 @@ export const EditList = (props: EditListProps) => {
               iconName={IconName.Printer}
               link={`./${store.id}/print?checkable=${store.isCheckable}`}
               text={"Напечатать список"}
-              testId={TOOLS_BUTTON_PRINT_LIST}
+              testId={TOOLS_PANEL_BUTTON_PRINT_LIST}
               isDisabled={store.isNewList || store.sendingNow !== false}
               openInNewTab={true}
             />
