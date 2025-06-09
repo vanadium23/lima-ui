@@ -49,7 +49,7 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
       size: ListStripeSize.Medium,
       isRemoving: false,
     },
-    props,
+    props
   );
 
   const [isDialogOpen, setIsDialogOpen] = createSignal(false);
@@ -99,10 +99,7 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
       .catch((error) => {
         soften(() => {
           mProps.onRemoveError(true);
-          console.error(
-            "There has been a problem with your fetch operation:",
-            error,
-          );
+          console.error("There has been a problem with your fetch operation:", error);
           setIsRemoving(false);
         });
       });
@@ -138,7 +135,7 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
           testId={OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON}
           testSubId={mProps.testSubId || "0"}
           dropDownMenuTestId={LIST_STRIPE_CONTEXT_MENU}
-          iconName={IconName.DotsThreeVertical}
+          iconName={IconName.DotsThree}
           listOfButtons={dropdownMenuItems()}
           isLoading={listStripeIsRemoving()}
         />
@@ -167,8 +164,7 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
         }
       >
         <p>
-          Список <strong>{mProps.listTitle}</strong> будет удален без
-          возможности восстановления.
+          Список <strong>{mProps.listTitle}</strong> будет удален без возможности восстановления.
         </p>
       </Dialog>
     </div>
