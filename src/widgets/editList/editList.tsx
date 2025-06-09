@@ -418,9 +418,10 @@ export const EditList = (props: EditListProps) => {
 
         setStore(
           "items",
-          updatedItems.map((item) => ({
+          updatedItems.map((item, index) => ({
             ...item,
-            auto: false,
+            auto:
+              index === updatedItems.length - 1 && item.content.trim() === "",
           })),
         );
         checkChanges(store, setStore);

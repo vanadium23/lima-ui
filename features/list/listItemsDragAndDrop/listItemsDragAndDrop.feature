@@ -80,6 +80,13 @@ Feature: List items drag and drop functionality
     Then I expect to see the dragged list item on the "last" position
     Then I expect not to see the "automatic" item input
 
+  Scenario: Automatic item remains if dragged before it
+    When I start dragging the "first" list item
+    And I drag the item on the "second" item
+    And I complete the drag operation
+    And I scroll to the bottom of the list items
+    Then I expect to see the "automatic" item input enabled
+
   Scenario: Drag item after automatic item when last item was deleted and recreated
     When I ensure the tools panel is open
     And I add list items to their limit
