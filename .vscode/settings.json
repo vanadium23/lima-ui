@@ -1,6 +1,13 @@
 {
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.organizeImports": "always",
-    "source.fixAll.eslint": "always",
-  }
+    "source.fixAll.eslint": "always"
+  },
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.requireConfig": true,
+  "prettier.useEditorConfig": false
 }
