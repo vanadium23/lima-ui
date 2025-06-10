@@ -45,6 +45,18 @@ Feature: Removing a list from the List view page
     And I press the visible "confirm list removal" button
     Then I expect to see the "list removal" error
 
+  Scenario: Opening and closing the list removal dialog multiple times on List View
+    When I add a list
+    And I ensure the tools panel is open
+    And I press the "remove list tools panel" button
+    Then I expect to see the "remove list" dialog modal box
+    When I press the visible "cancel list removal" button
+    Then I expect not to see the "remove list" dialog modal box
+    When I press the "remove list tools panel" button
+    Then I expect to see the "remove list" dialog modal box
+    When I click outside of the "remove list" dialog modal box
+    Then I expect not to see the "remove list" dialog modal box
+
   Scenario: Consequent removal attempt leads to error message disappearance
     When I add a list
     And I ensure the tools panel is open
@@ -82,7 +94,7 @@ Feature: Removing a list from the List view page
     Then I expect to see the "list note" accordion disabled
     Then I expect to see the "list note" accordion content expanded
     Then I expect to see the "list note" text area disabled
-    Then I expect to see items inputs area without scroll
+    Then I expect to see list items area
     Then I expect to see the "first" item input disabled
     Then I expect to see the "automatic" item input disabled
     And I ensure the tools panel is open
