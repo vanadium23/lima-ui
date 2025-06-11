@@ -1,5 +1,5 @@
 {
-  "name": "@svernik/svernik",
+  "name": "@lima/lima-ui",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -8,23 +8,7 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "test": "npm run test-desktop && npm run test-tablet && npm run test-mobile",
-    "test-desktop": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" DEVICE_PROFILE=desktop cucumber-js",
-    "test-tablet": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" DEVICE_PROFILE=tablet cucumber-js",
-    "test-mobile": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" DEVICE_PROFILE=mobile cucumber-js",
-    "test-current": "npm run test-current-desktop && npm run test-current-tablet && npm run test-current-mobile",
-    "test-current-desktop": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" DEVICE_PROFILE=desktop cucumber-js --tags \"@under-development\"",
-    "test-current-tablet": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" DEVICE_PROFILE=tablet cucumber-js --tags \"@under-development\"",
-    "test-current-mobile": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" DEVICE_PROFILE=mobile cucumber-js --tags \"@under-development\"",
-    "test-current-debug": "cross-env PWDEBUG=\"1\" npm run test-current-desktop && npm run test-current-tablet && npm run test-current-mobile",
-    "test-fixing": "npm run test-fixing-desktop && npm run test-fixing-tablet && npm run test-fixing-mobile",
-    "test-fixing-desktop": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" DEVICE_PROFILE=desktop cucumber-js --tags \"@needs-fixing\"",
-    "test-fixing-tablet": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" DEVICE_PROFILE=tablet cucumber-js --tags \"@needs-fixing\"",
-    "test-fixing-mobile": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" DEVICE_PROFILE=mobile cucumber-js --tags \"@needs-fixing\"",
-    "test-working": "npm run test-working-desktop && npm run test-working-tablet && npm run test-working-mobile",
-    "test-working-desktop": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" DEVICE_PROFILE=desktop cucumber-js --tags \"not @needs-fixing\"",
-    "test-working-tablet": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" DEVICE_PROFILE=tablet cucumber-js --tags \"not @needs-fixing\"",
-    "test-working-mobile": "cross-env NODE_OPTIONS=\"--loader ts-node/esm\" DEVICE_PROFILE=mobile cucumber-js --tags \"not @needs-fixing\""
+    "test": "tsx scripts/run-tests.ts"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -41,10 +25,14 @@
   "devDependencies": {
     "@cucumber/cucumber": "^11.2.0",
     "@playwright/test": "^1.50.1",
+    "@types/chalk": "^2.2.4",
+    "@types/commander": "^2.12.5",
     "@types/node": "^20.17.50",
     "@typescript-eslint/eslint-plugin": "^6.12.0",
     "@typescript-eslint/parser": "^6.12.0",
     "autoprefixer": "^10.4.16",
+    "chalk": "^5.4.1",
+    "commander": "^14.0.0",
     "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
     "cssnano": "^6.0.1",
@@ -57,6 +45,7 @@
     "prettier": "^3.1.1",
     "prettier-plugin-astro": "^0.13.0",
     "stylelint-config-standard": "^34.0.0",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.4"
   }
 }

@@ -83,7 +83,7 @@ Feature: Removing items from an existing list
     And I press the "open context menu first item" button
     Then I expect to see the "remove list item" menu item disabled
 
-  @needs-fixing
+  @broken
   Scenario: Adding list items to the limit and then removing one list item leads to limit warning disappear and buttons enablement
     When I ensure the tools panel is open
     And I add list items to their limit

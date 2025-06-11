@@ -119,8 +119,6 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
   }
 }
 
-const debugging = process.env.PWDEBUG === "1";
-
 const MORE_THAN_IN_PLAYWRIGHT = getTimeoutOrCancelItIfDebugging(6000);
 setDefaultTimeout(MORE_THAN_IN_PLAYWRIGHT);
 setWorldConstructor(ComplexWorld);
@@ -129,8 +127,6 @@ const screenshotsFolder = path.join(process.cwd(), "features", "screenshots");
 
 BeforeAll(async function () {
   prepareEmptyScreenshotsFolder();
-  logDeviceInfo();
-
   browser = await chromium.launch();
 });
 
@@ -161,11 +157,11 @@ After(async function (this: ComplexWorld, scenario: ITestCaseHookParameter) {
 
 // This After hook should run AFTER the screenshot hook
 After("@last", async function (this: ComplexWorld) {
-  debugging || (await this.context.close());
+  await this.context.close();
 });
 
 AfterAll({ timeout: 60000 }, async function () {
-  debugging || (await browser.close());
+  await browser.close();
 });
 
 function prepareEmptyScreenshotsFolder() {
@@ -175,41 +171,7 @@ function prepareEmptyScreenshotsFolder() {
     for (const file of files) {
       fs.unlinkSync(path.join(screenshotsFolder, file));
     }
-    console.log(
-      `\nCleared ${files.length} screenshots from: ${screenshotsFolder}`,
-    );
   } else {
     fs.mkdirSync(screenshotsFolder, { recursive: true });
   }
-}
-
-/**
- * Logs detailed information about the test device in a formatted way
- */
-function logDeviceInfo() {
-  // ANSI escape codes for styling
-  const reset = "\x1b[0m";
-  const bold = "\x1b[1m";
-  const cyan = "\x1b[36m";
-  const bgBlue = "\x1b[44m";
-  const dim = "\x1b[2m";
-
-  const deviceProfile = getDeviceProfile();
-
-  const header = `${bold}${bgBlue} TEST DEVICE: ${reset}`;
-  const deviceHeader = `${bold}${cyan}${getDeviceProfileName().toUpperCase()}${reset}`;
-
-  const deviceInfo = [
-    `${dim}• Viewport:${reset} ${deviceProfile.viewport.width}x${deviceProfile.viewport.height}`,
-    `${dim}• Mobile:${reset} ${deviceProfile.isMobile ? "Yes" : "No"}`,
-    `${dim}• Touch:${reset} ${deviceProfile.hasTouch ? "Yes" : "No"}`,
-    `${dim}• Pixel Ratio:${reset} ${deviceProfile.deviceScaleFactor}`,
-  ].join("\n");
-
-  // Add some spacing and a separator line
-  console.log("\n" + "=".repeat(60));
-  console.log(header, deviceHeader);
-  console.log("\n");
-  console.log(deviceInfo);
-  console.log("=".repeat(60) + "\n");
 }

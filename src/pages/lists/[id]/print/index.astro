@@ -1,5 +1,10 @@
 ---
-import { PRINT_LIST_ITEM,PRINT_LIST_NOTE, PRINT_LIST_PURPOSE, PRINT_LIST_TITLE } from "../../../../../features/testIds";
+import {
+  PRINT_LIST_ITEM,
+  PRINT_LIST_NOTE,
+  PRINT_LIST_PURPOSE,
+  PRINT_LIST_TITLE,
+} from "../../../../../features/testIds";
 import { LISTS } from "../../../../../utilities/addresses";
 
 import "./style.css";
@@ -37,16 +42,23 @@ const isCheckableParam = Astro.url.searchParams.get("checkable") === "true";
       name="msapplication-TileImage"
     />
     <meta content="#ffffff" name="theme-color" />
-    <title>Svernik APP</title>
+    <title>Lima APP</title>
   </head>
   <body>
     <div class="print">
       <div class="print__header">
         <div class="print__headerInner">
-          <span class="print__headerTitle" data-test-id={PRINT_LIST_TITLE}>{list.name}</span>
+          <span class="print__headerTitle" data-test-id={PRINT_LIST_TITLE}
+            >{list.name}</span
+          >
           {
             list.purpose && (
-              <span class="print__headerPurpose" data-test-id={PRINT_LIST_PURPOSE}>{list.purpose}</span>
+              <span
+                class="print__headerPurpose"
+                data-test-id={PRINT_LIST_PURPOSE}
+              >
+                {list.purpose}
+              </span>
             )
           }
         </div>
@@ -57,14 +69,22 @@ const isCheckableParam = Astro.url.searchParams.get("checkable") === "true";
           list.note && (
             <div class="print__note">
               <div class="print_noteTitle">Заметка:</div>
-              <div class="print_noteText" data-test-id={PRINT_LIST_NOTE}>{list.note}</div>
+              <div class="print_noteText" data-test-id={PRINT_LIST_NOTE}>
+                {list.note}
+              </div>
             </div>
           )
         }
-        <ul class=`print__items ${isCheckableParam ? "print__items_checklist" : "print__items_list"}`>
+        <ul
+          class=`print__items ${isCheckableParam ? "print__items_checklist" : "print__items_list"}`
+        >
           {
             list.items.map((item, index) => (
-              <li class="print__item" data-test-id={PRINT_LIST_ITEM} data-test-sub-id={index}>
+              <li
+                class="print__item"
+                data-test-id={PRINT_LIST_ITEM}
+                data-test-sub-id={index}
+              >
                 {item.content}
               </li>
             ))

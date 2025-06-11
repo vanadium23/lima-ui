@@ -61,9 +61,9 @@ Feature: List items drag and drop functionality
     And I complete the drag operation
     Then I expect to see the dragged list item on the "third" position
     And I start dragging the "third" list item
-    And I drag the item on the "ninth" item
+    And I drag the item on the "sixth" item
     And I complete the drag operation
-    Then I expect to see the dragged list item on the "ninth" position
+    Then I expect to see the dragged list item on the "sixth" position
     And I expect to see the "save" button enabled
 
   Scenario: Drag item to the start of a list

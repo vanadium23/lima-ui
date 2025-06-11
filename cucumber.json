@@ -9,7 +9,6 @@
       "json:features/reports/cucumber-report.json"
     ],
     "paths": ["features"],
-    "requireModule": ["ts-node/register"],
     "import": ["features/**/*.ts"],
     "order": "random"
   }

@@ -25,23 +25,32 @@
 | `npm install` | Устанавливает зависимости |
 | `npm run dev` | Запускает локальный сервер разработки на `localhost:4321` |
 | `npm run build` | Сборка вашего сайта для продакшена в папку `./dist/` |
+| `npm start` | Запускает продакшен-сервер из папки `dist` |
+| `npm run preview` | Запускает локальный сервер для предпросмотра продакшен-сборки |
+| `npm run astro` | Запускает интерфейс командной строки Astro |
 | `npm test` | Запускает все тесты на всех устройствах (desktop, tablet, mobile) |
-| `npm run test-desktop` | Запускает тесты только для десктопной версии |
-| `npm run test-tablet` | Запускает тесты только для планшетной версии |
-| `npm run test-mobile` | Запускает тесты только для мобильной версии |
-| `npm run test-current` | Запускает тесты с тегом @under-development на всех устройствах |
-| `npm run test-current-desktop` | Запускает тесты с тегом @under-development на десктопе |
-| `npm run test-current-tablet` | Запускает тесты с тегом @under-development на планшете |
-| `npm run test-current-mobile` | Запускает тесты с тегом @under-development на мобильном |
-| `npm run test-current-debug` | Запускает отладочные тесты с тегом @under-development на всех устройствах |
-| `npm run test-fixing` | Запускает тесты с тегом @needs-fixing на всех устройствах |
-| `npm run test-fixing-desktop` | Запускает тесты с тегом @needs-fixing на десктопе |
-| `npm run test-fixing-tablet` | Запускает тесты с тегом @needs-fixing на планшете |
-| `npm run test-fixing-mobile` | Запускает тесты с тегом @needs-fixing на мобильном |
-| `npm run test-working` | Запускает тесты без тега @needs-fixing на всех устройствах |
-| `npm run test-working-desktop` | Запускает тесты без тега @needs-fixing на десктопе |
-| `npm run test-working-tablet` | Запускает тесты без тега @needs-fixing на планшете |
-| `npm run test-working-mobile` | Запускает тесты без тега @needs-fixing на мобильном |
+
+**Примеры использования:**
+
+```bash
+# Запуск всех тестов на всех устройствах (игнорирует @broken)
+npm test
+
+# Показать справку
+npm test -- --help
+
+# Запуск тестов только для десктопа и планшета
+npm test -- --desktop --tablet
+
+# Запуск только сломанных тестов
+npm test -- --broken
+
+# Запуск только текущих тестов (с тегом @current)
+npm test -- --current
+
+# Комбинирование флагов: запуск текущих тестов в отладочном режиме
+npm test -- --current --debug
+```
 
 ## 🧪 Тестирование
 
