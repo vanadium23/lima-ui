@@ -39,7 +39,7 @@ export function ItemInputWrapper(props: ItemInputWrapperProps) {
         mProps.listOfButtons ? (
           <DropdownMenuWrapper
             iconSize={IconButtonSize.MediumEmbedded}
-            iconName={IconName.DotsThreeCircle}
+            iconName={IconName.DotsThree}
             testId={OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON}
             testSubId="0"
             dropDownMenuTestId={DEFAULT_TEST_ID}
