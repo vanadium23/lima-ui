@@ -26,7 +26,6 @@ import {
   TEST_ID_ATTRIBUTE,
   TEST_SUB_ID_ATTRIBUTE,
 } from "../../utilities/buildTestableSelector.ts";
-import { noVerticalScroll } from "../../utilities/checkScroll.ts";
 import {
   isDesktop,
   isMobile,
@@ -115,16 +114,11 @@ Then(
   },
 );
 
-Then(
-  "I expect to see items inputs area without scroll",
-  async function (this: ComplexWorld) {
-    expect(
-      await this.locateByIdParts(
-        this.accounting.elements.registerTestId(LIST_ITEMS),
-      ).evaluate(noVerticalScroll),
-    ).toBe(true);
-  },
-);
+Then("I expect to see list items area", async function (this: ComplexWorld) {
+  await this.expectLocated(
+    this.accounting.elements.registerTestId(LIST_ITEMS),
+  ).toBeInViewport();
+});
 
 Then(
   "I expect to see the {string} button {string} with the following text: {string}",

@@ -20,7 +20,7 @@ Feature: Disabling controls when list is being updated
     Then I expect to see the "list note" accordion disabled
     Then I expect to see the "list note" accordion content expanded
     Then I expect to see the "list note" text area disabled
-    Then I expect to see items inputs area without scroll
+    Then I expect to see list items area
     Then I expect to see the "first" item input disabled
     Then I expect to see the "automatic" item input disabled
     Then I expect to see the "save" button in the loading state

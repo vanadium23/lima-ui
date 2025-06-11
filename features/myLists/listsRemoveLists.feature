@@ -45,6 +45,23 @@ Feature: Removing the lists on the Lists page
     Then I expect to see the visible "first" list stripe "view list" link disabled
     Then I expect to see the visible "first" list stripe "open context menu list stripe" button disabled
 
+  Scenario: Opening and closing the list removal dialog multiple times
+    When I add a list
+    And I hover away from anything actionable
+    And I open Lists page
+    And I hover "first" list stripe
+    And I press the "first" list stripe "open context menu list stripe" button
+    And I press the visible "remove list" button
+    Then I expect to see the "remove list" dialog modal box
+    When I press the visible "cancel list removal" button
+    Then I expect not to see the "remove list" dialog modal box
+    When I hover "first" list stripe
+    And I press the "first" list stripe "open context menu list stripe" button
+    And I press the visible "remove list" button
+    Then I expect to see the "remove list" dialog modal box
+    When I click outside of the "remove list" dialog modal box
+    Then I expect not to see the "remove list" dialog modal box
+
   Scenario: Not seeing the dialog modal box when removal in progress on "My Lists" page
     When I add a list
     And I open Lists page

@@ -19,7 +19,7 @@ Feature: Successfully creating list with correct data
     Then I expect to see the "list note" accordion disabled
     Then I expect to see the "list note" accordion content expanded
     Then I expect to see the "list note" text area disabled
-    Then I expect to see items inputs area without scroll
+    Then I expect to see list items area
     Then I expect to see the "first" item input disabled
     Then I expect to see the "automatic" item input disabled
     Then I expect to see the "save" button in the loading state
@@ -45,7 +45,7 @@ Feature: Successfully creating list with correct data
     Then I expect to see the "list purpose" input enabled
     Then I expect to fully see the expanded "list note" accordion ready for collapsing
     Then I expect to see the "list note" text area enabled
-    Then I expect to see items inputs area without scroll
+    Then I expect to see list items area
     Then I expect to see the "first" item input enabled
     Then I expect to see the "automatic" item input enabled
     Then I expect to see the "save" button disabled
