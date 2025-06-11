@@ -127,7 +127,9 @@ const screenshotsFolder = path.join(process.cwd(), "features", "screenshots");
 
 BeforeAll(async function () {
   prepareEmptyScreenshotsFolder();
-  browser = await chromium.launch();
+  browser = await chromium.launch({
+    headless: !isVisible(),
+  });
 });
 
 Before(async function (this: ComplexWorld) {
@@ -156,12 +158,12 @@ After(async function (this: ComplexWorld, scenario: ITestCaseHookParameter) {
 });
 
 // This After hook should run AFTER the screenshot hook
-After("@last", async function (this: ComplexWorld) {
-  await this.context.close();
+After({ tags: "@last", timeout: 60000 }, async function (this: ComplexWorld) {
+  isVisible() || (await this.context.close());
 });
 
 AfterAll({ timeout: 60000 }, async function () {
-  await browser.close();
+  isVisible() || (await browser.close());
 });
 
 function prepareEmptyScreenshotsFolder() {
@@ -174,4 +176,8 @@ function prepareEmptyScreenshotsFolder() {
   } else {
     fs.mkdirSync(screenshotsFolder, { recursive: true });
   }
+}
+
+function isVisible() {
+  return process.env.BROWSER_VISIBLE === "1";
 }

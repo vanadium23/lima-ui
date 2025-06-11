@@ -10,6 +10,7 @@ import {
 interface TestConfig {
   tags: string[];
   debug: boolean;
+  visible: boolean;
   devices: DeviceProfiles[];
 }
 
@@ -31,6 +32,10 @@ program
   .option("-b, --broken", "Run only tests with @broken tag.")
   .option("-c, --current", "Run only tests with @current tag.")
   .option("--debug", "Run in debug mode")
+  .option(
+    "--visible",
+    "Run browser in non-headless mode and keep it open after tests",
+  )
   .addHelpText(
     "afterAll",
     chalk.yellow("\nExamples:\n") +
@@ -46,9 +51,10 @@ program
 program.parse(process.argv);
 
 const config: TestConfig = {
+  devices: [],
   tags: ["not @broken"], // Default: exclude broken tests
   debug: program.opts().debug || false,
-  devices: [],
+  visible: program.opts().visible || false,
 };
 
 const { desktop, tablet, mobile, broken, current } = program.opts();
@@ -80,7 +86,8 @@ async function runTests() {
   console.log(chalk.blue.bold("\nStarting tests with configuration:"));
   console.log(`- Devices: ${config.devices.join(", ")}`);
   console.log(`- Tags: ${config.tags.join(", ")}`);
-  console.log(`- Debug: ${config.debug ? "enabled" : "disabled"}\n`);
+  console.log(`- Debug: ${config.debug ? "enabled" : "disabled"}`);
+  console.log(`- Visible mode: ${config.visible ? "enabled" : "disabled"}\n`);
 
   const results: { device: DeviceProfiles; success: boolean }[] = [];
   let hasError = false;
@@ -115,6 +122,7 @@ async function runTests() {
         ...process.env,
         DEVICE_PROFILE: device,
         ...(config.debug ? { PWDEBUG: "1", DEBUG: "cucumber" } : {}),
+        ...(config.visible ? { BROWSER_VISIBLE: "1" } : {}),
         NODE_OPTIONS: nodeOptions,
         NODE_PATH: process.env.NODE_PATH || "",
         PATH: process.env.PATH || "",
