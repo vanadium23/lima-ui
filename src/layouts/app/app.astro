@@ -25,6 +25,39 @@ interface Props {
     />
     <meta content="#ffffff" name="theme-color" />
 
+    <!--
+      Ensures no FOUT (Flash of Unstyled Text).
+      Font changes also influence how our stretching text areas are initially drawn.
+    -->
+    <link
+      rel="preload"
+      href="/fonts/montserrat/files/montserrat-normal-cyrillic.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/montserrat/files/montserrat-normal-cyrillic-ext.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/montserrat/files/montserrat-normal-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/montserrat/files/montserrat-normal-latin-ext.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
     <title>
       {
         Astro.props.titleName
