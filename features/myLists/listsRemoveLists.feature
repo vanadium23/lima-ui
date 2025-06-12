@@ -106,7 +106,6 @@ Feature: Removing the lists on the Lists page
     And I press the visible "confirm list removal" button
     Then I expect to see the "list removal" error
 
-  @broken
   Scenario: Consequent removal attempt leads to error message disappearance
     When I add a list
     And I add a list
