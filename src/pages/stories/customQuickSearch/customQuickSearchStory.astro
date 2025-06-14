@@ -1,0 +1,111 @@
+---
+import { DEFAULT_TEST_ID } from "../../../../features/testIds";
+import {
+  CustomQuickSearch,
+  CustomQuickSearchTheme,
+} from "../../../components/customQuickSearch/customQuickSearch.tsx";
+import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
+
+const themes = Object.values(CustomQuickSearchTheme);
+
+const listsExample1 = [
+  {
+    name: "Трололо1",
+    link: "https://ya.ru",
+  },
+];
+
+const listsExample2 = [
+  {
+    name: "Трололо1",
+    link: "https://ya.ru",
+  },
+  {
+    name: "Трололо2",
+    link: "https://google.com",
+  },
+  {
+    name: "Трололо3",
+    link: "https://google.com",
+  },
+  {
+    name: "Трололо4",
+    link: "https://google.com",
+  },
+  {
+    name: "Трололо5",
+    link: "https://google.com",
+  },
+  {
+    name: "Трололо6",
+    link: "https://google.com",
+  },
+  {
+    name: "Трололо7",
+    link: "https://google.com",
+  },
+  {
+    name: "Трололо8 джабуду-джубу азик азик ипалу пагоч азик азик, памаги адеть бикини",
+    link: "https://google.com",
+  },
+  {
+    name: "Трололо9",
+    link: "https://google.com",
+  },
+  {
+    name: "Трололо10",
+    link: "https://google.com",
+  },
+];
+---
+
+<StorybookPage title="Quick Search">
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 class="demoThemeWrapper__title">{theme}</h3>
+        <div class="grid grid_1Col">
+          <span class="chead" />
+          <span class="chead">Medium</span>
+
+          <span class="rhead">Default 1</span>
+
+          <CustomQuickSearch
+            client:only="solid-js"
+            testId={DEFAULT_TEST_ID}
+            isLoading={false}
+            lists={listsExample1}
+            query="Тест"
+          />
+
+          <span class="rhead">Default 10</span>
+
+          <CustomQuickSearch
+            client:only="solid-js"
+            testId={DEFAULT_TEST_ID}
+            isLoading={false}
+            lists={listsExample2}
+            query="Тест"
+          />
+          <span class="rhead">Loading</span>
+
+          <CustomQuickSearch
+            client:only="solid-js"
+            testId={DEFAULT_TEST_ID}
+            isLoading={true}
+            query="test"
+          />
+
+          <span class="rhead">Empty</span>
+
+          <CustomQuickSearch
+            client:only="solid-js"
+            testId={DEFAULT_TEST_ID}
+            isLoading={false}
+            query="test"
+          />
+        </div>
+      </div>
+    ))
+  }
+</StorybookPage>
