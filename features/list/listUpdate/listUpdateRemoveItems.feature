@@ -83,7 +83,6 @@ Feature: Removing items from an existing list
     And I press the "open context menu first item" button
     Then I expect to see the "remove list item" menu item disabled
 
-  @broken
   Scenario: Adding list items to the limit and then removing one list item leads to limit warning disappear and buttons enablement
     When I ensure the tools panel is open
     And I add list items to their limit
@@ -109,9 +108,6 @@ Feature: Removing items from an existing list
     When I press the "save" button
     And I wait for the list update to complete
     And I refresh the page
-    # TODO: Этот шаг валится. Нужно починить интерфейс.
-    #  Здесь появляется автопункт и вновь отображает сообщение о лимите.
-    #  Видится, что при наличии автопункта сообщение показываться не должно.
     Then I expect not to see the warning about items inputs limit reached
     And I ensure the tools panel is open
     And I expect to see the "add list item" button enabled
