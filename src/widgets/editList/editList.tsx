@@ -68,7 +68,6 @@ import {
 } from "../../organisms/toolsPanel/toolsPanel.tsx";
 import { setLocation } from "../../state/locationState.ts";
 
-import "./editList.css";
 import { createList } from "./services/createList.ts";
 import { removeList } from "./services/removeList.ts";
 import { updateList } from "./services/updateList.ts";
@@ -93,6 +92,7 @@ import {
 import { isOnlyOneItem } from "./utilities/isOnlyOneItem.ts";
 import { prepareListItemsDataForSending } from "./utilities/prepareListItemsDataForSending.ts";
 import { soften } from "./utilities/soften.ts";
+import "./editList.css";
 
 type EditListProps = {
   defaultList?: List;
@@ -476,7 +476,7 @@ export const EditList = (props: EditListProps) => {
 
             <div class="editList__container">
               <div
-                class="editList__scrollContainer"
+                class="editList__scrollContainer scrollStyles"
                 ref={(el) => (scrollContainer = el)}
                 data-test-id={LIST_ITEMS}
               >
