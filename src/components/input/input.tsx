@@ -84,15 +84,18 @@ export const Input = (props: Testable<InputProps>) => {
         autocomplete={mProps.autocomplete}
         aria-label={mProps.label}
       />
-      <div class="input__controls">
-        <Show when={mProps.isCountable}>
-          <CharCounter
-            value={mProps.maxLength - getCounter()}
-            testId={mProps.testId}
-            testSubId={mProps.testSubId ?? ""}
-          />
-        </Show>
-      </div>
+      <Show when={mProps.isCountable}>
+        {/* Заложено на будущее, когда обертка нужна не только для других контролов, из-за бага при клике в инпут справа без контролов*/}
+        <div class="input__controls">
+          <Show when={mProps.isCountable}>
+            <CharCounter
+              value={mProps.maxLength - getCounter()}
+              testId={mProps.testId}
+              testSubId={mProps.testSubId ?? ""}
+            />
+          </Show>
+        </div>
+      </Show>
     </div>
   );
 };

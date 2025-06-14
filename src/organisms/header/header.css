@@ -1,6 +1,6 @@
 .header {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 30.4rem 1fr;
   align-items: center;
   width: 100%;
   background: linear-gradient(90deg, #0285f1 0%, #72bbf8 100%);
@@ -19,7 +19,8 @@
 .header__search {
   display: flex;
   justify-self: center;
-  max-width: 29.6rem;
+  width: 100%;
+  max-width: 30.4rem;
 }
 
 .header__controls {
@@ -36,5 +37,15 @@
 @media (width >= 768px) {
   .header__toggleToolsPanelButton {
     display: none;
+  }
+
+  .header__searchOpen {
+    display: none;
+  }
+}
+
+@media (width <= 768px) {
+  .header {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
