@@ -1,13 +1,14 @@
 import { mergeProps, Show } from "solid-js";
 
+import { LIST_TITLE_INPUT_LIMIT } from "../../../configuration.ts";
 import { DEFAULT_TEST_ID, SEARCH_BUTTON } from "../../../features/testIds.ts";
 import { LISTS } from "../../../utilities/addresses.ts";
 import { location } from "../../state/locationState.ts";
 import { searchState } from "../../state/searchState.ts";
-import { CustomQuickSearch } from "../customQuickSearch/customQuickSearch.tsx";
 import { IconName } from "../icon/icon.tsx";
 import { IconButton, IconButtonTheme } from "../iconButton/iconButton.tsx";
 import { Input, InputTheme } from "../input/input.tsx";
+import { QuickSearch } from "../quickSearch/quickSearch.tsx";
 import type { Testable } from "../utilities/testable.ts";
 
 import "./search.css";
@@ -47,7 +48,7 @@ export const Search = (props: Testable<SearchProps>) => {
           placeholder={"Поиск..."}
           name={"Поиск"}
           isCountable={false}
-          maxLength={80}
+          maxLength={LIST_TITLE_INPUT_LIMIT}
           testId={DEFAULT_TEST_ID}
         />
         <IconButton
@@ -60,7 +61,7 @@ export const Search = (props: Testable<SearchProps>) => {
           <IconButton
             iconName={IconName.X}
             ariaLabel={"Закрыть поиск"}
-            testId={SEARCH_BUTTON}
+            testId={DEFAULT_TEST_ID}
             theme={IconButtonTheme.Tertiary}
             handleClick={searchState.close}
           />
@@ -69,11 +70,7 @@ export const Search = (props: Testable<SearchProps>) => {
 
       <Show when={location() !== LISTS}>
         <div class="search__dialog">
-          <CustomQuickSearch
-            query={""}
-            isLoading={false}
-            testId={DEFAULT_TEST_ID}
-          />
+          <QuickSearch query={""} isLoading={false} testId={DEFAULT_TEST_ID} />
         </div>
       </Show>
     </div>

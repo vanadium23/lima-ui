@@ -44,7 +44,7 @@
   }
 }
 
-@media (width <= 768px) {
+@media (width <= 767px) {
   .header {
     grid-template-columns: repeat(3, 1fr);
   }
