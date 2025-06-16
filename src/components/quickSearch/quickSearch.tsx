@@ -9,13 +9,13 @@ import {
 } from "../textButton/textButton.tsx";
 import type { Testable } from "../utilities/testable.ts";
 
-import "./customQuickSearch.css";
+import "./quickSearch.css";
 
-export enum CustomQuickSearchTheme {
+export enum QuickSearchTheme {
   Primary = "primary",
 }
 
-export enum CustomQuickSearchSize {
+export enum QuickSearchSize {
   Medium = "medium",
 }
 
@@ -24,32 +24,32 @@ type SearchList = {
   link: string;
 };
 
-export type CustomQuickSearchProps = {
-  theme?: CustomQuickSearchTheme;
-  size?: CustomQuickSearchSize;
+export type QuickSearchProps = {
+  theme?: QuickSearchTheme;
+  size?: QuickSearchSize;
   lists?: SearchList[];
   isLoading: boolean;
   query: string;
 };
 
-export const CustomQuickSearch = (props: Testable<CustomQuickSearchProps>) => {
-  const mProps: Testable<Required<CustomQuickSearchProps>> = mergeProps(
+export const QuickSearch = (props: Testable<QuickSearchProps>) => {
+  const mProps: Testable<Required<QuickSearchProps>> = mergeProps(
     {
-      theme: CustomQuickSearchTheme.Primary,
-      size: CustomQuickSearchSize.Medium,
-      query: "Тест",
+      theme: QuickSearchTheme.Primary,
+      size: QuickSearchSize.Medium,
       lists: [],
     },
     props,
   );
 
   function getResultWord(num: number): string {
-    const lastDigit = num % 10;
     const lastTwoDigits = num % 100;
 
     if (lastTwoDigits >= 11 && lastTwoDigits <= 14) {
       return `Найдено ${num} результатов. Смотреть все`;
     }
+
+    const lastDigit = num % 10;
 
     if (lastDigit === 1) {
       return `Найден ${num} результат. Смотреть все`;
@@ -62,7 +62,7 @@ export const CustomQuickSearch = (props: Testable<CustomQuickSearchProps>) => {
 
   return (
     <div
-      class={`quickSearch quickSearch_${props.theme} quickSearch__${mProps.size}`}
+      class={`quickSearch quickSearch_${props.theme} quickSearch_${mProps.size}`}
     >
       <Show
         when={!mProps.isLoading}
@@ -81,12 +81,13 @@ export const CustomQuickSearch = (props: Testable<CustomQuickSearchProps>) => {
           <div class="quickSearch__results">
             <ul class="quickSearch__list scrollStyles">
               <For each={mProps.lists}>
-                {(list) => {
+                {(list, index) => {
                   return (
                     <SearchItem
                       text={list.name}
                       link={list.link}
                       testId={DEFAULT_TEST_ID}
+                      testSubId={index()}
                     />
                   );
                 }}

@@ -1,12 +1,12 @@
 ---
 import { DEFAULT_TEST_ID } from "../../../../features/testIds";
 import {
-  CustomQuickSearch,
-  CustomQuickSearchTheme,
-} from "../../../components/customQuickSearch/customQuickSearch.tsx";
+  QuickSearch,
+  QuickSearchTheme,
+} from "../../../components/quickSearch/quickSearch.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
-const themes = Object.values(CustomQuickSearchTheme);
+const themes = Object.values(QuickSearchTheme);
 
 const listsExample1 = [
   {
@@ -70,7 +70,7 @@ const listsExample2 = [
 
           <span class="rhead">Default 1</span>
 
-          <CustomQuickSearch
+          <QuickSearch
             client:only="solid-js"
             testId={DEFAULT_TEST_ID}
             isLoading={false}
@@ -80,7 +80,7 @@ const listsExample2 = [
 
           <span class="rhead">Default 10</span>
 
-          <CustomQuickSearch
+          <QuickSearch
             client:only="solid-js"
             testId={DEFAULT_TEST_ID}
             isLoading={false}
@@ -89,7 +89,7 @@ const listsExample2 = [
           />
           <span class="rhead">Loading</span>
 
-          <CustomQuickSearch
+          <QuickSearch
             client:only="solid-js"
             testId={DEFAULT_TEST_ID}
             isLoading={true}
@@ -98,7 +98,7 @@ const listsExample2 = [
 
           <span class="rhead">Empty</span>
 
-          <CustomQuickSearch
+          <QuickSearch
             client:only="solid-js"
             testId={DEFAULT_TEST_ID}
             isLoading={false}
