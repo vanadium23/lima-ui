@@ -7,6 +7,8 @@
   display: flex;
   width: 100%;
   border-bottom-style: solid;
+  user-select: none;
+  text-decoration: none;
 }
 
 .searchItem:focus .searchItem__text {
@@ -14,8 +16,6 @@
 }
 
 .searchItem_medium .searchItem__text {
-  user-select: none;
-  text-decoration: none;
   padding: var(--size-x3) var(--size-x8);
   font-size: 1.6rem;
   line-height: 2rem;
@@ -36,6 +36,9 @@
 
 .searchItem_primary .searchItem__text:active {
   background-color: var(--neutral-200);
+}
+
+.searchItem__text:active {
   transform: translateY(0.1rem);
 }
 
