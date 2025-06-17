@@ -8,13 +8,13 @@ import {
   buildAccordionButtonTestId,
   buildAccordionContentTestId,
   HEADER,
-  LIST_ITEM_INPUT,
   LIST_ITEMS,
   PAGE_TITLE,
   PRO_VERSION_BUTTON,
   SEARCH_BUTTON,
   SEARCH_INPUT,
   SIDEBAR,
+  TOGGLE_SIDEBAR_BUTTON,
   TOGGLE_TOOLS_PANEL_BUTTON,
   TOOLS_PANEL,
   TOOLS_PANEL_ADD_ITEM_BUTTON,
@@ -26,10 +26,13 @@ import {
   TEST_ID_ATTRIBUTE,
   TEST_SUB_ID_ATTRIBUTE,
 } from "../../utilities/buildTestableSelector.ts";
-import { noVerticalScroll } from "../../utilities/checkScroll.ts";
-import { registerItem } from "../../utilities/registerItem.ts";
+import {
+  isDesktop,
+  isMobile,
+  isTablet,
+} from "../../utilities/discoverDevice.ts";
+import { getTimeoutOrCancelItIfDebugging } from "../../utilities/getTimeoutOrCancelItIfDebugging.ts";
 import { type PageAlias, PAGES_TEST_IDS } from "../../utilities/testIds.ts";
-
 import {
   ACCORDION_TEST_IDS,
   type AccordionMeaning,
@@ -39,21 +42,33 @@ import {
 
 When(
   "I open List Creation page",
-  { timeout: 10000 },
+  { timeout: getTimeoutOrCancelItIfDebugging(10000) },
   async function (this: ComplexWorld) {
     await this.navigate(LISTS_CREATE);
+    await this.page.waitForLoadState("networkidle");
   },
 );
 
-Then("I expect to see sidebar", async function (this: ComplexWorld) {
-  await this.expectLocated(
-    this.accounting.elements.registerTestId(SIDEBAR),
-  ).toBeInViewport();
+Then(
+  "I expect to see sidebar or its button",
+  async function (this: ComplexWorld) {
+    if (isDesktop()) {
+      await this.expectLocated(
+        this.accounting.elements.registerTestId(SIDEBAR),
+      ).toBeInViewport();
+    }
 
-  this.accounting.elements.registerTestId(USER_BUTTON);
-  this.accounting.elements.registerTestId(ADD_GROUP_BUTTON);
-  this.accounting.elements.registerTestId(PRO_VERSION_BUTTON);
-});
+    if (isTablet() || isMobile()) {
+      await this.expectLocated(
+        this.accounting.elements.registerTestId(TOGGLE_SIDEBAR_BUTTON),
+      ).toBeInViewport();
+    }
+
+    this.accounting.elements.registerTestId(USER_BUTTON);
+    this.accounting.elements.registerTestId(ADD_GROUP_BUTTON);
+    this.accounting.elements.registerTestId(PRO_VERSION_BUTTON);
+  },
+);
 
 Then("I expect to see header", async function (this: ComplexWorld) {
   await this.expectLocated(
@@ -64,15 +79,22 @@ Then("I expect to see header", async function (this: ComplexWorld) {
   this.accounting.elements.registerTestId(SEARCH_BUTTON);
 });
 
-Then("I expect to see tools panel", async function (this: ComplexWorld) {
-  await this.expectLocated(
-    this.accounting.elements.registerTestId(TOGGLE_TOOLS_PANEL_BUTTON),
-  ).toBeInViewport();
+Then(
+  "I expect to see tools panel or its button",
+  async function (this: ComplexWorld) {
+    if (isDesktop() || isTablet()) {
+      await this.expectLocated(
+        this.accounting.elements.registerTestId(TOOLS_PANEL),
+      ).toBeInViewport();
+    }
 
-  await this.expectLocated(
-    this.accounting.elements.registerTestId(TOOLS_PANEL),
-  ).toBeInViewport();
-});
+    if (isMobile()) {
+      await this.expectLocated(
+        this.accounting.elements.registerTestId(TOGGLE_TOOLS_PANEL_BUTTON),
+      ).toBeInViewport();
+    }
+  },
+);
 
 Then("I expect not to see tools panel", async function (this: ComplexWorld) {
   await this.expectLocated(TOGGLE_TOOLS_PANEL_BUTTON).not.toBeInViewport();
@@ -92,29 +114,11 @@ Then(
   },
 );
 
-Then(
-  "I expect to see items inputs area without scroll",
-  async function (this: ComplexWorld) {
-    expect(
-      await this.locateByIdParts(
-        this.accounting.elements.registerTestId(LIST_ITEMS),
-      ).evaluate(noVerticalScroll),
-    ).toBe(true);
-  },
-);
-
-Then(
-  "I expect to see single item input enabled",
-  async function (this: ComplexWorld) {
-    await registerItem.call(this, this.locateByIdParts(LIST_ITEM_INPUT));
-
-    const expectItemInput = this.expectLocated(LIST_ITEM_INPUT);
-
-    await expectItemInput.toHaveCount(1);
-    await expectItemInput.toBeInViewport();
-    await expectItemInput.toBeEnabled();
-  },
-);
+Then("I expect to see list items area", async function (this: ComplexWorld) {
+  await this.expectLocated(
+    this.accounting.elements.registerTestId(LIST_ITEMS),
+  ).toBeInViewport();
+});
 
 Then(
   "I expect to see the {string} button {string} with the following text: {string}",
@@ -223,6 +227,7 @@ Then("I expect to see no other elements", async function (this: ComplexWorld) {
     await this.expectLocated(id).not.toBeVisible();
   }
 });
+
 Then(
   "I expect to fully see the collapsed {string} accordion ready for expanding",
   async function (this: ComplexWorld, accordionMeaning: AccordionMeaning) {

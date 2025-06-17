@@ -1,12 +1,12 @@
-import { createEffect, createRoot, createSignal, onCleanup } from "solid-js";
+import { createRoot, createSignal, onCleanup } from "solid-js";
 
 export const panelState = createRoot(() => {
   const [isSidebarHidden, setIsSidebarHidden] = createSignal(true);
-  const [isToolsPanelHidden, setIsToolsPanelHidden] = createSignal(
-    JSON.parse(localStorage.getItem("toolsPanelIsHidden") ?? "true"),
-  );
+  const [isToolsPanelHidden, setIsToolsPanelHidden] = createSignal(true);
 
   const handleClickOutside = (event: MouseEvent) => {
+    if (window.innerWidth >= 1024) return;
+
     const target = event.target as HTMLElement;
 
     const isSidebarToggleButton = target.closest("#sidebarToggle");
@@ -46,13 +46,6 @@ export const panelState = createRoot(() => {
     setIsToolsPanelHidden(!willOpen);
     if (willOpen) setIsSidebarHidden(true);
   };
-
-  createEffect(() => {
-    localStorage.setItem(
-      "toolsPanelIsHidden",
-      JSON.stringify(isToolsPanelHidden()),
-    );
-  });
 
   return {
     isSidebarHidden,

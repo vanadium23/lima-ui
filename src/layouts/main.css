@@ -22,6 +22,7 @@
   --size-x19: 3.8rem;
   --size-x20: 4rem;
   --size-x21: 4.2rem;
+  --size-x22: 4.4rem;
   --size-x23: 4.6rem;
   --size-x26: 5.2rem;
   --size-x40: 8rem;
@@ -101,4 +102,28 @@ textarea {
   to {
     transform: rotate(360deg);
   }
+}
+
+.scrollStyles {
+  overflow: auto;
+  scrollbar-gutter: stable;
+}
+
+.scrollStyles::-webkit-scrollbar {
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
+.scrollStyles::-webkit-scrollbar-track {
+  background-color: rgb(0 0 0 / 0%);
+  border-radius: 100rem;
+}
+
+.scrollStyles::-webkit-scrollbar-thumb {
+  background-color: rgb(83 83 83 / 30%);
+  border-radius: 100rem;
+}
+
+.scrollStyles:hover::-webkit-scrollbar-thumb {
+  background-color: rgb(83 83 83 / 60%);
 }

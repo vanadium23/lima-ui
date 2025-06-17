@@ -16,9 +16,7 @@ export enum NavTheme {
 }
 
 export enum NavSize {
-  Small = "small",
   Medium = "medium",
-  Large = "large",
 }
 
 type NavProps = {
@@ -27,9 +25,7 @@ type NavProps = {
 };
 
 const navItemSize = {
-  [NavSize.Small]: NavItemSize.Small,
   [NavSize.Medium]: NavItemSize.Medium,
-  [NavSize.Large]: NavItemSize.Large,
 };
 
 export const Nav = (props: Testable<NavProps>) => {

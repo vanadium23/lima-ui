@@ -1,33 +1,44 @@
-import type { Locator } from "@playwright/test";
-
 import type { ComplexWorld } from "../context/hooks.ts";
+import {
+  ITEM_INPUT_TEST_IDS,
+  type ItemInputMeaning,
+} from "../list/listAddItems/testIds.ts";
+import {
+  DRAG_HANDLE_TEST_IDS,
+  OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON_TEST_IDS,
+} from "../list/listItemsDragAndDrop/testIds.ts";
 import {
   AUTO_LIST_ITEM_INPUT,
   extractListItemTestIdFromItsInputTestId,
 } from "../testIds.ts";
 
-import {
-  TEST_ID_ATTRIBUTE,
-  TEST_SUB_ID_ATTRIBUTE,
-} from "./buildTestableSelector.ts";
+import { destructureFullTestId } from "./buildTestableSelector.ts";
+import { isMobile, isTablet } from "./discoverDevice.ts";
 
-export async function registerItem(this: ComplexWorld, itemInput: Locator) {
-  const itemInputTestSubId = await itemInput.getAttribute(
-    TEST_SUB_ID_ATTRIBUTE,
-  );
-  const itemInputTestId =
-    (await itemInput.getAttribute(TEST_ID_ATTRIBUTE)) || "";
+export async function registerItem(
+  complexWorld: ComplexWorld,
+  itemInputMeaning: ItemInputMeaning,
+) {
+  const itemInputFullTestId = ITEM_INPUT_TEST_IDS[itemInputMeaning];
 
-  if (itemInputTestId === AUTO_LIST_ITEM_INPUT) {
-    this.accounting.itemAdders.registerTestId(itemInputTestId);
+  const { testId, testSubId } = destructureFullTestId(itemInputFullTestId);
+
+  if (testId === AUTO_LIST_ITEM_INPUT) {
+    complexWorld.accounting.itemAdders.registerTestId(itemInputFullTestId);
   }
 
-  this.accounting.elements.registerTestIdAndSubId(
-    itemInputTestId,
-    itemInputTestSubId,
+  complexWorld.accounting.elements.registerTestIdAndSubId(testId, testSubId);
+  complexWorld.accounting.elements.registerTestIdAndSubId(
+    extractListItemTestIdFromItsInputTestId(testId),
+    testSubId,
   );
-  this.accounting.elements.registerTestIdAndSubId(
-    extractListItemTestIdFromItsInputTestId(itemInputTestId),
-    itemInputTestSubId,
-  );
+
+  if (isTablet() || isMobile()) {
+    complexWorld.accounting.elements.registerTestId(
+      DRAG_HANDLE_TEST_IDS[itemInputMeaning],
+    );
+    complexWorld.accounting.elements.registerTestId(
+      OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON_TEST_IDS[itemInputMeaning],
+    );
+  }
 }

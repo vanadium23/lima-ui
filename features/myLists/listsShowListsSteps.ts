@@ -18,50 +18,64 @@ import {
   INPUT_TEST_IDS,
 } from "../list/listCreation/testIds.ts";
 import {
-  DEFAULT_TEST_ID,
   LIST_STRIPE,
   LIST_STRIPE_LINK_TO_VIEW,
   LISTS_LIMIT_REACHED_WARNING,
+  OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
 } from "../testIds.ts";
-import { TEST_SUB_ID_ATTRIBUTE } from "../utilities/buildTestableSelector.ts";
+import {
+  buildTestableSelector,
+  TEST_SUB_ID_ATTRIBUTE,
+} from "../utilities/buildTestableSelector.ts";
+import { isMobile, isTablet } from "../utilities/discoverDevice.ts";
 import { getStringUpToLimit } from "../utilities/getStringOfLength.ts";
+import { getTimeoutOrCancelItIfDebugging } from "../utilities/getTimeoutOrCancelItIfDebugging.ts";
 
-When("I add a list", { timeout: 20000 }, async function (this: ComplexWorld) {
-  await this.navigate(LISTS_CREATE);
+When(
+  "I add a list",
+  { timeout: getTimeoutOrCancelItIfDebugging(20000) },
+  async function (this: ComplexWorld) {
+    await this.navigate(LISTS_CREATE);
 
-  const inputs: [keyof typeof INPUT_TEST_IDS, number][] = [
-    ["list title", LIST_TITLE_INPUT_LIMIT],
-    ["list purpose", LIST_PURPOSE_INPUT_LIMIT],
-    ["first item", EDIT_LIST_INPUT_LIMIT],
-  ];
+    const inputs: [keyof typeof INPUT_TEST_IDS, number][] = [
+      ["list title", LIST_TITLE_INPUT_LIMIT],
+      ["list purpose", LIST_PURPOSE_INPUT_LIMIT],
+      ["first item", EDIT_LIST_INPUT_LIMIT],
+    ];
 
-  for (const [input, limit] of inputs) {
-    const inputText = getStringUpToLimit(limit);
-    this.data[input] = inputText;
-    await this.locateByFullId(INPUT_TEST_IDS[input]).fill(inputText);
-  }
+    for (const [input, limit] of inputs) {
+      const inputText = getStringUpToLimit(limit);
+      this.data[input] = inputText;
+      await this.locateByFullId(INPUT_TEST_IDS[input]).fill(inputText);
+    }
 
-  await this.locateByFullId(BUTTON_TEST_IDS.save).click();
-  await this.page.waitForURL(`**${SOME_LIST}`);
+    await this.locateByFullId(BUTTON_TEST_IDS.save).click();
+    await this.page.waitForURL(`**${SOME_LIST}`);
 
-  this.listIds.unshift(
-    (await this.page.evaluate(() =>
-      window.location.pathname.split("/").pop(),
-    )) || "",
-  );
-});
+    this.listIds.unshift(
+      (await this.page.evaluate(() =>
+        window.location.pathname.split("/").pop(),
+      )) || "",
+    );
+  },
+);
 
 Then("I expect to see created list", async function (this: ComplexWorld) {
-  const createdListId = this.listIds[0] || DEFAULT_TEST_ID;
-
   await this.expectLocated(
-    this.accounting.elements.registerTestIdAndSubId(LIST_STRIPE, createdListId),
+    this.accounting.elements.registerTestIdAndSubId(LIST_STRIPE, "0"),
   ).toBeInViewport();
 
   this.accounting.elements.registerTestIdAndSubId(
     LIST_STRIPE_LINK_TO_VIEW,
-    createdListId,
+    "0",
   );
+
+  if (isTablet() || isMobile()) {
+    this.accounting.elements.registerTestIdAndSubId(
+      OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
+      "0",
+    );
+  }
 });
 
 Then(
@@ -76,21 +90,30 @@ Then(
 Then(
   "I expect to see the following number of list stripes: {int}",
   async function (this: ComplexWorld, listStripesQuantity: number) {
-    const listStripes = this.locateByIdParts(LIST_STRIPE);
+    if (listStripesQuantity > 0) {
+      await this.page.waitForSelector(buildTestableSelector(LIST_STRIPE));
+    }
 
-    const listsIds = (await listStripes.all()).map((listStripe) =>
-      listStripe.getAttribute(TEST_SUB_ID_ATTRIBUTE),
+    const listsPositions = (await this.locateByIdParts(LIST_STRIPE).all()).map(
+      (listStripe) => listStripe.getAttribute(TEST_SUB_ID_ATTRIBUTE),
     );
 
-    for (const listId of listsIds) {
+    for (const listPosition of listsPositions) {
       this.accounting.elements.registerTestIdAndSubId(
         LIST_STRIPE,
-        await listId,
+        await listPosition,
       );
       this.accounting.elements.registerTestIdAndSubId(
         LIST_STRIPE_LINK_TO_VIEW,
-        await listId,
+        await listPosition,
       );
+
+      if (isTablet() || isMobile()) {
+        this.accounting.elements.registerTestIdAndSubId(
+          OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
+          await listPosition,
+        );
+      }
     }
 
     await this.expectLocated(LIST_STRIPE).toHaveCount(listStripesQuantity);
@@ -99,7 +122,7 @@ Then(
 
 When(
   "I add lists to their limit",
-  { timeout: 10000 },
+  { timeout: getTimeoutOrCancelItIfDebugging(10000) },
   async function (this: ComplexWorld) {
     for (let i = 0; i < LISTS_LIMIT; i++) {
       const listData = {

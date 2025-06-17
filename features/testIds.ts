@@ -109,13 +109,14 @@ export const DRAG_HANDLE = "dragHandle";
 export const CHECKLIST_SWITCH = "checklistSwitch";
 export const CHECKBOX = "checkbox";
 
+export const TOGGLE_SIDEBAR_BUTTON = "toggleSidebarButton";
 export const TOGGLE_TOOLS_PANEL_BUTTON = "toggleToolsPanelButton";
 
 export const TOOLS_PANEL = "toolsPanel";
 export const TOOLS_PANEL_ADD_ITEM_BUTTON = "toolsPanelAddItemButton";
-export const TOOLS_BUTTON_COPY_ITEMS = "toolsButtonCopyItems";
-export const TOOLS_BUTTON_REMOVE_LIST = "toolsButtonRemoveList";
-export const TOOLS_BUTTON_PRINT_LIST = "toolsButtonPrintList";
+export const TOOLS_PANEL_BUTTON_COPY_ITEMS = "toolsPanelButtonCopyItems";
+export const TOOLS_PANEL_BUTTON_REMOVE_LIST = "toolsPanelButtonRemoveList";
+export const TOOLS_PANEL_BUTTON_PRINT_LIST = "toolsPanelButtonPrintList";
 
 export const PRINT_LIST_TITLE = "printListTitle";
 export const PRINT_LIST_PURPOSE = "printListPurpose";

@@ -3,5 +3,5 @@ export function createDefaultItem(auto: boolean = false) {
 }
 
 export function createDragId() {
-  return crypto.randomUUID();
+  return (Math.random() * 1000000).toString();
 }

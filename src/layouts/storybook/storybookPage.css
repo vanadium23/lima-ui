@@ -27,8 +27,8 @@ html {
 
 .wrapper {
   display: grid;
-  width: 100vw;
-  height: 100vh;
+  width: 100dvw;
+  height: 100dvh;
   grid-template-columns: 20rem 1fr;
 }
 
@@ -192,7 +192,7 @@ h2 {
 .storybookSidebar {
   display: flex;
   flex-direction: column;
-  max-height: 100vh;
+  max-height: 100dvh;
   background: var(--storybook-sidebar-bg);
   border-right: 0.1rem solid var(--storybook-demo-border-color);
 }

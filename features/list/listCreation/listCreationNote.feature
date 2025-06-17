@@ -21,11 +21,15 @@ Feature: Note on the List Creation page
     Then I expect to see the remembered text in the "list note" text area
 
   Scenario: Fully seeing the collapsed note accordion when there are more inputs than fit into screen
-    When I add list items till scroll appears plus one item input
+    When I ensure the tools panel is open
+    And I add list items till scroll appears plus one item input
+    And I ensure the tools panel does not disturb
     Then I expect to fully see the collapsed "list note" accordion ready for expanding
 
   Scenario: Fully seeing the expanded note accordion when there are more inputs than fit into screen
-    When I add list items till scroll appears plus one item input
+    When I ensure the tools panel is open
+    And I add list items till scroll appears plus one item input
+    And I ensure the tools panel does not disturb
     And I press on the "list note" accordion
     Then I expect to fully see the expanded "list note" accordion ready for collapsing
 

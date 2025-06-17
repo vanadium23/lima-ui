@@ -1,0 +1,110 @@
+import { For, mergeProps, Show } from "solid-js";
+
+import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
+import { Icon, IconName, IconSize } from "../icon/icon.tsx";
+import { SearchItem } from "../searchItem/searchItem.tsx";
+import {
+  TextButton,
+  TextButtonComponentType,
+} from "../textButton/textButton.tsx";
+import type { Testable } from "../utilities/testable.ts";
+
+import "./quickSearch.css";
+
+export enum QuickSearchTheme {
+  Primary = "primary",
+}
+
+export enum QuickSearchSize {
+  Medium = "medium",
+}
+
+type SearchList = {
+  name: string;
+  link: string;
+};
+
+export type QuickSearchProps = {
+  theme?: QuickSearchTheme;
+  size?: QuickSearchSize;
+  lists?: SearchList[];
+  isLoading: boolean;
+  query: string;
+};
+
+export const QuickSearch = (props: Testable<QuickSearchProps>) => {
+  const mProps: Testable<Required<QuickSearchProps>> = mergeProps(
+    {
+      theme: QuickSearchTheme.Primary,
+      size: QuickSearchSize.Medium,
+      lists: [],
+    },
+    props,
+  );
+
+  function getResultWord(num: number): string {
+    const lastTwoDigits = num % 100;
+
+    if (lastTwoDigits >= 11 && lastTwoDigits <= 14) {
+      return `Найдено ${num} результатов. Смотреть все`;
+    }
+
+    const lastDigit = num % 10;
+
+    if (lastDigit === 1) {
+      return `Найден ${num} результат. Смотреть все`;
+    } else if (lastDigit >= 2 && lastDigit <= 4) {
+      return `Найдено ${num} результата. Смотреть все`;
+    } else {
+      return `Найдено ${num} результатов. Смотреть все`;
+    }
+  }
+
+  return (
+    <div
+      class={`quickSearch quickSearch_${props.theme} quickSearch_${mProps.size}`}
+    >
+      <Show
+        when={!mProps.isLoading}
+        fallback={
+          <div class="quickSearch__loader">
+            <Icon name={IconName.CircleNotch} size={IconSize.Large} />
+          </div>
+        }
+      >
+        <Show
+          when={mProps.lists.length}
+          fallback={
+            <span class="quickSearch__empty">{`По запросу «${mProps.query}» ничего не найдено`}</span>
+          }
+        >
+          <div class="quickSearch__results">
+            <ul class="quickSearch__list scrollStyles">
+              <For each={mProps.lists}>
+                {(list, index) => {
+                  return (
+                    <SearchItem
+                      text={list.name}
+                      link={list.link}
+                      testId={DEFAULT_TEST_ID}
+                      testSubId={index()}
+                    />
+                  );
+                }}
+              </For>
+            </ul>
+          </div>
+        </Show>
+
+        <Show when={mProps.lists.length}>
+          <TextButton
+            componentType={TextButtonComponentType.Link}
+            link={`/lists/?search=${encodeURIComponent(mProps.query)}`}
+            text={`${getResultWord(mProps.lists.length)}`}
+            testId={DEFAULT_TEST_ID}
+          />
+        </Show>
+      </Show>
+    </div>
+  );
+};

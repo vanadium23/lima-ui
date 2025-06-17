@@ -2,11 +2,11 @@ import {
   createSortable,
   DragDropProvider,
   DragDropSensors,
+  type DragEvent,
   DragOverlay,
   SortableProvider,
   transformStyle,
   useDragDropContext,
-  type DragEvent,
 } from "@thisbeyond/solid-dnd";
 import { For, mergeProps, onCleanup, onMount, Show } from "solid-js";
 import { createStore } from "solid-js/store";
@@ -19,6 +19,7 @@ import {
 import {
   AUTO_LIST_ITEM,
   CHECKLIST_SWITCH,
+  DIALOG_REMOVE_BUTTON,
   DRAGGED_LIST_ITEM,
   ITEMS_LIMIT_REACHED_WARNING,
   LIST_ITEM,
@@ -28,15 +29,20 @@ import {
   NETWORK_ERROR,
   REMOVE_LIST_DIALOG,
   SAVE_LIST_BUTTON,
-  TOOLS_BUTTON_COPY_ITEMS,
-  TOOLS_BUTTON_PRINT_LIST,
-  TOOLS_BUTTON_REMOVE_LIST,
   TOOLS_PANEL,
   TOOLS_PANEL_ADD_ITEM_BUTTON,
+  TOOLS_PANEL_BUTTON_COPY_ITEMS,
+  TOOLS_PANEL_BUTTON_PRINT_LIST,
+  TOOLS_PANEL_BUTTON_REMOVE_LIST,
 } from "../../../features/testIds.ts";
 import { LISTS } from "../../../utilities/addresses.ts";
 import { suffixTabTitle } from "../../../utilities/tabTitle.ts";
-import { Button, ButtonType } from "../../components/button/button.tsx";
+import {
+  Button,
+  ButtonSize,
+  ButtonTheme,
+  ButtonType,
+} from "../../components/button/button.tsx";
 import { Dialog } from "../../components/dialog/dialog.tsx";
 import { Divider } from "../../components/divider/divider.tsx";
 import { EditableTitle } from "../../components/editableTitle/editableTitle.tsx";
@@ -62,13 +68,12 @@ import {
 } from "../../organisms/toolsPanel/toolsPanel.tsx";
 import { setLocation } from "../../state/locationState.ts";
 
-import "./editList.css";
 import { createList } from "./services/createList.ts";
 import { removeList } from "./services/removeList.ts";
 import { updateList } from "./services/updateList.ts";
 import {
-  EditListFormNames,
   type DragItems,
+  EditListFormNames,
   type EditListStore,
   type List,
   type NewList,
@@ -87,6 +92,7 @@ import {
 import { isOnlyOneItem } from "./utilities/isOnlyOneItem.ts";
 import { prepareListItemsDataForSending } from "./utilities/prepareListItemsDataForSending.ts";
 import { soften } from "./utilities/soften.ts";
+import "./editList.css";
 
 type EditListProps = {
   defaultList?: List;
@@ -358,8 +364,6 @@ export const EditList = (props: EditListProps) => {
       error: false,
       sendingNow: "deleting",
     });
-    closeDialog();
-
     removeList(store.id)
       .then(() => {
         soften(() => {
@@ -414,9 +418,10 @@ export const EditList = (props: EditListProps) => {
 
         setStore(
           "items",
-          updatedItems.map((item) => ({
+          updatedItems.map((item, index) => ({
             ...item,
-            auto: false,
+            auto:
+              index === updatedItems.length - 1 && item.content.trim() === "",
           })),
         );
         checkChanges(store, setStore);
@@ -471,7 +476,7 @@ export const EditList = (props: EditListProps) => {
 
             <div class="editList__container">
               <div
-                class="editList__scrollContainer"
+                class="editList__scrollContainer scrollStyles"
                 ref={(el) => (scrollContainer = el)}
                 data-test-id={LIST_ITEMS}
               >
@@ -599,7 +604,7 @@ export const EditList = (props: EditListProps) => {
               text={"Копировать пункты"}
               isDisabled={store.isNewList || store.sendingNow !== false}
               handleClick={() => copyItemsToClipboard(store.items)}
-              testId={TOOLS_BUTTON_COPY_ITEMS}
+              testId={TOOLS_PANEL_BUTTON_COPY_ITEMS}
             />
             <ToolsButton
               componentType={ToolsButtonComponentType.Button}
@@ -609,12 +614,23 @@ export const EditList = (props: EditListProps) => {
               isLoading={store.sendingNow === "deleting"}
               isDisabled={store.isNewList || store.sendingNow === "saving"}
               handleClick={openDialog}
-              testId={TOOLS_BUTTON_REMOVE_LIST}
+              testId={TOOLS_PANEL_BUTTON_REMOVE_LIST}
             />
             <Dialog
               title="Удаление списка"
-              onConfirm={sendListRemove}
               onCancel={closeDialog}
+              controls={
+                <Button
+                  theme={ButtonTheme.Dangerous}
+                  size={ButtonSize.Medium}
+                  text={"Удалить"}
+                  handleClick={() => {
+                    sendListRemove();
+                    closeDialog();
+                  }}
+                  testId={DIALOG_REMOVE_BUTTON}
+                />
+              }
               isOpen={store.isDialogOpen}
               testId={REMOVE_LIST_DIALOG}
             >
@@ -641,7 +657,7 @@ export const EditList = (props: EditListProps) => {
               iconName={IconName.Printer}
               link={`./${store.id}/print?checkable=${store.isCheckable}`}
               text={"Напечатать список"}
-              testId={TOOLS_BUTTON_PRINT_LIST}
+              testId={TOOLS_PANEL_BUTTON_PRINT_LIST}
               isDisabled={store.isNewList || store.sendingNow !== false}
               openInNewTab={true}
             />

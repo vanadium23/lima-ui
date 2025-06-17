@@ -2,14 +2,18 @@ import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
 import type { ComplexWorld } from "../../context/hooks.ts";
-import { PRINT_LIST_ITEM, TOOLS_BUTTON_PRINT_LIST } from "../../testIds.ts";
+import {
+  PRINT_LIST_ITEM,
+  PRINT_LIST_TITLE,
+  TOOLS_PANEL_BUTTON_PRINT_LIST,
+} from "../../testIds.ts";
 
 import { PRINT_ELEMENT_TEST_IDS, type PrintElementMeaning } from "./testIds.ts";
 
 When(
   "I press the print list button and wait for the new tab with printing stub",
   async function (this: ComplexWorld) {
-    await this.locateByIdParts(TOOLS_BUTTON_PRINT_LIST).click();
+    await this.locateByIdParts(TOOLS_PANEL_BUTTON_PRINT_LIST).click();
 
     const newPage = await this.context.waitForEvent("page");
 
@@ -61,7 +65,7 @@ Then(
         const bulletStyle = window.getComputedStyle(itemElement, "::before");
 
         return (
-          bulletStyle.getPropertyValue("content") === "\"\"" &&
+          bulletStyle.getPropertyValue("content") === '""' &&
           bulletStyle.getPropertyValue("border").includes("solid") &&
           bulletStyle.getPropertyValue("border").includes("1px")
         );
@@ -75,7 +79,7 @@ Then(
 When(
   "I press the print list button and check for system print dialog",
   async function (this: ComplexWorld) {
-    await this.locateByIdParts(TOOLS_BUTTON_PRINT_LIST).click();
+    await this.locateByIdParts(TOOLS_PANEL_BUTTON_PRINT_LIST).click();
 
     const newPage = await this.context.waitForEvent("page");
 
@@ -90,7 +94,7 @@ Then(
   async function (this: ComplexWorld) {
     await expect(async () => {
       // Clicking on the body doesn't work as system dialog is shown.
-      await this.page.locator("body").dblclick({ timeout: 1000 });
+      await this.page.locator(PRINT_LIST_TITLE).dblclick({ timeout: 1000 });
     }).not.toPass();
   },
 );

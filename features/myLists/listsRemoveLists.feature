@@ -8,7 +8,7 @@ Feature: Removing the lists on the Lists page
     And I hover away from anything actionable
     And I open Lists page
     And I hover "first" list stripe
-    And I press the visible "open context menu list stripe" button
+    And I press the "first" list stripe "open context menu list stripe" button
     And I press the visible "remove list" button
     Then I expect to see the "remove list" dialog modal box
 
@@ -18,17 +18,17 @@ Feature: Removing the lists on the Lists page
     And I hover away from anything actionable
     And I open Lists page
     And I hover "first" list stripe
-    And I press the visible "open context menu list stripe" button
+    And I press the "first" list stripe "open context menu list stripe" button
     And I press the visible "remove list" button
     And I press the visible "cancel list removal" button
     Then I expect not to see the "remove list" dialog modal box
 
-  Scenario: Closing a dialog modal box on pressing outside of it
+  Scenario: Closing a dialog modal box on pressing outside of it on Lists page
     When I add a list
     And I hover away from anything actionable
     And I open Lists page
     And I hover "first" list stripe
-    And I press the visible "open context menu list stripe" button
+    And I press the "first" list stripe "open context menu list stripe" button
     And I press the visible "remove list" button
     And I click outside of the "remove list" dialog modal box
     Then I expect not to see the "remove list" dialog modal box
@@ -38,18 +38,35 @@ Feature: Removing the lists on the Lists page
     And I add a list
     And I open Lists page
     And I hover "first" list stripe
-    And I press the visible "open context menu list stripe" button
+    And I press the "first" list stripe "open context menu list stripe" button
     And I press the visible "remove list" button
     And I press the visible "confirm list removal" button
     Then I expect not to see the "remove list" dialog modal box
     Then I expect to see the visible "first" list stripe "view list" link disabled
     Then I expect to see the visible "first" list stripe "open context menu list stripe" button disabled
 
+  Scenario: Opening and closing the list removal dialog multiple times
+    When I add a list
+    And I hover away from anything actionable
+    And I open Lists page
+    And I hover "first" list stripe
+    And I press the "first" list stripe "open context menu list stripe" button
+    And I press the visible "remove list" button
+    Then I expect to see the "remove list" dialog modal box
+    When I press the visible "cancel list removal" button
+    Then I expect not to see the "remove list" dialog modal box
+    When I hover "first" list stripe
+    And I press the "first" list stripe "open context menu list stripe" button
+    And I press the visible "remove list" button
+    Then I expect to see the "remove list" dialog modal box
+    When I click outside of the "remove list" dialog modal box
+    Then I expect not to see the "remove list" dialog modal box
+
   Scenario: Not seeing the dialog modal box when removal in progress on "My Lists" page
     When I add a list
     And I open Lists page
     And I hover "first" list stripe
-    And I press the visible "open context menu list stripe" button
+    And I press the "first" list stripe "open context menu list stripe" button
     And I press the visible "remove list" button
     And I press the visible "confirm list removal" button
     And I forcefully press the "first" list stripe "open context menu list stripe" button
@@ -60,7 +77,7 @@ Feature: Removing the lists on the Lists page
     And I add a list
     And I open Lists page
     And I hover "first" list stripe
-    And I press the visible "open context menu list stripe" button
+    And I press the "first" list stripe "open context menu list stripe" button
     And I press the visible "remove list" button
     And I start waiting for the "list removal" request to happen
     And I press the visible "confirm list removal" button
@@ -71,7 +88,7 @@ Feature: Removing the lists on the Lists page
     When I add a list
     And I open Lists page
     And I hover "first" list stripe
-    And I press the visible "open context menu list stripe" button
+    And I press the "first" list stripe "open context menu list stripe" button
     And I press the visible "remove list" button
     And I start waiting for the "list removal" request to happen
     And I press the visible "confirm list removal" button
@@ -83,24 +100,23 @@ Feature: Removing the lists on the Lists page
     And I add a list
     And I open Lists page
     And I hover "first" list stripe
-    And I press the visible "open context menu list stripe" button
+    And I press the "first" list stripe "open context menu list stripe" button
     And I press the visible "remove list" button
     Given Data server is not available
     And I press the visible "confirm list removal" button
     Then I expect to see the "list removal" error
 
-  @needs-fixing
   Scenario: Consequent removal attempt leads to error message disappearance
     When I add a list
     And I add a list
     And I open Lists page
     And I hover "first" list stripe
-    And I press the visible "open context menu list stripe" button
+    And I press the "first" list stripe "open context menu list stripe" button
     And I press the visible "remove list" button
     Given Data server is not available
     And I press the visible "confirm list removal" button
     And I hover "first" list stripe
-    And I press the visible "open context menu list stripe" button
+    And I press the "first" list stripe "open context menu list stripe" button
     And I press the visible "remove list" button
     And I press the visible "confirm list removal" button
     Then I expect not to see the "list removal" error
@@ -109,7 +125,7 @@ Feature: Removing the lists on the Lists page
     When I add lists to their limit
     And I open Lists page
     And I hover "first" list stripe
-    And I press the visible "open context menu list stripe" button
+    And I press the "first" list stripe "open context menu list stripe" button
     And I press the visible "remove list" button
     Given Data server is not available
     And I press the visible "confirm list removal" button
@@ -120,7 +136,7 @@ Feature: Removing the lists on the Lists page
     When I add lists to their limit
     And I open Lists page
     And I hover "first" list stripe
-    And I press the visible "open context menu list stripe" button
+    And I press the "first" list stripe "open context menu list stripe" button
     And I press the visible "remove list" button
     And I press the visible "confirm list removal" button
     Then I expect not to see the "lists limit reached" warning

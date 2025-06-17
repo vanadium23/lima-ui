@@ -1,0 +1,31 @@
+---
+import { DEFAULT_TEST_ID } from "../../../../features/testIds";
+import { SearchItem, SearchItemSize, SearchItemTheme } from "../../../components/searchItem/searchItem.tsx";
+import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
+
+const themes = Object.values(SearchItemTheme);
+const sizes = Object.values(SearchItemSize);
+---
+
+<StorybookPage title="Search Item">
+
+  {themes.map((theme) => (
+    <div class="demoThemeWrapper">
+      <h3 class="demoThemeWrapper__title">{theme}</h3>
+      <div class="grid grid_1Col">
+        <span class="chead" />
+        <span class="chead">Default</span>
+
+        {sizes.map((size) => (
+          <span class="rhead">{size}</span>
+
+          <SearchItem link="https://ya.ru" client:only="solid-js" theme={theme} size={size} text="Text"
+                      testId={DEFAULT_TEST_ID} />
+
+        ))}
+
+      </div>
+    </div>
+  ))}
+
+</StorybookPage>

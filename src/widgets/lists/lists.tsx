@@ -4,8 +4,8 @@ import { createStore } from "solid-js/store";
 import { LISTS_LIMIT } from "../../../configuration.ts";
 import {
   CREATE_LIST_BUTTON,
-  DEFAULT_TEST_ID,
   LIST_REMOVAL_ERROR,
+  LIST_STRIPE,
   LISTS_LIMIT_REACHED_WARNING,
   NETWORK_ERROR,
   NO_SAVED_LISTS_MESSAGE,
@@ -80,17 +80,18 @@ export const Lists = (props: ListsProps) => {
       >
         <ul class="lists__list">
           <For each={store.lists.slice().reverse()}>
-            {(list) => (
+            {(list, index) => (
               <li class="lists__item">
                 <ListStripe
-                  defaultListId={list.id}
+                  listId={list.id}
                   link={`./${list.id}`}
                   editLink={`./${list.id}/edit`}
                   listTitle={list.name}
                   listPurpose={list.purpose}
-                  staticOnRemoveSuccess={removingListInStore}
-                  staticOnRemoveError={setRemoveError}
-                  testId={DEFAULT_TEST_ID}
+                  onRemoveSuccess={removingListInStore}
+                  onRemoveError={setRemoveError}
+                  testId={LIST_STRIPE}
+                  testSubId={index()}
                 />
               </li>
             )}

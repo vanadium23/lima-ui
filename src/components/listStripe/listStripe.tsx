@@ -1,9 +1,10 @@
 import { createSignal, mergeProps } from "solid-js";
+import { type Testable } from "../utilities/testable.ts";
 
 import {
   DIALOG_REMOVE_BUTTON,
-  LIST_ITEM_CONTEXT_MENU,
   LIST_STRIPE,
+  LIST_STRIPE_CONTEXT_MENU,
   LIST_STRIPE_LINK_TO_VIEW,
   LIST_STRIPE_REMOVE_BUTTON,
   OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
@@ -17,7 +18,6 @@ import { DropdownMenuWrapper } from "../dropdownMenuWrapper/dropdownMenuWrapper.
 import { IconName } from "../icon/icon.tsx";
 import { IconButtonSize } from "../iconButton/iconButton.tsx";
 import { MenuItemTheme } from "../menuItem/menuItem.tsx";
-import type { Testable } from "../utilities/testable.ts";
 
 import "./listStripe.css";
 
@@ -36,10 +36,10 @@ type ListStripeProps = {
   listPurpose: string;
   editLink: string;
   link: string;
-  defaultListId: string;
+  listId: string;
   isRemoving?: boolean;
-  staticOnRemoveSuccess: (defaultListId: string) => void;
-  staticOnRemoveError: (removeError: boolean) => void;
+  onRemoveSuccess: (listId: string) => void;
+  onRemoveError: (removeError: boolean) => void;
 };
 
 export const ListStripe = (props: Testable<ListStripeProps>) => {
@@ -49,7 +49,7 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
       size: ListStripeSize.Medium,
       isRemoving: false,
     },
-    props,
+    props
   );
 
   const [isDialogOpen, setIsDialogOpen] = createSignal(false);
@@ -75,15 +75,15 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
       handleClick: openDialog,
       theme: MenuItemTheme.Dangerous,
       testId: LIST_STRIPE_REMOVE_BUTTON,
-      testSubId: mProps.defaultListId,
+      testSubId: mProps.testSubId,
     },
   ];
 
   function removeList() {
-    mProps.staticOnRemoveError(false);
+    mProps.onRemoveError(false);
     setIsRemoving(true);
     setIsDialogOpen(false);
-    fetch(`${import.meta.env.PUBLIC_API_URL}${LISTS}${mProps.defaultListId}`, {
+    fetch(`${import.meta.env.PUBLIC_API_URL}${LISTS}${mProps.listId}`, {
       method: "DELETE", // или 'PUT', 'DELETE', и т.д.
     })
       .then((response) => {
@@ -94,15 +94,12 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
         return response.json();
       })
       .then(() => {
-        soften(() => mProps.staticOnRemoveSuccess(mProps.defaultListId));
+        soften(() => mProps.onRemoveSuccess(mProps.listId));
       })
       .catch((error) => {
         soften(() => {
-          mProps.staticOnRemoveError(true);
-          console.error(
-            "There has been a problem with your fetch operation:",
-            error,
-          );
+          mProps.onRemoveError(true);
+          console.error("There has been a problem with your fetch operation:", error);
           setIsRemoving(false);
         });
       });
@@ -115,14 +112,14 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
         listStripe_removing: listStripeIsRemoving(),
       }}
       data-test-id={LIST_STRIPE}
-      data-test-sub-id={mProps.defaultListId}
+      data-test-sub-id={mProps.testSubId}
     >
       {/* MAKSIM: Подумалось, что можно подменять сам тег <a> на какой-нибудь другой при помощи <Dynamic> во время удаления, чтобы не прыгать с #. */}
       <a
         class="listStripe__link"
         href={listStripeIsRemoving() ? "#" : mProps.link}
         data-test-id={LIST_STRIPE_LINK_TO_VIEW}
-        data-test-sub-id={mProps.defaultListId}
+        data-test-sub-id={mProps.testSubId}
       >
         <span class="listStripe__title" title={mProps.listTitle}>
           {mProps.listTitle}
@@ -136,9 +133,9 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
         <DropdownMenuWrapper
           iconSize={IconButtonSize.Medium}
           testId={OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON}
-          testSubId={mProps.defaultListId}
-          dropDownMenuTestId={LIST_ITEM_CONTEXT_MENU}
-          iconName={IconName.DotsThreeVertical}
+          testSubId={mProps.testSubId || "0"}
+          dropDownMenuTestId={LIST_STRIPE_CONTEXT_MENU}
+          iconName={IconName.DotsThree}
           listOfButtons={dropdownMenuItems()}
           isLoading={listStripeIsRemoving()}
         />
@@ -151,23 +148,23 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
         isOpen={isDialogOpen()}
         title={"Удаление списка"}
         testId={REMOVE_LIST_DIALOG}
+        testSubId={mProps.testSubId || "0"}
         controls={
           <Button
             theme={ButtonTheme.Dangerous}
             size={ButtonSize.Medium}
-            text={"Подтвердить удаление"}
+            text={"Удалить"}
             handleClick={() => {
               removeList();
               closeDialog();
             }}
             testId={DIALOG_REMOVE_BUTTON}
-            testSubId={mProps.defaultListId ?? ""}
+            testSubId={mProps.testSubId || "0"}
           />
         }
       >
         <p>
-          Список <strong>{mProps.listTitle}</strong> будет удален без
-          возможности восстановления.
+          Список <strong>{mProps.listTitle}</strong> будет удален без возможности восстановления.
         </p>
       </Dialog>
     </div>

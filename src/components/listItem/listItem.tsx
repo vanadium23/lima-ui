@@ -4,6 +4,7 @@ import { EDIT_LIST_INPUT_LIMIT } from "../../../configuration.ts";
 import {
   ADD_ITEM_ABOVE_MENUITEM,
   ADD_ITEM_BELOW_MENUITEM,
+  AUTO_LIST_ITEM,
   buildListItemInputTestId,
   CHECKBOX,
   DEFAULT_TEST_ID,
@@ -28,7 +29,7 @@ import {
   ItemInputTheme,
 } from "../itemInput/itemInput.tsx";
 import { MenuItemTheme } from "../menuItem/menuItem.tsx";
-import type { Testable } from "../utilities/testable.ts";
+import type { Testable, TestId, TestSubId } from "../utilities/testable.ts";
 
 import "./listItem.css";
 
@@ -120,7 +121,7 @@ export const ListItem = (props: Testable<ListItemProps>) => {
       isDisabled: mProps.isOnlyOneItem,
       theme: MenuItemTheme.Dangerous,
       testId: REMOVE_ITEM_MENUITEM,
-      testSubId: mProps.testSubId ?? "0",
+      testSubId: getListItemTestSubId(mProps.testId, mProps.testSubId),
     },
   ];
 
@@ -133,13 +134,13 @@ export const ListItem = (props: Testable<ListItemProps>) => {
         listItem_transition: !!mProps.dragSettings.dragState?.active.draggable,
       }}
       data-test-id={mProps.testId}
-      data-test-sub-id={mProps.testSubId}
+      data-test-sub-id={getListItemTestSubId(mProps.testId, mProps.testSubId)}
     >
       <div class="listItem__dragHandle">
         <DragHandle
           isDisabled={mProps.isDisabled}
           testId={DRAG_HANDLE}
-          testSubId={mProps.testSubId ?? "0"}
+          testSubId={getListItemTestSubId(mProps.testId, mProps.testSubId)}
           dragHandle={mProps.dragSettings.dragData}
         />
       </div>
@@ -149,7 +150,7 @@ export const ListItem = (props: Testable<ListItemProps>) => {
             theme={CheckboxTheme.Primary}
             size={CheckboxSize.Medium}
             testId={CHECKBOX}
-            testSubId={mProps.testSubId ?? "0"}
+            testSubId={getListItemTestSubId(mProps.testId, mProps.testSubId)}
             isDisabled={mProps.isDisabled}
             isChecked={mProps.isChecked}
           />
@@ -168,13 +169,13 @@ export const ListItem = (props: Testable<ListItemProps>) => {
           isRequired={mProps.isRequired}
           onChange={mProps.onChange}
           testId={buildListItemInputTestId(mProps.testId)}
-          testSubId={mProps.testSubId ?? "0"}
-          childComponent={
+          testSubId={getListItemTestSubId(mProps.testId, mProps.testSubId)}
+          controlElements={
             <DropdownMenuWrapper
               iconSize={IconButtonSize.MediumEmbedded}
-              iconName={IconName.DotsThreeCircle}
+              iconName={IconName.DotsThree}
               testId={OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON}
-              testSubId={mProps.testSubId ?? "0"}
+              testSubId={getListItemTestSubId(mProps.testId, mProps.testSubId)}
               dropDownMenuTestId={LIST_ITEM_CONTEXT_MENU}
               listOfButtons={dropdownItems()}
               isDisabled={mProps.isDisabled}
@@ -185,3 +186,10 @@ export const ListItem = (props: Testable<ListItemProps>) => {
     </div>
   );
 };
+
+function getListItemTestSubId(
+  testId: TestId,
+  testSubId: TestSubId | undefined,
+): TestSubId {
+  return testId === AUTO_LIST_ITEM ? AUTO_LIST_ITEM : testSubId || "0";
+}

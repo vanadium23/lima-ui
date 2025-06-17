@@ -2,6 +2,7 @@ import {
   ADD_GROUP_BUTTON,
   DEFAULT_TEST_ID,
   PRO_VERSION_BUTTON,
+  SIDEBAR,
 } from "../../../features/testIds.ts";
 import {
   Button,
@@ -37,6 +38,7 @@ export const Sidebar = () => {
       classList={{
         sidebar_hidden: panelState.isSidebarHidden(),
       }}
+      data-test-id={SIDEBAR}
     >
       <div class="sidebar__top">
         <div class="sidebar__user">

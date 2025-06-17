@@ -41,7 +41,9 @@ Feature: Failing to update a list
 
   Scenario: Hidden empty item input is shown when attempting to update a list
     When I clear the "first item" input
+    And I ensure the tools panel is open
     And I add list items till scroll appears plus one item input
+    And I ensure the tools panel does not disturb
     And I start counting the "list update" requests
     And I press the "save" button
     Then I expect to be focused on the "first item" input

@@ -141,3 +141,10 @@ Then(
     }
   },
 );
+
+When(
+  "I ensure the presence of clipboard permissions",
+  async function (this: ComplexWorld) {
+    await this.context.grantPermissions(["clipboard-read", "clipboard-write"]);
+  },
+);

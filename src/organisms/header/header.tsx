@@ -4,7 +4,7 @@ import {
   DEFAULT_TEST_ID,
   HEADER,
   SEARCH_BUTTON,
-  SEARCH_INPUT,
+  TOGGLE_SIDEBAR_BUTTON,
   TOGGLE_TOOLS_PANEL_BUTTON,
 } from "../../../features/testIds.ts";
 import { LISTS } from "../../../utilities/addresses.ts";
@@ -13,10 +13,11 @@ import {
   IconButton,
   IconButtonTheme,
 } from "../../components/iconButton/iconButton.tsx";
-import { Input, InputTheme } from "../../components/input/input.tsx";
 import { Logo } from "../../components/logo/logo.tsx";
+import { Search } from "../../components/search/search.tsx";
 import { ToggleIconButton } from "../../components/toggleIconButton/toggleIconButton.tsx";
 import { location } from "../../state/locationState.ts";
+import { searchState } from "../../state/searchState.ts";
 import { panelState } from "../../state/sidebarsStateManager.ts";
 
 import "./header.css";
@@ -42,7 +43,7 @@ export const Header = (props: HeaderProps) => {
         <div class="header__burger">
           <ToggleIconButton
             iconName={IconName.List}
-            testId={DEFAULT_TEST_ID}
+            testId={TOGGLE_SIDEBAR_BUTTON}
             ariaLabel={"Переключить меню"}
             isToggled={!panelState.isSidebarHidden()}
             setGlobalToggled={panelState.toggleSidebar}
@@ -54,22 +55,18 @@ export const Header = (props: HeaderProps) => {
         </div>
       </div>
       <div class="header__search">
-        <Input
-          theme={InputTheme.Tertiary}
-          name={"Search"}
-          placeholder={"Поиск"}
-          maxLength={80}
-          testId={SEARCH_INPUT}
-          isCountable={false}
-        />
-        <IconButton
-          iconName={IconName.MagnifyingGlass}
-          ariaLabel={"Начать поиск"}
-          testId={SEARCH_BUTTON}
-          theme={IconButtonTheme.Tertiary}
-        />
+        <Search testId={DEFAULT_TEST_ID} />
       </div>
       <div class="header__controls">
+        <div class="header__searchOpen">
+          <IconButton
+            iconName={IconName.MagnifyingGlass}
+            ariaLabel={"Открыть поиск"}
+            testId={SEARCH_BUTTON}
+            theme={IconButtonTheme.Tertiary}
+            handleClick={searchState.open}
+          />
+        </div>
         <div class="header__toggleToolsPanelButton">
           <Show when={showToggleIconButton()}>
             <ToggleIconButton

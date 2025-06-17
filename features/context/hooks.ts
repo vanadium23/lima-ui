@@ -12,8 +12,8 @@ import {
 import {
   type Browser,
   type BrowserContext,
+  chromium,
   expect,
-  firefox,
   type Page,
 } from "@playwright/test";
 import * as fs from "fs";
@@ -31,6 +31,11 @@ import {
   destructureFullTestId,
 } from "../utilities/buildTestableSelector.ts";
 
+import {
+  getDeviceProfile,
+  getDeviceProfileName,
+} from "../utilities/discoverDevice.ts";
+import { getTimeoutOrCancelItIfDebugging } from "../utilities/getTimeoutOrCancelItIfDebugging.ts";
 import { createAccountedTesting } from "./createAccountedTesting.ts";
 
 let browser: Browser;
@@ -61,7 +66,7 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
   }
 
   async setContextAndPage() {
-    this.context = await browser.newContext();
+    this.context = await browser.newContext(getDeviceProfile());
     this.page = await this.context.newPage();
   }
 
@@ -80,7 +85,7 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
       buildTestableSelector(testId),
     );
 
-    if (!testSubId) return elementWithRequiredId;
+    if (testSubId == null) return elementWithRequiredId;
 
     const elementWithRequiredSubId = this.page.locator(
       buildTestableSubSelector(testSubId),
@@ -114,20 +119,17 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
   }
 }
 
-const MORE_THAN_IN_PLAYWRIGHT = 6000;
+const MORE_THAN_IN_PLAYWRIGHT = getTimeoutOrCancelItIfDebugging(6000);
 setDefaultTimeout(MORE_THAN_IN_PLAYWRIGHT);
 setWorldConstructor(ComplexWorld);
-
-const debugging = false;
 
 const screenshotsFolder = path.join(process.cwd(), "features", "screenshots");
 
 BeforeAll(async function () {
   prepareEmptyScreenshotsFolder();
-
-  const BROWSER_OPTIONS = { headless: !debugging };
-
-  browser = await firefox.launch(BROWSER_OPTIONS);
+  browser = await chromium.launch({
+    headless: !isVisible(),
+  });
 });
 
 Before(async function (this: ComplexWorld) {
@@ -140,9 +142,10 @@ After(async function (this: ComplexWorld, scenario: ITestCaseHookParameter) {
   if (scenario.result?.status === "FAILED") {
     const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
     const scenarioName = scenario.pickle.name.replace(/[^a-zA-Z0-9]/g, "_");
+    const deviceSuffix = getDeviceProfileName();
     const screenshotPath = path.join(
       screenshotsFolder,
-      `${timestamp}_${scenarioName}.png`,
+      `${timestamp}_${scenarioName}_${deviceSuffix}.png`,
     );
 
     try {
@@ -155,12 +158,12 @@ After(async function (this: ComplexWorld, scenario: ITestCaseHookParameter) {
 });
 
 // This After hook should run AFTER the screenshot hook
-After("@last", async function (this: ComplexWorld) {
-  debugging || (await this.context.close());
+After({ tags: "@last", timeout: 60000 }, async function (this: ComplexWorld) {
+  isVisible() || (await this.context.close());
 });
 
 AfterAll({ timeout: 60000 }, async function () {
-  debugging || (await browser.close());
+  isVisible() || (await browser.close());
 });
 
 function prepareEmptyScreenshotsFolder() {
@@ -170,10 +173,11 @@ function prepareEmptyScreenshotsFolder() {
     for (const file of files) {
       fs.unlinkSync(path.join(screenshotsFolder, file));
     }
-    console.log(
-      `\nCleared ${files.length} screenshots from: ${screenshotsFolder}`,
-    );
   } else {
     fs.mkdirSync(screenshotsFolder, { recursive: true });
   }
+}
+
+function isVisible() {
+  return process.env.BROWSER_VISIBLE === "1";
 }

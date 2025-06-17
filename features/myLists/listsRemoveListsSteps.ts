@@ -11,13 +11,13 @@ import {
   type ButtonMeaning,
 } from "../list/listCreation/testIds.ts";
 import {
-  DEFAULT_TEST_ID,
   LIST_STRIPE,
   type WarningMeaning,
   WARNINGS_TEST_IDS,
 } from "../testIds.ts";
-import { TEST_SUB_ID_ATTRIBUTE } from "../utilities/buildTestableSelector.ts";
+import { buildTestableSelector } from "../utilities/buildTestableSelector.ts";
 
+import { getTimeoutOrCancelItIfDebugging } from "../utilities/getTimeoutOrCancelItIfDebugging.ts";
 import {
   CONTEXT_MENU_TEST_IDS,
   type ContextMenuMeaning,
@@ -43,11 +43,7 @@ When(
 When(
   "I press the visible {string} button",
   async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
-    const button = this.locateVisible(`${BUTTON_TEST_IDS[buttonMeaning]}`);
-    this.data.clickedButtonTestSubId =
-      (await button.getAttribute(TEST_SUB_ID_ATTRIBUTE)) || "";
-
-    await button.click();
+    await this.locateVisible(`${BUTTON_TEST_IDS[buttonMeaning]}`).click();
   },
 );
 
@@ -67,7 +63,7 @@ Then(
 
 Then(
   "I expect not to see the {string} dialog modal box",
-  { timeout: 500 },
+  { timeout: getTimeoutOrCancelItIfDebugging(500) },
   async function (this: ComplexWorld, dialogMeaning: DialogMeaning) {
     const dialogs = this.locateByIdParts(DIALOG_TEST_IDS[dialogMeaning]);
 
@@ -80,10 +76,7 @@ Then(
 When(
   "I click outside of the {string} dialog modal box",
   async function (this: ComplexWorld, dialogMeaning: DialogMeaning) {
-    await this.locateByIdParts(
-      DIALOG_TEST_IDS[dialogMeaning],
-      this.data.clickedButtonTestSubId,
-    ).click({
+    await this.locateVisible(DIALOG_TEST_IDS[dialogMeaning]).click({
       position: { x: -10, y: -10 },
     });
   },
@@ -103,13 +96,9 @@ Then(
     listStripePosition: ListStripePosition,
     linkMeaning: LinkMeaning,
   ) {
-    const listId =
-      this.listIds[LIST_STRIPE_POSITIONS[listStripePosition]] ||
-      DEFAULT_TEST_ID;
-
     const listStripeLink = this.locateVisible(
       LINK_TEST_IDS[linkMeaning],
-      listId,
+      LIST_STRIPE_POSITIONS[listStripePosition],
     );
 
     await expect(listStripeLink).toHaveAttribute("href", "#");
@@ -123,16 +112,12 @@ Then(
     listStripePosition: ListStripePosition,
     buttonMeaning: ButtonMeaning,
   ) {
-    const listId =
-      this.listIds[LIST_STRIPE_POSITIONS[listStripePosition]] ||
-      DEFAULT_TEST_ID;
-
-    const listStripeLink = this.locateVisible(
+    const listStripeButton = this.locateVisible(
       BUTTON_TEST_IDS[buttonMeaning],
-      listId,
+      LIST_STRIPE_POSITIONS[listStripePosition],
     );
 
-    await expect(listStripeLink).toBeDisabled();
+    await expect(listStripeButton).toBeDisabled();
   },
 );
 
@@ -143,11 +128,10 @@ Then(
     listStripePosition: ListStripePosition,
     buttonMeaning: ButtonMeaning,
   ) {
-    const listId =
-      this.listIds[LIST_STRIPE_POSITIONS[listStripePosition]] ||
-      DEFAULT_TEST_ID;
-
-    await this.locateVisible(BUTTON_TEST_IDS[buttonMeaning], listId).click({
+    await this.locateVisible(
+      BUTTON_TEST_IDS[buttonMeaning],
+      LIST_STRIPE_POSITIONS[listStripePosition],
+    ).click({
       force: true,
     });
   },
@@ -184,5 +168,24 @@ Then(
     await this.expectLocated(
       CONTEXT_MENU_TEST_IDS[contextMenuMeaning],
     ).not.toBeInViewport();
+  },
+);
+
+When(
+  "I press the {string} list stripe {string} button",
+  async function (
+    this: ComplexWorld,
+    listStripePosition: ListStripePosition,
+    buttonMeaning: ButtonMeaning,
+  ) {
+    const listStripe = this.locateVisible(LIST_STRIPE).nth(
+      LIST_STRIPE_POSITIONS[listStripePosition],
+    );
+
+    const dropdownMenuButton = listStripe.locator(
+      buildTestableSelector(BUTTON_TEST_IDS[buttonMeaning]),
+    );
+
+    await dropdownMenuButton.click();
   },
 );
