@@ -1,0 +1,50 @@
+.pushNotification {
+  color: black;
+  border-radius: var(--size-x4);
+  width: 38rem;
+  position: relative;
+  border: 0.1rem solid var(--neutral-200, #eee);
+  opacity: 0.96;
+  background: var(--neutral-150, #f9f9f9);
+  box-shadow: 0 var(--size-x1) var(--size-x11) 0 rgba(0 0 0 / 25%);
+}
+
+.pushNotification__wrapper {
+  display: flex;
+  padding: var(--size-x3) var(--size-x4);
+  gap: var(--size-x4);
+}
+
+.pushNotification__icon {
+  padding: var(--size-x3);
+  width: var(--size-x16);
+  height: var(--size-x16);
+  border-radius: var(--size-x4);
+  text-align-last: center;
+}
+
+.pushNotification__icon_dangerous {
+  background-color: red;
+}
+
+.pushNotification__title {
+  margin: 0;
+  font-size: var(--size-x7);
+  font-style: normal;
+  font-weight: 600;
+  line-height: var(--size-x9);
+}
+
+.pushNotification__description {
+  margin: 0 var(--size-x3) 0 0;
+  font-size: var(--size-x7);
+  font-style: normal;
+  font-weight: 500;
+  line-height: var(--size-x9);
+}
+
+.pushNotification__closeBtn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
