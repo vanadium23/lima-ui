@@ -36,6 +36,7 @@ program
     "--visible",
     "Run browser in non-headless mode and keep it open after tests",
   )
+  .option("--fail-fast", "Stop test execution after the first failure")
   .addHelpText(
     "afterAll",
     chalk.yellow("\nExamples:\n") +
@@ -44,6 +45,7 @@ program
       "  npm run test -- --broken          # Run only broken tests for all devices\n" +
       "  npm run test -- --current         # Run only current tests for all devices\n" +
       "  npm run test -- --desktop --debug # Run desktop tests in debug mode\n" +
+      "  npm run test -- --fail-fast       # Stop after first test failure\n" +
       "  npm run test -- --help            # Show this help message\n",
   )
   .showHelpAfterError("(run `npm test -- --help` for additional information)");
@@ -57,7 +59,7 @@ const config: TestConfig = {
   visible: program.opts().visible || false,
 };
 
-const { desktop, tablet, mobile, broken, current } = program.opts();
+const { desktop, tablet, mobile, broken, current, failFast } = program.opts();
 
 if (!desktop && !tablet && !mobile) {
   config.devices = [
@@ -87,7 +89,8 @@ async function runTests() {
   console.log(`- Devices: ${config.devices.join(", ")}`);
   console.log(`- Tags: ${config.tags.join(", ")}`);
   console.log(`- Debug: ${config.debug ? "enabled" : "disabled"}`);
-  console.log(`- Visible mode: ${config.visible ? "enabled" : "disabled"}\n`);
+  console.log(`- Visible mode: ${config.visible ? "enabled" : "disabled"}`);
+  console.log(`- Fail fast: ${failFast ? "enabled" : "disabled"}\n`);
 
   const results: { device: DeviceProfiles; success: boolean }[] = [];
   let hasError = false;
@@ -98,6 +101,10 @@ async function runTests() {
     try {
       const command = "npx";
       const args = ["cucumber-js"];
+
+      if (failFast) {
+        args.push("--fail-fast");
+      }
 
       if (config.tags.length > 0) {
         const escapeTagsWithSpaces = (tag: string): string => `"${tag}"`;
