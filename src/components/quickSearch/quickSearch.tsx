@@ -7,7 +7,6 @@ import {
   TextButton,
   TextButtonComponentType,
 } from "../textButton/textButton.tsx";
-import type { Testable } from "../utilities/testable.ts";
 
 import "./quickSearch.css";
 
@@ -32,8 +31,8 @@ export type QuickSearchProps = {
   query: string;
 };
 
-export const QuickSearch = (props: Testable<QuickSearchProps>) => {
-  const mProps: Testable<Required<QuickSearchProps>> = mergeProps(
+export const QuickSearch = (props: QuickSearchProps) => {
+  const mProps: Required<QuickSearchProps> = mergeProps(
     {
       theme: QuickSearchTheme.Primary,
       size: QuickSearchSize.Medium,

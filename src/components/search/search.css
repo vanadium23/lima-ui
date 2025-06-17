@@ -16,6 +16,7 @@
   top: calc(100% + 0.7rem);
   left: 50%;
   transform: translateX(-50%);
+  display: none;
 }
 
 @media (width >= 768px) {

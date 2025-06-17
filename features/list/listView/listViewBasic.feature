@@ -8,6 +8,7 @@ Feature: Seeing the basis of List view page
     Then I expect to see the suffixed list title as tab title
     Then I expect to see sidebar or its button
     Then I expect to see header
+    Then I expect to see search
     Then I expect to see tools panel or its button
     Then I expect to see the "list title" input enabled
     Then I expect to see the "list purpose" input enabled
@@ -32,6 +33,7 @@ Feature: Seeing the basis of List view page
     Then I expect to see the suffixed list title as tab title
     Then I expect to see sidebar or its button
     Then I expect to see header
+    Then I expect to see search
     Then I expect to see tools panel or its button
     Then I expect to see the "list title" input enabled
     Then I expect to see the "list purpose" input enabled
@@ -75,6 +77,7 @@ Feature: Seeing the basis of List view page
     Then I expect to see the default tab title
     Then I expect to see sidebar or its button
     Then I expect to see header
+    Then I expect to see search
     Then I expect not to see tools panel
     Then I expect to see the "connection" error
     Then I expect not to see the "save" button

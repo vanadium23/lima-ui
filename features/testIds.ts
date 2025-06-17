@@ -37,7 +37,6 @@ export const AUTO_LIST_ITEM_INPUT = buildListItemInputTestId(AUTO_LIST_ITEM);
 
 export const LIST_ITEM_CONTEXT_MENU = "listItemContextMenu";
 
-export const SEARCH_INPUT = "searchInput";
 export const CREATE_LIST_BUTTON = "createListButton";
 export const SAVE_LIST_BUTTON = "saveListButton";
 export const OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON =
@@ -47,7 +46,13 @@ export const OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON =
 export const REMOVE_ITEM_MENUITEM = "removeItemMenuitem";
 export const ADD_ITEM_ABOVE_MENUITEM = "addItemAboveMenuitem";
 export const ADD_ITEM_BELOW_MENUITEM = "addItemBelowMenuitem";
+
+export const SEARCH_INPUT = "searchInput";
 export const SEARCH_BUTTON = "searchButton";
+export const OPEN_SEARCH_BUTTON = "openSearchButton";
+export const CLOSE_SEARCH_BUTTON = "closeSearchButton";
+export const SEARCH_DIALOG = "searchDialog";
+
 export const USER_BUTTON = "userButton";
 
 const COUNTER_SUFFIX = "Counter";

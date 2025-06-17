@@ -13,6 +13,7 @@ Feature: Successfully creating list with correct data
     Then I expect to see the following suffixed tab title: "Новый список"
     Then I expect to see sidebar or its button
     Then I expect to see header
+    Then I expect to see search
     Then I expect to see tools panel or its button
     Then I expect to see the "list title" input disabled
     Then I expect to see the "list purpose" input disabled
@@ -40,6 +41,7 @@ Feature: Successfully creating list with correct data
     Then I expect to see the suffixed list title as tab title
     Then I expect to see sidebar or its button
     Then I expect to see header
+    Then I expect to see search
     Then I expect to see tools panel or its button
     Then I expect to see the "list title" input enabled
     Then I expect to see the "list purpose" input enabled

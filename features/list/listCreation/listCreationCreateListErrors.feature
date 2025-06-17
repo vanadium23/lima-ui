@@ -68,6 +68,7 @@ Feature: Failing to create a new list
     Then I expect to see the following suffixed tab title: "Новый список"
     Then I expect to see sidebar or its button
     Then I expect to see header
+    Then I expect to see search
     Then I expect to see tools panel or its button
     Then I expect to see the "list title" input enabled
     Then I expect to see the "list purpose" input enabled

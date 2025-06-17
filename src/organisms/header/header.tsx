@@ -1,9 +1,8 @@
 import { Show } from "solid-js";
 
 import {
-  DEFAULT_TEST_ID,
   HEADER,
-  SEARCH_BUTTON,
+  OPEN_SEARCH_BUTTON,
   TOGGLE_SIDEBAR_BUTTON,
   TOGGLE_TOOLS_PANEL_BUTTON,
 } from "../../../features/testIds.ts";
@@ -55,14 +54,14 @@ export const Header = (props: HeaderProps) => {
         </div>
       </div>
       <div class="header__search">
-        <Search testId={DEFAULT_TEST_ID} />
+        <Search />
       </div>
       <div class="header__controls">
         <div class="header__searchOpen">
           <IconButton
             iconName={IconName.MagnifyingGlass}
             ariaLabel={"Открыть поиск"}
-            testId={SEARCH_BUTTON}
+            testId={OPEN_SEARCH_BUTTON}
             theme={IconButtonTheme.Tertiary}
             handleClick={searchState.open}
           />

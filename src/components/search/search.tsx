@@ -1,7 +1,12 @@
 import { mergeProps, Show } from "solid-js";
 
 import { LIST_TITLE_INPUT_LIMIT } from "../../../configuration.ts";
-import { DEFAULT_TEST_ID, SEARCH_BUTTON } from "../../../features/testIds.ts";
+import {
+  CLOSE_SEARCH_BUTTON,
+  SEARCH_BUTTON,
+  SEARCH_DIALOG,
+  SEARCH_INPUT,
+} from "../../../features/testIds.ts";
 import { LISTS } from "../../../utilities/addresses.ts";
 import { location } from "../../state/locationState.ts";
 import { searchState } from "../../state/searchState.ts";
@@ -9,7 +14,6 @@ import { IconName } from "../icon/icon.tsx";
 import { IconButton, IconButtonTheme } from "../iconButton/iconButton.tsx";
 import { Input, InputTheme } from "../input/input.tsx";
 import { QuickSearch } from "../quickSearch/quickSearch.tsx";
-import type { Testable } from "../utilities/testable.ts";
 
 import "./search.css";
 
@@ -26,8 +30,8 @@ type SearchProps = {
   size?: SearchSize;
 };
 
-export const Search = (props: Testable<SearchProps>) => {
-  const mProps: Testable<Required<SearchProps>> = mergeProps(
+export const Search = (props: SearchProps) => {
+  const mProps: Required<SearchProps> = mergeProps(
     {
       theme: SearchTheme.Primary,
       size: SearchSize.Medium,
@@ -49,7 +53,7 @@ export const Search = (props: Testable<SearchProps>) => {
           name={"Поиск"}
           isCountable={false}
           maxLength={LIST_TITLE_INPUT_LIMIT}
-          testId={DEFAULT_TEST_ID}
+          testId={SEARCH_INPUT}
         />
         <IconButton
           iconName={IconName.MagnifyingGlass}
@@ -61,7 +65,7 @@ export const Search = (props: Testable<SearchProps>) => {
           <IconButton
             iconName={IconName.X}
             ariaLabel={"Закрыть поиск"}
-            testId={DEFAULT_TEST_ID}
+            testId={CLOSE_SEARCH_BUTTON}
             theme={IconButtonTheme.Tertiary}
             handleClick={searchState.close}
           />
@@ -69,8 +73,8 @@ export const Search = (props: Testable<SearchProps>) => {
       </div>
 
       <Show when={location() !== LISTS}>
-        <div class="search__dialog">
-          <QuickSearch query={""} isLoading={false} testId={DEFAULT_TEST_ID} />
+        <div class="search__dialog" data-test-id={SEARCH_DIALOG}>
+          <QuickSearch query={""} isLoading={false} />
         </div>
       </Show>
     </div>

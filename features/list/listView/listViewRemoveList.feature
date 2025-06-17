@@ -88,6 +88,7 @@ Feature: Removing a list from the List view page
     Then I expect to see the suffixed list title as tab title
     Then I expect to see sidebar or its button
     Then I expect to see header
+    Then I expect to see search
     Then I expect to see tools panel or its button
     Then I expect to see the "list title" input disabled
     Then I expect to see the "list purpose" input disabled

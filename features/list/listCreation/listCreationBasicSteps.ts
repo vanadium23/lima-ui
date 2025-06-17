@@ -11,8 +11,6 @@ import {
   LIST_ITEMS,
   PAGE_TITLE,
   PRO_VERSION_BUTTON,
-  SEARCH_BUTTON,
-  SEARCH_INPUT,
   SIDEBAR,
   TOGGLE_SIDEBAR_BUTTON,
   TOGGLE_TOOLS_PANEL_BUTTON,
@@ -74,9 +72,6 @@ Then("I expect to see header", async function (this: ComplexWorld) {
   await this.expectLocated(
     this.accounting.elements.registerTestId(HEADER),
   ).toBeInViewport();
-
-  this.accounting.elements.registerTestId(SEARCH_INPUT);
-  this.accounting.elements.registerTestId(SEARCH_BUTTON);
 });
 
 Then(
