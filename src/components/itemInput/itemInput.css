@@ -49,7 +49,7 @@
   text-align: center;
 }
 
-.itemInput__counter_visible {
+.itemInput:focus-within .itemInput__counter_visible {
   display: block;
 }
 
