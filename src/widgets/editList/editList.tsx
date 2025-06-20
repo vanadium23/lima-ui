@@ -25,6 +25,7 @@ import {
   LIST_ITEM,
   LIST_ITEMS,
   LIST_PURPOSE_INPUT,
+  LIST_REMOVAL_ERROR,
   LIST_TITLE_INPUT,
   NETWORK_ERROR,
   REMOVE_LIST_DIALOG,
@@ -137,6 +138,7 @@ export const EditList = (props: EditListProps) => {
     initialList: list,
     sendingNow: false,
     error: false,
+    removeError: false,
     isCheckable: false,
     isDialogOpen: false,
     isChanged: false,
@@ -361,7 +363,7 @@ export const EditList = (props: EditListProps) => {
 
   function sendListRemove() {
     setStore({
-      error: false,
+      removeError: false,
       sendingNow: "deleting",
     });
     removeList(store.id)
@@ -375,8 +377,8 @@ export const EditList = (props: EditListProps) => {
         console.error("Error deleting the list:", error);
         soften(() => {
           setStore({
-            error: true,
             sendingNow: false,
+            removeError: true,
           });
         });
       });
@@ -555,16 +557,23 @@ export const EditList = (props: EditListProps) => {
                   </DragOverlay>
                 </DragDropProvider>
               </div>
-              <Show when={store.error}>
-                <PageError testId={NETWORK_ERROR}>
-                  Ошибка соединения с сервером, попробуйте еще раз
-                </PageError>
-              </Show>
-              <Show when={reachedItemsLimit()}>
-                <PageError testId={ITEMS_LIMIT_REACHED_WARNING}>
-                  Вы использовали лимит в {ITEMS_LIMIT} пунктов
-                </PageError>
-              </Show>
+              <div class="editList__errors">
+                <Show when={store.error}>
+                  <PageError testId={NETWORK_ERROR}>
+                    Ошибка соединения с сервером, попробуйте еще раз
+                  </PageError>
+                </Show>
+                <Show when={reachedItemsLimit()}>
+                  <PageError testId={ITEMS_LIMIT_REACHED_WARNING}>
+                    Вы использовали лимит в {ITEMS_LIMIT} пунктов
+                  </PageError>
+                </Show>
+                <Show when={store.removeError}>
+                  <PageError testId={LIST_REMOVAL_ERROR}>
+                    Не удалось удалить список. Попробуйте ещё раз.
+                  </PageError>
+                </Show>
+              </div>
 
               <div class="editList__controls">
                 <Button

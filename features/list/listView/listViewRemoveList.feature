@@ -36,7 +36,7 @@ Feature: Removing a list from the List view page
     Then I expect to see the following number of list stripes: 0
     Then I expect to see the message about lists absence
 
-  @broken
+
   Scenario: Unsuccessful list removal leads to error message appearance
     When I add a list
     And I ensure the tools panel is open
@@ -68,7 +68,7 @@ Feature: Removing a list from the List view page
     And I press the visible "confirm list removal" button
     Then I expect not to see the "list removal" error
 
-  @broken
+
   Scenario: Unsuccessful list removal accompanied by reached items limit leads to error and warning at the same time
     When I add a list
     And I ensure the tools panel is open

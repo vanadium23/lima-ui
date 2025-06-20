@@ -63,6 +63,7 @@ export type EditListStore = DragList & {
   initialList: List;
   sendingNow: false | "saving" | "deleting";
   error: boolean;
+  removeError: boolean;
   isCheckable: boolean;
   isDialogOpen: boolean;
   isChanged: boolean;
