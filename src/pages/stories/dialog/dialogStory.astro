@@ -15,7 +15,6 @@ import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
     <div class="grid grid_1Col">
       <span class="chead"></span>
       <span class="chead">Default</span>
-
       <Dialog
         client:only="solid-js"
         theme={DialogTheme.Primary}
@@ -24,6 +23,7 @@ import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
         isOpen={true}
         testId={DEFAULT_TEST_ID}
         controls={[]}
+        onCancel={() => {}}
       >
         <PasteContent />
       </Dialog>

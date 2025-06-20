@@ -2,13 +2,35 @@
   "name": "@lima/lima-ui",
   "type": "module",
   "version": "0.0.1",
+  "engines": {
+    "node": ">=20.17.0"
+  },
   "scripts": {
     "dev": "concurrently \"astro dev --open --host\" \"astro check --watch\"",
     "start": "node dist/server/entry.mjs",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "test": "tsx scripts/run-tests.ts"
+    "test": "tsx scripts/run-tests.ts",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "tsc --noEmit --pretty"
+    ],
+    "**/*.{cjs,mjs,astro}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "**/*.{css,scss}": [
+      "stylelint --fix",
+      "prettier --write"
+    ],
+    "**/*.{json,md,yml,feature}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -42,8 +64,12 @@
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-solid": "^0.13.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
     "prettier": "^3.1.1",
     "prettier-plugin-astro": "^0.13.0",
+    "prettier-plugin-gherkin": "^3.1.2",
+    "stylelint": "^15.11.0",
     "stylelint-config-standard": "^34.0.0",
     "ts-node": "^10.9.2",
     "tsx": "^4.19.4"

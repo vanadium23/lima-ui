@@ -1,6 +1,6 @@
 /** @type {import("prettier").Config} */
 export default {
-  plugins: ["prettier-plugin-astro"],
+  plugins: ["prettier-plugin-astro", "prettier-plugin-gherkin"],
   overrides: [
     {
       files: "*.astro",
@@ -12,6 +12,12 @@ export default {
       files: "*.md",
       options: {
         proseWrap: "never",
+      },
+    },
+    {
+      files: "*.feature",
+      options: {
+        parser: "gherkin",
       },
     },
   ],
