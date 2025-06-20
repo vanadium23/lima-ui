@@ -1,6 +1,6 @@
 ---
-import {DEFAULT_TEST_ID} from "../../../../features/testIds";
-import {IconName} from "../../../components/icon/icon.tsx";
+import { DEFAULT_TEST_ID } from "../../../../features/testIds";
+import { IconName } from "../../../components/icon/icon.tsx";
 import {
   ToggleIconButton,
   ToggleIconButtonSize,
@@ -13,68 +13,73 @@ const sizes = Object.values(ToggleIconButtonSize);
 ---
 
 <StorybookPage title="Toggle Icon Button">
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 style="font-size: 24px; margin-bottom: 10px;">{theme}</h3>
+        <div class="grid grid_2Col">
+          <span class="chead" />
+          <span class="chead">Default</span>
+          <span class="chead">Disabled</span>
 
-  {themes.map((theme) => (
-          <div class="demoThemeWrapper">
-              <h3 style="font-size: 24px; margin-bottom: 10px;">{theme}</h3>
-              <div class="grid grid_2Col">
-                  <span class="chead"></span>
-                  <span class="chead">Default</span>
-                  <span class="chead">Disabled</span>
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size} - Basic</span>
 
-                {sizes.map((size) => (
-                        <span class="rhead">{size} - Basic</span>
+              <ToggleIconButton
+                client:only="solid-js"
+                ariaLabel={"text"}
+                theme={theme}
+                size={size}
+                iconName={IconName.Trash}
+                testId={DEFAULT_TEST_ID}
+                isToggled={false}
+                setGlobalToggled={() => false}
+              />
 
-                        <ToggleIconButton
-                                client:only="solid-js"
-                                ariaLabel={"text"}
-                                theme={theme}
-                                size={size}
-                                iconName={IconName.Trash}
-                                testId={DEFAULT_TEST_ID}
-                                setGlobalToggled={()=> false}
-                        />
+              <ToggleIconButton
+                client:only="solid-js"
+                isDisabled={true}
+                ariaLabel={"text"}
+                theme={theme}
+                size={size}
+                iconName={IconName.Trash}
+                testId={DEFAULT_TEST_ID}
+                isToggled={false}
+                setGlobalToggled={() => false}
+              />
+            </>
+          ))}
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size} - Toggle</span>
 
-                        <ToggleIconButton
-                                client:only="solid-js"
-                                isDisabled={true}
-                                ariaLabel={"text"}
-                                theme={theme}
-                                size={size}
-                                iconName={IconName.Trash}
-                                testId={DEFAULT_TEST_ID}
-                                setGlobalToggled={()=> false}
-                        />
-                ))}
-                {sizes.map((size) => (
-                        <span class="rhead">{size} - Toggle</span>
+              <ToggleIconButton
+                client:only="solid-js"
+                ariaLabel={"text"}
+                theme={theme}
+                size={size}
+                iconName={IconName.Trash}
+                testId={DEFAULT_TEST_ID}
+                isToggled={true}
+                setGlobalToggled={() => false}
+              />
 
-                        <ToggleIconButton
-                                client:only="solid-js"
-                                ariaLabel={"text"}
-                                theme={theme}
-                                size={size}
-                                iconName={IconName.Trash}
-                                testId={DEFAULT_TEST_ID}
-                                defaultIsToggled={true}
-                                setGlobalToggled={()=> false}
-                        />
-
-                        <ToggleIconButton
-                                client:only="solid-js"
-                                isDisabled={true}
-                                ariaLabel={"text"}
-                                theme={theme}
-                                size={size}
-                                iconName={IconName.Trash}
-                                testId={DEFAULT_TEST_ID}
-                                defaultIsToggled={true}
-                                setGlobalToggled={()=> false}
-                        />
-                ))}
-
-              </div>
-          </div>
-  ))}
-
+              <ToggleIconButton
+                client:only="solid-js"
+                isDisabled={true}
+                ariaLabel={"text"}
+                theme={theme}
+                size={size}
+                iconName={IconName.Trash}
+                testId={DEFAULT_TEST_ID}
+                isToggled={true}
+                setGlobalToggled={() => false}
+              />
+            </>
+          ))}
+        </div>
+      </div>
+    ))
+  }
 </StorybookPage>

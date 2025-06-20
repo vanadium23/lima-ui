@@ -5,6 +5,14 @@
     "jsxImportSource": "solid-js",
     "types": ["vite/client"]
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.astro",
+    "features/**/*.ts",
+    "features/**/*.tsx",
+    "scripts/**/*.ts",
+    "utilities/**/*.ts"
+  ],
   "exclude": ["node_modules", "dist"]
 }

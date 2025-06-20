@@ -1,5 +1,4 @@
 ---
-import { DEFAULT_TEST_ID } from "../../../../features/testIds";
 import {
   QuickSearch,
   QuickSearchTheme,
@@ -72,7 +71,6 @@ const listsExample2 = [
 
           <QuickSearch
             client:only="solid-js"
-            testId={DEFAULT_TEST_ID}
             isLoading={false}
             lists={listsExample1}
             query="Тест"
@@ -82,28 +80,17 @@ const listsExample2 = [
 
           <QuickSearch
             client:only="solid-js"
-            testId={DEFAULT_TEST_ID}
             isLoading={false}
             lists={listsExample2}
             query="Тест"
           />
           <span class="rhead">Loading</span>
 
-          <QuickSearch
-            client:only="solid-js"
-            testId={DEFAULT_TEST_ID}
-            isLoading={true}
-            query="test"
-          />
+          <QuickSearch client:only="solid-js" isLoading={true} query="test" />
 
           <span class="rhead">Empty</span>
 
-          <QuickSearch
-            client:only="solid-js"
-            testId={DEFAULT_TEST_ID}
-            isLoading={false}
-            query="test"
-          />
+          <QuickSearch client:only="solid-js" isLoading={false} query="test" />
         </div>
       </div>
     ))
