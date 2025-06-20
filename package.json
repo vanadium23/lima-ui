@@ -14,24 +14,6 @@
     "test": "tsx scripts/run-tests.ts",
     "prepare": "husky"
   },
-  "lint-staged": {
-    "**/*.{ts,tsx}": [
-      "eslint --fix",
-      "prettier --write",
-      "tsc --noEmit --pretty"
-    ],
-    "**/*.{cjs,mjs,astro}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "**/*.{css,scss}": [
-      "stylelint --fix",
-      "prettier --write"
-    ],
-    "**/*.{json,md,yml,feature}": [
-      "prettier --write"
-    ]
-  },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/node": "^9.1.3",
