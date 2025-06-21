@@ -1,7 +1,9 @@
 export default {
-  "**/*.{ts,tsx}": () => "tsc --noEmit --pretty --project tsconfig.json",
-  "**/*.astro": "astro check",
-  "**/*.{js,cjs,mjs,astro,ts,tsx}": ["eslint --fix", "prettier --write"],
+  "**/*.{js,cjs,mjs,ts,tsx,astro}": [
+    "eslint --fix",
+    "prettier --write",
+    "astro check",
+  ],
   "**/*.{css,scss}": ["stylelint --fix", "prettier --write"],
   "**/*.{json,md,yml,feature}": ["prettier --write"],
 };
