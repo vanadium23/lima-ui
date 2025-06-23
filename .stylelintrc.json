@@ -21,18 +21,6 @@
         }
       }
     ],
-    "no-descending-specificity": [
-      true,
-      {
-        "ignorePseudoClasses": [
-          ":focus-within",
-          ":hover",
-          ":has",
-          ":focus",
-          ":not",
-          "focus-visible"
-        ]
-      }
-    ]
+    "no-descending-specificity": true
   }
 }

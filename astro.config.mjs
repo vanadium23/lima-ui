@@ -1,7 +1,7 @@
-import {defineConfig} from "astro/config";
 import node from "@astrojs/node";
-
 import solidJs from "@astrojs/solid-js";
+import { defineConfig } from "astro/config";
+import process from "process";
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,7 +11,7 @@ export default defineConfig({
     mode: "standalone",
   }),
   devToolbar: {
-    enabled: false
+    enabled: false,
   },
   vite: {
     build: {
@@ -20,10 +20,12 @@ export default defineConfig({
     },
     optimizeDeps: {
       // To resolve incorrectly working caching on the first run: https://stackoverflow.com/a/76379587/2008562.
-      force: true
+      force: true,
     },
     define: {
-      "import.meta.env.PUBLIC_API_URL": JSON.stringify(process.env.PUBLIC_API_URL || "http://localhost:3000")
+      "import.meta.env.PUBLIC_API_URL": JSON.stringify(
+        process.env.PUBLIC_API_URL || "http://localhost:3000",
+      ),
     },
   },
 });

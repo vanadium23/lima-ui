@@ -1,0 +1,28 @@
+# Build outputs
+dist/
+.astro/
+*.d.ts
+
+# Dependencies
+node_modules/
+
+# Editor directories and files
+.husky/
+.idea/
+.vscode/
+*.iml
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Ignore all binary files
+*.svg
+*.woff2
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# Ignore lock files
+package-lock.json
