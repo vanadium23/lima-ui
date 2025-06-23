@@ -20,6 +20,12 @@ export enum IconButtonSize {
   Large = "large",
 }
 
+export enum IconButtonType {
+  Button = "button",
+  Submit = "submit",
+  Reset = "reset",
+}
+
 export enum IconButtonComponentType {
   Button = "button",
   Link = "link",
@@ -29,6 +35,7 @@ type IconButtonProps = {
   theme?: IconButtonTheme;
   size?: IconButtonSize;
   componentType?: IconButtonComponentType;
+  type?: IconButtonType;
   link?: string;
   iconName: IconName;
   isDisabled?: boolean;
@@ -48,6 +55,7 @@ export const IconButton = (props: Testable<IconButtonProps>) => {
       handleClick: () => {},
       componentType: IconButtonComponentType.Button,
       link: "",
+      type: IconButtonType.Button,
       ref: () => {},
     },
     props,
@@ -81,7 +89,7 @@ export const IconButton = (props: Testable<IconButtonProps>) => {
       }
     >
       <button
-        type="button"
+        type={mProps.type}
         onClick={() => {
           if (!mProps.isLoading) {
             mProps.handleClick();

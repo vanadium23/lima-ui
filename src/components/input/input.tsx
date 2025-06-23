@@ -37,9 +37,10 @@ type InputProps = {
   isRequired?: boolean;
   type?: InputType;
   defaultValue?: string;
-  autocomplete?: AutocompleteType; //TODO - Подумать Герману как это сделать получше (может Union type)
+  autocomplete?: AutocompleteType;
   isCountable?: boolean;
   label?: string;
+  onInput?: (e: InputEvent) => void;
 };
 
 export const Input = (props: Testable<InputProps>) => {
@@ -55,11 +56,18 @@ export const Input = (props: Testable<InputProps>) => {
       defaultValue: "",
       isCountable: true,
       label: "",
+      onInput: () => {},
     },
     props,
   );
 
   const [getCounter, setCounter] = createSignal(mProps.defaultValue.length);
+
+  const handleInput = (e: InputEvent) => {
+    const target = e.target as HTMLInputElement;
+    setCounter(target.value.length);
+    mProps.onInput(e);
+  };
 
   return (
     <div
@@ -80,9 +88,9 @@ export const Input = (props: Testable<InputProps>) => {
         value={mProps.defaultValue}
         data-test-id={mProps.testId}
         data-test-sub-id={mProps.testSubId}
-        onInput={(event) => setCounter(event.target.value.length)}
         autocomplete={mProps.autocomplete}
         aria-label={mProps.label}
+        onInput={handleInput}
       />
       <Show when={mProps.isCountable}>
         {/* Заложено на будущее, когда обертка нужна не только для других контролов, из-за бага при клике в инпут справа без контролов*/}

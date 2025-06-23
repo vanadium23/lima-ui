@@ -13,11 +13,11 @@ import {
   IconButtonTheme,
 } from "../../components/iconButton/iconButton.tsx";
 import { Logo } from "../../components/logo/logo.tsx";
-import { Search } from "../../components/search/search.tsx";
 import { ToggleIconButton } from "../../components/toggleIconButton/toggleIconButton.tsx";
 import { location } from "../../state/locationState.ts";
 import { searchState } from "../../state/searchState.ts";
 import { panelState } from "../../state/sidebarsStateManager.ts";
+import { Search } from "../../widgets/search/search.tsx";
 
 import "./header.css";
 

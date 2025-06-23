@@ -1,6 +1,7 @@
 import { For, mergeProps, Show } from "solid-js";
 
 import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
+import type { SearchList } from "../../widgets/editList/types.ts";
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
 import { SearchItem } from "../searchItem/searchItem.tsx";
 import {
@@ -17,11 +18,6 @@ export enum QuickSearchTheme {
 export enum QuickSearchSize {
   Medium = "medium",
 }
-
-type SearchList = {
-  name: string;
-  link: string;
-};
 
 export type QuickSearchProps = {
   theme?: QuickSearchTheme;
@@ -59,6 +55,8 @@ export const QuickSearch = (props: QuickSearchProps) => {
     }
   }
 
+  console.log(mProps.lists);
+
   return (
     <div
       class={`quickSearch quickSearch_${props.theme} quickSearch_${mProps.size}`}
@@ -84,7 +82,7 @@ export const QuickSearch = (props: QuickSearchProps) => {
                   return (
                     <SearchItem
                       text={list.name}
-                      link={list.link}
+                      link={list.id}
                       testId={DEFAULT_TEST_ID}
                       testSubId={index()}
                     />

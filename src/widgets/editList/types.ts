@@ -50,6 +50,11 @@ export type UpdatedList = {
   items: ItemToSend[];
 };
 
+export type SearchList = {
+  name: string;
+  id: string;
+};
+
 export type ScrollContainer = HTMLDivElement | undefined;
 
 export type ComparableList = {
