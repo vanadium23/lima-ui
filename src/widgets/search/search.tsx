@@ -11,7 +11,6 @@ import {
   SEARCH_DIALOG,
   SEARCH_INPUT,
 } from "../../../features/testIds.ts";
-import { LISTS } from "../../../utilities/addresses.ts";
 import { IconName } from "../../components/icon/icon.tsx";
 import {
   IconButton,
@@ -20,7 +19,6 @@ import {
 } from "../../components/iconButton/iconButton.tsx";
 import { Input, InputTheme } from "../../components/input/input.tsx";
 import { QuickSearch } from "../../components/quickSearch/quickSearch.tsx";
-import { location } from "../../state/locationState.ts";
 import { searchState } from "../../state/searchState.ts";
 import type { SearchList } from "../editList/types.ts";
 
@@ -62,8 +60,12 @@ export const Search = (props: SearchProps) => {
   let debounceTimer: ReturnType<typeof setTimeout>;
   let abortController: AbortController | null = null;
 
-  const executeSearch = async (query: string, backendURL?: string) => {
-    if (query === state.lastSubmitted) return;
+  const executeSearch = async (
+    query: string,
+    forceSubmit = false,
+    backendURL?: string,
+  ) => {
+    if (!forceSubmit && query === state.lastSubmitted) return;
 
     if (abortController) {
       abortController.abort();
@@ -131,6 +133,8 @@ export const Search = (props: SearchProps) => {
 
   const handleSubmit = (e: Event) => {
     e.preventDefault();
+    if (state.query.length >= LISTS_SEARCH_MINIMAL_QUERY)
+      executeSearch(state.query, true);
   };
 
   onCleanup(() => {
@@ -157,6 +161,7 @@ export const Search = (props: SearchProps) => {
           maxLength={LIST_TITLE_INPUT_LIMIT}
           testId={SEARCH_INPUT}
           onInput={handleInput}
+          onKeyDown={(e) => e.key === "Enter" && handleSubmit(e)}
         />
         <IconButton
           type={IconButtonType.Submit}
@@ -176,12 +181,7 @@ export const Search = (props: SearchProps) => {
         </div>
       </form>
 
-      <Show
-        when={
-          location() !== LISTS &&
-          state.query.length >= LISTS_SEARCH_MINIMAL_QUERY
-        }
-      >
+      <Show when={state.query.length >= LISTS_SEARCH_MINIMAL_QUERY}>
         <div class="search__dialog" data-test-id={SEARCH_DIALOG}>
           <QuickSearch
             query={state.query}

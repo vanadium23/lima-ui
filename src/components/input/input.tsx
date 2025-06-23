@@ -41,6 +41,7 @@ type InputProps = {
   isCountable?: boolean;
   label?: string;
   onInput?: (e: InputEvent) => void;
+  onKeyDown?: (e: KeyboardEvent) => void;
 };
 
 export const Input = (props: Testable<InputProps>) => {
@@ -57,6 +58,7 @@ export const Input = (props: Testable<InputProps>) => {
       isCountable: true,
       label: "",
       onInput: () => {},
+      onKeyDown: () => {},
     },
     props,
   );
@@ -91,6 +93,7 @@ export const Input = (props: Testable<InputProps>) => {
         autocomplete={mProps.autocomplete}
         aria-label={mProps.label}
         onInput={handleInput}
+        onKeyDown={(e) => mProps.onKeyDown(e)}
       />
       <Show when={mProps.isCountable}>
         {/* Заложено на будущее, когда обертка нужна не только для других контролов, из-за бага при клике в инпут справа без контролов*/}

@@ -43,6 +43,13 @@
   padding: var(--size-x3) var(--size-x8);
 }
 
+.quickSearch__totalResults {
+  padding: var(--size-x3) var(--size-x8);
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  color: var(--text-neutral-500);
+}
+
 @media (width <= 767px) {
   .quickSearch {
     min-width: 100%;

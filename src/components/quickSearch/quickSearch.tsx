@@ -4,10 +4,6 @@ import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import type { SearchList } from "../../widgets/editList/types.ts";
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
 import { SearchItem } from "../searchItem/searchItem.tsx";
-import {
-  TextButton,
-  TextButtonComponentType,
-} from "../textButton/textButton.tsx";
 
 import "./quickSearch.css";
 
@@ -41,21 +37,19 @@ export const QuickSearch = (props: QuickSearchProps) => {
     const lastTwoDigits = num % 100;
 
     if (lastTwoDigits >= 11 && lastTwoDigits <= 14) {
-      return `Найдено ${num} результатов. Смотреть все`;
+      return `Найдено ${num} результатов`;
     }
 
     const lastDigit = num % 10;
 
     if (lastDigit === 1) {
-      return `Найден ${num} результат. Смотреть все`;
+      return `Найден ${num} результат`;
     } else if (lastDigit >= 2 && lastDigit <= 4) {
-      return `Найдено ${num} результата. Смотреть все`;
+      return `Найдено ${num} результата`;
     } else {
-      return `Найдено ${num} результатов. Смотреть все`;
+      return `Найдено ${num} результатов`;
     }
   }
-
-  console.log(mProps.lists);
 
   return (
     <div
@@ -94,12 +88,9 @@ export const QuickSearch = (props: QuickSearchProps) => {
         </Show>
 
         <Show when={mProps.lists.length}>
-          <TextButton
-            componentType={TextButtonComponentType.Link}
-            link={`/lists/?search=${encodeURIComponent(mProps.query)}`}
-            text={`${getResultWord(mProps.lists.length)}`}
-            testId={DEFAULT_TEST_ID}
-          />
+          <span class="quickSearch__totalResults">
+            {getResultWord(mProps.lists.length)}
+          </span>
         </Show>
       </Show>
     </div>
