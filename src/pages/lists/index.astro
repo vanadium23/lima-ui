@@ -1,4 +1,8 @@
 ---
+import {
+  BACKEND_LISTS,
+  BACKEND_NON_EXISTING,
+} from "../../../utilities/addresses";
 import AppPage from "../../layouts/app/app.astro";
 import type { ListBase } from "../../widgets/editList/types";
 import { Lists } from "../../widgets/lists/lists";
@@ -7,15 +11,20 @@ let lists: ListBase[] = [];
 
 let listsRequestError = false;
 
-function urlParamError() {
-  throw new Error("URL param error present");
-}
-
 try {
+  let backendURL = import.meta.env.PUBLIC_API_URL;
+  let backendListsAddress = BACKEND_LISTS;
+
   if (Astro.url.searchParams.get("error") === "true") {
-    urlParamError();
+    backendListsAddress = BACKEND_NON_EXISTING;
   }
-  const response = await fetch(`${import.meta.env.PUBLIC_API_URL}/lists`);
+
+  const response = await fetch(`${backendURL}${backendListsAddress}`);
+
+  if (!response.ok) {
+    throw new Error("Network response was not ok " + response.statusText);
+  }
+
   lists = await response.json();
 } catch (error) {
   listsRequestError = true;

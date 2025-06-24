@@ -5,6 +5,7 @@ export const ERROR_SIGN = "?error=true";
 export const LISTS_WITH_NETWORK_ERROR = `${LISTS}${ERROR_SIGN}`;
 
 export const BACKEND_LISTS = "/lists/";
+export const BACKEND_NON_EXISTING = "/404/";
 
 export const ADDRESSES_MEANINGS = {
   "list creation": { address: LISTS, method: "POST" },
