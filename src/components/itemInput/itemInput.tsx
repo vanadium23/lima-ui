@@ -1,4 +1,10 @@
-import { createSignal, type JSXElement, mergeProps, onMount } from "solid-js";
+import {
+  createSignal,
+  type JSXElement,
+  mergeProps,
+  onCleanup,
+  onMount,
+} from "solid-js";
 
 import { CharCounter } from "../charCounter/charCounter.tsx";
 import type { Testable } from "../utilities/testable.ts";
@@ -55,12 +61,24 @@ export const ItemInput = (props: Testable<ItemInputProps>) => {
     });
   };
 
-  const remainingChars = () => mProps.maxLength - mProps.textAreaValue.length;
-
-  onMount(() => {
+  const handleResize = () => {
     if (textareaRef) {
       autoGrow(textareaRef);
     }
+  };
+
+  const remainingChars = () => mProps.maxLength - mProps.textAreaValue.length;
+
+  onMount(() => {
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("orientationchange", handleResize);
+  });
+
+  onCleanup(() => {
+    window.removeEventListener("resize", handleResize);
+    window.removeEventListener("orientationchange", handleResize);
   });
 
   return (
