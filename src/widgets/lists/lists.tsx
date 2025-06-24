@@ -1,4 +1,4 @@
-import { For, mergeProps, Show } from "solid-js";
+import { For, mergeProps, onMount, Show } from "solid-js";
 import { createStore } from "solid-js/store";
 
 import { LISTS_LIMIT } from "../../../configuration.ts";
@@ -23,11 +23,12 @@ import {
   isLimitReached,
   setIsLimitReached,
 } from "../../state/reachListsLimit.ts";
+import type { ListBase } from "../editList/types.ts";
 
 import "./lists.css";
 
 type ListsProps = {
-  defaultLists: Array<{ name: string; id: string; purpose: string }>;
+  defaultLists: ListBase[];
   listsRequestError: boolean;
 };
 
@@ -47,16 +48,16 @@ export const Lists = (props: ListsProps) => {
     setStore("removeError", removeError);
   }
 
-  //TODO Подозрительная ошибка появилась
-
   function removingListInStore(listIdToRemove: string) {
-    setStore("lists", (lists) =>
+    setStore("lists", (lists: ListBase[]) =>
       lists.filter((item) => item.id !== listIdToRemove),
     );
     setIsLimitReached(checkListsLimitReached());
   }
 
-  setIsLimitReached(checkListsLimitReached());
+  onMount(() => {
+    setIsLimitReached(checkListsLimitReached());
+  });
 
   return (
     <div slot="mainContent" class="lists">

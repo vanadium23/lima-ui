@@ -1,8 +1,9 @@
 ---
 import AppPage from "../../layouts/app/app.astro";
+import type { ListBase } from "../../widgets/editList/types";
 import { Lists } from "../../widgets/lists/lists";
 
-let lists: Array<{ name: string; id: string; purpose: string }> = [];
+let lists: ListBase[] = [];
 
 let listsRequestError = false;
 

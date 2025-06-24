@@ -8,11 +8,14 @@ export type Item = {
 
 export type Items = Item[];
 
-export type List = {
-  items: Items;
+export type ListBase = {
   id: string;
   name: string;
   purpose: string;
+};
+
+export type List = ListBase & {
+  items: Items;
   note: string;
 };
 
@@ -25,11 +28,8 @@ export type DragItem = {
 
 export type DragItems = DragItem[];
 
-export type DragList = {
+export type DragList = ListBase & {
   items: DragItems;
-  id: string;
-  name: string;
-  purpose: string;
   note: string;
 };
 
@@ -42,10 +42,7 @@ export type NewList = {
   items: ItemToSend[];
 };
 
-export type UpdatedList = {
-  id: string;
-  name: string;
-  purpose: string;
+export type UpdatedList = ListBase & {
   note: string;
   items: ItemToSend[];
 };
