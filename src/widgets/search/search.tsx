@@ -19,6 +19,7 @@ import {
 } from "../../components/iconButton/iconButton.tsx";
 import { Input, InputTheme } from "../../components/input/input.tsx";
 import { QuickSearch } from "../../components/quickSearch/quickSearch.tsx";
+import { notificationState } from "../../state/pushNotificationStateManager.ts";
 import { searchState } from "../../state/searchState.ts";
 import type { SearchList } from "../editList/types.ts";
 
@@ -65,7 +66,11 @@ export const Search = (props: SearchProps) => {
     forceSubmit = false,
     backendURL?: string,
   ) => {
-    if (!forceSubmit && query === state.lastSubmitted) return;
+    if (!forceSubmit && query === state.lastSubmitted) {
+      setState("isLoading", false);
+
+      return;
+    }
 
     if (abortController) {
       abortController.abort();
@@ -95,14 +100,22 @@ export const Search = (props: SearchProps) => {
         signal: abortController.signal,
       });
 
-      if (!response.ok)
+      if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
       setState("results", await response.json());
     } catch (error) {
       if (error instanceof Error && error.name === "AbortError") {
         return;
       }
+
+      notificationState.pushNetworkError(
+        "Ошибка",
+        "Нет соединения с сервером, попробуйте еще раз",
+      );
+
+      setState("results", []);
     } finally {
       setState("isLoading", false);
       abortController = null;
