@@ -15,7 +15,7 @@ Feature: Seeing the basis of List view page
     Then I expect to fully see the collapsed "list note" accordion ready for expanding
     Then I expect to see list items area
     Then I expect to see the "first" item input enabled
-    Then I expect to see the "automatic" item input enabled
+    Then I expect to have the "automatic" item input enabled
     Then I expect to see the "save" button "disabled" with the following text: "Сохранить"
     And I ensure the tools panel is open
     Then I expect to see the "add list item" button enabled
@@ -40,7 +40,7 @@ Feature: Seeing the basis of List view page
     Then I expect to fully see the collapsed "list note" accordion ready for expanding
     Then I expect to see list items area
     Then I expect to see the "first" item input enabled
-    Then I expect to see the "automatic" item input enabled
+    Then I expect to have the "automatic" item input enabled
     Then I expect to see the "save" button "disabled" with the following text: "Сохранить"
     And I ensure the tools panel is open
     Then I expect to see the "add list item" button enabled

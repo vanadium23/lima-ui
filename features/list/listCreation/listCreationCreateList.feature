@@ -22,7 +22,7 @@ Feature: Successfully creating list with correct data
     Then I expect to see the "list note" text area disabled
     Then I expect to see list items area
     Then I expect to see the "first" item input disabled
-    Then I expect to see the "automatic" item input disabled
+    Then I expect to have the "automatic" item input disabled
     Then I expect to see the "save" button in the loading state
     And I ensure the tools panel is open
     Then I expect to see the "add list item" button disabled
@@ -49,7 +49,7 @@ Feature: Successfully creating list with correct data
     Then I expect to see the "list note" text area enabled
     Then I expect to see list items area
     Then I expect to see the "first" item input enabled
-    Then I expect to see the "automatic" item input enabled
+    Then I expect to have the "automatic" item input enabled
     Then I expect to see the "save" button disabled
     And I ensure the tools panel is open
     Then I expect to see the "add list item" button enabled

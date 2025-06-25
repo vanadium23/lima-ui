@@ -36,7 +36,6 @@ Feature: Removing a list from the List view page
     Then I expect to see the following number of list stripes: 0
     Then I expect to see the message about lists absence
 
-
   Scenario: Unsuccessful list removal leads to error message appearance
     When I add a list
     And I ensure the tools panel is open
@@ -68,7 +67,6 @@ Feature: Removing a list from the List view page
     And I press the visible "confirm list removal" button
     Then I expect not to see the "list removal" error
 
-
   Scenario: Unsuccessful list removal accompanied by reached items limit leads to error and warning at the same time
     When I add a list
     And I ensure the tools panel is open
@@ -97,7 +95,7 @@ Feature: Removing a list from the List view page
     Then I expect to see the "list note" text area disabled
     Then I expect to see list items area
     Then I expect to see the "first" item input disabled
-    Then I expect to see the "automatic" item input disabled
+    Then I expect to have the "automatic" item input disabled
     And I ensure the tools panel is open
     Then I expect to see the "add list item" button disabled
     Then I expect to see the "save" button disabled
