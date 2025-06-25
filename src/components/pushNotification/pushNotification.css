@@ -1,50 +1,77 @@
 .pushNotification {
-  color: black;
-  border-radius: var(--size-x4);
-  width: 38rem;
+  display: flex;
+  width: 100%;
   position: relative;
-  border: 0.1rem solid var(--neutral-200, #eee);
-  opacity: 0.96;
-  background: var(--neutral-150, #f9f9f9);
+  border-style: solid;
   box-shadow: 0 var(--size-x1) var(--size-x11) 0 rgba(0 0 0 / 25%);
 }
 
-.pushNotification__wrapper {
+.pushNotification__title {
+  flex-grow: 1;
+}
+
+.pushNotification__inner {
   display: flex;
-  padding: var(--size-x3) var(--size-x4);
-  gap: var(--size-x4);
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .pushNotification__icon {
-  padding: var(--size-x3);
-  width: var(--size-x16);
-  height: var(--size-x16);
+  border-style: solid;
+}
+
+.pushNotification_dangerous {
+  color: var(--text-neutral-800);
+  background-color: var(--neutral-150);
+  border-color: var(--neutral-200);
+  opacity: 0.96;
+}
+
+.pushNotification_dangerous .pushNotification__icon {
+  background-color: var(--dangerous-500);
+  color: var(--neutral-100);
+  border-color: var(--dangerous-500);
+}
+
+.pushNotification_medium {
+  gap: var(--size-x6);
   border-radius: var(--size-x4);
-  text-align-last: center;
+  max-width: 32rem;
+  border-width: 0.1rem;
+  padding-left: var(--size-x5);
 }
 
-.pushNotification__icon_dangerous {
-  background-color: red;
+.pushNotification_medium .pushNotification__iconWrapper {
+  padding: var(--size-x4) 0 var(--size-x4) 0;
 }
 
-.pushNotification__title {
-  margin: 0;
-  font-size: var(--size-x7);
-  font-style: normal;
+.pushNotification_medium .pushNotification__icon {
+  border-width: 0.1rem;
+  width: var(--size-x18);
+  height: var(--size-x18);
+  border-radius: var(--size-x4);
+  padding: var(--size-x3);
+}
+
+.pushNotification_medium .pushNotification__header {
+  display: flex;
+  gap: var(--size-x4);
+}
+
+.pushNotification_medium .pushNotification__title {
+  padding-top: var(--size-x4);
+  font-size: 1.5rem;
   font-weight: 600;
-  line-height: var(--size-x9);
+  line-height: 1.8rem;
 }
 
-.pushNotification__description {
-  margin: 0 var(--size-x3) 0 0;
-  font-size: var(--size-x7);
-  font-style: normal;
+.pushNotification_medium .pushNotification__close {
+  padding: var(--size-x2) var(--size-x2) 0 0;
+}
+
+.pushNotification_medium .pushNotification__text {
+  padding: 0 var(--size-x4) var(--size-x4) 0;
+  font-size: 1.4rem;
   font-weight: 500;
-  line-height: var(--size-x9);
-}
-
-.pushNotification__closeBtn {
-  position: absolute;
-  top: 0;
-  right: 0;
+  line-height: 1.8rem;
 }

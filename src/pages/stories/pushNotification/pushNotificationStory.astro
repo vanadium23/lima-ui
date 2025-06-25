@@ -1,31 +1,44 @@
 ---
 import { DEFAULT_TEST_ID } from "../../../../features/testIds";
+import { IconName } from "../../../components/icon/icon";
 import {
   PushNotification,
+  PushNotificationSize,
   PushNotificationTheme,
 } from "../../../components/pushNotification/pushNotification.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
+
+const themes = Object.values(PushNotificationTheme);
+const sizes = Object.values(PushNotificationSize);
 ---
 
-<StorybookPage title="PushNotification">
-  <div class="demoThemeWrapper">
-    <h3 class="demoThemeWrapper__title">Without Themes</h3>
-    <div class="grid grid_1Col">
-      <span class="chead"></span>
-      <span class="chead">Default</span>
+<StorybookPage title="Push Notification">
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 class="demoThemeWrapper__title">{theme}</h3>
+        <div class="grid grid_1Col">
+          <span class="chead" />
+          <span class="chead">Default</span>
 
-      <span class="rhead">Universal</span>
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
 
-      <PushNotification
-        client:only="solid-js"
-        isOpen={true}
-        title="Заголовок"
-        description="Описание"
-        theme={PushNotificationTheme.Dangerous}
-        onCloseNotification={() => {}}
-        image="https://via.placeholder.com/150"
-        testId={DEFAULT_TEST_ID}
-      />
-    </div>
-  </div>
+              <PushNotification
+                client:only="solid-js"
+                isOpen={true}
+                title="Ошибка"
+                iconName={IconName.GlobeSimpleX}
+                description="Нет соединения с сервером"
+                theme={PushNotificationTheme.Dangerous}
+                onClose={() => {}}
+                testId={DEFAULT_TEST_ID}
+              />
+            </>
+          ))}
+        </div>
+      </div>
+    ))
+  }
 </StorybookPage>

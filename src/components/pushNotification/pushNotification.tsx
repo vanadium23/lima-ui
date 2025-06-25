@@ -1,7 +1,7 @@
 import { mergeProps } from "solid-js";
 
 import { DEFAULT_TEST_ID } from "../../../features/testIds";
-import { Icon, IconName } from "../icon/icon";
+import { Icon, IconName, IconSize } from "../icon/icon";
 import {
   IconButton,
   IconButtonSize,
@@ -15,53 +15,60 @@ export enum PushNotificationTheme {
   Dangerous = "dangerous",
 }
 
+export enum PushNotificationSize {
+  Medium = "medium",
+}
+
 type PushNotification = {
-  image: string;
-  isOpen: boolean;
+  isOpen?: boolean;
   title: string;
   description: string;
-  theme: PushNotificationTheme;
-  onCloseNotification: () => void;
+  theme?: PushNotificationTheme;
+  size?: PushNotificationSize;
+  iconName: IconName;
+  onClose?: () => void;
 };
 
 export const PushNotification = (props: Testable<PushNotification>) => {
   const mProps: Testable<Required<PushNotification>> = mergeProps(
     {
-      isOpen: false,
-      title: "Ошибка",
-      description:
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit.Dolore, beatae.",
-      onCloseNotification: () => {},
-      theme: "dangerous",
+      isOpen: true,
+      theme: PushNotificationTheme.Dangerous,
+      size: PushNotificationSize.Medium,
+      onClose: () => {},
     },
     props,
   );
 
+  const handleClose = () => {
+    mProps.onClose?.();
+  };
+
   return (
-    <div class="pushNotification">
-      <div class="pushNotification__wrapper">
-        <div
-          class={`pushNotification__icon pushNotification__icon_${mProps.theme}`}
-        >
-          <Icon name={IconName.GlobeSimpleX} />
-        </div>
-        <div class="pushNotification__body">
-          <h4 class="pushNotification__title">{mProps.title}</h4>
-          <p class="pushNotification__description">{mProps.description}</p>
+    <div
+      class={`pushNotification pushNotification_${mProps.theme} pushNotification_${mProps.size}`}
+    >
+      <div class="pushNotification__iconWrapper">
+        <div class="pushNotification__icon">
+          <Icon name={mProps.iconName} size={IconSize.Large} />
         </div>
       </div>
-      <div class="pushNotification__closeBtn">
-        <IconButton
-          theme={IconButtonTheme.Primary}
-          size={IconButtonSize.MediumEmbedded}
-          iconName={IconName.X}
-          ariaLabel={`Закрыть диалоговое окно ${mProps.title}`}
-          handleClick={() => {
-            mProps.onCloseNotification();
-          }}
-          testId={DEFAULT_TEST_ID}
-          testSubId={mProps.testSubId ?? ""}
-        />
+      <div class="pushNotification__inner">
+        <div class="pushNotification__header">
+          <span class="pushNotification__title">{mProps.title}</span>
+          <div class="pushNotification__close">
+            <IconButton
+              theme={IconButtonTheme.Primary}
+              size={IconButtonSize.MediumEmbedded}
+              iconName={IconName.X}
+              ariaLabel={`Закрыть уведомление ${mProps.title}`}
+              handleClick={handleClose}
+              testId={DEFAULT_TEST_ID}
+              testSubId={mProps.testSubId ?? ""}
+            />
+          </div>
+        </div>
+        <span class="pushNotification__text">{mProps.description}</span>
       </div>
     </div>
   );

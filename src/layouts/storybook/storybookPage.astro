@@ -10,6 +10,59 @@ interface Props {
 }
 
 const { title } = Astro.props;
+
+const components = [
+  { name: "Accordion", href: "/stories/accordion/accordionStory/" },
+  { name: "Button", href: "/stories/button/buttonStory/" },
+  { name: "Char Counter", href: "/stories/charCounter/charCounterStory/" },
+  { name: "Checkbox", href: "/stories/checkbox/checkboxStory/" },
+  {
+    name: "Custom Quick Search",
+    href: "/stories/quickSearch/quickSearchStory/",
+  },
+  { name: "Dialog", href: "/stories/dialog/dialogStory/" },
+  { name: "Divider", href: "/stories/divider/dividerStory/" },
+  { name: "Drag Handle", href: "/stories/dragHandle/dragHandleStory/" },
+  { name: "Dropdown Menu", href: "/stories/dropdownMenu/dropdownMenuStory/" },
+  {
+    name: "Editable Title",
+    href: "/stories/editableTitle/editableTitleStory/",
+  },
+  { name: "Header", href: "/stories/header/headerStory/" },
+  { name: "Icon", href: "/stories/icon/iconStory/" },
+  { name: "Icon Button", href: "/stories/iconButton/iconButtonStory/" },
+  { name: "Input", href: "/stories/input/inputStory/" },
+  { name: "Item Input", href: "/stories/itemInput/itemInputStory/" },
+  { name: "List Item", href: "/stories/listItem/listItemStory/" },
+  { name: "List Stripe", href: "/stories/listStripe/listStripeStory/" },
+  { name: "Logo", href: "/stories/logo/logoStory/" },
+  { name: "Menu Item", href: "/stories/menuItem/menuItemStory/" },
+  { name: "Nav", href: "/stories/nav/navStory/" },
+  { name: "Nav Item", href: "/stories/navItem/navItemStory/" },
+  { name: "Note", href: "/stories/note/noteStory/" },
+  { name: "Page Error", href: "/stories/pageError/pageErrorStory/" },
+  { name: "Paste Content", href: "/stories/pasteContent/pasteContentStory/" },
+  {
+    name: "PushNotification",
+    href: "/stories/pushNotification/pushNotificationStory/",
+  },
+  { name: "Search Item", href: "/stories/searchItem/searchItemStory/" },
+  { name: "Switch", href: "/stories/switch/switchStory/" },
+  { name: "Text Button", href: "/stories/textButton/textButtonStory/" },
+  { name: "Textarea", href: "/stories/textarea/textareaStory/" },
+  { name: "Title", href: "/stories/title/titleStory/" },
+  {
+    name: "Toggle Icon Button",
+    href: "/stories/toggleIconButton/toggleIconButtonStory/",
+  },
+  { name: "Tools Button", href: "/stories/toolsButton/toolsButtonStory/" },
+  { name: "Tools Panel", href: "/stories/toolsPanel/toolsPanelStory/" },
+  { name: "UserButton", href: "/stories/userButton/userButtonStory/" },
+];
+
+const sortedComponents = components.sort((a, b) =>
+  a.name.localeCompare(b.name, "ru"),
+);
 ---
 
 <!doctype html>
@@ -25,9 +78,9 @@ const { title } = Astro.props;
     <meta content="#ffffff" name="theme-color" />
 
     <!--
-      Ensures no FOUT (Flash of Unstyled Text).
-      Font changes also influence how our stretching text areas are initially drawn.
-    -->
+Ensures no FOUT (Flash of Unstyled Text).
+Font changes also influence how our stretching text areas are initially drawn.
+-->
     <link
       rel="preload"
       href="/fonts/montserrat/files/montserrat-normal-cyrillic.woff2"
@@ -111,141 +164,13 @@ const { title } = Astro.props;
             <span class="storybookSidebar__sectionTitle">Pages</span>
             <a class="storybookSidebar__navItem" href="/">Lima App</a>
             <span class="storybookSidebar__sectionTitle">Components</span>
-            <a
-              class="storybookSidebar__navItem"
-              href="/stories/accordion/accordionStory/">Accordion</a
-            >
-            <a
-              class="storybookSidebar__navItem"
-              href="/stories/button/buttonStory/">Button</a
-            >
-            <a
-              class="storybookSidebar__navItem"
-              href="/stories/charCounter/charCounterStory/">Char Counter</a
-            >
-            <a
-              class="storybookSidebar__navItem"
-              href="/stories/checkbox/checkboxStory/">Checkbox</a
-            >
-            <a
-              class="storybookSidebar__navItem"
-              href="/stories/dialog/dialogStory/">Dialog</a
-            >
-            <a
-              class="storybookSidebar__navItem"
-              href="/stories/divider/dividerStory/">Divider</a
-            >
-            <a
-              class="storybookSidebar__navItem"
-              href="/stories/dropdownMenu/dropdownMenuStory/">Dropdown Menu</a
-            >
-            <a
-              class="storybookSidebar__navItem"
-              href="/stories/dragHandle/dragHandleStory/">Drag Handle</a
-            >
-            <a
-              class="storybookSidebar__navItem"
-              href="/stories/editableTitle/editableTitleStory/"
-              >Editable Title</a
-            >
-            <a
-              class="storybookSidebar__navItem"
-              href="/stories/header/headerStory/">Header</a
-            >
-            <a class="storybookSidebar__navItem" href="/stories/icon/iconStory/"
-              >Icon</a
-            >
-            <a
-              class="storybookSidebar__navItem"
-              href="/stories/iconButton/iconButtonStory/">Icon Button</a
-            >
-            <a
-              class="storybookSidebar__navItem"
-              href="/stories/input/inputStory/">Input</a
-            >
-            <a
-              class="storybookSidebar__navItem"
-              href="/stories/listItem/listItemStory/">List Item</a
-            >
-            <a
-              class="storybookSidebar__navItem"
-              href="/stories/itemInput/itemInputStory/">Item Input</a
-            >
-            <a
-              class="storybookSidebar__navItem"
-              href="/stories/listStripe/listStripeStory/">List Stripe</a
-            >
-            <a class="storybookSidebar__navItem" href="/stories/logo/logoStory/"
-              >Logo</a
-            >
-            <a class="storybookSidebar__navItem" href="/stories/nav/navStory/"
-              >Nav</a
-            >
-            <a
-              class="storybookSidebar__navItem"
-              href="/stories/navItem/navItemStory/">Nav Item</a
-            >
-            <a
-              class="storybookSidebar__navItem"
-              href="/stories/menuItem/menuItemStory/">Menu Item</a
-            >
-            <a class="storybookSidebar__navItem" href="/stories/note/noteStory/"
-              >Note</a
-            >
-            <a
-              class="storybookSidebar__navItem"
-              href="/stories/pageError/pageErrorStory/">Page Error</a
-            >
-            <a
-              class="storybookSidebar__navItem"
-              href="/stories/pasteContent/pasteContentStory/">Paste Content</a
-            >
-            <a
-              class="storybookSidebar__navItem"
-              href="/stories/searchItem/searchItemStory/">Search Item</a
-            >
-            <a
-              class="storybookSidebar__navItem"
-              href="/stories/quickSearch/quickSearchStory/"
-              >Custom Quick Search</a
-            >
-            <a
-              class="storybookSidebar__navItem"
-              href="/stories/switch/switchStory/">Switch</a
-            >
-            <a
-              class="storybookSidebar__navItem"
-              href="/stories/textButton/textButtonStory/">Text Button</a
-            >
-            <a
-              class="storybookSidebar__navItem"
-              href="/stories/textarea/textareaStory/">Textarea</a
-            >
-            <a
-              class="storybookSidebar__navItem"
-              href="/stories/title/titleStory/">Title</a
-            >
-            <a
-              class="storybookSidebar__navItem"
-              href="/stories/toggleIconButton/toggleIconButtonStory/"
-              >Toggle Icon Button</a
-            >
-            <a
-              class="storybookSidebar__navItem"
-              href="/stories/toolsPanel/toolsPanelStory/">Tools Panel</a
-            >
-            <a
-              class="storybookSidebar__navItem"
-              href="/stories/toolsButton/toolsButtonStory/">Tools Button</a
-            >
-            <a
-              class="storybookSidebar__navItem"
-              href="/stories/userButton/userButtonStory/">UserButton</a
-            >
-            <a
-              class="storybookSidebar__navItem"
-              href="/stories/pushNotification/pushNotification/">PushNotification</a
-            >
+            {
+              sortedComponents.map((component) => (
+                <a class="storybookSidebar__navItem" href={component.href}>
+                  {component.name}
+                </a>
+              ))
+            }
           </div>
         </div>
       </aside>
