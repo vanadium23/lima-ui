@@ -1,5 +1,6 @@
 ---
 import { DEFAULT_TAB_TITLE, suffixTabTitle } from "../../../utilities/tabTitle";
+import { PushNotificationWrapper } from "../../components/pushNotificationWrapper/pushNotificationWrapper.tsx";
 import { Header } from "../../organisms/header/header";
 import { Sidebar } from "../../organisms/sidebar/sidebar";
 
@@ -26,9 +27,9 @@ interface Props {
     <meta content="#ffffff" name="theme-color" />
 
     <!--
-      Ensures no FOUT (Flash of Unstyled Text).
-      Font changes also influence how our stretching text areas are initially drawn.
-    -->
+Ensures no FOUT (Flash of Unstyled Text).
+Font changes also influence how our stretching text areas are initially drawn.
+-->
     <link
       rel="preload"
       href="/fonts/montserrat/files/montserrat-normal-cyrillic.woff2"
@@ -77,6 +78,8 @@ interface Props {
       <main class="main">
         <slot name="mainContent" />
       </main>
+
+      <PushNotificationWrapper client:only="solid-js" />
     </div>
 
     <footer></footer>
