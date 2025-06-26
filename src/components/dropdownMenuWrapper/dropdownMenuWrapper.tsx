@@ -51,6 +51,7 @@ export const DropdownMenuWrapper = (props: Testable<DropdownMenuWrapper>) => {
         ref={setMenuButtonRef}
         handleClick={() => setIsMenuOpen((prev) => !prev)}
         isLoading={mProps.isLoading}
+        isDisabled={mProps.isDisabled}
       />
       <Show when={isMenuOpen()}>
         <DropdownMenu

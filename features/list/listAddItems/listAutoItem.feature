@@ -5,7 +5,7 @@ Feature: Seeing the basis of the automatically added item
 
   Scenario: Seeing the new item automatically added
     When I type some text with length less or equal to the one of "first item" input limit
-    Then I expect to see the "automatic" item input enabled
+    Then I expect to have the "automatic" item input enabled
 
   Scenario: Not seeing the automatically added item when the first item is removed
     When I type some text with length less or equal to the one of "first item" input limit
@@ -16,7 +16,7 @@ Feature: Seeing the basis of the automatically added item
 
   Scenario: Seeing the automatically added item removed when the previous is cleared
     When I type some text with length less or equal to the one of "first item" input limit
-    Then I expect to see the "automatic" item input enabled
+    Then I expect to have the "automatic" item input enabled
     And I clear the "first item" input
     Then I expect not to see the "automatic" item input
 
@@ -40,7 +40,7 @@ Feature: Seeing the basis of the automatically added item
     And I press the visible "remove list item" menu item
     Then I expect not to see the "automatic" item input
     And I type some text with length less or equal to the one of "first item" input limit
-    Then I expect to see the "automatic" item input enabled
+    Then I expect to have the "automatic" item input enabled
 
   Scenario: Automatically added item is not restored when modifying the not last list item
     When I type some text with length less or equal to the one of "first item" input limit

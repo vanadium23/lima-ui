@@ -22,7 +22,7 @@ Feature: Controls state after list update
     Then I expect to see the "list note" text area enabled
     Then I expect to see list items area
     Then I expect to see the "first" item input enabled
-    Then I expect to see the "automatic" item input enabled
+    Then I expect to have the "automatic" item input enabled
     Then I expect to see the "save" button disabled
     And I ensure the tools panel is open
     Then I expect to see the "add list item" button enabled
@@ -52,7 +52,7 @@ Feature: Controls state after list update
     Then I expect to see the "list note" text area enabled
     Then I expect to see list items area
     Then I expect to see the "first" item input enabled
-    Then I expect to see the "automatic" item input enabled
+    Then I expect to have the "automatic" item input enabled
     Then I expect to see the "save" button enabled
     And I ensure the tools panel is open
     Then I expect to see the "add list item" button enabled
