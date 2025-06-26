@@ -58,11 +58,7 @@ const components = [
   { name: "Tools Button", href: "/stories/toolsButton/toolsButtonStory/" },
   { name: "Tools Panel", href: "/stories/toolsPanel/toolsPanelStory/" },
   { name: "UserButton", href: "/stories/userButton/userButtonStory/" },
-];
-
-const sortedComponents = components.sort((a, b) =>
-  a.name.localeCompare(b.name, "ru"),
-);
+].sort((a, b) => a.name.localeCompare(b.name, "en"));
 ---
 
 <!doctype html>
@@ -165,7 +161,7 @@ Font changes also influence how our stretching text areas are initially drawn.
             <a class="storybookSidebar__navItem" href="/">Lima App</a>
             <span class="storybookSidebar__sectionTitle">Components</span>
             {
-              sortedComponents.map((component) => (
+              components.map((component) => (
                 <a class="storybookSidebar__navItem" href={component.href}>
                   {component.name}
                 </a>

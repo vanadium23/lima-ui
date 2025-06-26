@@ -1,6 +1,7 @@
 import { For, Show } from "solid-js";
 import { Portal } from "solid-js/web";
 
+import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import { notificationState } from "../../state/pushNotificationStateManager.ts";
 import {
   PushNotification,
@@ -11,9 +12,9 @@ import "./pushNotificationWrapper.css";
 
 export const PushNotificationWrapper = () => {
   return (
-    <Portal>
-      <div class="pushNotificationWrapper">
-        <Show when={notificationState.notifications().length > 0}>
+    <Show when={notificationState.notifications().length > 0}>
+      <Portal>
+        <div class="pushNotificationWrapper">
           <For each={notificationState.notifications()}>
             {(notification) => (
               <div class="pushNotificationWrapper__item">
@@ -23,14 +24,14 @@ export const PushNotificationWrapper = () => {
                   iconName={notification.iconName}
                   theme={PushNotificationTheme.Dangerous}
                   onClose={() => notificationState.remove(notification.id)}
-                  testId="notification"
+                  testId={DEFAULT_TEST_ID}
                   testSubId={notification.id}
                 />
               </div>
             )}
           </For>
-        </Show>
-      </div>
-    </Portal>
+        </div>
+      </Portal>
+    </Show>
   );
 };

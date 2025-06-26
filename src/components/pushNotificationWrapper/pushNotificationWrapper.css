@@ -13,7 +13,6 @@
 .pushNotificationWrapper__item {
   pointer-events: auto;
   animation: open-notification 0.3s ease-out;
-  transition: all 0.3s ease-out;
 }
 
 @keyframes open-notification {
@@ -25,11 +24,5 @@
   to {
     transform: translateX(0);
     opacity: 1;
-  }
-}
-
-@media (width <= 767px) {
-  .pushNotificationWrapper {
-    right: var(--size-x4);
   }
 }

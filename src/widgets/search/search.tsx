@@ -43,6 +43,7 @@ type SearchState = {
   isLoading: boolean;
   lastSubmitted: string;
   results: SearchList[];
+  serverError: boolean;
 };
 
 export const Search = (props: SearchProps) => {
@@ -56,6 +57,7 @@ export const Search = (props: SearchProps) => {
     isLoading: false,
     lastSubmitted: "",
     results: [],
+    serverError: false,
   });
 
   let debounceTimer: ReturnType<typeof setTimeout>;
@@ -104,11 +106,18 @@ export const Search = (props: SearchProps) => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      setState("results", await response.json());
+      setState({
+        results: await response.json(),
+        serverError: false,
+      });
+
+      notificationState.clearNetworkErrors();
     } catch (error) {
       if (error instanceof Error && error.name === "AbortError") {
         return;
       }
+
+      setState("serverError", true);
 
       notificationState.pushNetworkError(
         "Ошибка",
@@ -194,7 +203,11 @@ export const Search = (props: SearchProps) => {
         </div>
       </form>
 
-      <Show when={state.query.length >= LISTS_SEARCH_MINIMAL_QUERY}>
+      <Show
+        when={
+          state.query.length >= LISTS_SEARCH_MINIMAL_QUERY && !state.serverError
+        }
+      >
         <div class="search__dialog" data-test-id={SEARCH_DIALOG}>
           <QuickSearch
             query={state.query}

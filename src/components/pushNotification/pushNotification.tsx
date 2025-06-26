@@ -19,8 +19,7 @@ export enum PushNotificationSize {
   Medium = "medium",
 }
 
-type PushNotification = {
-  isOpen?: boolean;
+type PushNotificationProps = {
   title: string;
   description: string;
   theme?: PushNotificationTheme;
@@ -29,20 +28,15 @@ type PushNotification = {
   onClose?: () => void;
 };
 
-export const PushNotification = (props: Testable<PushNotification>) => {
-  const mProps: Testable<Required<PushNotification>> = mergeProps(
+export const PushNotification = (props: Testable<PushNotificationProps>) => {
+  const mProps: Testable<Required<PushNotificationProps>> = mergeProps(
     {
-      isOpen: true,
       theme: PushNotificationTheme.Dangerous,
       size: PushNotificationSize.Medium,
       onClose: () => {},
     },
     props,
   );
-
-  const handleClose = () => {
-    mProps.onClose?.();
-  };
 
   return (
     <div
@@ -62,7 +56,7 @@ export const PushNotification = (props: Testable<PushNotification>) => {
               size={IconButtonSize.MediumEmbedded}
               iconName={IconName.X}
               ariaLabel={`Закрыть уведомление ${mProps.title}`}
-              handleClick={handleClose}
+              handleClick={mProps.onClose}
               testId={DEFAULT_TEST_ID}
               testSubId={mProps.testSubId ?? ""}
             />

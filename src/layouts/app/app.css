@@ -16,6 +16,7 @@ body {
 @media (width <= 1023px) {
   .appContainer__nav {
     position: absolute;
+    z-index: 1;
     height: calc(100dvh - 4.8rem);
   }
 }

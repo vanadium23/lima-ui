@@ -42,7 +42,7 @@
 }
 
 .pushNotification_medium .pushNotification__iconWrapper {
-  padding: var(--size-x4) 0 var(--size-x4) 0;
+  padding: var(--size-x4) 0;
 }
 
 .pushNotification_medium .pushNotification__icon {
@@ -60,7 +60,7 @@
 
 .pushNotification_medium .pushNotification__title {
   padding-top: var(--size-x4);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 600;
   line-height: 1.8rem;
 }

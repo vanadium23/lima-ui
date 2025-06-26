@@ -7,6 +7,7 @@ export type NotificationData = {
   title: string;
   description: string;
   iconName: IconName;
+  type?: "network-error" | "general";
 };
 
 const [notifications, setNotifications] = createSignal<NotificationData[]>([]);
@@ -21,6 +22,7 @@ export const notificationState = {
       title,
       description,
       iconName: IconName.GlobeSimpleX,
+      type: "network-error",
     };
 
     setNotifications((prev) => [...prev, notification]);
@@ -30,6 +32,10 @@ export const notificationState = {
     }, 15000);
 
     return id;
+  },
+
+  clearNetworkErrors: () => {
+    setNotifications((prev) => prev.filter((n) => n.type !== "network-error"));
   },
 
   remove: (id: string) => {
