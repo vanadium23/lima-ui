@@ -19,8 +19,8 @@
 }
 
 .button_medium {
-  font-size: 1.4rem;
-  line-height: 1.8rem;
+  font-size: 1.6rem;
+  line-height: 2rem;
   min-width: 9rem;
   gap: var(--size-x2);
   padding: var(--size-x3) var(--size-x8);

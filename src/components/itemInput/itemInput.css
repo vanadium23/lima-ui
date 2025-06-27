@@ -58,9 +58,9 @@
 }
 
 .itemInput_medium .itemInput__inner {
-  min-height: 1.8rem;
-  font-size: 1.4rem;
-  line-height: 1.8rem;
+  min-height: 2rem;
+  font-size: 1.6rem;
+  line-height: 2rem;
 }
 
 .itemInput_primary {

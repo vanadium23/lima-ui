@@ -23,10 +23,6 @@ type NavItemProps = {
   isDisabled?: boolean;
 };
 
-const iconSize = {
-  [NavItemSize.Medium]: IconSize.Large,
-};
-
 export const NavItem = (props: Testable<NavItemProps>) => {
   const mProps: Testable<Required<NavItemProps>> = mergeProps(
     {
@@ -50,7 +46,7 @@ export const NavItem = (props: Testable<NavItemProps>) => {
       }}
       aria-disabled={mProps.isDisabled}
     >
-      <Icon name={mProps.icon} size={iconSize[mProps.size]} />
+      <Icon name={mProps.icon} size={IconSize.Medium} />
       <span class="navItem__text">{mProps.text}</span>
     </a>
   );

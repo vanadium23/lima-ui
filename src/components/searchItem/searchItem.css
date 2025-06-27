@@ -11,6 +11,10 @@
   text-decoration: none;
 }
 
+.searchItem__text:active {
+  transform: translateY(0.1rem);
+}
+
 .searchItem:focus .searchItem__text {
   outline: none;
 }
@@ -36,10 +40,6 @@
 
 .searchItem_primary .searchItem__text:active {
   background-color: var(--neutral-200);
-}
-
-.searchItem__text:active {
-  transform: translateY(0.1rem);
 }
 
 @media (hover: hover) {

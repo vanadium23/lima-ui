@@ -37,8 +37,8 @@
 
 .accordion_medium .accordion__header {
   padding: var(--size-x3) var(--size-x8);
-  font-size: 1.4rem;
-  line-height: 1.8rem;
+  font-size: 1.6rem;
+  line-height: 2rem;
 }
 
 .accordion_medium .accordion__content {

@@ -2,8 +2,8 @@
   display: flex;
   flex-shrink: 0;
   cursor: pointer;
-  border: none;
   touch-action: none;
+  border-style: solid;
 }
 
 .dragHandle:active:not(.dragHandle_disabled) {
@@ -12,20 +12,24 @@
 
 .dragHandle_medium {
   padding: var(--size-x3);
+  border-width: 0.1rem;
 }
 
 .dragHandle_primary {
   color: var(--neutral-800);
   border-radius: var(--size-x4);
   background: transparent;
+  border-color: transparent;
 }
 
 .dragHandle_primary:hover:not(.dragHandle_disabled) {
   background-color: var(--primary-100);
+  border-color: var(--primary-100);
 }
 
 .dragHandle_primary:active:not(.dragHandle_disabled) {
   background-color: var(--primary-200);
+  border-color: var(--primary-200);
 }
 
 .dragHandle_disabled {
