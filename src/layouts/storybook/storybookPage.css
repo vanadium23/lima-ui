@@ -233,6 +233,10 @@ h2 {
   background-color: rgb(83 83 83 / 100%);
 }
 
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
 .storybookSidebar__navItem {
   color: var(--storybook-demo-nav-item-color);
   font-size: 1.6rem;

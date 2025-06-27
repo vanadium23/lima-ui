@@ -109,21 +109,57 @@ textarea {
   scrollbar-gutter: stable;
 }
 
+/* WebKit браузеры (Chrome, Safari, Edge) */
 .scrollStyles::-webkit-scrollbar {
   width: 0.8rem;
   height: 0.8rem;
 }
 
 .scrollStyles::-webkit-scrollbar-track {
-  background-color: rgb(0 0 0 / 0%);
+  background-color: transparent;
   border-radius: 100rem;
 }
 
 .scrollStyles::-webkit-scrollbar-thumb {
   background-color: rgb(83 83 83 / 30%);
-  border-radius: 100rem;
+  border-radius: 10rem;
+  background-clip: content-box;
 }
 
 .scrollStyles:hover::-webkit-scrollbar-thumb {
   background-color: rgb(83 83 83 / 60%);
+}
+
+/* Убираем угловой элемент */
+.scrollStyles::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+/* Дополнительные стили для лучшей кроссбраузерности */
+.scrollStyles::-webkit-scrollbar-track-piece {
+  background-color: transparent;
+}
+
+/* Стили для принудительного скрытия системных полос прокрутки на macOS */
+.scrollStyles::-webkit-scrollbar-track:horizontal {
+  background-color: transparent;
+}
+
+.scrollStyles::-webkit-scrollbar-track:vertical {
+  background-color: transparent;
+}
+
+/* Стили для принудительного скрытия системных полос прокрутки на macOS */
+.scrollStyles::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Стандартные свойства для Firefox */
+@supports not selector(::-webkit-scrollbar) {
+  .scrollStyles {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(83 83 83 / 30%) transparent;
+  }
 }
