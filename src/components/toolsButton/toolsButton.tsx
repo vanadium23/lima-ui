@@ -92,40 +92,52 @@ export const ToolsButton = (props: Testable<ToolsButtonProps>) => {
           <span class="toolsButton__text">{mProps.text}</span>
         </button>
       </Show>
-      <Show when={mProps.componentType === ToolsButtonComponentType.Link}>
+      <Show
+        when={
+          mProps.componentType === ToolsButtonComponentType.Link &&
+          !mProps.isDisabled
+        }
+      >
         <a
-          href={!mProps.isLoading && !mProps.isDisabled ? mProps.link : "#"}
+          href={mProps.link}
           target={mProps.openInNewTab ? "_blank" : "_self"}
           rel={mProps.openInNewTab ? "noopener noreferrer" : ""}
           class={`toolsButton toolsButton_${mProps.theme} toolsButton_${mProps.size}`}
-          classList={{
-            toolsButton_disabled: mProps.isDisabled,
-            toolsButton_loading: mProps.isLoading,
-          }}
-          aria-disabled={mProps.isLoading || mProps.isDisabled}
           data-test-id={mProps.testId}
           data-test-sub-id={mProps.testSubId}
         >
           <div class="toolsButton__iconWrapper">
             <div class="toolsButton__icon">
-              <Show
-                when={mProps.isLoading}
-                fallback={
-                  <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
-                }
-              >
-                <div class="toolsButton__loadingIcon">
-                  <Icon
-                    name={IconName.CircleNotch}
-                    size={iconSize[mProps.size]}
-                  />
-                </div>
-              </Show>
+              <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
             </div>
           </div>
 
           <span class="toolsButton__text">{mProps.text}</span>
         </a>
+      </Show>
+      <Show
+        when={
+          mProps.componentType === ToolsButtonComponentType.Link &&
+          mProps.isDisabled
+        }
+      >
+        <span
+          class={`toolsButton toolsButton_${mProps.theme} toolsButton_${mProps.size}`}
+          classList={{
+            toolsButton_disabled: mProps.isDisabled,
+          }}
+          aria-disabled={mProps.isDisabled}
+          data-test-id={mProps.testId}
+          data-test-sub-id={mProps.testSubId}
+        >
+          <div class="toolsButton__iconWrapper">
+            <div class="toolsButton__icon">
+              <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
+            </div>
+          </div>
+
+          <span class="toolsButton__text">{mProps.text}</span>
+        </span>
       </Show>
     </>
   );

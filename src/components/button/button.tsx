@@ -91,32 +91,39 @@ export const Button = (props: Testable<ButtonProps>) => {
           <span class="button__text">{mProps.text}</span>
         </button>
       </Show>
-      <Show when={mProps.componentType === ButtonComponentType.Link}>
+      <Show
+        when={
+          mProps.componentType === ButtonComponentType.Link &&
+          !mProps.isDisabled
+        }
+      >
         <a
-          href={!mProps.isLoading && !mProps.isDisabled ? mProps.link : "#"}
+          href={mProps.link}
           target={mProps.openInNewTab ? "_blank" : "_self"}
           rel={mProps.openInNewTab ? "noopener noreferrer" : ""}
           class={`button button_${mProps.theme} button_${mProps.size}`}
-          classList={{
-            button_disabled: mProps.isDisabled,
-            button_loading: mProps.isLoading,
-          }}
-          aria-disabled={
-            mProps.isLoading || mProps.isDisabled ? true : undefined
-          }
           data-test-id={mProps.testId}
           data-test-sub-id={mProps.testSubId}
         >
-          <Show when={mProps.isLoading}>
-            <div class="button__loadingIcon">
-              <Icon
-                name={IconName.CircleNotch}
-                size={loadingIconSize[mProps.size]}
-              />
-            </div>
-          </Show>
           <span class="button__text">{mProps.text}</span>
         </a>
+      </Show>
+      <Show
+        when={
+          mProps.componentType === ButtonComponentType.Link && mProps.isDisabled
+        }
+      >
+        <span
+          class={`button button_${mProps.theme} button_${mProps.size}`}
+          classList={{
+            button_disabled: mProps.isDisabled,
+          }}
+          aria-disabled={true}
+          data-test-id={mProps.testId}
+          data-test-sub-id={mProps.testSubId}
+        >
+          <span class="button__text">{mProps.text}</span>
+        </span>
       </Show>
     </>
   );

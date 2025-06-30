@@ -69,16 +69,49 @@ export const IconButton = (props: Testable<IconButtonProps>) => {
   };
 
   return (
-    <Show
-      when={mProps.componentType === IconButtonComponentType.Button}
-      fallback={
-        <a
-          href={!mProps.isLoading && !mProps.isDisabled ? mProps.link : "#"}
+    <>
+      <Show when={mProps.componentType === IconButtonComponentType.Button}>
+        <button
+          type={mProps.type}
+          onClick={() => {
+            if (!mProps.isLoading) {
+              mProps.handleClick();
+            }
+          }}
           class={`iconButton iconButton_${mProps.theme} iconButton_${mProps.size}`}
           classList={{
             iconButton_disabled: mProps.isDisabled,
             iconButton_loading: mProps.isLoading,
           }}
+          title={mProps.ariaLabel}
+          disabled={mProps.isDisabled}
+          aria-disabled={mProps.isLoading ? true : undefined}
+          aria-label={mProps.ariaLabel}
+          data-test-id={mProps.testId}
+          data-test-sub-id={mProps.testSubId}
+          ref={mProps.ref}
+        >
+          <Show
+            when={mProps.isLoading}
+            fallback={
+              <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
+            }
+          >
+            <div class="iconButton__loadingIcon">
+              <Icon name={IconName.CircleNotch} size={iconSize[mProps.size]} />
+            </div>
+          </Show>
+        </button>
+      </Show>
+      <Show
+        when={
+          mProps.componentType === IconButtonComponentType.Link &&
+          !mProps.isDisabled
+        }
+      >
+        <a
+          href={mProps.link}
+          class={`iconButton iconButton_${mProps.theme} iconButton_${mProps.size}`}
           title={mProps.ariaLabel}
           aria-label={mProps.ariaLabel}
           data-test-id={mProps.testId}
@@ -86,39 +119,27 @@ export const IconButton = (props: Testable<IconButtonProps>) => {
         >
           <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
         </a>
-      }
-    >
-      <button
-        type={mProps.type}
-        onClick={() => {
-          if (!mProps.isLoading) {
-            mProps.handleClick();
-          }
-        }}
-        class={`iconButton iconButton_${mProps.theme} iconButton_${mProps.size}`}
-        classList={{
-          iconButton_disabled: mProps.isDisabled,
-          iconButton_loading: mProps.isLoading,
-        }}
-        title={mProps.ariaLabel}
-        disabled={mProps.isDisabled}
-        aria-disabled={mProps.isLoading ? true : undefined}
-        aria-label={mProps.ariaLabel}
-        data-test-id={mProps.testId}
-        data-test-sub-id={mProps.testSubId}
-        ref={mProps.ref}
+      </Show>
+      <Show
+        when={
+          mProps.componentType === IconButtonComponentType.Link &&
+          mProps.isDisabled
+        }
       >
-        <Show
-          when={mProps.isLoading}
-          fallback={
-            <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
-          }
+        <span
+          class={`iconButton iconButton_${mProps.theme} iconButton_${mProps.size}`}
+          classList={{
+            iconButton_disabled: mProps.isDisabled,
+          }}
+          title={mProps.ariaLabel}
+          aria-label={mProps.ariaLabel}
+          aria-disabled={mProps.isDisabled}
+          data-test-id={mProps.testId}
+          data-test-sub-id={mProps.testSubId}
         >
-          <div class="iconButton__loadingIcon">
-            <Icon name={IconName.CircleNotch} size={iconSize[mProps.size]} />
-          </div>
-        </Show>
-      </button>
-    </Show>
+          <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
+        </span>
+      </Show>
+    </>
   );
 };

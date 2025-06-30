@@ -90,29 +90,40 @@ export const TextButton = (props: Testable<TextButtonProps>) => {
           <span class="textButton__text">{mProps.text}</span>
         </button>
       </Show>
-      <Show when={mProps.componentType === TextButtonComponentType.Link}>
+      <Show
+        when={
+          mProps.componentType === TextButtonComponentType.Link &&
+          !mProps.isDisabled
+        }
+      >
         <a
-          href={!mProps.isLoading && !mProps.isDisabled ? mProps.link : "#"}
+          href={mProps.link}
           class={`textButton textButton_${mProps.theme} textButton_${mProps.size}`}
-          classList={{
-            textButton_disabled: mProps.isDisabled,
-            textButton_loading: mProps.isLoading,
-          }}
-          aria-disabled={mProps.isLoading ? true : undefined}
           {...prepareARIALabel(mProps.ariaLabel)}
           data-test-id={mProps.testId}
           data-test-sub-id={mProps.testSubId}
         >
-          <Show when={mProps.isLoading}>
-            <div class="textButton__loadingIcon">
-              <Icon
-                name={IconName.CircleNotch}
-                size={loadingIconSize[mProps.size]}
-              />
-            </div>
-          </Show>
           <span class="textButton__text">{mProps.text}</span>
         </a>
+      </Show>
+      <Show
+        when={
+          mProps.componentType === TextButtonComponentType.Link &&
+          mProps.isDisabled
+        }
+      >
+        <span
+          class={`textButton textButton_${mProps.theme} textButton_${mProps.size}`}
+          classList={{
+            textButton_disabled: mProps.isDisabled,
+          }}
+          aria-disabled={mProps.isDisabled}
+          {...prepareARIALabel(mProps.ariaLabel)}
+          data-test-id={mProps.testId}
+          data-test-sub-id={mProps.testSubId}
+        >
+          <span class="textButton__text">{mProps.text}</span>
+        </span>
       </Show>
     </>
   );
