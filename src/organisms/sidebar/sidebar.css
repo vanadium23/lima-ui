@@ -17,6 +17,8 @@
 }
 
 .sidebar__user {
+  display: flex;
+  gap: var(--size-x3);
   padding: 0 var(--size-x1) 0 var(--size-x3);
 }
 

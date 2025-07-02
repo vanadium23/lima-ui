@@ -48,6 +48,7 @@ export const Sidebar = () => {
             size={UserButtonSize.Medium}
             testId={DEFAULT_TEST_ID}
           />
+          <IconButton iconName={IconName.SignOut} ariaLabel="Выйти из аккаунта" testId={DEFAULT_TEST_ID} />
         </div>
         <Divider
           theme={DividerTheme.Primary}
