@@ -441,152 +441,140 @@ export const EditList = (props: EditListProps) => {
           method="post"
           onSubmit={prepareAndSendListData}
         >
-          <div class="editList__wrapper">
-            <div class="editList__listHeader">
-              <div class="editList__title">
-                <EditableTitle
-                  maxLength={LIST_TITLE_INPUT_LIMIT}
-                  name={EditListFormNames.ListTitle}
-                  testId={LIST_TITLE_INPUT}
-                  isRequired={true}
-                  isDisabled={store.sendingNow !== false}
-                  defaultValue={store.name}
-                  onChange={(value) => handleInputChange("name", value)}
-                />
-              </div>
-              <div class="editList__listHeaderInner">
-                <ItemInput
-                  theme={ItemInputTheme.Primary}
-                  size={ItemInputSize.Medium}
-                  placeholder="Цель списка"
-                  maxLength={LIST_PURPOSE_INPUT_LIMIT}
-                  name={EditListFormNames.ListPurpose}
-                  testId={LIST_PURPOSE_INPUT}
-                  isDisabled={store.sendingNow !== false}
-                  textAreaValue={store.purpose}
-                  onChange={(value) => handleInputChange("purpose", value)}
-                />
-                <Note
-                  title="Заметка"
-                  name={EditListFormNames.ListNote}
-                  isDisabled={store.sendingNow !== false}
-                  defaultValue={store.note}
-                  onChange={(value) => handleInputChange("note", value)}
-                />
-              </div>
-            </div>
+          <div class="editList__listHeader">
+            <EditableTitle
+              maxLength={LIST_TITLE_INPUT_LIMIT}
+              name={EditListFormNames.ListTitle}
+              testId={LIST_TITLE_INPUT}
+              isRequired={true}
+              isDisabled={store.sendingNow !== false}
+              defaultValue={store.name}
+              onChange={(value) => handleInputChange("name", value)}
+            />
+            <ItemInput
+              theme={ItemInputTheme.Primary}
+              size={ItemInputSize.Medium}
+              placeholder="Цель списка"
+              maxLength={LIST_PURPOSE_INPUT_LIMIT}
+              name={EditListFormNames.ListPurpose}
+              testId={LIST_PURPOSE_INPUT}
+              isDisabled={store.sendingNow !== false}
+              textAreaValue={store.purpose}
+              onChange={(value) => handleInputChange("purpose", value)}
+            />
+            <Note
+              title="Заметка"
+              name={EditListFormNames.ListNote}
+              isDisabled={store.sendingNow !== false}
+              defaultValue={store.note}
+              onChange={(value) => handleInputChange("note", value)}
+            />
+          </div>
 
-            <div class="editList__container">
-              <div
-                class="editList__scrollContainer scrollStyles"
-                ref={(el) => (scrollContainer = el)}
-                data-test-id={LIST_ITEMS}
-              >
-                <DragDropProvider
-                  onDragStart={onDragStart}
-                  onDragEnd={onDragEnd}
-                  collisionDetector={createScrollableCollisionsDetector(
-                    scrollContainer,
-                    store,
-                  )}
-                >
-                  <DragDropSensors />
-                  <SortableProvider ids={ids()}>
-                    <For each={store.items}>
-                      {(item, index) => {
-                        const dragData = createSortable(item.dragId);
+          <div
+            class="editList__scrollContainer scrollStyles"
+            ref={(el) => (scrollContainer = el)}
+            data-test-id={LIST_ITEMS}
+          >
+            <DragDropProvider
+              onDragStart={onDragStart}
+              onDragEnd={onDragEnd}
+              collisionDetector={createScrollableCollisionsDetector(
+                scrollContainer,
+                store,
+              )}
+            >
+              <DragDropSensors />
+              <SortableProvider ids={ids()}>
+                <For each={store.items}>
+                  {(item, index) => {
+                    const dragData = createSortable(item.dragId);
 
-                        return (
-                          <ListItem
-                            removeItem={() => removeItem(index())}
-                            isDisabled={store.sendingNow !== false}
-                            isOnlyOneItem={isOnlyOneItem(store.items)}
-                            isCheckable={store.isCheckable}
-                            isChecked={false}
-                            defaultValue={item.content}
-                            name={`${EditListFormNames.ListItem} ${index() + 1}`}
-                            dataId={item.id}
-                            onChange={(value) =>
-                              handleItemChange(index(), value)
-                            }
-                            onAddBefore={() =>
-                              addItem({ mode: "before", index: index() })
-                            }
-                            onAddAfter={() =>
-                              addItem({ mode: "after", index: index() })
-                            }
-                            canAddMore={!reachedItemsLimit()}
-                            testId={item.auto ? AUTO_LIST_ITEM : LIST_ITEM}
-                            testSubId={index()}
-                            isRequired={!item.auto}
-                            dragSettings={{
-                              dragData,
-                              dragProps: {
-                                ref: dragData.ref,
-                                style: store.draggedItem
-                                  ? transformStyle(dragData.transform)
-                                  : {},
-                              },
-                              dragState: useDragDropContext()?.[0] || null,
-                            }}
-                            placeholder={
-                              item.auto
-                                ? "Добавить пункт списка"
-                                : "Пункт списка"
-                            }
-                          />
-                        );
-                      }}
-                    </For>
-                  </SortableProvider>
-                  <DragOverlay>
-                    <ListItem
-                      isCheckable={store.isCheckable}
-                      isChecked={false}
-                      defaultValue={draggedItemData().content}
-                      dataId={draggedItemData().dragId}
-                      canAddMore={!reachedItemsLimit()}
-                      testId={DRAGGED_LIST_ITEM}
-                      isDraggingOverlay={true}
-                      placeholder={
-                        draggedItemData().auto
-                          ? "Добавить пункт списка"
-                          : "Пункт списка"
-                      }
-                    />
-                  </DragOverlay>
-                </DragDropProvider>
-              </div>
-              <div class="editList__errors">
-                <Show when={store.error}>
-                  <PageError testId={NETWORK_ERROR}>
-                    Ошибка соединения с сервером, попробуйте еще раз
-                  </PageError>
-                </Show>
-                <Show when={reachedItemsLimit()}>
-                  <PageError testId={ITEMS_LIMIT_REACHED_WARNING}>
-                    Вы использовали лимит в {ITEMS_LIMIT} пунктов
-                  </PageError>
-                </Show>
-                <Show when={store.removeError}>
-                  <PageError testId={LIST_REMOVAL_ERROR}>
-                    Не удалось удалить список. Попробуйте ещё раз.
-                  </PageError>
-                </Show>
-              </div>
-
-              <div class="editList__controls">
-                <Button
-                  type={ButtonType.Submit}
-                  text="Сохранить"
-                  isDisabled={
-                    !store.isChanged || store.sendingNow === "deleting"
+                    return (
+                      <ListItem
+                        removeItem={() => removeItem(index())}
+                        isDisabled={store.sendingNow !== false}
+                        isOnlyOneItem={isOnlyOneItem(store.items)}
+                        isCheckable={store.isCheckable}
+                        isChecked={false}
+                        defaultValue={item.content}
+                        name={`${EditListFormNames.ListItem} ${index() + 1}`}
+                        dataId={item.id}
+                        onChange={(value) => handleItemChange(index(), value)}
+                        onAddBefore={() =>
+                          addItem({ mode: "before", index: index() })
+                        }
+                        onAddAfter={() =>
+                          addItem({ mode: "after", index: index() })
+                        }
+                        canAddMore={!reachedItemsLimit()}
+                        testId={item.auto ? AUTO_LIST_ITEM : LIST_ITEM}
+                        testSubId={index()}
+                        isRequired={!item.auto}
+                        dragSettings={{
+                          dragData,
+                          dragProps: {
+                            ref: dragData.ref,
+                            style: store.draggedItem
+                              ? transformStyle(dragData.transform)
+                              : {},
+                          },
+                          dragState: useDragDropContext()?.[0] || null,
+                        }}
+                        placeholder={
+                          item.auto ? "Добавить пункт списка" : "Пункт списка"
+                        }
+                      />
+                    );
+                  }}
+                </For>
+              </SortableProvider>
+              <DragOverlay>
+                <ListItem
+                  isCheckable={store.isCheckable}
+                  isChecked={false}
+                  defaultValue={draggedItemData().content}
+                  dataId={draggedItemData().dragId}
+                  canAddMore={!reachedItemsLimit()}
+                  testId={DRAGGED_LIST_ITEM}
+                  isDraggingOverlay={true}
+                  placeholder={
+                    draggedItemData().auto
+                      ? "Добавить пункт списка"
+                      : "Пункт списка"
                   }
-                  isLoading={store.sendingNow === "saving"}
-                  testId={SAVE_LIST_BUTTON}
                 />
-              </div>
+              </DragOverlay>
+            </DragDropProvider>
+          </div>
+          <Show when={store.error || reachedItemsLimit() || store.removeError}>
+            <div class="editList__errors">
+              <Show when={store.error}>
+                <PageError testId={NETWORK_ERROR}>
+                  Ошибка соединения с сервером, попробуйте еще раз
+                </PageError>
+              </Show>
+              <Show when={reachedItemsLimit()}>
+                <PageError testId={ITEMS_LIMIT_REACHED_WARNING}>
+                  Вы использовали лимит в {ITEMS_LIMIT} пунктов
+                </PageError>
+              </Show>
+              <Show when={store.removeError}>
+                <PageError testId={LIST_REMOVAL_ERROR}>
+                  Не удалось удалить список. Попробуйте ещё раз.
+                </PageError>
+              </Show>
             </div>
+          </Show>
+
+          <div class="editList__controls">
+            <Button
+              type={ButtonType.Submit}
+              text="Сохранить"
+              isDisabled={!store.isChanged || store.sendingNow === "deleting"}
+              isLoading={store.sendingNow === "saving"}
+              testId={SAVE_LIST_BUTTON}
+            />
           </div>
         </form>
       </div>

@@ -125,19 +125,3 @@
 .listStripe.listStripe_removing .listStripe__link {
   cursor: not-allowed;
 }
-
-@media (width <= 767px) {
-  .listStripe_medium .listStripe__title {
-    font-size: 1.4rem;
-    line-height: 1.8rem;
-  }
-
-  .listStripe_medium .listStripe__purpose {
-    font-size: 1.2rem;
-    line-height: 1.6rem;
-  }
-
-  .listStripe_medium .listStripe__link {
-    padding: var(--size-x3) var(--size-x22) var(--size-x3) var(--size-x4);
-  }
-}
