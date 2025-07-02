@@ -10,13 +10,13 @@
   flex-direction: column;
   flex-grow: 1;
   height: 100%;
-  padding: var(--size-x3) var(--size-x2) var(--size-x8) 0;
+  padding: var(--size-x3) var(--size-x2) var(--size-x10) 0;
 }
 
 .editList__form {
   display: flex;
   flex-direction: column;
-  gap: var(--size-x4);
+  gap: var(--size-x9);
   height: 100%;
   max-width: 75rem;
 }
@@ -24,25 +24,8 @@
 .editList__listHeader {
   display: flex;
   flex-direction: column;
-  gap: var(--size-x3);
-}
-
-.editList__title {
-  padding: 0 var(--size-x8) 0 var(--size-x18);
-}
-
-.editList__listHeaderInner {
-  display: flex;
-  flex-direction: column;
   gap: var(--size-x4);
   padding: 0 var(--size-x8) 0 var(--size-x18);
-}
-
-.editList__wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: var(--size-x4);
-  height: 100%;
 }
 
 .editList__container {
