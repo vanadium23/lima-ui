@@ -26,6 +26,7 @@ import {
   SEARCH_BUTTON,
   SEARCH_INPUT,
   SIDEBAR,
+  SIGN_OUT_BUTTON,
   TOGGLE_SIDEBAR_BUTTON,
   TOGGLE_TOOLS_PANEL_BUTTON,
   TOOLS_PANEL,
@@ -40,12 +41,17 @@ import { buildFullTestId } from "./buildTestableSelector.ts";
 import { isDesktop, isMobile, isTablet } from "./discoverDevice.ts";
 
 const PAGE_TEMPLATE_PARTS = [
-  USER_BUTTON,
-  ADD_GROUP_BUTTON,
-  PRO_VERSION_BUTTON,
   HEADER,
   PAGE_TAB_TITLE,
-  ...(isDesktop() ? [SIDEBAR] : []),
+  ...(isDesktop()
+    ? [
+        SIDEBAR,
+        USER_BUTTON,
+        ADD_GROUP_BUTTON,
+        PRO_VERSION_BUTTON,
+        SIGN_OUT_BUTTON,
+      ]
+    : []),
   ...(isDesktop() || isTablet() ? [SEARCH_INPUT, SEARCH_BUTTON] : []),
   ...(isTablet() || isMobile() ? [TOGGLE_SIDEBAR_BUTTON] : []),
   ...(isMobile() ? [OPEN_SEARCH_BUTTON] : []),

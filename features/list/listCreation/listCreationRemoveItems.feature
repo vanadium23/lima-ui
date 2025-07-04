@@ -26,5 +26,5 @@ Feature: Removing items on the List Creation page
     And I press the visible "remove list item" menu item
     Then I expect not to see the warning about items inputs limit reached
     And I ensure the tools panel is open
-    Then I expect to see the "add list item" button "enabled" with the following text: "Добавить пункт"
+    Then I expect to see the "add list item" button enabled
     And I ensure the tools panel does not disturb

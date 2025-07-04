@@ -1,6 +1,9 @@
 ---
-import { DEFAULT_TEST_ID } from "../../../../features/testIds";
-import { UserButton, UserButtonSize, UserButtonTheme } from "../../../components/userButton/userButton";
+import {
+  UserButton,
+  UserButtonSize,
+  UserButtonTheme,
+} from "../../../components/userButton/userButton";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 const themes = Object.values(UserButtonTheme);
@@ -8,18 +11,23 @@ const sizes = Object.values(UserButtonSize);
 ---
 
 <StorybookPage title="UserButton">
-
-  {themes.map((theme) => (
-    <div class="demoThemeWrapper">
-        <h3 style="font-size: 24px; margin-bottom: 10px; text-transform: capitalize;">{theme}</h3>
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 style="font-size: 24px; margin-bottom: 10px; text-transform: capitalize;">
+          {theme}
+        </h3>
         <div class="grid grid_1Col">
-            <span class="chead"/>
-            <span class="chead">Default</span>
-            {sizes.map((size) => (
-                    <span class="rhead">{size}</span>
-                    <UserButton userName="Ефросинья_Мыловареная" testId={DEFAULT_TEST_ID}/>
-            ))}
+          <span class="chead" />
+          <span class="chead">Default</span>
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <UserButton userName="Ефросинья_Мыловареная" size={size} />
+            </>
+          ))}
         </div>
-    </div>
-))}
+      </div>
+    ))
+  }
 </StorybookPage>;

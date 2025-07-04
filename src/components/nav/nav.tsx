@@ -7,7 +7,6 @@ import { isLimitReached } from "../../state/reachListsLimit.ts";
 import { Divider } from "../divider/divider.tsx";
 import { IconName } from "../icon/icon.tsx";
 import { NavItem, NavItemSize, NavItemTheme } from "../navItem/navItem.tsx";
-import type { Testable } from "../utilities/testable.ts";
 
 import "./nav.css";
 
@@ -28,8 +27,8 @@ const navItemSize = {
   [NavSize.Medium]: NavItemSize.Medium,
 };
 
-export const Nav = (props: Testable<NavProps>) => {
-  const mProps: Testable<Required<NavProps>> = mergeProps(
+export const Nav = (props: NavProps) => {
+  const mProps: Required<NavProps> = mergeProps(
     {
       theme: NavTheme.Primary,
       size: NavSize.Medium,

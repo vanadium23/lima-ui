@@ -8,6 +8,7 @@ export const PAGE_TAB_TITLE = "pageTabTitle";
 
 export const SIDEBAR = "sidebar";
 export const HEADER = "header";
+export const SIGN_OUT_BUTTON = "signOutButton";
 export const ADD_GROUP_BUTTON = "addGroupButton";
 export const PRO_VERSION_BUTTON = "proVersionButton";
 export const PAGE_TITLE = "pageTitle";

@@ -1,8 +1,8 @@
 import {
   ADD_GROUP_BUTTON,
-  DEFAULT_TEST_ID,
   PRO_VERSION_BUTTON,
   SIDEBAR,
+  SIGN_OUT_BUTTON,
 } from "../../../features/testIds.ts";
 import {
   Button,
@@ -46,16 +46,19 @@ export const Sidebar = () => {
             userName="Ефросинья_Мыловареная"
             theme={UserButtonTheme.Primary}
             size={UserButtonSize.Medium}
-            testId={DEFAULT_TEST_ID}
           />
-          <IconButton iconName={IconName.SignOut} ariaLabel="Выйти из аккаунта" testId={DEFAULT_TEST_ID} />
+          <IconButton
+            iconName={IconName.SignOut}
+            ariaLabel="Выйти из аккаунта"
+            testId={SIGN_OUT_BUTTON}
+          />
         </div>
         <Divider
           theme={DividerTheme.Primary}
           size={DividerSize.Medium}
           orientation={DividerOrientation.Horizontal}
         />
-        <Nav testId={DEFAULT_TEST_ID} />
+        <Nav />
       </div>
       <div class="sidebar__bottom">
         <div class="sidebar__profile">

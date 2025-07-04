@@ -12,10 +12,10 @@ import {
   PAGE_TITLE,
   PRO_VERSION_BUTTON,
   SIDEBAR,
+  SIGN_OUT_BUTTON,
   TOGGLE_SIDEBAR_BUTTON,
   TOGGLE_TOOLS_PANEL_BUTTON,
   TOOLS_PANEL,
-  TOOLS_PANEL_ADD_ITEM_BUTTON,
   USER_BUTTON,
 } from "../../testIds.ts";
 import {
@@ -31,6 +31,7 @@ import {
 } from "../../utilities/discoverDevice.ts";
 import { getTimeoutOrCancelItIfDebugging } from "../../utilities/getTimeoutOrCancelItIfDebugging.ts";
 import { type PageAlias, PAGES_TEST_IDS } from "../../utilities/testIds.ts";
+
 import {
   ACCORDION_TEST_IDS,
   type AccordionMeaning,
@@ -54,6 +55,22 @@ Then(
       await this.expectLocated(
         this.accounting.elements.registerTestId(SIDEBAR),
       ).toBeInViewport();
+
+      await this.expectLocated(
+        this.accounting.elements.registerTestId(USER_BUTTON),
+      ).toBeInViewport();
+
+      await this.expectLocated(
+        this.accounting.elements.registerTestId(SIGN_OUT_BUTTON),
+      ).toBeInViewport();
+
+      await this.expectLocated(
+        this.accounting.elements.registerTestId(ADD_GROUP_BUTTON),
+      ).toBeInViewport();
+
+      await this.expectLocated(
+        this.accounting.elements.registerTestId(PRO_VERSION_BUTTON),
+      ).toBeInViewport();
     }
 
     if (isTablet() || isMobile()) {
@@ -61,10 +78,6 @@ Then(
         this.accounting.elements.registerTestId(TOGGLE_SIDEBAR_BUTTON),
       ).toBeInViewport();
     }
-
-    this.accounting.elements.registerTestId(USER_BUTTON);
-    this.accounting.elements.registerTestId(ADD_GROUP_BUTTON);
-    this.accounting.elements.registerTestId(PRO_VERSION_BUTTON);
   },
 );
 
@@ -114,66 +127,6 @@ Then("I expect to see list items area", async function (this: ComplexWorld) {
     this.accounting.elements.registerTestId(LIST_ITEMS),
   ).toBeInViewport();
 });
-
-Then(
-  "I expect to see the {string} button {string} with the following text: {string}",
-  async function (
-    this: ComplexWorld,
-    buttonMeaning: ButtonMeaning,
-    buttonState: string,
-    buttonText: string,
-  ) {
-    // Находим локатор по тестовому ID
-    const buttonFullTestId = BUTTON_TEST_IDS[buttonMeaning];
-    const buttonLocator = this.locateByIdParts(
-      this.accounting.elements.registerTestId(buttonFullTestId),
-    );
-
-    if (buttonFullTestId === TOOLS_PANEL_ADD_ITEM_BUTTON) {
-      this.accounting.itemAdders.registerTestId(buttonFullTestId);
-    }
-
-    await expect(buttonLocator).toBeInViewport();
-
-    // Проверить, что текст внутри элемента соответствует ожидаемому
-    await expect(buttonLocator).toContainText(buttonText);
-
-    // Получить имя тега элемента
-    const tagName = await buttonLocator.evaluate((el: HTMLElement) =>
-      el.tagName.toLowerCase(),
-    );
-
-    let buttonDisable = null;
-
-    if (buttonState === "enabled") {
-      buttonDisable = "false";
-    } else if (buttonState === "disabled") {
-      buttonDisable = "true";
-    } else {
-      throw new Error("Ожидалось состояние disabled или enabled");
-    }
-
-    if (tagName === "button") {
-      // Если это тег <button>, проверить, что он отключен или включен
-      if (buttonState === "enabled") {
-        await expect(buttonLocator).toBeEnabled();
-      } else {
-        await expect(buttonLocator).toBeDisabled();
-      }
-    } else if (tagName === "a") {
-      // Если это тег <a>, проверить наличие aria-disabled="true" aria-disabled="false"
-      await expect(buttonLocator).toHaveAttribute(
-        "aria-disabled",
-        buttonDisable,
-      );
-    } else {
-      // Обработка неожиданных типов тегов
-      throw new Error(
-        `Неподдерживаемый тег элемента: <${tagName}>. Ожидался <button> или <a>.`,
-      );
-    }
-  },
-);
 
 Then(
   "I expect to see the {string} button enabled",

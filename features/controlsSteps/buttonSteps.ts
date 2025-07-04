@@ -61,7 +61,13 @@ Then(
     if (isButton) {
       await expect(element).toBeDisabled();
     } else {
-      await expect(element).toHaveAttribute("href", "#");
+      expect(
+        await element.evaluate(
+          (el) =>
+            el.tagName.toLowerCase() === "span" &&
+            el.getAttribute("aria-disabled") === "true",
+        ),
+      ).toBe(true);
     }
   },
 );

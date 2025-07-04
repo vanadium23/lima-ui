@@ -24,7 +24,7 @@ Feature: Seeing the basis of the automatically added item
     When I add list items to their limit via automatically added item
     Then I expect to see the warning about items inputs limit reached
     And I ensure the tools panel is open
-    Then I expect to see the "add list item" button "disabled" with the following text: "Добавить пункт"
+    Then I expect to see the "add list item" button disabled
     And I ensure the tools panel does not disturb
     Then I expect not to see the "automatic" item input
     And I focus "some item" input

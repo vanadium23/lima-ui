@@ -24,7 +24,7 @@ Feature: Seeing the added lists on the Lists page
   Scenario: Adding lists to the limit
     When I add lists to their limit
     And I open Lists page
-    Then I expect to see the "create" button "disabled" with the following text: "Создать"
+    Then I expect to see the "create" button disabled
     Then I expect to see the warning about lists limit reached
 
   Scenario: Lists page with lists loading error

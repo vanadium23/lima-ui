@@ -1,7 +1,6 @@
 import { mergeProps } from "solid-js";
 
 import { USER_BUTTON } from "../../../features/testIds";
-import type { Testable } from "../utilities/testable";
 
 import "./userButton.css";
 
@@ -19,8 +18,8 @@ type UserButtonProps = {
   size?: UserButtonSize;
 };
 
-export const UserButton = (props: Testable<UserButtonProps>) => {
-  const mProps: Testable<Required<UserButtonProps>> = mergeProps(
+export const UserButton = (props: UserButtonProps) => {
+  const mProps: Required<UserButtonProps> = mergeProps(
     {
       theme: UserButtonTheme.Primary,
       size: UserButtonSize.Medium,
