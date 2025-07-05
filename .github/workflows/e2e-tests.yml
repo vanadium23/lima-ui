@@ -1,0 +1,92 @@
+name: E2E Tests
+
+on:
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout UI repository
+        uses: actions/checkout@v4
+        with:
+          path: svernik-UI
+
+      - name: Checkout Lima backend repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.repository_owner }}/svernik
+          path: svernik
+
+      - name: Configure backend environment
+        run: |
+          cp svernik/.env.example svernik/.env
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: svernik-UI/package.json
+          cache: "npm"
+          cache-dependency-path: svernik-UI/package-lock.json
+
+      - name: Install UI dependencies
+        run: npm ci
+        working-directory: svernik-UI
+
+      - name: Start server and database
+        run: |
+          docker compose up -d
+          # Verify backend API is responding with expected data
+          timeout 180 bash -c 'until curl -s http://localhost:3000/ | jq -e ".greeting" > /dev/null; do sleep 10; done'
+        working-directory: svernik
+
+      - name: Build front-end
+        run: npm run build
+        working-directory: svernik-UI
+
+      - name: Start front-end in background
+        run: npm run start & echo $! > frontend.pid
+        working-directory: svernik-UI
+
+      - name: Wait for front-end to be ready
+        run: |
+          # Wait for the front-end to be available
+          timeout 120 bash -c 'until curl -s http://localhost:4321/ > /dev/null; do sleep 5; done'
+        shell: bash
+
+      - name: Run E2E tests
+        run: npm test
+        working-directory: svernik-UI
+
+      - name: Stop front-end
+        if: always()
+        run: |
+          if [ -f frontend.pid ]; then
+            kill $(cat frontend.pid) || true
+            rm frontend.pid
+          fi
+        shell: bash
+
+      - name: Stop services
+        if: always()
+        run: docker compose down
+        working-directory: svernik
+
+      - name: Upload test results and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2e-test-artifacts
+          path: |
+            svernik-UI/features/reports/
+            svernik-UI/features/screenshots/
