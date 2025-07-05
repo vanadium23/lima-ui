@@ -1,8 +1,15 @@
 ---
-import {DEFAULT_TEST_ID, REMOVE_ITEM_MENUITEM} from "../../../../features/testIds";
-import {DropdownMenu, DropdownMenuSize, DropdownMenuTheme} from "../../../components/dropdownMenu/dropdownMenu";
-import {IconName} from "../../../components/icon/icon";
-import {MenuItem, MenuItemTheme} from "../../../components/menuItem/menuItem";
+import {
+  DEFAULT_TEST_ID,
+  REMOVE_ITEM_MENUITEM,
+} from "../../../../features/testIds";
+import {
+  DropdownMenu,
+  DropdownMenuSize,
+  DropdownMenuTheme,
+} from "../../../components/dropdownMenu/dropdownMenu";
+import { IconName } from "../../../components/icon/icon";
+import { MenuItem, MenuItemTheme } from "../../../components/menuItem/menuItem";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 const themes = Object.values(DropdownMenuTheme);
@@ -10,39 +17,39 @@ const sizes = Object.values(DropdownMenuSize);
 ---
 
 <StorybookPage title="DropdownMenu">
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 class="demoThemeWrapper__title">{theme}</h3>
+        <div class="grid grid_1Col">
+          <span class="chead" />
+          <span class="chead">Default</span>
 
-  {themes.map((theme) => (
-    <div class="demoThemeWrapper">
-      <h3 class="demoThemeWrapper__title">{theme}</h3>
-      <div class="grid grid_1Col">
-        <span class="chead"/>
-        <span class="chead">Default</span>
-
-        {sizes.map((size) => (
-          <span class="rhead">{size}</span>
-
-          <DropdownMenu testId={DEFAULT_TEST_ID}>
-            <MenuItem
-              text={"Добавить пункт выше"}
-              icon={IconName.Plus}
-              testId={DEFAULT_TEST_ID}
-            />
-            <MenuItem
-              text={"Добавить пункт ниже"}
-              icon={IconName.Plus}
-              testId={DEFAULT_TEST_ID}
-            />
-            <MenuItem
-              text={"Удалить пункт"}
-              theme={MenuItemTheme.Dangerous}
-              icon={IconName.Trash}
-              testId={REMOVE_ITEM_MENUITEM}
-            />
-          </DropdownMenu>
-        ))}
-
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <DropdownMenu testId={DEFAULT_TEST_ID}>
+                <MenuItem
+                  text={"Добавить пункт выше"}
+                  icon={IconName.Plus}
+                  testId={DEFAULT_TEST_ID}
+                />
+                <MenuItem
+                  text={"Добавить пункт ниже"}
+                  icon={IconName.Plus}
+                  testId={DEFAULT_TEST_ID}
+                />
+                <MenuItem
+                  text={"Удалить пункт"}
+                  theme={MenuItemTheme.Dangerous}
+                  icon={IconName.Trash}
+                  testId={REMOVE_ITEM_MENUITEM}
+                />
+              </DropdownMenu>
+            </>
+          ))}
+        </div>
       </div>
-    </div>
-  ))}
-
+    ))
+  }
 </StorybookPage>

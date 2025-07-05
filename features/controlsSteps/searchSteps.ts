@@ -1,4 +1,5 @@
 import { Then } from "@cucumber/cucumber";
+
 import type { ComplexWorld } from "../context/hooks";
 import { OPEN_SEARCH_BUTTON, SEARCH_BUTTON, SEARCH_INPUT } from "../testIds.ts";
 import { isDesktop, isMobile, isTablet } from "../utilities/discoverDevice.ts";

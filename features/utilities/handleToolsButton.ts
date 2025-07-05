@@ -1,5 +1,6 @@
 import type { ComplexWorld } from "../context/hooks.ts";
 import { TOGGLE_TOOLS_PANEL_BUTTON, TOOLS_PANEL } from "../testIds.ts";
+
 import { isMobile } from "./discoverDevice.ts";
 
 export async function openToolsPanelForMobile(complexWorld: ComplexWorld) {

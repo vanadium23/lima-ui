@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
 
-import type {ComplexWorld} from "../context/hooks";
+import type { ComplexWorld } from "../context/hooks";
 
 /**
  * Takes a screenshot and saves it to the screenshots directory

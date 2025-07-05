@@ -1,5 +1,5 @@
 ---
-import {Note, NoteSize, NoteTheme} from "../../../components/note/note.tsx";
+import { Note, NoteSize, NoteTheme } from "../../../components/note/note";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 const themes = Object.values(NoteTheme);
@@ -7,22 +7,37 @@ const sizes = Object.values(NoteSize);
 ---
 
 <StorybookPage title="Note">
-    {themes.map((theme) => (
+  {
+    themes.map((theme) => (
       <div class="demoThemeWrapper">
         <h3 class="demoThemeWrapper__title">{theme}</h3>
         <div class="grid grid_2Col">
-          <span class="chead"/>
+          <span class="chead" />
           <span class="chead">Default</span>
           <span class="chead">Disabled</span>
 
-            {sizes.map((size) => (
+          {sizes.map((size) => (
+            <>
               <span class="rhead">{size}</span>
-              <Note client:only="solid-js" theme={theme} size={size} title="Заметка" name=""/>
-              <Note client:only="solid-js" theme={theme} size={size} title="Заметка" isDisabled={true} name=""/>
-            ))}
-
+              <Note
+                client:only="solid-js"
+                theme={theme}
+                size={size}
+                title="Заметка"
+                name=""
+              />
+              <Note
+                client:only="solid-js"
+                theme={theme}
+                size={size}
+                title="Заметка"
+                isDisabled={true}
+                name=""
+              />
+            </>
+          ))}
         </div>
       </div>
-
-    ))}
+    ))
+  }
 </StorybookPage>

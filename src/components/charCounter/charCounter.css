@@ -1,9 +1,9 @@
 .charCounter_primary {
-    color: var(--text-neutral-700);
-    font-weight: 500;
+  color: var(--text-neutral-700);
+  font-weight: 500;
 }
 
 .charCounter_medium {
-    font-size: 1.2rem;
-    line-height: 1.6rem;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
 }

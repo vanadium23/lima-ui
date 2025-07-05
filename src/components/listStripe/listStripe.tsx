@@ -1,5 +1,4 @@
 import { createSignal, mergeProps } from "solid-js";
-import { type Testable } from "../utilities/testable.ts";
 
 import {
   DIALOG_REMOVE_BUTTON,
@@ -18,6 +17,7 @@ import { DropdownMenuWrapper } from "../dropdownMenuWrapper/dropdownMenuWrapper.
 import { IconName } from "../icon/icon.tsx";
 import { IconButtonSize } from "../iconButton/iconButton.tsx";
 import { MenuItemTheme } from "../menuItem/menuItem.tsx";
+import { type Testable } from "../utilities/testable.ts";
 
 import "./listStripe.css";
 
@@ -49,7 +49,7 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
       size: ListStripeSize.Medium,
       isRemoving: false,
     },
-    props
+    props,
   );
 
   const [isDialogOpen, setIsDialogOpen] = createSignal(false);
@@ -99,7 +99,10 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
       .catch((error) => {
         soften(() => {
           mProps.onRemoveError(true);
-          console.error("There has been a problem with your fetch operation:", error);
+          console.error(
+            "There has been a problem with your fetch operation:",
+            error,
+          );
           setIsRemoving(false);
         });
       });
@@ -164,7 +167,8 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
         }
       >
         <p>
-          Список <strong>{mProps.listTitle}</strong> будет удален без возможности восстановления.
+          Список <strong>{mProps.listTitle}</strong> будет удален без
+          возможности восстановления.
         </p>
       </Dialog>
     </div>

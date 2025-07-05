@@ -1,6 +1,10 @@
 ---
-import {DividerOrientation} from "../../../components/divider/divider";
-import {Divider, DividerSize, DividerTheme} from "../../../components/divider/divider.tsx";
+import {
+  Divider,
+  DividerOrientation,
+  DividerSize,
+  DividerTheme,
+} from "../../../components/divider/divider";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 const themes = Object.values(DividerTheme);
@@ -8,24 +12,34 @@ const sizes = Object.values(DividerSize);
 ---
 
 <StorybookPage title="Button">
-
-    {themes.map((theme) => (
+  {
+    themes.map((theme) => (
       <div class="demoThemeWrapper">
         <h3 class="demoThemeWrapper__title">{theme}</h3>
         <div class="grid grid_2Col">
-          <span class="chead"/>
+          <span class="chead" />
           <span class="chead">Horizontal</span>
           <span class="chead">Vertical</span>
 
-            {sizes.map((size) => (
+          {sizes.map((size) => (
+            <>
               <span class="rhead">{size}</span>
-
-              <Divider client:only="solid-js" theme={theme} size={size} orientation={DividerOrientation.Horizontal}/>
-              <Divider client:only="solid-js" theme={theme} size={size} orientation={DividerOrientation.Vertical}/>
-            ))}
-
+              <Divider
+                client:only="solid-js"
+                theme={theme}
+                size={size}
+                orientation={DividerOrientation.Horizontal}
+              />
+              <Divider
+                client:only="solid-js"
+                theme={theme}
+                size={size}
+                orientation={DividerOrientation.Vertical}
+              />
+            </>
+          ))}
         </div>
       </div>
-    ))}
-
+    ))
+  }
 </StorybookPage>

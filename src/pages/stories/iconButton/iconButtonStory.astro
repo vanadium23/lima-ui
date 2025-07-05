@@ -1,12 +1,12 @@
 ---
 import { DEFAULT_TEST_ID } from "../../../../features/testIds";
-import { IconName } from "../../../components/icon/icon.tsx";
-import { IconButtonComponentType } from "../../../components/iconButton/iconButton";
+import { IconName } from "../../../components/icon/icon";
 import {
   IconButton,
+  IconButtonComponentType,
   IconButtonSize,
-  IconButtonTheme
-} from "../../../components/iconButton/iconButton.tsx";
+  IconButtonTheme,
+} from "../../../components/iconButton/iconButton";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 const themes = Object.values(IconButtonTheme);
@@ -14,93 +14,91 @@ const sizes = Object.values(IconButtonSize);
 ---
 
 <StorybookPage title="Icon Button">
-
   <h2>Type - Button</h2>
-  {themes.map((theme) => (
-    <div class="demoThemeWrapper">
-      <h3 style="font-size: 24px; margin-bottom: 10px;">{theme}</h3>
-      <div class="grid grid_3Col">
-        <span class="chead"></span>
-        <span class="chead">Default</span>
-        <span class="chead">Loading</span>
-        <span class="chead">Disabled</span>
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 style="font-size: 24px; margin-bottom: 10px;">{theme}</h3>
+        <div class="grid grid_3Col">
+          <span class="chead" />
+          <span class="chead">Default</span>
+          <span class="chead">Loading</span>
+          <span class="chead">Disabled</span>
 
-        {sizes.map((size) => (
-          <span class="rhead">{size}</span>
-
-          <IconButton
-            client:only="solid-js"
-            ariaLabel={"text"}
-            theme={theme}
-            size={size}
-            iconName={IconName.Trash}
-            testId={DEFAULT_TEST_ID}
-          />
-
-          <IconButton
-            client:only="solid-js"
-            isLoading={true}
-            ariaLabel={"text"}
-            theme={theme}
-            size={size}
-            iconName={IconName.Trash}
-            testId={DEFAULT_TEST_ID}
-          />
-
-          <IconButton
-            client:only="solid-js"
-            isDisabled={true}
-            ariaLabel={"text"}
-            theme={theme}
-            size={size}
-            iconName={IconName.Trash}
-            testId={DEFAULT_TEST_ID}
-          />
-        ))}
-
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <IconButton
+                client:only="solid-js"
+                ariaLabel={"text"}
+                theme={theme}
+                size={size}
+                iconName={IconName.Trash}
+                testId={DEFAULT_TEST_ID}
+              />
+              <IconButton
+                client:only="solid-js"
+                isLoading={true}
+                ariaLabel={"text"}
+                theme={theme}
+                size={size}
+                iconName={IconName.Trash}
+                testId={DEFAULT_TEST_ID}
+              />
+              <IconButton
+                client:only="solid-js"
+                isDisabled={true}
+                ariaLabel={"text"}
+                theme={theme}
+                size={size}
+                iconName={IconName.Trash}
+                testId={DEFAULT_TEST_ID}
+              />
+            </>
+          ))}
+        </div>
       </div>
-    </div>
-  ))}
+    ))
+  }
 
   <h2>Type - Link</h2>
-  {themes.map((theme) => (
-    <div class="demoThemeWrapper">
-      <h3 style="font-size: 24px; margin-bottom: 10px;">{theme}</h3>
-      <div class="grid grid_3Col">
-        <span class="chead"></span>
-        <span class="chead">Default</span>
-        <span class="chead">Loading</span>
-        <span class="chead">Disabled</span>
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 style="font-size: 24px; margin-bottom: 10px;">{theme}</h3>
+        <div class="grid grid_3Col">
+          <span class="chead" />
+          <span class="chead">Default</span>
+          <span class="chead">Loading</span>
+          <span class="chead">Disabled</span>
 
-        {sizes.map((size) => (
-          <span class="rhead">{size}</span>
-
-          <IconButton
-            client:only="solid-js"
-            componentType={IconButtonComponentType.Link}
-            ariaLabel={"text"}
-            theme={theme}
-            size={size}
-            iconName={IconName.Trash}
-            testId={DEFAULT_TEST_ID}
-          />
-
-          <span>Не предусмотрено</span>
-
-          <IconButton
-            client:only="solid-js"
-            componentType={IconButtonComponentType.Link}
-            isDisabled={true}
-            ariaLabel={"text"}
-            theme={theme}
-            size={size}
-            iconName={IconName.Trash}
-            testId={DEFAULT_TEST_ID}
-          />
-        ))}
-
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <IconButton
+                client:only="solid-js"
+                componentType={IconButtonComponentType.Link}
+                ariaLabel={"text"}
+                theme={theme}
+                size={size}
+                iconName={IconName.Trash}
+                testId={DEFAULT_TEST_ID}
+              />
+              <span>Не предусмотрено</span>
+              <IconButton
+                client:only="solid-js"
+                componentType={IconButtonComponentType.Link}
+                isDisabled={true}
+                ariaLabel={"text"}
+                theme={theme}
+                size={size}
+                iconName={IconName.Trash}
+                testId={DEFAULT_TEST_ID}
+              />
+            </>
+          ))}
+        </div>
       </div>
-    </div>
-  ))}
-
+    ))
+  }
 </StorybookPage>

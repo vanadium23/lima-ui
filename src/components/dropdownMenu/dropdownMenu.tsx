@@ -27,8 +27,8 @@ export const DropdownMenu = (props: Testable<DropdownMenuProps>) => {
       theme: DropdownMenuTheme.Primary,
       size: DropdownMenuSize.Medium,
       isDisabled: false,
-      handleClick: () => { },
-      ref: () => { },
+      handleClick: () => {},
+      ref: () => {},
       floatingStyles: null,
     },
     props,
@@ -41,14 +41,14 @@ export const DropdownMenu = (props: Testable<DropdownMenuProps>) => {
       style={
         mProps.floatingStyles
           ? {
-            position: mProps.floatingStyles.strategy,
-            top: `${(mProps.floatingStyles.y ?? 0) / 10}rem`,
-            left: `${(mProps.floatingStyles.x ?? 0) / 10}rem`,
-            display: mProps.floatingStyles.middlewareData.hide
-              ?.referenceHidden
-              ? "none"
-              : "flex",
-          }
+              position: mProps.floatingStyles.strategy,
+              top: `${(mProps.floatingStyles.y ?? 0) / 10}rem`,
+              left: `${(mProps.floatingStyles.x ?? 0) / 10}rem`,
+              display: mProps.floatingStyles.middlewareData.hide
+                ?.referenceHidden
+                ? "none"
+                : "flex",
+            }
           : {}
       }
       ref={mProps.ref}

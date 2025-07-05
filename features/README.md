@@ -4,13 +4,11 @@ This directory contains Cucumber feature files and step definitions for testing 
 
 ## Screenshot Functionality
 
-The test framework includes automatic screenshot capture for failed tests, as well as the ability to take manual
-screenshots during test execution.
+The test framework includes automatic screenshot capture for failed tests, as well as the ability to take manual screenshots during test execution.
 
 ### Automatic Screenshots on Test Failure
 
-When a test fails, a screenshot is automatically taken and saved to the `features/screenshots` directory. The screenshot
-filename includes the scenario name and a timestamp.
+When a test fails, a screenshot is automatically taken and saved to the `features/screenshots` directory. The screenshot filename includes the scenario name and a timestamp.
 
 ### Manual Screenshots
 

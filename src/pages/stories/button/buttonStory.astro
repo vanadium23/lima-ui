@@ -1,7 +1,11 @@
 ---
 import { DEFAULT_TEST_ID } from "../../../../features/testIds";
-import { ButtonComponentType } from "../../../components/button/button";
-import { Button, ButtonSize, ButtonTheme } from "../../../components/button/button.tsx";
+import {
+  Button,
+  ButtonComponentType,
+  ButtonSize,
+  ButtonTheme,
+} from "../../../components/button/button";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 const themes = Object.values(ButtonTheme);
@@ -9,56 +13,86 @@ const sizes = Object.values(ButtonSize);
 ---
 
 <StorybookPage title="Button">
-
   <h2>Type - Button</h2>
-  {themes.map((theme) => (
-    <div class="demoThemeWrapper">
-      <h3 class="demoThemeWrapper__title">{theme}</h3>
-      <div class="grid grid_3Col">
-        <span class="chead" />
-        <span class="chead">Default</span>
-        <span class="chead">Loading</span>
-        <span class="chead">Disabled</span>
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 class="demoThemeWrapper__title">{theme}</h3>
+        <div class="grid grid_3Col">
+          <span class="chead" />
+          <span class="chead">Default</span>
+          <span class="chead">Loading</span>
+          <span class="chead">Disabled</span>
 
-        {sizes.map((size) => (
-          <span class="rhead">{size}</span>
-
-          <Button client:only="solid-js" theme={theme} size={size} text="Text" testId={DEFAULT_TEST_ID} />
-          <Button client:only="solid-js" theme={theme} size={size} text="Text" testId={DEFAULT_TEST_ID}
-                  isLoading={true} />
-          <Button client:only="solid-js" theme={theme} size={size} text="Text" testId={DEFAULT_TEST_ID}
-                  isDisabled={true} />
-        ))}
-
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <Button
+                client:only="solid-js"
+                theme={theme}
+                size={size}
+                text="Text"
+                testId={DEFAULT_TEST_ID}
+              />
+              <Button
+                client:only="solid-js"
+                theme={theme}
+                size={size}
+                text="Text"
+                testId={DEFAULT_TEST_ID}
+                isLoading={true}
+              />
+              <Button
+                client:only="solid-js"
+                theme={theme}
+                size={size}
+                text="Text"
+                testId={DEFAULT_TEST_ID}
+                isDisabled={true}
+              />
+            </>
+          ))}
+        </div>
       </div>
-    </div>
-  ))}
+    ))
+  }
 
   <h2>Type - Link</h2>
-  {themes.map((theme) => (
-    <div class="demoThemeWrapper">
-      <h3 class="demoThemeWrapper__title">{theme}</h3>
-      <div class="grid grid_3Col">
-        <span class="chead" />
-        <span class="chead">Default</span>
-        <span class="chead">Loading</span>
-        <span class="chead">Disabled</span>
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 class="demoThemeWrapper__title">{theme}</h3>
+        <div class="grid grid_3Col">
+          <span class="chead" />
+          <span class="chead">Default</span>
+          <span class="chead">Loading</span>
+          <span class="chead">Disabled</span>
 
-        {sizes.map((size) => (
-          <span class="rhead">{size}</span>
-
-          <Button client:only="solid-js" componentType={ButtonComponentType.Link} theme={theme} size={size}
-                  text="Text"
-                  testId={DEFAULT_TEST_ID} />
-          <span>Не предусмотрено</span>
-          <Button client:only="solid-js" componentType={ButtonComponentType.Link} theme={theme} size={size}
-                  text="Text"
-                  testId={DEFAULT_TEST_ID}
-                  isDisabled={true} />
-        ))}
-
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <Button
+                client:only="solid-js"
+                componentType={ButtonComponentType.Link}
+                theme={theme}
+                size={size}
+                text="Text"
+                testId={DEFAULT_TEST_ID}
+              />
+              <span>Не предусмотрено</span>
+              <Button
+                client:only="solid-js"
+                componentType={ButtonComponentType.Link}
+                theme={theme}
+                size={size}
+                text="Text"
+                testId={DEFAULT_TEST_ID}
+                isDisabled={true}
+              />
+            </>
+          ))}
+        </div>
       </div>
-    </div>
-  ))}
-
+    ))
+  }
 </StorybookPage>
