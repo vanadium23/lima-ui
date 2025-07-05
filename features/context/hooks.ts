@@ -16,7 +16,6 @@ import {
   expect,
   type Page,
 } from "@playwright/test";
-import * as fs from "fs";
 import * as path from "path";
 
 import type {
@@ -25,17 +24,18 @@ import type {
   TestSubId,
 } from "../../src/components/utilities/testable.ts";
 import type { AddressMeaning } from "../../utilities/addresses.ts";
+import { SCREENSHOTS_FOLDER } from "../../utilities/pathes.ts";
 import {
   buildTestableSelector,
   buildTestableSubSelector,
   destructureFullTestId,
 } from "../utilities/buildTestableSelector.ts";
-
 import {
   getDeviceProfile,
   getDeviceProfileName,
 } from "../utilities/discoverDevice.ts";
 import { getTimeoutOrCancelItIfDebugging } from "../utilities/getTimeoutOrCancelItIfDebugging.ts";
+
 import { createAccountedTesting } from "./createAccountedTesting.ts";
 
 let browser: Browser;
@@ -123,10 +123,7 @@ const MORE_THAN_IN_PLAYWRIGHT = getTimeoutOrCancelItIfDebugging(6000);
 setDefaultTimeout(MORE_THAN_IN_PLAYWRIGHT);
 setWorldConstructor(ComplexWorld);
 
-const screenshotsFolder = path.join(process.cwd(), "features", "screenshots");
-
 BeforeAll(async function () {
-  prepareEmptyScreenshotsFolder();
   browser = await chromium.launch({
     headless: !isVisible(),
   });
@@ -144,7 +141,7 @@ After(async function (this: ComplexWorld, scenario: ITestCaseHookParameter) {
     const scenarioName = scenario.pickle.name.replace(/[^a-zA-Z0-9]/g, "_");
     const deviceSuffix = getDeviceProfileName();
     const screenshotPath = path.join(
-      screenshotsFolder,
+      SCREENSHOTS_FOLDER,
       `${timestamp}_${scenarioName}_${deviceSuffix}.png`,
     );
 
@@ -165,18 +162,6 @@ After({ tags: "@last", timeout: 60000 }, async function (this: ComplexWorld) {
 AfterAll({ timeout: 60000 }, async function () {
   isVisible() || (await browser.close());
 });
-
-function prepareEmptyScreenshotsFolder() {
-  if (fs.existsSync(screenshotsFolder)) {
-    const files = fs.readdirSync(screenshotsFolder);
-
-    for (const file of files) {
-      fs.unlinkSync(path.join(screenshotsFolder, file));
-    }
-  } else {
-    fs.mkdirSync(screenshotsFolder, { recursive: true });
-  }
-}
 
 function isVisible() {
   return process.env.BROWSER_VISIBLE === "1";

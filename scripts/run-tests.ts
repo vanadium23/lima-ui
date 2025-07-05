@@ -2,10 +2,14 @@
 import chalk from "chalk";
 import { spawn } from "child_process";
 import { Command } from "commander";
+import fs from "fs";
+import path from "path";
+
 import {
   DEVICE_PROFILES,
   DeviceProfiles,
 } from "../features/config/deviceProfiles";
+import { SCREENSHOTS_FOLDER } from "../utilities/pathes";
 
 interface TestConfig {
   tags: string[];
@@ -91,6 +95,8 @@ async function runTests() {
   console.log(`- Debug: ${config.debug ? "enabled" : "disabled"}`);
   console.log(`- Visible mode: ${config.visible ? "enabled" : "disabled"}`);
   console.log(`- Fail fast: ${failFast ? "enabled" : "disabled"}\n`);
+
+  prepareEmptyScreenshotsFolder();
 
   const results: { device: DeviceProfiles; success: boolean }[] = [];
   let hasError = false;
@@ -187,9 +193,18 @@ process.on("uncaughtException", (error) => {
   process.exit(1);
 });
 
-/**
- * Logs detailed information about the test device in a formatted way
- */
+function prepareEmptyScreenshotsFolder() {
+  console.log(chalk.greenBright("\nScreenshots folder cleared"));
+
+  if (fs.existsSync(SCREENSHOTS_FOLDER)) {
+    for (const file of fs.readdirSync(SCREENSHOTS_FOLDER)) {
+      fs.unlinkSync(path.join(SCREENSHOTS_FOLDER, file));
+    }
+  } else {
+    fs.mkdirSync(SCREENSHOTS_FOLDER, { recursive: true });
+  }
+}
+
 function logDeviceInfo(device: string) {
   const deviceProfile =
     DEVICE_PROFILES[device as DeviceProfiles] || DEVICE_PROFILES.desktop;
