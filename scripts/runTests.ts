@@ -16,6 +16,7 @@ interface TestConfig {
   debug: boolean;
   visible: boolean;
   devices: DeviceProfiles[];
+  perScenarioProgress: boolean;
 }
 
 // Parse command line arguments
@@ -41,16 +42,21 @@ program
     "Run browser in non-headless mode and keep it open after tests",
   )
   .option("--fail-fast", "Stop test execution after the first failure")
+  .option(
+    "--per-scenario-progress",
+    "Use per-scenario progress formatter (scenario name: dots)",
+  )
   .addHelpText(
     "afterAll",
     chalk.yellow("\nExamples:\n") +
-      "  npm run test                      # Run all tests for all devices\n" +
-      "  npm run test -- --desktop         # Run tests only for desktop\n" +
-      "  npm run test -- --broken          # Run only broken tests for all devices\n" +
-      "  npm run test -- --current         # Run only current tests for all devices\n" +
-      "  npm run test -- --desktop --debug # Run desktop tests in debug mode\n" +
-      "  npm run test -- --fail-fast       # Stop after first test failure\n" +
-      "  npm run test -- --help            # Show this help message\n",
+      "  npm run test                            # Run all tests for all devices\n" +
+      "  npm run test -- --desktop               # Run tests only for desktop\n" +
+      "  npm run test -- --broken                # Run only broken tests for all devices\n" +
+      "  npm run test -- --current               # Run only current tests for all devices\n" +
+      "  npm run test -- --desktop --debug       # Run desktop tests in debug mode\n" +
+      "  npm run test -- --fail-fast             # Stop after first test failure\n" +
+      "  npm run test -- --per-scenario-progress # Use per-scenario progress formatter\n" +
+      "  npm run test -- --help                  # Show this help message\n",
   )
   .showHelpAfterError("(run `npm test -- --help` for additional information)");
 
@@ -61,6 +67,7 @@ const config: TestConfig = {
   tags: ["not @broken"], // Default: exclude broken tests
   debug: program.opts().debug || false,
   visible: program.opts().visible || false,
+  perScenarioProgress: program.opts().perScenarioProgress || false,
 };
 
 const { desktop, tablet, mobile, broken, current, failFast } = program.opts();
@@ -94,7 +101,10 @@ async function runTests() {
   console.log(`- Tags: ${config.tags.join(", ")}`);
   console.log(`- Debug: ${config.debug ? "enabled" : "disabled"}`);
   console.log(`- Visible mode: ${config.visible ? "enabled" : "disabled"}`);
-  console.log(`- Fail fast: ${failFast ? "enabled" : "disabled"}\n`);
+  console.log(`- Fail fast: ${failFast ? "enabled" : "disabled"}`);
+  console.log(
+    `- Per-scenario progress: ${config.perScenarioProgress ? "enabled" : "disabled"}\n`,
+  );
 
   prepareEmptyScreenshotsFolder();
 
@@ -122,6 +132,11 @@ async function runTests() {
 
       // Add import for TypeScript support
       args.push("--import", "tsx/cucumber/import");
+
+      // Set formatter based on config
+      if (config.perScenarioProgress) {
+        args.push("--format", "./scripts/perScenarioProgressFormatter.ts");
+      }
 
       const nodeOptions = [
         process.env.NODE_OPTIONS || "",
