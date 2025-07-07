@@ -64,6 +64,7 @@ class PerScenarioProgressFormatter {
     }
   >;
   private currentScenarioId: string | null;
+  private scenarioAttempts: Map<string, number>;
 
   constructor(options: IFormatterOptions) {
     this.log = options.log;
@@ -73,6 +74,7 @@ class PerScenarioProgressFormatter {
     // Scenario tracking
     this.scenarioMap = new Map();
     this.currentScenarioId = null;
+    this.scenarioAttempts = new Map();
 
     // Register event handlers
     this.eventBroadcaster.on("envelope", this.processEnvelope.bind(this));
@@ -112,7 +114,21 @@ class PerScenarioProgressFormatter {
     if (scenarioInfo) {
       this.currentScenarioId = pickleId;
 
-      this.log(`\n${scenarioInfo.name}: `);
+      const scenarioName = scenarioInfo.name;
+      const currentAttempt = this.scenarioAttempts.get(scenarioName) || 0;
+      const attemptNumber = currentAttempt + 1;
+      this.scenarioAttempts.set(scenarioName, attemptNumber);
+
+      // Make the attempt number very visible for retries
+      let scenarioDisplay = scenarioName;
+
+      if (attemptNumber > 1) {
+        scenarioDisplay = chalk.yellow(
+          `${scenarioName} (Retry Attempt ${attemptNumber})`,
+        );
+      }
+
+      this.log(`\n${scenarioDisplay}: `);
     }
   }
 

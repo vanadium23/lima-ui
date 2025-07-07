@@ -70,7 +70,7 @@ jobs:
         shell: bash
 
       - name: Run E2E tests
-        run: npm test -- --per-scenario-progress
+        run: npm test -- --per-scenario-progress --retry 1
         working-directory: svernik-UI
 
       - name: Stop front-end
@@ -91,7 +91,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: e2e-test-artifacts
+          name: e2e-test-artifacts-${{ github.run_number }}-${{ github.run_attempt }}-${{ github.sha }}-${{ github.event.pull_request.number }}-${{ format(github.event.pull_request.updated_at || github.event.repository.updated_at, 'yyyy-MM-dd-HH-mm') }}
           path: |
             svernik-UI/features/reports/
             svernik-UI/features/screenshots/

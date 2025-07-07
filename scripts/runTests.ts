@@ -17,6 +17,7 @@ interface TestConfig {
   visible: boolean;
   devices: DeviceProfiles[];
   perScenarioProgress: boolean;
+  retry: number;
 }
 
 // Parse command line arguments
@@ -46,6 +47,7 @@ program
     "--per-scenario-progress",
     "Use per-scenario progress formatter (scenario name: dots)",
   )
+  .option("--retry <number>", "Number of times to retry failed tests", "0")
   .addHelpText(
     "afterAll",
     chalk.yellow("\nExamples:\n") +
@@ -56,6 +58,7 @@ program
       "  npm run test -- --desktop --debug       # Run desktop tests in debug mode\n" +
       "  npm run test -- --fail-fast             # Stop after first test failure\n" +
       "  npm run test -- --per-scenario-progress # Use per-scenario progress formatter\n" +
+      "  npm run test -- --retry 2               # Retry failed tests up to 2 times\n" +
       "  npm run test -- --help                  # Show this help message\n",
   )
   .showHelpAfterError("(run `npm test -- --help` for additional information)");
@@ -68,6 +71,7 @@ const config: TestConfig = {
   debug: program.opts().debug || false,
   visible: program.opts().visible || false,
   perScenarioProgress: program.opts().perScenarioProgress || false,
+  retry: parseInt(program.opts().retry || "0", 10),
 };
 
 const { desktop, tablet, mobile, broken, current, failFast } = program.opts();
@@ -103,8 +107,9 @@ async function runTests() {
   console.log(`- Visible mode: ${config.visible ? "enabled" : "disabled"}`);
   console.log(`- Fail fast: ${failFast ? "enabled" : "disabled"}`);
   console.log(
-    `- Per-scenario progress: ${config.perScenarioProgress ? "enabled" : "disabled"}\n`,
+    `- Per-scenario progress: ${config.perScenarioProgress ? "enabled" : "disabled"}`,
   );
+  console.log(`- Retry: ${config.retry}\n`);
 
   prepareEmptyScreenshotsFolder();
 
@@ -133,9 +138,12 @@ async function runTests() {
       // Add import for TypeScript support
       args.push("--import", "tsx/cucumber/import");
 
-      // Set formatter based on config
       if (config.perScenarioProgress) {
         args.push("--format", "./scripts/perScenarioProgressFormatter.ts");
+      }
+
+      if (config.retry > 0) {
+        args.push("--retry", config.retry.toString());
       }
 
       const nodeOptions = [
