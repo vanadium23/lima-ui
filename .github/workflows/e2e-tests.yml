@@ -87,11 +87,19 @@ jobs:
         run: docker compose down
         working-directory: svernik
 
+      # Set variables for the artifact name that doesn't contain invalid characters
+      - name: Set artifact variables
+        id: artifact_vars
+        run: |
+          echo "timestamp=$(date +'%Y-%m-%d-%H-%M')" >> $GITHUB_OUTPUT
+          echo "short_sha=$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_OUTPUT
+        shell: bash
+
       - name: Upload test results and screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: e2e-test-artifacts-${{ github.run_number }}-${{ github.run_attempt }}-${{ github.sha }}-${{ github.event.pull_request.number }}-${{ format(github.event.pull_request.updated_at || github.event.repository.updated_at, 'yyyy-MM-dd-HH-mm') }}
+          name: "e2e-test-artifacts-${{ github.run_number }}-${{ github.run_attempt }}-${{ steps.artifact_vars.outputs.short_sha }}-PR${{ github.event.pull_request.number }}-${{ steps.artifact_vars.outputs.timestamp }}"
           path: |
             svernik-UI/features/reports/
             svernik-UI/features/screenshots/
