@@ -4,8 +4,8 @@ import { expect } from "@playwright/test";
 import type { ComplexWorld } from "../../context/hooks.ts";
 import { ITEMS_LIMIT_REACHED_WARNING, LIST_ITEM } from "../../testIds.ts";
 import { TEST_SUB_ID_ATTRIBUTE } from "../../utilities/buildTestableSelector.ts";
+import { getRandomInt } from "../../utilities/getRandomInt.ts";
 import { getTimeoutOrCancelItIfDebugging } from "../../utilities/getTimeoutOrCancelItIfDebugging.ts";
-import { getRandomInt } from "../utilities/getRandomInt.ts";
 
 import {
   BUTTON_TEST_IDS,
