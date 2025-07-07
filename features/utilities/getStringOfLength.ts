@@ -10,11 +10,14 @@ function getStringOfLength(length: number): string {
 }
 
 export function getStringUpToLimit(limit: number): string {
-  const string = getStringOfLength(getRandomInt(limit));
+  const string = getStringOfLength(getRandomInt(limit)) + 1;
 
+  const startingSpacesCount = string.match(/^\s+/)?.[0].length ?? 0;
   const endingSpacesCount = string.match(/\s+$/)?.[0].length ?? 0;
 
-  return string.replace(/\s+$/g, ".".repeat(endingSpacesCount));
+  return string
+    .replace(/^\s+/g, ".".repeat(startingSpacesCount))
+    .replace(/\s+$/g, ".".repeat(endingSpacesCount));
 }
 
 export function getStringLongerThanLowerLimit(limit: number): string {
