@@ -115,13 +115,18 @@ class PerScenarioProgressFormatter {
       this.currentScenarioId = pickleId;
 
       const scenarioName = scenarioInfo.name;
-      const currentAttempt = this.scenarioAttempts.get(scenarioName) || 0;
-      const attemptNumber = currentAttempt + 1;
-      this.scenarioAttempts.set(scenarioName, attemptNumber);
-
-      // Make the attempt number very visible for retries
       let scenarioDisplay = scenarioName;
 
+      // Use the pickle ID as the key for tracking retries
+      // This ensures each unique scenario outline example is tracked separately
+      const scenarioKey = pickleId;
+
+      // Check if this specific scenario has been run before
+      const currentAttempt = this.scenarioAttempts.get(scenarioKey) || 0;
+      const attemptNumber = currentAttempt + 1;
+      this.scenarioAttempts.set(scenarioKey, attemptNumber);
+
+      // Only mark as a retry if this exact scenario has been run more than once
       if (attemptNumber > 1) {
         scenarioDisplay = chalk.yellow(
           `${scenarioName} (Retry Attempt ${attemptNumber})`,
