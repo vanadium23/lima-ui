@@ -123,6 +123,15 @@ async function runTests() {
       const command = "npx";
       const args = ["cucumber-js"];
 
+      // Add device-specific report paths to prevent overwriting reports
+      const deviceReportSuffix = `-${device}`;
+      args.push(
+        "--format",
+        `html:features/reports/cucumber-report${deviceReportSuffix}.html`,
+        "--format",
+        `json:features/reports/cucumber-report${deviceReportSuffix}.json`,
+      );
+
       if (failFast) {
         args.push("--fail-fast");
       }
