@@ -68,7 +68,7 @@ export function cleanupVideoFiles(): void {
 }
 
 /**
- * Handles the latest video file - either renames it for failed tests or removes it for passed tests
+ * Handles video files - either renames them for failed tests or removes them for passed tests
  * @param failedVideoPath Path to rename the video to if it's a failed test, or undefined to remove it
  * @returns Promise that resolves when the operation is complete
  */
@@ -76,9 +76,16 @@ export async function renameFailedRemovePassedVideo(
   failedVideoPath: string,
 ): Promise<void> {
   try {
-    const latestVideo = fs
+    if (!fs.existsSync(VIDEOS_FOLDER)) {
+      return;
+    }
+
+    const recentVideos = fs
       .readdirSync(VIDEOS_FOLDER)
-      .filter((file) => file.endsWith(".webm"))
+      .filter(
+        (file) =>
+          file.endsWith(".webm") && !file.startsWith(FAILED_VIDEO_PREFIX),
+      )
       .map((file) => {
         const fullVideoPath = path.join(VIDEOS_FOLDER, file);
 
@@ -91,16 +98,33 @@ export async function renameFailedRemovePassedVideo(
       .sort(
         (video, anotherVideo) =>
           anotherVideo.mtime.getTime() - video.mtime.getTime(),
-      )[0];
+      );
 
-    if (latestVideo) {
-      if (failedVideoPath) {
-        fs.renameSync(latestVideo.path, failedVideoPath);
-      } else {
-        fs.unlinkSync(latestVideo.path);
+    // If this is a failed test, rename the newest video files
+    if (failedVideoPath) {
+      for (const [i, video] of recentVideos.entries()) {
+        try {
+          const dir = path.dirname(failedVideoPath);
+          const ext = path.extname(failedVideoPath);
+          const baseName = path.basename(failedVideoPath, ext);
+
+          const targetPath = path.join(dir, `${baseName}_${i}${ext}`);
+
+          fs.renameSync(video.path, targetPath);
+        } catch (error) {
+          console.error(`Failed to rename video file ${video.path}: ${error}`);
+        }
+      }
+    } else {
+      for (const video of recentVideos) {
+        try {
+          fs.unlinkSync(video.path);
+        } catch (error) {
+          console.error(`Failed to remove video file ${video.path}: ${error}`);
+        }
       }
     }
   } catch (error) {
-    console.error(`Failed to handle video file: ${error}`);
+    console.error(`Failed to handle video files: ${error}`);
   }
 }
