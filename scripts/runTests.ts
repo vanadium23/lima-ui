@@ -2,14 +2,14 @@
 import chalk from "chalk";
 import { spawn } from "child_process";
 import { Command } from "commander";
-import fs from "fs";
-import path from "path";
 
 import {
   DEVICE_PROFILES,
   DeviceProfiles,
 } from "../features/config/deviceProfiles";
-import { SCREENSHOTS_FOLDER } from "../utilities/pathes";
+import { RESULTS_FOLDER } from "../features/config/results.ts";
+import { prepareEmptyScreenshotsFolder } from "../features/utilities/screenshot.ts";
+import { prepareEmptyVideosFolder } from "../features/utilities/video.ts";
 
 interface TestConfig {
   tags: string[];
@@ -111,7 +111,11 @@ async function runTests() {
   );
   console.log(`- Retry: ${config.retry}\n`);
 
+  console.log(chalk.greenBright("\nScreenshots folder cleared"));
   prepareEmptyScreenshotsFolder();
+
+  console.log(chalk.greenBright("\nVideos folder cleared"));
+  prepareEmptyVideosFolder();
 
   const results: { device: DeviceProfiles; success: boolean }[] = [];
   let hasError = false;
@@ -125,11 +129,12 @@ async function runTests() {
 
       // Add device-specific report paths to prevent overwriting reports
       const deviceReportSuffix = `-${device}`;
+      const resultsFolder = RESULTS_FOLDER.join("/");
       args.push(
         "--format",
-        `html:features/reports/cucumber-report${deviceReportSuffix}.html`,
+        `html:${resultsFolder}/reports/cucumber-report${deviceReportSuffix}.html`,
         "--format",
-        `json:features/reports/cucumber-report${deviceReportSuffix}.json`,
+        `json:${resultsFolder}/reports/cucumber-report${deviceReportSuffix}.json`,
       );
 
       if (failFast) {
@@ -224,18 +229,6 @@ process.on("uncaughtException", (error) => {
   console.error("Uncaught exception:", error);
   process.exit(1);
 });
-
-function prepareEmptyScreenshotsFolder() {
-  console.log(chalk.greenBright("\nScreenshots folder cleared"));
-
-  if (fs.existsSync(SCREENSHOTS_FOLDER)) {
-    for (const file of fs.readdirSync(SCREENSHOTS_FOLDER)) {
-      fs.unlinkSync(path.join(SCREENSHOTS_FOLDER, file));
-    }
-  } else {
-    fs.mkdirSync(SCREENSHOTS_FOLDER, { recursive: true });
-  }
-}
 
 function logDeviceInfo(device: string) {
   const deviceProfile =

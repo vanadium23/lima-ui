@@ -95,11 +95,12 @@ jobs:
           echo "short_sha=$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_OUTPUT
         shell: bash
 
-      - name: Upload test results and screenshots
+      - name: Upload test results, screenshots, and videos
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: "e2e-test-artifacts-${{ github.run_number }}-${{ github.run_attempt }}-${{ steps.artifact_vars.outputs.short_sha }}-PR${{ github.event.pull_request.number }}-${{ steps.artifact_vars.outputs.timestamp }}"
           path: |
-            svernik-UI/features/reports/
-            svernik-UI/features/screenshots/
+            svernik-UI/features/results/reports/
+            svernik-UI/features/results/screenshots/
+            svernik-UI/features/results/videos/

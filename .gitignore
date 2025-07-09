@@ -25,5 +25,4 @@ pnpm-debug.log*
 /playwright/.cache/
 
 # Cucumber test artifacts
-/features/screenshots/
-/features/reports/
+/features/results/

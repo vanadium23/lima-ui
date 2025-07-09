@@ -1,48 +1,12 @@
 import type { IFormatterOptions } from "@cucumber/cucumber";
+import {
+  Envelope,
+  TestCaseFinished,
+  TestCaseStarted,
+  TestRunFinished,
+  TestStepFinished,
+} from "@cucumber/messages";
 import chalk from "chalk";
-
-/**
- * Note: We're defining our own interfaces here instead of importing them directly
- * from @cucumber/cucumber because the internal structure of the Cucumber.js types
- * can change between versions, and direct imports from internal paths like
- * '@cucumber/cucumber/lib/formatter/...' are not recommended for stability.
- *
- * These interfaces match the structure of the objects we receive from Cucumber.js events.
- */
-
-// Define interfaces for Cucumber.js objects
-interface Pickle {
-  id: string;
-  name: string;
-  steps?: { length: number }[];
-}
-
-interface Envelope {
-  pickle?: Pickle;
-  testCaseStarted?: TestCaseStarted;
-  testStepFinished?: TestStepFinished;
-  testCaseFinished?: TestCaseFinished;
-  testRunFinished?: TestRunFinished;
-}
-
-interface TestCaseStarted {
-  id: string;
-}
-
-interface TestStepFinished {
-  testCaseStartedId: string;
-  testStepResult: {
-    status: string;
-  };
-}
-
-interface TestCaseFinished {
-  testCaseStartedId: string;
-}
-
-interface TestRunFinished {
-  success: boolean;
-}
 
 /**
  * Custom formatter that shows progress for each scenario on separate lines
