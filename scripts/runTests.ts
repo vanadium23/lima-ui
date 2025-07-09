@@ -9,6 +9,7 @@ import {
 } from "../features/config/deviceProfiles";
 import { RESULTS_FOLDER } from "../features/config/results.ts";
 import { prepareEmptyScreenshotsFolder } from "../features/utilities/screenshot.ts";
+import { cleanupVideoFiles } from "../features/utilities/video.ts";
 import { prepareEmptyVideosFolder } from "../features/utilities/video.ts";
 
 interface TestConfig {
@@ -208,7 +209,6 @@ async function runTests() {
     }
   }
 
-  // Print summary
   console.log("\n" + chalk.blue.bold("Test Summary:") + "\n" + "=".repeat(30));
   results.forEach(({ device, success }) => {
     const status = success ? chalk.green("PASS") : chalk.red("FAIL");
@@ -216,10 +216,11 @@ async function runTests() {
   });
   console.log("=".repeat(30));
 
+  cleanupVideoFiles();
+
   process.exit(hasError ? 1 : 0);
 }
 
-// Add error handling
 process.on("unhandledRejection", (error) => {
   console.error("Unhandled rejection:", error);
   process.exit(1);

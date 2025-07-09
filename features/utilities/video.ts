@@ -9,13 +9,15 @@ export const VIDEOS_FOLDER = path.join(
   "videos",
 );
 
+const FAILED_VIDEO_PREFIX = "FAILED_";
+
 export function createVideoPath(
   scenarioName: string,
   deviceSuffix: string,
 ): string {
   const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
   const sanitizedName = scenarioName.replace(/[^a-zA-Z0-9]/g, "_");
-  const videoName = `${timestamp}_${sanitizedName}_${deviceSuffix}.webm`;
+  const videoName = `${FAILED_VIDEO_PREFIX}${timestamp}_${sanitizedName}_${deviceSuffix}.webm`;
 
   return path.join(VIDEOS_FOLDER, videoName);
 }
@@ -27,6 +29,41 @@ export function prepareEmptyVideosFolder(): void {
     }
   } else {
     fs.mkdirSync(VIDEOS_FOLDER, { recursive: true });
+  }
+}
+
+/**
+ * Cleans up video files in the videos folder, keeping only files with the FAILED_VIDEO_PREFIX
+ * This should be called at the end of the test run
+ */
+export function cleanupVideoFiles(): void {
+  try {
+    if (!fs.existsSync(VIDEOS_FOLDER)) {
+      return;
+    }
+
+    const files = fs.readdirSync(VIDEOS_FOLDER);
+    let removedCount = 0;
+
+    for (const file of files) {
+      // Only keep files that start with the FAILED_VIDEO_PREFIX
+      if (!file.startsWith(FAILED_VIDEO_PREFIX) && file.endsWith(".webm")) {
+        const filePath = path.join(VIDEOS_FOLDER, file);
+
+        try {
+          fs.unlinkSync(filePath);
+          removedCount++;
+        } catch (error) {
+          console.error(`Failed to remove video file ${filePath}: ${error}`);
+        }
+      }
+    }
+
+    if (removedCount > 0) {
+      console.log(`Cleaned up ${removedCount} non-failure video files`);
+    }
+  } catch (error) {
+    console.error(`Error during video cleanup: ${error}`);
   }
 }
 
