@@ -1,42 +1,70 @@
 ---
-import {DEFAULT_TEST_ID} from "../../../../features/testIds";
-import {Switch, SwitchSize, SwitchTheme} from "../../../components/switch/switch";
+import { DEFAULT_TEST_ID } from "../../../../features/testIds";
+import {
+  Switch,
+  SwitchSize,
+  SwitchTheme,
+} from "../../../components/switch/switch";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 const themes = Object.values(SwitchTheme);
 const sizes = Object.values(SwitchSize);
-
 ---
 
 <StorybookPage title="Switch">
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 class="demoThemeWrapper__title">{theme}</h3>
+        <div class="grid grid_2Col">
+          <span class="chead" />
+          <span class="chead">Default</span>
+          <span class="chead">Disabled</span>
 
-    {themes.map((theme) => (
-            <div class="demoThemeWrapper">
-                <h3 class="demoThemeWrapper__title">{theme}</h3>
-                <div class="grid grid_2Col">
-                    <span class="chead"/>
-                    <span class="chead">Default</span>
-                    <span class="chead">Disabled</span>
-
-                    {sizes.map((size) => (
-                            <span class="rhead">{size}</span>
-
-                            <Switch client:only="solid-js" theme={theme} size={size} testId={DEFAULT_TEST_ID} aria-label="Тыц-тыц"/>
-
-                            <Switch client:only="solid-js" theme={theme} size={size} testId={DEFAULT_TEST_ID}
-                                    isDisabled={true} isChecked={false} aria-label="Тыц-тыц"/>
-                    ))}
-                  {sizes.map((size) => (
-                          <span class="rhead">{size}</span>
-
-                          <Switch client:only="solid-js" theme={theme} size={size} testId={DEFAULT_TEST_ID} text="Текст"/>
-
-                          <Switch client:only="solid-js" theme={theme} size={size} testId={DEFAULT_TEST_ID} text="Текст"
-                                  isDisabled={true} isChecked={true}/>
-                  ))}
-
-                </div>
-            </div>
-    ))}
-
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <Switch
+                client:only="solid-js"
+                theme={theme}
+                size={size}
+                testId={DEFAULT_TEST_ID}
+                aria-label="Тыц-тыц"
+              />
+              <Switch
+                client:only="solid-js"
+                theme={theme}
+                size={size}
+                testId={DEFAULT_TEST_ID}
+                isDisabled={true}
+                isChecked={false}
+                aria-label="Тыц-тыц"
+              />
+            </>
+          ))}
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <Switch
+                client:only="solid-js"
+                theme={theme}
+                size={size}
+                testId={DEFAULT_TEST_ID}
+                text="Текст"
+              />
+              <Switch
+                client:only="solid-js"
+                theme={theme}
+                size={size}
+                testId={DEFAULT_TEST_ID}
+                text="Текст"
+                isDisabled={true}
+                isChecked={true}
+              />
+            </>
+          ))}
+        </div>
+      </div>
+    ))
+  }
 </StorybookPage>

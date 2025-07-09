@@ -3,7 +3,7 @@ Feature: Removing a list from the List view page
   Background:
     When I clear all data
 
-  Scenario: Closing a dialog modal box on pressing the cancel button
+  Scenario: Closing a dialog modal box on pressing the cancel button while viewing a list
     When I add a list
     And I ensure the tools panel is open
     And I press the "remove list tools panel" button
@@ -36,7 +36,7 @@ Feature: Removing a list from the List view page
     Then I expect to see the following number of list stripes: 0
     Then I expect to see the message about lists absence
 
-  Scenario: Unsuccessful list removal leads to error message appearance
+  Scenario: Unsuccessful list removal leads to error message appearance while viewing a list
     When I add a list
     And I ensure the tools panel is open
     And I press the "remove list tools panel" button
@@ -56,7 +56,7 @@ Feature: Removing a list from the List view page
     When I click outside of the "remove list" dialog modal box
     Then I expect not to see the "remove list" dialog modal box
 
-  Scenario: Consequent removal attempt leads to error message disappearance
+  Scenario: Consequent removal attempt leads to error message disappearance while viewing a list
     When I add a list
     And I ensure the tools panel is open
     And I press the "remove list tools panel" button

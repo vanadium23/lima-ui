@@ -3,11 +3,7 @@
     "formatOptions": {
       "snippetInterface": "async-await"
     },
-    "format": [
-      "progress",
-      "html:features/reports/cucumber-report.html",
-      "json:features/reports/cucumber-report.json"
-    ],
+    "format": ["progress"],
     "paths": ["features"],
     "import": ["features/**/*.ts"],
     "order": "random"

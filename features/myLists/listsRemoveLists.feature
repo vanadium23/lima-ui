@@ -12,7 +12,7 @@ Feature: Removing the lists on the Lists page
     And I press the visible "remove list" button
     Then I expect to see the "remove list" dialog modal box
 
-  Scenario: Closing a dialog modal box on pressing the cancel button
+  Scenario: Closing a dialog modal box on pressing the cancel button on My Lists page
     When I add a list
     And I add a list
     And I hover away from anything actionable
@@ -95,7 +95,7 @@ Feature: Removing the lists on the Lists page
     And I wait for the "list removal" request to happen
     Then I expect to see the message about lists absence
 
-  Scenario: Unsuccessful list removal leads to error message appearance
+  Scenario: Unsuccessful list removal leads to error message appearance on My Lists page
     When I add a list
     And I add a list
     And I open Lists page
@@ -106,7 +106,7 @@ Feature: Removing the lists on the Lists page
     And I press the visible "confirm list removal" button
     Then I expect to see the "list removal" error
 
-  Scenario: Consequent removal attempt leads to error message disappearance
+  Scenario: Consequent removal attempt leads to error message disappearance on My Lists page
     When I add a list
     And I add a list
     And I open Lists page

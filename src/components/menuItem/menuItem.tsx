@@ -29,7 +29,7 @@ export const MenuItem = (props: Testable<MenuItemProps>) => {
       theme: MenuItemTheme.Primary,
       size: MenuItemSize.Medium,
       isDisabled: false,
-      handleClick: () => { },
+      handleClick: () => {},
     },
     props,
   );

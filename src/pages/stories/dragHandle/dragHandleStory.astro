@@ -1,6 +1,10 @@
 ---
-import {DEFAULT_TEST_ID} from "../../../../features/testIds";
-import {DragHandle, DragHandleSize, DragHandleTheme} from "../../../components/dragHandle/dragHandle.tsx";
+import { DEFAULT_TEST_ID } from "../../../../features/testIds";
+import {
+  DragHandle,
+  DragHandleSize,
+  DragHandleTheme,
+} from "../../../components/dragHandle/dragHandle";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 const themes = Object.values(DragHandleTheme);
@@ -8,26 +12,35 @@ const sizes = Object.values(DragHandleSize);
 ---
 
 <StorybookPage title="DragHandle">
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 class="demoThemeWrapper__title">{theme}</h3>
+        <div class="grid grid_2Col">
+          <span class="chead" />
+          <span class="chead">Default</span>
+          <span class="chead">Disabled</span>
 
-    {themes.map((theme) => (
-            <div class="demoThemeWrapper">
-                <h3 class="demoThemeWrapper__title">{theme}</h3>
-                <div class="grid grid_2Col">
-                    <span class="chead"/>
-                    <span class="chead">Default</span>
-                    <span class="chead">Disabled</span>
-
-                    {sizes.map((size) => (
-                            <span class="rhead">{size}</span>
-
-                            <DragHandle client:only="solid-js" theme={theme} size={size} testId={DEFAULT_TEST_ID}/>
-
-                            <DragHandle client:only="solid-js" theme={theme} size={size} testId={DEFAULT_TEST_ID}
-                                    isDisabled={true}/>
-                    ))}
-
-                </div>
-            </div>
-    ))}
-
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <DragHandle
+                client:only="solid-js"
+                theme={theme}
+                size={size}
+                testId={DEFAULT_TEST_ID}
+              />
+              <DragHandle
+                client:only="solid-js"
+                theme={theme}
+                size={size}
+                testId={DEFAULT_TEST_ID}
+                isDisabled={true}
+              />
+            </>
+          ))}
+        </div>
+      </div>
+    ))
+  }
 </StorybookPage>

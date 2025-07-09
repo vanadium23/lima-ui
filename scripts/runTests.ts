@@ -2,20 +2,23 @@
 import chalk from "chalk";
 import { spawn } from "child_process";
 import { Command } from "commander";
-import fs from "fs";
-import path from "path";
 
 import {
   DEVICE_PROFILES,
   DeviceProfiles,
 } from "../features/config/deviceProfiles";
-import { SCREENSHOTS_FOLDER } from "../utilities/pathes";
+import { RESULTS_FOLDER } from "../features/config/results.ts";
+import { prepareEmptyScreenshotsFolder } from "../features/utilities/screenshot.ts";
+import { cleanupVideoFiles } from "../features/utilities/video.ts";
+import { prepareEmptyVideosFolder } from "../features/utilities/video.ts";
 
 interface TestConfig {
   tags: string[];
   debug: boolean;
   visible: boolean;
   devices: DeviceProfiles[];
+  perScenarioProgress: boolean;
+  retry: number;
 }
 
 // Parse command line arguments
@@ -41,16 +44,23 @@ program
     "Run browser in non-headless mode and keep it open after tests",
   )
   .option("--fail-fast", "Stop test execution after the first failure")
+  .option(
+    "--per-scenario-progress",
+    "Use per-scenario progress formatter (scenario name: dots)",
+  )
+  .option("--retry <number>", "Number of times to retry failed tests", "0")
   .addHelpText(
     "afterAll",
     chalk.yellow("\nExamples:\n") +
-      "  npm run test                      # Run all tests for all devices\n" +
-      "  npm run test -- --desktop         # Run tests only for desktop\n" +
-      "  npm run test -- --broken          # Run only broken tests for all devices\n" +
-      "  npm run test -- --current         # Run only current tests for all devices\n" +
-      "  npm run test -- --desktop --debug # Run desktop tests in debug mode\n" +
-      "  npm run test -- --fail-fast       # Stop after first test failure\n" +
-      "  npm run test -- --help            # Show this help message\n",
+      "  npm run test                            # Run all tests for all devices\n" +
+      "  npm run test -- --desktop               # Run tests only for desktop\n" +
+      "  npm run test -- --broken                # Run only broken tests for all devices\n" +
+      "  npm run test -- --current               # Run only current tests for all devices\n" +
+      "  npm run test -- --desktop --debug       # Run desktop tests in debug mode\n" +
+      "  npm run test -- --fail-fast             # Stop after first test failure\n" +
+      "  npm run test -- --per-scenario-progress # Use per-scenario progress formatter\n" +
+      "  npm run test -- --retry 2               # Retry failed tests up to 2 times\n" +
+      "  npm run test -- --help                  # Show this help message\n",
   )
   .showHelpAfterError("(run `npm test -- --help` for additional information)");
 
@@ -61,6 +71,8 @@ const config: TestConfig = {
   tags: ["not @broken"], // Default: exclude broken tests
   debug: program.opts().debug || false,
   visible: program.opts().visible || false,
+  perScenarioProgress: program.opts().perScenarioProgress || false,
+  retry: parseInt(program.opts().retry || "0", 10),
 };
 
 const { desktop, tablet, mobile, broken, current, failFast } = program.opts();
@@ -94,9 +106,17 @@ async function runTests() {
   console.log(`- Tags: ${config.tags.join(", ")}`);
   console.log(`- Debug: ${config.debug ? "enabled" : "disabled"}`);
   console.log(`- Visible mode: ${config.visible ? "enabled" : "disabled"}`);
-  console.log(`- Fail fast: ${failFast ? "enabled" : "disabled"}\n`);
+  console.log(`- Fail fast: ${failFast ? "enabled" : "disabled"}`);
+  console.log(
+    `- Per-scenario progress: ${config.perScenarioProgress ? "enabled" : "disabled"}`,
+  );
+  console.log(`- Retry: ${config.retry}\n`);
 
+  console.log(chalk.greenBright("\nScreenshots folder cleared"));
   prepareEmptyScreenshotsFolder();
+
+  console.log(chalk.greenBright("\nVideos folder cleared"));
+  prepareEmptyVideosFolder();
 
   const results: { device: DeviceProfiles; success: boolean }[] = [];
   let hasError = false;
@@ -107,6 +127,16 @@ async function runTests() {
     try {
       const command = "npx";
       const args = ["cucumber-js"];
+
+      // Add device-specific report paths to prevent overwriting reports
+      const deviceReportSuffix = `-${device}`;
+      const resultsFolder = RESULTS_FOLDER.join("/");
+      args.push(
+        "--format",
+        `html:${resultsFolder}/reports/cucumber-report${deviceReportSuffix}.html`,
+        "--format",
+        `json:${resultsFolder}/reports/cucumber-report${deviceReportSuffix}.json`,
+      );
 
       if (failFast) {
         args.push("--fail-fast");
@@ -122,6 +152,14 @@ async function runTests() {
 
       // Add import for TypeScript support
       args.push("--import", "tsx/cucumber/import");
+
+      if (config.perScenarioProgress) {
+        args.push("--format", "./scripts/perScenarioProgressFormatter.ts");
+      }
+
+      if (config.retry > 0) {
+        args.push("--retry", config.retry.toString());
+      }
 
       const nodeOptions = [
         process.env.NODE_OPTIONS || "",
@@ -171,7 +209,6 @@ async function runTests() {
     }
   }
 
-  // Print summary
   console.log("\n" + chalk.blue.bold("Test Summary:") + "\n" + "=".repeat(30));
   results.forEach(({ device, success }) => {
     const status = success ? chalk.green("PASS") : chalk.red("FAIL");
@@ -179,10 +216,11 @@ async function runTests() {
   });
   console.log("=".repeat(30));
 
+  cleanupVideoFiles();
+
   process.exit(hasError ? 1 : 0);
 }
 
-// Add error handling
 process.on("unhandledRejection", (error) => {
   console.error("Unhandled rejection:", error);
   process.exit(1);
@@ -192,18 +230,6 @@ process.on("uncaughtException", (error) => {
   console.error("Uncaught exception:", error);
   process.exit(1);
 });
-
-function prepareEmptyScreenshotsFolder() {
-  console.log(chalk.greenBright("\nScreenshots folder cleared"));
-
-  if (fs.existsSync(SCREENSHOTS_FOLDER)) {
-    for (const file of fs.readdirSync(SCREENSHOTS_FOLDER)) {
-      fs.unlinkSync(path.join(SCREENSHOTS_FOLDER, file));
-    }
-  } else {
-    fs.mkdirSync(SCREENSHOTS_FOLDER, { recursive: true });
-  }
-}
 
 function logDeviceInfo(device: string) {
   const deviceProfile =

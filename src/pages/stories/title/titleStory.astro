@@ -1,30 +1,36 @@
 ---
-import {DEFAULT_TEST_ID} from "../../../../features/testIds";
-import {Title, TitleSize, TitleTheme} from "../../../components/title/title.tsx";
+import { DEFAULT_TEST_ID } from "../../../../features/testIds";
+import { Title, TitleSize, TitleTheme } from "../../../components/title/title";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 const themes = Object.values(TitleTheme);
 const sizes = Object.values(TitleSize);
-
 ---
 
 <StorybookPage title="Title">
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 class="demoThemeWrapper__title">{theme}</h3>
+        <div class="grid grid_1Col">
+          <span class="chead" />
+          <span class="chead">h1</span>
 
-    {themes.map((theme) => (
-            <div class="demoThemeWrapper">
-                <h3 class="demoThemeWrapper__title">{theme}</h3>
-                <div class="grid grid_1Col">
-                    <span class="chead"/>
-                    <span class="chead">h1</span>
-
-                    {sizes.map((size) => (
-                            <span class="rhead">{size}</span>
-
-                            <Title client:only="solid-js" theme={theme} size={size} testId={DEFAULT_TEST_ID}>Заголовок</Title>
-                    ))}
-
-                </div>
-            </div>
-    ))}
-
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <Title
+                client:only="solid-js"
+                theme={theme}
+                size={size}
+                testId={DEFAULT_TEST_ID}
+              >
+                Заголовок
+              </Title>
+            </>
+          ))}
+        </div>
+      </div>
+    ))
+  }
 </StorybookPage>

@@ -16,7 +16,6 @@ import {
   expect,
   type Page,
 } from "@playwright/test";
-import * as path from "path";
 
 import type {
   FullTestId,
@@ -24,7 +23,6 @@ import type {
   TestSubId,
 } from "../../src/components/utilities/testable.ts";
 import type { AddressMeaning } from "../../utilities/addresses.ts";
-import { SCREENSHOTS_FOLDER } from "../../utilities/pathes.ts";
 import {
   buildTestableSelector,
   buildTestableSubSelector,
@@ -35,6 +33,12 @@ import {
   getDeviceProfileName,
 } from "../utilities/discoverDevice.ts";
 import { getTimeoutOrCancelItIfDebugging } from "../utilities/getTimeoutOrCancelItIfDebugging.ts";
+import { createScreenshotPath } from "../utilities/screenshot.ts";
+import {
+  createVideoPath,
+  renameFailedRemovePassedVideo,
+  VIDEOS_FOLDER,
+} from "../utilities/video.ts";
 
 import { createAccountedTesting } from "./createAccountedTesting.ts";
 
@@ -66,7 +70,12 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
   }
 
   async setContextAndPage() {
-    this.context = await browser.newContext(getDeviceProfile());
+    this.context = await browser.newContext({
+      ...getDeviceProfile(),
+      recordVideo: {
+        dir: VIDEOS_FOLDER,
+      },
+    });
     this.page = await this.context.newPage();
   }
 
@@ -134,16 +143,13 @@ Before(async function (this: ComplexWorld) {
   this.accounting.elements.clearTestIds();
 });
 
-// Take screenshot when a test fails - this needs to run BEFORE closing the page
 After(async function (this: ComplexWorld, scenario: ITestCaseHookParameter) {
+  let failedVideoPath = "";
+
   if (scenario.result?.status === "FAILED") {
-    const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
-    const scenarioName = scenario.pickle.name.replace(/[^a-zA-Z0-9]/g, "_");
+    const scenarioName = scenario.pickle.name;
     const deviceSuffix = getDeviceProfileName();
-    const screenshotPath = path.join(
-      SCREENSHOTS_FOLDER,
-      `${timestamp}_${scenarioName}_${deviceSuffix}.png`,
-    );
+    const screenshotPath = createScreenshotPath(scenarioName, deviceSuffix);
 
     try {
       await this.page.screenshot({ path: screenshotPath, fullPage: true });
@@ -151,12 +157,18 @@ After(async function (this: ComplexWorld, scenario: ITestCaseHookParameter) {
     } catch (error) {
       console.error(`\nFailed to take screenshot: ${error}`);
     }
-  }
-});
 
-// This After hook should run AFTER the screenshot hook
-After({ tags: "@last", timeout: 60000 }, async function (this: ComplexWorld) {
+    // For failed tests, we'll keep the video.
+    // Set the target video path for renaming after context close.
+    // Playwright doesn't allow to rename video files, so we'll do it manually.
+    failedVideoPath = createVideoPath(scenarioName, deviceSuffix);
+
+    console.log(`\nVideo will be saved to: ${failedVideoPath}`);
+  }
+
   isVisible() || (await this.context.close());
+
+  await renameFailedRemovePassedVideo(failedVideoPath);
 });
 
 AfterAll({ timeout: 60000 }, async function () {

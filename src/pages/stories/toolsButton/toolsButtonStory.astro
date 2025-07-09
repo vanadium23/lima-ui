@@ -1,12 +1,12 @@
 ---
 import { DEFAULT_TEST_ID } from "../../../../features/testIds";
-import { IconName } from "../../../components/icon/icon.tsx";
-import { ToolsButtonComponentType } from "../../../components/toolsButton/toolsButton";
+import { IconName } from "../../../components/icon/icon";
 import {
   ToolsButton,
+  ToolsButtonComponentType,
   ToolsButtonSize,
-  ToolsButtonTheme
-} from "../../../components/toolsButton/toolsButton.tsx";
+  ToolsButtonTheme,
+} from "../../../components/toolsButton/toolsButton";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 const themes = Object.values(ToolsButtonTheme);
@@ -14,96 +14,94 @@ const sizes = Object.values(ToolsButtonSize);
 ---
 
 <StorybookPage title="Tools Button">
-
   <h2>Type - Button</h2>
-  {themes.map((theme) => (
-    <div class="demoThemeWrapper">
-      <h3 style="font-size: 24px; margin-bottom: 10px;">{theme}</h3>
-      <div class="grid grid_3Col">
-        <span class="chead"></span>
-        <span class="chead">Default</span>
-        <span class="chead">Loading</span>
-        <span class="chead">Disabled</span>
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 style="font-size: 24px; margin-bottom: 10px;">{theme}</h3>
+        <div class="grid grid_3Col">
+          <span class="chead" />
+          <span class="chead">Default</span>
+          <span class="chead">Loading</span>
+          <span class="chead">Disabled</span>
 
-        {sizes.map((size) => (
-          <span class="rhead">{size}</span>
-
-          <ToolsButton
-            client:only="solid-js"
-            componentType={ToolsButtonComponentType.Button}
-            text={"text"}
-            theme={theme}
-            size={size}
-            iconName={IconName.Trash}
-            testId={DEFAULT_TEST_ID}
-          />
-
-          <ToolsButton
-            client:only="solid-js"
-            componentType={ToolsButtonComponentType.Button}
-            text={"text"}
-            theme={theme}
-            size={size}
-            iconName={IconName.Trash}
-            testId={DEFAULT_TEST_ID}
-            isLoading={true}
-          />
-
-          <ToolsButton
-            client:only="solid-js"
-            componentType={ToolsButtonComponentType.Button}
-            isDisabled={true}
-            text={"text"}
-            theme={theme}
-            size={size}
-            iconName={IconName.Trash}
-            testId={DEFAULT_TEST_ID}
-          />
-        ))}
-
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <ToolsButton
+                client:only="solid-js"
+                componentType={ToolsButtonComponentType.Button}
+                text={"text"}
+                theme={theme}
+                size={size}
+                iconName={IconName.Trash}
+                testId={DEFAULT_TEST_ID}
+              />
+              <ToolsButton
+                client:only="solid-js"
+                componentType={ToolsButtonComponentType.Button}
+                text={"text"}
+                theme={theme}
+                size={size}
+                iconName={IconName.Trash}
+                testId={DEFAULT_TEST_ID}
+                isLoading={true}
+              />
+              <ToolsButton
+                client:only="solid-js"
+                componentType={ToolsButtonComponentType.Button}
+                isDisabled={true}
+                text={"text"}
+                theme={theme}
+                size={size}
+                iconName={IconName.Trash}
+                testId={DEFAULT_TEST_ID}
+              />
+            </>
+          ))}
+        </div>
       </div>
-    </div>
-  ))}
+    ))
+  }
 
   <h2>Type - Link</h2>
-  {themes.map((theme) => (
-    <div class="demoThemeWrapper">
-      <h3 style="font-size: 24px; margin-bottom: 10px;">{theme}</h3>
-      <div class="grid grid_3Col">
-        <span class="chead"></span>
-        <span class="chead">Default</span>
-        <span class="chead">Loading</span>
-        <span class="chead">Disabled</span>
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 style="font-size: 24px; margin-bottom: 10px;">{theme}</h3>
+        <div class="grid grid_3Col">
+          <span class="chead" />
+          <span class="chead">Default</span>
+          <span class="chead">Loading</span>
+          <span class="chead">Disabled</span>
 
-        {sizes.map((size) => (
-          <span class="rhead">{size}</span>
-
-          <ToolsButton
-            client:only="solid-js"
-            componentType={ToolsButtonComponentType.Link}
-            text={"text"}
-            theme={theme}
-            size={size}
-            iconName={IconName.Trash}
-            testId={DEFAULT_TEST_ID}
-          />
-
-          <span>Не предусмотрено</span>
-
-          <ToolsButton
-            client:only="solid-js"
-            componentType={ToolsButtonComponentType.Link}
-            isDisabled={true}
-            text={"text"}
-            theme={theme}
-            size={size}
-            iconName={IconName.Trash}
-            testId={DEFAULT_TEST_ID}
-          />
-        ))}
-
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <ToolsButton
+                client:only="solid-js"
+                componentType={ToolsButtonComponentType.Link}
+                text={"text"}
+                theme={theme}
+                size={size}
+                iconName={IconName.Trash}
+                testId={DEFAULT_TEST_ID}
+              />
+              <span>Не предусмотрено</span>
+              <ToolsButton
+                client:only="solid-js"
+                componentType={ToolsButtonComponentType.Link}
+                isDisabled={true}
+                text={"text"}
+                theme={theme}
+                size={size}
+                iconName={IconName.Trash}
+                testId={DEFAULT_TEST_ID}
+              />
+            </>
+          ))}
+        </div>
       </div>
-    </div>
-  ))}
-
+    ))
+  }
 </StorybookPage>

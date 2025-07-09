@@ -26,6 +26,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: ${{ github.repository_owner }}/svernik
+          token: ${{ secrets.LIMA_BACKEND_REPO_TOKEN }}
           path: svernik
 
       - name: Configure backend environment
@@ -41,6 +42,10 @@ jobs:
 
       - name: Install UI dependencies
         run: npm ci
+        working-directory: svernik-UI
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
         working-directory: svernik-UI
 
       - name: Start server and database
@@ -65,7 +70,7 @@ jobs:
         shell: bash
 
       - name: Run E2E tests
-        run: npm test
+        run: npm test -- --per-scenario-progress --retry 1
         working-directory: svernik-UI
 
       - name: Stop front-end
@@ -82,11 +87,20 @@ jobs:
         run: docker compose down
         working-directory: svernik
 
-      - name: Upload test results and screenshots
+      # Set variables for the artifact name that doesn't contain invalid characters
+      - name: Set artifact variables
+        id: artifact_vars
+        run: |
+          echo "timestamp=$(date +'%Y-%m-%d-%H-%M')" >> $GITHUB_OUTPUT
+          echo "short_sha=$(echo ${{ github.sha }} | cut -c1-7)" >> $GITHUB_OUTPUT
+        shell: bash
+
+      - name: Upload test results, screenshots, and videos
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: e2e-test-artifacts
+          name: "e2e-test-artifacts-${{ github.run_number }}-${{ github.run_attempt }}-${{ steps.artifact_vars.outputs.short_sha }}-PR${{ github.event.pull_request.number }}-${{ steps.artifact_vars.outputs.timestamp }}"
           path: |
-            svernik-UI/features/reports/
-            svernik-UI/features/screenshots/
+            svernik-UI/features/results/reports/
+            svernik-UI/features/results/screenshots/
+            svernik-UI/features/results/videos/

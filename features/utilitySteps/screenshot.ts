@@ -1,7 +1,7 @@
-import {Then} from "@cucumber/cucumber";
+import { Then } from "@cucumber/cucumber";
 
-import type {ComplexWorld} from "../context/hooks.ts";
-import {takeScreenshot} from "../utilities/screenshot.ts";
+import type { ComplexWorld } from "../context/hooks.ts";
+import { takeScreenshot } from "../utilities/screenshot.ts";
 
 /**
  * Example step to manually take a screenshot at any point in a test
