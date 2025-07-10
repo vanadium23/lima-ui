@@ -8,6 +8,7 @@ import "./textButton.css";
 
 export enum TextButtonTheme {
   Primary = "primary",
+  Dangerous = "dangerous",
 }
 
 export enum TextButtonSize {

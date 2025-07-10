@@ -40,6 +40,20 @@
   }
 }
 
+.textButton_dangerous {
+  color: var(--text-dangerous-500);
+}
+
+.textButton_dangerous:active:not(.textButton_disabled, .textButton_loading) {
+  color: var(--text-dangerous-600);
+}
+
+@media (hover: hover) {
+  .textButton_dangerous:hover:not(.textButton_disabled, .textButton_loading) {
+    color: var(--text-dangerous-400);
+  }
+}
+
 .textButton:disabled,
 .textButton_disabled {
   cursor: not-allowed;
