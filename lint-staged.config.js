@@ -5,5 +5,6 @@ export default {
     "astro check",
   ],
   "**/*.{css,scss}": ["stylelint --fix", "prettier --write"],
-  "**/*.{json,md,yml,feature}": ["prettier --write"],
+  "**/*.feature": ["tsx scripts/remove-current-tags.ts", "prettier --write"],
+  "**/*.{json,md,yml}": ["prettier --write"],
 };
