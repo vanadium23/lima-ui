@@ -12,8 +12,7 @@
 
 .toolsPanel__horizontalSection {
   display: flex;
-
-  /* justify-content: space-between; */
+  gap: 0.6em;
   flex-wrap: wrap;
 }
 
