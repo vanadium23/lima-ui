@@ -1,4 +1,4 @@
-import { mergeProps, type Ref, Show } from "solid-js";
+import { Match, mergeProps, type Ref, Show, Switch } from "solid-js";
 
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
 import type { Testable } from "../utilities/testable.ts";
@@ -48,14 +48,14 @@ type IconButtonProps = {
 export const IconButton = (props: Testable<IconButtonProps>) => {
   const mProps: Testable<Required<IconButtonProps>> = mergeProps(
     {
+      componentType: IconButtonComponentType.Button,
+      type: IconButtonType.Button,
       theme: IconButtonTheme.Primary,
       size: IconButtonSize.Medium,
       isDisabled: false,
       isLoading: false,
       handleClick: () => {},
-      componentType: IconButtonComponentType.Button,
       link: "",
-      type: IconButtonType.Button,
       ref: () => {},
     },
     props,
@@ -69,8 +69,8 @@ export const IconButton = (props: Testable<IconButtonProps>) => {
   };
 
   return (
-    <>
-      <Show when={mProps.componentType === IconButtonComponentType.Button}>
+    <Switch>
+      <Match when={mProps.componentType === IconButtonComponentType.Button}>
         <button
           type={mProps.type}
           onClick={() => {
@@ -102,8 +102,8 @@ export const IconButton = (props: Testable<IconButtonProps>) => {
             </div>
           </Show>
         </button>
-      </Show>
-      <Show
+      </Match>
+      <Match
         when={
           mProps.componentType === IconButtonComponentType.Link &&
           !mProps.isDisabled
@@ -119,8 +119,8 @@ export const IconButton = (props: Testable<IconButtonProps>) => {
         >
           <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
         </a>
-      </Show>
-      <Show
+      </Match>
+      <Match
         when={
           mProps.componentType === IconButtonComponentType.Link &&
           mProps.isDisabled
@@ -139,7 +139,7 @@ export const IconButton = (props: Testable<IconButtonProps>) => {
         >
           <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
         </span>
-      </Show>
-    </>
+      </Match>
+    </Switch>
   );
 };

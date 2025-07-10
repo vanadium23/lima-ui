@@ -184,6 +184,7 @@ export const Search = (props: SearchProps) => {
           testId={SEARCH_INPUT}
           onInput={handleInput}
           onKeyDown={(e) => e.key === "Enter" && handleSubmit(e)}
+          onClear={() => setState("query", "")}
         />
         <IconButton
           type={IconButtonType.Submit}

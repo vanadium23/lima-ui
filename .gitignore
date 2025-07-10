@@ -26,3 +26,5 @@ pnpm-debug.log*
 
 # Cucumber test artifacts
 /features/results/
+/features/screenshots
+/features/reports

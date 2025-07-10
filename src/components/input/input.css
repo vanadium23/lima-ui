@@ -43,14 +43,8 @@
   padding: var(--size-x3) var(--size-x8) var(--size-x3) 0;
 }
 
-.input_large .input__inner {
-  font-size: 1.8rem;
-  line-height: 2.2rem;
-  padding: var(--size-x4) var(--size-x8);
-}
-
-.input_large .input__controls {
-  padding: var(--size-x4) var(--size-x8) var(--size-x4) 0;
+.input_medium .input__clearButton {
+  padding: var(--size-x3) var(--size-x3) var(--size-x3) 0;
 }
 
 .input_primary {

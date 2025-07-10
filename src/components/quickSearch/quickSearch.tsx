@@ -54,6 +54,7 @@ export const QuickSearch = (props: QuickSearchProps) => {
   return (
     <div
       class={`quickSearch quickSearch_${props.theme} quickSearch_${mProps.size}`}
+      tabIndex={-1}
     >
       <Show
         when={!mProps.isLoading}
