@@ -64,7 +64,7 @@ export const Input = (props: Testable<InputProps>) => {
       type: InputType.Text,
       defaultValue: "",
       isCountable: true,
-      isClearable: true,
+      isClearable: false,
       label: "",
       onInput: () => {},
       onKeyDown: () => {},
@@ -74,7 +74,6 @@ export const Input = (props: Testable<InputProps>) => {
   );
 
   const [getValue, setValue] = createSignal(mProps.defaultValue);
-  const [getCounter, setCounter] = createSignal(mProps.defaultValue.length);
 
   let inputRef: HTMLInputElement | undefined;
 
@@ -82,13 +81,11 @@ export const Input = (props: Testable<InputProps>) => {
     const target = e.target as HTMLInputElement;
     setValue(target.value);
 
-    setCounter(target.value.length);
     mProps.onInput(e);
   };
 
   const handleClear = () => {
     setValue("");
-    setCounter(0);
 
     if (inputRef) {
       inputRef.focus();
@@ -142,7 +139,7 @@ export const Input = (props: Testable<InputProps>) => {
         <div class="input__controls">
           <Show when={mProps.isCountable}>
             <CharCounter
-              value={mProps.maxLength - getCounter()}
+              value={mProps.maxLength - getValue().length}
               testId={mProps.testId}
               testSubId={mProps.testSubId ?? ""}
             />

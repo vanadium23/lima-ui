@@ -184,6 +184,7 @@ export const Search = (props: SearchProps) => {
           testId={SEARCH_INPUT}
           onInput={handleInput}
           onKeyDown={(e) => e.key === "Enter" && handleSubmit(e)}
+          isClearable={true}
           onClear={() => setState("query", "")}
         />
         <IconButton

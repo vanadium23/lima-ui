@@ -29,7 +29,6 @@ const PLACEHOLDER_TEXT = "Enter text...";
           {sizes.map((size) => (
             <>
               <span class="rhead">{size}</span>
-
               <Input
                 client:only="solid-js"
                 type={InputType.Text}
@@ -41,6 +40,8 @@ const PLACEHOLDER_TEXT = "Enter text...";
                 name="Some-text"
                 testId={DEFAULT_TEST_ID}
                 label="Test"
+                isClearable={true}
+                isCountable={true}
               />
               <Input
                 client:only="solid-js"
@@ -54,6 +55,7 @@ const PLACEHOLDER_TEXT = "Enter text...";
                 isRequired={true}
                 testId={DEFAULT_TEST_ID}
                 label="Test"
+                isClearable={true}
               />
               <Input
                 client:only="solid-js"
@@ -68,6 +70,7 @@ const PLACEHOLDER_TEXT = "Enter text...";
                 defaultValue={"Text"}
                 testId={DEFAULT_TEST_ID}
                 label="Test"
+                isClearable={true}
               />
               <Input
                 client:only="solid-js"
@@ -81,6 +84,7 @@ const PLACEHOLDER_TEXT = "Enter text...";
                 isRequired={true}
                 testId={DEFAULT_TEST_ID}
                 label="Test"
+                isClearable={true}
               />
             </>
           ))}

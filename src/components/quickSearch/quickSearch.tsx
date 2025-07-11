@@ -55,6 +55,7 @@ export const QuickSearch = (props: QuickSearchProps) => {
     <div
       class={`quickSearch quickSearch_${props.theme} quickSearch_${mProps.size}`}
       tabIndex={-1}
+      /* Tabindex чтобы сделать элемент псевдофокусабельными для фикса focus-within */
     >
       <Show
         when={!mProps.isLoading}
