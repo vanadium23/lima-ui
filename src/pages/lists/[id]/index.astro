@@ -1,6 +1,9 @@
 ---
 import { NETWORK_ERROR } from "../../../../features/testIds";
-import { BACKEND_NON_EXISTING, LISTS } from "../../../../utilities/addresses";
+import {
+  BACKEND_NON_EXISTING,
+  MY_LISTS,
+} from "../../../../utilities/addresses";
 import { PageError } from "../../../components/pageError/pageError";
 import AppPage from "../../../layouts/app/app.astro";
 import { EditList } from "../../../widgets/editList/editList";
@@ -18,7 +21,7 @@ function undefinedListId() {
 
 try {
   let backendURL = import.meta.env.PUBLIC_API_URL;
-  let backendListsAddress = LISTS;
+  let backendListsAddress = MY_LISTS;
 
   if (Astro.url.searchParams.get("error") === "true") {
     errorText = "Ошибка соединения с сервером, попробуйте еще раз";

@@ -2,6 +2,7 @@ import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
 import {
+  MY_LISTS,
   type PageMeaning,
   PAGES_MEANINGS,
 } from "../../../utilities/addresses.ts";
@@ -12,6 +13,7 @@ import {
   buildAccordionContentTestId,
   HEADER,
   LIST_ITEMS,
+  LIST_STRIPE,
   PAGE_TITLE,
   PRO_VERSION_BUTTON,
   SIDEBAR,
@@ -46,6 +48,14 @@ When(
   "I open {string} page",
   { timeout: getTimeoutOrCancelItIfDebugging(10000) },
   async function (this: ComplexWorld, pageMeaning: PageMeaning) {
+    if (pageMeaning === "Latest List") {
+      await this.navigate(MY_LISTS);
+
+      await this.locateByIdParts(LIST_STRIPE).nth(0).click();
+
+      return;
+    }
+
     const address = PAGES_MEANINGS[pageMeaning];
 
     if (!address) throw new Error(`Unknown page meaning: ${pageMeaning}`);

@@ -9,7 +9,7 @@ import {
   OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
   REMOVE_LIST_DIALOG,
 } from "../../../features/testIds.ts";
-import { LISTS } from "../../../utilities/addresses.ts";
+import { MY_LISTS } from "../../../utilities/addresses.ts";
 import { soften } from "../../widgets/editList/utilities/soften.ts";
 import { Button, ButtonSize, ButtonTheme } from "../button/button.tsx";
 import { Dialog, DialogSize, DialogTheme } from "../dialog/dialog.tsx";
@@ -83,7 +83,7 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
     mProps.onRemoveError(false);
     setIsRemoving(true);
     setIsDialogOpen(false);
-    fetch(`${import.meta.env.PUBLIC_API_URL}${LISTS}${mProps.listId}`, {
+    fetch(`${import.meta.env.PUBLIC_API_URL}${MY_LISTS}${mProps.listId}`, {
       method: "DELETE", // или 'PUT', 'DELETE', и т.д.
     })
       .then((response) => {

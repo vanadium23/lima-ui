@@ -36,7 +36,7 @@ import {
   TOOLS_PANEL_BUTTON_PRINT_LIST,
   TOOLS_PANEL_BUTTON_REMOVE_LIST,
 } from "../../../features/testIds.ts";
-import { LISTS } from "../../../utilities/addresses.ts";
+import { MY_LISTS } from "../../../utilities/addresses.ts";
 import { suffixTabTitle } from "../../../utilities/tabTitle.ts";
 import {
   Button,
@@ -301,7 +301,7 @@ export const EditList = (props: EditListProps) => {
     createList(data)
       .then((newList) => {
         soften(() => {
-          history.pushState({}, "", `${LISTS}${newList.id}`);
+          history.pushState({}, "", `${MY_LISTS}${newList.id}`);
           setLocation(window.location.pathname);
           document.title = suffixTabTitle(newList.name);
 

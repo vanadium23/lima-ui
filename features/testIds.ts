@@ -53,6 +53,7 @@ export const SEARCH_BUTTON = "searchButton";
 export const OPEN_SEARCH_BUTTON = "openSearchButton";
 export const CLOSE_SEARCH_BUTTON = "closeSearchButton";
 export const SEARCH_DIALOG = "searchDialog";
+export const SEARCH_DIALOG_LOADING = "searchDialogLoading";
 
 export const USER_BUTTON = "userButton";
 

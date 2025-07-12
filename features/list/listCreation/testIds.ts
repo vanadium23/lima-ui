@@ -21,6 +21,7 @@ import {
   OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
   REMOVE_ITEM_MENUITEM,
   SAVE_LIST_BUTTON,
+  SEARCH_INPUT,
   TOOLS_PANEL_ADD_ITEM_BUTTON,
   TOOLS_PANEL_BUTTON_COPY_ITEMS,
   TOOLS_PANEL_BUTTON_PRINT_LIST,
@@ -100,6 +101,7 @@ export const INPUT_TEST_IDS = {
   "automatic item": AUTO_LIST_ITEM_INPUT,
   "last item": LIST_ITEM_INPUT,
   "some item": LIST_ITEM_INPUT,
+  "search bar": SEARCH_INPUT,
 };
 export type InputMeaning = keyof typeof INPUT_TEST_IDS;
 

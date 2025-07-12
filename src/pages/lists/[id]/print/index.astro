@@ -5,13 +5,13 @@ import {
   PRINT_LIST_PURPOSE,
   PRINT_LIST_TITLE,
 } from "../../../../../features/testIds";
-import { LISTS } from "../../../../../utilities/addresses";
+import { MY_LISTS } from "../../../../../utilities/addresses";
 
 import "./style.css";
 import "normalize.css";
 
 const response = await fetch(
-  `${import.meta.env.PUBLIC_API_URL}${LISTS}${Astro.params.id}`,
+  `${import.meta.env.PUBLIC_API_URL}${MY_LISTS}${Astro.params.id}`,
 );
 
 type Item = {

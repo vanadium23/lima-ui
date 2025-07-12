@@ -6,7 +6,7 @@ import {
   TOGGLE_SIDEBAR_BUTTON,
   TOGGLE_TOOLS_PANEL_BUTTON,
 } from "../../../features/testIds.ts";
-import { LISTS } from "../../../utilities/addresses.ts";
+import { MY_LISTS } from "../../../utilities/addresses.ts";
 import { IconName } from "../../components/icon/icon.tsx";
 import {
   IconButton,
@@ -31,8 +31,8 @@ export const Header = (props: HeaderProps) => {
 
     return (
       !props.list404 &&
-      currentLocation !== LISTS &&
-      currentLocation !== LISTS.slice(0, -1)
+      currentLocation !== MY_LISTS &&
+      currentLocation !== MY_LISTS.slice(0, -1)
     );
   };
 

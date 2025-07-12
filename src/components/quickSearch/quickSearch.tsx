@@ -1,6 +1,9 @@
 import { For, mergeProps, Show } from "solid-js";
 
-import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
+import {
+  DEFAULT_TEST_ID,
+  SEARCH_DIALOG_LOADING,
+} from "../../../features/testIds.ts";
 import type { SearchList } from "../../widgets/editList/types.ts";
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
 import { SearchItem } from "../searchItem/searchItem.tsx";
@@ -60,7 +63,7 @@ export const QuickSearch = (props: QuickSearchProps) => {
       <Show
         when={!mProps.isLoading}
         fallback={
-          <div class="quickSearch__loader">
+          <div class="quickSearch__loader" data-test-id={SEARCH_DIALOG_LOADING}>
             <Icon name={IconName.CircleNotch} size={IconSize.Large} />
           </div>
         }

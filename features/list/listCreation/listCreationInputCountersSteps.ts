@@ -54,6 +54,7 @@ const INPUT_LIMIT_RELATION = {
   "automatic item": EDIT_LIST_INPUT_LIMIT,
   "last item": EDIT_LIST_INPUT_LIMIT,
   "some item": EDIT_LIST_INPUT_LIMIT,
+  "search bar": LIST_TITLE_INPUT_LIMIT,
 };
 
 When(

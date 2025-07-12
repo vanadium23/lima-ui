@@ -1,4 +1,3 @@
-@current
 Feature: Seeing the basis of List Creation page
 
   Background:
