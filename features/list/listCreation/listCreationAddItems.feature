@@ -1,7 +1,7 @@
 Feature: Adding items on the List Creation page
 
   Background:
-    When I open List Creation page
+    When I open "List Creation" page
 
   Scenario: Adding single item input
     When All necessary elements are on the "List Creation" page

@@ -1,7 +1,7 @@
 Feature: Basic list printing functionality
 
   Background:
-    When I open List Creation page
+    When I open "List Creation" page
 
   Scenario: Print button enables after creating a list
     When I type some text with length less or equal to the one of "list title" input limit

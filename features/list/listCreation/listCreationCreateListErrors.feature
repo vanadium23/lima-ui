@@ -1,7 +1,7 @@
 Feature: Failing to create a new list
 
   Background:
-    When I open List Creation page
+    When I open "List Creation" page
 
   Scenario: Seeing connection error when the browser is offline
     Given There is no internet connection

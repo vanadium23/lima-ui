@@ -1,7 +1,8 @@
+@current
 Feature: Seeing the basis of List Creation page
 
   Background:
-    When I open List Creation page
+    When I open "List Creation" page
 
   Scenario: Seeing List Creation page
     Then I expect to see the following suffixed tab title: "Новый список"

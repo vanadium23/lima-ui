@@ -1,7 +1,10 @@
 import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
-import { LISTS_CREATE } from "../../../utilities/addresses.ts";
+import {
+  type PageMeaning,
+  PAGES_MEANINGS,
+} from "../../../utilities/addresses.ts";
 import type { ComplexWorld } from "../../context/hooks.ts";
 import {
   ADD_GROUP_BUTTON,
@@ -40,10 +43,14 @@ import {
 } from "./testIds.ts";
 
 When(
-  "I open List Creation page",
+  "I open {string} page",
   { timeout: getTimeoutOrCancelItIfDebugging(10000) },
-  async function (this: ComplexWorld) {
-    await this.navigate(LISTS_CREATE);
+  async function (this: ComplexWorld, pageMeaning: PageMeaning) {
+    const address = PAGES_MEANINGS[pageMeaning];
+
+    if (!address) throw new Error(`Unknown page meaning: ${pageMeaning}`);
+
+    await this.navigate(address);
     await this.page.waitForLoadState("networkidle");
   },
 );

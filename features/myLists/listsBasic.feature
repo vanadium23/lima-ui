@@ -2,7 +2,7 @@ Feature: Seeing the basis of Lists page
 
   Scenario: Seeing no lists on freshly opened Lists page
     When I clear all data
-    When I open Lists page
+    When I open "My Lists" page
     Then I expect to see the following suffixed tab title: "Мои списки"
     Then I expect to see sidebar or its button
     Then I expect to see header
