@@ -9,7 +9,7 @@ import {
   OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
   REMOVE_LIST_DIALOG,
 } from "../../../features/testIds.ts";
-import { MY_LISTS } from "../../../utilities/addresses.ts";
+import { removeList } from "../../widgets/editList/services/removeList.ts";
 import { soften } from "../../widgets/editList/utilities/soften.ts";
 import { Button, ButtonSize, ButtonTheme } from "../button/button.tsx";
 import { Dialog, DialogSize, DialogTheme } from "../dialog/dialog.tsx";
@@ -79,20 +79,12 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
     },
   ];
 
-  function removeList() {
+  function removeListFromListStripe() {
     mProps.onRemoveError(false);
     setIsRemoving(true);
     setIsDialogOpen(false);
-    fetch(`${import.meta.env.PUBLIC_API_URL}${MY_LISTS}${mProps.listId}`, {
-      method: "DELETE", // или 'PUT', 'DELETE', и т.д.
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok " + response.statusText);
-        }
 
-        return response.json();
-      })
+    removeList(mProps.listId)
       .then(() => {
         soften(() => mProps.onRemoveSuccess(mProps.listId));
       })
@@ -158,7 +150,7 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
             size={ButtonSize.Medium}
             text={"Удалить"}
             handleClick={() => {
-              removeList();
+              removeListFromListStripe();
               closeDialog();
             }}
             testId={DIALOG_REMOVE_BUTTON}

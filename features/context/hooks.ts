@@ -22,7 +22,7 @@ import type {
   TestId,
   TestSubId,
 } from "../../src/components/utilities/testable.ts";
-import type { AddressMeaning } from "../../utilities/addresses.ts";
+import { type AddressMeaning, PAGE_TYPES } from "../../utilities/addresses.ts";
 import {
   buildTestableSelector,
   buildTestableSubSelector,
@@ -132,10 +132,16 @@ const MORE_THAN_IN_PLAYWRIGHT = getTimeoutOrCancelItIfDebugging(6000);
 setDefaultTimeout(MORE_THAN_IN_PLAYWRIGHT);
 setWorldConstructor(ComplexWorld);
 
+export const persistentAccounting = {
+  searchPagesTypes: createAccountedTesting(false),
+};
+
 BeforeAll(async function () {
   browser = await chromium.launch({
     headless: !isVisible(),
   });
+
+  persistentAccounting.searchPagesTypes = createAccountedTesting(false);
 });
 
 Before(async function (this: ComplexWorld) {
@@ -172,6 +178,12 @@ After(async function (this: ComplexWorld, scenario: ITestCaseHookParameter) {
 });
 
 AfterAll({ timeout: 60000 }, async function () {
+  if (persistentAccounting.searchPagesTypes.active) {
+    expect(persistentAccounting.searchPagesTypes.getTestIds()).toEqual(
+      PAGE_TYPES,
+    );
+  }
+
   isVisible() || (await browser.close());
 });
 

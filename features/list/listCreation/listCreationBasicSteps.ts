@@ -6,7 +6,10 @@ import {
   type PageMeaning,
   PAGES_MEANINGS,
 } from "../../../utilities/addresses.ts";
-import type { ComplexWorld } from "../../context/hooks.ts";
+import {
+  type ComplexWorld,
+  persistentAccounting,
+} from "../../context/hooks.ts";
 import {
   ADD_GROUP_BUTTON,
   buildAccordionButtonTestId,
@@ -48,6 +51,10 @@ When(
   "I open {string} page",
   { timeout: getTimeoutOrCancelItIfDebugging(10000) },
   async function (this: ComplexWorld, pageMeaning: PageMeaning) {
+    const address = PAGES_MEANINGS[pageMeaning];
+
+    persistentAccounting.searchPagesTypes.registerTestId(address);
+
     if (pageMeaning === "Latest List") {
       await this.navigate(MY_LISTS);
 
@@ -55,8 +62,6 @@ When(
 
       return;
     }
-
-    const address = PAGES_MEANINGS[pageMeaning];
 
     if (!address) throw new Error(`Unknown page meaning: ${pageMeaning}`);
 

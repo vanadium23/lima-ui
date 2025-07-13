@@ -7,6 +7,7 @@ import { buildFullTestId } from "../utilities/buildTestableSelector.ts";
 
 export interface AccountedTesting {
   testIds: SeveralTestIds;
+  active: boolean;
 
   registerTestId(testId: TestId): TestId;
 
@@ -22,11 +23,16 @@ export interface AccountedTesting {
   clearTestIds(): void;
 }
 
-export function createAccountedTesting(): AccountedTesting {
+export function createAccountedTesting(
+  active: boolean = true,
+): AccountedTesting {
   return {
     testIds: [],
+    active,
 
     registerTestId(testId) {
+      this.active = true;
+
       this.testIds.push(testId);
 
       return testId;
