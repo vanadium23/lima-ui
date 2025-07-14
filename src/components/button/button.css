@@ -44,6 +44,10 @@
   }
 }
 
+.button_primary:focus-visible {
+  outline: var(--outline-set-alt);
+}
+
 .button_secondary {
   color: var(--text-primary-500);
   border-color: var(--primary-500);
@@ -58,6 +62,10 @@
   .button_secondary:hover:not(.button_disabled, .button_loading) {
     border-color: var(--primary-400);
   }
+}
+
+.button_secondary:focus-visible {
+  outline: var(--outline-set-alt);
 }
 
 .button_successful {
@@ -78,6 +86,10 @@
   }
 }
 
+.button_successful:focus-visible {
+  outline: var(--outline-set);
+}
+
 .button_dangerous {
   color: var(--text-neutral-100);
   border-color: var(--dangerous-500);
@@ -96,6 +108,10 @@
   }
 }
 
+.button_dangerous:focus-visible {
+  outline: var(--outline-set);
+}
+
 .button:disabled,
 .button_disabled {
   cursor: not-allowed;
@@ -105,7 +121,6 @@
 }
 
 .button:focus-visible {
-  outline: var(--outline-set);
   outline-offset: var(--outline-offset);
 }
 
