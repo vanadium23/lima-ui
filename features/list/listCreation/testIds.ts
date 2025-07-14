@@ -23,6 +23,7 @@ import {
   SAVE_LIST_BUTTON,
   TOOLS_PANEL_ADD_ITEM_BUTTON,
   TOOLS_PANEL_BUTTON_COPY_ITEMS,
+  TOOLS_PANEL_BUTTON_IMPORT_LIST,
   TOOLS_PANEL_BUTTON_PRINT_LIST,
   TOOLS_PANEL_BUTTON_REMOVE_LIST,
 } from "../../testIds.ts";
@@ -62,6 +63,7 @@ export const BUTTON_TEST_IDS = {
   "cancel list removal": DIALOG_CLOSE_BUTTON,
   "confirm list removal": DIALOG_REMOVE_BUTTON,
   "copy items": TOOLS_PANEL_BUTTON_COPY_ITEMS,
+  import: TOOLS_PANEL_BUTTON_IMPORT_LIST,
   "remove list tools panel": TOOLS_PANEL_BUTTON_REMOVE_LIST,
   "print list": TOOLS_PANEL_BUTTON_PRINT_LIST,
   "open context menu list stripe": OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
