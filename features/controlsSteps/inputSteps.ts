@@ -16,6 +16,10 @@ When(
 When(
   "I add the following text into the {string}: {string}",
   async function (this: ComplexWorld, inputName: InputMeaning, text: string) {
-    await this.locateByFullId(INPUT_TEST_IDS[inputName]).type(text);
+    const input = this.locateByFullId(INPUT_TEST_IDS[inputName]);
+
+    for (const char of text) {
+      await input.press(char);
+    }
   },
 );

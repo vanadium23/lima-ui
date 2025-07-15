@@ -28,3 +28,8 @@ Feature: Searching for lists
       | "My Lists"      |
       | "List Creation" |
       | "Latest List"   |
+
+  Scenario: Not being able to type more text than in search bar's limit
+    And I focus "search bar" input
+    And I type some text with length more than of "search bar" input limit
+    Then I expect "search bar" input content length to be equal to its limit
