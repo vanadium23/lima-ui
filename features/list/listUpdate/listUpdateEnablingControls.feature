@@ -60,6 +60,7 @@ Feature: Controls state after list update
     Then I expect to see the "copy items" button enabled
     Then I expect to see the "remove list tools panel" button enabled
     Then I expect to see the "checklist" switch enabled
+    Then I expect to see the "import" button enabled
     Then I expect to see the "print list" button enabled
     And I ensure the tools panel does not disturb
     Then I expect to see the "connection" error
