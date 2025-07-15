@@ -1,0 +1,38 @@
+---
+import { DEFAULT_TEST_ID } from "../../../../features/testIds";
+import {
+  ListItemImport,
+  ListItemImportSize,
+  ListItemImportTheme,
+} from "../../../components/listItemImport/listItemImport";
+import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
+
+const themes = Object.values(ListItemImportTheme);
+const sizes = Object.values(ListItemImportSize);
+---
+
+<StorybookPage title="List Item Import">
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 class="demoThemeWrapper__title">{theme}</h3>
+        <div class="grid grid_1Col">
+          <span class="chead" />
+          <span class="chead">Default</span>
+
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <ListItemImport
+                text={
+                  "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, tempore. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, tempore."
+                }
+                testId={DEFAULT_TEST_ID}
+              />
+            </>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+</StorybookPage>

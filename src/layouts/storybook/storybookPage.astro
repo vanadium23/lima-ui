@@ -58,6 +58,10 @@ const components = [
   { name: "Tools Button", href: "/stories/toolsButton/toolsButtonStory/" },
   { name: "Tools Panel", href: "/stories/toolsPanel/toolsPanelStory/" },
   { name: "UserButton", href: "/stories/userButton/userButtonStory/" },
+  {
+    name: "List Item Import",
+    href: "/stories/listItemImport/listItemImportStory/",
+  },
 ].sort((a, b) => a.name.localeCompare(b.name, "en"));
 ---
 
@@ -113,7 +117,6 @@ Font changes also influence how our stretching text areas are initially drawn.
 
     <div class="wrapper">
       <aside class="storybookSidebar">
-        <h1 hidden>Lima</h1>
         <div class="storybookLogo">
           <svg
             width="33"
@@ -174,7 +177,7 @@ Font changes also influence how our stretching text areas are initially drawn.
       <main class="main">
         <div class="main__wrapper">
           <section class="component">
-            <h2 id="main-button-link">{title}</h2>
+            <h1 id="main-button-link">{title}</h1>
 
             <slot />
           </section>
