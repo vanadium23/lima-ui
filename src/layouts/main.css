@@ -68,9 +68,11 @@
   --secondary-600: #a6db09;
   --text-secondary-500: #cef55a;
   --outline: #0285f1;
+  --outline-alt: #f0a;
 
   /* Custom-properties */
   --outline-set: 0.1rem solid var(--outline);
+  --outline-set-alt: 0.1rem solid var(--outline-alt);
   --outline-offset: -0.1rem;
   --preloader: rotate-preloader 0.7s linear infinite;
 }
