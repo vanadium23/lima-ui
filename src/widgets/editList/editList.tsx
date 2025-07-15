@@ -33,6 +33,7 @@ import {
   TOOLS_PANEL,
   TOOLS_PANEL_ADD_ITEM_BUTTON,
   TOOLS_PANEL_BUTTON_COPY_ITEMS,
+  TOOLS_PANEL_BUTTON_IMPORT_LIST,
   TOOLS_PANEL_BUTTON_PRINT_LIST,
   TOOLS_PANEL_BUTTON_REMOVE_LIST,
 } from "../../../features/testIds.ts";
@@ -649,6 +650,13 @@ export const EditList = (props: EditListProps) => {
           </div>
           <Divider />
           <div class="toolsPanel__horizontalSection">
+            <ToolsButton
+              componentType={ToolsButtonComponentType.Button}
+              iconName={IconName.SortAscending}
+              isDisabled={reachedItemsLimit() || store.sendingNow !== false}
+              text={"Импорт"}
+              testId={TOOLS_PANEL_BUTTON_IMPORT_LIST}
+            />
             <ToolsButton
               componentType={ToolsButtonComponentType.Link}
               iconName={IconName.Printer}

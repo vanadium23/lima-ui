@@ -143,33 +143,36 @@ Before(async function (this: ComplexWorld) {
   this.accounting.elements.clearTestIds();
 });
 
-After(async function (this: ComplexWorld, scenario: ITestCaseHookParameter) {
-  let failedVideoPath = "";
+After(
+  { timeout: 60000 },
+  async function (this: ComplexWorld, scenario: ITestCaseHookParameter) {
+    let failedVideoPath = "";
 
-  if (scenario.result?.status === "FAILED") {
-    const scenarioName = scenario.pickle.name;
-    const deviceSuffix = getDeviceProfileName();
-    const screenshotPath = createScreenshotPath(scenarioName, deviceSuffix);
+    if (scenario.result?.status === "FAILED") {
+      const scenarioName = scenario.pickle.name;
+      const deviceSuffix = getDeviceProfileName();
+      const screenshotPath = createScreenshotPath(scenarioName, deviceSuffix);
 
-    try {
-      await this.page.screenshot({ path: screenshotPath, fullPage: true });
-      console.log(`\nScreenshot saved to: ${screenshotPath}`);
-    } catch (error) {
-      console.error(`\nFailed to take screenshot: ${error}`);
+      try {
+        await this.page.screenshot({ path: screenshotPath, fullPage: true });
+        console.log(`\nScreenshot saved to: ${screenshotPath}`);
+      } catch (error) {
+        console.error(`\nFailed to take screenshot: ${error}`);
+      }
+
+      // For failed tests, we'll keep the video.
+      // Set the target video path for renaming after context close.
+      // Playwright doesn't allow to rename video files, so we'll do it manually.
+      failedVideoPath = createVideoPath(scenarioName, deviceSuffix);
+
+      console.log(`\nVideo will be saved to: ${failedVideoPath}`);
     }
 
-    // For failed tests, we'll keep the video.
-    // Set the target video path for renaming after context close.
-    // Playwright doesn't allow to rename video files, so we'll do it manually.
-    failedVideoPath = createVideoPath(scenarioName, deviceSuffix);
+    isVisible() || (await this.context.close());
 
-    console.log(`\nVideo will be saved to: ${failedVideoPath}`);
-  }
-
-  isVisible() || (await this.context.close());
-
-  await renameFailedRemovePassedVideo(failedVideoPath);
-});
+    await renameFailedRemovePassedVideo(failedVideoPath);
+  },
+);
 
 AfterAll({ timeout: 60000 }, async function () {
   isVisible() || (await browser.close());

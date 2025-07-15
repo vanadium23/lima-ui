@@ -123,6 +123,7 @@ export const TOOLS_PANEL_ADD_ITEM_BUTTON = "toolsPanelAddItemButton";
 export const TOOLS_PANEL_BUTTON_COPY_ITEMS = "toolsPanelButtonCopyItems";
 export const TOOLS_PANEL_BUTTON_REMOVE_LIST = "toolsPanelButtonRemoveList";
 export const TOOLS_PANEL_BUTTON_PRINT_LIST = "toolsPanelButtonPrintList";
+export const TOOLS_PANEL_BUTTON_IMPORT_LIST = "toolsPanelButtonImportList";
 
 export const PRINT_LIST_TITLE = "printListTitle";
 export const PRINT_LIST_PURPOSE = "printListPurpose";

@@ -102,6 +102,7 @@ Feature: Removing a list from the List view page
     Then I expect to see the "copy items" button disabled
     Then I expect to see the "remove list tools panel" button in the loading state
     Then I expect to see the "checklist" switch disabled
+    Then I expect to see the "import" button disabled
     Then I expect to see the "print list" button disabled
     And I ensure the tools panel does not disturb
     Then All necessary elements are on the "List View During Removal" page

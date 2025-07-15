@@ -105,14 +105,16 @@ export const ListItem = (props: Testable<ListItemProps>) => {
       isDisabled: !mProps.canAddMore,
     },
     {
-      text: "Импортировать пункт выше",
+      text: "Импортировать выше",
       icon: IconName.SortDescending,
       testId: DEFAULT_TEST_ID,
+      isDisabled: !mProps.canAddMore,
     },
     {
-      text: "Импортировать пункт ниже",
+      text: "Импортировать ниже",
       icon: IconName.SortAscending,
       testId: DEFAULT_TEST_ID,
+      isDisabled: !mProps.canAddMore,
     },
     {
       text: "Удалить пункт",
