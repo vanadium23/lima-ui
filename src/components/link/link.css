@@ -1,0 +1,42 @@
+.link {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.link_small {
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+}
+
+.link_primary {
+  color: var(--text-primary-500);
+  font-weight: 500;
+}
+
+.link_primary:active:not(.link_disabled) {
+  color: var(--text-primary-600);
+}
+
+@media (hover: hover) {
+  .link_primary:hover:not(.link_disabled) {
+    color: var(--text-primary-400);
+  }
+}
+
+.link_disabled {
+  cursor: not-allowed;
+  color: var(--text-neutral-500);
+}
+
+.link:focus-visible {
+  outline: var(--outline-set);
+  outline-offset: var(--outline-offset);
+}
+
+.link:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.link:active:not(.link_disabled) {
+  transform: translateY(0.1rem);
+}
