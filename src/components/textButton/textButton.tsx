@@ -29,7 +29,6 @@ export enum TextButtonComponentType {
 type TextButtonProps = {
   theme?: TextButtonTheme;
   size?: TextButtonSize;
-  link?: string;
   type?: TextButtonType;
   isDisabled?: boolean;
   ariaLabel?: string;
@@ -47,7 +46,6 @@ export const TextButton = (props: Testable<TextButtonProps>) => {
       isDisabled: false,
       isLoading: false,
       ariaLabel: "",
-      link: "",
       handleClick: () => {},
     },
     props,
