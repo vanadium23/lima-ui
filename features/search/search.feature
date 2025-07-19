@@ -5,7 +5,7 @@ Feature: Searching for lists
     And I add a list
 
   Scenario Outline: Interacting with search bar
-    When I open <PageMeaning> page
+    When I open <PageMeaning> page with "search" accounting
     And I ensure search is visible
     And I focus "search bar" input
     And I wait for "dialog to remain hidden" for the following number of seconds: 0.5

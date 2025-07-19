@@ -40,7 +40,10 @@ import {
   VIDEOS_FOLDER,
 } from "../utilities/video.ts";
 
-import { createAccountedTesting } from "./createAccountedTesting.ts";
+import {
+  type AccountedTesting,
+  createAccountedTesting,
+} from "./createAccountedTesting.ts";
 
 let browser: Browser;
 
@@ -132,16 +135,12 @@ const MORE_THAN_IN_PLAYWRIGHT = getTimeoutOrCancelItIfDebugging(6000);
 setDefaultTimeout(MORE_THAN_IN_PLAYWRIGHT);
 setWorldConstructor(ComplexWorld);
 
-export const persistentAccounting = {
-  searchPagesTypes: createAccountedTesting(false),
-};
+export const pagesAccounting: Record<string, AccountedTesting> = {};
 
 BeforeAll(async function () {
   browser = await chromium.launch({
     headless: !isVisible(),
   });
-
-  persistentAccounting.searchPagesTypes = createAccountedTesting(false);
 });
 
 Before(async function (this: ComplexWorld) {
@@ -178,10 +177,8 @@ After(async function (this: ComplexWorld, scenario: ITestCaseHookParameter) {
 });
 
 AfterAll({ timeout: 60000 }, async function () {
-  if (persistentAccounting.searchPagesTypes.active) {
-    expect(persistentAccounting.searchPagesTypes.getTestIds()).toEqual(
-      PAGE_TYPES,
-    );
+  for (const accountedPagesSet of Object.values(pagesAccounting)) {
+    expect(accountedPagesSet.getTestIds()).toEqual(PAGE_TYPES);
   }
 
   isVisible() || (await browser.close());
