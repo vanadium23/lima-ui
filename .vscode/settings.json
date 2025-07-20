@@ -1,13 +1,29 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
+
   "editor.codeActionsOnSave": {
+    "source.addMissingImports": "always",
     "source.organizeImports": "always",
-    "source.fixAll.eslint": "always"
+    "source.fixAll.eslint": "always",
   },
-  "[astro]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+
+  "javascript.preferences.importModuleSpecifier": "relative",
+  "javascript.preferences.importModuleSpecifierEnding": "js",
+  "javascript.suggest.autoImports": true,
+  "javascript.suggest.paths": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.preferences.importModuleSpecifierEnding": "js",
+  "typescript.suggest.autoImports": true,
+  "typescript.suggest.paths": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+
+  "eslint.validate": ["typescript", "astro", "javascript", "typescriptsolid"],
+  "eslint.format.enable": true,
+  "eslint.codeActionsOnSave.mode": "all",
+
   "prettier.requireConfig": true,
   "prettier.useEditorConfig": false
 }
