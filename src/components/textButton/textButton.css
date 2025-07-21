@@ -18,18 +18,18 @@
   animation: var(--preloader);
 }
 
+.textButton_extraSmallEmbedded {
+  font-size: 1.4rem;
+  line-height: 2rem;
+  gap: var(--size-x2);
+}
+
 .textButton_medium {
   font-size: 1.6rem;
   line-height: 2rem;
   min-width: 9rem;
   gap: var(--size-x2);
   padding: var(--size-x3) var(--size-x8);
-}
-
-.textButton_extraSmallEmbedded {
-  font-size: 1.4rem;
-  line-height: 2rem;
-  gap: var(--size-x2);
 }
 
 .textButton_primary {
