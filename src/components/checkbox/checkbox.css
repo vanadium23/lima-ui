@@ -40,7 +40,7 @@
   cursor: not-allowed;
 }
 
-.checkbox__input:focus-visible:not(.checkbox_independent) + .checkbox__inner {
+.checkbox__input:focus-visible + .checkbox__inner {
   outline: var(--outline-set);
   outline-offset: var(--outline-offset);
 }
