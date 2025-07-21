@@ -14,12 +14,4 @@ export const ADDRESSES_MEANINGS = {
 };
 export type AddressMeaning = keyof typeof ADDRESSES_MEANINGS;
 
-export const PAGES_MEANINGS = {
-  "List Creation": LISTS_CREATE,
-  "My Lists": MY_LISTS,
-  "My Lists with failed lists loading": LISTS_WITH_NETWORK_ERROR,
-  "Latest List": SOME_LIST,
-};
-export type PageMeaning = keyof typeof PAGES_MEANINGS;
-
 export const PAGE_TYPES = [LISTS_CREATE, MY_LISTS, SOME_LIST].sort();

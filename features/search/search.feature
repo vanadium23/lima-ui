@@ -44,6 +44,8 @@ Feature: Searching for lists
     Then I expect to see the search "dialog"
     Then I expect to have the following number of search results: 1
     Then I expect to see the search result with the following text: "Пробуем поиск"
+    And I press the "first" search result
+    Then I expect to be on the "Some List" page
 
     Examples:
       | PageMeaning     | SearchQuery     | AccountingName                     |

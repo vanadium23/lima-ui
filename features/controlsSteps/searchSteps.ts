@@ -8,6 +8,7 @@ import {
   SEARCH_INPUT,
   SEARCH_RESULT,
 } from "../testIds.ts";
+import { buildFullTestId } from "../utilities/buildTestableSelector.ts";
 import { isDesktop, isMobile, isTablet } from "../utilities/discoverDevice.ts";
 
 Then("I expect to see search", async function (this: ComplexWorld) {
@@ -66,5 +67,21 @@ Then(
     await this.expectLocated(SEARCH_RESULT).toHaveCount(
       expectedSearchResultsQuantity,
     );
+  },
+);
+
+const SEARCH_RESULT_IDS = {
+  first: buildFullTestId(SEARCH_RESULT, 0),
+};
+
+type SearchResultMeaning = keyof typeof SEARCH_RESULT_IDS;
+
+When(
+  "I press the {string} search result",
+  async function (
+    this: ComplexWorld,
+    searchResultMeaning: SearchResultMeaning,
+  ) {
+    await this.locateByFullId(SEARCH_RESULT_IDS[searchResultMeaning]).click();
   },
 );
