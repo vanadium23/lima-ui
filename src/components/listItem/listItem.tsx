@@ -167,7 +167,7 @@ export const ListItem = (props: Testable<ListItemProps>) => {
           dataId={mProps.dataId}
           isDisabled={mProps.isDisabled}
           placeholder={mProps.placeholder}
-          textAreaValue={mProps.defaultValue}
+          defaultValue={mProps.defaultValue}
           isRequired={mProps.isRequired}
           onChange={mProps.onChange}
           testId={buildListItemInputTestId(mProps.testId)}

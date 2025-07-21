@@ -28,7 +28,7 @@ export function ItemInputWrapper(props: ItemInputWrapperProps) {
   return (
     <ItemInput
       onChange={setText}
-      textAreaValue={text()}
+      defaultValue={text()}
       maxLength={200}
       name="Some-text"
       isRequired={true}
