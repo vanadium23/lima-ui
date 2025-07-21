@@ -26,7 +26,7 @@ type ItemInputProps = {
   name: string;
   maxLength: number;
   isRequired?: boolean;
-  textAreaValue?: string;
+  defaultValue?: string;
   dataId?: string;
   placeholder: string;
   onChange?: (value: string) => void;
@@ -42,7 +42,7 @@ export const ItemInput = (props: Testable<ItemInputProps>) => {
       isDisabled: false,
       defaultIsError: false,
       isRequired: false,
-      textAreaValue: "",
+      defaultValue: "",
       dataId: "",
       onChange: () => {},
       controlElements: null,
@@ -67,7 +67,7 @@ export const ItemInput = (props: Testable<ItemInputProps>) => {
     }
   };
 
-  const remainingChars = () => mProps.maxLength - mProps.textAreaValue.length;
+  const remainingChars = () => mProps.maxLength - mProps.defaultValue.length;
 
   onMount(() => {
     handleResize();
@@ -85,7 +85,7 @@ export const ItemInput = (props: Testable<ItemInputProps>) => {
     <div
       class={`itemInput itemInput_${mProps.theme} itemInput_${mProps.size}`}
       classList={{
-        itemInput_error: hasError() && mProps.textAreaValue === "",
+        itemInput_error: hasError() && mProps.defaultValue === "",
         itemInput_disabled: mProps.isDisabled,
       }}
     >
@@ -107,7 +107,7 @@ export const ItemInput = (props: Testable<ItemInputProps>) => {
           mProps.onChange(event.target.value);
         }}
       >
-        {mProps.textAreaValue}
+        {mProps.defaultValue}
       </textarea>
       <div class="itemInput__controls">
         {mProps.controlElements}
