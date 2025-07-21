@@ -15,7 +15,6 @@ import "./input.css";
 export enum InputTheme {
   Primary = "primary",
   Secondary = "secondary",
-  Tertiary = "tertiary",
 }
 
 export enum InputSize {
