@@ -1,4 +1,5 @@
 import { Then, When } from "@cucumber/cucumber";
+import { expect } from "@playwright/test";
 
 import type { ComplexWorld } from "../context/hooks";
 import { SEARCH_TEST_IDS, type SearchPartMeaning } from "../search/testIds.ts";
@@ -32,8 +33,11 @@ Then("I expect to see search", async function (this: ComplexWorld) {
 Then(
   "I expect to see the search result with the following text: {string}",
   async function (this: ComplexWorld, expectedText: string) {
-    await this.expectLocated(SEARCH_RESULT).toBeInViewport();
-    await this.expectLocated(SEARCH_RESULT).toHaveText(expectedText);
+    const searchResultWithText = this.locateByIdParts(SEARCH_RESULT).filter({
+      hasText: new RegExp(`^${expectedText}$`),
+    });
+
+    await expect(searchResultWithText).toBeInViewport();
   },
 );
 

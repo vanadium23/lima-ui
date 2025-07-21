@@ -31,7 +31,6 @@ Feature: Searching for lists
 
   Scenario: Not being able to type more text than in search bar's limit
     When I ensure search is visible
-    And I focus "search bar" input
     And I type some text with length more than of "search bar" input limit
     Then I expect "search bar" input content length to be equal to its limit
 
@@ -39,7 +38,6 @@ Feature: Searching for lists
     When I add a list with the following title: "Пробуем поиск"
     When I open <PageMeaning> page with <AccountingName> accounting
     And I ensure search is visible
-    And I focus "search bar" input
     And I type the following text into the "search bar": <SearchQuery>
     Then I expect to see the search "dialog"
     Then I expect to have the following number of search results: 1
@@ -55,3 +53,17 @@ Feature: Searching for lists
       | "List Creation" | "Про"           | "search single item partial words" |
       | "Latest List"   | "Пробуем поиск" | "search single item full words"    |
       | "Latest List"   | "оиск"          | "search single item partial words" |
+
+  Scenario: Seeing several lists in search results
+    When I add a list with the following title: "Пробуем поиск"
+    And I add a list with the following title: "Пробуем поиск 2"
+    And I add a list with the following title: "Пробуем поиск 3"
+    And I add a list with the following title: "Пробуем поиск 4"
+    And I ensure search is visible
+    And I type the following text into the "search bar": "Пробуем"
+    Then I expect to see the search "dialog"
+    Then I expect to have the following number of search results: 4
+    Then I expect to see the search result with the following text: "Пробуем поиск"
+    Then I expect to see the search result with the following text: "Пробуем поиск 2"
+    Then I expect to see the search result with the following text: "Пробуем поиск 3"
+    Then I expect to see the search result with the following text: "Пробуем поиск 4"
