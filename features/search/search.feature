@@ -37,16 +37,19 @@ Feature: Searching for lists
 
   Scenario Outline: Searching for a specific list
     When I add a list with the following title: "Пробуем поиск"
-    When I open <PageMeaning> page with "search single item" accounting
+    When I open <PageMeaning> page with <AccountingName> accounting
     And I ensure search is visible
     And I focus "search bar" input
-    And I type the following text into the "search bar": "Пробуем поиск"
+    And I type the following text into the "search bar": <SearchQuery>
     Then I expect to see the search "dialog"
-    Then I expect to see the following number of search results: 1
+    Then I expect to have the following number of search results: 1
     Then I expect to see the search result with the following text: "Пробуем поиск"
 
     Examples:
-      | PageMeaning     |
-      | "My Lists"      |
-      | "List Creation" |
-      | "Latest List"   |
+      | PageMeaning     | SearchQuery     | AccountingName                     |
+      | "My Lists"      | "Пробуем поиск" | "search single item full words"    |
+      | "My Lists"      | "Проб"          | "search single item partial words" |
+      | "List Creation" | "Пробуем поиск" | "search single item full words"    |
+      | "List Creation" | "Про"           | "search single item partial words" |
+      | "Latest List"   | "Пробуем поиск" | "search single item full words"    |
+      | "Latest List"   | "оиск"          | "search single item partial words" |

@@ -61,7 +61,7 @@ When("I ensure search is visible", async function (this: ComplexWorld) {
 });
 
 Then(
-  "I expect to see the following number of search results: {int}",
+  "I expect to have the following number of search results: {int}",
   async function (this: ComplexWorld, expectedSearchResultsQuantity: number) {
     await this.expectLocated(SEARCH_RESULT).toHaveCount(
       expectedSearchResultsQuantity,
