@@ -37,12 +37,14 @@ export const ListItemImport = (props: Testable<ListItemImportProps>) => {
     <label
       class={`listItemImport listItemImport_${mProps.theme} listItemImport_${mProps.size}`}
       data-test-id={mProps.testId}
+      data-test-sub-id={mProps.testSubId}
     >
       <span class="listItemImport__checkbox">
         <Checkbox
           theme={CheckboxTheme.Primary}
           size={CheckboxSize.Small}
           testId={DEFAULT_TEST_ID}
+          testSubId={mProps.testSubId ?? ""}
           independent={false}
         />
       </span>
