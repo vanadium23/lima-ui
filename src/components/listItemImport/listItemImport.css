@@ -1,0 +1,38 @@
+.listItemImport {
+  display: flex;
+  cursor: pointer;
+}
+
+.listItemImport:active {
+  transform: translateY(0.1rem);
+}
+
+.listItemImport__text {
+  display: flex;
+}
+
+.listItemImport_medium {
+  gap: var(--size-x6);
+  padding: var(--size-x4) var(--size-x9) var(--size-x4) var(--size-x4);
+}
+
+.listItemImport_medium .listItemImport__text {
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.8rem;
+}
+
+.listItemImport_primary {
+  color: var(--text-neutral-800);
+  background: var(--neutral-100);
+}
+
+@media (hover: hover) {
+  .listItemImport_primary:hover {
+    background: var(--neutral-150);
+  }
+}
+
+.listItemImport_primary:active {
+  background: var(--neutral-200);
+}

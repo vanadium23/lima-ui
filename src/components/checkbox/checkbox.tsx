@@ -1,4 +1,4 @@
-import { mergeProps } from "solid-js";
+import { Match, mergeProps, Switch } from "solid-js";
 
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
 import { prepareARIALabel } from "../utilities/prepareARIALabel.ts";
@@ -22,6 +22,7 @@ type CheckboxProps = {
   ariaLabel?: string;
   handleClick?: () => void;
   isChecked?: boolean;
+  independent?: boolean;
 };
 
 export const Checkbox = (props: Testable<CheckboxProps>) => {
@@ -33,6 +34,7 @@ export const Checkbox = (props: Testable<CheckboxProps>) => {
       ariaLabel: "",
       handleClick: () => {},
       isChecked: false,
+      independent: true,
     },
     props,
   );
@@ -43,30 +45,61 @@ export const Checkbox = (props: Testable<CheckboxProps>) => {
   };
 
   return (
-    <label
-      class={`checkbox checkbox_${mProps.theme} checkbox_${mProps.size}`}
-      classList={{
-        checkbox_disabled: mProps.isDisabled,
-      }}
-      data-test-id={mProps.testId}
-      data-test-sub-id={mProps.testSubId}
-    >
-      <input
-        type="checkbox"
-        class="checkbox__input"
-        disabled={mProps.isDisabled}
-        checked={mProps.isChecked}
-        onClick={() => {
-          mProps.handleClick();
-        }}
-        {...prepareARIALabel(mProps.ariaLabel)}
-      />
+    <Switch>
+      <Match when={mProps.independent}>
+        <label
+          class={`checkbox checkbox_${mProps.theme} checkbox_${mProps.size}`}
+          classList={{
+            checkbox_disabled: mProps.isDisabled,
+          }}
+          data-test-id={mProps.testId}
+          data-test-sub-id={mProps.testSubId}
+        >
+          <input
+            type="checkbox"
+            class="checkbox__input"
+            disabled={mProps.isDisabled}
+            checked={mProps.isChecked}
+            onClick={() => {
+              mProps.handleClick();
+            }}
+            {...prepareARIALabel(mProps.ariaLabel)}
+          />
 
-      <span class="checkbox__inner">
-        <span class="checkbox__icon">
-          <Icon name={IconName.Check} size={iconSize[mProps.size]} />
+          <span class="checkbox__inner">
+            <span class="checkbox__icon">
+              <Icon name={IconName.Check} size={iconSize[mProps.size]} />
+            </span>
+          </span>
+        </label>
+      </Match>
+      <Match when={!mProps.independent}>
+        <span
+          class={`checkbox checkbox_${mProps.theme} checkbox_${mProps.size} checkbox_independent`}
+          classList={{
+            checkbox_disabled: mProps.isDisabled,
+          }}
+          data-test-id={mProps.testId}
+          data-test-sub-id={mProps.testSubId}
+        >
+          <input
+            type="checkbox"
+            class="checkbox__input"
+            disabled={mProps.isDisabled}
+            checked={mProps.isChecked}
+            onClick={() => {
+              mProps.handleClick();
+            }}
+            {...prepareARIALabel(mProps.ariaLabel)}
+          />
+
+          <span class="checkbox__inner">
+            <span class="checkbox__icon">
+              <Icon name={IconName.Check} size={iconSize[mProps.size]} />
+            </span>
+          </span>
         </span>
-      </span>
-    </label>
+      </Match>
+    </Switch>
   );
 };
