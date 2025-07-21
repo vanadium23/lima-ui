@@ -26,6 +26,12 @@
   padding: var(--size-x3) var(--size-x8);
 }
 
+.textButton_extraSmallEmbedded {
+  font-size: 1.4rem;
+  line-height: 2rem;
+  gap: var(--size-x2);
+}
+
 .textButton_primary {
   color: var(--text-primary-500);
 }
