@@ -1,4 +1,5 @@
-import { Match, mergeProps, Switch } from "solid-js";
+import { mergeProps } from "solid-js";
+import { Dynamic } from "solid-js/web";
 
 import type { Testable } from "../utilities/testable.ts";
 
@@ -32,27 +33,18 @@ export const Link = (props: Testable<LinkProps>) => {
   );
 
   return (
-    <Switch>
-      <Match when={!mProps.isDisabled}>
-        <a
-          href={mProps.link}
-          class={`link link_${mProps.theme} link_${mProps.size}`}
-          data-test-id={mProps.testId}
-          data-test-sub-id={mProps.testSubId}
-        >
-          {mProps.text}
-        </a>
-      </Match>
-      <Match when={mProps.isDisabled}>
-        <span
-          class={`link link_${mProps.theme} link_${mProps.size} link_disabled`}
-          aria-disabled={mProps.isDisabled}
-          data-test-id={mProps.testId}
-          data-test-sub-id={mProps.testSubId}
-        >
-          {mProps.text}
-        </span>
-      </Match>
-    </Switch>
+    <Dynamic
+      component={mProps.isDisabled ? "span" : "a"}
+      href={!mProps.isDisabled ? mProps.link : undefined}
+      class={`link link_${mProps.theme} link_${mProps.size}`}
+      classList={{
+        link_disabled: mProps.isDisabled,
+      }}
+      aria-disabled={mProps.isDisabled}
+      data-test-id={mProps.testId}
+      data-test-sub-id={mProps.testSubId}
+    >
+      {mProps.text}
+    </Dynamic>
   );
 };
