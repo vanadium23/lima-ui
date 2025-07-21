@@ -90,13 +90,9 @@
 }
 
 .input_secondary {
-  border-color: transparent transparent var(--neutral-500) transparent;
-  background: var(--neutral-150);
-  border-radius: 0;
-}
-
-.input_secondary:focus-within {
-  border-color: transparent transparent var(--neutral-700) transparent;
+  border-color: var(--primary-200);
+  background: var(--primary-200);
+  border-radius: var(--size-x4);
 }
 
 .input_secondary .input__inner::placeholder {
@@ -104,68 +100,30 @@
 }
 
 .input_secondary.input_error {
-  border-color: transparent transparent var(--dangerous-500) transparent;
-  background: var(--dangerous-300);
+  border-color: var(--dangerous-500);
 }
 
 .input_secondary.input_error .input__inner {
   color: var(--text-dangerous-500);
 }
 
-.input_secondary.input_disabled .input__inner {
+.input_secondary.input_disabled .input__inner,
+.input_secondary.input_disabled .input__inner::placeholder {
   color: var(--text-neutral-500);
 }
 
 .input_secondary.input_disabled {
   background: var(--neutral-200);
-}
-
-.input_secondary .input__inner {
-  color: var(--text-neutral-800);
-  font-weight: 600;
-}
-
-@media (hover: hover) {
-  .input_secondary:hover:not(.input_disabled) {
-    border-color: transparent transparent var(--neutral-700) transparent;
-  }
-}
-
-.input_tertiary {
-  border-color: var(--primary-200);
-  background: var(--primary-200);
-  border-radius: var(--size-x4);
-}
-
-.input_tertiary .input__inner::placeholder {
-  color: var(--text-neutral-500);
-}
-
-.input_tertiary.input_error {
-  border-color: var(--dangerous-500);
-}
-
-.input_tertiary.input_error .input__inner {
-  color: var(--text-dangerous-500);
-}
-
-.input_tertiary.input_disabled .input__inner,
-.input_tertiary.input_disabled .input__inner::placeholder {
-  color: var(--text-neutral-500);
-}
-
-.input_tertiary.input_disabled {
-  background: var(--neutral-200);
   border-color: var(--neutral-200);
 }
 
-.input_tertiary .input__inner {
+.input_secondary .input__inner {
   color: var(--text-neutral-800);
   font-weight: 500;
 }
 
 @media (hover: hover) {
-  .input_tertiary:hover:not(.input_disabled) {
+  .input_secondary:hover:not(.input_disabled) {
     background: var(--primary-100);
     border-color: var(--primary-100);
   }
