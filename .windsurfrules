@@ -1,8 +1,17 @@
+- Verify that your solution is working after introducing it.
+- Ensure that there are no linting of typing problems or warnings introduced with your solution.
+- Do the cleanup after completing your solution. Remove unnecessary logs, screenshots and other debugging files.
+
 For .feature files:
 
 - Use the existing steps as much as possible. In case there are no relevant, create the corresponding \*Steps.ts file and write the implementation there.
 - Don’t create the corresponding \*Steps.ts file if no new implemetnations are needed.
 - To test every new scenario add the @current tag, and then run the `npm test -- --current` command.
+
+For \*Steps.ts files:
+
+- Before introducing new methods first investigate existing ones from the ComplexWorld class.
+- Timeouts are poor solution. Never use them, but propose them to me after you try all possible solutions.
 
 For .js files:
 

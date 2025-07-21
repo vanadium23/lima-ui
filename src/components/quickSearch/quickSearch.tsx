@@ -1,8 +1,8 @@
 import { For, mergeProps, Show } from "solid-js";
 
 import {
-  DEFAULT_TEST_ID,
   SEARCH_DIALOG_LOADING,
+  SEARCH_RESULT,
 } from "../../../features/testIds.ts";
 import type { SearchList } from "../../widgets/editList/types.ts";
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
@@ -82,7 +82,7 @@ export const QuickSearch = (props: QuickSearchProps) => {
                     <SearchItem
                       text={list.name}
                       link={list.id}
-                      testId={DEFAULT_TEST_ID}
+                      testId={SEARCH_RESULT}
                       testSubId={index()}
                     />
                   );

@@ -5,7 +5,7 @@ Feature: Searching for lists
     And I add a list
 
   Scenario Outline: Interacting with search bar
-    When I open <PageMeaning> page with "search" accounting
+    When I open <PageMeaning> page with "search interaction" accounting
     And I ensure search is visible
     And I focus "search bar" input
     And I wait for "dialog to remain hidden" for the following number of seconds: 0.5
@@ -30,7 +30,23 @@ Feature: Searching for lists
       | "Latest List"   |
 
   Scenario: Not being able to type more text than in search bar's limit
-    And I ensure search is visible
+    When I ensure search is visible
     And I focus "search bar" input
     And I type some text with length more than of "search bar" input limit
     Then I expect "search bar" input content length to be equal to its limit
+
+  Scenario Outline: Searching for a specific list
+    When I add a list with the following title: "Пробуем поиск"
+    When I open <PageMeaning> page with "search single item" accounting
+    And I ensure search is visible
+    And I focus "search bar" input
+    And I type the following text into the "search bar": "Пробуем поиск"
+    Then I expect to see the search "dialog"
+    Then I expect to see the following number of search results: 1
+    Then I expect to see the search result with the following text: "Пробуем поиск"
+
+    Examples:
+      | PageMeaning     |
+      | "My Lists"      |
+      | "List Creation" |
+      | "Latest List"   |

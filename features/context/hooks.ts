@@ -59,7 +59,6 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
   data: Record<string, string> = {};
   oldData: Record<string, string> = {};
   numbers: Record<string, number> = {};
-  listIds: TestId[] = [];
   itemsValues: string[] = [];
   responsesToWait: Partial<
     Record<AddressMeaning, ReturnType<Page["waitForResponse"]>>
