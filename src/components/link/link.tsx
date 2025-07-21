@@ -9,13 +9,14 @@ export enum LinkTheme {
 }
 
 export enum LinkSize {
+  Small = "small",
   Medium = "medium",
 }
 
 type LinkProps = {
   theme?: LinkTheme;
   size?: LinkSize;
-  link?: string;
+  link: string;
   text: string;
   isDisabled?: boolean;
 };
@@ -25,7 +26,6 @@ export const Link = (props: Testable<LinkProps>) => {
     {
       theme: LinkTheme.Primary,
       size: LinkSize.Medium,
-      link: "",
       isDisabled: false,
     },
     props,

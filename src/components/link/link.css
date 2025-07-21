@@ -8,6 +8,11 @@
   line-height: 1.6rem;
 }
 
+.link_medium {
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+}
+
 .link_primary {
   color: var(--text-primary-500);
   font-weight: 500;
