@@ -1,6 +1,7 @@
 import { For, mergeProps, Show } from "solid-js";
 
 import {
+  SEARCH_DIALOG_EMPTY,
   SEARCH_DIALOG_LOADING,
   SEARCH_RESULT,
 } from "../../../features/testIds.ts";
@@ -71,7 +72,10 @@ export const QuickSearch = (props: QuickSearchProps) => {
         <Show
           when={mProps.lists.length}
           fallback={
-            <span class="quickSearch__empty">{`По запросу «${mProps.query}» ничего не найдено`}</span>
+            <span
+              class="quickSearch__empty"
+              data-test-id={SEARCH_DIALOG_EMPTY}
+            >{`По запросу «${mProps.query}» ничего не найдено`}</span>
           }
         >
           <div class="quickSearch__results">

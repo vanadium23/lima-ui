@@ -100,3 +100,9 @@ Feature: Searching for lists
     Then I expect to see the search result with the following text: "Проба поиска 2"
     Then I expect to see the search result with the following text: "Hello world"
     Then I expect to see the search result with the following text: "Hello world 2"
+
+  Scenario: Seeing empty search results
+    When I ensure search is visible
+    And I type the following text into the "search bar": "Проб"
+    Then I expect to see the search "dialog empty"
+    Then I expect to have the following number of search results: 0
