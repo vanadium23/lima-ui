@@ -72,3 +72,17 @@ Feature: Searching for lists
       | SearchQuery |
       | "Пробуем"   |
       | "Проб"      |
+
+  Scenario: Seeing both full and partial matches in search results
+    When I add a list with the following title: "Проб поиск"
+    And I add a list with the following title: "Проб поиск 2"
+    And I add a list with the following title: "Пробуем поиск"
+    And I add a list with the following title: "Пробуем поиск 2"
+    And I ensure search is visible
+    And I type the following text into the "search bar": "Проб"
+    Then I expect to see the search "dialog"
+    Then I expect to have the following number of search results: 4
+    Then I expect to see the search result with the following text: "Проб поиск"
+    Then I expect to see the search result with the following text: "Проб поиск 2"
+    Then I expect to see the search result with the following text: "Пробуем поиск"
+    Then I expect to see the search result with the following text: "Пробуем поиск 2"
