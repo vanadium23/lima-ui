@@ -3,8 +3,13 @@
   padding: 0;
 }
 
-.title_primary {
+.title_left {
   color: var(--text-neutral-900);
+}
+
+.title_center {
+  color: var(--text-neutral-900);
+  text-align: center;
 }
 
 .title_medium {

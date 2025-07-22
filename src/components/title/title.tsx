@@ -5,7 +5,8 @@ import type { Testable } from "../utilities/testable.ts";
 import "./title.css";
 
 export enum TitleTheme {
-  Primary = "primary",
+  Left = "left",
+  Center = "center",
 }
 
 export enum TitleSize {
@@ -21,7 +22,7 @@ type TitleProps = {
 export const Title = (props: Testable<TitleProps>) => {
   const mProps: Testable<Required<TitleProps>> = mergeProps(
     {
-      theme: TitleTheme.Primary,
+      theme: TitleTheme.Left,
       size: TitleSize.Medium,
     },
     props,
