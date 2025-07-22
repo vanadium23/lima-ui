@@ -86,3 +86,17 @@ Feature: Searching for lists
     Then I expect to see the search result with the following text: "Проб поиск 2"
     Then I expect to see the search result with the following text: "Пробуем поиск"
     Then I expect to see the search result with the following text: "Пробуем поиск 2"
+
+  Scenario: Seeing all matches for several words
+    When I add a list with the following title: "Проба поиска"
+    And I add a list with the following title: "Проба поиска 2"
+    And I add a list with the following title: "Hello world"
+    And I add a list with the following title: "Hello world 2"
+    And I ensure search is visible
+    And I type the following text into the "search bar": "Проба Hello"
+    Then I expect to see the search "dialog"
+    Then I expect to have the following number of search results: 4
+    Then I expect to see the search result with the following text: "Проба поиска"
+    Then I expect to see the search result with the following text: "Проба поиска 2"
+    Then I expect to see the search result with the following text: "Hello world"
+    Then I expect to see the search result with the following text: "Hello world 2"
