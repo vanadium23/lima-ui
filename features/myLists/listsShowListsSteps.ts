@@ -2,6 +2,7 @@ import { Then, When } from "@cucumber/cucumber";
 
 import { LISTS_LIMIT } from "../../configuration.ts";
 import { createList } from "../../src/widgets/editList/services/createList.ts";
+import { getLists } from "../../src/widgets/editList/services/getLists.ts";
 import type { ComplexWorld } from "../context/hooks.ts";
 import {
   LIST_STRIPE,
@@ -81,7 +82,10 @@ When(
   "I add lists to their limit",
   { timeout: getTimeoutOrCancelItIfDebugging(10000) },
   async function (this: ComplexWorld) {
-    for (let i = 0; i < LISTS_LIMIT; i++) {
+    const existingLists = await getLists(this.BACKEND_ADDRESS);
+    const currentListsCount = existingLists.length;
+
+    for (let i = currentListsCount; i < LISTS_LIMIT; i++) {
       const listData = {
         name: `Здесь был Максим + ${i + 1}`,
         purpose: "",

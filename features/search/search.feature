@@ -124,3 +124,11 @@ Feature: Searching for lists
     Then I expect to have the following number of search results: 10
     When I scroll to the bottom of the search results
     Then I expect to see the "last" search result
+
+  Scenario: Seeing the on-limit amount of search results
+    When I clear all data
+    And I add lists to their limit
+    And I ensure search is visible
+    And I type the following text into the "search bar": "Здесь"
+    Then I expect to see the search "dialog"
+    Then I expect to have the following number of search results: 200

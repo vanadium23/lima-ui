@@ -2,15 +2,12 @@ import { BACKEND_LISTS } from "../../../../utilities/addresses.ts";
 
 export async function removeList(
   id: string,
-  backendURL?: string,
+  backendURL = import.meta.env.PUBLIC_API_URL,
 ): Promise<void> {
   if (!id) {
     throw new Error("Потерялся ID списка");
   }
-
-  const backend = backendURL || import.meta.env.PUBLIC_API_URL;
-
-  const response = await fetch(`${backend}${BACKEND_LISTS}${id}`, {
+  const response = await fetch(`${backendURL}${BACKEND_LISTS}${id}`, {
     method: "DELETE",
   });
 

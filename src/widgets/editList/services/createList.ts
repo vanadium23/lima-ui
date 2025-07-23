@@ -3,17 +3,9 @@ import type { List, NewList } from "../types.ts";
 
 export async function createList(
   data: NewList,
-  backendURL?: string,
+  backendURL = import.meta.env.PUBLIC_API_URL,
 ): Promise<List> {
-  let backend: string;
-
-  if (backendURL) {
-    backend = backendURL;
-  } else {
-    backend = import.meta.env.PUBLIC_API_URL;
-  }
-
-  const response = await fetch(backend + BACKEND_LISTS.slice(0, -1), {
+  const response = await fetch(backendURL + BACKEND_LISTS.slice(0, -1), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
