@@ -10,6 +10,7 @@ import {
   SEARCH_BUTTON,
   SEARCH_DIALOG,
   SEARCH_INPUT,
+  SEARCH_NETWORK_ERROR,
 } from "../../../features/testIds.ts";
 import { IconName } from "../../components/icon/icon.tsx";
 import {
@@ -122,6 +123,7 @@ export const Search = (props: SearchProps) => {
       notificationState.pushNetworkError(
         "Ошибка",
         "Нет соединения с сервером, попробуйте еще раз",
+        SEARCH_NETWORK_ERROR,
       );
 
       setState("results", []);

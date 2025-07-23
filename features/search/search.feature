@@ -132,3 +132,10 @@ Feature: Searching for lists
     And I type the following text into the "search bar": "Здесь"
     Then I expect to see the search "dialog"
     Then I expect to have the following number of search results: 200
+
+  Scenario: Seeing error notification when search request fails
+    Given Data server is not available
+    And I ensure search is visible
+    And I type the following text into the "search bar": "test search"
+    And I wait for "search error to appear" for the following number of seconds: 2
+    Then I expect to see the search "error notification"

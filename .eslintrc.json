@@ -43,7 +43,7 @@
     "quotes": ["error", "double"], // двойные кавычки
     "import/extensions": [
       "error",
-      "never",
+      "ignorePackages",
       {
         "js": "always",
         "astro": "always",
