@@ -1,6 +1,6 @@
 import { mergeProps } from "solid-js";
 
-import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
+import { SEARCH_NETWORK_ERROR_CLOSE_BUTTON } from "../../../features/testIds.ts";
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
 import {
   IconButton,
@@ -59,7 +59,7 @@ export const PushNotification = (props: Testable<PushNotificationProps>) => {
               iconName={IconName.X}
               ariaLabel={`Закрыть уведомление ${mProps.title}`}
               handleClick={mProps.onClose}
-              testId={DEFAULT_TEST_ID}
+              testId={SEARCH_NETWORK_ERROR_CLOSE_BUTTON}
               testSubId={mProps.testSubId ?? ""}
             />
           </div>

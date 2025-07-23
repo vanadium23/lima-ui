@@ -139,3 +139,5 @@ Feature: Searching for lists
     And I type the following text into the "search bar": "test search"
     And I wait for "search error to appear" for the following number of seconds: 2
     Then I expect to see the search "error notification"
+    When I press the "close error notification" button
+    Then I expect not to see the search "error notification"

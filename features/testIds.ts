@@ -58,6 +58,7 @@ export const SEARCH_DIALOG_EMPTY = "searchDialogEmpty";
 export const SEARCH_RESULT = "searchResult";
 export const SEARCH_RESULTS = "searchResults";
 export const SEARCH_NETWORK_ERROR = "searchNetworkError";
+export const SEARCH_NETWORK_ERROR_CLOSE_BUTTON = `${SEARCH_NETWORK_ERROR}CloseButton`;
 
 export const USER_BUTTON = "userButton";
 
