@@ -8,9 +8,11 @@ import {
   SEARCH_BUTTON,
   SEARCH_INPUT,
   SEARCH_RESULT,
+  SEARCH_RESULTS,
 } from "../testIds.ts";
 import { buildFullTestId } from "../utilities/buildTestableSelector.ts";
 import { isDesktop, isMobile, isTablet } from "../utilities/discoverDevice.ts";
+import { scrollToBottom } from "../utilities/scroll.ts";
 
 Then("I expect to see search", async function (this: ComplexWorld) {
   if (isDesktop() || isTablet()) {
@@ -76,6 +78,7 @@ Then(
 
 const SEARCH_RESULT_IDS = {
   first: buildFullTestId(SEARCH_RESULT, 0),
+  last: SEARCH_RESULT,
 };
 
 type SearchResultMeaning = keyof typeof SEARCH_RESULT_IDS;
@@ -87,5 +90,32 @@ When(
     searchResultMeaning: SearchResultMeaning,
   ) {
     await this.locateByFullId(SEARCH_RESULT_IDS[searchResultMeaning]).click();
+  },
+);
+
+When(
+  "I scroll to the bottom of the search results",
+  async function (this: ComplexWorld) {
+    await this.locateByIdParts(SEARCH_RESULTS).evaluate(scrollToBottom);
+  },
+);
+
+Then(
+  "I expect to see the {string} search result",
+  async function (
+    this: ComplexWorld,
+    searchResultMeaning: SearchResultMeaning,
+  ) {
+    if (searchResultMeaning === "last") {
+      const lastSearchResult = this.locateByIdParts(SEARCH_RESULT).last();
+
+      await expect(lastSearchResult).toBeInViewport();
+
+      return;
+    }
+
+    await this.expectLocated(
+      SEARCH_RESULT_IDS[searchResultMeaning],
+    ).toBeInViewport();
   },
 );

@@ -106,3 +106,21 @@ Feature: Searching for lists
     And I type the following text into the "search bar": "Проб"
     Then I expect to see the search "dialog empty"
     Then I expect to have the following number of search results: 0
+
+  Scenario: Seeing scrollable search results
+    When I add a list with the following title: "Проба поиска"
+    And I add a list with the following title: "Проба поиска 2"
+    And I add a list with the following title: "Проба поиска 3"
+    And I add a list with the following title: "Проба поиска 4"
+    And I add a list with the following title: "Проба поиска 5"
+    And I add a list with the following title: "Проба поиска 6"
+    And I add a list with the following title: "Проба поиска 7"
+    And I add a list with the following title: "Проба поиска 8"
+    And I add a list with the following title: "Проба поиска 9"
+    And I add a list with the following title: "Проба поиска 10"
+    And I ensure search is visible
+    And I type the following text into the "search bar": "Проба"
+    Then I expect to see the search "dialog"
+    Then I expect to have the following number of search results: 10
+    When I scroll to the bottom of the search results
+    Then I expect to see the "last" search result

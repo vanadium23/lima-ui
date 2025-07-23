@@ -56,6 +56,7 @@ export const SEARCH_DIALOG = "searchDialog";
 export const SEARCH_DIALOG_LOADING = "searchDialogLoading";
 export const SEARCH_DIALOG_EMPTY = "searchDialogEmpty";
 export const SEARCH_RESULT = "searchResult";
+export const SEARCH_RESULTS = "searchResults";
 
 export const USER_BUTTON = "userButton";
 

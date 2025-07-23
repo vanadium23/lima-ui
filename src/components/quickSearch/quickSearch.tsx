@@ -4,6 +4,7 @@ import {
   SEARCH_DIALOG_EMPTY,
   SEARCH_DIALOG_LOADING,
   SEARCH_RESULT,
+  SEARCH_RESULTS,
 } from "../../../features/testIds.ts";
 import type { SearchList } from "../../widgets/editList/types.ts";
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
@@ -79,7 +80,10 @@ export const QuickSearch = (props: QuickSearchProps) => {
           }
         >
           <div class="quickSearch__results">
-            <ul class="quickSearch__list scrollStyles">
+            <ul
+              class="quickSearch__list scrollStyles"
+              data-test-id={SEARCH_RESULTS}
+            >
               <For each={mProps.lists}>
                 {(list, index) => {
                   return (
