@@ -1,4 +1,5 @@
 import { For, mergeProps, Show } from "solid-js";
+import { Portal } from "solid-js/web";
 
 import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import { DropdownMenu } from "../dropdownMenu/dropdownMenu.tsx";
@@ -54,26 +55,28 @@ export const DropdownMenuWrapper = (props: Testable<DropdownMenuWrapper>) => {
         isDisabled={mProps.isDisabled}
       />
       <Show when={isMenuOpen()}>
-        <DropdownMenu
-          ref={setMenuRef}
-          floatingStyles={floatingPosition}
-          testId={mProps.dropDownMenuTestId}
-        >
-          <For each={mProps.listOfButtons}>
-            {(button) => (
-              <MenuItem
-                testId={DEFAULT_TEST_ID}
-                testSubId={mProps.testSubId || "0"}
-                {...button}
-                handleClick={() => {
-                  button.handleClick?.();
-                  setIsMenuOpen(false);
-                }}
-                isDisabled={button.isDisabled || mProps.isDisabled}
-              />
-            )}
-          </For>
-        </DropdownMenu>
+        <Portal mount={document.body}>
+          <DropdownMenu
+            ref={setMenuRef}
+            floatingStyles={floatingPosition}
+            testId={mProps.dropDownMenuTestId}
+          >
+            <For each={mProps.listOfButtons}>
+              {(button) => (
+                <MenuItem
+                  testId={DEFAULT_TEST_ID}
+                  testSubId={mProps.testSubId || "0"}
+                  {...button}
+                  handleClick={() => {
+                    button.handleClick?.();
+                    setIsMenuOpen(false);
+                  }}
+                  isDisabled={button.isDisabled || mProps.isDisabled}
+                />
+              )}
+            </For>
+          </DropdownMenu>
+        </Portal>
       </Show>
     </>
   );

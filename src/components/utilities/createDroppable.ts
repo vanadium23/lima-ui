@@ -47,7 +47,7 @@ export function createDroppable(): Droppable {
   });
 
   const floatingPosition = useFloating(menuButtonRef, menuRef, {
-    placement: "bottom-start",
+    placement: "bottom-end",
     whileElementsMounted: (reference, floating, update) =>
       autoUpdate(reference, floating, update, {
         animationFrame: true,

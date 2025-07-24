@@ -84,6 +84,7 @@ Feature: Failing to create a new list
     Then I expect to see the "copy items" button disabled
     Then I expect to see the "remove list tools panel" button disabled
     Then I expect to see the "checklist" switch enabled
+    Then I expect to see the "import" button enabled
     Then I expect to see the "print list" button disabled
     And I ensure the tools panel does not disturb
     Then I expect to see the "connection" error
