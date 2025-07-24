@@ -40,6 +40,10 @@
   cursor: not-allowed;
 }
 
+.checkbox__input {
+  outline: none;
+}
+
 .checkbox__input:focus-visible + .checkbox__inner {
   outline: var(--outline-set);
   outline-offset: var(--outline-offset);
@@ -75,8 +79,4 @@
 
 .checkbox__input:checked + .checkbox__inner .checkbox__icon {
   visibility: visible;
-}
-
-.checkbox__input:focus:not(:focus-visible) {
-  outline: none;
 }
