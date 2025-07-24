@@ -12,6 +12,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "test": "tsx scripts/runTests.ts",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "prepare": "husky"
   },
   "dependencies": {

@@ -16,7 +16,7 @@ import {
   Button,
   ButtonComponentType,
 } from "../../components/button/button.tsx";
-import { ListStripe } from "../../components/listStripe/listStripe";
+import { ListStripe } from "../../components/listStripe/listStripe.tsx";
 import { PageError } from "../../components/pageError/pageError.tsx";
 import { Title } from "../../components/title/title.tsx";
 import {

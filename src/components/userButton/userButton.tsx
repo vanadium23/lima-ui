@@ -1,6 +1,6 @@
 import { mergeProps } from "solid-js";
 
-import { USER_BUTTON } from "../../../features/testIds";
+import { USER_BUTTON } from "../../../features/testIds.ts";
 
 import "./userButton.css";
 

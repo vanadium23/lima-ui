@@ -1,16 +1,16 @@
 import { For, mergeProps, Show } from "solid-js";
 
-import { DEFAULT_TEST_ID } from "../../../features/testIds";
-import { DropdownMenu } from "../dropdownMenu/dropdownMenu";
-import { IconName } from "../icon/icon";
+import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
+import { DropdownMenu } from "../dropdownMenu/dropdownMenu.tsx";
+import { IconName } from "../icon/icon.tsx";
 import {
   IconButton,
   IconButtonComponentType,
   IconButtonSize,
-} from "../iconButton/iconButton";
-import type { MenuItemProps } from "../menuItem/menuItem";
-import { MenuItem } from "../menuItem/menuItem";
-import { createDroppable } from "../utilities/createDroppable";
+} from "../iconButton/iconButton.tsx";
+import type { MenuItemProps } from "../menuItem/menuItem.tsx";
+import { MenuItem } from "../menuItem/menuItem.tsx";
+import { createDroppable } from "../utilities/createDroppable.ts";
 import type { Testable, TestId } from "../utilities/testable";
 
 type DropdownMenuWrapper = {

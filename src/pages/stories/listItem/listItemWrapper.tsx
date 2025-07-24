@@ -1,7 +1,7 @@
 import { createSignal, mergeProps } from "solid-js";
 
-import { DEFAULT_TEST_ID } from "../../../../features/testIds";
-import { ListItem } from "../../../components/listItem/listItem";
+import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
+import { ListItem } from "../../../components/listItem/listItem.tsx";
 
 type ListItemWrapperProps = {
   staticIsCheckable?: boolean;

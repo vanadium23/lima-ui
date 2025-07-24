@@ -1,5 +1,5 @@
-import { IconName } from "../../../components/icon/icon";
-import { MenuItemTheme } from "../../../components/menuItem/menuItem";
+import { IconName } from "../../../components/icon/icon.tsx";
+import { MenuItemTheme } from "../../../components/menuItem/menuItem.tsx";
 
 export const dropdownItems = () => [
   {
