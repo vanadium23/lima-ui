@@ -62,7 +62,7 @@ export const Input = (props: Testable<InputProps>) => {
       isRequired: false,
       type: InputType.Text,
       defaultValue: "",
-      isCountable: true,
+      isCountable: false,
       isClearable: false,
       label: "",
       onInput: () => {},
@@ -73,6 +73,7 @@ export const Input = (props: Testable<InputProps>) => {
   );
 
   const [getValue, setValue] = createSignal(mProps.defaultValue);
+  const [getIsPasswordVisible, setIsPasswordVisible] = createSignal(false);
 
   let inputRef: HTMLInputElement | undefined;
 
@@ -93,6 +94,18 @@ export const Input = (props: Testable<InputProps>) => {
     mProps.onClear();
   };
 
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible(!getIsPasswordVisible());
+  };
+
+  const getInputType = () => {
+    if (mProps.type === InputType.Password) {
+      return getIsPasswordVisible() ? "text" : "password";
+    }
+
+    return mProps.type;
+  };
+
   return (
     <div
       class={`input input_${mProps.theme} input_${mProps.size}`}
@@ -103,7 +116,7 @@ export const Input = (props: Testable<InputProps>) => {
     >
       <input
         ref={inputRef}
-        type={mProps.type}
+        type={getInputType()}
         name={mProps.name}
         class="input__inner"
         disabled={mProps.isDisabled}
@@ -129,6 +142,22 @@ export const Input = (props: Testable<InputProps>) => {
             ariaLabel="Очистить поле"
             theme={IconButtonTheme.Secondary}
             handleClick={handleClear}
+            testId={DEFAULT_TEST_ID}
+          />
+        </div>
+      </Show>
+
+      <Show when={mProps.type === InputType.Password}>
+        <div class="input__passwordToggle">
+          <IconButton
+            size={IconButtonSize.MediumEmbedded}
+            iconName={getIsPasswordVisible() ? IconName.EyeSlash : IconName.Eye}
+            ariaLabel={
+              getIsPasswordVisible() ? "Скрыть пароль" : "Показать пароль"
+            }
+            theme={IconButtonTheme.Secondary}
+            isDisabled={mProps.isDisabled}
+            handleClick={togglePasswordVisibility}
             testId={DEFAULT_TEST_ID}
           />
         </div>

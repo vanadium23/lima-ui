@@ -47,6 +47,10 @@
   padding: var(--size-x3) var(--size-x3) var(--size-x3) 0;
 }
 
+.input_medium .input__passwordToggle {
+  padding: var(--size-x3) var(--size-x3) var(--size-x3) 0;
+}
+
 .input_primary {
   border-color: var(--neutral-500);
   background: var(--neutral-100);
