@@ -6,7 +6,7 @@
   visibility: hidden;
 }
 
-.checkbox:active:not(.checkbox_disabled) {
+.checkbox:active:not(.checkbox_disabled, .checkbox_independent) {
   transform: translateY(0.1rem);
 }
 
@@ -67,7 +67,8 @@
 }
 
 @media (hover: hover) {
-  .checkbox_primary:hover:not(.checkbox_disabled) .checkbox__inner {
+  .checkbox_primary:hover:not(.checkbox_disabled) .checkbox__inner,
+  label:hover .checkbox_primary:not(.checkbox_disabled) .checkbox__inner {
     border-color: var(--neutral-700);
   }
 }

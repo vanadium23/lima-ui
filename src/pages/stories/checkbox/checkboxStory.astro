@@ -12,6 +12,7 @@ const sizes = Object.values(CheckboxSize);
 ---
 
 <StorybookPage title="Checkbox">
+  <h2>Type - Label included</h2>
   {
     themes.map((theme) => (
       <div class="demoThemeWrapper">
@@ -38,6 +39,48 @@ const sizes = Object.values(CheckboxSize);
                 isDisabled={true}
                 isChecked={true}
               />
+            </>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+
+  <h2>Type - Outside label</h2>
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 class="demoThemeWrapper__title">{theme}</h3>
+        <div class="grid grid_2Col">
+          <span class="chead" />
+          <span class="chead">Default</span>
+          <span class="chead">Disabled</span>
+
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <label>
+                <Checkbox
+                  client:only="solid-js"
+                  theme={theme}
+                  size={size}
+                  testId={DEFAULT_TEST_ID}
+                  independent={false}
+                />
+                <span>Test</span>
+              </label>
+              <label>
+                <Checkbox
+                  client:only="solid-js"
+                  theme={theme}
+                  size={size}
+                  testId={DEFAULT_TEST_ID}
+                  isDisabled={true}
+                  isChecked={true}
+                  independent={false}
+                />
+                <span>Test</span>
+              </label>
             </>
           ))}
         </div>

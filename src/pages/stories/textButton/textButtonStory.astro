@@ -1,6 +1,5 @@
 ---
 import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
-import { TextButtonComponentType } from "../../../components/textButton/textButton.tsx";
 import {
   TextButton,
   TextButtonSize,
@@ -29,7 +28,6 @@ const sizes = Object.values(TextButtonSize);
               <span class="rhead">{size}</span>
               <TextButton
                 client:only="solid-js"
-                componentType={TextButtonComponentType.Button}
                 theme={theme}
                 size={size}
                 text="Text"
@@ -37,7 +35,6 @@ const sizes = Object.values(TextButtonSize);
               />
               <TextButton
                 client:only="solid-js"
-                componentType={TextButtonComponentType.Button}
                 theme={theme}
                 size={size}
                 text="Text"
@@ -46,46 +43,6 @@ const sizes = Object.values(TextButtonSize);
               />
               <TextButton
                 client:only="solid-js"
-                componentType={TextButtonComponentType.Button}
-                theme={theme}
-                size={size}
-                text="Text"
-                testId={DEFAULT_TEST_ID}
-                isDisabled={true}
-              />
-            </>
-          ))}
-        </div>
-      </div>
-    ))
-  }
-
-  <h2>Type - Link</h2>
-  {
-    themes.map((theme) => (
-      <div class="demoThemeWrapper">
-        <h3 class="demoThemeWrapper__title">{theme}</h3>
-        <div class="grid grid_3Col">
-          <span class="chead" />
-          <span class="chead">Default</span>
-          <span class="chead">Loading</span>
-          <span class="chead">Disabled</span>
-
-          {sizes.map((size) => (
-            <>
-              <span class="rhead">{size}</span>
-              <TextButton
-                client:only="solid-js"
-                componentType={TextButtonComponentType.Link}
-                theme={theme}
-                size={size}
-                text="Text"
-                testId={DEFAULT_TEST_ID}
-              />
-              <span>Не предусмотрено</span>
-              <TextButton
-                client:only="solid-js"
-                componentType={TextButtonComponentType.Link}
                 theme={theme}
                 size={size}
                 text="Text"

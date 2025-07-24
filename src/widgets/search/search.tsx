@@ -178,7 +178,7 @@ export const Search = (props: SearchProps) => {
     >
       <form class="search__wrapper" onSubmit={handleSubmit}>
         <Input
-          theme={InputTheme.Tertiary}
+          theme={InputTheme.Secondary}
           placeholder={"Поиск..."}
           name={"Поиск"}
           isCountable={false}

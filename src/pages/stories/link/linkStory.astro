@@ -1,0 +1,46 @@
+---
+import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
+import { Link, LinkSize, LinkTheme } from "../../../components/link/link.tsx";
+import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
+
+const themes = Object.values(LinkTheme);
+const sizes = Object.values(LinkSize);
+---
+
+<StorybookPage title="Link">
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 class="demoThemeWrapper__title">{theme}</h3>
+        <div class="grid grid_2Col">
+          <span class="chead" />
+          <span class="chead">Default</span>
+          <span class="chead">Disabled</span>
+
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <Link
+                client:only="solid-js"
+                link="https://ya.ru"
+                theme={theme}
+                size={size}
+                text="Text"
+                testId={DEFAULT_TEST_ID}
+              />
+              <Link
+                client:only="solid-js"
+                link="https://ya.ru"
+                theme={theme}
+                size={size}
+                text="Text"
+                testId={DEFAULT_TEST_ID}
+                isDisabled={true}
+              />
+            </>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+</StorybookPage>
