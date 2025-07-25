@@ -1,4 +1,4 @@
-import { When } from "@cucumber/cucumber";
+import { Then, When } from "@cucumber/cucumber";
 
 import type { ComplexWorld } from "../context/hooks";
 import {
@@ -21,5 +21,12 @@ When(
     for (const char of text) {
       await input.press(char);
     }
+  },
+);
+
+Then(
+  "I expect to see the {string} input empty",
+  async function (this: ComplexWorld, inputName: InputMeaning) {
+    await this.expectLocated(INPUT_TEST_IDS[inputName]).toHaveValue("");
   },
 );

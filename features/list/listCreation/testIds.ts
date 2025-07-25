@@ -7,6 +7,7 @@ import {
   buildInputCounterTestId,
   buildTextAreaCounterTestId,
   CHECKLIST_SWITCH,
+  CLEAR_SEARCH_BUTTON,
   CREATE_LIST_BUTTON,
   DIALOG_CLOSE_BUTTON,
   DIALOG_REMOVE_BUTTON,
@@ -75,6 +76,7 @@ export const BUTTON_TEST_IDS = {
     0,
   ),
   search: SEARCH_BUTTON,
+  "clear search": CLEAR_SEARCH_BUTTON,
   "close search error notification": SEARCH_NETWORK_ERROR_CLOSE_BUTTON,
 };
 export type ButtonMeaning = keyof typeof BUTTON_TEST_IDS;

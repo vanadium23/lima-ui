@@ -1,6 +1,6 @@
 import { createSignal, mergeProps, Show } from "solid-js";
 
-import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
+import { buildClearInputButtonTestId } from "../../../features/testIds.ts";
 import { CharCounter } from "../charCounter/charCounter.tsx";
 import { IconName } from "../icon/icon.tsx";
 import {
@@ -129,7 +129,7 @@ export const Input = (props: Testable<InputProps>) => {
             ariaLabel="Очистить поле"
             theme={IconButtonTheme.Secondary}
             handleClick={handleClear}
-            testId={DEFAULT_TEST_ID}
+            testId={buildClearInputButtonTestId(mProps.testId)}
           />
         </div>
       </Show>

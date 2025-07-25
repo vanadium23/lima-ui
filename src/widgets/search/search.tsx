@@ -133,14 +133,13 @@ export const Search = (props: SearchProps) => {
     }
   };
 
-  const handleInput = (e: InputEvent) => {
-    const value = (e.target as HTMLInputElement).value.trim();
-    setState("query", value);
+  const handleQueryUpdate = (query: string) => {
+    setState("query", query);
     clearTimeout(debounceTimer);
 
-    if (value.length >= LISTS_SEARCH_MINIMAL_QUERY) {
+    if (query.length >= LISTS_SEARCH_MINIMAL_QUERY) {
       setState("isLoading", true);
-      debounceTimer = setTimeout(() => executeSearch(value), 350);
+      debounceTimer = setTimeout(() => executeSearch(query), 350);
     } else {
       if (abortController) {
         abortController.abort();
@@ -153,6 +152,11 @@ export const Search = (props: SearchProps) => {
         results: [],
       });
     }
+  };
+
+  const handleInput = (e: InputEvent) => {
+    const value = (e.target as HTMLInputElement).value.trim();
+    handleQueryUpdate(value);
   };
 
   const handleSubmit = (e: Event) => {
@@ -187,7 +191,7 @@ export const Search = (props: SearchProps) => {
           onInput={handleInput}
           onKeyDown={(e) => e.key === "Enter" && handleSubmit(e)}
           isClearable={true}
-          onClear={() => setState("query", "")}
+          onClear={() => handleQueryUpdate("")}
         />
         <IconButton
           type={IconButtonType.Submit}
