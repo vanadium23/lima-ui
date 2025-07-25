@@ -139,5 +139,16 @@ Feature: Searching for lists
     And I type the following text into the "search bar": "test search"
     And I wait for "search error to appear" for the following number of seconds: 2
     Then I expect to see the search "error notification"
-    When I press the "close error notification" button
+    When I press the "close search error notification" button
     Then I expect not to see the search "error notification"
+
+  Scenario: Pressing search button runs search again
+    When I add a list with the following title: "Проба поиска"
+    When I ensure search is visible
+    And I type the following text into the "search bar": "Проба"
+    And I wait for "search to complete" for the following number of seconds: 2
+    And I press the "search" button
+    Then I expect to see the search "dialog loading"
+    Then I expect to see the search "dialog"
+    Then I expect to have the following number of search results: 1
+    Then I expect to see the search result with the following text: "Проба поиска"
