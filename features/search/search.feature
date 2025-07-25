@@ -152,3 +152,11 @@ Feature: Searching for lists
     Then I expect to see the search "dialog"
     Then I expect to have the following number of search results: 1
     Then I expect to see the search result with the following text: "Проба поиска"
+
+  Scenario: Pressing clear search button clears it
+    When I ensure search is visible
+    And I type the following text into the "search bar": "Проба"
+    And I press the "clear search" button
+    Then I expect to see the "search bar" input empty
+    And I wait for "unwanted search to complete" for the following number of seconds: 1
+    Then I expect not to see the search "dialog"
