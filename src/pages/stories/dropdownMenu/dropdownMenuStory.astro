@@ -2,14 +2,17 @@
 import {
   DEFAULT_TEST_ID,
   REMOVE_ITEM_MENUITEM,
-} from "../../../../features/testIds";
+} from "../../../../features/testIds.ts";
 import {
   DropdownMenu,
   DropdownMenuSize,
   DropdownMenuTheme,
-} from "../../../components/dropdownMenu/dropdownMenu";
-import { IconName } from "../../../components/icon/icon";
-import { MenuItem, MenuItemTheme } from "../../../components/menuItem/menuItem";
+} from "../../../components/dropdownMenu/dropdownMenu.tsx";
+import { IconName } from "../../../components/icon/icon.tsx";
+import {
+  MenuItem,
+  MenuItemTheme,
+} from "../../../components/menuItem/menuItem.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 const themes = Object.values(DropdownMenuTheme);

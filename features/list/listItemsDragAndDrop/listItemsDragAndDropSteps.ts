@@ -9,6 +9,7 @@ import {
   LIST_ITEMS,
 } from "../../testIds.ts";
 import { buildTestableSelector } from "../../utilities/buildTestableSelector.ts";
+import { scrollToBottom } from "../../utilities/scroll.ts";
 import { getListItemValue } from "../utilities/getListItemValue.ts";
 
 import { LIST_ITEM_TEST_IDS, type ListItemMeaning } from "./testIds.ts";
@@ -131,8 +132,6 @@ Then(
 When(
   "I scroll to the bottom of the list items",
   async function (this: ComplexWorld) {
-    await this.locateByIdParts(LIST_ITEMS).evaluate((element) => {
-      element.scrollTop = element.scrollHeight;
-    });
+    await this.locateByIdParts(LIST_ITEMS).evaluate(scrollToBottom);
   },
 );

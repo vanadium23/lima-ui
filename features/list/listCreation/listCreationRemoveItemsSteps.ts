@@ -19,7 +19,7 @@ import {
 const MILLISECONDS_IN_SECOND = 1000;
 
 When(
-  "I wait for {string} for the following number of seconds: {int}",
+  "I wait for {string} for the following number of seconds: {float}",
   { timeout: getTimeoutOrCancelItIfDebugging(10000) },
   async function (this: ComplexWorld, reason: string, seconds: number) {
     const someExtraTimeToEnsure =

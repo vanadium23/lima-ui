@@ -1,7 +1,7 @@
 Feature: Seeing the basis of the automatically added item
 
   Background:
-    When I open List Creation page
+    When I open "List Creation" page
 
   Scenario: Seeing the new item automatically added
     When I type some text with length less or equal to the one of "first item" input limit

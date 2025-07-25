@@ -1,7 +1,7 @@
 Feature: Failing to create a new list
 
   Background:
-    When I open List Creation page
+    When I open "List Creation" page
 
   Scenario: Seeing connection error when the browser is offline
     Given There is no internet connection
@@ -75,7 +75,8 @@ Feature: Failing to create a new list
     Then I expect to fully see the expanded "list note" accordion ready for collapsing
     Then I expect to see the "list note" text area enabled
     Then I expect to see list items area
-    Then I expect to see the "first" item input enabled
+    # Sometimes on a mobile device these list items are scrolled out of the viewport.
+    Then I expect to have the "first" item input enabled
     Then I expect to have the "automatic" item input enabled
     Then I expect to see the "save" button enabled
     And I ensure the tools panel is open

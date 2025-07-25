@@ -74,5 +74,5 @@ Feature: Updating list
     When I type some text with length less or equal to the one of "list title" input limit
     When I press the "save" button
     And I wait for the list update to complete
-    And I open Lists page
+    When I open "My Lists" page
     Then I expect to see the following number of list stripes: 1

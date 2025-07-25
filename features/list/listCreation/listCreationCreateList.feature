@@ -1,7 +1,7 @@
 Feature: Successfully creating list with correct data
 
   Background:
-    When I open List Creation page
+    When I open "List Creation" page
     And I type some text with length less or equal to the one of "list title" input limit
     And I type some text with length less or equal to the one of "list purpose" input limit
     And I press on the "list note" accordion

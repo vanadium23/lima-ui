@@ -21,6 +21,9 @@ import {
   OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
   REMOVE_ITEM_MENUITEM,
   SAVE_LIST_BUTTON,
+  SEARCH_BUTTON,
+  SEARCH_INPUT,
+  SEARCH_NETWORK_ERROR_CLOSE_BUTTON,
   TOOLS_PANEL_ADD_ITEM_BUTTON,
   TOOLS_PANEL_BUTTON_COPY_ITEMS,
   TOOLS_PANEL_BUTTON_IMPORT_LIST,
@@ -71,6 +74,8 @@ export const BUTTON_TEST_IDS = {
     OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
     0,
   ),
+  search: SEARCH_BUTTON,
+  "close search error notification": SEARCH_NETWORK_ERROR_CLOSE_BUTTON,
 };
 export type ButtonMeaning = keyof typeof BUTTON_TEST_IDS;
 
@@ -102,6 +107,7 @@ export const INPUT_TEST_IDS = {
   "automatic item": AUTO_LIST_ITEM_INPUT,
   "last item": LIST_ITEM_INPUT,
   "some item": LIST_ITEM_INPUT,
+  "search bar": SEARCH_INPUT,
 };
 export type InputMeaning = keyof typeof INPUT_TEST_IDS;
 

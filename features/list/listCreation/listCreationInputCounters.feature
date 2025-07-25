@@ -1,7 +1,7 @@
 Feature: Seeing the amount of symbols left for typing in the inputs on the List Creation page
 
   Background:
-    When I open List Creation page
+    When I open "List Creation" page
 
   Scenario Outline: Seeing the correct input counter when focusing this input
     And I focus <input name> input

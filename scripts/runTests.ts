@@ -6,7 +6,7 @@ import { Command } from "commander";
 import {
   DEVICE_PROFILES,
   DeviceProfiles,
-} from "../features/config/deviceProfiles";
+} from "../features/config/deviceProfiles.ts";
 import { RESULTS_FOLDER } from "../features/config/results.ts";
 import { prepareEmptyScreenshotsFolder } from "../features/utilities/screenshot.ts";
 import { cleanupVideoFiles } from "../features/utilities/video.ts";

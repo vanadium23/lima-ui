@@ -55,7 +55,7 @@ Feature: Seeing the basis of List view page
     Then I expect to see no other elements
 
   Scenario: First item is visible when opening a list with many items
-    When I open List Creation page
+    When I open "List Creation" page
     And I type some text with length less or equal to the one of "list title" input limit
     And I type some text with length less or equal to the one of "list purpose" input limit
     And I type some text with length less or equal to the one of "first item" input limit
@@ -65,7 +65,7 @@ Feature: Seeing the basis of List view page
     And I type some text to all items inputs
     And I press the "save" button
     And I wait for the list to create
-    And I open Lists page
+    When I open "My Lists" page
     And I press on the "first" list stripe
     And I wait for the page to load
     Then I expect to see the "first item" input
@@ -73,7 +73,7 @@ Feature: Seeing the basis of List view page
 
   Scenario: List view page with list loading error
     When I add a list
-    And I open Lists page
+    When I open "My Lists" page
     And I press on the "first" list stripe
     But Error happens while loading
     Then I expect to see the default tab title

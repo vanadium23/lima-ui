@@ -3,17 +3,9 @@ import type { List, UpdatedList } from "../types.ts";
 
 export async function updateList(
   data: UpdatedList,
-  backendURL?: string,
+  backendURL = import.meta.env.PUBLIC_API_URL,
 ): Promise<List> {
-  let backend: string;
-
-  if (backendURL) {
-    backend = backendURL;
-  } else {
-    backend = import.meta.env.PUBLIC_API_URL;
-  }
-
-  const response = await fetch(`${backend}${BACKEND_LISTS}${data.id}`, {
+  const response = await fetch(`${backendURL}${BACKEND_LISTS}${data.id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",

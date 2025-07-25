@@ -10,6 +10,7 @@ import {
   SEARCH_BUTTON,
   SEARCH_DIALOG,
   SEARCH_INPUT,
+  SEARCH_NETWORK_ERROR,
 } from "../../../features/testIds.ts";
 import { IconName } from "../../components/icon/icon.tsx";
 import {
@@ -22,6 +23,7 @@ import { QuickSearch } from "../../components/quickSearch/quickSearch.tsx";
 import { notificationState } from "../../state/pushNotificationStateManager.ts";
 import { searchState } from "../../state/searchState.ts";
 import type { SearchList } from "../editList/types.ts";
+import { soften } from "../editList/utilities/soften.ts";
 
 import "./search.css";
 
@@ -106,12 +108,16 @@ export const Search = (props: SearchProps) => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      setState({
-        results: await response.json(),
-        serverError: false,
-      });
+      const searchResults = await response.json();
 
-      notificationState.clearNetworkErrors();
+      await soften(() => {
+        setState({
+          results: searchResults,
+          serverError: false,
+        });
+
+        notificationState.clearNetworkErrors();
+      });
     } catch (error) {
       if (error instanceof Error && error.name === "AbortError") {
         return;
@@ -122,6 +128,7 @@ export const Search = (props: SearchProps) => {
       notificationState.pushNetworkError(
         "Ошибка",
         "Нет соединения с сервером, попробуйте еще раз",
+        SEARCH_NETWORK_ERROR,
       );
 
       setState("results", []);

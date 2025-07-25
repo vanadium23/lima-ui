@@ -1,7 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("/fonts/montserrat/montserrat.css");
 
 @page {
   margin: 0;
+}
+
+html {
+  font-size: 62.5%;
 }
 
 body {
@@ -15,9 +19,9 @@ body {
 
 .print__header {
   display: flex;
-  gap: 15px;
-  padding: 10px 10px 0 20px;
-  border-bottom: 1px solid #000;
+  gap: 1.5rem;
+  padding: 1rem 1rem 0 2rem;
+  border-bottom: 0.1rem solid #000;
 }
 
 .print__headerInner {
@@ -25,22 +29,30 @@ body {
   justify-content: space-between;
   width: 100%;
   flex-direction: column;
-  gap: 5px;
-  padding: 10px 0 15px;
+  gap: 0.5rem;
+  padding: 1rem 0 1.5rem;
 }
 
 .print__headerTitle {
-  font-size: 18px;
+  font-size: 1.8rem;
   font-style: normal;
   font-weight: 700;
-  line-height: 22px;
+  line-height: 2.2rem;
+}
+
+.print__headerPurpose {
+  font-size: 1.6rem;
+}
+
+.print__logo {
+  font-size: 1.6rem;
 }
 
 .print__mainContent {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 10px 150px 20px 20px;
+  gap: 2rem;
+  padding: 1rem 15rem 2rem 2rem;
 }
 
 .print__note {
@@ -50,17 +62,17 @@ body {
 
 .print_noteTitle {
   color: #000;
-  font-size: 14px;
+  font-size: 1.4rem;
   font-style: normal;
   font-weight: 600;
-  line-height: 18px;
+  line-height: 1.8rem;
 }
 
 .print_noteText {
-  font-size: 14px;
+  font-size: 1.4rem;
   font-style: normal;
   font-weight: 500;
-  line-height: 18px;
+  line-height: 1.8rem;
   white-space: pre-wrap;
   word-break: break-word;
 }
@@ -70,9 +82,9 @@ body {
   flex-direction: column;
   align-items: flex-start;
   align-self: stretch;
-  gap: 8px;
+  gap: 0.8rem;
   margin: 0;
-  padding: 0 0 0 24px;
+  padding: 0 0 0 2.4rem;
 }
 
 .print__items_list {
@@ -85,9 +97,9 @@ body {
 
 .print__item {
   position: relative;
-  font-size: 14px;
+  font-size: 1.4rem;
   font-weight: 500;
-  line-height: 14px;
+  line-height: 1.4rem;
   white-space: pre-wrap;
   word-break: break-word;
 }
@@ -96,24 +108,24 @@ body {
   content: "";
   position: absolute;
   top: 0;
-  left: -22px;
+  left: -2.2rem;
   display: block;
-  width: 12px;
-  height: 12px;
-  border-radius: 4px;
-  border: 1px solid #000;
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 0.4rem;
+  border: 0.1rem solid #000;
 }
 
 .print__items_checklist .print__item.print_itemChecked::after {
   content: "";
   position: absolute;
-  top: 3px;
-  left: -20px;
+  top: 0.3rem;
+  left: -2rem;
   display: block;
-  width: 8px;
-  height: 3px;
+  width: 0.8rem;
+  height: 0.3rem;
   transform: rotate(-45deg);
   border-color: #000;
   border-style: solid;
-  border-width: 0 0 2px 2px;
+  border-width: 0 0 0.2rem 0.2rem;
 }

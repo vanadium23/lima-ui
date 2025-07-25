@@ -6,7 +6,7 @@ Feature: Removing the lists on the Lists page
   Scenario: Seeing a dialog modal box on pressing the remove button
     When I add a list
     And I hover away from anything actionable
-    And I open Lists page
+    When I open "My Lists" page
     And I hover "first" list stripe
     And I press the "first" list stripe "open context menu list stripe" button
     And I press the visible "remove list" button
@@ -16,7 +16,7 @@ Feature: Removing the lists on the Lists page
     When I add a list
     And I add a list
     And I hover away from anything actionable
-    And I open Lists page
+    When I open "My Lists" page
     And I hover "first" list stripe
     And I press the "first" list stripe "open context menu list stripe" button
     And I press the visible "remove list" button
@@ -26,7 +26,7 @@ Feature: Removing the lists on the Lists page
   Scenario: Closing a dialog modal box on pressing outside of it on Lists page
     When I add a list
     And I hover away from anything actionable
-    And I open Lists page
+    When I open "My Lists" page
     And I hover "first" list stripe
     And I press the "first" list stripe "open context menu list stripe" button
     And I press the visible "remove list" button
@@ -36,7 +36,7 @@ Feature: Removing the lists on the Lists page
   Scenario: Confirming list removal leads to the loading state of a list stripe
     When I add a list
     And I add a list
-    And I open Lists page
+    When I open "My Lists" page
     And I hover "first" list stripe
     And I press the "first" list stripe "open context menu list stripe" button
     And I press the visible "remove list" button
@@ -48,7 +48,7 @@ Feature: Removing the lists on the Lists page
   Scenario: Opening and closing the list removal dialog multiple times
     When I add a list
     And I hover away from anything actionable
-    And I open Lists page
+    When I open "My Lists" page
     And I hover "first" list stripe
     And I press the "first" list stripe "open context menu list stripe" button
     And I press the visible "remove list" button
@@ -64,7 +64,7 @@ Feature: Removing the lists on the Lists page
 
   Scenario: Not seeing the dialog modal box when removal in progress on "My Lists" page
     When I add a list
-    And I open Lists page
+    When I open "My Lists" page
     And I hover "first" list stripe
     And I press the "first" list stripe "open context menu list stripe" button
     And I press the visible "remove list" button
@@ -75,7 +75,7 @@ Feature: Removing the lists on the Lists page
   Scenario: Successful list removal leads to list stripe's disappearance
     When I add a list
     And I add a list
-    And I open Lists page
+    When I open "My Lists" page
     And I hover "first" list stripe
     And I press the "first" list stripe "open context menu list stripe" button
     And I press the visible "remove list" button
@@ -86,7 +86,7 @@ Feature: Removing the lists on the Lists page
 
   Scenario: Successful removal of a single list leads to the message about lists absence appearance
     When I add a list
-    And I open Lists page
+    When I open "My Lists" page
     And I hover "first" list stripe
     And I press the "first" list stripe "open context menu list stripe" button
     And I press the visible "remove list" button
@@ -98,7 +98,7 @@ Feature: Removing the lists on the Lists page
   Scenario: Unsuccessful list removal leads to error message appearance on My Lists page
     When I add a list
     And I add a list
-    And I open Lists page
+    When I open "My Lists" page
     And I hover "first" list stripe
     And I press the "first" list stripe "open context menu list stripe" button
     And I press the visible "remove list" button
@@ -109,7 +109,7 @@ Feature: Removing the lists on the Lists page
   Scenario: Consequent removal attempt leads to error message disappearance on My Lists page
     When I add a list
     And I add a list
-    And I open Lists page
+    When I open "My Lists" page
     And I hover "first" list stripe
     And I press the "first" list stripe "open context menu list stripe" button
     And I press the visible "remove list" button
@@ -123,7 +123,7 @@ Feature: Removing the lists on the Lists page
 
   Scenario: Unsuccessful list removal accompanied by reached lists limit leads to error and warning at the same time
     When I add lists to their limit
-    And I open Lists page
+    When I open "My Lists" page
     And I hover "first" list stripe
     And I press the "first" list stripe "open context menu list stripe" button
     And I press the visible "remove list" button
@@ -134,7 +134,7 @@ Feature: Removing the lists on the Lists page
 
   Scenario: Successful list removal accompanied by reached lists limit leads to hiding the warning and enabling the "Create" button
     When I add lists to their limit
-    And I open Lists page
+    When I open "My Lists" page
     And I hover "first" list stripe
     And I press the "first" list stripe "open context menu list stripe" button
     And I press the visible "remove list" button

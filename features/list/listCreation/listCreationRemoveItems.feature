@@ -1,7 +1,7 @@
 Feature: Removing items on the List Creation page
 
   Background:
-    When I open List Creation page
+    When I open "List Creation" page
 
   Scenario: Removing single list item
     When I ensure the tools panel is open

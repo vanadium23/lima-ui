@@ -22,7 +22,7 @@ import type {
   TestId,
   TestSubId,
 } from "../../src/components/utilities/testable.ts";
-import type { AddressMeaning } from "../../utilities/addresses.ts";
+import { type AddressMeaning, PAGE_TYPES } from "../../utilities/addresses.ts";
 import {
   buildTestableSelector,
   buildTestableSubSelector,
@@ -40,7 +40,10 @@ import {
   VIDEOS_FOLDER,
 } from "../utilities/video.ts";
 
-import { createAccountedTesting } from "./createAccountedTesting.ts";
+import {
+  type AccountedTesting,
+  createAccountedTesting,
+} from "./createAccountedTesting.ts";
 
 let browser: Browser;
 
@@ -56,7 +59,6 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
   data: Record<string, string> = {};
   oldData: Record<string, string> = {};
   numbers: Record<string, number> = {};
-  listIds: TestId[] = [];
   itemsValues: string[] = [];
   responsesToWait: Partial<
     Record<AddressMeaning, ReturnType<Page["waitForResponse"]>>
@@ -132,6 +134,8 @@ const MORE_THAN_IN_PLAYWRIGHT = getTimeoutOrCancelItIfDebugging(6000);
 setDefaultTimeout(MORE_THAN_IN_PLAYWRIGHT);
 setWorldConstructor(ComplexWorld);
 
+export const pagesAccounting: Record<string, AccountedTesting> = {};
+
 BeforeAll(async function () {
   browser = await chromium.launch({
     headless: !isVisible(),
@@ -175,6 +179,10 @@ After(
 );
 
 AfterAll({ timeout: 60000 }, async function () {
+  for (const accountedPagesSet of Object.values(pagesAccounting)) {
+    expect(accountedPagesSet.getTestIds()).toEqual(PAGE_TYPES);
+  }
+
   isVisible() || (await browser.close());
 });
 
