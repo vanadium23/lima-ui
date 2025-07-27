@@ -9,7 +9,6 @@ export enum IconButtonTheme {
   Primary = "primary",
   Secondary = "secondary",
   Tertiary = "tertiary",
-  Successful = "successful",
   Dangerous = "dangerous",
 }
 

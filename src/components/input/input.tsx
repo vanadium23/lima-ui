@@ -1,6 +1,9 @@
 import { createSignal, mergeProps, Show } from "solid-js";
 
-import { buildClearInputButtonTestId } from "../../../features/testIds.ts";
+import {
+  buildClearInputButtonTestId,
+  DEFAULT_TEST_ID,
+} from "../../../features/testIds.ts";
 import { CharCounter } from "../charCounter/charCounter.tsx";
 import { IconName } from "../icon/icon.tsx";
 import {
