@@ -1,17 +1,17 @@
 ---
 import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
 import {
-  ItemInput,
-  ItemInputSize,
-  ItemInputTheme,
-} from "../../../components/itemInput/itemInput.tsx";
+  CyberInput,
+  CyberInputSize,
+  CyberInputTheme,
+} from "../../../components/cyberInput/cyberInput.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
-import { dropdownItems } from "./itemInputMenu.ts";
-import { ItemInputWrapper } from "./itemInputWrapper.tsx";
+import { dropdownItems } from "./cyberInputMenu.ts";
+import { CyberInputWrapper } from "./CyberInputWrapper.tsx";
 
-const themes = Object.values(ItemInputTheme);
-const sizes = Object.values(ItemInputSize);
+const themes = Object.values(CyberInputTheme);
+const sizes = Object.values(CyberInputSize);
 ---
 
 <StorybookPage title="Item Input">
@@ -30,10 +30,18 @@ const sizes = Object.values(ItemInputSize);
           {sizes.map((size) => (
             <>
               <span class="rhead">{size}</span>
-
-              <ItemInputWrapper client:only="solid-js" />
-              <ItemInputWrapper client:only="solid-js" isError={true} />
-              <ItemInput
+              <CyberInputWrapper
+                client:only="solid-js"
+                size={size}
+                theme={theme}
+              />
+              <CyberInputWrapper
+                client:only="solid-js"
+                size={size}
+                theme={theme}
+                isError={true}
+              />
+              <CyberInput
                 client:only="solid-js"
                 theme={theme}
                 size={size}
@@ -44,7 +52,7 @@ const sizes = Object.values(ItemInputSize);
                 placeholder="Введите текст"
                 isDisabled={true}
               />
-              <ItemInput
+              <CyberInput
                 client:only="solid-js"
                 theme={theme}
                 size={size}
@@ -56,8 +64,10 @@ const sizes = Object.values(ItemInputSize);
                 placeholder="Введите текст"
                 isDisabled={true}
               />
-              <ItemInputWrapper
+              <CyberInputWrapper
                 client:only="solid-js"
+                size={size}
+                theme={theme}
                 listOfButtons={dropdownItems()}
               />
             </>

@@ -1,0 +1,250 @@
+.cyberInput {
+  display: flex;
+  width: 100%;
+  border-width: 0.1rem;
+  border-style: solid;
+  border-radius: var(--size-x4);
+  gap: var(--size-x8);
+}
+
+.cyberInput__inner {
+  width: 100%;
+  flex-grow: 1;
+  background: transparent;
+  border: none;
+  resize: none;
+  overflow-y: hidden;
+  overflow-wrap: break-word;
+}
+
+.cyberInput__inner:disabled,
+.cyberInput_disabled .cyberInput__inner {
+  cursor: not-allowed;
+}
+
+.cyberInput__inner:focus {
+  outline: none;
+}
+
+.cyberInput:focus-within {
+  outline-offset: var(--outline-offset);
+  outline: var(--outline-set);
+}
+
+.cyberInput__controls {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (hover: hover) {
+  .cyberInput__controls {
+    visibility: hidden;
+  }
+}
+
+.cyberInput__counter {
+  visibility: hidden;
+  margin-top: auto;
+  text-align: center;
+  min-width: 1.3rem;
+}
+
+.cyberInput:focus-within .cyberInput__counter_visible {
+  visibility: visible;
+}
+
+.cyberInput_medium {
+  padding: var(--size-x3) var(--size-x3) var(--size-x3) var(--size-x8);
+}
+
+.cyberInput_medium .cyberInput__inner {
+  min-height: 2rem;
+  font-size: 1.6rem;
+  line-height: 2rem;
+}
+
+.cyberInput_medium .cyberInput__controls {
+  gap: var(--size-x2);
+}
+
+.cyberInput_extraLarge {
+  padding: var(--size-x3) var(--size-x3) var(--size-x3) var(--size-x8);
+}
+
+.cyberInput_extraLarge .cyberInput__inner {
+  min-height: 2.4rem;
+  font-size: 2rem;
+  line-height: 2.4rem;
+}
+
+.cyberInput_extraLarge .cyberInput__controls {
+  gap: var(--size-x2);
+}
+
+.cyberInput_primary {
+  background: var(--neutral-100);
+  border-color: transparent;
+}
+
+.cyberInput_primary .cyberInput__inner::placeholder {
+  color: var(--text-neutral-500);
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+
+.cyberInput_primary:focus-within {
+  border-color: var(--neutral-700);
+  background: var(--neutral-100);
+}
+
+.cyberInput_primary .cyberInput__inner {
+  color: var(--text-neutral-800);
+  font-weight: 500;
+}
+
+.cyberInput_primary.cyberInput_error .cyberInput__inner {
+  color: var(--text-dangerous-500);
+}
+
+.cyberInput_primary.cyberInput_disabled .cyberInput__inner {
+  color: var(--text-neutral-500);
+}
+
+.cyberInput_primary:focus-within:has(.cyberInput__inner:placeholder-shown) {
+  border-color: var(--neutral-700);
+  background: var(--neutral-100);
+}
+
+.cyberInput_primary:not(.cyberInput_error, .cyberInput_disabled):has(
+    .cyberInput__inner:placeholder-shown
+  ) {
+  border-color: var(--neutral-500);
+  background: var(--neutral-100);
+}
+
+.cyberInput_primary.cyberInput_error {
+  border-color: var(--dangerous-500);
+  background: var(--neutral-100);
+}
+
+.cyberInput_primary.cyberInput_error .cyberInput__inner:focus {
+  color: var(--text-neutral-800);
+  border-color: var(--neutral-700);
+}
+
+.cyberInput_primary.cyberInput_disabled {
+  border-color: var(--neutral-200);
+  background: var(--neutral-200);
+}
+
+.cyberInput_primary.cyberInput_disabled:has(
+    .cyberInput__inner:placeholder-shown
+  ) {
+  border-color: var(--neutral-500);
+  background: var(--neutral-200);
+}
+
+@media (hover: hover) {
+  .cyberInput_primary:hover:not(.cyberInput_disabled) .cyberInput__inner {
+    color: var(--text-neutral-700);
+  }
+
+  .cyberInput_primary:hover:not(.cyberInput_disabled, .cyberInput_error) {
+    border-color: var(--neutral-700);
+  }
+
+  .cyberInput_primary:hover:not(.cyberInput_disabled):has(
+      .cyberInput__inner:placeholder-shown
+    ) {
+    border-color: var(--neutral-700);
+  }
+}
+
+.cyberInput_secondary {
+  background: var(--neutral-100);
+  border-color: transparent;
+}
+
+.cyberInput_secondary .cyberInput__inner::placeholder {
+  color: var(--text-neutral-500);
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+
+.cyberInput_secondary:focus-within {
+  border-color: var(--neutral-700);
+  background: var(--neutral-100);
+}
+
+.cyberInput_secondary .cyberInput__inner {
+  color: var(--text-neutral-800);
+  font-weight: 600;
+}
+
+.cyberInput_secondary.cyberInput_error .cyberInput__inner {
+  color: var(--text-dangerous-500);
+}
+
+.cyberInput_secondary.cyberInput_disabled .cyberInput__inner {
+  color: var(--text-neutral-500);
+}
+
+.cyberInput_secondary:focus-within:has(.cyberInput__inner:placeholder-shown) {
+  border-color: var(--neutral-700);
+  background: var(--neutral-100);
+}
+
+.cyberInput_secondary:not(.cyberInput_error, .cyberInput_disabled):has(
+    .cyberInput__inner:placeholder-shown
+  ) {
+  border-color: var(--neutral-500);
+  background: var(--neutral-100);
+}
+
+.cyberInput_secondary.cyberInput_error {
+  border-color: var(--dangerous-500);
+  background: var(--neutral-100);
+}
+
+.cyberInput_secondary.cyberInput_error .cyberInput__inner:focus {
+  color: var(--text-neutral-800);
+  border-color: var(--neutral-700);
+}
+
+.cyberInput_secondary.cyberInput_disabled {
+  border-color: var(--neutral-200);
+  background: var(--neutral-200);
+}
+
+.cyberInput_secondary.cyberInput_disabled:has(
+    .cyberInput__inner:placeholder-shown
+  ) {
+  border-color: var(--neutral-500);
+  background: var(--neutral-200);
+}
+
+@media (hover: hover) {
+  .cyberInput_secondary:hover:not(.cyberInput_disabled) .cyberInput__inner {
+    color: var(--text-neutral-700);
+  }
+
+  .cyberInput_secondary:hover:not(.cyberInput_disabled, .cyberInput_error) {
+    border-color: var(--neutral-700);
+  }
+
+  .cyberInput_secondary:hover:not(.cyberInput_disabled):has(
+      .cyberInput__inner:placeholder-shown
+    ) {
+    border-color: var(--neutral-700);
+  }
+}
+
+@media (hover: hover) {
+  .cyberInput:hover .cyberInput__controls {
+    visibility: visible;
+  }
+}
+
+.cyberInput:focus-within .cyberInput__controls {
+  visibility: visible;
+}
