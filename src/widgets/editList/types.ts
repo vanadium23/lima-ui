@@ -47,7 +47,7 @@ export type UpdatedList = ListBase & {
   items: ItemToSend[];
 };
 
-export type SearchList = {
+export type DropdownListType = {
   name: string;
   id: string;
 };

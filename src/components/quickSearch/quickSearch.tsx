@@ -6,9 +6,9 @@ import {
   SEARCH_RESULT,
   SEARCH_RESULTS,
 } from "../../../features/testIds.ts";
-import type { SearchList } from "../../widgets/editList/types.ts";
+import type { DropdownListType } from "../../widgets/editList/types.ts";
+import { DropdownListItem } from "../dropdownListItem/dropdownListItem.tsx";
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
-import { SearchItem } from "../searchItem/searchItem.tsx";
 
 import "./quickSearch.css";
 
@@ -23,7 +23,7 @@ export enum QuickSearchSize {
 export type QuickSearchProps = {
   theme?: QuickSearchTheme;
   size?: QuickSearchSize;
-  lists?: SearchList[];
+  lists?: DropdownListType[];
   isLoading: boolean;
   query: string;
 };
@@ -87,7 +87,7 @@ export const QuickSearch = (props: QuickSearchProps) => {
               <For each={mProps.lists}>
                 {(list, index) => {
                   return (
-                    <SearchItem
+                    <DropdownListItem
                       text={list.name}
                       link={list.id}
                       testId={SEARCH_RESULT}

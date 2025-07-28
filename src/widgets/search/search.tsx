@@ -22,7 +22,7 @@ import { Input, InputTheme } from "../../components/input/input.tsx";
 import { QuickSearch } from "../../components/quickSearch/quickSearch.tsx";
 import { notificationState } from "../../state/pushNotificationStateManager.ts";
 import { searchState } from "../../state/searchState.ts";
-import type { SearchList } from "../editList/types.ts";
+import type { DropdownListType } from "../editList/types.ts";
 import { soften } from "../editList/utilities/soften.ts";
 
 import "./search.css";
@@ -44,7 +44,7 @@ type SearchState = {
   query: string;
   isLoading: boolean;
   lastSubmitted: string;
-  results: SearchList[];
+  results: DropdownListType[];
   serverError: boolean;
 };
 
