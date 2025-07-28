@@ -3,19 +3,18 @@
   padding: 0;
 }
 
-.title_left {
+.title_primary {
   color: var(--text-neutral-900);
-}
-
-.title_center {
-  color: var(--text-neutral-900);
-  text-align: center;
 }
 
 .title_medium {
   font-size: 2.4rem;
   font-weight: 600;
   line-height: 2.8rem;
+}
+
+.title_center {
+  text-align: center;
 }
 
 @media (width <= 767px) {
