@@ -1,6 +1,5 @@
 .dropdownList {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -9,7 +8,6 @@
   background: var(--neutral-100);
   border-radius: var(--size-x4);
   box-shadow: 0 0.2rem 1rem 0 rgb(0 0 0 / 15%);
-  gap: var(--size-x3);
   min-height: 4.4rem;
 }
 
@@ -24,7 +22,7 @@
 }
 
 @media (width <= 767px) {
-  .quickSearch {
-    min-width: 100%;
+  .dropdownList {
+    max-height: 22.4rem;
   }
 }

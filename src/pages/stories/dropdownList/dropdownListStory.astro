@@ -1,4 +1,5 @@
 ---
+import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
 import {
   DropdownList,
   DropdownListTheme,
@@ -69,11 +70,19 @@ const listsExample2 = [
 
           <span class="rhead">Default 1</span>
 
-          <DropdownList client:only="solid-js" lists={listsExample1} />
+          <DropdownList
+            client:only="solid-js"
+            lists={listsExample1}
+            testId={DEFAULT_TEST_ID}
+          />
 
           <span class="rhead">Default 10</span>
 
-          <DropdownList client:only="solid-js" lists={listsExample2} />
+          <DropdownList
+            client:only="solid-js"
+            lists={listsExample2}
+            testId={DEFAULT_TEST_ID}
+          />
         </div>
       </div>
     ))
