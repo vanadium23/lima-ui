@@ -51,7 +51,7 @@ export const MenuItem = (props: Testable<MenuItemProps>) => {
       data-test-id={mProps.testId}
       data-test-sub-id={mProps.testSubId}
     >
-      <Icon name={mProps.icon} size={IconSize.Medium} />
+      <Icon name={mProps.icon} size={IconSize.Small} />
       <span class="menuItem__text">{mProps.text}</span>
     </li>
   );
