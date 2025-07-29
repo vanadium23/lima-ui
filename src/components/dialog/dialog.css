@@ -3,7 +3,7 @@
 }
 
 .dialog {
-  border-radius: 2.8rem;
+  border-radius: var(--size-x7);
   padding: 0;
   border: none;
   box-shadow:
