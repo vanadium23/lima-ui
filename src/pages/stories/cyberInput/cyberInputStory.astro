@@ -22,10 +22,10 @@ const sizes = Object.values(CyberInputSize);
         <div class="grid grid_5Col">
           <span class="chead" />
           <span class="chead">Default</span>
+          <span class="chead">With Dropdown Menu</span>
           <span class="chead">Error</span>
           <span class="chead">Disabled</span>
           <span class="chead">Disabled Typed</span>
-          <span class="chead">With Dropdown Menu</span>
 
           {sizes.map((size) => (
             <>
@@ -34,6 +34,12 @@ const sizes = Object.values(CyberInputSize);
                 client:only="solid-js"
                 size={size}
                 theme={theme}
+              />
+              <CyberInputWrapper
+                client:only="solid-js"
+                size={size}
+                theme={theme}
+                listOfButtons={dropdownItems()}
               />
               <CyberInputWrapper
                 client:only="solid-js"
@@ -63,12 +69,6 @@ const sizes = Object.values(CyberInputSize);
                 testId={DEFAULT_TEST_ID}
                 placeholder="Введите текст"
                 isDisabled={true}
-              />
-              <CyberInputWrapper
-                client:only="solid-js"
-                size={size}
-                theme={theme}
-                listOfButtons={dropdownItems()}
               />
             </>
           ))}
