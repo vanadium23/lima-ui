@@ -13,8 +13,8 @@
 .menuItem_medium {
   padding: var(--size-x5) var(--size-x6);
   gap: var(--size-x3);
-  font-size: 1.6rem;
-  line-height: 2rem;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
   font-weight: 500;
 }
 
