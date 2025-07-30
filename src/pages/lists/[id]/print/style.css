@@ -71,7 +71,6 @@ body {
 .print_noteText {
   font-size: 1.4rem;
   font-style: normal;
-  font-weight: 500;
   line-height: 1.8rem;
   white-space: pre-wrap;
   word-break: break-word;
@@ -98,7 +97,6 @@ body {
 .print__item {
   position: relative;
   font-size: 1.4rem;
-  font-weight: 500;
   line-height: 1.4rem;
   white-space: pre-wrap;
   word-break: break-word;

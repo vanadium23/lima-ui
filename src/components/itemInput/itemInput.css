@@ -81,7 +81,6 @@
 
 .itemInput_primary .itemInput__inner {
   color: var(--text-neutral-800);
-  font-weight: 500;
 }
 
 .itemInput_primary.itemInput_error .itemInput__inner {

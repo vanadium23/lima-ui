@@ -89,6 +89,7 @@ html {
   font-family: Montserrat, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-weight: 500;
 }
 
 input,
@@ -96,6 +97,19 @@ button,
 textarea {
   appearance: none;
   padding: 0;
+}
+
+input,
+button,
+textarea,
+select,
+optgroup,
+option,
+fieldset,
+legend,
+a,
+th {
+  font-weight: inherit;
 }
 
 @keyframes rotate-preloader {

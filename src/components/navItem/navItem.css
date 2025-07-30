@@ -6,7 +6,6 @@
   flex-wrap: nowrap;
   gap: var(--size-x4);
   text-decoration: none;
-  font-weight: 500;
 }
 
 .navItem_medium {

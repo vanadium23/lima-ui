@@ -13,7 +13,6 @@
 
 .pageError_dangerous {
   border-style: solid;
-  font-weight: 500;
   color: var(--text-dangerous-500);
   background: var(--dangerous-300);
 }
