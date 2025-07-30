@@ -1,6 +1,6 @@
 ---
-import { DEFAULT_TEST_ID } from "../../../../features/testIds";
-import { InputType } from "../../../components/input/input";
+import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
+import { InputType } from "../../../components/input/input.tsx";
 import {
   Input,
   InputSize,
@@ -15,6 +15,8 @@ const PLACEHOLDER_TEXT = "Enter text...";
 ---
 
 <StorybookPage title="Input">
+  <h2>Type - Text (Clearable)</h2>
+
   {
     themes.map((theme) => (
       <div class="demoThemeWrapper">
@@ -31,7 +33,6 @@ const PLACEHOLDER_TEXT = "Enter text...";
               <span class="rhead">{size}</span>
               <Input
                 client:only="solid-js"
-                type={InputType.Text}
                 theme={theme}
                 size={size}
                 placeholder={PLACEHOLDER_TEXT}
@@ -41,11 +42,9 @@ const PLACEHOLDER_TEXT = "Enter text...";
                 testId={DEFAULT_TEST_ID}
                 label="Test"
                 isClearable={true}
-                isCountable={true}
               />
               <Input
                 client:only="solid-js"
-                type={InputType.Text}
                 theme={theme}
                 size={size}
                 isError={true}
@@ -59,7 +58,6 @@ const PLACEHOLDER_TEXT = "Enter text...";
               />
               <Input
                 client:only="solid-js"
-                type={InputType.Text}
                 theme={theme}
                 size={size}
                 isError={true}
@@ -74,7 +72,6 @@ const PLACEHOLDER_TEXT = "Enter text...";
               />
               <Input
                 client:only="solid-js"
-                type={InputType.Text}
                 theme={theme}
                 size={size}
                 isDisabled={true}
@@ -85,6 +82,154 @@ const PLACEHOLDER_TEXT = "Enter text...";
                 testId={DEFAULT_TEST_ID}
                 label="Test"
                 isClearable={true}
+              />
+            </>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+
+  <h2>Type - Text (Countable)</h2>
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 class="demoThemeWrapper__title">{theme}</h3>
+        <div class="grid grid_4Col">
+          <span class="chead" />
+          <span class="chead">Default</span>
+          <span class="chead">Error</span>
+          <span class="chead">Error Typed</span>
+          <span class="chead">Disabled</span>
+
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <Input
+                client:only="solid-js"
+                theme={theme}
+                size={size}
+                placeholder={PLACEHOLDER_TEXT}
+                maxLength={10}
+                isRequired={true}
+                name="Some-text"
+                testId={DEFAULT_TEST_ID}
+                label="Test"
+                isCountable={true}
+              />
+              <Input
+                client:only="solid-js"
+                theme={theme}
+                size={size}
+                isError={true}
+                placeholder={PLACEHOLDER_TEXT}
+                maxLength={10}
+                name="Some-text"
+                isRequired={true}
+                testId={DEFAULT_TEST_ID}
+                label="Test"
+                isCountable={true}
+              />
+              <Input
+                client:only="solid-js"
+                theme={theme}
+                size={size}
+                isError={true}
+                placeholder={PLACEHOLDER_TEXT}
+                maxLength={10}
+                name="Some-text"
+                isRequired={true}
+                defaultValue={"Text"}
+                testId={DEFAULT_TEST_ID}
+                label="Test"
+                isCountable={true}
+              />
+              <Input
+                client:only="solid-js"
+                theme={theme}
+                size={size}
+                isDisabled={true}
+                placeholder={PLACEHOLDER_TEXT}
+                maxLength={10}
+                name="Some-text"
+                isRequired={true}
+                testId={DEFAULT_TEST_ID}
+                label="Test"
+                isCountable={true}
+              />
+            </>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+
+  <h2>Type - Password</h2>
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 class="demoThemeWrapper__title">{theme}</h3>
+        <div class="grid grid_4Col">
+          <span class="chead" />
+          <span class="chead">Default</span>
+          <span class="chead">Error</span>
+          <span class="chead">Error Typed</span>
+          <span class="chead">Disabled</span>
+
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <Input
+                client:only="solid-js"
+                type={InputType.Password}
+                theme={theme}
+                size={size}
+                placeholder={PLACEHOLDER_TEXT}
+                maxLength={10}
+                isRequired={true}
+                name="Some-text"
+                testId={DEFAULT_TEST_ID}
+                label="Test"
+              />
+              <Input
+                client:only="solid-js"
+                type={InputType.Password}
+                theme={theme}
+                size={size}
+                isError={true}
+                placeholder={PLACEHOLDER_TEXT}
+                maxLength={10}
+                name="Some-text"
+                isRequired={true}
+                testId={DEFAULT_TEST_ID}
+                label="Test"
+              />
+              <Input
+                client:only="solid-js"
+                type={InputType.Password}
+                theme={theme}
+                size={size}
+                isError={true}
+                placeholder={PLACEHOLDER_TEXT}
+                maxLength={10}
+                name="Some-text"
+                isRequired={true}
+                defaultValue={"Text"}
+                testId={DEFAULT_TEST_ID}
+                label="Test"
+              />
+              <Input
+                client:only="solid-js"
+                type={InputType.Password}
+                theme={theme}
+                size={size}
+                isDisabled={true}
+                placeholder={PLACEHOLDER_TEXT}
+                maxLength={10}
+                name="Some-text"
+                isRequired={true}
+                testId={DEFAULT_TEST_ID}
+                label="Test"
               />
             </>
           ))}

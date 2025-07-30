@@ -1,14 +1,14 @@
 ---
-import { DEFAULT_TEST_ID } from "../../../../features/testIds";
+import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
 import {
-  SearchItem,
-  SearchItemSize,
-  SearchItemTheme,
-} from "../../../components/searchItem/searchItem";
+  DropdownListItem,
+  DropdownListItemSize,
+  DropdownListItemTheme,
+} from "../../../components/dropdownListItem/dropdownListItem.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
-const themes = Object.values(SearchItemTheme);
-const sizes = Object.values(SearchItemSize);
+const themes = Object.values(DropdownListItemTheme);
+const sizes = Object.values(DropdownListItemSize);
 ---
 
 <StorybookPage title="Search Item">
@@ -23,7 +23,7 @@ const sizes = Object.values(SearchItemSize);
           {sizes.map((size) => (
             <>
               <span class="rhead">{size}</span>
-              <SearchItem
+              <DropdownListItem
                 client:only="solid-js"
                 link="https://ya.ru"
                 theme={theme}

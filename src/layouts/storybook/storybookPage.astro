@@ -1,5 +1,5 @@
 ---
-import { suffixTabTitle } from "../../../utilities/tabTitle";
+import { suffixTabTitle } from "../../../utilities/tabTitle.ts";
 
 import "normalize.css";
 import "../main.css";
@@ -46,7 +46,10 @@ const components = [
     name: "PushNotification",
     href: "/stories/pushNotification/pushNotificationStory/",
   },
-  { name: "Search Item", href: "/stories/searchItem/searchItemStory/" },
+  {
+    name: "Dropdown List Item",
+    href: "/stories/dropdownListItem/dropdownListItemStory/",
+  },
   { name: "Switch", href: "/stories/switch/switchStory/" },
   { name: "Text Button", href: "/stories/textButton/textButtonStory/" },
   { name: "Textarea", href: "/stories/textarea/textareaStory/" },
@@ -59,6 +62,10 @@ const components = [
   { name: "Link", href: "/stories/link/linkStory/" },
   { name: "Tools Panel", href: "/stories/toolsPanel/toolsPanelStory/" },
   { name: "UserButton", href: "/stories/userButton/userButtonStory/" },
+  {
+    name: "Dropdown List",
+    href: "/stories/dropdownList/dropdownListStory/",
+  },
   {
     name: "List Item Import",
     href: "/stories/listItemImport/listItemImportStory/",

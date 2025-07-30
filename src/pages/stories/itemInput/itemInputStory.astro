@@ -1,5 +1,5 @@
 ---
-import { DEFAULT_TEST_ID } from "../../../../features/testIds";
+import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
 import {
   ItemInput,
   ItemInputSize,
@@ -7,7 +7,7 @@ import {
 } from "../../../components/itemInput/itemInput.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
-import { dropdownItems } from "./itemInputMenu";
+import { dropdownItems } from "./itemInputMenu.ts";
 import { ItemInputWrapper } from "./itemInputWrapper.tsx";
 
 const themes = Object.values(ItemInputTheme);

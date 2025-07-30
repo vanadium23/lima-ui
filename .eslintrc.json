@@ -15,7 +15,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "simple-import-sort"],
+  "plugins": ["@typescript-eslint", "simple-import-sort", "import"],
   "rules": {
     "simple-import-sort/imports": [
       "error",
@@ -39,8 +39,19 @@
     "no-multiple-empty-lines": [
       "error",
       { "max": 1, "maxEOF": 0, "maxBOF": 0 }
-    ], // одна пустая строка
-    "quotes": ["error", "double"], // двойные кавычки
+    ],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "always",
+        "astro": "always",
+        "ts": "always",
+        "tsx": "always",
+        "css": "always"
+      }
+    ],
+    "import/no-unresolved": ["error", { "caseSensitive": true }],
     "semi": ["error", "always"], // точка с запятой
     "@typescript-eslint/padding-line-between-statements": [
       "error",

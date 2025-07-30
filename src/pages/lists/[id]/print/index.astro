@@ -4,14 +4,14 @@ import {
   PRINT_LIST_NOTE,
   PRINT_LIST_PURPOSE,
   PRINT_LIST_TITLE,
-} from "../../../../../features/testIds";
-import { LISTS } from "../../../../../utilities/addresses";
+} from "../../../../../features/testIds.ts";
+import { MY_LISTS } from "../../../../../utilities/addresses.ts";
 
 import "./style.css";
 import "normalize.css";
 
 const response = await fetch(
-  `${import.meta.env.PUBLIC_API_URL}${LISTS}${Astro.params.id}`,
+  `${import.meta.env.PUBLIC_API_URL}${MY_LISTS}${Astro.params.id}`,
 );
 
 type Item = {

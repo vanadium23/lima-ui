@@ -2,10 +2,11 @@
 import {
   BACKEND_LISTS,
   BACKEND_NON_EXISTING,
-} from "../../../utilities/addresses";
+} from "../../../utilities/addresses.ts";
 import AppPage from "../../layouts/app/app.astro";
-import type { ListBase } from "../../widgets/editList/types";
-import { Lists } from "../../widgets/lists/lists";
+import { getLists } from "../../widgets/editList/services/getLists.ts";
+import type { ListBase } from "../../widgets/editList/types.ts";
+import { Lists } from "../../widgets/lists/lists.tsx";
 
 let lists: ListBase[] = [];
 
@@ -19,13 +20,7 @@ try {
     backendListsAddress = BACKEND_NON_EXISTING;
   }
 
-  const response = await fetch(`${backendURL}${backendListsAddress}`);
-
-  if (!response.ok) {
-    throw new Error("Network response was not ok " + response.statusText);
-  }
-
-  lists = await response.json();
+  lists = await getLists(backendURL, backendListsAddress);
 } catch (error) {
   listsRequestError = true;
 }

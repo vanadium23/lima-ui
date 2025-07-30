@@ -1,9 +1,14 @@
 import { For, mergeProps, Show } from "solid-js";
 
-import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
-import type { SearchList } from "../../widgets/editList/types.ts";
+import {
+  SEARCH_DIALOG_EMPTY,
+  SEARCH_DIALOG_LOADING,
+  SEARCH_RESULT,
+  SEARCH_RESULTS,
+} from "../../../features/testIds.ts";
+import type { DropdownListType } from "../../widgets/editList/types.ts";
+import { DropdownListItem } from "../dropdownListItem/dropdownListItem.tsx";
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
-import { SearchItem } from "../searchItem/searchItem.tsx";
 
 import "./quickSearch.css";
 
@@ -18,7 +23,7 @@ export enum QuickSearchSize {
 export type QuickSearchProps = {
   theme?: QuickSearchTheme;
   size?: QuickSearchSize;
-  lists?: SearchList[];
+  lists?: DropdownListType[];
   isLoading: boolean;
   query: string;
 };
@@ -60,7 +65,7 @@ export const QuickSearch = (props: QuickSearchProps) => {
       <Show
         when={!mProps.isLoading}
         fallback={
-          <div class="quickSearch__loader">
+          <div class="quickSearch__loader" data-test-id={SEARCH_DIALOG_LOADING}>
             <Icon name={IconName.CircleNotch} size={IconSize.Large} />
           </div>
         }
@@ -68,18 +73,24 @@ export const QuickSearch = (props: QuickSearchProps) => {
         <Show
           when={mProps.lists.length}
           fallback={
-            <span class="quickSearch__empty">{`По запросу «${mProps.query}» ничего не найдено`}</span>
+            <span
+              class="quickSearch__empty"
+              data-test-id={SEARCH_DIALOG_EMPTY}
+            >{`По запросу «${mProps.query}» ничего не найдено`}</span>
           }
         >
           <div class="quickSearch__results">
-            <ul class="quickSearch__list scrollStyles">
+            <ul
+              class="quickSearch__list scrollStyles"
+              data-test-id={SEARCH_RESULTS}
+            >
               <For each={mProps.lists}>
                 {(list, index) => {
                   return (
-                    <SearchItem
+                    <DropdownListItem
                       text={list.name}
                       link={list.id}
-                      testId={DEFAULT_TEST_ID}
+                      testId={SEARCH_RESULT}
                       testSubId={index()}
                     />
                   );

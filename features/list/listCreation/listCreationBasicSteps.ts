@@ -1,8 +1,7 @@
-import { Then, When } from "@cucumber/cucumber";
+import { Then } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
-import { LISTS_CREATE } from "../../../utilities/addresses.ts";
-import type { ComplexWorld } from "../../context/hooks.ts";
+import { type ComplexWorld } from "../../context/hooks.ts";
 import {
   ADD_GROUP_BUTTON,
   buildAccordionButtonTestId,
@@ -29,7 +28,6 @@ import {
   isMobile,
   isTablet,
 } from "../../utilities/discoverDevice.ts";
-import { getTimeoutOrCancelItIfDebugging } from "../../utilities/getTimeoutOrCancelItIfDebugging.ts";
 import { type PageAlias, PAGES_TEST_IDS } from "../../utilities/testIds.ts";
 
 import {
@@ -38,15 +36,6 @@ import {
   BUTTON_TEST_IDS,
   type ButtonMeaning,
 } from "./testIds.ts";
-
-When(
-  "I open List Creation page",
-  { timeout: getTimeoutOrCancelItIfDebugging(10000) },
-  async function (this: ComplexWorld) {
-    await this.navigate(LISTS_CREATE);
-    await this.page.waitForLoadState("networkidle");
-  },
-);
 
 Then(
   "I expect to see sidebar or its button",

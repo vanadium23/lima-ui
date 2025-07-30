@@ -1,7 +1,7 @@
 Feature: Note on the List Creation page
 
   Background:
-    When I open List Creation page
+    When I open "List Creation" page
 
   Scenario: Expanding Note accordion and seeing Note text area
     When I press on the "list note" accordion

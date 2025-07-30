@@ -9,7 +9,7 @@ for (const file of files) {
 
   try {
     const content = readFileSync(file, "utf8");
-    const updatedContent = content.replace(/\s+@current\b/g, "");
+    const updatedContent = content.replace(/\s*@current\b/g, "");
 
     if (content !== updatedContent) {
       writeFileSync(file, updatedContent);

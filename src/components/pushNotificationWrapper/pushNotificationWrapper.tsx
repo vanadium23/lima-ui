@@ -1,7 +1,6 @@
 import { For, Show } from "solid-js";
 import { Portal } from "solid-js/web";
 
-import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import { notificationState } from "../../state/pushNotificationStateManager.ts";
 import {
   PushNotification,
@@ -24,8 +23,8 @@ export const PushNotificationWrapper = () => {
                   iconName={notification.iconName}
                   theme={PushNotificationTheme.Dangerous}
                   onClose={() => notificationState.remove(notification.id)}
-                  testId={DEFAULT_TEST_ID}
-                  testSubId={notification.id}
+                  testId={notification.testId}
+                  testSubId={notification.testSubId}
                 />
               </div>
             )}

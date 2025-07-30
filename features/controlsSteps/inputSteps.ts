@@ -1,4 +1,4 @@
-import { When } from "@cucumber/cucumber";
+import { Then, When } from "@cucumber/cucumber";
 
 import type { ComplexWorld } from "../context/hooks";
 import {
@@ -10,5 +10,23 @@ When(
   "I type the following text into the {string}: {string}",
   async function (this: ComplexWorld, inputName: InputMeaning, text: string) {
     await this.locateByFullId(INPUT_TEST_IDS[inputName]).fill(text);
+  },
+);
+
+When(
+  "I add the following text into the {string}: {string}",
+  async function (this: ComplexWorld, inputName: InputMeaning, text: string) {
+    const input = this.locateByFullId(INPUT_TEST_IDS[inputName]);
+
+    for (const char of text) {
+      await input.press(char);
+    }
+  },
+);
+
+Then(
+  "I expect to see the {string} input empty",
+  async function (this: ComplexWorld, inputName: InputMeaning) {
+    await this.expectLocated(INPUT_TEST_IDS[inputName]).toHaveValue("");
   },
 );

@@ -32,7 +32,7 @@ Feature: Removing a list from the List view page
     And I start waiting for the "list removal" request to happen
     And I press the visible "confirm list removal" button
     And I wait for the "list removal" request to happen
-    Then I expect to be on the Lists page
+    Then I expect to be on the "My Lists" page
     Then I expect to see the following number of list stripes: 0
     Then I expect to see the message about lists absence
 

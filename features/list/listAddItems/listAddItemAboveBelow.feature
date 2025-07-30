@@ -1,7 +1,7 @@
 Feature: Adding items above and below on the List page
 
   Background:
-    When I open List Creation page
+    When I open "List Creation" page
 
   Scenario: Adding an item above the first one via context menu
     When I hover "first list item"

@@ -52,7 +52,18 @@ export const SEARCH_INPUT = "searchInput";
 export const SEARCH_BUTTON = "searchButton";
 export const OPEN_SEARCH_BUTTON = "openSearchButton";
 export const CLOSE_SEARCH_BUTTON = "closeSearchButton";
+export const CLEAR_SEARCH_BUTTON = buildClearInputButtonTestId(SEARCH_INPUT);
 export const SEARCH_DIALOG = "searchDialog";
+export const SEARCH_DIALOG_LOADING = "searchDialogLoading";
+export const SEARCH_DIALOG_EMPTY = "searchDialogEmpty";
+export const SEARCH_RESULT = "searchResult";
+export const SEARCH_RESULTS = "searchResults";
+export const SEARCH_NETWORK_ERROR = "searchNetworkError";
+export const SEARCH_NETWORK_ERROR_CLOSE_BUTTON = `${SEARCH_NETWORK_ERROR}CloseButton`;
+
+export function buildClearInputButtonTestId(inputTestId: TestId): TestId {
+  return `${inputTestId}ClearButton`;
+}
 
 export const USER_BUTTON = "userButton";
 

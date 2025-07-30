@@ -10,6 +10,7 @@ import {
   SEARCH_BUTTON,
   SEARCH_DIALOG,
   SEARCH_INPUT,
+  SEARCH_NETWORK_ERROR,
 } from "../../../features/testIds.ts";
 import { IconName } from "../../components/icon/icon.tsx";
 import {
@@ -21,7 +22,8 @@ import { Input, InputTheme } from "../../components/input/input.tsx";
 import { QuickSearch } from "../../components/quickSearch/quickSearch.tsx";
 import { notificationState } from "../../state/pushNotificationStateManager.ts";
 import { searchState } from "../../state/searchState.ts";
-import type { SearchList } from "../editList/types.ts";
+import type { DropdownListType } from "../editList/types.ts";
+import { soften } from "../editList/utilities/soften.ts";
 
 import "./search.css";
 
@@ -42,7 +44,7 @@ type SearchState = {
   query: string;
   isLoading: boolean;
   lastSubmitted: string;
-  results: SearchList[];
+  results: DropdownListType[];
   serverError: boolean;
 };
 
@@ -106,12 +108,16 @@ export const Search = (props: SearchProps) => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      setState({
-        results: await response.json(),
-        serverError: false,
-      });
+      const searchResults = await response.json();
 
-      notificationState.clearNetworkErrors();
+      await soften(() => {
+        setState({
+          results: searchResults,
+          serverError: false,
+        });
+
+        notificationState.clearNetworkErrors();
+      });
     } catch (error) {
       if (error instanceof Error && error.name === "AbortError") {
         return;
@@ -122,6 +128,7 @@ export const Search = (props: SearchProps) => {
       notificationState.pushNetworkError(
         "Ошибка",
         "Нет соединения с сервером, попробуйте еще раз",
+        SEARCH_NETWORK_ERROR,
       );
 
       setState("results", []);
@@ -131,14 +138,13 @@ export const Search = (props: SearchProps) => {
     }
   };
 
-  const handleInput = (e: InputEvent) => {
-    const value = (e.target as HTMLInputElement).value.trim();
-    setState("query", value);
+  const handleQueryUpdate = (query: string) => {
+    setState("query", query);
     clearTimeout(debounceTimer);
 
-    if (value.length >= LISTS_SEARCH_MINIMAL_QUERY) {
+    if (query.length >= LISTS_SEARCH_MINIMAL_QUERY) {
       setState("isLoading", true);
-      debounceTimer = setTimeout(() => executeSearch(value), 350);
+      debounceTimer = setTimeout(() => executeSearch(query), 350);
     } else {
       if (abortController) {
         abortController.abort();
@@ -151,6 +157,11 @@ export const Search = (props: SearchProps) => {
         results: [],
       });
     }
+  };
+
+  const handleInput = (e: InputEvent) => {
+    const value = (e.target as HTMLInputElement).value.trim();
+    handleQueryUpdate(value);
   };
 
   const handleSubmit = (e: Event) => {
@@ -185,7 +196,7 @@ export const Search = (props: SearchProps) => {
           onInput={handleInput}
           onKeyDown={(e) => e.key === "Enter" && handleSubmit(e)}
           isClearable={true}
-          onClear={() => setState("query", "")}
+          onClear={() => handleQueryUpdate("")}
         />
         <IconButton
           type={IconButtonType.Submit}

@@ -1,7 +1,7 @@
 import { mergeProps } from "solid-js";
 
 import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
-import { LISTS, LISTS_CREATE } from "../../../utilities/addresses.ts";
+import { LISTS_CREATE, MY_LISTS } from "../../../utilities/addresses.ts";
 import { location } from "../../state/locationState.ts";
 import { isLimitReached } from "../../state/reachListsLimit.ts";
 import { Divider } from "../divider/divider.tsx";
@@ -53,26 +53,27 @@ export const Nav = (props: NavProps) => {
         </li>
         <li role="none">
           <NavItem
-            url={LISTS}
+            url={MY_LISTS}
             theme={NavItemTheme.Primary}
             size={navItemSize[mProps.size]}
             text="Мои списки"
             icon={IconName.List}
             testId={DEFAULT_TEST_ID}
             isCurrent={
-              location() === LISTS || location().startsWith(`${LISTS}list-`)
+              location() === MY_LISTS ||
+              location().startsWith(`${MY_LISTS}list-`)
             }
           />
         </li>
         <li role="none">
           <NavItem
-            url={LISTS}
+            url={MY_LISTS}
             theme={NavItemTheme.Primary}
             size={navItemSize[mProps.size]}
             text="Мои чек-листы"
             icon={IconName.ListChecks}
             testId={DEFAULT_TEST_ID}
-            isCurrent={location() === LISTS}
+            isCurrent={location() === MY_LISTS}
           />
         </li>
         <Divider />
