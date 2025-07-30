@@ -37,7 +37,7 @@ export function CyberInputWrapper(props: CyberInputWrapperProps) {
       defaultValue={text()}
       size={mProps.size}
       theme={mProps.theme}
-      maxLength={200}
+      maxLength={50}
       name="Some-text"
       isRequired={true}
       testId={DEFAULT_TEST_ID}

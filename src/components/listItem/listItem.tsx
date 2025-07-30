@@ -19,11 +19,7 @@ import {
   CheckboxSize,
   CheckboxTheme,
 } from "../checkbox/checkbox.tsx";
-import {
-  CyberInput,
-  CyberInputSize,
-  CyberInputTheme,
-} from "../cyberInput/cyberInput.tsx";
+import { CyberInput } from "../cyberInput/cyberInput.tsx";
 import { DragHandle } from "../dragHandle/dragHandle.tsx";
 import { DropdownMenuWrapper } from "../dropdownMenuWrapper/dropdownMenuWrapper.tsx";
 import { IconName } from "../icon/icon.tsx";
@@ -160,8 +156,6 @@ export const ListItem = (props: Testable<ListItemProps>) => {
       </Show>
       <div class="listItem__inner">
         <CyberInput
-          theme={CyberInputTheme.Primary}
-          size={CyberInputSize.Medium}
           maxLength={EDIT_LIST_INPUT_LIMIT}
           name={mProps.name}
           dataId={mProps.dataId}

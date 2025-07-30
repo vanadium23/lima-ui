@@ -4,6 +4,7 @@ import {
   mergeProps,
   onCleanup,
   onMount,
+  Show,
 } from "solid-js";
 
 import { CharCounter } from "../charCounter/charCounter.tsx";
@@ -117,16 +118,15 @@ export const CyberInput = (props: Testable<ItemInputProps>) => {
       </textarea>
       <div class="cyberInput__controls">
         {mProps.controlElements}
-        <div
-          class="cyberInput__counter"
-          classList={{ cyberInput__counter_visible: remainingChars() <= 10 }}
-        >
-          <CharCounter
-            value={remainingChars()}
-            testId={mProps.testId}
-            testSubId={mProps.testSubId ?? ""}
-          />
-        </div>
+        <Show when={remainingChars() <= 10}>
+          <div class="cyberInput__counter">
+            <CharCounter
+              value={remainingChars()}
+              testId={mProps.testId}
+              testSubId={mProps.testSubId ?? ""}
+            />
+          </div>
+        </Show>
       </div>
     </div>
   );

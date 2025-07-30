@@ -46,10 +46,9 @@
   visibility: hidden;
   margin-top: auto;
   text-align: center;
-  min-width: 1.3rem;
 }
 
-.cyberInput:focus-within .cyberInput__counter_visible {
+.cyberInput:focus-within .cyberInput__counter {
   visibility: visible;
 }
 
