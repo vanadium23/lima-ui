@@ -36,7 +36,7 @@ export const Title = (props: Testable<TitleProps>) => {
 
   return (
     <h1
-      class={`title title_${mProps.theme} title_${mProps.size} ${mProps.position === TitlePosition.Center ? "title_center" : ""}`}
+      class={`title title_${mProps.theme} title_${mProps.size} title_${mProps.position}`}
       data-test-id={mProps.testId}
     >
       {mProps.children}

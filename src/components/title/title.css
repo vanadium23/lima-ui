@@ -1,6 +1,7 @@
 .title {
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 
 .title_primary {
@@ -11,6 +12,10 @@
   font-size: 2.4rem;
   font-weight: 600;
   line-height: 2.8rem;
+}
+
+.title_left {
+  text-align: left;
 }
 
 .title_center {
