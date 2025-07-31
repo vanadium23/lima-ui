@@ -4,7 +4,7 @@ import { expect } from "@playwright/test";
 import type { ComplexWorld } from "../../context/hooks.ts";
 import { ITEMS_LIMIT_REACHED_WARNING, LIST_ITEM } from "../../testIds.ts";
 import { TEST_SUB_ID_ATTRIBUTE } from "../../utilities/buildTestableSelector.ts";
-import { getRandomInt } from "../../utilities/getRandomInt.ts";
+import { getRandomIntBelowMax } from "../../utilities/getRandomInt.ts";
 import { getTimeoutOrCancelItIfDebugging } from "../../utilities/getTimeoutOrCancelItIfDebugging.ts";
 
 import {
@@ -78,7 +78,9 @@ When(
     if (inputMeaning === "some item") {
       const numberOfInputs = await this.locateByIdParts(inputId).count();
 
-      input = this.locateByIdParts(inputId).nth(getRandomInt(numberOfInputs));
+      input = this.locateByIdParts(inputId).nth(
+        getRandomIntBelowMax(numberOfInputs),
+      );
     }
 
     await input.focus();

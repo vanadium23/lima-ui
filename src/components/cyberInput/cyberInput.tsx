@@ -4,24 +4,28 @@ import {
   mergeProps,
   onCleanup,
   onMount,
+  Show,
 } from "solid-js";
 
+import { COUNTER_DISPLAY_LIMIT } from "../../../configuration.ts";
 import { CharCounter } from "../charCounter/charCounter.tsx";
 import type { Testable } from "../utilities/testable.ts";
 
-import "./itemInput.css";
+import "./cyberInput.css";
 
-export enum ItemInputTheme {
+export enum CyberInputTheme {
   Primary = "primary",
+  Secondary = "secondary",
 }
 
-export enum ItemInputSize {
+export enum CyberInputSize {
   Medium = "medium",
+  ExtraLarge = "extraLarge",
 }
 
 type ItemInputProps = {
-  theme?: ItemInputTheme;
-  size?: ItemInputSize;
+  theme?: CyberInputTheme;
+  size?: CyberInputSize;
   isDisabled?: boolean;
   name: string;
   maxLength: number;
@@ -34,11 +38,15 @@ type ItemInputProps = {
   controlElements?: JSXElement;
 };
 
-export const ItemInput = (props: Testable<ItemInputProps>) => {
+export const CyberInput = (props: Testable<ItemInputProps>) => {
+  /* Компонент так называется ради шутки, потому что мы искали название для
+  этого наполовину Input'а, наполовину Textarea'а, который при этом имеет
+  динамическую высоту и кучу встроенных модулей, таких как выпадающее меню и т.д.
+  Ну и конечно, чтобы немного отдать дань уважению Джонни Сильверхенду xD */
   const mProps: Testable<Required<ItemInputProps>> = mergeProps(
     {
-      theme: ItemInputTheme.Primary,
-      size: ItemInputSize.Medium,
+      theme: CyberInputTheme.Primary,
+      size: CyberInputSize.Medium,
       isDisabled: false,
       defaultIsError: false,
       isRequired: false,
@@ -83,16 +91,16 @@ export const ItemInput = (props: Testable<ItemInputProps>) => {
 
   return (
     <div
-      class={`itemInput itemInput_${mProps.theme} itemInput_${mProps.size}`}
+      class={`cyberInput cyberInput_${mProps.theme} cyberInput_${mProps.size}`}
       classList={{
-        itemInput_error: hasError() && mProps.defaultValue === "",
-        itemInput_disabled: mProps.isDisabled,
+        cyberInput_error: hasError() && mProps.defaultValue === "",
+        cyberInput_disabled: mProps.isDisabled,
       }}
     >
       <textarea
         ref={textareaRef}
         name={mProps.name}
-        class="itemInput__inner"
+        class="cyberInput__inner"
         disabled={mProps.isDisabled}
         maxlength={mProps.maxLength}
         placeholder={mProps.placeholder}
@@ -109,18 +117,17 @@ export const ItemInput = (props: Testable<ItemInputProps>) => {
       >
         {mProps.defaultValue}
       </textarea>
-      <div class="itemInput__controls">
+      <div class="cyberInput__controls">
         {mProps.controlElements}
-        <div
-          class="itemInput__counter"
-          classList={{ itemInput__counter_visible: remainingChars() <= 10 }}
-        >
-          <CharCounter
-            value={remainingChars()}
-            testId={mProps.testId}
-            testSubId={mProps.testSubId ?? ""}
-          />
-        </div>
+        <Show when={remainingChars() <= COUNTER_DISPLAY_LIMIT}>
+          <div class="cyberInput__counter">
+            <CharCounter
+              value={remainingChars()}
+              testId={mProps.testId}
+              testSubId={mProps.testSubId ?? ""}
+            />
+          </div>
+        </Show>
       </div>
     </div>
   );

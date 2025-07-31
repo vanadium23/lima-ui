@@ -4,18 +4,24 @@ import {
   DEFAULT_TEST_ID,
   OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
 } from "../../../../features/testIds.ts";
+import {
+  CyberInput,
+  CyberInputSize,
+  CyberInputTheme,
+} from "../../../components/cyberInput/cyberInput.tsx";
 import { DropdownMenuWrapper } from "../../../components/dropdownMenuWrapper/dropdownMenuWrapper.tsx";
 import { IconName } from "../../../components/icon/icon.tsx";
 import { IconButtonSize } from "../../../components/iconButton/iconButton.tsx";
-import { ItemInput } from "../../../components/itemInput/itemInput.tsx";
 import type { MenuItemProps } from "../../../components/menuItem/menuItem.tsx";
 
-type ItemInputWrapperProps = {
+type CyberInputWrapperProps = {
   isError?: boolean;
   listOfButtons?: MenuItemProps[] | null;
+  size: CyberInputSize;
+  theme: CyberInputTheme;
 };
 
-export function ItemInputWrapper(props: ItemInputWrapperProps) {
+export function CyberInputWrapper(props: CyberInputWrapperProps) {
   const mProps = mergeProps(
     {
       isError: false,
@@ -26,10 +32,12 @@ export function ItemInputWrapper(props: ItemInputWrapperProps) {
   const [text, setText] = createSignal("");
 
   return (
-    <ItemInput
+    <CyberInput
       onChange={setText}
       defaultValue={text()}
-      maxLength={200}
+      size={mProps.size}
+      theme={mProps.theme}
+      maxLength={50}
       name="Some-text"
       isRequired={true}
       testId={DEFAULT_TEST_ID}
