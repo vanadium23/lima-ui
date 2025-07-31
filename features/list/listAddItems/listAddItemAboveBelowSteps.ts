@@ -13,7 +13,7 @@ import {
   LIST_ITEM_INPUT,
 } from "../../testIds.ts";
 import { TEST_SUB_ID_ATTRIBUTE } from "../../utilities/buildTestableSelector.ts";
-import { getRandomInt } from "../../utilities/getRandomInt.ts";
+import { getRandomIntBelowMax } from "../../utilities/getRandomInt.ts";
 import { getTimeoutOrCancelItIfDebugging } from "../../utilities/getTimeoutOrCancelItIfDebugging.ts";
 import { calculateCurrentItemsCount } from "../utilities/calculateCurrentItemsCount.ts";
 
@@ -41,7 +41,9 @@ When(
   { timeout: getTimeoutOrCancelItIfDebugging(60000) },
   async function (this: ComplexWorld) {
     for (let i = await calculateCurrentItemsCount(this); i < ITEMS_LIMIT; i++) {
-      await this.locateByIdParts(LIST_ITEM_INPUT).nth(getRandomInt(i)).focus();
+      await this.locateByIdParts(LIST_ITEM_INPUT)
+        .nth(getRandomIntBelowMax(i))
+        .focus();
       await this.page.keyboard.press("Tab");
       await this.page.keyboard.press("Space");
 

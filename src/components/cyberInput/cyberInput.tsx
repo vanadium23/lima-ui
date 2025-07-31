@@ -7,6 +7,7 @@ import {
   Show,
 } from "solid-js";
 
+import { COUNTER_DISPLAY_LIMIT } from "../../../configuration.ts";
 import { CharCounter } from "../charCounter/charCounter.tsx";
 import type { Testable } from "../utilities/testable.ts";
 
@@ -118,7 +119,7 @@ export const CyberInput = (props: Testable<ItemInputProps>) => {
       </textarea>
       <div class="cyberInput__controls">
         {mProps.controlElements}
-        <Show when={remainingChars() <= 10}>
+        <Show when={remainingChars() <= COUNTER_DISPLAY_LIMIT}>
           <div class="cyberInput__counter">
             <CharCounter
               value={remainingChars()}
