@@ -45,15 +45,14 @@ import {
   ButtonTheme,
   ButtonType,
 } from "../../components/button/button.tsx";
+import {
+  CyberInput,
+  CyberInputSize,
+  CyberInputTheme,
+} from "../../components/cyberInput/cyberInput.tsx";
 import { Dialog } from "../../components/dialog/dialog.tsx";
 import { Divider } from "../../components/divider/divider.tsx";
-import { EditableTitle } from "../../components/editableTitle/editableTitle.tsx";
 import { IconName } from "../../components/icon/icon.tsx";
-import {
-  ItemInput,
-  ItemInputSize,
-  ItemInputTheme,
-} from "../../components/itemInput/itemInput.tsx";
 import { ListItem } from "../../components/listItem/listItem.tsx";
 import { Note } from "../../components/note/note.tsx";
 import { PageError } from "../../components/pageError/pageError.tsx";
@@ -443,7 +442,9 @@ export const EditList = (props: EditListProps) => {
           onSubmit={prepareAndSendListData}
         >
           <div class="editList__listHeader">
-            <EditableTitle
+            <CyberInput
+              theme={CyberInputTheme.Secondary}
+              size={CyberInputSize.ExtraLarge}
               maxLength={LIST_TITLE_INPUT_LIMIT}
               name={EditListFormNames.ListTitle}
               testId={LIST_TITLE_INPUT}
@@ -451,10 +452,11 @@ export const EditList = (props: EditListProps) => {
               isDisabled={store.sendingNow !== false}
               defaultValue={store.name}
               onChange={(value) => handleInputChange("name", value)}
+              placeholder={"Название списка"}
             />
-            <ItemInput
-              theme={ItemInputTheme.Primary}
-              size={ItemInputSize.Medium}
+            <CyberInput
+              theme={CyberInputTheme.Primary}
+              size={CyberInputSize.Medium}
               placeholder="Цель списка"
               maxLength={LIST_PURPOSE_INPUT_LIMIT}
               name={EditListFormNames.ListPurpose}

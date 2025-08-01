@@ -89,7 +89,7 @@ export const QuickSearch = (props: QuickSearchProps) => {
                   return (
                     <DropdownListItem
                       text={list.name}
-                      link={list.id}
+                      listId={list.id}
                       testId={SEARCH_RESULT}
                       testSubId={index()}
                     />

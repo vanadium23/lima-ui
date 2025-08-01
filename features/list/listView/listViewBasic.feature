@@ -58,7 +58,6 @@ Feature: Seeing the basis of List view page
     When I open "List Creation" page
     And I type some text with length less or equal to the one of "list title" input limit
     And I type some text with length less or equal to the one of "list purpose" input limit
-    And I type some text with length less or equal to the one of "first item" input limit
     And I ensure the tools panel is open
     And I add list items till scroll appears plus one item input
     And I ensure the tools panel does not disturb

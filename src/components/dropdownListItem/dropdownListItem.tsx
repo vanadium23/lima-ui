@@ -1,5 +1,6 @@
 import { mergeProps } from "solid-js";
 
+import { MY_LISTS } from "../../../utilities/addresses.ts";
 import type { Testable } from "../utilities/testable.ts";
 
 import "./dropdownListItem.css";
@@ -16,7 +17,7 @@ export type DropdownListItemProps = {
   theme?: DropdownListItemTheme;
   size?: DropdownListItemSize;
   text: string;
-  link: string;
+  listId: string;
 };
 
 export const DropdownListItem = (props: Testable<DropdownListItemProps>) => {
@@ -34,7 +35,7 @@ export const DropdownListItem = (props: Testable<DropdownListItemProps>) => {
       data-test-id={mProps.testId}
       data-test-sub-id={mProps.testSubId}
     >
-      <a class="dropdownListItem__text" href={mProps.link}>
+      <a class="dropdownListItem__text" href={MY_LISTS + mProps.listId}>
         {mProps.text}
       </a>
     </li>
