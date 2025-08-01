@@ -98,7 +98,6 @@
 
 .cyberInput_primary .cyberInput__inner {
   color: var(--text-neutral-800);
-  font-weight: 500;
 }
 
 .cyberInput_primary.cyberInput_error .cyberInput__inner {
