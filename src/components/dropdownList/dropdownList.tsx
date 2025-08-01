@@ -43,7 +43,7 @@ export const DropdownList = (props: Testable<DropdownListProps>) => {
             return (
               <DropdownListItem
                 text={list.name}
-                link={list.id}
+                listId={list.id}
                 testId={DEFAULT_TEST_ID}
                 testSubId={index()}
               />
