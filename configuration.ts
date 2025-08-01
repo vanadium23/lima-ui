@@ -5,3 +5,4 @@ export const EDIT_LIST_INPUT_LIMIT = 200;
 export const NOTE_TEXT_AREA_LIMIT = 500;
 export const LISTS_LIMIT = 200;
 export const LISTS_SEARCH_MINIMAL_QUERY = 2;
+export const COUNTER_DISPLAY_LIMIT = 10;
