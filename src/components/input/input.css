@@ -63,7 +63,6 @@
 
 .input_primary .input__inner {
   color: var(--text-neutral-700);
-  font-weight: 500;
 }
 
 .input_primary .input__inner::placeholder {
@@ -123,7 +122,6 @@
 
 .input_secondary .input__inner {
   color: var(--text-neutral-800);
-  font-weight: 500;
 }
 
 @media (hover: hover) {
