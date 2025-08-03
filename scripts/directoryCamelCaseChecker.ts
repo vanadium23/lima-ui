@@ -101,6 +101,23 @@ function isCamelCaseDirName(dirName: string): boolean {
   );
 }
 
+// Проверяет, является ли файл .astro файлом в папке src/pages/stories
+function isStoryAstroFile(relativePath: string): boolean {
+  const normalizedPath = relativePath.replace(/\\/g, "/");
+
+  return (
+    normalizedPath.startsWith("src/pages/stories/") &&
+    normalizedPath.endsWith(".astro")
+  );
+}
+
+// Проверяет, заканчивается ли имя файла на "Story" (без учета расширения)
+function hasStoryPostfix(fileName: string): boolean {
+  const nameWithoutExt = basename(fileName, extname(fileName));
+
+  return nameWithoutExt.endsWith("Story");
+}
+
 // Проверяет, следует ли исключить элемент из проверки
 function shouldExclude(
   itemName: string,
@@ -189,6 +206,15 @@ async function checkSpecificFiles(
           );
         }
       } else {
+        // Специальная проверка для .astro файлов в src/pages/stories
+        if (isStoryAstroFile(relativePath)) {
+          if (!hasStoryPostfix(fileName)) {
+            errors.push(
+              `❌ Файл "${relativePath}" в папке stories должен заканчиваться на "Story" (например: inputStory.astro)`,
+            );
+          }
+        }
+
         // Проверяем имя файла
         if (!isCamelCaseFileName(fileName)) {
           errors.push(
@@ -290,6 +316,15 @@ async function checkDirectory(
         );
         errors.push(...subErrors);
       } else {
+        // Специальная проверка для .astro файлов в src/pages/stories
+        if (isStoryAstroFile(itemRelativePath)) {
+          if (!hasStoryPostfix(item)) {
+            errors.push(
+              `❌ Файл "${itemRelativePath}" в папке stories должен заканчиваться на "Story" (например: inputStory.astro)`,
+            );
+          }
+        }
+
         // Проверяем имя файла
         if (!isCamelCaseFileName(item)) {
           errors.push(
@@ -355,12 +390,12 @@ async function main() {
       if (errors.length === 0) {
         console.log(
           chalk.green(
-            "✅ Все имена файлов и папок соответствуют camelCase правилам!",
+            "✅ Все имена файлов и папок соответствуют правилам наименования!",
           ),
         );
         process.exit(0);
       } else {
-        console.log(chalk.red("\n❌ Найдены нарушения camelCase правил:\n"));
+        console.log(chalk.red("\n❌ Найдены нарушения правил наименования:\n"));
         errors.forEach((error) => console.log(error));
 
         console.log(
@@ -394,12 +429,12 @@ async function main() {
       if (errors.length === 0) {
         console.log(
           chalk.green(
-            "✅ Все имена файлов и папок соответствуют camelCase правилам!",
+            "✅ Все имена файлов и папок соответствуют правилам наименования!",
           ),
         );
         process.exit(0);
       } else {
-        console.log(chalk.red("\n❌ Найдены нарушения camelCase правил:\n"));
+        console.log(chalk.red("\n❌ Найдены нарушения правил наименования:\n"));
         errors.forEach((error) => console.log(error));
 
         console.log(

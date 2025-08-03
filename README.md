@@ -168,6 +168,7 @@ npm test -- --current --debug
 - Разрешены точки в имени (но не две подряд)
 - Разрешены квадратные скобки для динамических роутов
 - Только буквы и цифры (без дефисов, подчеркиваний и т.д.)
+- Файлы `.astro` в папке stories должен заканчиваться на "Story" (например: inputStory.astro)
 
 ### Примеры правильных имен:
 
@@ -180,6 +181,7 @@ npm test -- --current --debug
 - ✅ [id].astro
 - ✅ [userId]/
 - ✅ apiUtils/
+- ✅ src/pages/stories/inputStory.astro
 
 ### Примеры неправильных имен:
 
@@ -188,6 +190,7 @@ npm test -- --current --debug
 - ❌ api_utils/ (содержит подчеркивание)
 - ❌ config..json (две точки подряд)
 - ❌ [Id].astro (содержимое скобок начинается с большой буквы)
+- ❌ src/pages/stories/inputStories.astro (Файл заканчивается неправильно, Stories вместо Story)
 
 ### Исключения
 
