@@ -7,4 +7,6 @@ export default {
   "**/*.{css,scss}": ["stylelint --fix", "prettier --write"],
   "**/*.feature": ["tsx scripts/removeCurrentTags.ts", "prettier --write"],
   "**/*.{json,md,yml}": ["prettier --write"],
+  // Добавляем проверку имен файлов для всех изменений
+  "*": ["tsx scripts/directoryCamelCaseChecker.ts"],
 };
