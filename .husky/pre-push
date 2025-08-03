@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Цвета для вывода
+RED='\033[0;31m'
+NC='\033[0m' # No Color
+
+# Получаем текущую ветку
+current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
+
+# Запрещаем пуш в main
+if [ "$current_branch" = "main" ]; then
+  printf "${RED}❌ Прямой пуш в ветку main запрещен!${NC}\n"
+  printf "${RED}Пожалуйста, создайте ветку с именем в виде номера задачи с доски(например 5527. Название задачи и т.д. добавлять не нужно, только номер) и используйте Pull Request.${NC}\n"
+  exit 1
+fi
