@@ -1,6 +1,8 @@
 import { readFileSync, writeFileSync } from "fs";
 
-const files = process.argv.slice(2);
+import { getFilesToCheck } from "./utilities/getFilesToCheck.ts";
+
+const files = getFilesToCheck();
 
 for (const file of files) {
   if (!file.endsWith(".feature")) {

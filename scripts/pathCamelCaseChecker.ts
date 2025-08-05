@@ -2,6 +2,8 @@ import chalk from "chalk";
 import { readdir, stat } from "fs/promises";
 import { basename, dirname, extname, join, relative, resolve } from "path";
 
+import { getFilesToCheck } from "./utilities/getFilesToCheck.ts";
+
 // Папки и файлы, которые следует исключить из проверки
 const DEFAULT_EXCLUDED_DIRS = [
   "node_modules",
@@ -176,9 +178,9 @@ async function checkSpecificFiles(
   for (const filePath of filePaths) {
     try {
       // Проверяем, что файл находится внутри проекта
-      if (!isInsideProject(filePath, projectRoot)) {
+      /* if (!isInsideProject(filePath, projectRoot)) {
         continue;
-      }
+      } */
 
       const stats = await stat(filePath);
       const fileName = basename(filePath);
@@ -342,11 +344,9 @@ async function checkDirectory(
   return errors;
 }
 
-async function main() {
+async function pathCamelCaseChecker() {
   // Получаем список файлов из аргументов командной строки (от lint-staged)
-  const filesToCheck = process.argv
-    .slice(2)
-    .filter((arg) => !arg.startsWith("--"));
+  const filesToCheck = getFilesToCheck();
 
   // Проверяем дополнительные аргументы
   const args = process.argv.slice(2);
@@ -452,4 +452,4 @@ async function main() {
   }
 }
 
-main();
+pathCamelCaseChecker();
