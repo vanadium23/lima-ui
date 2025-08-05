@@ -1,28 +1,19 @@
 import chalk from "chalk";
-import { readdir, stat } from "fs/promises";
-import { basename, dirname, extname, join, relative, resolve } from "path";
+import { stat } from "fs/promises";
+import { basename, dirname, extname, relative, resolve } from "path";
 
 import { getFilesToCheck } from "./utilities/getFilesToCheck.ts";
 
-// Папки и файлы, которые следует исключить из проверки
-const DEFAULT_EXCLUDED_DIRS = [
-  "node_modules",
-  ".git",
+const EXCLUDED = [
   ".husky",
-  ".astro",
   ".vscode",
   ".idea",
   ".github",
-];
-
-const DEFAULT_EXCLUDED_FILES = [
   "package-lock.json",
   "README.md",
   "lint-staged.config.js",
+  "public/fonts",
 ];
-
-// Пути к папкам, которые следует исключить из проверки (относительно корня проекта)
-const DEFAULT_EXCLUDED_PATHS = ["features/results", "public/fonts"];
 
 // Проверяет, соответствует ли имя файла camelCase правилам
 // - Начинается с маленькой буквы, точки или квадратной скобки [
@@ -103,54 +94,9 @@ function isCamelCaseDirName(dirName: string): boolean {
   );
 }
 
-// Проверяет, является ли файл .astro файлом в папке src/pages/stories
-function isStoryAstroFile(relativePath: string): boolean {
-  const normalizedPath = relativePath.replace(/\\/g, "/");
-
-  return (
-    normalizedPath.startsWith("src/pages/stories/") &&
-    normalizedPath.endsWith(".astro")
-  );
-}
-
-// Проверяет, заканчивается ли имя файла на "Story" (без учета расширения)
-function hasStoryPostfix(fileName: string): boolean {
-  const nameWithoutExt = basename(fileName, extname(fileName));
-
-  return nameWithoutExt.endsWith("Story");
-}
-
 // Проверяет, следует ли исключить элемент из проверки
-function shouldExclude(
-  itemName: string,
-  isDirectory: boolean,
-  relativePath: string,
-  excludedDirs: string[],
-  excludedFiles: string[],
-  excludedPaths: string[],
-): boolean {
-  // Проверяем исключение по полному пути
-  const normalizedRelativePath = relativePath.replace(/\\/g, "/");
-
-  if (
-    excludedPaths.some((excludedPath) => {
-      const normalizedExcludedPath = excludedPath.replace(/\\/g, "/");
-
-      return (
-        normalizedRelativePath === normalizedExcludedPath ||
-        normalizedRelativePath.startsWith(normalizedExcludedPath + "/")
-      );
-    })
-  ) {
-    return true;
-  }
-
-  // Проверяем исключение по имени файла/папки
-  if (isDirectory) {
-    return excludedDirs.includes(itemName);
-  } else {
-    return excludedFiles.includes(itemName);
-  }
+function shouldExclude(filePath: string) {
+  return EXCLUDED.some((excluded) => filePath.startsWith(excluded));
 }
 
 // Проверяет, находится ли путь внутри корневой папки проекта
@@ -165,62 +111,32 @@ function isInsideProject(filePath: string, projectRoot: string): boolean {
 }
 
 // Проверяет конкретные файлы из списка
-async function checkSpecificFiles(
-  filePaths: string[],
-  excludedDirs: string[] = DEFAULT_EXCLUDED_DIRS,
-  excludedFiles: string[] = DEFAULT_EXCLUDED_FILES,
-  excludedPaths: string[] = DEFAULT_EXCLUDED_PATHS,
-): Promise<string[]> {
+async function checkSpecificFiles(filePaths: string[]): Promise<string[]> {
   const errors: string[] = [];
   const checkedDirs = new Set<string>();
   const projectRoot = process.cwd();
 
   for (const filePath of filePaths) {
-    try {
-      // Проверяем, что файл находится внутри проекта
-      /* if (!isInsideProject(filePath, projectRoot)) {
-        continue;
-      } */
+    if (shouldExclude(filePath)) {
+      continue;
+    }
 
+    try {
       const stats = await stat(filePath);
       const fileName = basename(filePath);
-      const relativePath = relative(projectRoot, filePath);
-
-      // Проверяем исключения
-      if (
-        shouldExclude(
-          fileName,
-          stats.isDirectory(),
-          relativePath,
-          excludedDirs,
-          excludedFiles,
-          excludedPaths,
-        )
-      ) {
-        continue;
-      }
 
       if (stats.isDirectory()) {
         // Проверяем имя папки
         if (!isCamelCaseDirName(fileName)) {
           errors.push(
-            `❌ Папка "${relativePath}" не соответствует camelCase правилам`,
+            `❌ Папка "${filePath}" не соответствует camelCase правилам`,
           );
-        }
-      } else {
-        // Специальная проверка для .astro файлов в src/pages/stories
-        if (isStoryAstroFile(relativePath)) {
-          if (!hasStoryPostfix(fileName)) {
-            errors.push(
-              `❌ Файл "${relativePath}" в папке stories должен заканчиваться на "Story" (например: inputStory.astro)`,
-            );
-          }
         }
 
         // Проверяем имя файла
         if (!isCamelCaseFileName(fileName)) {
           errors.push(
-            `❌ Файл "${relativePath}" не соответствует camelCase правилам`,
+            `❌ Файл "${filePath}" не соответствует camelCase правилам`,
           );
         }
 
@@ -237,16 +153,7 @@ async function checkSpecificFiles(
           const dirName = basename(currentDir);
           const relativeDirPath = relative(projectRoot, currentDir);
 
-          if (
-            !shouldExclude(
-              dirName,
-              true,
-              relativeDirPath,
-              excludedDirs,
-              excludedFiles,
-              excludedPaths,
-            )
-          ) {
+          if (!shouldExclude(dirName)) {
             if (!isCamelCaseDirName(dirName)) {
               errors.push(
                 `❌ Папка "${relativeDirPath}" не соответствует camelCase правилам`,
@@ -268,187 +175,34 @@ async function checkSpecificFiles(
   return errors;
 }
 
-// Рекурсивно проверяет все файлы и папки в директории (для режима полной проверки)
-async function checkDirectory(
-  dirPath: string,
-  relativePath: string = "",
-  excludedDirs: string[] = DEFAULT_EXCLUDED_DIRS,
-  excludedFiles: string[] = DEFAULT_EXCLUDED_FILES,
-  excludedPaths: string[] = DEFAULT_EXCLUDED_PATHS,
-): Promise<string[]> {
-  const errors: string[] = [];
-
-  try {
-    const items = await readdir(dirPath);
-
-    for (const item of items) {
-      const fullPath = join(dirPath, item);
-      const itemRelativePath = relativePath ? join(relativePath, item) : item;
-      const stats = await stat(fullPath);
-
-      // Проверяем, нужно ли исключить этот элемент
-      if (
-        shouldExclude(
-          item,
-          stats.isDirectory(),
-          itemRelativePath,
-          excludedDirs,
-          excludedFiles,
-          excludedPaths,
-        )
-      ) {
-        continue;
-      }
-
-      if (stats.isDirectory()) {
-        // Проверяем имя папки
-        if (!isCamelCaseDirName(item)) {
-          errors.push(
-            `❌ Папка "${itemRelativePath}" не соответствует camelCase правилам`,
-          );
-        }
-
-        // Рекурсивно проверяем содержимое папки
-        const subErrors = await checkDirectory(
-          fullPath,
-          itemRelativePath,
-          excludedDirs,
-          excludedFiles,
-          excludedPaths,
-        );
-        errors.push(...subErrors);
-      } else {
-        // Специальная проверка для .astro файлов в src/pages/stories
-        if (isStoryAstroFile(itemRelativePath)) {
-          if (!hasStoryPostfix(item)) {
-            errors.push(
-              `❌ Файл "${itemRelativePath}" в папке stories должен заканчиваться на "Story" (например: inputStory.astro)`,
-            );
-          }
-        }
-
-        // Проверяем имя файла
-        if (!isCamelCaseFileName(item)) {
-          errors.push(
-            `❌ Файл "${itemRelativePath}" не соответствует camelCase правилам`,
-          );
-        }
-      }
-    }
-  } catch (error) {
-    errors.push(
-      `❌ Ошибка при чтении директории ${relativePath || dirPath}: ${error}`,
-    );
-  }
-
-  return errors;
-}
-
 async function pathCamelCaseChecker() {
-  // Получаем список файлов из аргументов командной строки (от lint-staged)
   const filesToCheck = getFilesToCheck();
 
-  // Проверяем дополнительные аргументы
-  const args = process.argv.slice(2);
-  const excludeDirsArg = args
-    .find((arg) => arg.startsWith("--exclude-dirs="))
-    ?.split("=")[1];
-  const excludeFilesArg = args
-    .find((arg) => arg.startsWith("--exclude-files="))
-    ?.split("=")[1];
-  const excludePathsArg = args
-    .find((arg) => arg.startsWith("--exclude-paths="))
-    ?.split("=")[1];
-  const fullCheckArg = args.includes("--full-check");
+  try {
+    const errors = await checkSpecificFiles(filesToCheck);
 
-  const excludedDirs = excludeDirsArg
-    ? excludeDirsArg.split(",")
-    : DEFAULT_EXCLUDED_DIRS;
-  const excludedFiles = excludeFilesArg
-    ? excludeFilesArg.split(",")
-    : DEFAULT_EXCLUDED_FILES;
-  const excludedPaths = excludePathsArg
-    ? excludePathsArg.split(",")
-    : DEFAULT_EXCLUDED_PATHS;
+    if (errors.length === 0) {
+      console.log(
+        chalk.green(
+          "✅ Все имена файлов и папок соответствуют правилам наименования!",
+        ),
+      );
+      process.exit(0);
+    } else {
+      console.log(chalk.red("\n❌ Найдены нарушения правил наименования:\n"));
+      errors.forEach((error) => console.log(error));
 
-  // Определяем режим работы
-  if (fullCheckArg || filesToCheck.length === 0) {
-    // Режим полной проверки проекта
-    console.log(
-      chalk.blue("🔍 Проверка имен файлов и папок во всем проекте..."),
-    );
-
-    try {
-      const errors = await checkDirectory(
-        process.cwd(),
-        "",
-        excludedDirs,
-        excludedFiles,
-        excludedPaths,
+      console.log(
+        chalk.blue(
+          "\n📖 Подробные примеры проверки можно прочитать в корневом README.md",
+        ),
       );
 
-      if (errors.length === 0) {
-        console.log(
-          chalk.green(
-            "✅ Все имена файлов и папок соответствуют правилам наименования!",
-          ),
-        );
-        process.exit(0);
-      } else {
-        console.log(chalk.red("\n❌ Найдены нарушения правил наименования:\n"));
-        errors.forEach((error) => console.log(error));
-
-        console.log(
-          chalk.blue(
-            "\n📖 Подробные примеры проверки можно прочитать в корневом README.md",
-          ),
-        );
-
-        process.exit(1);
-      }
-    } catch (error) {
-      console.error(chalk.red(`❌ Ошибка при проверке: ${error}`));
       process.exit(1);
     }
-  } else {
-    // Режим проверки конкретных файлов (от lint-staged)
-    console.log(
-      chalk.blue(
-        `🔍 Проверка имен файлов и папок для ${filesToCheck.length} измененных файлов...`,
-      ),
-    );
-
-    try {
-      const errors = await checkSpecificFiles(
-        filesToCheck,
-        excludedDirs,
-        excludedFiles,
-        excludedPaths,
-      );
-
-      if (errors.length === 0) {
-        console.log(
-          chalk.green(
-            "✅ Все имена файлов и папок соответствуют правилам наименования!",
-          ),
-        );
-        process.exit(0);
-      } else {
-        console.log(chalk.red("\n❌ Найдены нарушения правил наименования:\n"));
-        errors.forEach((error) => console.log(error));
-
-        console.log(
-          chalk.blue(
-            "\n📖 Подробные примеры проверки можно прочитать в корневом README.md",
-          ),
-        );
-
-        process.exit(1);
-      }
-    } catch (error) {
-      console.error(chalk.red(`❌ Ошибка при проверке: ${error}`));
-      process.exit(1);
-    }
+  } catch (error) {
+    console.error(chalk.red(`❌ Ошибка при проверке: ${error}`));
+    process.exit(1);
   }
 }
 
