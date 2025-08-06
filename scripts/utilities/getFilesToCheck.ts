@@ -1,4 +1,15 @@
-// Получаем список файлов из аргументов командной строки (от lint-staged)
+import { relative } from "path";
+
+const NODE_AND_SCRIPT = 2;
+
 export function getFilesToCheck() {
-  return process.argv.slice(2).filter((arg) => !arg.startsWith("--"));
+  function removeArg(arg: string) {
+    return !arg.startsWith("--");
+  }
+
+  function clipPath(path: string) {
+    return relative(process.cwd(), path).replace(/\\/g, "/");
+  }
+
+  return process.argv.slice(NODE_AND_SCRIPT).filter(removeArg).map(clipPath);
 }
