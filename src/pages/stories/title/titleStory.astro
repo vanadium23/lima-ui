@@ -10,38 +10,60 @@ import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 const themes = Object.values(TitleTheme);
 const sizes = Object.values(TitleSize);
-const positions = Object.values(TitlePosition);
 ---
 
 <StorybookPage title="Title">
+  <h2>Title position - Left</h2>
   {
     themes.map((theme) => (
       <div class="demoThemeWrapper">
-        {positions.map((position) => (
-          <>
-            <h3 class="demoThemeWrapper__title">{theme}</h3>
-            <span class="rhead">{position}</span>
-            <div class="grid grid_1Col">
-              <span class="chead" />
-              <span class="chead">h1</span>
+        <h3 class="demoThemeWrapper__title">{theme}</h3>
+        <div class="grid grid_1Col">
+          <span class="chead" />
+          <span class="chead">h1</span>
 
-              {sizes.map((size) => (
-                <>
-                  <span class="rhead">{size}</span>
-                  <Title
-                    client:only="solid-js"
-                    theme={theme}
-                    size={size}
-                    position={position}
-                    testId={DEFAULT_TEST_ID}
-                  >
-                    Заголовок
-                  </Title>
-                </>
-              ))}
-            </div>
-          </>
-        ))}
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <Title
+                client:only="solid-js"
+                theme={theme}
+                size={size}
+                testId={DEFAULT_TEST_ID}
+                position={TitlePosition.Left}
+              >
+                Заголовок
+              </Title>
+            </>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+  <h2>Title position - Center</h2>
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 class="demoThemeWrapper__title">{theme}</h3>
+        <div class="grid grid_1Col">
+          <span class="chead" />
+          <span class="chead">h1</span>
+
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <Title
+                client:only="solid-js"
+                theme={theme}
+                size={size}
+                testId={DEFAULT_TEST_ID}
+                position={TitlePosition.Center}
+              >
+                Заголовок
+              </Title>
+            </>
+          ))}
+        </div>
       </div>
     ))
   }
