@@ -41,7 +41,6 @@
 
 .switch_medium .switch__text {
   font-size: 1.6rem;
-  font-weight: 500;
   line-height: 2.2rem;
   color: var(--text-neutral-800);
   white-space: nowrap;

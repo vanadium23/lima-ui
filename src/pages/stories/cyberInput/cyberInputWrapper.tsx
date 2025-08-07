@@ -15,10 +15,10 @@ import { IconButtonSize } from "../../../components/iconButton/iconButton.tsx";
 import type { MenuItemProps } from "../../../components/menuItem/menuItem.tsx";
 
 type CyberInputWrapperProps = {
-  isError?: boolean;
-  listOfButtons?: MenuItemProps[] | null;
   size: CyberInputSize;
   theme: CyberInputTheme;
+  isError?: boolean;
+  listOfButtons?: MenuItemProps[] | null;
 };
 
 export function CyberInputWrapper(props: CyberInputWrapperProps) {

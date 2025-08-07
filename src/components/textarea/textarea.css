@@ -61,7 +61,6 @@
 
 .textarea_primary .textarea__inner {
   color: var(--text-neutral-700);
-  font-weight: 500;
 }
 
 .textarea_primary.textarea_disabled .textarea__inner {
@@ -106,7 +105,6 @@
 
 .textarea_secondary .textarea__inner {
   color: var(--text-neutral-700);
-  font-weight: 500;
 }
 
 .textarea_secondary.textarea_error .textarea__inner {

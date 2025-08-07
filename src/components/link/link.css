@@ -15,7 +15,6 @@
 
 .link_primary {
   color: var(--text-primary-500);
-  font-weight: 500;
 }
 
 .link_primary:active:not(.link_disabled) {

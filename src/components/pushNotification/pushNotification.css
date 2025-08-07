@@ -72,6 +72,5 @@
 .pushNotification_medium .pushNotification__text {
   padding: 0 var(--size-x4) var(--size-x4) 0;
   font-size: 1.4rem;
-  font-weight: 500;
   line-height: 1.8rem;
 }
