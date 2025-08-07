@@ -9,6 +9,7 @@
 
 .lists__title {
   display: flex;
+  justify-content: center;
   padding: var(--size-x6) var(--size-x4) var(--size-x3) var(--size-x18);
 }
 
