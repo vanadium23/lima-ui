@@ -2,6 +2,7 @@
 import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
 import {
   Title,
+  TitlePosition,
   TitleSize,
   TitleTheme,
 } from "../../../components/title/title.tsx";
@@ -12,6 +13,7 @@ const sizes = Object.values(TitleSize);
 ---
 
 <StorybookPage title="Title">
+  <h2>Title position - Left</h2>
   {
     themes.map((theme) => (
       <div class="demoThemeWrapper">
@@ -28,8 +30,36 @@ const sizes = Object.values(TitleSize);
                 theme={theme}
                 size={size}
                 testId={DEFAULT_TEST_ID}
+                position={TitlePosition.Left}
               >
                 Заголовок
+              </Title>
+            </>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+  <h2>Title position - Center</h2>
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 class="demoThemeWrapper__title">{theme}</h3>
+        <div class="grid grid_1Col">
+          <span class="chead" />
+          <span class="chead">h1</span>
+
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <Title
+                client:only="solid-js"
+                theme={theme}
+                size={size}
+                testId={DEFAULT_TEST_ID}
+                position={TitlePosition.Center}
+              >
+                Ужаааааааааассссссссссноооооооо длиииииииииный заголовок
               </Title>
             </>
           ))}
