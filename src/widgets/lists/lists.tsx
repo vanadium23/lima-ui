@@ -85,8 +85,7 @@ export const Lists = (props: ListsProps) => {
               <li class="lists__item">
                 <ListStripe
                   listId={list.id}
-                  link={`./${list.id}`}
-                  editLink={`./${list.id}/edit`}
+                  link={`/lists/${list.id}`}
                   listTitle={list.name}
                   listPurpose={list.purpose}
                   onRemoveSuccess={removingListInStore}
