@@ -54,6 +54,15 @@ Feature: Searching for lists
       | "Latest List"   | "Пробуем поиск" | "search single item full words"    |
       | "Latest List"   | "оиск"          | "search single item partial words" |
 
+  Scenario: Searching for a list on ”My Lists” page without trailing “/” in the URL
+    When I add a list with the following title: "Пробуем поиск"
+    And I open "My Lists without trailing /" page
+    And I ensure search is visible
+    And I type the following text into the "search bar": "Пробуем"
+    Then I expect to see the search "dialog"
+    And I press the "first" search result
+    Then I expect to be on the "Some List" page
+
   Scenario Outline: Seeing several lists in search results
     When I add a list with the following title: "Пробуем поиск"
     And I add a list with the following title: "Пробуем поиск 2"

@@ -13,6 +13,14 @@
   line-height: 2.8rem;
 }
 
+.title_left {
+  text-align: left;
+}
+
+.title_center {
+  text-align: center;
+}
+
 @media (width <= 767px) {
   .title_medium {
     font-size: 2rem;

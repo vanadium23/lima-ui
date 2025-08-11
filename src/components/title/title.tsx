@@ -12,9 +12,15 @@ export enum TitleSize {
   Medium = "medium",
 }
 
+export enum TitlePosition {
+  Left = "left",
+  Center = "center",
+}
+
 type TitleProps = {
   theme?: TitleTheme;
   size?: TitleSize;
+  position?: TitlePosition;
   children: JSX.Element;
 };
 
@@ -23,13 +29,14 @@ export const Title = (props: Testable<TitleProps>) => {
     {
       theme: TitleTheme.Primary,
       size: TitleSize.Medium,
+      position: TitlePosition.Left,
     },
     props,
   );
 
   return (
     <h1
-      class={`title title_${mProps.theme} title_${mProps.size}`}
+      class={`title title_${mProps.theme} title_${mProps.size} title_${mProps.position}`}
       data-test-id={mProps.testId}
     >
       {mProps.children}
