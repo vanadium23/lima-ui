@@ -11,7 +11,7 @@ import {
   NO_SAVED_LISTS_MESSAGE,
   PAGE_TITLE,
 } from "../../../features/testIds.ts";
-import { LISTS_CREATE } from "../../../utilities/addresses.ts";
+import { URL_CREATE_LIST, URL_MY_LISTS } from "../../../utilities/addresses.ts";
 import {
   Button,
   ButtonComponentType,
@@ -85,7 +85,7 @@ export const Lists = (props: ListsProps) => {
               <li class="lists__item">
                 <ListStripe
                   listId={list.id}
-                  link={`/lists/${list.id}`}
+                  link={`${URL_MY_LISTS}${list.id}`}
                   listTitle={list.name}
                   listPurpose={list.purpose}
                   onRemoveSuccess={removingListInStore}
@@ -114,7 +114,7 @@ export const Lists = (props: ListsProps) => {
         <div class="lists__new">
           <Button
             componentType={ButtonComponentType.Link}
-            link={LISTS_CREATE}
+            link={URL_CREATE_LIST}
             text="Создать"
             testId={CREATE_LIST_BUTTON}
             isDisabled={checkListsLimitReached()}

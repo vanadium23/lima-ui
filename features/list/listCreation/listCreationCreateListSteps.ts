@@ -5,7 +5,7 @@ import { EDIT_LIST_INPUT_LIMIT } from "../../../configuration.ts";
 import {
   ADDRESSES_MEANINGS,
   type AddressMeaning,
-  SOME_LIST,
+  TESTS_URL_SOME_LIST,
 } from "../../../utilities/addresses.ts";
 import type { ComplexWorld } from "../../context/hooks.ts";
 import {
@@ -174,7 +174,7 @@ When(
 );
 
 When("I wait for the list to create", async function (this: ComplexWorld) {
-  await this.page.waitForURL(`**${SOME_LIST}`);
+  await this.page.waitForURL(`**${TESTS_URL_SOME_LIST}`);
 });
 
 Then(

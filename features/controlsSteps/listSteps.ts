@@ -5,7 +5,10 @@ import {
   LIST_PURPOSE_INPUT_LIMIT,
   LIST_TITLE_INPUT_LIMIT,
 } from "../../configuration.ts";
-import { LISTS_CREATE, SOME_LIST } from "../../utilities/addresses.ts";
+import {
+  TESTS_URL_SOME_LIST,
+  URL_CREATE_LIST,
+} from "../../utilities/addresses.ts";
 import type { ComplexWorld } from "../context/hooks.ts";
 import {
   BUTTON_TEST_IDS,
@@ -37,7 +40,7 @@ When(
 );
 
 async function fillListFields(complexWorld: ComplexWorld) {
-  await complexWorld.navigate(LISTS_CREATE);
+  await complexWorld.navigate(URL_CREATE_LIST);
 
   const inputs: [keyof typeof INPUT_TEST_IDS, number][] = [
     ["list title", LIST_TITLE_INPUT_LIMIT],
@@ -54,5 +57,5 @@ async function fillListFields(complexWorld: ComplexWorld) {
 
 async function saveList(complexWorld: ComplexWorld) {
   await complexWorld.locateByFullId(BUTTON_TEST_IDS.save).click();
-  await complexWorld.page.waitForURL(`**${SOME_LIST}`);
+  await complexWorld.page.waitForURL(`**${TESTS_URL_SOME_LIST}`);
 }
