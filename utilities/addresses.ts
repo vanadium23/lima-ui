@@ -1,17 +1,25 @@
-export const MY_LISTS = "/lists/";
-export const LISTS_CREATE = `${MY_LISTS}create`;
-export const SOME_LIST = `${MY_LISTS}list-*`;
-export const ERROR_SIGN = "?error=true";
-export const LISTS_WITH_NETWORK_ERROR = `${MY_LISTS}${ERROR_SIGN}`;
+/* Client routing URLs */
+export const URL_MY_LISTS = "/lists/";
+export const URL_CREATE_LIST = `${URL_MY_LISTS}create`;
 
-export const BACKEND_LISTS = "/lists/";
-export const BACKEND_NON_EXISTING = "/404/";
+/* Test URLs */
+export const TESTS_URL_SOME_LIST = `${URL_MY_LISTS}list-*`;
+export const TESTS_URL_ERROR_SIGN = "?error=true";
+export const TESTS_URL_LISTS_WITH_NETWORK_ERROR = `${URL_MY_LISTS}${TESTS_URL_ERROR_SIGN}`;
+
+/* Backend routing URLs */
+export const BACKEND_URL_LISTS = "/lists/";
+export const BACKEND_URL_NON_EXISTING = "/404/";
 
 export const ADDRESSES_MEANINGS = {
-  "list creation": { address: MY_LISTS, method: "POST" },
-  "list removal": { address: SOME_LIST, method: "DELETE" },
-  "list update": { address: SOME_LIST, method: "PATCH" },
+  "list creation": { address: URL_MY_LISTS, method: "POST" },
+  "list removal": { address: TESTS_URL_SOME_LIST, method: "DELETE" },
+  "list update": { address: TESTS_URL_SOME_LIST, method: "PATCH" },
 };
 export type AddressMeaning = keyof typeof ADDRESSES_MEANINGS;
 
-export const PAGE_TYPES = [LISTS_CREATE, MY_LISTS, SOME_LIST].sort();
+export const PAGE_TYPES = [
+  URL_CREATE_LIST,
+  URL_MY_LISTS,
+  TESTS_URL_SOME_LIST,
+].sort();

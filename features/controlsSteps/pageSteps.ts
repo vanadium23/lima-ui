@@ -2,10 +2,10 @@ import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
 import {
-  LISTS_CREATE,
-  LISTS_WITH_NETWORK_ERROR,
-  MY_LISTS,
-  SOME_LIST,
+  TESTS_URL_LISTS_WITH_NETWORK_ERROR,
+  TESTS_URL_SOME_LIST,
+  URL_CREATE_LIST,
+  URL_MY_LISTS,
 } from "../../utilities/addresses.ts";
 import { createAccountedTesting } from "../context/createAccountedTesting.ts";
 import { type ComplexWorld, pagesAccounting } from "../context/hooks.ts";
@@ -13,12 +13,12 @@ import { LIST_STRIPE } from "../testIds.ts";
 import { getTimeoutOrCancelItIfDebugging } from "../utilities/getTimeoutOrCancelItIfDebugging.ts";
 
 export const PAGES_MEANINGS = {
-  "List Creation": LISTS_CREATE,
-  "My Lists": MY_LISTS,
-  "My Lists without trailing /": MY_LISTS.slice(0, -1),
-  "My Lists with failed lists loading": LISTS_WITH_NETWORK_ERROR,
-  "Latest List": SOME_LIST,
-  "Some List": SOME_LIST,
+  "List Creation": URL_CREATE_LIST,
+  "My Lists": URL_MY_LISTS,
+  "My Lists without trailing /": URL_MY_LISTS.slice(0, -1),
+  "My Lists with failed lists loading": TESTS_URL_LISTS_WITH_NETWORK_ERROR,
+  "Latest List": TESTS_URL_SOME_LIST,
+  "Some List": TESTS_URL_SOME_LIST,
 };
 
 type PageMeaning = keyof typeof PAGES_MEANINGS;
@@ -64,7 +64,7 @@ Then(
 
 async function navigate(complexWorld: ComplexWorld, pageMeaning: PageMeaning) {
   if (pageMeaning === "Latest List") {
-    await complexWorld.navigate(MY_LISTS);
+    await complexWorld.navigate(URL_MY_LISTS);
 
     await complexWorld.locateByIdParts(LIST_STRIPE).nth(0).click();
 
