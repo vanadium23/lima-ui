@@ -56,7 +56,7 @@
   min-height: 2rem;
   font-size: 1.6rem;
   line-height: 2rem;
-  padding: var(--size-x3) var(--size-x8) var(--size-x3) var(--size-x8);
+  padding: var(--size-x3) var(--size-x8);
 }
 
 .cyberInput_medium .cyberInput__controls {
@@ -69,7 +69,7 @@
   min-height: 2.4rem;
   font-size: 2rem;
   line-height: 2.4rem;
-  padding: var(--size-x3) var(--size-x8) var(--size-x3) var(--size-x8);
+  padding: var(--size-x3) var(--size-x8);
 }
 
 .cyberInput_extraLarge .cyberInput__controls {
