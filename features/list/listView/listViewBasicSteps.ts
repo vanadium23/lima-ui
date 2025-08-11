@@ -1,7 +1,7 @@
 import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
-import { ERROR_SIGN } from "../../../utilities/addresses.ts";
+import { TESTS_URL_ERROR_SIGN } from "../../../utilities/addresses.ts";
 import type { ComplexWorld } from "../../context/hooks.ts";
 import {
   LIST_STRIPE_POSITIONS,
@@ -80,5 +80,5 @@ When(
 
 When("Error happens while loading", async function (this: ComplexWorld) {
   const currentUrl = this.page.url();
-  await this.page.goto(currentUrl + ERROR_SIGN);
+  await this.page.goto(currentUrl + TESTS_URL_ERROR_SIGN);
 });

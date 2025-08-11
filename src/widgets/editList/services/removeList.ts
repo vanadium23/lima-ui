@@ -1,4 +1,4 @@
-import { BACKEND_LISTS } from "../../../../utilities/addresses.ts";
+import { BACKEND_URL_LISTS } from "../../../../utilities/addresses.ts";
 
 export async function removeList(
   id: string,
@@ -7,7 +7,7 @@ export async function removeList(
   if (!id) {
     throw new Error("Потерялся ID списка");
   }
-  const response = await fetch(`${backendURL}${BACKEND_LISTS}${id}`, {
+  const response = await fetch(`${backendURL}${BACKEND_URL_LISTS}${id}`, {
     method: "DELETE",
   });
 
