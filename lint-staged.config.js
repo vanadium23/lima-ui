@@ -4,7 +4,6 @@ export default {
     "prettier --write",
     "astro check",
   ],
-  "src/pages/stories/**/*.astro": ["astro check"],
   "**/*.{css,scss}": ["stylelint --fix", "prettier --write"],
   "**/*.feature": ["tsx scripts/removeCurrentTags.ts", "prettier --write"],
   "**/*.{json,md,yml}": ["prettier --write"],

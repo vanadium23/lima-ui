@@ -14,8 +14,7 @@
     "test": "tsx scripts/runTests.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "prepare": "husky",
-    "check-names": "tsx scripts/pathCamelCaseChecker.ts scripts/utilities/Test.ts scripts/pathCamelCaseChecker.ts"
+    "prepare": "husky"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
