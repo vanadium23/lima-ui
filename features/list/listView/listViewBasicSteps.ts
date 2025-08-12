@@ -3,11 +3,7 @@ import { expect } from "@playwright/test";
 
 import { TESTS_URL_ERROR_SIGN } from "../../../utilities/addresses.ts";
 import type { ComplexWorld } from "../../context/hooks.ts";
-import {
-  LIST_STRIPE_POSITIONS,
-  type ListStripePosition,
-} from "../../myLists/testIds.ts";
-import { LIST_ITEM_INPUT, LIST_STRIPE } from "../../testIds.ts";
+import { LIST_ITEM_INPUT } from "../../testIds.ts";
 import {
   INPUT_TEST_IDS,
   type InputMeaning,
@@ -64,17 +60,6 @@ Then(
     await expect(
       this.locateByIdParts(LIST_ITEM_INPUT).last(),
     ).not.toBeInViewport();
-  },
-);
-
-When(
-  "I press on the {string} list stripe",
-  async function (this: ComplexWorld, listStripePosition: ListStripePosition) {
-    const listStripe = this.locateByIdParts(LIST_STRIPE).nth(
-      LIST_STRIPE_POSITIONS[listStripePosition],
-    );
-
-    await listStripe.click();
   },
 );
 
