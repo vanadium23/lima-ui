@@ -6,11 +6,6 @@ import {
   REMOVE_LIST_DIALOG,
 } from "../testIds.ts";
 
-export const LIST_STRIPE_POSITIONS = {
-  first: 0,
-};
-export type ListStripePosition = keyof typeof LIST_STRIPE_POSITIONS;
-
 export const DIALOG_TEST_IDS = {
   "remove list": REMOVE_LIST_DIALOG,
 };

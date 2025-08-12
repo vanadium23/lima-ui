@@ -7,6 +7,10 @@ import {
 } from "../../utilities/addresses.ts";
 import type { ComplexWorld } from "../context/hooks.ts";
 import {
+  LIST_STRIPE_POSITIONS,
+  type ListStripePosition,
+} from "../controlsSteps/listStripeSteps.ts";
+import {
   BUTTON_TEST_IDS,
   type ButtonMeaning,
 } from "../list/listCreation/testIds.ts";
@@ -25,8 +29,6 @@ import {
   type DialogMeaning,
   LINK_TEST_IDS,
   type LinkMeaning,
-  LIST_STRIPE_POSITIONS,
-  type ListStripePosition,
 } from "./testIds.ts";
 
 When(
