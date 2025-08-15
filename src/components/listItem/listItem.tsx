@@ -56,6 +56,7 @@ type ListItemProps = {
   dragSettings?: DragSettings;
   isDraggingOverlay?: boolean;
   placeholder?: string;
+  setFocusRef?: (el: HTMLTextAreaElement) => void;
 };
 
 export const ListItem = (props: Testable<ListItemProps>) => {
@@ -81,6 +82,7 @@ export const ListItem = (props: Testable<ListItemProps>) => {
         dragState: null,
       },
       placeholder: "Пункт списка",
+      setFocusRef: () => {},
     },
     props,
   );
@@ -164,6 +166,7 @@ export const ListItem = (props: Testable<ListItemProps>) => {
           defaultValue={mProps.defaultValue}
           isRequired={mProps.isRequired}
           onChange={mProps.onChange}
+          inputRef={mProps.setFocusRef}
           testId={buildListItemInputTestId(mProps.testId)}
           testSubId={getListItemTestSubId(mProps.testId, mProps.testSubId)}
           controlElements={

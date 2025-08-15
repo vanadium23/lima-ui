@@ -120,6 +120,7 @@ export const EditList = (props: EditListProps) => {
   );
 
   let scrollContainer: ScrollContainer = undefined;
+  let firstItemRef: HTMLTextAreaElement | undefined;
 
   function scrollToBottom() {
     if (scrollContainer) {
@@ -259,6 +260,9 @@ export const EditList = (props: EditListProps) => {
       }
 
       return updatedItems;
+    });
+    requestAnimationFrame(() => {
+      firstItemRef?.focus();
     });
     checkChanges(store, setStore);
   }
@@ -527,6 +531,7 @@ export const EditList = (props: EditListProps) => {
                         placeholder={
                           item.auto ? "Добавить пункт списка" : "Пункт списка"
                         }
+                        setFocusRef={(el) => (firstItemRef = el)}
                       />
                     );
                   }}

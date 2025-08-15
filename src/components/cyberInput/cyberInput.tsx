@@ -36,6 +36,7 @@ type ItemInputProps = {
   onChange?: (value: string) => void;
   defaultIsError?: boolean;
   controlElements?: JSXElement;
+  inputRef?: (el: HTMLTextAreaElement) => void;
 };
 
 export const CyberInput = (props: Testable<ItemInputProps>) => {
@@ -54,6 +55,7 @@ export const CyberInput = (props: Testable<ItemInputProps>) => {
       dataId: "",
       onChange: () => {},
       controlElements: null,
+      inputRef: () => {},
     },
     props,
   );
@@ -98,7 +100,10 @@ export const CyberInput = (props: Testable<ItemInputProps>) => {
       }}
     >
       <textarea
-        ref={textareaRef}
+        ref={(el) => {
+          textareaRef = el;
+          mProps.inputRef(el); // пробрасываем наружу
+        }}
         name={mProps.name}
         class="cyberInput__inner"
         disabled={mProps.isDisabled}
