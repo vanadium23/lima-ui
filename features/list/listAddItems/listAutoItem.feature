@@ -50,3 +50,8 @@ Feature: Seeing the basis of the automatically added item
     And I press the visible "remove list item" menu item
     And I type some text with length less or equal to the one of "first item" input limit
     Then I expect not to see the "automatic" item input
+
+  Scenario: The first item keeps its focus after cleaning it
+    When I type some text with length less or equal to the one of "first item" input limit
+    And I clear the "first item" input
+    Then I expect to be focused on the "first item" input
