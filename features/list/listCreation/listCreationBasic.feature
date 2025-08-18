@@ -25,3 +25,20 @@ Feature: Seeing the basis of List Creation page
     And I ensure the tools panel does not disturb
     Then All necessary elements are on the "List Creation" page
     Then I expect to see no other elements
+
+  Scenario Outline: Restoring default List Creation page state
+    And I type some text with length less or equal to the one of <input> input limit
+    And I clear the <input> input
+    Then I expect to see the "save" button disabled
+
+    Examples:
+      | input          |
+      | "list title"   |
+      | "list purpose" |
+      | "first item"   |
+
+  Scenario: Restoring default List Creation page state after list note change
+    When I press on the "list note" accordion
+    And I type some text with length less or equal to the one of "list note" text area limit
+    And I clear the "list note" text area
+    Then I expect to see the "save" button disabled
