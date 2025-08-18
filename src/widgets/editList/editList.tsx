@@ -247,19 +247,13 @@ export const EditList = (props: EditListProps) => {
 
   function removeItem(indexToRemove: number) {
     setStore("items", (items) => {
-      const updatedItems = items.filter(
-        (_item, index) => index !== indexToRemove,
-      );
-
-      if (updatedItems.length === 1) {
-        return updatedItems.map((item) => ({
-          ...item,
-          auto: false,
-        }));
-      }
-
-      return updatedItems;
+      return items.filter((_item, index) => index !== indexToRemove);
     });
+
+    if (store.items.length === 1) {
+      setStore("items", 0, "auto", false);
+    }
+
     checkChanges(store, setStore);
   }
 
