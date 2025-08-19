@@ -1,13 +1,9 @@
 import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
-import { ERROR_SIGN } from "../../../utilities/addresses.ts";
+import { TESTS_URL_ERROR_SIGN } from "../../../utilities/addresses.ts";
 import type { ComplexWorld } from "../../context/hooks.ts";
-import {
-  LIST_STRIPE_POSITIONS,
-  type ListStripePosition,
-} from "../../myLists/testIds.ts";
-import { LIST_ITEM_INPUT, LIST_STRIPE } from "../../testIds.ts";
+import { LIST_ITEM_INPUT } from "../../testIds.ts";
 import {
   INPUT_TEST_IDS,
   type InputMeaning,
@@ -67,18 +63,7 @@ Then(
   },
 );
 
-When(
-  "I press on the {string} list stripe",
-  async function (this: ComplexWorld, listStripePosition: ListStripePosition) {
-    const listStripe = this.locateByIdParts(LIST_STRIPE).nth(
-      LIST_STRIPE_POSITIONS[listStripePosition],
-    );
-
-    await listStripe.click();
-  },
-);
-
 When("Error happens while loading", async function (this: ComplexWorld) {
   const currentUrl = this.page.url();
-  await this.page.goto(currentUrl + ERROR_SIGN);
+  await this.page.goto(currentUrl + TESTS_URL_ERROR_SIGN);
 });

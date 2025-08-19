@@ -34,7 +34,6 @@ type ListStripeProps = {
   size?: ListStripeSize;
   listTitle: string;
   listPurpose: string;
-  editLink: string;
   link: string;
   listId: string;
   isRemoving?: boolean;
