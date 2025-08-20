@@ -6,6 +6,7 @@ import {
   SEARCH_RESULT,
   SEARCH_RESULTS,
 } from "../../../features/testIds.ts";
+import { pluralizeRu } from "../../../utilities/pluralizeRussianWords.ts";
 import type { DropdownListType } from "../../widgets/editList/types.ts";
 import { DropdownListItem } from "../dropdownListItem/dropdownListItem.tsx";
 import { Icon, IconName, IconSize } from "../icon/icon.tsx";
@@ -38,22 +39,19 @@ export const QuickSearch = (props: QuickSearchProps) => {
     props,
   );
 
-  function getResultWord(num: number): string {
-    const lastTwoDigits = num % 100;
+  function getResultPhrase() {
+    const firstWord = pluralizeRu(mProps.lists.length, [
+      "Найден",
+      "Найдено",
+      "Найдено",
+    ]);
+    const secondWord = pluralizeRu(mProps.lists.length, [
+      "результат",
+      "результата",
+      "результатов",
+    ]);
 
-    if (lastTwoDigits >= 11 && lastTwoDigits <= 14) {
-      return `Найдено ${num} результатов`;
-    }
-
-    const lastDigit = num % 10;
-
-    if (lastDigit === 1) {
-      return `Найден ${num} результат`;
-    } else if (lastDigit >= 2 && lastDigit <= 4) {
-      return `Найдено ${num} результата`;
-    } else {
-      return `Найдено ${num} результатов`;
-    }
+    return `${firstWord} ${mProps.lists.length} ${secondWord}`;
   }
 
   return (
@@ -101,9 +99,7 @@ export const QuickSearch = (props: QuickSearchProps) => {
         </Show>
 
         <Show when={mProps.lists.length}>
-          <span class="quickSearch__totalResults">
-            {getResultWord(mProps.lists.length)}
-          </span>
+          <span class="quickSearch__totalResults">{getResultPhrase()}</span>
         </Show>
       </Show>
     </div>
