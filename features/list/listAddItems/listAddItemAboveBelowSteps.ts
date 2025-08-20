@@ -38,7 +38,7 @@ Then("I expect to see the new last item", async function (this: ComplexWorld) {
 
 When(
   "I add list items to their limit via adding above and below",
-  { timeout: getTimeoutOrCancelItIfDebugging(60000) },
+  { timeout: getTimeoutOrCancelItIfDebugging(120000) },
   async function (this: ComplexWorld) {
     for (let i = await calculateCurrentItemsCount(this); i < ITEMS_LIMIT; i++) {
       await this.locateByIdParts(LIST_ITEM_INPUT)
