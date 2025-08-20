@@ -8,6 +8,6 @@ When(
   async function (this: ComplexWorld) {
     await this.page.waitForLoadState("networkidle");
     // soften также применяется в интерфейсе для более плавного снятия загрузки.
-    await soften(() => {}, 1000);
+    await soften(() => {}, 2500);
   },
 );
