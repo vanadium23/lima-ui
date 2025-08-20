@@ -39,7 +39,7 @@ export const QuickSearch = (props: QuickSearchProps) => {
     props,
   );
 
-  function resultPhrase() {
+  function getResultPhrase() {
     const firstWord = pluralizeRu(mProps.lists.length, [
       "Найден",
       "Найдено",
@@ -99,7 +99,7 @@ export const QuickSearch = (props: QuickSearchProps) => {
         </Show>
 
         <Show when={mProps.lists.length}>
-          <span class="quickSearch__totalResults">{resultPhrase()}</span>
+          <span class="quickSearch__totalResults">{getResultPhrase()}</span>
         </Show>
       </Show>
     </div>
