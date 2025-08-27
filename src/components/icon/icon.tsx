@@ -1528,12 +1528,16 @@ export enum IconSize {
 type IconProps = {
   name: IconName;
   size?: IconSize;
+  role?: "img" | undefined;
+  ariaLabel?: string | undefined;
 };
 
 export const Icon = (props: IconProps) => {
   const mProps: Required<IconProps> = mergeProps(
     {
       size: IconSize.Medium,
+      role: undefined,
+      ariaLabel: undefined,
     },
     props,
   );
@@ -1542,7 +1546,9 @@ export const Icon = (props: IconProps) => {
     <Dynamic
       component={icons[props.name]}
       size={mProps.size}
-      ariaHidden={true}
+      ariaHidden={!mProps.role}
+      role={mProps.role}
+      ariaLabel={mProps.ariaLabel}
     />
   );
 };
