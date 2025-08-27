@@ -1,12 +1,10 @@
-import type { JSX } from "solid-js";
-
 import { IconSize } from "./icon.tsx";
 
 type SpriteProps = {
   size: IconSize;
   ariaHidden: boolean;
-  role?: JSX.HTMLAttributes<SVGSVGElement>["role"];
-  ariaLabel?: JSX.HTMLAttributes<SVGSVGElement>["aria-label"];
+  role?: "img" | undefined;
+  ariaLabel?: string | undefined;
 };
 
 export const AcornIcon = (props: SpriteProps) => {

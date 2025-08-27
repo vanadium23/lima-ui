@@ -9,8 +9,9 @@ const sizes = Object.values(IconSize);
   <div class="demoThemeWrapper">
     <div class="grid grid_2Col">
       <span class="chead"></span>
-      <span class="chead">Decorative</span>
+
       <span class="chead">Semantic</span>
+      <span class="chead">Decorative</span>
 
       {
         sizes.map((size) => (
@@ -21,7 +22,7 @@ const sizes = Object.values(IconSize);
               name={IconName.Trash}
               size={size}
               role={"img"}
-              aria-label="Смысловая нагрузка иконки, если она имеет тултип или несет информацию, необходимую для скринридеров и используется только вместе с ролью img"
+              ariaLabel="Смысловая нагрузка иконки, если она имеет тултип или несет информацию, необходимую для скринридеров и используется только вместе с ролью img"
             />
             <Icon client:only="solid-js" name={IconName.Trash} size={size} />
           </>

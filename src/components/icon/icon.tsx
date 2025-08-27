@@ -1,4 +1,4 @@
-import { type JSX, mergeProps } from "solid-js";
+import { mergeProps } from "solid-js";
 import { Dynamic } from "solid-js/web";
 
 import * as icons from "./sprite.tsx";
@@ -1528,8 +1528,8 @@ export enum IconSize {
 type IconProps = {
   name: IconName;
   size?: IconSize;
-  role?: JSX.HTMLAttributes<SVGSVGElement>["role"];
-  ariaLabel?: JSX.HTMLAttributes<SVGSVGElement>["aria-label"];
+  role?: "img" | undefined;
+  ariaLabel?: string | undefined;
 };
 
 export const Icon = (props: IconProps) => {
