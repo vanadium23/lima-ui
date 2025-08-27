@@ -22,7 +22,7 @@ import {
 import { CyberInput } from "../cyberInput/cyberInput.tsx";
 import { DragHandle } from "../dragHandle/dragHandle.tsx";
 import { DropdownMenuWrapper } from "../dropdownMenuWrapper/dropdownMenuWrapper.tsx";
-import { IconName } from "../icon/icon.tsx";
+import { IconName } from "../icon/types.ts";
 import { IconButtonSize } from "../iconButton/iconButton.tsx";
 import { MenuItemTheme } from "../menuItem/menuItem.tsx";
 import type { Testable, TestId, TestSubId } from "../utilities/testable.ts";

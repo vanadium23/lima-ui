@@ -12,7 +12,7 @@ import {
   SEARCH_INPUT,
   SEARCH_NETWORK_ERROR,
 } from "../../../features/testIds.ts";
-import { IconName } from "../../components/icon/icon.tsx";
+import { IconName } from "../../components/icon/types.ts";
 import {
   IconButton,
   IconButtonTheme,

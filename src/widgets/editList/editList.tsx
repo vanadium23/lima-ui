@@ -52,7 +52,7 @@ import {
 } from "../../components/cyberInput/cyberInput.tsx";
 import { Dialog } from "../../components/dialog/dialog.tsx";
 import { Divider } from "../../components/divider/divider.tsx";
-import { IconName } from "../../components/icon/icon.tsx";
+import { IconName } from "../../components/icon/types.ts";
 import { ListItem } from "../../components/listItem/listItem.tsx";
 import { Note } from "../../components/note/note.tsx";
 import { PageError } from "../../components/pageError/pageError.tsx";

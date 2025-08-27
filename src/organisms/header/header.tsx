@@ -7,7 +7,7 @@ import {
   TOGGLE_TOOLS_PANEL_BUTTON,
 } from "../../../features/testIds.ts";
 import { URL_MY_LISTS } from "../../../utilities/addresses.ts";
-import { IconName } from "../../components/icon/icon.tsx";
+import { IconName } from "../../components/icon/types.ts";
 import {
   IconButton,
   IconButtonTheme,

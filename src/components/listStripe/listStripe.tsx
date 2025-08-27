@@ -14,7 +14,7 @@ import { soften } from "../../widgets/editList/utilities/soften.ts";
 import { Button, ButtonSize, ButtonTheme } from "../button/button.tsx";
 import { Dialog, DialogSize, DialogTheme } from "../dialog/dialog.tsx";
 import { DropdownMenuWrapper } from "../dropdownMenuWrapper/dropdownMenuWrapper.tsx";
-import { IconName } from "../icon/icon.tsx";
+import { IconName } from "../icon/types.ts";
 import { IconButtonSize } from "../iconButton/iconButton.tsx";
 import { MenuItemTheme } from "../menuItem/menuItem.tsx";
 import { type Testable } from "../utilities/testable.ts";

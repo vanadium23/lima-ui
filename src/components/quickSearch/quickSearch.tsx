@@ -9,7 +9,8 @@ import {
 import { pluralizeRu } from "../../../utilities/pluralizeRussianWords.ts";
 import type { DropdownListType } from "../../widgets/editList/types.ts";
 import { DropdownListItem } from "../dropdownListItem/dropdownListItem.tsx";
-import { Icon, IconName, IconSize } from "../icon/icon.tsx";
+import { Icon, IconSize } from "../icon/icon.tsx";
+import { IconName } from "../icon/types.ts";
 
 import "./quickSearch.css";
 
