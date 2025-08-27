@@ -125,7 +125,7 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
       {/* MAKSIM: Скрываются в состоянии Loading, когда нет Hover'а. */}
       <div class="listStripe__controls">
         <DropdownMenuWrapper
-          iconSize={IconButtonSize.Medium}
+          iconSize={IconButtonSize.MediumEmbedded}
           testId={OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON}
           testSubId={mProps.testSubId || "0"}
           dropDownMenuTestId={LIST_STRIPE_CONTEXT_MENU}

@@ -29,7 +29,7 @@
 .listStripe__controls {
   display: inline-flex;
   position: absolute;
-  right: 0;
+  right: var(--size-x3);
   top: var(--size-x3);
 }
 
@@ -62,7 +62,7 @@
 }
 
 .listStripe_medium .listStripe__link {
-  padding: var(--size-x3) var(--size-x22) var(--size-x3) var(--size-x6);
+  padding: var(--size-x3) var(--size-x13) var(--size-x3) var(--size-x6);
 }
 
 .listStripe_medium .listStripe__title {
