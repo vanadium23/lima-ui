@@ -1,7 +1,7 @@
 import { createEffect, type JSX, mergeProps } from "solid-js";
 
 import { DIALOG_CLOSE_BUTTON } from "../../../features/testIds.ts";
-import { IconName } from "../icon/icon.tsx";
+import { IconName } from "../icon/types.ts";
 import {
   IconButton,
   IconButtonSize,

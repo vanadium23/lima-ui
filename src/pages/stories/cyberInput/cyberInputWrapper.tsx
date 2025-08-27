@@ -10,7 +10,7 @@ import {
   CyberInputTheme,
 } from "../../../components/cyberInput/cyberInput.tsx";
 import { DropdownMenuWrapper } from "../../../components/dropdownMenuWrapper/dropdownMenuWrapper.tsx";
-import { IconName } from "../../../components/icon/icon.tsx";
+import { IconName } from "../../../components/icon/types.ts";
 import { IconButtonSize } from "../../../components/iconButton/iconButton.tsx";
 import type { MenuItemProps } from "../../../components/menuItem/menuItem.tsx";
 

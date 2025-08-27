@@ -1,6 +1,7 @@
 import { Match, mergeProps, type Ref, Show, Switch } from "solid-js";
 
-import { Icon, IconName, IconSize } from "../icon/icon.tsx";
+import { Icon, IconSize } from "../icon/icon.tsx";
+import { IconName } from "../icon/types.ts";
 import type { Testable } from "../utilities/testable.ts";
 
 import "./iconButton.css";

@@ -1,4 +1,4 @@
-import { IconName } from "../../../components/icon/icon.tsx";
+import { IconName } from "../../../components/icon/types.ts";
 import { MenuItemTheme } from "../../../components/menuItem/menuItem.tsx";
 
 export const dropdownItems = () => [

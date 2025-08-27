@@ -1,7 +1,8 @@
 import { mergeProps } from "solid-js";
 
 import { SEARCH_NETWORK_ERROR_CLOSE_BUTTON } from "../../../features/testIds.ts";
-import { Icon, IconName, IconSize } from "../icon/icon.tsx";
+import { Icon, IconSize } from "../icon/icon.tsx";
+import { IconName } from "../icon/types.ts";
 import {
   IconButton,
   IconButtonSize,

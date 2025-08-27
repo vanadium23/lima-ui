@@ -3,7 +3,7 @@ import { Portal } from "solid-js/web";
 
 import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import { DropdownMenu } from "../dropdownMenu/dropdownMenu.tsx";
-import { IconName } from "../icon/icon.tsx";
+import { IconName } from "../icon/types.ts";
 import {
   IconButton,
   IconButtonComponentType,

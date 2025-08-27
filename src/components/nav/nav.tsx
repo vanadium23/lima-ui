@@ -5,7 +5,7 @@ import { URL_CREATE_LIST, URL_MY_LISTS } from "../../../utilities/addresses.ts";
 import { location } from "../../state/locationState.ts";
 import { isLimitReached } from "../../state/reachListsLimit.ts";
 import { Divider } from "../divider/divider.tsx";
-import { IconName } from "../icon/icon.tsx";
+import { IconName } from "../icon/types.ts";
 import { NavItem, NavItemSize, NavItemTheme } from "../navItem/navItem.tsx";
 
 import "./nav.css";

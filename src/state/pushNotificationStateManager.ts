@@ -1,7 +1,7 @@
 import { createSignal } from "solid-js";
 
 import { DEFAULT_TEST_ID } from "../../features/testIds.ts";
-import { IconName } from "../components/icon/icon.tsx";
+import { IconName } from "../components/icon/types.ts";
 import type { TestId, TestSubId } from "../components/utilities/testable.ts";
 
 export type NotificationData = {

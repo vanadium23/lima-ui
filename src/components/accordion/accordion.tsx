@@ -4,7 +4,8 @@ import {
   buildAccordionButtonTestId,
   buildAccordionContentTestId,
 } from "../../../features/testIds.ts";
-import { Icon, IconName, IconSize } from "../icon/icon.tsx";
+import { Icon, IconSize } from "../icon/icon.tsx";
+import { IconName } from "../icon/types.ts";
 import type { Testable } from "../utilities/testable.ts";
 
 import "./accordion.css";
