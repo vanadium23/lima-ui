@@ -1,8 +1,12 @@
+import type { JSX } from "solid-js";
+
 import { IconSize } from "./icon.tsx";
 
 type SpriteProps = {
   size: IconSize;
   ariaHidden: boolean;
+  role?: JSX.HTMLAttributes<SVGSVGElement>["role"];
+  ariaLabel?: JSX.HTMLAttributes<SVGSVGElement>["aria-label"];
 };
 
 export const AcornIcon = (props: SpriteProps) => {
@@ -12,6 +16,8 @@ export const AcornIcon = (props: SpriteProps) => {
       data-id="acorn"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -27,6 +33,8 @@ export const AddressBookTabsIcon = (props: SpriteProps) => {
       data-id="addressBookTabs"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -42,6 +50,8 @@ export const AddressBookIcon = (props: SpriteProps) => {
       data-id="addressBook"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -57,6 +67,8 @@ export const AirTrafficControlIcon = (props: SpriteProps) => {
       data-id="airTrafficControl"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -72,6 +84,8 @@ export const AirplaneInFlightIcon = (props: SpriteProps) => {
       data-id="airplaneInFlight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -87,6 +101,8 @@ export const AirplaneLandingIcon = (props: SpriteProps) => {
       data-id="airplaneLanding"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -102,6 +118,8 @@ export const AirplaneTakeoffIcon = (props: SpriteProps) => {
       data-id="airplaneTakeoff"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -117,6 +135,8 @@ export const AirplaneTaxiingIcon = (props: SpriteProps) => {
       data-id="airplaneTaxiing"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -132,6 +152,8 @@ export const AirplaneTiltIcon = (props: SpriteProps) => {
       data-id="airplaneTilt"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -147,6 +169,8 @@ export const AirplaneIcon = (props: SpriteProps) => {
       data-id="airplane"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -162,6 +186,8 @@ export const AirplayIcon = (props: SpriteProps) => {
       data-id="airplay"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -177,6 +203,8 @@ export const AlarmIcon = (props: SpriteProps) => {
       data-id="alarm"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -192,6 +220,8 @@ export const AlienIcon = (props: SpriteProps) => {
       data-id="alien"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -207,6 +237,8 @@ export const AlignBottomSimpleIcon = (props: SpriteProps) => {
       data-id="alignBottomSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -222,6 +254,8 @@ export const AlignBottomIcon = (props: SpriteProps) => {
       data-id="alignBottom"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -237,6 +271,8 @@ export const AlignCenterHorizontalSimpleIcon = (props: SpriteProps) => {
       data-id="alignCenterHorizontalSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -252,6 +288,8 @@ export const AlignCenterHorizontalIcon = (props: SpriteProps) => {
       data-id="alignCenterHorizontal"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -267,6 +305,8 @@ export const AlignCenterVerticalSimpleIcon = (props: SpriteProps) => {
       data-id="alignCenterVerticalSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -282,6 +322,8 @@ export const AlignCenterVerticalIcon = (props: SpriteProps) => {
       data-id="alignCenterVertical"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -297,6 +339,8 @@ export const AlignLeftSimpleIcon = (props: SpriteProps) => {
       data-id="alignLeftSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -312,6 +356,8 @@ export const AlignLeftIcon = (props: SpriteProps) => {
       data-id="alignLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -327,6 +373,8 @@ export const AlignRightSimpleIcon = (props: SpriteProps) => {
       data-id="alignRightSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -342,6 +390,8 @@ export const AlignRightIcon = (props: SpriteProps) => {
       data-id="alignRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -357,6 +407,8 @@ export const AlignTopSimpleIcon = (props: SpriteProps) => {
       data-id="alignTopSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -372,6 +424,8 @@ export const AlignTopIcon = (props: SpriteProps) => {
       data-id="alignTop"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -387,6 +441,8 @@ export const AmazonLogoIcon = (props: SpriteProps) => {
       data-id="amazonLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -402,6 +458,8 @@ export const AmbulanceIcon = (props: SpriteProps) => {
       data-id="ambulance"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -417,6 +475,8 @@ export const AnchorSimpleIcon = (props: SpriteProps) => {
       data-id="anchorSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -432,6 +492,8 @@ export const AnchorIcon = (props: SpriteProps) => {
       data-id="anchor"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -447,6 +509,8 @@ export const AndroidLogoIcon = (props: SpriteProps) => {
       data-id="androidLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -462,6 +526,8 @@ export const AngleIcon = (props: SpriteProps) => {
       data-id="angle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -477,6 +543,8 @@ export const AngularLogoIcon = (props: SpriteProps) => {
       data-id="angularLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -492,6 +560,8 @@ export const ApertureIcon = (props: SpriteProps) => {
       data-id="aperture"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -507,6 +577,8 @@ export const AppStoreLogoIcon = (props: SpriteProps) => {
       data-id="appStoreLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -522,6 +594,8 @@ export const AppWindowIcon = (props: SpriteProps) => {
       data-id="appWindow"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -537,6 +611,8 @@ export const AppleLogoIcon = (props: SpriteProps) => {
       data-id="appleLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -552,6 +628,8 @@ export const ApplePodcastsLogoIcon = (props: SpriteProps) => {
       data-id="applePodcastsLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -567,6 +645,8 @@ export const ApproximateEqualsIcon = (props: SpriteProps) => {
       data-id="approximateEquals"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -582,6 +662,8 @@ export const ArchiveIcon = (props: SpriteProps) => {
       data-id="archive"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -597,6 +679,8 @@ export const ArmchairIcon = (props: SpriteProps) => {
       data-id="armchair"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -612,6 +696,8 @@ export const ArrowArcLeftIcon = (props: SpriteProps) => {
       data-id="arrowArcLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -627,6 +713,8 @@ export const ArrowArcRightIcon = (props: SpriteProps) => {
       data-id="arrowArcRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -642,6 +730,8 @@ export const ArrowBendDoubleUpLeftIcon = (props: SpriteProps) => {
       data-id="arrowBendDoubleUpLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -657,6 +747,8 @@ export const ArrowBendDoubleUpRightIcon = (props: SpriteProps) => {
       data-id="arrowBendDoubleUpRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -672,6 +764,8 @@ export const ArrowBendDownLeftIcon = (props: SpriteProps) => {
       data-id="arrowBendDownLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -687,6 +781,8 @@ export const ArrowBendDownRightIcon = (props: SpriteProps) => {
       data-id="arrowBendDownRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -702,6 +798,8 @@ export const ArrowBendLeftDownIcon = (props: SpriteProps) => {
       data-id="arrowBendLeftDown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -717,6 +815,8 @@ export const ArrowBendLeftUpIcon = (props: SpriteProps) => {
       data-id="arrowBendLeftUp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -732,6 +832,8 @@ export const ArrowBendRightDownIcon = (props: SpriteProps) => {
       data-id="arrowBendRightDown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -747,6 +849,8 @@ export const ArrowBendRightUpIcon = (props: SpriteProps) => {
       data-id="arrowBendRightUp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -762,6 +866,8 @@ export const ArrowBendUpLeftIcon = (props: SpriteProps) => {
       data-id="arrowBendUpLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -777,6 +883,8 @@ export const ArrowBendUpRightIcon = (props: SpriteProps) => {
       data-id="arrowBendUpRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -792,6 +900,8 @@ export const ArrowCircleDownLeftIcon = (props: SpriteProps) => {
       data-id="arrowCircleDownLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -807,6 +917,8 @@ export const ArrowCircleDownRightIcon = (props: SpriteProps) => {
       data-id="arrowCircleDownRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -822,6 +934,8 @@ export const ArrowCircleDownIcon = (props: SpriteProps) => {
       data-id="arrowCircleDown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -837,6 +951,8 @@ export const ArrowCircleLeftIcon = (props: SpriteProps) => {
       data-id="arrowCircleLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -852,6 +968,8 @@ export const ArrowCircleRightIcon = (props: SpriteProps) => {
       data-id="arrowCircleRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -867,6 +985,8 @@ export const ArrowCircleUpLeftIcon = (props: SpriteProps) => {
       data-id="arrowCircleUpLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -882,6 +1002,8 @@ export const ArrowCircleUpRightIcon = (props: SpriteProps) => {
       data-id="arrowCircleUpRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -897,6 +1019,8 @@ export const ArrowCircleUpIcon = (props: SpriteProps) => {
       data-id="arrowCircleUp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -912,6 +1036,8 @@ export const ArrowClockwiseIcon = (props: SpriteProps) => {
       data-id="arrowClockwise"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -927,6 +1053,8 @@ export const ArrowCounterClockwiseIcon = (props: SpriteProps) => {
       data-id="arrowCounterClockwise"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -942,6 +1070,8 @@ export const ArrowDownLeftIcon = (props: SpriteProps) => {
       data-id="arrowDownLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -957,6 +1087,8 @@ export const ArrowDownRightIcon = (props: SpriteProps) => {
       data-id="arrowDownRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -972,6 +1104,8 @@ export const ArrowDownIcon = (props: SpriteProps) => {
       data-id="arrowDown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -987,6 +1121,8 @@ export const ArrowElbowDownLeftIcon = (props: SpriteProps) => {
       data-id="arrowElbowDownLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1002,6 +1138,8 @@ export const ArrowElbowDownRightIcon = (props: SpriteProps) => {
       data-id="arrowElbowDownRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1017,6 +1155,8 @@ export const ArrowElbowLeftDownIcon = (props: SpriteProps) => {
       data-id="arrowElbowLeftDown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1032,6 +1172,8 @@ export const ArrowElbowLeftUpIcon = (props: SpriteProps) => {
       data-id="arrowElbowLeftUp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1047,6 +1189,8 @@ export const ArrowElbowLeftIcon = (props: SpriteProps) => {
       data-id="arrowElbowLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1062,6 +1206,8 @@ export const ArrowElbowRightDownIcon = (props: SpriteProps) => {
       data-id="arrowElbowRightDown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1077,6 +1223,8 @@ export const ArrowElbowRightUpIcon = (props: SpriteProps) => {
       data-id="arrowElbowRightUp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1092,6 +1240,8 @@ export const ArrowElbowRightIcon = (props: SpriteProps) => {
       data-id="arrowElbowRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1107,6 +1257,8 @@ export const ArrowElbowUpLeftIcon = (props: SpriteProps) => {
       data-id="arrowElbowUpLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1122,6 +1274,8 @@ export const ArrowElbowUpRightIcon = (props: SpriteProps) => {
       data-id="arrowElbowUpRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1137,6 +1291,8 @@ export const ArrowFatDownIcon = (props: SpriteProps) => {
       data-id="arrowFatDown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1152,6 +1308,8 @@ export const ArrowFatLeftIcon = (props: SpriteProps) => {
       data-id="arrowFatLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1167,6 +1325,8 @@ export const ArrowFatLineDownIcon = (props: SpriteProps) => {
       data-id="arrowFatLineDown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1182,6 +1342,8 @@ export const ArrowFatLineLeftIcon = (props: SpriteProps) => {
       data-id="arrowFatLineLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1197,6 +1359,8 @@ export const ArrowFatLineRightIcon = (props: SpriteProps) => {
       data-id="arrowFatLineRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1212,6 +1376,8 @@ export const ArrowFatLineUpIcon = (props: SpriteProps) => {
       data-id="arrowFatLineUp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1227,6 +1393,8 @@ export const ArrowFatLinesDownIcon = (props: SpriteProps) => {
       data-id="arrowFatLinesDown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1242,6 +1410,8 @@ export const ArrowFatLinesLeftIcon = (props: SpriteProps) => {
       data-id="arrowFatLinesLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1257,6 +1427,8 @@ export const ArrowFatLinesRightIcon = (props: SpriteProps) => {
       data-id="arrowFatLinesRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1272,6 +1444,8 @@ export const ArrowFatLinesUpIcon = (props: SpriteProps) => {
       data-id="arrowFatLinesUp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1287,6 +1461,8 @@ export const ArrowFatRightIcon = (props: SpriteProps) => {
       data-id="arrowFatRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1302,6 +1478,8 @@ export const ArrowFatUpIcon = (props: SpriteProps) => {
       data-id="arrowFatUp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1317,6 +1495,8 @@ export const ArrowLeftIcon = (props: SpriteProps) => {
       data-id="arrowLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1332,6 +1512,8 @@ export const ArrowLineDownLeftIcon = (props: SpriteProps) => {
       data-id="arrowLineDownLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1347,6 +1529,8 @@ export const ArrowLineDownRightIcon = (props: SpriteProps) => {
       data-id="arrowLineDownRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1362,6 +1546,8 @@ export const ArrowLineDownIcon = (props: SpriteProps) => {
       data-id="arrowLineDown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1377,6 +1563,8 @@ export const ArrowLineLeftIcon = (props: SpriteProps) => {
       data-id="arrowLineLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1392,6 +1580,8 @@ export const ArrowLineRightIcon = (props: SpriteProps) => {
       data-id="arrowLineRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1407,6 +1597,8 @@ export const ArrowLineUpLeftIcon = (props: SpriteProps) => {
       data-id="arrowLineUpLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1422,6 +1614,8 @@ export const ArrowLineUpRightIcon = (props: SpriteProps) => {
       data-id="arrowLineUpRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1437,6 +1631,8 @@ export const ArrowLineUpIcon = (props: SpriteProps) => {
       data-id="arrowLineUp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1452,6 +1648,8 @@ export const ArrowRightIcon = (props: SpriteProps) => {
       data-id="arrowRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1467,6 +1665,8 @@ export const ArrowSquareDownLeftIcon = (props: SpriteProps) => {
       data-id="arrowSquareDownLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1482,6 +1682,8 @@ export const ArrowSquareDownRightIcon = (props: SpriteProps) => {
       data-id="arrowSquareDownRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1497,6 +1699,8 @@ export const ArrowSquareDownIcon = (props: SpriteProps) => {
       data-id="arrowSquareDown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1512,6 +1716,8 @@ export const ArrowSquareInIcon = (props: SpriteProps) => {
       data-id="arrowSquareIn"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1527,6 +1733,8 @@ export const ArrowSquareLeftIcon = (props: SpriteProps) => {
       data-id="arrowSquareLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1542,6 +1750,8 @@ export const ArrowSquareOutIcon = (props: SpriteProps) => {
       data-id="arrowSquareOut"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1557,6 +1767,8 @@ export const ArrowSquareRightIcon = (props: SpriteProps) => {
       data-id="arrowSquareRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1572,6 +1784,8 @@ export const ArrowSquareUpLeftIcon = (props: SpriteProps) => {
       data-id="arrowSquareUpLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1587,6 +1801,8 @@ export const ArrowSquareUpRightIcon = (props: SpriteProps) => {
       data-id="arrowSquareUpRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1602,6 +1818,8 @@ export const ArrowSquareUpIcon = (props: SpriteProps) => {
       data-id="arrowSquareUp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1617,6 +1835,8 @@ export const ArrowUDownLeftIcon = (props: SpriteProps) => {
       data-id="arrowUDownLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1632,6 +1852,8 @@ export const ArrowUDownRightIcon = (props: SpriteProps) => {
       data-id="arrowUDownRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1647,6 +1869,8 @@ export const ArrowULeftDownIcon = (props: SpriteProps) => {
       data-id="arrowULeftDown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1662,6 +1886,8 @@ export const ArrowULeftUpIcon = (props: SpriteProps) => {
       data-id="arrowULeftUp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1677,6 +1903,8 @@ export const ArrowURightDownIcon = (props: SpriteProps) => {
       data-id="arrowURightDown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1692,6 +1920,8 @@ export const ArrowURightUpIcon = (props: SpriteProps) => {
       data-id="arrowURightUp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1707,6 +1937,8 @@ export const ArrowUUpLeftIcon = (props: SpriteProps) => {
       data-id="arrowUUpLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1722,6 +1954,8 @@ export const ArrowUUpRightIcon = (props: SpriteProps) => {
       data-id="arrowUUpRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1737,6 +1971,8 @@ export const ArrowUpLeftIcon = (props: SpriteProps) => {
       data-id="arrowUpLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1752,6 +1988,8 @@ export const ArrowUpRightIcon = (props: SpriteProps) => {
       data-id="arrowUpRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1767,6 +2005,8 @@ export const ArrowUpIcon = (props: SpriteProps) => {
       data-id="arrowUp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1782,6 +2022,8 @@ export const ArrowsClockwiseIcon = (props: SpriteProps) => {
       data-id="arrowsClockwise"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1797,6 +2039,8 @@ export const ArrowsCounterClockwiseIcon = (props: SpriteProps) => {
       data-id="arrowsCounterClockwise"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1812,6 +2056,8 @@ export const ArrowsDownUpIcon = (props: SpriteProps) => {
       data-id="arrowsDownUp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1827,6 +2073,8 @@ export const ArrowsHorizontalIcon = (props: SpriteProps) => {
       data-id="arrowsHorizontal"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1842,6 +2090,8 @@ export const ArrowsInCardinalIcon = (props: SpriteProps) => {
       data-id="arrowsInCardinal"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1857,6 +2107,8 @@ export const ArrowsInLineHorizontalIcon = (props: SpriteProps) => {
       data-id="arrowsInLineHorizontal"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1872,6 +2124,8 @@ export const ArrowsInLineVerticalIcon = (props: SpriteProps) => {
       data-id="arrowsInLineVertical"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1887,6 +2141,8 @@ export const ArrowsInSimpleIcon = (props: SpriteProps) => {
       data-id="arrowsInSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1902,6 +2158,8 @@ export const ArrowsInIcon = (props: SpriteProps) => {
       data-id="arrowsIn"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1917,6 +2175,8 @@ export const ArrowsLeftRightIcon = (props: SpriteProps) => {
       data-id="arrowsLeftRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1932,6 +2192,8 @@ export const ArrowsMergeIcon = (props: SpriteProps) => {
       data-id="arrowsMerge"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1947,6 +2209,8 @@ export const ArrowsOutCardinalIcon = (props: SpriteProps) => {
       data-id="arrowsOutCardinal"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1962,6 +2226,8 @@ export const ArrowsOutLineHorizontalIcon = (props: SpriteProps) => {
       data-id="arrowsOutLineHorizontal"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1977,6 +2243,8 @@ export const ArrowsOutLineVerticalIcon = (props: SpriteProps) => {
       data-id="arrowsOutLineVertical"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -1992,6 +2260,8 @@ export const ArrowsOutSimpleIcon = (props: SpriteProps) => {
       data-id="arrowsOutSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2007,6 +2277,8 @@ export const ArrowsOutIcon = (props: SpriteProps) => {
       data-id="arrowsOut"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2022,6 +2294,8 @@ export const ArrowsSplitIcon = (props: SpriteProps) => {
       data-id="arrowsSplit"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2037,6 +2311,8 @@ export const ArrowsVerticalIcon = (props: SpriteProps) => {
       data-id="arrowsVertical"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2052,6 +2328,8 @@ export const ArticleMediumIcon = (props: SpriteProps) => {
       data-id="articleMedium"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2067,6 +2345,8 @@ export const ArticleNyTimesIcon = (props: SpriteProps) => {
       data-id="articleNyTimes"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2082,6 +2362,8 @@ export const ArticleIcon = (props: SpriteProps) => {
       data-id="article"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2097,6 +2379,8 @@ export const AsclepiusIcon = (props: SpriteProps) => {
       data-id="asclepius"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2112,6 +2396,8 @@ export const AsteriskSimpleIcon = (props: SpriteProps) => {
       data-id="asteriskSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2127,6 +2413,8 @@ export const AsteriskIcon = (props: SpriteProps) => {
       data-id="asterisk"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2142,6 +2430,8 @@ export const AtIcon = (props: SpriteProps) => {
       data-id="at"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2157,6 +2447,8 @@ export const AtomIcon = (props: SpriteProps) => {
       data-id="atom"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2172,6 +2464,8 @@ export const AvocadoIcon = (props: SpriteProps) => {
       data-id="avocado"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2187,6 +2481,8 @@ export const AxeIcon = (props: SpriteProps) => {
       data-id="axe"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2202,6 +2498,8 @@ export const BabyCarriageIcon = (props: SpriteProps) => {
       data-id="babyCarriage"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2217,6 +2515,8 @@ export const BabyIcon = (props: SpriteProps) => {
       data-id="baby"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2232,6 +2532,8 @@ export const BackpackIcon = (props: SpriteProps) => {
       data-id="backpack"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2247,6 +2549,8 @@ export const BackspaceIcon = (props: SpriteProps) => {
       data-id="backspace"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2262,6 +2566,8 @@ export const BagSimpleIcon = (props: SpriteProps) => {
       data-id="bagSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2277,6 +2583,8 @@ export const BagIcon = (props: SpriteProps) => {
       data-id="bag"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2292,6 +2600,8 @@ export const BalloonIcon = (props: SpriteProps) => {
       data-id="balloon"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2307,6 +2617,8 @@ export const BandaidsIcon = (props: SpriteProps) => {
       data-id="bandaids"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2322,6 +2634,8 @@ export const BankIcon = (props: SpriteProps) => {
       data-id="bank"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2337,6 +2651,8 @@ export const BarbellIcon = (props: SpriteProps) => {
       data-id="barbell"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2352,6 +2668,8 @@ export const BarcodeIcon = (props: SpriteProps) => {
       data-id="barcode"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2367,6 +2685,8 @@ export const BarnIcon = (props: SpriteProps) => {
       data-id="barn"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2382,6 +2702,8 @@ export const BarricadeIcon = (props: SpriteProps) => {
       data-id="barricade"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2397,6 +2719,8 @@ export const BaseballCapIcon = (props: SpriteProps) => {
       data-id="baseballCap"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2412,6 +2736,8 @@ export const BaseballHelmetIcon = (props: SpriteProps) => {
       data-id="baseballHelmet"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2427,6 +2753,8 @@ export const BaseballIcon = (props: SpriteProps) => {
       data-id="baseball"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2442,6 +2770,8 @@ export const BasketIcon = (props: SpriteProps) => {
       data-id="basket"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2457,6 +2787,8 @@ export const BasketballIcon = (props: SpriteProps) => {
       data-id="basketball"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2472,6 +2804,8 @@ export const BathtubIcon = (props: SpriteProps) => {
       data-id="bathtub"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2487,6 +2821,8 @@ export const BatteryChargingVerticalIcon = (props: SpriteProps) => {
       data-id="batteryChargingVertical"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2502,6 +2838,8 @@ export const BatteryChargingIcon = (props: SpriteProps) => {
       data-id="batteryCharging"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2517,6 +2855,8 @@ export const BatteryEmptyIcon = (props: SpriteProps) => {
       data-id="batteryEmpty"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2532,6 +2872,8 @@ export const BatteryFullIcon = (props: SpriteProps) => {
       data-id="batteryFull"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2547,6 +2889,8 @@ export const BatteryHighIcon = (props: SpriteProps) => {
       data-id="batteryHigh"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2562,6 +2906,8 @@ export const BatteryLowIcon = (props: SpriteProps) => {
       data-id="batteryLow"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2577,6 +2923,8 @@ export const BatteryMediumIcon = (props: SpriteProps) => {
       data-id="batteryMedium"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2592,6 +2940,8 @@ export const BatteryPlusVerticalIcon = (props: SpriteProps) => {
       data-id="batteryPlusVertical"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2607,6 +2957,8 @@ export const BatteryPlusIcon = (props: SpriteProps) => {
       data-id="batteryPlus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2622,6 +2974,8 @@ export const BatteryVerticalEmptyIcon = (props: SpriteProps) => {
       data-id="batteryVerticalEmpty"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2637,6 +2991,8 @@ export const BatteryVerticalFullIcon = (props: SpriteProps) => {
       data-id="batteryVerticalFull"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2652,6 +3008,8 @@ export const BatteryVerticalHighIcon = (props: SpriteProps) => {
       data-id="batteryVerticalHigh"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2667,6 +3025,8 @@ export const BatteryVerticalLowIcon = (props: SpriteProps) => {
       data-id="batteryVerticalLow"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2682,6 +3042,8 @@ export const BatteryVerticalMediumIcon = (props: SpriteProps) => {
       data-id="batteryVerticalMedium"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2697,6 +3059,8 @@ export const BatteryWarningVerticalIcon = (props: SpriteProps) => {
       data-id="batteryWarningVertical"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2712,6 +3076,8 @@ export const BatteryWarningIcon = (props: SpriteProps) => {
       data-id="batteryWarning"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2727,6 +3093,8 @@ export const BeachBallIcon = (props: SpriteProps) => {
       data-id="beachBall"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2742,6 +3110,8 @@ export const BeanieIcon = (props: SpriteProps) => {
       data-id="beanie"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2757,6 +3127,8 @@ export const BedIcon = (props: SpriteProps) => {
       data-id="bed"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2772,6 +3144,8 @@ export const BeerBottleIcon = (props: SpriteProps) => {
       data-id="beerBottle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2787,6 +3161,8 @@ export const BeerSteinIcon = (props: SpriteProps) => {
       data-id="beerStein"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2802,6 +3178,8 @@ export const BehanceLogoIcon = (props: SpriteProps) => {
       data-id="behanceLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2817,6 +3195,8 @@ export const BellRingingIcon = (props: SpriteProps) => {
       data-id="bellRinging"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2832,6 +3212,8 @@ export const BellSimpleRingingIcon = (props: SpriteProps) => {
       data-id="bellSimpleRinging"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2847,6 +3229,8 @@ export const BellSimpleSlashIcon = (props: SpriteProps) => {
       data-id="bellSimpleSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2862,6 +3246,8 @@ export const BellSimpleZIcon = (props: SpriteProps) => {
       data-id="bellSimpleZ"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2877,6 +3263,8 @@ export const BellSimpleIcon = (props: SpriteProps) => {
       data-id="bellSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2892,6 +3280,8 @@ export const BellSlashIcon = (props: SpriteProps) => {
       data-id="bellSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2907,6 +3297,8 @@ export const BellZIcon = (props: SpriteProps) => {
       data-id="bellZ"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2922,6 +3314,8 @@ export const BellIcon = (props: SpriteProps) => {
       data-id="bell"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2937,6 +3331,8 @@ export const BeltIcon = (props: SpriteProps) => {
       data-id="belt"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2952,6 +3348,8 @@ export const BezierCurveIcon = (props: SpriteProps) => {
       data-id="bezierCurve"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2967,6 +3365,8 @@ export const BicycleIcon = (props: SpriteProps) => {
       data-id="bicycle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2982,6 +3382,8 @@ export const BinaryIcon = (props: SpriteProps) => {
       data-id="binary"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -2997,6 +3399,8 @@ export const BinocularsIcon = (props: SpriteProps) => {
       data-id="binoculars"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3012,6 +3416,8 @@ export const BiohazardIcon = (props: SpriteProps) => {
       data-id="biohazard"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3027,6 +3433,8 @@ export const BirdIcon = (props: SpriteProps) => {
       data-id="bird"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3042,6 +3450,8 @@ export const BlueprintIcon = (props: SpriteProps) => {
       data-id="blueprint"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3057,6 +3467,8 @@ export const BluetoothConnectedIcon = (props: SpriteProps) => {
       data-id="bluetoothConnected"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3072,6 +3484,8 @@ export const BluetoothSlashIcon = (props: SpriteProps) => {
       data-id="bluetoothSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3087,6 +3501,8 @@ export const BluetoothXIcon = (props: SpriteProps) => {
       data-id="bluetoothX"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3102,6 +3518,8 @@ export const BluetoothIcon = (props: SpriteProps) => {
       data-id="bluetooth"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3117,6 +3535,8 @@ export const BoatIcon = (props: SpriteProps) => {
       data-id="boat"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3132,6 +3552,8 @@ export const BombIcon = (props: SpriteProps) => {
       data-id="bomb"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3147,6 +3569,8 @@ export const BoneIcon = (props: SpriteProps) => {
       data-id="bone"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3162,6 +3586,8 @@ export const BookBookmarkIcon = (props: SpriteProps) => {
       data-id="bookBookmark"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3177,6 +3603,8 @@ export const BookOpenTextIcon = (props: SpriteProps) => {
       data-id="bookOpenText"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3192,6 +3620,8 @@ export const BookOpenUserIcon = (props: SpriteProps) => {
       data-id="bookOpenUser"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3207,6 +3637,8 @@ export const BookOpenIcon = (props: SpriteProps) => {
       data-id="bookOpen"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3222,6 +3654,8 @@ export const BookIcon = (props: SpriteProps) => {
       data-id="book"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3237,6 +3671,8 @@ export const BookmarkSimpleIcon = (props: SpriteProps) => {
       data-id="bookmarkSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3252,6 +3688,8 @@ export const BookmarkIcon = (props: SpriteProps) => {
       data-id="bookmark"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3267,6 +3705,8 @@ export const BookmarksSimpleIcon = (props: SpriteProps) => {
       data-id="bookmarksSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3282,6 +3722,8 @@ export const BookmarksIcon = (props: SpriteProps) => {
       data-id="bookmarks"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3297,6 +3739,8 @@ export const BooksIcon = (props: SpriteProps) => {
       data-id="books"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3312,6 +3756,8 @@ export const BootIcon = (props: SpriteProps) => {
       data-id="boot"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3327,6 +3773,8 @@ export const BoulesIcon = (props: SpriteProps) => {
       data-id="boules"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3342,6 +3790,8 @@ export const BoundingBoxIcon = (props: SpriteProps) => {
       data-id="boundingBox"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3357,6 +3807,8 @@ export const BowlFoodIcon = (props: SpriteProps) => {
       data-id="bowlFood"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3372,6 +3824,8 @@ export const BowlSteamIcon = (props: SpriteProps) => {
       data-id="bowlSteam"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3387,6 +3841,8 @@ export const BowlingBallIcon = (props: SpriteProps) => {
       data-id="bowlingBall"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3402,6 +3858,8 @@ export const BoxArrowDownIcon = (props: SpriteProps) => {
       data-id="boxArrowDown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3417,6 +3875,8 @@ export const BoxArrowUpIcon = (props: SpriteProps) => {
       data-id="boxArrowUp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3432,6 +3892,8 @@ export const BoxingGloveIcon = (props: SpriteProps) => {
       data-id="boxingGlove"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3447,6 +3909,8 @@ export const BracketsAngleIcon = (props: SpriteProps) => {
       data-id="bracketsAngle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3462,6 +3926,8 @@ export const BracketsCurlyIcon = (props: SpriteProps) => {
       data-id="bracketsCurly"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3477,6 +3943,8 @@ export const BracketsRoundIcon = (props: SpriteProps) => {
       data-id="bracketsRound"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3492,6 +3960,8 @@ export const BracketsSquareIcon = (props: SpriteProps) => {
       data-id="bracketsSquare"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3507,6 +3977,8 @@ export const BrainIcon = (props: SpriteProps) => {
       data-id="brain"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3522,6 +3994,8 @@ export const BrandyIcon = (props: SpriteProps) => {
       data-id="brandy"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3537,6 +4011,8 @@ export const BreadIcon = (props: SpriteProps) => {
       data-id="bread"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3552,6 +4028,8 @@ export const BridgeIcon = (props: SpriteProps) => {
       data-id="bridge"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3567,6 +4045,8 @@ export const BriefcaseMetalIcon = (props: SpriteProps) => {
       data-id="briefcaseMetal"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3582,6 +4062,8 @@ export const BriefcaseIcon = (props: SpriteProps) => {
       data-id="briefcase"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3597,6 +4079,8 @@ export const BroadcastIcon = (props: SpriteProps) => {
       data-id="broadcast"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3612,6 +4096,8 @@ export const BroomIcon = (props: SpriteProps) => {
       data-id="broom"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3627,6 +4113,8 @@ export const BrowserIcon = (props: SpriteProps) => {
       data-id="browser"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3642,6 +4130,8 @@ export const BrowsersIcon = (props: SpriteProps) => {
       data-id="browsers"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3657,6 +4147,8 @@ export const BugBeetleIcon = (props: SpriteProps) => {
       data-id="bugBeetle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3672,6 +4164,8 @@ export const BugDroidIcon = (props: SpriteProps) => {
       data-id="bugDroid"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3687,6 +4181,8 @@ export const BugIcon = (props: SpriteProps) => {
       data-id="bug"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3702,6 +4198,8 @@ export const BuildingApartmentIcon = (props: SpriteProps) => {
       data-id="buildingApartment"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3717,6 +4215,8 @@ export const BuildingOfficeIcon = (props: SpriteProps) => {
       data-id="buildingOffice"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3732,6 +4232,8 @@ export const BuildingIcon = (props: SpriteProps) => {
       data-id="building"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3747,6 +4249,8 @@ export const BuildingsIcon = (props: SpriteProps) => {
       data-id="buildings"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3762,6 +4266,8 @@ export const BulldozerIcon = (props: SpriteProps) => {
       data-id="bulldozer"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3777,6 +4283,8 @@ export const BusIcon = (props: SpriteProps) => {
       data-id="bus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3792,6 +4300,8 @@ export const ButterflyIcon = (props: SpriteProps) => {
       data-id="butterfly"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3807,6 +4317,8 @@ export const CableCarIcon = (props: SpriteProps) => {
       data-id="cableCar"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3822,6 +4334,8 @@ export const CactusIcon = (props: SpriteProps) => {
       data-id="cactus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3837,6 +4351,8 @@ export const CakeIcon = (props: SpriteProps) => {
       data-id="cake"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3852,6 +4368,8 @@ export const CalculatorIcon = (props: SpriteProps) => {
       data-id="calculator"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3867,6 +4385,8 @@ export const CalendarBlankIcon = (props: SpriteProps) => {
       data-id="calendarBlank"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3882,6 +4402,8 @@ export const CalendarCheckIcon = (props: SpriteProps) => {
       data-id="calendarCheck"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3897,6 +4419,8 @@ export const CalendarDotIcon = (props: SpriteProps) => {
       data-id="calendarDot"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3912,6 +4436,8 @@ export const CalendarDotsIcon = (props: SpriteProps) => {
       data-id="calendarDots"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3927,6 +4453,8 @@ export const CalendarHeartIcon = (props: SpriteProps) => {
       data-id="calendarHeart"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3942,6 +4470,8 @@ export const CalendarMinusIcon = (props: SpriteProps) => {
       data-id="calendarMinus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3957,6 +4487,8 @@ export const CalendarPlusIcon = (props: SpriteProps) => {
       data-id="calendarPlus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3972,6 +4504,8 @@ export const CalendarSlashIcon = (props: SpriteProps) => {
       data-id="calendarSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -3987,6 +4521,8 @@ export const CalendarStarIcon = (props: SpriteProps) => {
       data-id="calendarStar"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4002,6 +4538,8 @@ export const CalendarXIcon = (props: SpriteProps) => {
       data-id="calendarX"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4017,6 +4555,8 @@ export const CalendarIcon = (props: SpriteProps) => {
       data-id="calendar"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4032,6 +4572,8 @@ export const CallBellIcon = (props: SpriteProps) => {
       data-id="callBell"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4047,6 +4589,8 @@ export const CameraPlusIcon = (props: SpriteProps) => {
       data-id="cameraPlus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4062,6 +4606,8 @@ export const CameraRotateIcon = (props: SpriteProps) => {
       data-id="cameraRotate"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4077,6 +4623,8 @@ export const CameraSlashIcon = (props: SpriteProps) => {
       data-id="cameraSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4092,6 +4640,8 @@ export const CameraIcon = (props: SpriteProps) => {
       data-id="camera"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4107,6 +4657,8 @@ export const CampfireIcon = (props: SpriteProps) => {
       data-id="campfire"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4122,6 +4674,8 @@ export const CarBatteryIcon = (props: SpriteProps) => {
       data-id="carBattery"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4137,6 +4691,8 @@ export const CarProfileIcon = (props: SpriteProps) => {
       data-id="carProfile"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4152,6 +4708,8 @@ export const CarSimpleIcon = (props: SpriteProps) => {
       data-id="carSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4167,6 +4725,8 @@ export const CarIcon = (props: SpriteProps) => {
       data-id="car"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4182,6 +4742,8 @@ export const CardholderIcon = (props: SpriteProps) => {
       data-id="cardholder"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4197,6 +4759,8 @@ export const CardsThreeIcon = (props: SpriteProps) => {
       data-id="cardsThree"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4212,6 +4776,8 @@ export const CardsIcon = (props: SpriteProps) => {
       data-id="cards"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4227,6 +4793,8 @@ export const CaretCircleDoubleDownIcon = (props: SpriteProps) => {
       data-id="caretCircleDoubleDown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4242,6 +4810,8 @@ export const CaretCircleDoubleLeftIcon = (props: SpriteProps) => {
       data-id="caretCircleDoubleLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4257,6 +4827,8 @@ export const CaretCircleDoubleRightIcon = (props: SpriteProps) => {
       data-id="caretCircleDoubleRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4272,6 +4844,8 @@ export const CaretCircleDoubleUpIcon = (props: SpriteProps) => {
       data-id="caretCircleDoubleUp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4287,6 +4861,8 @@ export const CaretCircleDownIcon = (props: SpriteProps) => {
       data-id="caretCircleDown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4302,6 +4878,8 @@ export const CaretCircleLeftIcon = (props: SpriteProps) => {
       data-id="caretCircleLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4317,6 +4895,8 @@ export const CaretCircleRightIcon = (props: SpriteProps) => {
       data-id="caretCircleRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4332,6 +4912,8 @@ export const CaretCircleUpDownIcon = (props: SpriteProps) => {
       data-id="caretCircleUpDown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4347,6 +4929,8 @@ export const CaretCircleUpIcon = (props: SpriteProps) => {
       data-id="caretCircleUp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4362,6 +4946,8 @@ export const CaretDoubleDownIcon = (props: SpriteProps) => {
       data-id="caretDoubleDown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4377,6 +4963,8 @@ export const CaretDoubleLeftIcon = (props: SpriteProps) => {
       data-id="caretDoubleLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4392,6 +4980,8 @@ export const CaretDoubleRightIcon = (props: SpriteProps) => {
       data-id="caretDoubleRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4407,6 +4997,8 @@ export const CaretDoubleUpIcon = (props: SpriteProps) => {
       data-id="caretDoubleUp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4422,6 +5014,8 @@ export const CaretDownIcon = (props: SpriteProps) => {
       data-id="caretDown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4437,6 +5031,8 @@ export const CaretLeftIcon = (props: SpriteProps) => {
       data-id="caretLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4452,6 +5048,8 @@ export const CaretLineDownIcon = (props: SpriteProps) => {
       data-id="caretLineDown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4467,6 +5065,8 @@ export const CaretLineLeftIcon = (props: SpriteProps) => {
       data-id="caretLineLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4482,6 +5082,8 @@ export const CaretLineRightIcon = (props: SpriteProps) => {
       data-id="caretLineRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4497,6 +5099,8 @@ export const CaretLineUpIcon = (props: SpriteProps) => {
       data-id="caretLineUp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4512,6 +5116,8 @@ export const CaretRightIcon = (props: SpriteProps) => {
       data-id="caretRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4527,6 +5133,8 @@ export const CaretUpDownIcon = (props: SpriteProps) => {
       data-id="caretUpDown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4542,6 +5150,8 @@ export const CaretUpIcon = (props: SpriteProps) => {
       data-id="caretUp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4557,6 +5167,8 @@ export const CarrotIcon = (props: SpriteProps) => {
       data-id="carrot"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4572,6 +5184,8 @@ export const CashRegisterIcon = (props: SpriteProps) => {
       data-id="cashRegister"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4587,6 +5201,8 @@ export const CassetteTapeIcon = (props: SpriteProps) => {
       data-id="cassetteTape"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4602,6 +5218,8 @@ export const CastleTurretIcon = (props: SpriteProps) => {
       data-id="castleTurret"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4617,6 +5235,8 @@ export const CatIcon = (props: SpriteProps) => {
       data-id="cat"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4632,6 +5252,8 @@ export const CellSignalFullIcon = (props: SpriteProps) => {
       data-id="cellSignalFull"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4647,6 +5269,8 @@ export const CellSignalHighIcon = (props: SpriteProps) => {
       data-id="cellSignalHigh"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4662,6 +5286,8 @@ export const CellSignalLowIcon = (props: SpriteProps) => {
       data-id="cellSignalLow"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4677,6 +5303,8 @@ export const CellSignalMediumIcon = (props: SpriteProps) => {
       data-id="cellSignalMedium"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4692,6 +5320,8 @@ export const CellSignalNoneIcon = (props: SpriteProps) => {
       data-id="cellSignalNone"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4707,6 +5337,8 @@ export const CellSignalSlashIcon = (props: SpriteProps) => {
       data-id="cellSignalSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4722,6 +5354,8 @@ export const CellSignalXIcon = (props: SpriteProps) => {
       data-id="cellSignalX"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4737,6 +5371,8 @@ export const CellTowerIcon = (props: SpriteProps) => {
       data-id="cellTower"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4752,6 +5388,8 @@ export const CertificateIcon = (props: SpriteProps) => {
       data-id="certificate"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4767,6 +5405,8 @@ export const ChairIcon = (props: SpriteProps) => {
       data-id="chair"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4782,6 +5422,8 @@ export const ChalkboardSimpleIcon = (props: SpriteProps) => {
       data-id="chalkboardSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4797,6 +5439,8 @@ export const ChalkboardTeacherIcon = (props: SpriteProps) => {
       data-id="chalkboardTeacher"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4812,6 +5456,8 @@ export const ChalkboardIcon = (props: SpriteProps) => {
       data-id="chalkboard"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4827,6 +5473,8 @@ export const ChampagneIcon = (props: SpriteProps) => {
       data-id="champagne"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4842,6 +5490,8 @@ export const ChargingStationIcon = (props: SpriteProps) => {
       data-id="chargingStation"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4857,6 +5507,8 @@ export const ChartBarHorizontalIcon = (props: SpriteProps) => {
       data-id="chartBarHorizontal"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4872,6 +5524,8 @@ export const ChartBarIcon = (props: SpriteProps) => {
       data-id="chartBar"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4887,6 +5541,8 @@ export const ChartDonutIcon = (props: SpriteProps) => {
       data-id="chartDonut"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4902,6 +5558,8 @@ export const ChartLineDownIcon = (props: SpriteProps) => {
       data-id="chartLineDown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4917,6 +5575,8 @@ export const ChartLineUpIcon = (props: SpriteProps) => {
       data-id="chartLineUp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4932,6 +5592,8 @@ export const ChartLineIcon = (props: SpriteProps) => {
       data-id="chartLine"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4947,6 +5609,8 @@ export const ChartPieSliceIcon = (props: SpriteProps) => {
       data-id="chartPieSlice"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4962,6 +5626,8 @@ export const ChartPieIcon = (props: SpriteProps) => {
       data-id="chartPie"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4977,6 +5643,8 @@ export const ChartPolarIcon = (props: SpriteProps) => {
       data-id="chartPolar"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -4992,6 +5660,8 @@ export const ChartScatterIcon = (props: SpriteProps) => {
       data-id="chartScatter"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5007,6 +5677,8 @@ export const ChatCenteredDotsIcon = (props: SpriteProps) => {
       data-id="chatCenteredDots"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5022,6 +5694,8 @@ export const ChatCenteredSlashIcon = (props: SpriteProps) => {
       data-id="chatCenteredSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5037,6 +5711,8 @@ export const ChatCenteredTextIcon = (props: SpriteProps) => {
       data-id="chatCenteredText"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5052,6 +5728,8 @@ export const ChatCenteredIcon = (props: SpriteProps) => {
       data-id="chatCentered"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5067,6 +5745,8 @@ export const ChatCircleDotsIcon = (props: SpriteProps) => {
       data-id="chatCircleDots"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5082,6 +5762,8 @@ export const ChatCircleSlashIcon = (props: SpriteProps) => {
       data-id="chatCircleSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5097,6 +5779,8 @@ export const ChatCircleTextIcon = (props: SpriteProps) => {
       data-id="chatCircleText"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5112,6 +5796,8 @@ export const ChatCircleIcon = (props: SpriteProps) => {
       data-id="chatCircle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5127,6 +5813,8 @@ export const ChatDotsIcon = (props: SpriteProps) => {
       data-id="chatDots"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5142,6 +5830,8 @@ export const ChatSlashIcon = (props: SpriteProps) => {
       data-id="chatSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5157,6 +5847,8 @@ export const ChatTeardropDotsIcon = (props: SpriteProps) => {
       data-id="chatTeardropDots"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5172,6 +5864,8 @@ export const ChatTeardropSlashIcon = (props: SpriteProps) => {
       data-id="chatTeardropSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5187,6 +5881,8 @@ export const ChatTeardropTextIcon = (props: SpriteProps) => {
       data-id="chatTeardropText"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5202,6 +5898,8 @@ export const ChatTeardropIcon = (props: SpriteProps) => {
       data-id="chatTeardrop"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5217,6 +5915,8 @@ export const ChatTextIcon = (props: SpriteProps) => {
       data-id="chatText"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5232,6 +5932,8 @@ export const ChatIcon = (props: SpriteProps) => {
       data-id="chat"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5247,6 +5949,8 @@ export const ChatsCircleIcon = (props: SpriteProps) => {
       data-id="chatsCircle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5262,6 +5966,8 @@ export const ChatsTeardropIcon = (props: SpriteProps) => {
       data-id="chatsTeardrop"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5277,6 +5983,8 @@ export const ChatsIcon = (props: SpriteProps) => {
       data-id="chats"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5292,6 +6000,8 @@ export const CheckCircleIcon = (props: SpriteProps) => {
       data-id="checkCircle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5307,6 +6017,8 @@ export const CheckFatIcon = (props: SpriteProps) => {
       data-id="checkFat"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5322,6 +6034,8 @@ export const CheckSquareOffsetIcon = (props: SpriteProps) => {
       data-id="checkSquareOffset"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5337,6 +6051,8 @@ export const CheckSquareIcon = (props: SpriteProps) => {
       data-id="checkSquare"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5352,6 +6068,8 @@ export const CheckIcon = (props: SpriteProps) => {
       data-id="check"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5367,6 +6085,8 @@ export const CheckerboardIcon = (props: SpriteProps) => {
       data-id="checkerboard"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5382,6 +6102,8 @@ export const ChecksIcon = (props: SpriteProps) => {
       data-id="checks"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5397,6 +6119,8 @@ export const CheersIcon = (props: SpriteProps) => {
       data-id="cheers"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5412,6 +6136,8 @@ export const CheeseIcon = (props: SpriteProps) => {
       data-id="cheese"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5427,6 +6153,8 @@ export const ChefHatIcon = (props: SpriteProps) => {
       data-id="chefHat"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5442,6 +6170,8 @@ export const CherriesIcon = (props: SpriteProps) => {
       data-id="cherries"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5457,6 +6187,8 @@ export const ChurchIcon = (props: SpriteProps) => {
       data-id="church"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5472,6 +6204,8 @@ export const CigaretteSlashIcon = (props: SpriteProps) => {
       data-id="cigaretteSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5487,6 +6221,8 @@ export const CigaretteIcon = (props: SpriteProps) => {
       data-id="cigarette"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5502,6 +6238,8 @@ export const CircleDashedIcon = (props: SpriteProps) => {
       data-id="circleDashed"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5517,6 +6255,8 @@ export const CircleHalfTiltIcon = (props: SpriteProps) => {
       data-id="circleHalfTilt"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5532,6 +6272,8 @@ export const CircleHalfIcon = (props: SpriteProps) => {
       data-id="circleHalf"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5547,6 +6289,8 @@ export const CircleNotchIcon = (props: SpriteProps) => {
       data-id="circleNotch"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5562,6 +6306,8 @@ export const CircleIcon = (props: SpriteProps) => {
       data-id="circle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5577,6 +6323,8 @@ export const CirclesFourIcon = (props: SpriteProps) => {
       data-id="circlesFour"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5592,6 +6340,8 @@ export const CirclesThreePlusIcon = (props: SpriteProps) => {
       data-id="circlesThreePlus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5607,6 +6357,8 @@ export const CirclesThreeIcon = (props: SpriteProps) => {
       data-id="circlesThree"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5622,6 +6374,8 @@ export const CircuitryIcon = (props: SpriteProps) => {
       data-id="circuitry"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5637,6 +6391,8 @@ export const CityIcon = (props: SpriteProps) => {
       data-id="city"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5652,6 +6408,8 @@ export const ClipboardTextIcon = (props: SpriteProps) => {
       data-id="clipboardText"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5667,6 +6425,8 @@ export const ClipboardIcon = (props: SpriteProps) => {
       data-id="clipboard"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5682,6 +6442,8 @@ export const ClockAfternoonIcon = (props: SpriteProps) => {
       data-id="clockAfternoon"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5697,6 +6459,8 @@ export const ClockClockwiseIcon = (props: SpriteProps) => {
       data-id="clockClockwise"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5712,6 +6476,8 @@ export const ClockCountdownIcon = (props: SpriteProps) => {
       data-id="clockCountdown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5727,6 +6493,8 @@ export const ClockCounterClockwiseIcon = (props: SpriteProps) => {
       data-id="clockCounterClockwise"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5742,6 +6510,8 @@ export const ClockUserIcon = (props: SpriteProps) => {
       data-id="clockUser"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5757,6 +6527,8 @@ export const ClockIcon = (props: SpriteProps) => {
       data-id="clock"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5772,6 +6544,8 @@ export const ClosedCaptioningIcon = (props: SpriteProps) => {
       data-id="closedCaptioning"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5787,6 +6561,8 @@ export const CloudArrowDownIcon = (props: SpriteProps) => {
       data-id="cloudArrowDown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5802,6 +6578,8 @@ export const CloudArrowUpIcon = (props: SpriteProps) => {
       data-id="cloudArrowUp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5817,6 +6595,8 @@ export const CloudCheckIcon = (props: SpriteProps) => {
       data-id="cloudCheck"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5832,6 +6612,8 @@ export const CloudFogIcon = (props: SpriteProps) => {
       data-id="cloudFog"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5847,6 +6629,8 @@ export const CloudLightningIcon = (props: SpriteProps) => {
       data-id="cloudLightning"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5862,6 +6646,8 @@ export const CloudMoonIcon = (props: SpriteProps) => {
       data-id="cloudMoon"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5877,6 +6663,8 @@ export const CloudRainIcon = (props: SpriteProps) => {
       data-id="cloudRain"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5892,6 +6680,8 @@ export const CloudSlashIcon = (props: SpriteProps) => {
       data-id="cloudSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5907,6 +6697,8 @@ export const CloudSnowIcon = (props: SpriteProps) => {
       data-id="cloudSnow"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5922,6 +6714,8 @@ export const CloudSunIcon = (props: SpriteProps) => {
       data-id="cloudSun"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5937,6 +6731,8 @@ export const CloudWarningIcon = (props: SpriteProps) => {
       data-id="cloudWarning"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5952,6 +6748,8 @@ export const CloudXIcon = (props: SpriteProps) => {
       data-id="cloudX"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5967,6 +6765,8 @@ export const CloudIcon = (props: SpriteProps) => {
       data-id="cloud"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5982,6 +6782,8 @@ export const CloverIcon = (props: SpriteProps) => {
       data-id="clover"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -5997,6 +6799,8 @@ export const ClubIcon = (props: SpriteProps) => {
       data-id="club"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6012,6 +6816,8 @@ export const CoatHangerIcon = (props: SpriteProps) => {
       data-id="coatHanger"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6027,6 +6833,8 @@ export const CodaLogoIcon = (props: SpriteProps) => {
       data-id="codaLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6042,6 +6850,8 @@ export const CodeBlockIcon = (props: SpriteProps) => {
       data-id="codeBlock"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6057,6 +6867,8 @@ export const CodeSimpleIcon = (props: SpriteProps) => {
       data-id="codeSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6072,6 +6884,8 @@ export const CodeIcon = (props: SpriteProps) => {
       data-id="code"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6087,6 +6901,8 @@ export const CodepenLogoIcon = (props: SpriteProps) => {
       data-id="codepenLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6102,6 +6918,8 @@ export const CodesandboxLogoIcon = (props: SpriteProps) => {
       data-id="codesandboxLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6117,6 +6935,8 @@ export const CoffeeBeanIcon = (props: SpriteProps) => {
       data-id="coffeeBean"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6132,6 +6952,8 @@ export const CoffeeIcon = (props: SpriteProps) => {
       data-id="coffee"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6147,6 +6969,8 @@ export const CoinVerticalIcon = (props: SpriteProps) => {
       data-id="coinVertical"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6162,6 +6986,8 @@ export const CoinIcon = (props: SpriteProps) => {
       data-id="coin"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6177,6 +7003,8 @@ export const CoinsIcon = (props: SpriteProps) => {
       data-id="coins"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6192,6 +7020,8 @@ export const ColumnsPlusLeftIcon = (props: SpriteProps) => {
       data-id="columnsPlusLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6207,6 +7037,8 @@ export const ColumnsPlusRightIcon = (props: SpriteProps) => {
       data-id="columnsPlusRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6222,6 +7054,8 @@ export const ColumnsIcon = (props: SpriteProps) => {
       data-id="columns"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6237,6 +7071,8 @@ export const CommandIcon = (props: SpriteProps) => {
       data-id="command"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6252,6 +7088,8 @@ export const CompassRoseIcon = (props: SpriteProps) => {
       data-id="compassRose"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6267,6 +7105,8 @@ export const CompassToolIcon = (props: SpriteProps) => {
       data-id="compassTool"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6282,6 +7122,8 @@ export const CompassIcon = (props: SpriteProps) => {
       data-id="compass"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6297,6 +7139,8 @@ export const ComputerTowerIcon = (props: SpriteProps) => {
       data-id="computerTower"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6312,6 +7156,8 @@ export const ConfettiIcon = (props: SpriteProps) => {
       data-id="confetti"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6327,6 +7173,8 @@ export const ContactlessPaymentIcon = (props: SpriteProps) => {
       data-id="contactlessPayment"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6342,6 +7190,8 @@ export const ControlIcon = (props: SpriteProps) => {
       data-id="control"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6357,6 +7207,8 @@ export const CookieIcon = (props: SpriteProps) => {
       data-id="cookie"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6372,6 +7224,8 @@ export const CookingPotIcon = (props: SpriteProps) => {
       data-id="cookingPot"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6387,6 +7241,8 @@ export const CopySimpleIcon = (props: SpriteProps) => {
       data-id="copySimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6402,6 +7258,8 @@ export const CopyIcon = (props: SpriteProps) => {
       data-id="copy"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6417,6 +7275,8 @@ export const CopyleftIcon = (props: SpriteProps) => {
       data-id="copyleft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6432,6 +7292,8 @@ export const CopyrightIcon = (props: SpriteProps) => {
       data-id="copyright"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6447,6 +7309,8 @@ export const CornersInIcon = (props: SpriteProps) => {
       data-id="cornersIn"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6462,6 +7326,8 @@ export const CornersOutIcon = (props: SpriteProps) => {
       data-id="cornersOut"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6477,6 +7343,8 @@ export const CouchIcon = (props: SpriteProps) => {
       data-id="couch"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6492,6 +7360,8 @@ export const CourtBasketballIcon = (props: SpriteProps) => {
       data-id="courtBasketball"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6507,6 +7377,8 @@ export const CowIcon = (props: SpriteProps) => {
       data-id="cow"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6522,6 +7394,8 @@ export const CowboyHatIcon = (props: SpriteProps) => {
       data-id="cowboyHat"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6537,6 +7411,8 @@ export const CpuIcon = (props: SpriteProps) => {
       data-id="cpu"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6552,6 +7428,8 @@ export const CraneTowerIcon = (props: SpriteProps) => {
       data-id="craneTower"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6567,6 +7445,8 @@ export const CraneIcon = (props: SpriteProps) => {
       data-id="crane"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6582,6 +7462,8 @@ export const CreditCardIcon = (props: SpriteProps) => {
       data-id="creditCard"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6597,6 +7479,8 @@ export const CricketIcon = (props: SpriteProps) => {
       data-id="cricket"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6612,6 +7496,8 @@ export const CropIcon = (props: SpriteProps) => {
       data-id="crop"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6627,6 +7513,8 @@ export const CrossIcon = (props: SpriteProps) => {
       data-id="cross"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6642,6 +7530,8 @@ export const CrosshairSimpleIcon = (props: SpriteProps) => {
       data-id="crosshairSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6657,6 +7547,8 @@ export const CrosshairIcon = (props: SpriteProps) => {
       data-id="crosshair"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6672,6 +7564,8 @@ export const CrownCrossIcon = (props: SpriteProps) => {
       data-id="crownCross"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6687,6 +7581,8 @@ export const CrownSimpleIcon = (props: SpriteProps) => {
       data-id="crownSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6702,6 +7598,8 @@ export const CrownIcon = (props: SpriteProps) => {
       data-id="crown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6717,6 +7615,8 @@ export const CubeFocusIcon = (props: SpriteProps) => {
       data-id="cubeFocus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6732,6 +7632,8 @@ export const CubeTransparentIcon = (props: SpriteProps) => {
       data-id="cubeTransparent"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6747,6 +7649,8 @@ export const CubeIcon = (props: SpriteProps) => {
       data-id="cube"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6762,6 +7666,8 @@ export const CurrencyBtcIcon = (props: SpriteProps) => {
       data-id="currencyBtc"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6777,6 +7683,8 @@ export const CurrencyCircleDollarIcon = (props: SpriteProps) => {
       data-id="currencyCircleDollar"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6792,6 +7700,8 @@ export const CurrencyCnyIcon = (props: SpriteProps) => {
       data-id="currencyCny"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6807,6 +7717,8 @@ export const CurrencyDollarSimpleIcon = (props: SpriteProps) => {
       data-id="currencyDollarSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6822,6 +7734,8 @@ export const CurrencyDollarIcon = (props: SpriteProps) => {
       data-id="currencyDollar"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6837,6 +7751,8 @@ export const CurrencyEthIcon = (props: SpriteProps) => {
       data-id="currencyEth"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6852,6 +7768,8 @@ export const CurrencyEurIcon = (props: SpriteProps) => {
       data-id="currencyEur"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6867,6 +7785,8 @@ export const CurrencyGbpIcon = (props: SpriteProps) => {
       data-id="currencyGbp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6882,6 +7802,8 @@ export const CurrencyInrIcon = (props: SpriteProps) => {
       data-id="currencyInr"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6897,6 +7819,8 @@ export const CurrencyJpyIcon = (props: SpriteProps) => {
       data-id="currencyJpy"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6912,6 +7836,8 @@ export const CurrencyKrwIcon = (props: SpriteProps) => {
       data-id="currencyKrw"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6927,6 +7853,8 @@ export const CurrencyKztIcon = (props: SpriteProps) => {
       data-id="currencyKzt"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6942,6 +7870,8 @@ export const CurrencyNgnIcon = (props: SpriteProps) => {
       data-id="currencyNgn"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6957,6 +7887,8 @@ export const CurrencyRubIcon = (props: SpriteProps) => {
       data-id="currencyRub"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6972,6 +7904,8 @@ export const CursorClickIcon = (props: SpriteProps) => {
       data-id="cursorClick"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -6987,6 +7921,8 @@ export const CursorTextIcon = (props: SpriteProps) => {
       data-id="cursorText"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7002,6 +7938,8 @@ export const CursorIcon = (props: SpriteProps) => {
       data-id="cursor"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7017,6 +7955,8 @@ export const CylinderIcon = (props: SpriteProps) => {
       data-id="cylinder"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7032,6 +7972,8 @@ export const DatabaseIcon = (props: SpriteProps) => {
       data-id="database"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7047,6 +7989,8 @@ export const DeskIcon = (props: SpriteProps) => {
       data-id="desk"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7062,6 +8006,8 @@ export const DesktopTowerIcon = (props: SpriteProps) => {
       data-id="desktopTower"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7077,6 +8023,8 @@ export const DesktopIcon = (props: SpriteProps) => {
       data-id="desktop"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7092,6 +8040,8 @@ export const DetectiveIcon = (props: SpriteProps) => {
       data-id="detective"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7107,6 +8057,8 @@ export const DevToLogoIcon = (props: SpriteProps) => {
       data-id="devToLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7122,6 +8074,8 @@ export const DeviceMobileCameraIcon = (props: SpriteProps) => {
       data-id="deviceMobileCamera"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7137,6 +8091,8 @@ export const DeviceMobileSlashIcon = (props: SpriteProps) => {
       data-id="deviceMobileSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7152,6 +8108,8 @@ export const DeviceMobileSpeakerIcon = (props: SpriteProps) => {
       data-id="deviceMobileSpeaker"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7167,6 +8125,8 @@ export const DeviceMobileIcon = (props: SpriteProps) => {
       data-id="deviceMobile"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7182,6 +8142,8 @@ export const DeviceRotateIcon = (props: SpriteProps) => {
       data-id="deviceRotate"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7197,6 +8159,8 @@ export const DeviceTabletCameraIcon = (props: SpriteProps) => {
       data-id="deviceTabletCamera"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7212,6 +8176,8 @@ export const DeviceTabletSpeakerIcon = (props: SpriteProps) => {
       data-id="deviceTabletSpeaker"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7227,6 +8193,8 @@ export const DeviceTabletIcon = (props: SpriteProps) => {
       data-id="deviceTablet"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7242,6 +8210,8 @@ export const DevicesIcon = (props: SpriteProps) => {
       data-id="devices"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7257,6 +8227,8 @@ export const DiamondIcon = (props: SpriteProps) => {
       data-id="diamond"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7272,6 +8244,8 @@ export const DiamondsFourIcon = (props: SpriteProps) => {
       data-id="diamondsFour"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7287,6 +8261,8 @@ export const DiceFiveIcon = (props: SpriteProps) => {
       data-id="diceFive"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7302,6 +8278,8 @@ export const DiceFourIcon = (props: SpriteProps) => {
       data-id="diceFour"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7317,6 +8295,8 @@ export const DiceOneIcon = (props: SpriteProps) => {
       data-id="diceOne"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7332,6 +8312,8 @@ export const DiceSixIcon = (props: SpriteProps) => {
       data-id="diceSix"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7347,6 +8329,8 @@ export const DiceThreeIcon = (props: SpriteProps) => {
       data-id="diceThree"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7362,6 +8346,8 @@ export const DiceTwoIcon = (props: SpriteProps) => {
       data-id="diceTwo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7377,6 +8363,8 @@ export const DiscIcon = (props: SpriteProps) => {
       data-id="disc"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7392,6 +8380,8 @@ export const DiscoBallIcon = (props: SpriteProps) => {
       data-id="discoBall"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7407,6 +8397,8 @@ export const DiscordLogoIcon = (props: SpriteProps) => {
       data-id="discordLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7422,6 +8414,8 @@ export const DivideIcon = (props: SpriteProps) => {
       data-id="divide"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7437,6 +8431,8 @@ export const DnaIcon = (props: SpriteProps) => {
       data-id="dna"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7452,6 +8448,8 @@ export const DogIcon = (props: SpriteProps) => {
       data-id="dog"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7467,6 +8465,8 @@ export const DoorOpenIcon = (props: SpriteProps) => {
       data-id="doorOpen"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7482,6 +8482,8 @@ export const DoorIcon = (props: SpriteProps) => {
       data-id="door"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7497,6 +8499,8 @@ export const DotOutlineIcon = (props: SpriteProps) => {
       data-id="dotOutline"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7512,6 +8516,8 @@ export const DotIcon = (props: SpriteProps) => {
       data-id="dot"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7527,6 +8533,8 @@ export const DotsNineIcon = (props: SpriteProps) => {
       data-id="dotsNine"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7542,6 +8550,8 @@ export const DotsSixVerticalIcon = (props: SpriteProps) => {
       data-id="dotsSixVertical"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7557,6 +8567,8 @@ export const DotsSixIcon = (props: SpriteProps) => {
       data-id="dotsSix"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7572,6 +8584,8 @@ export const DotsThreeCircleVerticalIcon = (props: SpriteProps) => {
       data-id="dotsThreeCircleVertical"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7587,6 +8601,8 @@ export const DotsThreeCircleIcon = (props: SpriteProps) => {
       data-id="dotsThreeCircle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7602,6 +8618,8 @@ export const DotsThreeOutlineVerticalIcon = (props: SpriteProps) => {
       data-id="dotsThreeOutlineVertical"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7617,6 +8635,8 @@ export const DotsThreeOutlineIcon = (props: SpriteProps) => {
       data-id="dotsThreeOutline"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7632,6 +8652,8 @@ export const DotsThreeVerticalIcon = (props: SpriteProps) => {
       data-id="dotsThreeVertical"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7647,6 +8669,8 @@ export const DotsThreeIcon = (props: SpriteProps) => {
       data-id="dotsThree"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7662,6 +8686,8 @@ export const DownloadSimpleIcon = (props: SpriteProps) => {
       data-id="downloadSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7677,6 +8703,8 @@ export const DownloadIcon = (props: SpriteProps) => {
       data-id="download"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7692,6 +8720,8 @@ export const DressIcon = (props: SpriteProps) => {
       data-id="dress"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7707,6 +8737,8 @@ export const DresserIcon = (props: SpriteProps) => {
       data-id="dresser"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7722,6 +8754,8 @@ export const DribbbleLogoIcon = (props: SpriteProps) => {
       data-id="dribbbleLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7737,6 +8771,8 @@ export const DroneIcon = (props: SpriteProps) => {
       data-id="drone"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7752,6 +8788,8 @@ export const DropHalfBottomIcon = (props: SpriteProps) => {
       data-id="dropHalfBottom"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7767,6 +8805,8 @@ export const DropHalfIcon = (props: SpriteProps) => {
       data-id="dropHalf"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7782,6 +8822,8 @@ export const DropSimpleIcon = (props: SpriteProps) => {
       data-id="dropSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7797,6 +8839,8 @@ export const DropSlashIcon = (props: SpriteProps) => {
       data-id="dropSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7812,6 +8856,8 @@ export const DropIcon = (props: SpriteProps) => {
       data-id="drop"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7827,6 +8873,8 @@ export const DropboxLogoIcon = (props: SpriteProps) => {
       data-id="dropboxLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7842,6 +8890,8 @@ export const EarSlashIcon = (props: SpriteProps) => {
       data-id="earSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7857,6 +8907,8 @@ export const EarIcon = (props: SpriteProps) => {
       data-id="ear"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7872,6 +8924,8 @@ export const EggCrackIcon = (props: SpriteProps) => {
       data-id="eggCrack"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7887,6 +8941,8 @@ export const EggIcon = (props: SpriteProps) => {
       data-id="egg"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7902,6 +8958,8 @@ export const EjectSimpleIcon = (props: SpriteProps) => {
       data-id="ejectSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7917,6 +8975,8 @@ export const EjectIcon = (props: SpriteProps) => {
       data-id="eject"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7932,6 +8992,8 @@ export const ElevatorIcon = (props: SpriteProps) => {
       data-id="elevator"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7947,6 +9009,8 @@ export const EmptyIcon = (props: SpriteProps) => {
       data-id="empty"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7962,6 +9026,8 @@ export const EngineIcon = (props: SpriteProps) => {
       data-id="engine"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7977,6 +9043,8 @@ export const EnvelopeOpenIcon = (props: SpriteProps) => {
       data-id="envelopeOpen"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -7992,6 +9060,8 @@ export const EnvelopeSimpleOpenIcon = (props: SpriteProps) => {
       data-id="envelopeSimpleOpen"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8007,6 +9077,8 @@ export const EnvelopeSimpleIcon = (props: SpriteProps) => {
       data-id="envelopeSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8022,6 +9094,8 @@ export const EnvelopeIcon = (props: SpriteProps) => {
       data-id="envelope"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8037,6 +9111,8 @@ export const EqualizerIcon = (props: SpriteProps) => {
       data-id="equalizer"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8052,6 +9128,8 @@ export const EqualsIcon = (props: SpriteProps) => {
       data-id="equals"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8067,6 +9145,8 @@ export const EraserIcon = (props: SpriteProps) => {
       data-id="eraser"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8082,6 +9162,8 @@ export const EscalatorDownIcon = (props: SpriteProps) => {
       data-id="escalatorDown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8097,6 +9179,8 @@ export const EscalatorUpIcon = (props: SpriteProps) => {
       data-id="escalatorUp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8112,6 +9196,8 @@ export const ExamIcon = (props: SpriteProps) => {
       data-id="exam"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8127,6 +9213,8 @@ export const ExclamationMarkIcon = (props: SpriteProps) => {
       data-id="exclamationMark"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8142,6 +9230,8 @@ export const ExcludeSquareIcon = (props: SpriteProps) => {
       data-id="excludeSquare"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8157,6 +9247,8 @@ export const ExcludeIcon = (props: SpriteProps) => {
       data-id="exclude"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8172,6 +9264,8 @@ export const ExportIcon = (props: SpriteProps) => {
       data-id="export"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8187,6 +9281,8 @@ export const EyeClosedIcon = (props: SpriteProps) => {
       data-id="eyeClosed"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8202,6 +9298,8 @@ export const EyeSlashIcon = (props: SpriteProps) => {
       data-id="eyeSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8217,6 +9315,8 @@ export const EyeIcon = (props: SpriteProps) => {
       data-id="eye"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8232,6 +9332,8 @@ export const EyedropperSampleIcon = (props: SpriteProps) => {
       data-id="eyedropperSample"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8247,6 +9349,8 @@ export const EyedropperIcon = (props: SpriteProps) => {
       data-id="eyedropper"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8262,6 +9366,8 @@ export const EyeglassesIcon = (props: SpriteProps) => {
       data-id="eyeglasses"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8277,6 +9383,8 @@ export const EyesIcon = (props: SpriteProps) => {
       data-id="eyes"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8292,6 +9400,8 @@ export const FaceMaskIcon = (props: SpriteProps) => {
       data-id="faceMask"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8307,6 +9417,8 @@ export const FacebookLogoIcon = (props: SpriteProps) => {
       data-id="facebookLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8322,6 +9434,8 @@ export const FactoryIcon = (props: SpriteProps) => {
       data-id="factory"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8337,6 +9451,8 @@ export const FadersHorizontalIcon = (props: SpriteProps) => {
       data-id="fadersHorizontal"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8352,6 +9468,8 @@ export const FadersIcon = (props: SpriteProps) => {
       data-id="faders"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8367,6 +9485,8 @@ export const FalloutShelterIcon = (props: SpriteProps) => {
       data-id="falloutShelter"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8382,6 +9502,8 @@ export const FanIcon = (props: SpriteProps) => {
       data-id="fan"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8397,6 +9519,8 @@ export const FarmIcon = (props: SpriteProps) => {
       data-id="farm"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8412,6 +9536,8 @@ export const FastForwardCircleIcon = (props: SpriteProps) => {
       data-id="fastForwardCircle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8427,6 +9553,8 @@ export const FastForwardIcon = (props: SpriteProps) => {
       data-id="fastForward"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8442,6 +9570,8 @@ export const FeatherIcon = (props: SpriteProps) => {
       data-id="feather"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8457,6 +9587,8 @@ export const FediverseLogoIcon = (props: SpriteProps) => {
       data-id="fediverseLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8472,6 +9604,8 @@ export const FigmaLogoIcon = (props: SpriteProps) => {
       data-id="figmaLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8487,6 +9621,8 @@ export const FileArchiveIcon = (props: SpriteProps) => {
       data-id="fileArchive"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8502,6 +9638,8 @@ export const FileArrowDownIcon = (props: SpriteProps) => {
       data-id="fileArrowDown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8517,6 +9655,8 @@ export const FileArrowUpIcon = (props: SpriteProps) => {
       data-id="fileArrowUp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8532,6 +9672,8 @@ export const FileAudioIcon = (props: SpriteProps) => {
       data-id="fileAudio"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8547,6 +9689,8 @@ export const FileCSharpIcon = (props: SpriteProps) => {
       data-id="fileCSharp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8562,6 +9706,8 @@ export const FileCIcon = (props: SpriteProps) => {
       data-id="fileC"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8577,6 +9723,8 @@ export const FileCloudIcon = (props: SpriteProps) => {
       data-id="fileCloud"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8592,6 +9740,8 @@ export const FileCodeIcon = (props: SpriteProps) => {
       data-id="fileCode"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8607,6 +9757,8 @@ export const FileCppIcon = (props: SpriteProps) => {
       data-id="fileCpp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8622,6 +9774,8 @@ export const FileCssIcon = (props: SpriteProps) => {
       data-id="fileCss"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8637,6 +9791,8 @@ export const FileCsvIcon = (props: SpriteProps) => {
       data-id="fileCsv"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8652,6 +9808,8 @@ export const FileDashedIcon = (props: SpriteProps) => {
       data-id="fileDashed"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8667,6 +9825,8 @@ export const FileDocIcon = (props: SpriteProps) => {
       data-id="fileDoc"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8682,6 +9842,8 @@ export const FileHtmlIcon = (props: SpriteProps) => {
       data-id="fileHtml"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8697,6 +9859,8 @@ export const FileImageIcon = (props: SpriteProps) => {
       data-id="fileImage"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8712,6 +9876,8 @@ export const FileIniIcon = (props: SpriteProps) => {
       data-id="fileIni"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8727,6 +9893,8 @@ export const FileJpgIcon = (props: SpriteProps) => {
       data-id="fileJpg"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8742,6 +9910,8 @@ export const FileJsIcon = (props: SpriteProps) => {
       data-id="fileJs"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8757,6 +9927,8 @@ export const FileJsxIcon = (props: SpriteProps) => {
       data-id="fileJsx"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8772,6 +9944,8 @@ export const FileLockIcon = (props: SpriteProps) => {
       data-id="fileLock"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8787,6 +9961,8 @@ export const FileMagnifyingGlassIcon = (props: SpriteProps) => {
       data-id="fileMagnifyingGlass"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8802,6 +9978,8 @@ export const FileMdIcon = (props: SpriteProps) => {
       data-id="fileMd"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8817,6 +9995,8 @@ export const FileMinusIcon = (props: SpriteProps) => {
       data-id="fileMinus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8832,6 +10012,8 @@ export const FilePdfIcon = (props: SpriteProps) => {
       data-id="filePdf"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8847,6 +10029,8 @@ export const FilePlusIcon = (props: SpriteProps) => {
       data-id="filePlus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8862,6 +10046,8 @@ export const FilePngIcon = (props: SpriteProps) => {
       data-id="filePng"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8877,6 +10063,8 @@ export const FilePptIcon = (props: SpriteProps) => {
       data-id="filePpt"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8892,6 +10080,8 @@ export const FilePyIcon = (props: SpriteProps) => {
       data-id="filePy"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8907,6 +10097,8 @@ export const FileRsIcon = (props: SpriteProps) => {
       data-id="fileRs"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8922,6 +10114,8 @@ export const FileSqlIcon = (props: SpriteProps) => {
       data-id="fileSql"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8937,6 +10131,8 @@ export const FileSvgIcon = (props: SpriteProps) => {
       data-id="fileSvg"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8952,6 +10148,8 @@ export const FileTextIcon = (props: SpriteProps) => {
       data-id="fileText"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8967,6 +10165,8 @@ export const FileTsIcon = (props: SpriteProps) => {
       data-id="fileTs"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8982,6 +10182,8 @@ export const FileTsxIcon = (props: SpriteProps) => {
       data-id="fileTsx"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -8997,6 +10199,8 @@ export const FileTxtIcon = (props: SpriteProps) => {
       data-id="fileTxt"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9012,6 +10216,8 @@ export const FileVideoIcon = (props: SpriteProps) => {
       data-id="fileVideo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9027,6 +10233,8 @@ export const FileVueIcon = (props: SpriteProps) => {
       data-id="fileVue"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9042,6 +10250,8 @@ export const FileXIcon = (props: SpriteProps) => {
       data-id="fileX"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9057,6 +10267,8 @@ export const FileXlsIcon = (props: SpriteProps) => {
       data-id="fileXls"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9072,6 +10284,8 @@ export const FileZipIcon = (props: SpriteProps) => {
       data-id="fileZip"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9087,6 +10301,8 @@ export const FileIcon = (props: SpriteProps) => {
       data-id="file"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9102,6 +10318,8 @@ export const FilesIcon = (props: SpriteProps) => {
       data-id="files"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9117,6 +10335,8 @@ export const FilmReelIcon = (props: SpriteProps) => {
       data-id="filmReel"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9132,6 +10352,8 @@ export const FilmScriptIcon = (props: SpriteProps) => {
       data-id="filmScript"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9147,6 +10369,8 @@ export const FilmSlateIcon = (props: SpriteProps) => {
       data-id="filmSlate"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9162,6 +10386,8 @@ export const FilmStripIcon = (props: SpriteProps) => {
       data-id="filmStrip"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9177,6 +10403,8 @@ export const FingerprintSimpleIcon = (props: SpriteProps) => {
       data-id="fingerprintSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9192,6 +10420,8 @@ export const FingerprintIcon = (props: SpriteProps) => {
       data-id="fingerprint"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9207,6 +10437,8 @@ export const FinnTheHumanIcon = (props: SpriteProps) => {
       data-id="finnTheHuman"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9222,6 +10454,8 @@ export const FireExtinguisherIcon = (props: SpriteProps) => {
       data-id="fireExtinguisher"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9237,6 +10471,8 @@ export const FireSimpleIcon = (props: SpriteProps) => {
       data-id="fireSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9252,6 +10488,8 @@ export const FireTruckIcon = (props: SpriteProps) => {
       data-id="fireTruck"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9267,6 +10505,8 @@ export const FireIcon = (props: SpriteProps) => {
       data-id="fire"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9282,6 +10522,8 @@ export const FirstAidKitIcon = (props: SpriteProps) => {
       data-id="firstAidKit"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9297,6 +10539,8 @@ export const FirstAidIcon = (props: SpriteProps) => {
       data-id="firstAid"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9312,6 +10556,8 @@ export const FishSimpleIcon = (props: SpriteProps) => {
       data-id="fishSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9327,6 +10573,8 @@ export const FishIcon = (props: SpriteProps) => {
       data-id="fish"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9342,6 +10590,8 @@ export const FlagBannerFoldIcon = (props: SpriteProps) => {
       data-id="flagBannerFold"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9357,6 +10607,8 @@ export const FlagBannerIcon = (props: SpriteProps) => {
       data-id="flagBanner"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9372,6 +10624,8 @@ export const FlagCheckeredIcon = (props: SpriteProps) => {
       data-id="flagCheckered"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9387,6 +10641,8 @@ export const FlagPennantIcon = (props: SpriteProps) => {
       data-id="flagPennant"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9402,6 +10658,8 @@ export const FlagIcon = (props: SpriteProps) => {
       data-id="flag"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9417,6 +10675,8 @@ export const FlameIcon = (props: SpriteProps) => {
       data-id="flame"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9432,6 +10692,8 @@ export const FlashlightIcon = (props: SpriteProps) => {
       data-id="flashlight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9447,6 +10709,8 @@ export const FlaskIcon = (props: SpriteProps) => {
       data-id="flask"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9462,6 +10726,8 @@ export const FlipHorizontalIcon = (props: SpriteProps) => {
       data-id="flipHorizontal"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9477,6 +10743,8 @@ export const FlipVerticalIcon = (props: SpriteProps) => {
       data-id="flipVertical"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9492,6 +10760,8 @@ export const FloppyDiskBackIcon = (props: SpriteProps) => {
       data-id="floppyDiskBack"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9507,6 +10777,8 @@ export const FloppyDiskIcon = (props: SpriteProps) => {
       data-id="floppyDisk"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9522,6 +10794,8 @@ export const FlowArrowIcon = (props: SpriteProps) => {
       data-id="flowArrow"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9537,6 +10811,8 @@ export const FlowerLotusIcon = (props: SpriteProps) => {
       data-id="flowerLotus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9552,6 +10828,8 @@ export const FlowerTulipIcon = (props: SpriteProps) => {
       data-id="flowerTulip"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9567,6 +10845,8 @@ export const FlowerIcon = (props: SpriteProps) => {
       data-id="flower"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9582,6 +10862,8 @@ export const FlyingSaucerIcon = (props: SpriteProps) => {
       data-id="flyingSaucer"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9597,6 +10879,8 @@ export const FolderDashedIcon = (props: SpriteProps) => {
       data-id="folderDashed"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9612,6 +10896,8 @@ export const FolderLockIcon = (props: SpriteProps) => {
       data-id="folderLock"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9627,6 +10913,8 @@ export const FolderMinusIcon = (props: SpriteProps) => {
       data-id="folderMinus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9642,6 +10930,8 @@ export const FolderOpenIcon = (props: SpriteProps) => {
       data-id="folderOpen"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9657,6 +10947,8 @@ export const FolderPlusIcon = (props: SpriteProps) => {
       data-id="folderPlus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9672,6 +10964,8 @@ export const FolderSimpleDashedIcon = (props: SpriteProps) => {
       data-id="folderSimpleDashed"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9687,6 +10981,8 @@ export const FolderSimpleLockIcon = (props: SpriteProps) => {
       data-id="folderSimpleLock"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9702,6 +10998,8 @@ export const FolderSimpleMinusIcon = (props: SpriteProps) => {
       data-id="folderSimpleMinus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9717,6 +11015,8 @@ export const FolderSimplePlusIcon = (props: SpriteProps) => {
       data-id="folderSimplePlus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9732,6 +11032,8 @@ export const FolderSimpleStarIcon = (props: SpriteProps) => {
       data-id="folderSimpleStar"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9747,6 +11049,8 @@ export const FolderSimpleUserIcon = (props: SpriteProps) => {
       data-id="folderSimpleUser"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9762,6 +11066,8 @@ export const FolderSimpleIcon = (props: SpriteProps) => {
       data-id="folderSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9777,6 +11083,8 @@ export const FolderStarIcon = (props: SpriteProps) => {
       data-id="folderStar"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9792,6 +11100,8 @@ export const FolderUserIcon = (props: SpriteProps) => {
       data-id="folderUser"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9807,6 +11117,8 @@ export const FolderIcon = (props: SpriteProps) => {
       data-id="folder"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9822,6 +11134,8 @@ export const FoldersIcon = (props: SpriteProps) => {
       data-id="folders"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9837,6 +11151,8 @@ export const FootballHelmetIcon = (props: SpriteProps) => {
       data-id="footballHelmet"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9852,6 +11168,8 @@ export const FootballIcon = (props: SpriteProps) => {
       data-id="football"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9867,6 +11185,8 @@ export const FootprintsIcon = (props: SpriteProps) => {
       data-id="footprints"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9882,6 +11202,8 @@ export const ForkKnifeIcon = (props: SpriteProps) => {
       data-id="forkKnife"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9897,6 +11219,8 @@ export const FourKIcon = (props: SpriteProps) => {
       data-id="fourK"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9912,6 +11236,8 @@ export const FrameCornersIcon = (props: SpriteProps) => {
       data-id="frameCorners"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9927,6 +11253,8 @@ export const FramerLogoIcon = (props: SpriteProps) => {
       data-id="framerLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9942,6 +11270,8 @@ export const FunctionIcon = (props: SpriteProps) => {
       data-id="function"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9957,6 +11287,8 @@ export const FunnelSimpleXIcon = (props: SpriteProps) => {
       data-id="funnelSimpleX"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9972,6 +11304,8 @@ export const FunnelSimpleIcon = (props: SpriteProps) => {
       data-id="funnelSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -9987,6 +11321,8 @@ export const FunnelXIcon = (props: SpriteProps) => {
       data-id="funnelX"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10002,6 +11338,8 @@ export const FunnelIcon = (props: SpriteProps) => {
       data-id="funnel"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10017,6 +11355,8 @@ export const GameControllerIcon = (props: SpriteProps) => {
       data-id="gameController"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10032,6 +11372,8 @@ export const GarageIcon = (props: SpriteProps) => {
       data-id="garage"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10047,6 +11389,8 @@ export const GasCanIcon = (props: SpriteProps) => {
       data-id="gasCan"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10062,6 +11406,8 @@ export const GasPumpIcon = (props: SpriteProps) => {
       data-id="gasPump"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10077,6 +11423,8 @@ export const GaugeIcon = (props: SpriteProps) => {
       data-id="gauge"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10092,6 +11440,8 @@ export const GavelIcon = (props: SpriteProps) => {
       data-id="gavel"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10107,6 +11457,8 @@ export const GearFineIcon = (props: SpriteProps) => {
       data-id="gearFine"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10122,6 +11474,8 @@ export const GearSixIcon = (props: SpriteProps) => {
       data-id="gearSix"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10137,6 +11491,8 @@ export const GearIcon = (props: SpriteProps) => {
       data-id="gear"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10152,6 +11508,8 @@ export const GenderFemaleIcon = (props: SpriteProps) => {
       data-id="genderFemale"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10167,6 +11525,8 @@ export const GenderIntersexIcon = (props: SpriteProps) => {
       data-id="genderIntersex"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10182,6 +11542,8 @@ export const GenderMaleIcon = (props: SpriteProps) => {
       data-id="genderMale"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10197,6 +11559,8 @@ export const GenderNeuterIcon = (props: SpriteProps) => {
       data-id="genderNeuter"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10212,6 +11576,8 @@ export const GenderNonbinaryIcon = (props: SpriteProps) => {
       data-id="genderNonbinary"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10227,6 +11593,8 @@ export const GenderTransgenderIcon = (props: SpriteProps) => {
       data-id="genderTransgender"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10242,6 +11610,8 @@ export const GhostIcon = (props: SpriteProps) => {
       data-id="ghost"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10257,6 +11627,8 @@ export const GifIcon = (props: SpriteProps) => {
       data-id="gif"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10272,6 +11644,8 @@ export const GiftIcon = (props: SpriteProps) => {
       data-id="gift"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10287,6 +11661,8 @@ export const GitBranchIcon = (props: SpriteProps) => {
       data-id="gitBranch"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10302,6 +11678,8 @@ export const GitCommitIcon = (props: SpriteProps) => {
       data-id="gitCommit"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10317,6 +11695,8 @@ export const GitDiffIcon = (props: SpriteProps) => {
       data-id="gitDiff"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10332,6 +11712,8 @@ export const GitForkIcon = (props: SpriteProps) => {
       data-id="gitFork"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10347,6 +11729,8 @@ export const GitMergeIcon = (props: SpriteProps) => {
       data-id="gitMerge"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10362,6 +11746,8 @@ export const GitPullRequestIcon = (props: SpriteProps) => {
       data-id="gitPullRequest"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10377,6 +11763,8 @@ export const GithubLogoIcon = (props: SpriteProps) => {
       data-id="githubLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10392,6 +11780,8 @@ export const GitlabLogoSimpleIcon = (props: SpriteProps) => {
       data-id="gitlabLogoSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10407,6 +11797,8 @@ export const GitlabLogoIcon = (props: SpriteProps) => {
       data-id="gitlabLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10422,6 +11814,8 @@ export const GlobeHemisphereEastIcon = (props: SpriteProps) => {
       data-id="globeHemisphereEast"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10437,6 +11831,8 @@ export const GlobeHemisphereWestIcon = (props: SpriteProps) => {
       data-id="globeHemisphereWest"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10452,6 +11848,8 @@ export const GlobeSimpleXIcon = (props: SpriteProps) => {
       data-id="globeSimpleX"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10467,6 +11865,8 @@ export const GlobeSimpleIcon = (props: SpriteProps) => {
       data-id="globeSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10482,6 +11882,8 @@ export const GlobeStandIcon = (props: SpriteProps) => {
       data-id="globeStand"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10497,6 +11899,8 @@ export const GlobeXIcon = (props: SpriteProps) => {
       data-id="globeX"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10512,6 +11916,8 @@ export const GlobeIcon = (props: SpriteProps) => {
       data-id="globe"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10527,6 +11933,8 @@ export const GogglesIcon = (props: SpriteProps) => {
       data-id="goggles"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10542,6 +11950,8 @@ export const GolfIcon = (props: SpriteProps) => {
       data-id="golf"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10557,6 +11967,8 @@ export const GoodreadsLogoIcon = (props: SpriteProps) => {
       data-id="goodreadsLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10572,6 +11984,8 @@ export const GoogleCardboardLogoIcon = (props: SpriteProps) => {
       data-id="googleCardboardLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10587,6 +12001,8 @@ export const GoogleChromeLogoIcon = (props: SpriteProps) => {
       data-id="googleChromeLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10602,6 +12018,8 @@ export const GoogleDriveLogoIcon = (props: SpriteProps) => {
       data-id="googleDriveLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10617,6 +12035,8 @@ export const GoogleLogoIcon = (props: SpriteProps) => {
       data-id="googleLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10632,6 +12052,8 @@ export const GooglePhotosLogoIcon = (props: SpriteProps) => {
       data-id="googlePhotosLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10647,6 +12069,8 @@ export const GooglePlayLogoIcon = (props: SpriteProps) => {
       data-id="googlePlayLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10662,6 +12086,8 @@ export const GooglePodcastsLogoIcon = (props: SpriteProps) => {
       data-id="googlePodcastsLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10677,6 +12103,8 @@ export const GpsFixIcon = (props: SpriteProps) => {
       data-id="gpsFix"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10692,6 +12120,8 @@ export const GpsSlashIcon = (props: SpriteProps) => {
       data-id="gpsSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10707,6 +12137,8 @@ export const GpsIcon = (props: SpriteProps) => {
       data-id="gps"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10722,6 +12154,8 @@ export const GradientIcon = (props: SpriteProps) => {
       data-id="gradient"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10737,6 +12171,8 @@ export const GraduationCapIcon = (props: SpriteProps) => {
       data-id="graduationCap"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10752,6 +12188,8 @@ export const GrainsSlashIcon = (props: SpriteProps) => {
       data-id="grainsSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10767,6 +12205,8 @@ export const GrainsIcon = (props: SpriteProps) => {
       data-id="grains"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10782,6 +12222,8 @@ export const GraphIcon = (props: SpriteProps) => {
       data-id="graph"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10797,6 +12239,8 @@ export const GraphicsCardIcon = (props: SpriteProps) => {
       data-id="graphicsCard"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10812,6 +12256,8 @@ export const GreaterThanOrEqualIcon = (props: SpriteProps) => {
       data-id="greaterThanOrEqual"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10827,6 +12273,8 @@ export const GreaterThanIcon = (props: SpriteProps) => {
       data-id="greaterThan"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10842,6 +12290,8 @@ export const GridFourIcon = (props: SpriteProps) => {
       data-id="gridFour"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10857,6 +12307,8 @@ export const GridNineIcon = (props: SpriteProps) => {
       data-id="gridNine"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10872,6 +12324,8 @@ export const GuitarIcon = (props: SpriteProps) => {
       data-id="guitar"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10887,6 +12341,8 @@ export const HairDryerIcon = (props: SpriteProps) => {
       data-id="hairDryer"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10902,6 +12358,8 @@ export const HamburgerIcon = (props: SpriteProps) => {
       data-id="hamburger"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10917,6 +12375,8 @@ export const HammerIcon = (props: SpriteProps) => {
       data-id="hammer"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10932,6 +12392,8 @@ export const HandArrowDownIcon = (props: SpriteProps) => {
       data-id="handArrowDown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10947,6 +12409,8 @@ export const HandArrowUpIcon = (props: SpriteProps) => {
       data-id="handArrowUp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10962,6 +12426,8 @@ export const HandCoinsIcon = (props: SpriteProps) => {
       data-id="handCoins"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10977,6 +12443,8 @@ export const HandDepositIcon = (props: SpriteProps) => {
       data-id="handDeposit"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -10992,6 +12460,8 @@ export const HandEyeIcon = (props: SpriteProps) => {
       data-id="handEye"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11007,6 +12477,8 @@ export const HandFistIcon = (props: SpriteProps) => {
       data-id="handFist"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11022,6 +12494,8 @@ export const HandGrabbingIcon = (props: SpriteProps) => {
       data-id="handGrabbing"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11037,6 +12511,8 @@ export const HandHeartIcon = (props: SpriteProps) => {
       data-id="handHeart"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11052,6 +12528,8 @@ export const HandPalmIcon = (props: SpriteProps) => {
       data-id="handPalm"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11067,6 +12545,8 @@ export const HandPeaceIcon = (props: SpriteProps) => {
       data-id="handPeace"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11082,6 +12562,8 @@ export const HandPointingIcon = (props: SpriteProps) => {
       data-id="handPointing"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11097,6 +12579,8 @@ export const HandSoapIcon = (props: SpriteProps) => {
       data-id="handSoap"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11112,6 +12596,8 @@ export const HandSwipeLeftIcon = (props: SpriteProps) => {
       data-id="handSwipeLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11127,6 +12613,8 @@ export const HandSwipeRightIcon = (props: SpriteProps) => {
       data-id="handSwipeRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11142,6 +12630,8 @@ export const HandTapIcon = (props: SpriteProps) => {
       data-id="handTap"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11157,6 +12647,8 @@ export const HandWavingIcon = (props: SpriteProps) => {
       data-id="handWaving"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11172,6 +12664,8 @@ export const HandWithdrawIcon = (props: SpriteProps) => {
       data-id="handWithdraw"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11187,6 +12681,8 @@ export const HandIcon = (props: SpriteProps) => {
       data-id="hand"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11202,6 +12698,8 @@ export const HandbagSimpleIcon = (props: SpriteProps) => {
       data-id="handbagSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11217,6 +12715,8 @@ export const HandbagIcon = (props: SpriteProps) => {
       data-id="handbag"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11232,6 +12732,8 @@ export const HandsClappingIcon = (props: SpriteProps) => {
       data-id="handsClapping"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11247,6 +12749,8 @@ export const HandsPrayingIcon = (props: SpriteProps) => {
       data-id="handsPraying"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11262,6 +12766,8 @@ export const HandshakeIcon = (props: SpriteProps) => {
       data-id="handshake"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11277,6 +12783,8 @@ export const HardDriveIcon = (props: SpriteProps) => {
       data-id="hardDrive"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11292,6 +12800,8 @@ export const HardDrivesIcon = (props: SpriteProps) => {
       data-id="hardDrives"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11307,6 +12817,8 @@ export const HardHatIcon = (props: SpriteProps) => {
       data-id="hardHat"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11322,6 +12834,8 @@ export const HashStraightIcon = (props: SpriteProps) => {
       data-id="hashStraight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11337,6 +12851,8 @@ export const HashIcon = (props: SpriteProps) => {
       data-id="hash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11352,6 +12868,8 @@ export const HeadCircuitIcon = (props: SpriteProps) => {
       data-id="headCircuit"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11367,6 +12885,8 @@ export const HeadlightsIcon = (props: SpriteProps) => {
       data-id="headlights"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11382,6 +12902,8 @@ export const HeadphonesIcon = (props: SpriteProps) => {
       data-id="headphones"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11397,6 +12919,8 @@ export const HeadsetIcon = (props: SpriteProps) => {
       data-id="headset"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11412,6 +12936,8 @@ export const HeartBreakIcon = (props: SpriteProps) => {
       data-id="heartBreak"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11427,6 +12953,8 @@ export const HeartHalfIcon = (props: SpriteProps) => {
       data-id="heartHalf"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11442,6 +12970,8 @@ export const HeartStraightBreakIcon = (props: SpriteProps) => {
       data-id="heartStraightBreak"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11457,6 +12987,8 @@ export const HeartStraightIcon = (props: SpriteProps) => {
       data-id="heartStraight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11472,6 +13004,8 @@ export const HeartIcon = (props: SpriteProps) => {
       data-id="heart"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11487,6 +13021,8 @@ export const HeartbeatIcon = (props: SpriteProps) => {
       data-id="heartbeat"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11502,6 +13038,8 @@ export const HexagonIcon = (props: SpriteProps) => {
       data-id="hexagon"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11517,6 +13055,8 @@ export const HighDefinitionIcon = (props: SpriteProps) => {
       data-id="highDefinition"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11532,6 +13072,8 @@ export const HighHeelIcon = (props: SpriteProps) => {
       data-id="highHeel"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11547,6 +13089,8 @@ export const HighlighterCircleIcon = (props: SpriteProps) => {
       data-id="highlighterCircle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11562,6 +13106,8 @@ export const HighlighterIcon = (props: SpriteProps) => {
       data-id="highlighter"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11577,6 +13123,8 @@ export const HockeyIcon = (props: SpriteProps) => {
       data-id="hockey"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11592,6 +13140,8 @@ export const HoodieIcon = (props: SpriteProps) => {
       data-id="hoodie"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11607,6 +13157,8 @@ export const HorseIcon = (props: SpriteProps) => {
       data-id="horse"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11622,6 +13174,8 @@ export const HospitalIcon = (props: SpriteProps) => {
       data-id="hospital"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11637,6 +13191,8 @@ export const HourglassHighIcon = (props: SpriteProps) => {
       data-id="hourglassHigh"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11652,6 +13208,8 @@ export const HourglassLowIcon = (props: SpriteProps) => {
       data-id="hourglassLow"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11667,6 +13225,8 @@ export const HourglassMediumIcon = (props: SpriteProps) => {
       data-id="hourglassMedium"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11682,6 +13242,8 @@ export const HourglassSimpleHighIcon = (props: SpriteProps) => {
       data-id="hourglassSimpleHigh"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11697,6 +13259,8 @@ export const HourglassSimpleLowIcon = (props: SpriteProps) => {
       data-id="hourglassSimpleLow"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11712,6 +13276,8 @@ export const HourglassSimpleMediumIcon = (props: SpriteProps) => {
       data-id="hourglassSimpleMedium"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11727,6 +13293,8 @@ export const HourglassSimpleIcon = (props: SpriteProps) => {
       data-id="hourglassSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11742,6 +13310,8 @@ export const HourglassIcon = (props: SpriteProps) => {
       data-id="hourglass"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11757,6 +13327,8 @@ export const HouseLineIcon = (props: SpriteProps) => {
       data-id="houseLine"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11772,6 +13344,8 @@ export const HouseSimpleIcon = (props: SpriteProps) => {
       data-id="houseSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11787,6 +13361,8 @@ export const HouseIcon = (props: SpriteProps) => {
       data-id="house"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11802,6 +13378,8 @@ export const HurricaneIcon = (props: SpriteProps) => {
       data-id="hurricane"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11817,6 +13395,8 @@ export const IceCreamIcon = (props: SpriteProps) => {
       data-id="iceCream"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11832,6 +13412,8 @@ export const IdentificationBadgeIcon = (props: SpriteProps) => {
       data-id="identificationBadge"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11847,6 +13429,8 @@ export const IdentificationCardIcon = (props: SpriteProps) => {
       data-id="identificationCard"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11862,6 +13446,8 @@ export const ImageBrokenIcon = (props: SpriteProps) => {
       data-id="imageBroken"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11877,6 +13463,8 @@ export const ImageSquareIcon = (props: SpriteProps) => {
       data-id="imageSquare"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11892,6 +13480,8 @@ export const ImageIcon = (props: SpriteProps) => {
       data-id="image"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11907,6 +13497,8 @@ export const ImagesSquareIcon = (props: SpriteProps) => {
       data-id="imagesSquare"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11922,6 +13514,8 @@ export const ImagesIcon = (props: SpriteProps) => {
       data-id="images"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11937,6 +13531,8 @@ export const InfinityIcon = (props: SpriteProps) => {
       data-id="infinity"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11952,6 +13548,8 @@ export const InfoIcon = (props: SpriteProps) => {
       data-id="info"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11967,6 +13565,8 @@ export const InstagramLogoIcon = (props: SpriteProps) => {
       data-id="instagramLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11982,6 +13582,8 @@ export const IntersectSquareIcon = (props: SpriteProps) => {
       data-id="intersectSquare"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -11997,6 +13599,8 @@ export const IntersectThreeIcon = (props: SpriteProps) => {
       data-id="intersectThree"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12012,6 +13616,8 @@ export const IntersectIcon = (props: SpriteProps) => {
       data-id="intersect"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12027,6 +13633,8 @@ export const IntersectionIcon = (props: SpriteProps) => {
       data-id="intersection"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12042,6 +13650,8 @@ export const InvoiceIcon = (props: SpriteProps) => {
       data-id="invoice"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12057,6 +13667,8 @@ export const IslandIcon = (props: SpriteProps) => {
       data-id="island"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12072,6 +13684,8 @@ export const JarLabelIcon = (props: SpriteProps) => {
       data-id="jarLabel"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12087,6 +13701,8 @@ export const JarIcon = (props: SpriteProps) => {
       data-id="jar"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12102,6 +13718,8 @@ export const JeepIcon = (props: SpriteProps) => {
       data-id="jeep"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12117,6 +13735,8 @@ export const JoystickIcon = (props: SpriteProps) => {
       data-id="joystick"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12132,6 +13752,8 @@ export const KanbanIcon = (props: SpriteProps) => {
       data-id="kanban"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12147,6 +13769,8 @@ export const KeyReturnIcon = (props: SpriteProps) => {
       data-id="keyReturn"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12162,6 +13786,8 @@ export const KeyIcon = (props: SpriteProps) => {
       data-id="key"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12177,6 +13803,8 @@ export const KeyboardIcon = (props: SpriteProps) => {
       data-id="keyboard"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12192,6 +13820,8 @@ export const KeyholeIcon = (props: SpriteProps) => {
       data-id="keyhole"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12207,6 +13837,8 @@ export const KnifeIcon = (props: SpriteProps) => {
       data-id="knife"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12222,6 +13854,8 @@ export const LadderSimpleIcon = (props: SpriteProps) => {
       data-id="ladderSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12237,6 +13871,8 @@ export const LadderIcon = (props: SpriteProps) => {
       data-id="ladder"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12252,6 +13888,8 @@ export const LampPendantIcon = (props: SpriteProps) => {
       data-id="lampPendant"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12267,6 +13905,8 @@ export const LampIcon = (props: SpriteProps) => {
       data-id="lamp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12282,6 +13922,8 @@ export const LaptopIcon = (props: SpriteProps) => {
       data-id="laptop"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12297,6 +13939,8 @@ export const LassoIcon = (props: SpriteProps) => {
       data-id="lasso"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12312,6 +13956,8 @@ export const LastfmLogoIcon = (props: SpriteProps) => {
       data-id="lastfmLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12327,6 +13973,8 @@ export const LayoutIcon = (props: SpriteProps) => {
       data-id="layout"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12342,6 +13990,8 @@ export const LeafIcon = (props: SpriteProps) => {
       data-id="leaf"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12357,6 +14007,8 @@ export const LecternIcon = (props: SpriteProps) => {
       data-id="lectern"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12372,6 +14024,8 @@ export const LegoSmileyIcon = (props: SpriteProps) => {
       data-id="legoSmiley"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12387,6 +14041,8 @@ export const LegoIcon = (props: SpriteProps) => {
       data-id="lego"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12402,6 +14058,8 @@ export const LessThanOrEqualIcon = (props: SpriteProps) => {
       data-id="lessThanOrEqual"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12417,6 +14075,8 @@ export const LessThanIcon = (props: SpriteProps) => {
       data-id="lessThan"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12432,6 +14092,8 @@ export const LetterCircleHIcon = (props: SpriteProps) => {
       data-id="letterCircleH"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12447,6 +14109,8 @@ export const LetterCirclePIcon = (props: SpriteProps) => {
       data-id="letterCircleP"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12462,6 +14126,8 @@ export const LetterCircleVIcon = (props: SpriteProps) => {
       data-id="letterCircleV"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12477,6 +14143,8 @@ export const LifebuoyIcon = (props: SpriteProps) => {
       data-id="lifebuoy"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12492,6 +14160,8 @@ export const LightbulbFilamentIcon = (props: SpriteProps) => {
       data-id="lightbulbFilament"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12507,6 +14177,8 @@ export const LightbulbIcon = (props: SpriteProps) => {
       data-id="lightbulb"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12522,6 +14194,8 @@ export const LighthouseIcon = (props: SpriteProps) => {
       data-id="lighthouse"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12537,6 +14211,8 @@ export const LightningAIcon = (props: SpriteProps) => {
       data-id="lightningA"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12552,6 +14228,8 @@ export const LightningSlashIcon = (props: SpriteProps) => {
       data-id="lightningSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12567,6 +14245,8 @@ export const LightningIcon = (props: SpriteProps) => {
       data-id="lightning"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12582,6 +14262,8 @@ export const LineSegmentIcon = (props: SpriteProps) => {
       data-id="lineSegment"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12597,6 +14279,8 @@ export const LineSegmentsIcon = (props: SpriteProps) => {
       data-id="lineSegments"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12612,6 +14296,8 @@ export const LineVerticalIcon = (props: SpriteProps) => {
       data-id="lineVertical"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12627,6 +14313,8 @@ export const LinkBreakIcon = (props: SpriteProps) => {
       data-id="linkBreak"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12642,6 +14330,8 @@ export const LinkSimpleBreakIcon = (props: SpriteProps) => {
       data-id="linkSimpleBreak"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12657,6 +14347,8 @@ export const LinkSimpleHorizontalBreakIcon = (props: SpriteProps) => {
       data-id="linkSimpleHorizontalBreak"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12672,6 +14364,8 @@ export const LinkSimpleHorizontalIcon = (props: SpriteProps) => {
       data-id="linkSimpleHorizontal"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12687,6 +14381,8 @@ export const LinkSimpleIcon = (props: SpriteProps) => {
       data-id="linkSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12702,6 +14398,8 @@ export const LinkIcon = (props: SpriteProps) => {
       data-id="link"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12717,6 +14415,8 @@ export const LinkedinLogoIcon = (props: SpriteProps) => {
       data-id="linkedinLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12732,6 +14432,8 @@ export const LinktreeLogoIcon = (props: SpriteProps) => {
       data-id="linktreeLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12747,6 +14449,8 @@ export const LinuxLogoIcon = (props: SpriteProps) => {
       data-id="linuxLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12762,6 +14466,8 @@ export const ListBulletsIcon = (props: SpriteProps) => {
       data-id="listBullets"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12777,6 +14483,8 @@ export const ListChecksIcon = (props: SpriteProps) => {
       data-id="listChecks"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12792,6 +14500,8 @@ export const ListDashesIcon = (props: SpriteProps) => {
       data-id="listDashes"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12807,6 +14517,8 @@ export const ListHeartIcon = (props: SpriteProps) => {
       data-id="listHeart"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12822,6 +14534,8 @@ export const ListMagnifyingGlassIcon = (props: SpriteProps) => {
       data-id="listMagnifyingGlass"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12837,6 +14551,8 @@ export const ListNumbersIcon = (props: SpriteProps) => {
       data-id="listNumbers"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12852,6 +14568,8 @@ export const ListPlusIcon = (props: SpriteProps) => {
       data-id="listPlus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12867,6 +14585,8 @@ export const ListStarIcon = (props: SpriteProps) => {
       data-id="listStar"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12882,6 +14602,8 @@ export const ListIcon = (props: SpriteProps) => {
       data-id="list"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12897,6 +14619,8 @@ export const LockKeyOpenIcon = (props: SpriteProps) => {
       data-id="lockKeyOpen"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12912,6 +14636,8 @@ export const LockKeyIcon = (props: SpriteProps) => {
       data-id="lockKey"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12927,6 +14653,8 @@ export const LockLaminatedOpenIcon = (props: SpriteProps) => {
       data-id="lockLaminatedOpen"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12942,6 +14670,8 @@ export const LockLaminatedIcon = (props: SpriteProps) => {
       data-id="lockLaminated"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12957,6 +14687,8 @@ export const LockOpenIcon = (props: SpriteProps) => {
       data-id="lockOpen"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12972,6 +14704,8 @@ export const LockSimpleOpenIcon = (props: SpriteProps) => {
       data-id="lockSimpleOpen"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -12987,6 +14721,8 @@ export const LockSimpleIcon = (props: SpriteProps) => {
       data-id="lockSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13002,6 +14738,8 @@ export const LockIcon = (props: SpriteProps) => {
       data-id="lock"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13017,6 +14755,8 @@ export const LockersIcon = (props: SpriteProps) => {
       data-id="lockers"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13032,6 +14772,8 @@ export const LogIcon = (props: SpriteProps) => {
       data-id="log"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13047,6 +14789,8 @@ export const MagicWandIcon = (props: SpriteProps) => {
       data-id="magicWand"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13062,6 +14806,8 @@ export const MagnetStraightIcon = (props: SpriteProps) => {
       data-id="magnetStraight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13077,6 +14823,8 @@ export const MagnetIcon = (props: SpriteProps) => {
       data-id="magnet"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13092,6 +14840,8 @@ export const MagnifyingGlassMinusIcon = (props: SpriteProps) => {
       data-id="magnifyingGlassMinus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13107,6 +14857,8 @@ export const MagnifyingGlassPlusIcon = (props: SpriteProps) => {
       data-id="magnifyingGlassPlus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13122,6 +14874,8 @@ export const MagnifyingGlassIcon = (props: SpriteProps) => {
       data-id="magnifyingGlass"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13137,6 +14891,8 @@ export const MailboxIcon = (props: SpriteProps) => {
       data-id="mailbox"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13152,6 +14908,8 @@ export const MapPinAreaIcon = (props: SpriteProps) => {
       data-id="mapPinArea"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13167,6 +14925,8 @@ export const MapPinLineIcon = (props: SpriteProps) => {
       data-id="mapPinLine"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13182,6 +14942,8 @@ export const MapPinPlusIcon = (props: SpriteProps) => {
       data-id="mapPinPlus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13197,6 +14959,8 @@ export const MapPinSimpleAreaIcon = (props: SpriteProps) => {
       data-id="mapPinSimpleArea"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13212,6 +14976,8 @@ export const MapPinSimpleLineIcon = (props: SpriteProps) => {
       data-id="mapPinSimpleLine"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13227,6 +14993,8 @@ export const MapPinSimpleIcon = (props: SpriteProps) => {
       data-id="mapPinSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13242,6 +15010,8 @@ export const MapPinIcon = (props: SpriteProps) => {
       data-id="mapPin"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13257,6 +15027,8 @@ export const MapTrifoldIcon = (props: SpriteProps) => {
       data-id="mapTrifold"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13272,6 +15044,8 @@ export const MarkdownLogoIcon = (props: SpriteProps) => {
       data-id="markdownLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13287,6 +15061,8 @@ export const MarkerCircleIcon = (props: SpriteProps) => {
       data-id="markerCircle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13302,6 +15078,8 @@ export const MartiniIcon = (props: SpriteProps) => {
       data-id="martini"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13317,6 +15095,8 @@ export const MaskHappyIcon = (props: SpriteProps) => {
       data-id="maskHappy"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13332,6 +15112,8 @@ export const MaskSadIcon = (props: SpriteProps) => {
       data-id="maskSad"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13347,6 +15129,8 @@ export const MastodonLogoIcon = (props: SpriteProps) => {
       data-id="mastodonLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13362,6 +15146,8 @@ export const MathOperationsIcon = (props: SpriteProps) => {
       data-id="mathOperations"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13377,6 +15163,8 @@ export const MatrixLogoIcon = (props: SpriteProps) => {
       data-id="matrixLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13392,6 +15180,8 @@ export const MedalMilitaryIcon = (props: SpriteProps) => {
       data-id="medalMilitary"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13407,6 +15197,8 @@ export const MedalIcon = (props: SpriteProps) => {
       data-id="medal"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13422,6 +15214,8 @@ export const MediumLogoIcon = (props: SpriteProps) => {
       data-id="mediumLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13437,6 +15231,8 @@ export const MegaphoneSimpleIcon = (props: SpriteProps) => {
       data-id="megaphoneSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13452,6 +15248,8 @@ export const MegaphoneIcon = (props: SpriteProps) => {
       data-id="megaphone"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13467,6 +15265,8 @@ export const MemberOfIcon = (props: SpriteProps) => {
       data-id="memberOf"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13482,6 +15282,8 @@ export const MemoryIcon = (props: SpriteProps) => {
       data-id="memory"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13497,6 +15299,8 @@ export const MessengerLogoIcon = (props: SpriteProps) => {
       data-id="messengerLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13512,6 +15316,8 @@ export const MetaLogoIcon = (props: SpriteProps) => {
       data-id="metaLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13527,6 +15333,8 @@ export const MeteorIcon = (props: SpriteProps) => {
       data-id="meteor"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13542,6 +15350,8 @@ export const MetronomeIcon = (props: SpriteProps) => {
       data-id="metronome"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13557,6 +15367,8 @@ export const MicrophoneSlashIcon = (props: SpriteProps) => {
       data-id="microphoneSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13572,6 +15384,8 @@ export const MicrophoneStageIcon = (props: SpriteProps) => {
       data-id="microphoneStage"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13587,6 +15401,8 @@ export const MicrophoneIcon = (props: SpriteProps) => {
       data-id="microphone"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13602,6 +15418,8 @@ export const MicroscopeIcon = (props: SpriteProps) => {
       data-id="microscope"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13617,6 +15435,8 @@ export const MicrosoftExcelLogoIcon = (props: SpriteProps) => {
       data-id="microsoftExcelLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13632,6 +15452,8 @@ export const MicrosoftOutlookLogoIcon = (props: SpriteProps) => {
       data-id="microsoftOutlookLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13647,6 +15469,8 @@ export const MicrosoftPowerpointLogoIcon = (props: SpriteProps) => {
       data-id="microsoftPowerpointLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13662,6 +15486,8 @@ export const MicrosoftTeamsLogoIcon = (props: SpriteProps) => {
       data-id="microsoftTeamsLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13677,6 +15503,8 @@ export const MicrosoftWordLogoIcon = (props: SpriteProps) => {
       data-id="microsoftWordLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13692,6 +15520,8 @@ export const MinusCircleIcon = (props: SpriteProps) => {
       data-id="minusCircle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13707,6 +15537,8 @@ export const MinusSquareIcon = (props: SpriteProps) => {
       data-id="minusSquare"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13722,6 +15554,8 @@ export const MinusIcon = (props: SpriteProps) => {
       data-id="minus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13737,6 +15571,8 @@ export const MoneyWavyIcon = (props: SpriteProps) => {
       data-id="moneyWavy"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13752,6 +15588,8 @@ export const MoneyIcon = (props: SpriteProps) => {
       data-id="money"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13767,6 +15605,8 @@ export const MonitorArrowUpIcon = (props: SpriteProps) => {
       data-id="monitorArrowUp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13782,6 +15622,8 @@ export const MonitorPlayIcon = (props: SpriteProps) => {
       data-id="monitorPlay"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13797,6 +15639,8 @@ export const MonitorIcon = (props: SpriteProps) => {
       data-id="monitor"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13812,6 +15656,8 @@ export const MoonStarsIcon = (props: SpriteProps) => {
       data-id="moonStars"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13827,6 +15673,8 @@ export const MoonIcon = (props: SpriteProps) => {
       data-id="moon"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13842,6 +15690,8 @@ export const MopedFrontIcon = (props: SpriteProps) => {
       data-id="mopedFront"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13857,6 +15707,8 @@ export const MopedIcon = (props: SpriteProps) => {
       data-id="moped"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13872,6 +15724,8 @@ export const MosqueIcon = (props: SpriteProps) => {
       data-id="mosque"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13887,6 +15741,8 @@ export const MotorcycleIcon = (props: SpriteProps) => {
       data-id="motorcycle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13902,6 +15758,8 @@ export const MountainsIcon = (props: SpriteProps) => {
       data-id="mountains"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13917,6 +15775,8 @@ export const MouseLeftClickIcon = (props: SpriteProps) => {
       data-id="mouseLeftClick"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13932,6 +15792,8 @@ export const MouseMiddleClickIcon = (props: SpriteProps) => {
       data-id="mouseMiddleClick"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13947,6 +15809,8 @@ export const MouseRightClickIcon = (props: SpriteProps) => {
       data-id="mouseRightClick"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13962,6 +15826,8 @@ export const MouseScrollIcon = (props: SpriteProps) => {
       data-id="mouseScroll"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13977,6 +15843,8 @@ export const MouseSimpleIcon = (props: SpriteProps) => {
       data-id="mouseSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -13992,6 +15860,8 @@ export const MouseIcon = (props: SpriteProps) => {
       data-id="mouse"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14007,6 +15877,8 @@ export const MusicNoteSimpleIcon = (props: SpriteProps) => {
       data-id="musicNoteSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14022,6 +15894,8 @@ export const MusicNoteIcon = (props: SpriteProps) => {
       data-id="musicNote"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14037,6 +15911,8 @@ export const MusicNotesMinusIcon = (props: SpriteProps) => {
       data-id="musicNotesMinus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14052,6 +15928,8 @@ export const MusicNotesPlusIcon = (props: SpriteProps) => {
       data-id="musicNotesPlus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14067,6 +15945,8 @@ export const MusicNotesSimpleIcon = (props: SpriteProps) => {
       data-id="musicNotesSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14082,6 +15962,8 @@ export const MusicNotesIcon = (props: SpriteProps) => {
       data-id="musicNotes"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14097,6 +15979,8 @@ export const NavigationArrowIcon = (props: SpriteProps) => {
       data-id="navigationArrow"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14112,6 +15996,8 @@ export const NeedleIcon = (props: SpriteProps) => {
       data-id="needle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14127,6 +16013,8 @@ export const NetworkSlashIcon = (props: SpriteProps) => {
       data-id="networkSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14142,6 +16030,8 @@ export const NetworkXIcon = (props: SpriteProps) => {
       data-id="networkX"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14157,6 +16047,8 @@ export const NetworkIcon = (props: SpriteProps) => {
       data-id="network"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14172,6 +16064,8 @@ export const NewspaperClippingIcon = (props: SpriteProps) => {
       data-id="newspaperClipping"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14187,6 +16081,8 @@ export const NewspaperIcon = (props: SpriteProps) => {
       data-id="newspaper"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14202,6 +16098,8 @@ export const NotEqualsIcon = (props: SpriteProps) => {
       data-id="notEquals"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14217,6 +16115,8 @@ export const NotMemberOfIcon = (props: SpriteProps) => {
       data-id="notMemberOf"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14232,6 +16132,8 @@ export const NotSubsetOfIcon = (props: SpriteProps) => {
       data-id="notSubsetOf"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14247,6 +16149,8 @@ export const NotSupersetOfIcon = (props: SpriteProps) => {
       data-id="notSupersetOf"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14262,6 +16166,8 @@ export const NotchesIcon = (props: SpriteProps) => {
       data-id="notches"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14277,6 +16183,8 @@ export const NoteBlankIcon = (props: SpriteProps) => {
       data-id="noteBlank"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14292,6 +16200,8 @@ export const NotePencilIcon = (props: SpriteProps) => {
       data-id="notePencil"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14307,6 +16217,8 @@ export const NoteIcon = (props: SpriteProps) => {
       data-id="note"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14322,6 +16234,8 @@ export const NotebookIcon = (props: SpriteProps) => {
       data-id="notebook"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14337,6 +16251,8 @@ export const NotepadIcon = (props: SpriteProps) => {
       data-id="notepad"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14352,6 +16268,8 @@ export const NotificationIcon = (props: SpriteProps) => {
       data-id="notification"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14367,6 +16285,8 @@ export const NotionLogoIcon = (props: SpriteProps) => {
       data-id="notionLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14382,6 +16302,8 @@ export const NuclearPlantIcon = (props: SpriteProps) => {
       data-id="nuclearPlant"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14397,6 +16319,8 @@ export const NumberCircleEightIcon = (props: SpriteProps) => {
       data-id="numberCircleEight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14412,6 +16336,8 @@ export const NumberCircleFiveIcon = (props: SpriteProps) => {
       data-id="numberCircleFive"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14427,6 +16353,8 @@ export const NumberCircleFourIcon = (props: SpriteProps) => {
       data-id="numberCircleFour"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14442,6 +16370,8 @@ export const NumberCircleNineIcon = (props: SpriteProps) => {
       data-id="numberCircleNine"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14457,6 +16387,8 @@ export const NumberCircleOneIcon = (props: SpriteProps) => {
       data-id="numberCircleOne"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14472,6 +16404,8 @@ export const NumberCircleSevenIcon = (props: SpriteProps) => {
       data-id="numberCircleSeven"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14487,6 +16421,8 @@ export const NumberCircleSixIcon = (props: SpriteProps) => {
       data-id="numberCircleSix"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14502,6 +16438,8 @@ export const NumberCircleThreeIcon = (props: SpriteProps) => {
       data-id="numberCircleThree"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14517,6 +16455,8 @@ export const NumberCircleTwoIcon = (props: SpriteProps) => {
       data-id="numberCircleTwo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14532,6 +16472,8 @@ export const NumberCircleZeroIcon = (props: SpriteProps) => {
       data-id="numberCircleZero"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14547,6 +16489,8 @@ export const NumberEightIcon = (props: SpriteProps) => {
       data-id="numberEight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14562,6 +16506,8 @@ export const NumberFiveIcon = (props: SpriteProps) => {
       data-id="numberFive"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14577,6 +16523,8 @@ export const NumberFourIcon = (props: SpriteProps) => {
       data-id="numberFour"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14592,6 +16540,8 @@ export const NumberNineIcon = (props: SpriteProps) => {
       data-id="numberNine"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14607,6 +16557,8 @@ export const NumberOneIcon = (props: SpriteProps) => {
       data-id="numberOne"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14622,6 +16574,8 @@ export const NumberSevenIcon = (props: SpriteProps) => {
       data-id="numberSeven"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14637,6 +16591,8 @@ export const NumberSixIcon = (props: SpriteProps) => {
       data-id="numberSix"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14652,6 +16608,8 @@ export const NumberSquareEightIcon = (props: SpriteProps) => {
       data-id="numberSquareEight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14667,6 +16625,8 @@ export const NumberSquareFiveIcon = (props: SpriteProps) => {
       data-id="numberSquareFive"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14682,6 +16642,8 @@ export const NumberSquareFourIcon = (props: SpriteProps) => {
       data-id="numberSquareFour"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14697,6 +16659,8 @@ export const NumberSquareNineIcon = (props: SpriteProps) => {
       data-id="numberSquareNine"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14712,6 +16676,8 @@ export const NumberSquareOneIcon = (props: SpriteProps) => {
       data-id="numberSquareOne"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14727,6 +16693,8 @@ export const NumberSquareSevenIcon = (props: SpriteProps) => {
       data-id="numberSquareSeven"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14742,6 +16710,8 @@ export const NumberSquareSixIcon = (props: SpriteProps) => {
       data-id="numberSquareSix"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14757,6 +16727,8 @@ export const NumberSquareThreeIcon = (props: SpriteProps) => {
       data-id="numberSquareThree"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14772,6 +16744,8 @@ export const NumberSquareTwoIcon = (props: SpriteProps) => {
       data-id="numberSquareTwo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14787,6 +16761,8 @@ export const NumberSquareZeroIcon = (props: SpriteProps) => {
       data-id="numberSquareZero"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14802,6 +16778,8 @@ export const NumberThreeIcon = (props: SpriteProps) => {
       data-id="numberThree"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14817,6 +16795,8 @@ export const NumberTwoIcon = (props: SpriteProps) => {
       data-id="numberTwo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14832,6 +16812,8 @@ export const NumberZeroIcon = (props: SpriteProps) => {
       data-id="numberZero"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14847,6 +16829,8 @@ export const NumpadIcon = (props: SpriteProps) => {
       data-id="numpad"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14862,6 +16846,8 @@ export const NutIcon = (props: SpriteProps) => {
       data-id="nut"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14877,6 +16863,8 @@ export const NyTimesLogoIcon = (props: SpriteProps) => {
       data-id="nyTimesLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14892,6 +16880,8 @@ export const OctagonIcon = (props: SpriteProps) => {
       data-id="octagon"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14907,6 +16897,8 @@ export const OfficeChairIcon = (props: SpriteProps) => {
       data-id="officeChair"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14922,6 +16914,8 @@ export const OnigiriIcon = (props: SpriteProps) => {
       data-id="onigiri"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14937,6 +16931,8 @@ export const OpenAiLogoIcon = (props: SpriteProps) => {
       data-id="openAiLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14952,6 +16948,8 @@ export const OptionIcon = (props: SpriteProps) => {
       data-id="option"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14967,6 +16965,8 @@ export const OrangeSliceIcon = (props: SpriteProps) => {
       data-id="orangeSlice"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14982,6 +16982,8 @@ export const OrangeIcon = (props: SpriteProps) => {
       data-id="orange"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -14997,6 +16999,8 @@ export const OvenIcon = (props: SpriteProps) => {
       data-id="oven"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15012,6 +17016,8 @@ export const PackageIcon = (props: SpriteProps) => {
       data-id="package"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15027,6 +17033,8 @@ export const PaintBrushBroadIcon = (props: SpriteProps) => {
       data-id="paintBrushBroad"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15042,6 +17050,8 @@ export const PaintBrushHouseholdIcon = (props: SpriteProps) => {
       data-id="paintBrushHousehold"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15057,6 +17067,8 @@ export const PaintBrushIcon = (props: SpriteProps) => {
       data-id="paintBrush"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15072,6 +17084,8 @@ export const PaintBucketIcon = (props: SpriteProps) => {
       data-id="paintBucket"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15087,6 +17101,8 @@ export const PaintRollerIcon = (props: SpriteProps) => {
       data-id="paintRoller"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15102,6 +17118,8 @@ export const PaletteIcon = (props: SpriteProps) => {
       data-id="palette"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15117,6 +17135,8 @@ export const PanoramaIcon = (props: SpriteProps) => {
       data-id="panorama"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15132,6 +17152,8 @@ export const PantsIcon = (props: SpriteProps) => {
       data-id="pants"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15147,6 +17169,8 @@ export const PaperPlaneRightIcon = (props: SpriteProps) => {
       data-id="paperPlaneRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15162,6 +17186,8 @@ export const PaperPlaneTiltIcon = (props: SpriteProps) => {
       data-id="paperPlaneTilt"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15177,6 +17203,8 @@ export const PaperPlaneIcon = (props: SpriteProps) => {
       data-id="paperPlane"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15192,6 +17220,8 @@ export const PaperclipHorizontalIcon = (props: SpriteProps) => {
       data-id="paperclipHorizontal"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15207,6 +17237,8 @@ export const PaperclipIcon = (props: SpriteProps) => {
       data-id="paperclip"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15222,6 +17254,8 @@ export const ParachuteIcon = (props: SpriteProps) => {
       data-id="parachute"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15237,6 +17271,8 @@ export const ParagraphIcon = (props: SpriteProps) => {
       data-id="paragraph"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15252,6 +17288,8 @@ export const ParallelogramIcon = (props: SpriteProps) => {
       data-id="parallelogram"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15267,6 +17305,8 @@ export const ParkIcon = (props: SpriteProps) => {
       data-id="park"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15282,6 +17322,8 @@ export const PasswordIcon = (props: SpriteProps) => {
       data-id="password"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15297,6 +17339,8 @@ export const PathIcon = (props: SpriteProps) => {
       data-id="path"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15312,6 +17356,8 @@ export const PatreonLogoIcon = (props: SpriteProps) => {
       data-id="patreonLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15327,6 +17373,8 @@ export const PauseCircleIcon = (props: SpriteProps) => {
       data-id="pauseCircle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15342,6 +17390,8 @@ export const PauseIcon = (props: SpriteProps) => {
       data-id="pause"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15357,6 +17407,8 @@ export const PawPrintIcon = (props: SpriteProps) => {
       data-id="pawPrint"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15372,6 +17424,8 @@ export const PaypalLogoIcon = (props: SpriteProps) => {
       data-id="paypalLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15387,6 +17441,8 @@ export const PeaceIcon = (props: SpriteProps) => {
       data-id="peace"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15402,6 +17458,8 @@ export const PenNibStraightIcon = (props: SpriteProps) => {
       data-id="penNibStraight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15417,6 +17475,8 @@ export const PenNibIcon = (props: SpriteProps) => {
       data-id="penNib"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15432,6 +17492,8 @@ export const PenIcon = (props: SpriteProps) => {
       data-id="pen"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15447,6 +17509,8 @@ export const PencilCircleIcon = (props: SpriteProps) => {
       data-id="pencilCircle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15462,6 +17526,8 @@ export const PencilLineIcon = (props: SpriteProps) => {
       data-id="pencilLine"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15477,6 +17543,8 @@ export const PencilRulerIcon = (props: SpriteProps) => {
       data-id="pencilRuler"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15492,6 +17560,8 @@ export const PencilSimpleLineIcon = (props: SpriteProps) => {
       data-id="pencilSimpleLine"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15507,6 +17577,8 @@ export const PencilSimpleSlashIcon = (props: SpriteProps) => {
       data-id="pencilSimpleSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15522,6 +17594,8 @@ export const PencilSimpleIcon = (props: SpriteProps) => {
       data-id="pencilSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15537,6 +17611,8 @@ export const PencilSlashIcon = (props: SpriteProps) => {
       data-id="pencilSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15552,6 +17628,8 @@ export const PencilIcon = (props: SpriteProps) => {
       data-id="pencil"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15567,6 +17645,8 @@ export const PentagonIcon = (props: SpriteProps) => {
       data-id="pentagon"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15582,6 +17662,8 @@ export const PentagramIcon = (props: SpriteProps) => {
       data-id="pentagram"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15597,6 +17679,8 @@ export const PepperIcon = (props: SpriteProps) => {
       data-id="pepper"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15612,6 +17696,8 @@ export const PercentIcon = (props: SpriteProps) => {
       data-id="percent"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15627,6 +17713,8 @@ export const PersonArmsSpreadIcon = (props: SpriteProps) => {
       data-id="personArmsSpread"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15642,6 +17730,8 @@ export const PersonSimpleBikeIcon = (props: SpriteProps) => {
       data-id="personSimpleBike"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15657,6 +17747,8 @@ export const PersonSimpleCircleIcon = (props: SpriteProps) => {
       data-id="personSimpleCircle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15672,6 +17764,8 @@ export const PersonSimpleHikeIcon = (props: SpriteProps) => {
       data-id="personSimpleHike"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15687,6 +17781,8 @@ export const PersonSimpleRunIcon = (props: SpriteProps) => {
       data-id="personSimpleRun"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15702,6 +17798,8 @@ export const PersonSimpleSkiIcon = (props: SpriteProps) => {
       data-id="personSimpleSki"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15717,6 +17815,8 @@ export const PersonSimpleSnowboardIcon = (props: SpriteProps) => {
       data-id="personSimpleSnowboard"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15732,6 +17832,8 @@ export const PersonSimpleSwimIcon = (props: SpriteProps) => {
       data-id="personSimpleSwim"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15747,6 +17849,8 @@ export const PersonSimpleTaiChiIcon = (props: SpriteProps) => {
       data-id="personSimpleTaiChi"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15762,6 +17866,8 @@ export const PersonSimpleThrowIcon = (props: SpriteProps) => {
       data-id="personSimpleThrow"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15777,6 +17883,8 @@ export const PersonSimpleWalkIcon = (props: SpriteProps) => {
       data-id="personSimpleWalk"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15792,6 +17900,8 @@ export const PersonSimpleIcon = (props: SpriteProps) => {
       data-id="personSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15807,6 +17917,8 @@ export const PersonIcon = (props: SpriteProps) => {
       data-id="person"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15822,6 +17934,8 @@ export const PerspectiveIcon = (props: SpriteProps) => {
       data-id="perspective"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15837,6 +17951,8 @@ export const PhoneCallIcon = (props: SpriteProps) => {
       data-id="phoneCall"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15852,6 +17968,8 @@ export const PhoneDisconnectIcon = (props: SpriteProps) => {
       data-id="phoneDisconnect"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15867,6 +17985,8 @@ export const PhoneIncomingIcon = (props: SpriteProps) => {
       data-id="phoneIncoming"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15882,6 +18002,8 @@ export const PhoneListIcon = (props: SpriteProps) => {
       data-id="phoneList"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15897,6 +18019,8 @@ export const PhoneOutgoingIcon = (props: SpriteProps) => {
       data-id="phoneOutgoing"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15912,6 +18036,8 @@ export const PhonePauseIcon = (props: SpriteProps) => {
       data-id="phonePause"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15927,6 +18053,8 @@ export const PhonePlusIcon = (props: SpriteProps) => {
       data-id="phonePlus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15942,6 +18070,8 @@ export const PhoneSlashIcon = (props: SpriteProps) => {
       data-id="phoneSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15957,6 +18087,8 @@ export const PhoneTransferIcon = (props: SpriteProps) => {
       data-id="phoneTransfer"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15972,6 +18104,8 @@ export const PhoneXIcon = (props: SpriteProps) => {
       data-id="phoneX"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -15987,6 +18121,8 @@ export const PhoneIcon = (props: SpriteProps) => {
       data-id="phone"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16002,6 +18138,8 @@ export const PhosphorLogoIcon = (props: SpriteProps) => {
       data-id="phosphorLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16017,6 +18155,8 @@ export const PiIcon = (props: SpriteProps) => {
       data-id="pi"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16032,6 +18172,8 @@ export const PianoKeysIcon = (props: SpriteProps) => {
       data-id="pianoKeys"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16047,6 +18189,8 @@ export const PicnicTableIcon = (props: SpriteProps) => {
       data-id="picnicTable"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16062,6 +18206,8 @@ export const PictureInPictureIcon = (props: SpriteProps) => {
       data-id="pictureInPicture"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16077,6 +18223,8 @@ export const PiggyBankIcon = (props: SpriteProps) => {
       data-id="piggyBank"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16092,6 +18240,8 @@ export const PillIcon = (props: SpriteProps) => {
       data-id="pill"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16107,6 +18257,8 @@ export const PingPongIcon = (props: SpriteProps) => {
       data-id="pingPong"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16122,6 +18274,8 @@ export const PintGlassIcon = (props: SpriteProps) => {
       data-id="pintGlass"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16137,6 +18291,8 @@ export const PinterestLogoIcon = (props: SpriteProps) => {
       data-id="pinterestLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16152,6 +18308,8 @@ export const PinwheelIcon = (props: SpriteProps) => {
       data-id="pinwheel"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16167,6 +18325,8 @@ export const PipeWrenchIcon = (props: SpriteProps) => {
       data-id="pipeWrench"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16182,6 +18342,8 @@ export const PipeIcon = (props: SpriteProps) => {
       data-id="pipe"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16197,6 +18359,8 @@ export const PixLogoIcon = (props: SpriteProps) => {
       data-id="pixLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16212,6 +18376,8 @@ export const PizzaIcon = (props: SpriteProps) => {
       data-id="pizza"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16227,6 +18393,8 @@ export const PlaceholderIcon = (props: SpriteProps) => {
       data-id="placeholder"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16242,6 +18410,8 @@ export const PlanetIcon = (props: SpriteProps) => {
       data-id="planet"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16257,6 +18427,8 @@ export const PlantIcon = (props: SpriteProps) => {
       data-id="plant"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16272,6 +18444,8 @@ export const PlayCircleIcon = (props: SpriteProps) => {
       data-id="playCircle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16287,6 +18461,8 @@ export const PlayPauseIcon = (props: SpriteProps) => {
       data-id="playPause"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16302,6 +18478,8 @@ export const PlayIcon = (props: SpriteProps) => {
       data-id="play"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16317,6 +18495,8 @@ export const PlaylistIcon = (props: SpriteProps) => {
       data-id="playlist"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16332,6 +18512,8 @@ export const PlugChargingIcon = (props: SpriteProps) => {
       data-id="plugCharging"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16347,6 +18529,8 @@ export const PlugIcon = (props: SpriteProps) => {
       data-id="plug"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16362,6 +18546,8 @@ export const PlugsConnectedIcon = (props: SpriteProps) => {
       data-id="plugsConnected"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16377,6 +18563,8 @@ export const PlugsIcon = (props: SpriteProps) => {
       data-id="plugs"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16392,6 +18580,8 @@ export const PlusCircleIcon = (props: SpriteProps) => {
       data-id="plusCircle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16407,6 +18597,8 @@ export const PlusMinusIcon = (props: SpriteProps) => {
       data-id="plusMinus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16422,6 +18614,8 @@ export const PlusSquareIcon = (props: SpriteProps) => {
       data-id="plusSquare"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16437,6 +18631,8 @@ export const PlusIcon = (props: SpriteProps) => {
       data-id="plus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16452,6 +18648,8 @@ export const PokerChipIcon = (props: SpriteProps) => {
       data-id="pokerChip"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16467,6 +18665,8 @@ export const PoliceCarIcon = (props: SpriteProps) => {
       data-id="policeCar"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16482,6 +18682,8 @@ export const PolygonIcon = (props: SpriteProps) => {
       data-id="polygon"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16497,6 +18699,8 @@ export const PopcornIcon = (props: SpriteProps) => {
       data-id="popcorn"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16512,6 +18716,8 @@ export const PopsicleIcon = (props: SpriteProps) => {
       data-id="popsicle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16527,6 +18733,8 @@ export const PottedPlantIcon = (props: SpriteProps) => {
       data-id="pottedPlant"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16542,6 +18750,8 @@ export const PowerIcon = (props: SpriteProps) => {
       data-id="power"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16557,6 +18767,8 @@ export const PrescriptionIcon = (props: SpriteProps) => {
       data-id="prescription"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16572,6 +18784,8 @@ export const PresentationChartIcon = (props: SpriteProps) => {
       data-id="presentationChart"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16587,6 +18801,8 @@ export const PresentationIcon = (props: SpriteProps) => {
       data-id="presentation"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16602,6 +18818,8 @@ export const PrinterIcon = (props: SpriteProps) => {
       data-id="printer"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16617,6 +18835,8 @@ export const ProhibitInsetIcon = (props: SpriteProps) => {
       data-id="prohibitInset"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16632,6 +18852,8 @@ export const ProhibitIcon = (props: SpriteProps) => {
       data-id="prohibit"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16647,6 +18869,8 @@ export const ProjectorScreenChartIcon = (props: SpriteProps) => {
       data-id="projectorScreenChart"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16662,6 +18886,8 @@ export const ProjectorScreenIcon = (props: SpriteProps) => {
       data-id="projectorScreen"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16677,6 +18903,8 @@ export const PulseIcon = (props: SpriteProps) => {
       data-id="pulse"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16692,6 +18920,8 @@ export const PushPinSimpleSlashIcon = (props: SpriteProps) => {
       data-id="pushPinSimpleSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16707,6 +18937,8 @@ export const PushPinSimpleIcon = (props: SpriteProps) => {
       data-id="pushPinSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16722,6 +18954,8 @@ export const PushPinSlashIcon = (props: SpriteProps) => {
       data-id="pushPinSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16737,6 +18971,8 @@ export const PushPinIcon = (props: SpriteProps) => {
       data-id="pushPin"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16752,6 +18988,8 @@ export const PuzzlePieceIcon = (props: SpriteProps) => {
       data-id="puzzlePiece"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16767,6 +19005,8 @@ export const QrCodeIcon = (props: SpriteProps) => {
       data-id="qrCode"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16782,6 +19022,8 @@ export const QuestionMarkIcon = (props: SpriteProps) => {
       data-id="questionMark"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16797,6 +19039,8 @@ export const QuestionIcon = (props: SpriteProps) => {
       data-id="question"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16812,6 +19056,8 @@ export const QueueIcon = (props: SpriteProps) => {
       data-id="queue"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16827,6 +19073,8 @@ export const QuotesIcon = (props: SpriteProps) => {
       data-id="quotes"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16842,6 +19090,8 @@ export const RabbitIcon = (props: SpriteProps) => {
       data-id="rabbit"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16857,6 +19107,8 @@ export const RacquetIcon = (props: SpriteProps) => {
       data-id="racquet"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16872,6 +19124,8 @@ export const RadicalIcon = (props: SpriteProps) => {
       data-id="radical"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16887,6 +19141,8 @@ export const RadioButtonIcon = (props: SpriteProps) => {
       data-id="radioButton"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16902,6 +19158,8 @@ export const RadioIcon = (props: SpriteProps) => {
       data-id="radio"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16917,6 +19175,8 @@ export const RadioactiveIcon = (props: SpriteProps) => {
       data-id="radioactive"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16932,6 +19192,8 @@ export const RainbowCloudIcon = (props: SpriteProps) => {
       data-id="rainbowCloud"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16947,6 +19209,8 @@ export const RainbowIcon = (props: SpriteProps) => {
       data-id="rainbow"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16962,6 +19226,8 @@ export const RankingIcon = (props: SpriteProps) => {
       data-id="ranking"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16977,6 +19243,8 @@ export const ReadCvLogoIcon = (props: SpriteProps) => {
       data-id="readCvLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -16992,6 +19260,8 @@ export const ReceiptXIcon = (props: SpriteProps) => {
       data-id="receiptX"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17007,6 +19277,8 @@ export const ReceiptIcon = (props: SpriteProps) => {
       data-id="receipt"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17022,6 +19294,8 @@ export const RecordIcon = (props: SpriteProps) => {
       data-id="record"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17037,6 +19311,8 @@ export const RectangleDashedIcon = (props: SpriteProps) => {
       data-id="rectangleDashed"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17052,6 +19328,8 @@ export const RectangleIcon = (props: SpriteProps) => {
       data-id="rectangle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17067,6 +19345,8 @@ export const RecycleIcon = (props: SpriteProps) => {
       data-id="recycle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17082,6 +19362,8 @@ export const RedditLogoIcon = (props: SpriteProps) => {
       data-id="redditLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17097,6 +19379,8 @@ export const RepeatOnceIcon = (props: SpriteProps) => {
       data-id="repeatOnce"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17112,6 +19396,8 @@ export const RepeatIcon = (props: SpriteProps) => {
       data-id="repeat"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17127,6 +19413,8 @@ export const ReplitLogoIcon = (props: SpriteProps) => {
       data-id="replitLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17142,6 +19430,8 @@ export const ResizeIcon = (props: SpriteProps) => {
       data-id="resize"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17157,6 +19447,8 @@ export const RewindCircleIcon = (props: SpriteProps) => {
       data-id="rewindCircle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17172,6 +19464,8 @@ export const RewindIcon = (props: SpriteProps) => {
       data-id="rewind"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17187,6 +19481,8 @@ export const RoadHorizonIcon = (props: SpriteProps) => {
       data-id="roadHorizon"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17202,6 +19498,8 @@ export const RobotIcon = (props: SpriteProps) => {
       data-id="robot"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17217,6 +19515,8 @@ export const RocketLaunchIcon = (props: SpriteProps) => {
       data-id="rocketLaunch"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17232,6 +19532,8 @@ export const RocketIcon = (props: SpriteProps) => {
       data-id="rocket"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17247,6 +19549,8 @@ export const RowsPlusBottomIcon = (props: SpriteProps) => {
       data-id="rowsPlusBottom"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17262,6 +19566,8 @@ export const RowsPlusTopIcon = (props: SpriteProps) => {
       data-id="rowsPlusTop"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17277,6 +19583,8 @@ export const RowsIcon = (props: SpriteProps) => {
       data-id="rows"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17292,6 +19600,8 @@ export const RssSimpleIcon = (props: SpriteProps) => {
       data-id="rssSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17307,6 +19617,8 @@ export const RssIcon = (props: SpriteProps) => {
       data-id="rss"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17322,6 +19634,8 @@ export const RugIcon = (props: SpriteProps) => {
       data-id="rug"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17337,6 +19651,8 @@ export const RulerIcon = (props: SpriteProps) => {
       data-id="ruler"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17352,6 +19668,8 @@ export const SailboatIcon = (props: SpriteProps) => {
       data-id="sailboat"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17367,6 +19685,8 @@ export const ScalesIcon = (props: SpriteProps) => {
       data-id="scales"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17382,6 +19702,8 @@ export const ScanSmileyIcon = (props: SpriteProps) => {
       data-id="scanSmiley"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17397,6 +19719,8 @@ export const ScanIcon = (props: SpriteProps) => {
       data-id="scan"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17412,6 +19736,8 @@ export const ScissorsIcon = (props: SpriteProps) => {
       data-id="scissors"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17427,6 +19753,8 @@ export const ScooterIcon = (props: SpriteProps) => {
       data-id="scooter"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17442,6 +19770,8 @@ export const ScreencastIcon = (props: SpriteProps) => {
       data-id="screencast"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17457,6 +19787,8 @@ export const ScrewdriverIcon = (props: SpriteProps) => {
       data-id="screwdriver"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17472,6 +19804,8 @@ export const ScribbleLoopIcon = (props: SpriteProps) => {
       data-id="scribbleLoop"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17487,6 +19821,8 @@ export const ScribbleIcon = (props: SpriteProps) => {
       data-id="scribble"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17502,6 +19838,8 @@ export const ScrollIcon = (props: SpriteProps) => {
       data-id="scroll"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17517,6 +19855,8 @@ export const SealCheckIcon = (props: SpriteProps) => {
       data-id="sealCheck"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17532,6 +19872,8 @@ export const SealPercentIcon = (props: SpriteProps) => {
       data-id="sealPercent"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17547,6 +19889,8 @@ export const SealQuestionIcon = (props: SpriteProps) => {
       data-id="sealQuestion"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17562,6 +19906,8 @@ export const SealWarningIcon = (props: SpriteProps) => {
       data-id="sealWarning"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17577,6 +19923,8 @@ export const SealIcon = (props: SpriteProps) => {
       data-id="seal"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17592,6 +19940,8 @@ export const SeatIcon = (props: SpriteProps) => {
       data-id="seat"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17607,6 +19957,8 @@ export const SeatbeltIcon = (props: SpriteProps) => {
       data-id="seatbelt"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17622,6 +19974,8 @@ export const SecurityCameraIcon = (props: SpriteProps) => {
       data-id="securityCamera"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17637,6 +19991,8 @@ export const SelectionAllIcon = (props: SpriteProps) => {
       data-id="selectionAll"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17652,6 +20008,8 @@ export const SelectionBackgroundIcon = (props: SpriteProps) => {
       data-id="selectionBackground"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17667,6 +20025,8 @@ export const SelectionForegroundIcon = (props: SpriteProps) => {
       data-id="selectionForeground"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17682,6 +20042,8 @@ export const SelectionInverseIcon = (props: SpriteProps) => {
       data-id="selectionInverse"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17697,6 +20059,8 @@ export const SelectionPlusIcon = (props: SpriteProps) => {
       data-id="selectionPlus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17712,6 +20076,8 @@ export const SelectionSlashIcon = (props: SpriteProps) => {
       data-id="selectionSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17727,6 +20093,8 @@ export const SelectionIcon = (props: SpriteProps) => {
       data-id="selection"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17742,6 +20110,8 @@ export const ShapesIcon = (props: SpriteProps) => {
       data-id="shapes"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17757,6 +20127,8 @@ export const ShareFatIcon = (props: SpriteProps) => {
       data-id="shareFat"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17772,6 +20144,8 @@ export const ShareNetworkIcon = (props: SpriteProps) => {
       data-id="shareNetwork"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17787,6 +20161,8 @@ export const ShareIcon = (props: SpriteProps) => {
       data-id="share"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17802,6 +20178,8 @@ export const ShieldCheckIcon = (props: SpriteProps) => {
       data-id="shieldCheck"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17817,6 +20195,8 @@ export const ShieldCheckeredIcon = (props: SpriteProps) => {
       data-id="shieldCheckered"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17832,6 +20212,8 @@ export const ShieldChevronIcon = (props: SpriteProps) => {
       data-id="shieldChevron"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17847,6 +20229,8 @@ export const ShieldPlusIcon = (props: SpriteProps) => {
       data-id="shieldPlus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17862,6 +20246,8 @@ export const ShieldSlashIcon = (props: SpriteProps) => {
       data-id="shieldSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17877,6 +20263,8 @@ export const ShieldStarIcon = (props: SpriteProps) => {
       data-id="shieldStar"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17892,6 +20280,8 @@ export const ShieldWarningIcon = (props: SpriteProps) => {
       data-id="shieldWarning"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17907,6 +20297,8 @@ export const ShieldIcon = (props: SpriteProps) => {
       data-id="shield"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17922,6 +20314,8 @@ export const ShippingContainerIcon = (props: SpriteProps) => {
       data-id="shippingContainer"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17937,6 +20331,8 @@ export const ShirtFoldedIcon = (props: SpriteProps) => {
       data-id="shirtFolded"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17952,6 +20348,8 @@ export const ShootingStarIcon = (props: SpriteProps) => {
       data-id="shootingStar"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17967,6 +20365,8 @@ export const ShoppingBagOpenIcon = (props: SpriteProps) => {
       data-id="shoppingBagOpen"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17982,6 +20382,8 @@ export const ShoppingBagIcon = (props: SpriteProps) => {
       data-id="shoppingBag"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -17997,6 +20399,8 @@ export const ShoppingCartSimpleIcon = (props: SpriteProps) => {
       data-id="shoppingCartSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18012,6 +20416,8 @@ export const ShoppingCartIcon = (props: SpriteProps) => {
       data-id="shoppingCart"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18027,6 +20433,8 @@ export const ShovelIcon = (props: SpriteProps) => {
       data-id="shovel"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18042,6 +20450,8 @@ export const ShowerIcon = (props: SpriteProps) => {
       data-id="shower"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18057,6 +20467,8 @@ export const ShrimpIcon = (props: SpriteProps) => {
       data-id="shrimp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18072,6 +20484,8 @@ export const ShuffleAngularIcon = (props: SpriteProps) => {
       data-id="shuffleAngular"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18087,6 +20501,8 @@ export const ShuffleSimpleIcon = (props: SpriteProps) => {
       data-id="shuffleSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18102,6 +20518,8 @@ export const ShuffleIcon = (props: SpriteProps) => {
       data-id="shuffle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18117,6 +20535,8 @@ export const SidebarSimpleIcon = (props: SpriteProps) => {
       data-id="sidebarSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18132,6 +20552,8 @@ export const SidebarIcon = (props: SpriteProps) => {
       data-id="sidebar"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18147,6 +20569,8 @@ export const SigmaIcon = (props: SpriteProps) => {
       data-id="sigma"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18162,6 +20586,8 @@ export const SignInIcon = (props: SpriteProps) => {
       data-id="signIn"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18177,6 +20603,8 @@ export const SignOutIcon = (props: SpriteProps) => {
       data-id="signOut"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18192,6 +20620,8 @@ export const SignatureIcon = (props: SpriteProps) => {
       data-id="signature"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18207,6 +20637,8 @@ export const SignpostIcon = (props: SpriteProps) => {
       data-id="signpost"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18222,6 +20654,8 @@ export const SimCardIcon = (props: SpriteProps) => {
       data-id="simCard"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18237,6 +20671,8 @@ export const SirenIcon = (props: SpriteProps) => {
       data-id="siren"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18252,6 +20688,8 @@ export const SketchLogoIcon = (props: SpriteProps) => {
       data-id="sketchLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18267,6 +20705,8 @@ export const SkipBackCircleIcon = (props: SpriteProps) => {
       data-id="skipBackCircle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18282,6 +20722,8 @@ export const SkipBackIcon = (props: SpriteProps) => {
       data-id="skipBack"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18297,6 +20739,8 @@ export const SkipForwardCircleIcon = (props: SpriteProps) => {
       data-id="skipForwardCircle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18312,6 +20756,8 @@ export const SkipForwardIcon = (props: SpriteProps) => {
       data-id="skipForward"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18327,6 +20773,8 @@ export const SkullIcon = (props: SpriteProps) => {
       data-id="skull"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18342,6 +20790,8 @@ export const SkypeLogoIcon = (props: SpriteProps) => {
       data-id="skypeLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18357,6 +20807,8 @@ export const SlackLogoIcon = (props: SpriteProps) => {
       data-id="slackLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18372,6 +20824,8 @@ export const SlidersHorizontalIcon = (props: SpriteProps) => {
       data-id="slidersHorizontal"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18387,6 +20841,8 @@ export const SlidersIcon = (props: SpriteProps) => {
       data-id="sliders"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18402,6 +20858,8 @@ export const SlideshowIcon = (props: SpriteProps) => {
       data-id="slideshow"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18417,6 +20875,8 @@ export const SmileyAngryIcon = (props: SpriteProps) => {
       data-id="smileyAngry"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18432,6 +20892,8 @@ export const SmileyBlankIcon = (props: SpriteProps) => {
       data-id="smileyBlank"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18447,6 +20909,8 @@ export const SmileyMehIcon = (props: SpriteProps) => {
       data-id="smileyMeh"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18462,6 +20926,8 @@ export const SmileyMeltingIcon = (props: SpriteProps) => {
       data-id="smileyMelting"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18477,6 +20943,8 @@ export const SmileyNervousIcon = (props: SpriteProps) => {
       data-id="smileyNervous"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18492,6 +20960,8 @@ export const SmileySadIcon = (props: SpriteProps) => {
       data-id="smileySad"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18507,6 +20977,8 @@ export const SmileyStickerIcon = (props: SpriteProps) => {
       data-id="smileySticker"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18522,6 +20994,8 @@ export const SmileyWinkIcon = (props: SpriteProps) => {
       data-id="smileyWink"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18537,6 +21011,8 @@ export const SmileyXEyesIcon = (props: SpriteProps) => {
       data-id="smileyXEyes"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18552,6 +21028,8 @@ export const SmileyIcon = (props: SpriteProps) => {
       data-id="smiley"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18567,6 +21045,8 @@ export const SnapchatLogoIcon = (props: SpriteProps) => {
       data-id="snapchatLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18582,6 +21062,8 @@ export const SneakerMoveIcon = (props: SpriteProps) => {
       data-id="sneakerMove"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18597,6 +21079,8 @@ export const SneakerIcon = (props: SpriteProps) => {
       data-id="sneaker"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18612,6 +21096,8 @@ export const SnowflakeIcon = (props: SpriteProps) => {
       data-id="snowflake"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18627,6 +21113,8 @@ export const SoccerBallIcon = (props: SpriteProps) => {
       data-id="soccerBall"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18642,6 +21130,8 @@ export const SockIcon = (props: SpriteProps) => {
       data-id="sock"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18657,6 +21147,8 @@ export const SolarPanelIcon = (props: SpriteProps) => {
       data-id="solarPanel"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18672,6 +21164,8 @@ export const SolarRoofIcon = (props: SpriteProps) => {
       data-id="solarRoof"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18687,6 +21181,8 @@ export const SortAscendingIcon = (props: SpriteProps) => {
       data-id="sortAscending"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18702,6 +21198,8 @@ export const SortDescendingIcon = (props: SpriteProps) => {
       data-id="sortDescending"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18717,6 +21215,8 @@ export const SoundcloudLogoIcon = (props: SpriteProps) => {
       data-id="soundcloudLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18732,6 +21232,8 @@ export const SpadeIcon = (props: SpriteProps) => {
       data-id="spade"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18747,6 +21249,8 @@ export const SparkleIcon = (props: SpriteProps) => {
       data-id="sparkle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18762,6 +21266,8 @@ export const SpeakerHifiIcon = (props: SpriteProps) => {
       data-id="speakerHifi"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18777,6 +21283,8 @@ export const SpeakerHighIcon = (props: SpriteProps) => {
       data-id="speakerHigh"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18792,6 +21300,8 @@ export const SpeakerLowIcon = (props: SpriteProps) => {
       data-id="speakerLow"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18807,6 +21317,8 @@ export const SpeakerNoneIcon = (props: SpriteProps) => {
       data-id="speakerNone"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18822,6 +21334,8 @@ export const SpeakerSimpleHighIcon = (props: SpriteProps) => {
       data-id="speakerSimpleHigh"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18837,6 +21351,8 @@ export const SpeakerSimpleLowIcon = (props: SpriteProps) => {
       data-id="speakerSimpleLow"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18852,6 +21368,8 @@ export const SpeakerSimpleNoneIcon = (props: SpriteProps) => {
       data-id="speakerSimpleNone"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18867,6 +21385,8 @@ export const SpeakerSimpleSlashIcon = (props: SpriteProps) => {
       data-id="speakerSimpleSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18882,6 +21402,8 @@ export const SpeakerSimpleXIcon = (props: SpriteProps) => {
       data-id="speakerSimpleX"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18897,6 +21419,8 @@ export const SpeakerSlashIcon = (props: SpriteProps) => {
       data-id="speakerSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18912,6 +21436,8 @@ export const SpeakerXIcon = (props: SpriteProps) => {
       data-id="speakerX"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18927,6 +21453,8 @@ export const SpeedometerIcon = (props: SpriteProps) => {
       data-id="speedometer"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18942,6 +21470,8 @@ export const SphereIcon = (props: SpriteProps) => {
       data-id="sphere"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18957,6 +21487,8 @@ export const SpinnerBallIcon = (props: SpriteProps) => {
       data-id="spinnerBall"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18972,6 +21504,8 @@ export const SpinnerGapIcon = (props: SpriteProps) => {
       data-id="spinnerGap"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -18987,6 +21521,8 @@ export const SpinnerIcon = (props: SpriteProps) => {
       data-id="spinner"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19002,6 +21538,8 @@ export const SpiralIcon = (props: SpriteProps) => {
       data-id="spiral"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19017,6 +21555,8 @@ export const SplitHorizontalIcon = (props: SpriteProps) => {
       data-id="splitHorizontal"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19032,6 +21572,8 @@ export const SplitVerticalIcon = (props: SpriteProps) => {
       data-id="splitVertical"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19047,6 +21589,8 @@ export const SpotifyLogoIcon = (props: SpriteProps) => {
       data-id="spotifyLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19062,6 +21606,8 @@ export const SprayBottleIcon = (props: SpriteProps) => {
       data-id="sprayBottle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19077,6 +21623,8 @@ export const SquareHalfBottomIcon = (props: SpriteProps) => {
       data-id="squareHalfBottom"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19092,6 +21640,8 @@ export const SquareHalfIcon = (props: SpriteProps) => {
       data-id="squareHalf"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19107,6 +21657,8 @@ export const SquareLogoIcon = (props: SpriteProps) => {
       data-id="squareLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19122,6 +21674,8 @@ export const SquareSplitHorizontalIcon = (props: SpriteProps) => {
       data-id="squareSplitHorizontal"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19137,6 +21691,8 @@ export const SquareSplitVerticalIcon = (props: SpriteProps) => {
       data-id="squareSplitVertical"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19152,6 +21708,8 @@ export const SquareIcon = (props: SpriteProps) => {
       data-id="square"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19167,6 +21725,8 @@ export const SquaresFourIcon = (props: SpriteProps) => {
       data-id="squaresFour"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19182,6 +21742,8 @@ export const StackMinusIcon = (props: SpriteProps) => {
       data-id="stackMinus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19197,6 +21759,8 @@ export const StackOverflowLogoIcon = (props: SpriteProps) => {
       data-id="stackOverflowLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19212,6 +21776,8 @@ export const StackPlusIcon = (props: SpriteProps) => {
       data-id="stackPlus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19227,6 +21793,8 @@ export const StackSimpleIcon = (props: SpriteProps) => {
       data-id="stackSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19242,6 +21810,8 @@ export const StackIcon = (props: SpriteProps) => {
       data-id="stack"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19257,6 +21827,8 @@ export const StairsIcon = (props: SpriteProps) => {
       data-id="stairs"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19272,6 +21844,8 @@ export const StampIcon = (props: SpriteProps) => {
       data-id="stamp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19287,6 +21861,8 @@ export const StandardDefinitionIcon = (props: SpriteProps) => {
       data-id="standardDefinition"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19302,6 +21878,8 @@ export const StarAndCrescentIcon = (props: SpriteProps) => {
       data-id="starAndCrescent"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19317,6 +21895,8 @@ export const StarFourIcon = (props: SpriteProps) => {
       data-id="starFour"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19332,6 +21912,8 @@ export const StarHalfIcon = (props: SpriteProps) => {
       data-id="starHalf"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19347,6 +21929,8 @@ export const StarOfDavidIcon = (props: SpriteProps) => {
       data-id="starOfDavid"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19362,6 +21946,8 @@ export const StarIcon = (props: SpriteProps) => {
       data-id="star"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19377,6 +21963,8 @@ export const SteamLogoIcon = (props: SpriteProps) => {
       data-id="steamLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19392,6 +21980,8 @@ export const SteeringWheelIcon = (props: SpriteProps) => {
       data-id="steeringWheel"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19407,6 +21997,8 @@ export const StepsIcon = (props: SpriteProps) => {
       data-id="steps"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19422,6 +22014,8 @@ export const StethoscopeIcon = (props: SpriteProps) => {
       data-id="stethoscope"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19437,6 +22031,8 @@ export const StickerIcon = (props: SpriteProps) => {
       data-id="sticker"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19452,6 +22048,8 @@ export const StoolIcon = (props: SpriteProps) => {
       data-id="stool"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19467,6 +22065,8 @@ export const StopCircleIcon = (props: SpriteProps) => {
       data-id="stopCircle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19482,6 +22082,8 @@ export const StopIcon = (props: SpriteProps) => {
       data-id="stop"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19497,6 +22099,8 @@ export const StorefrontIcon = (props: SpriteProps) => {
       data-id="storefront"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19512,6 +22116,8 @@ export const StrategyIcon = (props: SpriteProps) => {
       data-id="strategy"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19527,6 +22133,8 @@ export const StripeLogoIcon = (props: SpriteProps) => {
       data-id="stripeLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19542,6 +22150,8 @@ export const StudentIcon = (props: SpriteProps) => {
       data-id="student"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19557,6 +22167,8 @@ export const SubsetOfIcon = (props: SpriteProps) => {
       data-id="subsetOf"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19572,6 +22184,8 @@ export const SubsetProperOfIcon = (props: SpriteProps) => {
       data-id="subsetProperOf"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19587,6 +22201,8 @@ export const SubtitlesSlashIcon = (props: SpriteProps) => {
       data-id="subtitlesSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19602,6 +22218,8 @@ export const SubtitlesIcon = (props: SpriteProps) => {
       data-id="subtitles"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19617,6 +22235,8 @@ export const SubtractSquareIcon = (props: SpriteProps) => {
       data-id="subtractSquare"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19632,6 +22252,8 @@ export const SubtractIcon = (props: SpriteProps) => {
       data-id="subtract"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19647,6 +22269,8 @@ export const SubwayIcon = (props: SpriteProps) => {
       data-id="subway"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19662,6 +22286,8 @@ export const SuitcaseRollingIcon = (props: SpriteProps) => {
       data-id="suitcaseRolling"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19677,6 +22303,8 @@ export const SuitcaseSimpleIcon = (props: SpriteProps) => {
       data-id="suitcaseSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19692,6 +22320,8 @@ export const SuitcaseIcon = (props: SpriteProps) => {
       data-id="suitcase"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19707,6 +22337,8 @@ export const SunDimIcon = (props: SpriteProps) => {
       data-id="sunDim"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19722,6 +22354,8 @@ export const SunHorizonIcon = (props: SpriteProps) => {
       data-id="sunHorizon"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19737,6 +22371,8 @@ export const SunIcon = (props: SpriteProps) => {
       data-id="sun"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19752,6 +22388,8 @@ export const SunglassesIcon = (props: SpriteProps) => {
       data-id="sunglasses"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19767,6 +22405,8 @@ export const SupersetOfIcon = (props: SpriteProps) => {
       data-id="supersetOf"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19782,6 +22422,8 @@ export const SupersetProperOfIcon = (props: SpriteProps) => {
       data-id="supersetProperOf"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19797,6 +22439,8 @@ export const SwapIcon = (props: SpriteProps) => {
       data-id="swap"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19812,6 +22456,8 @@ export const SwatchesIcon = (props: SpriteProps) => {
       data-id="swatches"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19827,6 +22473,8 @@ export const SwimmingPoolIcon = (props: SpriteProps) => {
       data-id="swimmingPool"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19842,6 +22490,8 @@ export const SwordIcon = (props: SpriteProps) => {
       data-id="sword"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19857,6 +22507,8 @@ export const SynagogueIcon = (props: SpriteProps) => {
       data-id="synagogue"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19872,6 +22524,8 @@ export const SyringeIcon = (props: SpriteProps) => {
       data-id="syringe"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19887,6 +22541,8 @@ export const TShirtIcon = (props: SpriteProps) => {
       data-id="tShirt"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19902,6 +22558,8 @@ export const TableIcon = (props: SpriteProps) => {
       data-id="table"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19917,6 +22575,8 @@ export const TabsIcon = (props: SpriteProps) => {
       data-id="tabs"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19932,6 +22592,8 @@ export const TagChevronIcon = (props: SpriteProps) => {
       data-id="tagChevron"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19947,6 +22609,8 @@ export const TagSimpleIcon = (props: SpriteProps) => {
       data-id="tagSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19962,6 +22626,8 @@ export const TagIcon = (props: SpriteProps) => {
       data-id="tag"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19977,6 +22643,8 @@ export const TargetIcon = (props: SpriteProps) => {
       data-id="target"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -19992,6 +22660,8 @@ export const TaxiIcon = (props: SpriteProps) => {
       data-id="taxi"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20007,6 +22677,8 @@ export const TeaBagIcon = (props: SpriteProps) => {
       data-id="teaBag"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20022,6 +22694,8 @@ export const TelegramLogoIcon = (props: SpriteProps) => {
       data-id="telegramLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20037,6 +22711,8 @@ export const TelevisionSimpleIcon = (props: SpriteProps) => {
       data-id="televisionSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20052,6 +22728,8 @@ export const TelevisionIcon = (props: SpriteProps) => {
       data-id="television"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20067,6 +22745,8 @@ export const TennisBallIcon = (props: SpriteProps) => {
       data-id="tennisBall"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20082,6 +22762,8 @@ export const TentIcon = (props: SpriteProps) => {
       data-id="tent"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20097,6 +22779,8 @@ export const TerminalWindowIcon = (props: SpriteProps) => {
       data-id="terminalWindow"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20112,6 +22796,8 @@ export const TerminalIcon = (props: SpriteProps) => {
       data-id="terminal"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20127,6 +22813,8 @@ export const TestTubeIcon = (props: SpriteProps) => {
       data-id="testTube"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20142,6 +22830,8 @@ export const TextAUnderlineIcon = (props: SpriteProps) => {
       data-id="textAUnderline"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20157,6 +22847,8 @@ export const TextAaIcon = (props: SpriteProps) => {
       data-id="textAa"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20172,6 +22864,8 @@ export const TextAlignCenterIcon = (props: SpriteProps) => {
       data-id="textAlignCenter"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20187,6 +22881,8 @@ export const TextAlignJustifyIcon = (props: SpriteProps) => {
       data-id="textAlignJustify"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20202,6 +22898,8 @@ export const TextAlignLeftIcon = (props: SpriteProps) => {
       data-id="textAlignLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20217,6 +22915,8 @@ export const TextAlignRightIcon = (props: SpriteProps) => {
       data-id="textAlignRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20232,6 +22932,8 @@ export const TextBIcon = (props: SpriteProps) => {
       data-id="textB"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20247,6 +22949,8 @@ export const TextColumnsIcon = (props: SpriteProps) => {
       data-id="textColumns"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20262,6 +22966,8 @@ export const TextHFiveIcon = (props: SpriteProps) => {
       data-id="textHFive"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20277,6 +22983,8 @@ export const TextHFourIcon = (props: SpriteProps) => {
       data-id="textHFour"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20292,6 +23000,8 @@ export const TextHOneIcon = (props: SpriteProps) => {
       data-id="textHOne"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20307,6 +23017,8 @@ export const TextHSixIcon = (props: SpriteProps) => {
       data-id="textHSix"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20322,6 +23034,8 @@ export const TextHThreeIcon = (props: SpriteProps) => {
       data-id="textHThree"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20337,6 +23051,8 @@ export const TextHTwoIcon = (props: SpriteProps) => {
       data-id="textHTwo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20352,6 +23068,8 @@ export const TextHIcon = (props: SpriteProps) => {
       data-id="textH"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20367,6 +23085,8 @@ export const TextIndentIcon = (props: SpriteProps) => {
       data-id="textIndent"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20382,6 +23102,8 @@ export const TextItalicIcon = (props: SpriteProps) => {
       data-id="textItalic"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20397,6 +23119,8 @@ export const TextOutdentIcon = (props: SpriteProps) => {
       data-id="textOutdent"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20412,6 +23136,8 @@ export const TextStrikethroughIcon = (props: SpriteProps) => {
       data-id="textStrikethrough"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20427,6 +23153,8 @@ export const TextSubscriptIcon = (props: SpriteProps) => {
       data-id="textSubscript"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20442,6 +23170,8 @@ export const TextSuperscriptIcon = (props: SpriteProps) => {
       data-id="textSuperscript"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20457,6 +23187,8 @@ export const TextTSlashIcon = (props: SpriteProps) => {
       data-id="textTSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20472,6 +23204,8 @@ export const TextTIcon = (props: SpriteProps) => {
       data-id="textT"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20487,6 +23221,8 @@ export const TextUnderlineIcon = (props: SpriteProps) => {
       data-id="textUnderline"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20502,6 +23238,8 @@ export const TextboxIcon = (props: SpriteProps) => {
       data-id="textbox"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20517,6 +23255,8 @@ export const ThermometerColdIcon = (props: SpriteProps) => {
       data-id="thermometerCold"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20532,6 +23272,8 @@ export const ThermometerHotIcon = (props: SpriteProps) => {
       data-id="thermometerHot"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20547,6 +23289,8 @@ export const ThermometerSimpleIcon = (props: SpriteProps) => {
       data-id="thermometerSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20562,6 +23306,8 @@ export const ThermometerIcon = (props: SpriteProps) => {
       data-id="thermometer"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20577,6 +23323,8 @@ export const ThreadsLogoIcon = (props: SpriteProps) => {
       data-id="threadsLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20592,6 +23340,8 @@ export const ThreeDIcon = (props: SpriteProps) => {
       data-id="threeD"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20607,6 +23357,8 @@ export const ThumbsDownIcon = (props: SpriteProps) => {
       data-id="thumbsDown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20622,6 +23374,8 @@ export const ThumbsUpIcon = (props: SpriteProps) => {
       data-id="thumbsUp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20637,6 +23391,8 @@ export const TicketIcon = (props: SpriteProps) => {
       data-id="ticket"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20652,6 +23408,8 @@ export const TidalLogoIcon = (props: SpriteProps) => {
       data-id="tidalLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20667,6 +23425,8 @@ export const TiktokLogoIcon = (props: SpriteProps) => {
       data-id="tiktokLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20682,6 +23442,8 @@ export const TildeIcon = (props: SpriteProps) => {
       data-id="tilde"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20697,6 +23459,8 @@ export const TimerIcon = (props: SpriteProps) => {
       data-id="timer"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20712,6 +23476,8 @@ export const TipJarIcon = (props: SpriteProps) => {
       data-id="tipJar"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20727,6 +23493,8 @@ export const TipiIcon = (props: SpriteProps) => {
       data-id="tipi"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20742,6 +23510,8 @@ export const TireIcon = (props: SpriteProps) => {
       data-id="tire"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20757,6 +23527,8 @@ export const ToggleLeftIcon = (props: SpriteProps) => {
       data-id="toggleLeft"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20772,6 +23544,8 @@ export const ToggleRightIcon = (props: SpriteProps) => {
       data-id="toggleRight"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20787,6 +23561,8 @@ export const ToiletPaperIcon = (props: SpriteProps) => {
       data-id="toiletPaper"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20802,6 +23578,8 @@ export const ToiletIcon = (props: SpriteProps) => {
       data-id="toilet"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20817,6 +23595,8 @@ export const ToolboxIcon = (props: SpriteProps) => {
       data-id="toolbox"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20832,6 +23612,8 @@ export const ToothIcon = (props: SpriteProps) => {
       data-id="tooth"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20847,6 +23629,8 @@ export const TornadoIcon = (props: SpriteProps) => {
       data-id="tornado"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20862,6 +23646,8 @@ export const ToteSimpleIcon = (props: SpriteProps) => {
       data-id="toteSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20877,6 +23663,8 @@ export const ToteIcon = (props: SpriteProps) => {
       data-id="tote"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20892,6 +23680,8 @@ export const TowelIcon = (props: SpriteProps) => {
       data-id="towel"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20907,6 +23697,8 @@ export const TractorIcon = (props: SpriteProps) => {
       data-id="tractor"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20922,6 +23714,8 @@ export const TrademarkRegisteredIcon = (props: SpriteProps) => {
       data-id="trademarkRegistered"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20937,6 +23731,8 @@ export const TrademarkIcon = (props: SpriteProps) => {
       data-id="trademark"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20952,6 +23748,8 @@ export const TrafficConeIcon = (props: SpriteProps) => {
       data-id="trafficCone"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20967,6 +23765,8 @@ export const TrafficSignIcon = (props: SpriteProps) => {
       data-id="trafficSign"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20982,6 +23782,8 @@ export const TrafficSignalIcon = (props: SpriteProps) => {
       data-id="trafficSignal"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -20997,6 +23799,8 @@ export const TrainRegionalIcon = (props: SpriteProps) => {
       data-id="trainRegional"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21012,6 +23816,8 @@ export const TrainSimpleIcon = (props: SpriteProps) => {
       data-id="trainSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21027,6 +23833,8 @@ export const TrainIcon = (props: SpriteProps) => {
       data-id="train"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21042,6 +23850,8 @@ export const TramIcon = (props: SpriteProps) => {
       data-id="tram"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21057,6 +23867,8 @@ export const TranslateIcon = (props: SpriteProps) => {
       data-id="translate"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21072,6 +23884,8 @@ export const TrashSimpleIcon = (props: SpriteProps) => {
       data-id="trashSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21087,6 +23901,8 @@ export const TrashIcon = (props: SpriteProps) => {
       data-id="trash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21102,6 +23918,8 @@ export const TrayArrowDownIcon = (props: SpriteProps) => {
       data-id="trayArrowDown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21117,6 +23935,8 @@ export const TrayArrowUpIcon = (props: SpriteProps) => {
       data-id="trayArrowUp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21132,6 +23952,8 @@ export const TrayIcon = (props: SpriteProps) => {
       data-id="tray"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21147,6 +23969,8 @@ export const TreasureChestIcon = (props: SpriteProps) => {
       data-id="treasureChest"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21162,6 +23986,8 @@ export const TreeEvergreenIcon = (props: SpriteProps) => {
       data-id="treeEvergreen"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21177,6 +24003,8 @@ export const TreePalmIcon = (props: SpriteProps) => {
       data-id="treePalm"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21192,6 +24020,8 @@ export const TreeStructureIcon = (props: SpriteProps) => {
       data-id="treeStructure"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21207,6 +24037,8 @@ export const TreeViewIcon = (props: SpriteProps) => {
       data-id="treeView"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21222,6 +24054,8 @@ export const TreeIcon = (props: SpriteProps) => {
       data-id="tree"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21237,6 +24071,8 @@ export const TrendDownIcon = (props: SpriteProps) => {
       data-id="trendDown"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21252,6 +24088,8 @@ export const TrendUpIcon = (props: SpriteProps) => {
       data-id="trendUp"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21267,6 +24105,8 @@ export const TriangleDashedIcon = (props: SpriteProps) => {
       data-id="triangleDashed"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21282,6 +24122,8 @@ export const TriangleIcon = (props: SpriteProps) => {
       data-id="triangle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21297,6 +24139,8 @@ export const TrolleySuitcaseIcon = (props: SpriteProps) => {
       data-id="trolleySuitcase"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21312,6 +24156,8 @@ export const TrolleyIcon = (props: SpriteProps) => {
       data-id="trolley"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21327,6 +24173,8 @@ export const TrophyIcon = (props: SpriteProps) => {
       data-id="trophy"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21342,6 +24190,8 @@ export const TruckTrailerIcon = (props: SpriteProps) => {
       data-id="truckTrailer"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21357,6 +24207,8 @@ export const TruckIcon = (props: SpriteProps) => {
       data-id="truck"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21372,6 +24224,8 @@ export const TumblrLogoIcon = (props: SpriteProps) => {
       data-id="tumblrLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21387,6 +24241,8 @@ export const TwitchLogoIcon = (props: SpriteProps) => {
       data-id="twitchLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21402,6 +24258,8 @@ export const TwitterLogoIcon = (props: SpriteProps) => {
       data-id="twitterLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21417,6 +24275,8 @@ export const UmbrellaSimpleIcon = (props: SpriteProps) => {
       data-id="umbrellaSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21432,6 +24292,8 @@ export const UmbrellaIcon = (props: SpriteProps) => {
       data-id="umbrella"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21447,6 +24309,8 @@ export const UnionIcon = (props: SpriteProps) => {
       data-id="union"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21462,6 +24326,8 @@ export const UniteSquareIcon = (props: SpriteProps) => {
       data-id="uniteSquare"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21477,6 +24343,8 @@ export const UniteIcon = (props: SpriteProps) => {
       data-id="unite"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21492,6 +24360,8 @@ export const UploadSimpleIcon = (props: SpriteProps) => {
       data-id="uploadSimple"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21507,6 +24377,8 @@ export const UploadIcon = (props: SpriteProps) => {
       data-id="upload"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21522,6 +24394,8 @@ export const UsbIcon = (props: SpriteProps) => {
       data-id="usb"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21537,6 +24411,8 @@ export const UserCheckIcon = (props: SpriteProps) => {
       data-id="userCheck"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21552,6 +24428,8 @@ export const UserCircleCheckIcon = (props: SpriteProps) => {
       data-id="userCircleCheck"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21567,6 +24445,8 @@ export const UserCircleDashedIcon = (props: SpriteProps) => {
       data-id="userCircleDashed"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21582,6 +24462,8 @@ export const UserCircleGearIcon = (props: SpriteProps) => {
       data-id="userCircleGear"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21597,6 +24479,8 @@ export const UserCircleMinusIcon = (props: SpriteProps) => {
       data-id="userCircleMinus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21612,6 +24496,8 @@ export const UserCirclePlusIcon = (props: SpriteProps) => {
       data-id="userCirclePlus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21627,6 +24513,8 @@ export const UserCircleIcon = (props: SpriteProps) => {
       data-id="userCircle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21642,6 +24530,8 @@ export const UserFocusIcon = (props: SpriteProps) => {
       data-id="userFocus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21657,6 +24547,8 @@ export const UserGearIcon = (props: SpriteProps) => {
       data-id="userGear"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21672,6 +24564,8 @@ export const UserListIcon = (props: SpriteProps) => {
       data-id="userList"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21687,6 +24581,8 @@ export const UserMinusIcon = (props: SpriteProps) => {
       data-id="userMinus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21702,6 +24598,8 @@ export const UserPlusIcon = (props: SpriteProps) => {
       data-id="userPlus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21717,6 +24615,8 @@ export const UserRectangleIcon = (props: SpriteProps) => {
       data-id="userRectangle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21732,6 +24632,8 @@ export const UserSoundIcon = (props: SpriteProps) => {
       data-id="userSound"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21747,6 +24649,8 @@ export const UserSquareIcon = (props: SpriteProps) => {
       data-id="userSquare"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21762,6 +24666,8 @@ export const UserSwitchIcon = (props: SpriteProps) => {
       data-id="userSwitch"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21777,6 +24683,8 @@ export const UserIcon = (props: SpriteProps) => {
       data-id="user"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21792,6 +24700,8 @@ export const UsersFourIcon = (props: SpriteProps) => {
       data-id="usersFour"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21807,6 +24717,8 @@ export const UsersThreeIcon = (props: SpriteProps) => {
       data-id="usersThree"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21822,6 +24734,8 @@ export const UsersIcon = (props: SpriteProps) => {
       data-id="users"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21837,6 +24751,8 @@ export const VanIcon = (props: SpriteProps) => {
       data-id="van"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21852,6 +24768,8 @@ export const VaultIcon = (props: SpriteProps) => {
       data-id="vault"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21867,6 +24785,8 @@ export const VectorThreeIcon = (props: SpriteProps) => {
       data-id="vectorThree"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21882,6 +24802,8 @@ export const VectorTwoIcon = (props: SpriteProps) => {
       data-id="vectorTwo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21897,6 +24819,8 @@ export const VibrateIcon = (props: SpriteProps) => {
       data-id="vibrate"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21912,6 +24836,8 @@ export const VideoCameraSlashIcon = (props: SpriteProps) => {
       data-id="videoCameraSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21927,6 +24853,8 @@ export const VideoCameraIcon = (props: SpriteProps) => {
       data-id="videoCamera"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21942,6 +24870,8 @@ export const VideoConferenceIcon = (props: SpriteProps) => {
       data-id="videoConference"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21957,6 +24887,8 @@ export const VideoIcon = (props: SpriteProps) => {
       data-id="video"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21972,6 +24904,8 @@ export const VignetteIcon = (props: SpriteProps) => {
       data-id="vignette"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -21987,6 +24921,8 @@ export const VinylRecordIcon = (props: SpriteProps) => {
       data-id="vinylRecord"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22002,6 +24938,8 @@ export const VirtualRealityIcon = (props: SpriteProps) => {
       data-id="virtualReality"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22017,6 +24955,8 @@ export const VirusIcon = (props: SpriteProps) => {
       data-id="virus"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22032,6 +24972,8 @@ export const VisorIcon = (props: SpriteProps) => {
       data-id="visor"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22047,6 +24989,8 @@ export const VoicemailIcon = (props: SpriteProps) => {
       data-id="voicemail"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22062,6 +25006,8 @@ export const VolleyballIcon = (props: SpriteProps) => {
       data-id="volleyball"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22077,6 +25023,8 @@ export const WallIcon = (props: SpriteProps) => {
       data-id="wall"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22092,6 +25040,8 @@ export const WalletIcon = (props: SpriteProps) => {
       data-id="wallet"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22107,6 +25057,8 @@ export const WarehouseIcon = (props: SpriteProps) => {
       data-id="warehouse"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22122,6 +25074,8 @@ export const WarningCircleIcon = (props: SpriteProps) => {
       data-id="warningCircle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22137,6 +25091,8 @@ export const WarningDiamondIcon = (props: SpriteProps) => {
       data-id="warningDiamond"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22152,6 +25108,8 @@ export const WarningOctagonIcon = (props: SpriteProps) => {
       data-id="warningOctagon"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22167,6 +25125,8 @@ export const WarningIcon = (props: SpriteProps) => {
       data-id="warning"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22182,6 +25142,8 @@ export const WashingMachineIcon = (props: SpriteProps) => {
       data-id="washingMachine"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22197,6 +25159,8 @@ export const WatchIcon = (props: SpriteProps) => {
       data-id="watch"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22212,6 +25176,8 @@ export const WaveSawtoothIcon = (props: SpriteProps) => {
       data-id="waveSawtooth"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22227,6 +25193,8 @@ export const WaveSineIcon = (props: SpriteProps) => {
       data-id="waveSine"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22242,6 +25210,8 @@ export const WaveSquareIcon = (props: SpriteProps) => {
       data-id="waveSquare"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22257,6 +25227,8 @@ export const WaveTriangleIcon = (props: SpriteProps) => {
       data-id="waveTriangle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22272,6 +25244,8 @@ export const WaveformSlashIcon = (props: SpriteProps) => {
       data-id="waveformSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22287,6 +25261,8 @@ export const WaveformIcon = (props: SpriteProps) => {
       data-id="waveform"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22302,6 +25278,8 @@ export const WavesIcon = (props: SpriteProps) => {
       data-id="waves"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22317,6 +25295,8 @@ export const WebcamSlashIcon = (props: SpriteProps) => {
       data-id="webcamSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22332,6 +25312,8 @@ export const WebcamIcon = (props: SpriteProps) => {
       data-id="webcam"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22347,6 +25329,8 @@ export const WebhooksLogoIcon = (props: SpriteProps) => {
       data-id="webhooksLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22362,6 +25346,8 @@ export const WechatLogoIcon = (props: SpriteProps) => {
       data-id="wechatLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22377,6 +25363,8 @@ export const WhatsappLogoIcon = (props: SpriteProps) => {
       data-id="whatsappLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22392,6 +25380,8 @@ export const WheelchairMotionIcon = (props: SpriteProps) => {
       data-id="wheelchairMotion"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22407,6 +25397,8 @@ export const WheelchairIcon = (props: SpriteProps) => {
       data-id="wheelchair"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22422,6 +25414,8 @@ export const WifiHighIcon = (props: SpriteProps) => {
       data-id="wifiHigh"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22437,6 +25431,8 @@ export const WifiLowIcon = (props: SpriteProps) => {
       data-id="wifiLow"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22452,6 +25448,8 @@ export const WifiMediumIcon = (props: SpriteProps) => {
       data-id="wifiMedium"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22467,6 +25465,8 @@ export const WifiNoneIcon = (props: SpriteProps) => {
       data-id="wifiNone"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22482,6 +25482,8 @@ export const WifiSlashIcon = (props: SpriteProps) => {
       data-id="wifiSlash"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22497,6 +25499,8 @@ export const WifiXIcon = (props: SpriteProps) => {
       data-id="wifiX"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22512,6 +25516,8 @@ export const WindIcon = (props: SpriteProps) => {
       data-id="wind"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22527,6 +25533,8 @@ export const WindmillIcon = (props: SpriteProps) => {
       data-id="windmill"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22542,6 +25550,8 @@ export const WindowsLogoIcon = (props: SpriteProps) => {
       data-id="windowsLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22557,6 +25567,8 @@ export const WineIcon = (props: SpriteProps) => {
       data-id="wine"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22572,6 +25584,8 @@ export const WrenchIcon = (props: SpriteProps) => {
       data-id="wrench"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22587,6 +25601,8 @@ export const XCircleIcon = (props: SpriteProps) => {
       data-id="xCircle"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22602,6 +25618,8 @@ export const XLogoIcon = (props: SpriteProps) => {
       data-id="xLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22617,6 +25635,8 @@ export const XSquareIcon = (props: SpriteProps) => {
       data-id="xSquare"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22632,6 +25652,8 @@ export const XIcon = (props: SpriteProps) => {
       data-id="x"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22647,6 +25669,8 @@ export const YarnIcon = (props: SpriteProps) => {
       data-id="yarn"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22662,6 +25686,8 @@ export const YinYangIcon = (props: SpriteProps) => {
       data-id="yinYang"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >
@@ -22677,6 +25703,8 @@ export const YoutubeLogoIcon = (props: SpriteProps) => {
       data-id="youtubeLogo"
       class={`icon icon_${props.size}`}
       aria-hidden={props.ariaHidden}
+      aria-label={props.ariaLabel}
+      role={props.role}
       fill="currentColor"
       viewBox="0 0 256 256"
     >

@@ -7,14 +7,22 @@ const sizes = Object.values(IconSize);
 
 <StorybookPage title="Icon">
   <div class="demoThemeWrapper">
-    <div class="grid grid_1Col">
+    <div class="grid grid_2Col">
       <span class="chead"></span>
-      <span class="chead">Default</span>
+      <span class="chead">Decorative</span>
+      <span class="chead">Semantic</span>
 
       {
         sizes.map((size) => (
           <>
             <span class="rhead">{size}</span>
+            <Icon
+              client:only="solid-js"
+              name={IconName.Trash}
+              size={size}
+              role={"img"}
+              aria-label="Смысловая нагрузка иконки, если она имеет тултип или несет информацию, необходимую для скринридеров и используется только вместе с ролью img"
+            />
             <Icon client:only="solid-js" name={IconName.Trash} size={size} />
           </>
         ))
