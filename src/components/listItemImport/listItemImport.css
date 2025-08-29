@@ -12,8 +12,8 @@
 }
 
 .listItemImport_medium {
-  gap: var(--size-x6);
-  padding: var(--size-x4) var(--size-x9) var(--size-x4) var(--size-x4);
+  gap: var(--size-x3);
+  padding: var(--size-x4) var(--size-x1);
 }
 
 .listItemImport_medium .listItemImport__text {
