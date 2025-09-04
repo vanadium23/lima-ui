@@ -1,8 +1,7 @@
-import { Match, mergeProps, Switch } from "solid-js";
+import { createEffect, createSignal, Match, mergeProps, Switch, untrack } from "solid-js";
 
 import { Icon, IconSize } from "../icon/icon.tsx";
 import { IconName } from "../icon/types.ts";
-import { prepareARIALabel } from "../utilities/prepareARIALabel.ts";
 import type { Testable } from "../utilities/testable.ts";
 
 import "./checkbox.css";
@@ -16,14 +15,17 @@ export enum CheckboxSize {
   Medium = "medium",
 }
 
+export type CheckedState = true | false | "mixed";
+
 type CheckboxProps = {
   theme?: CheckboxTheme;
   size?: CheckboxSize;
   isDisabled?: boolean;
-  ariaLabel?: string;
-  handleClick?: () => void;
-  isChecked?: boolean;
+  ariaLabel?: string | undefined;
+  checked?: CheckedState;
   independent?: boolean;
+  onChange?: (checked: boolean) => void;
+  name?: string;
 };
 
 export const Checkbox = (props: Testable<CheckboxProps>) => {
@@ -32,13 +34,35 @@ export const Checkbox = (props: Testable<CheckboxProps>) => {
       theme: CheckboxTheme.Primary,
       size: CheckboxSize.Medium,
       isDisabled: false,
-      ariaLabel: "",
-      handleClick: () => {},
-      isChecked: false,
+      ariaLabel: undefined,
+      checked: false,
       independent: true,
+      onChange: () => {},
+      name: "",
     },
     props,
   );
+
+  const [getState, setState] = createSignal(untrack(() => mProps.checked));
+
+  createEffect(() => {
+    setState(mProps.checked);
+  });
+
+  function handleChange(event: Event) {
+    const target = event.target as HTMLInputElement;
+    const currentState = target.checked;
+
+    setState(currentState);
+
+    mProps.onChange(currentState);
+  }
+
+  // Здесь мы преобразовываем из трех значений true/false/"mixed"
+  // в обычные true/false которые смогут принять нативные HTML-атрибуты
+  function getCheckedState() {
+    return getState() === true;
+  }
 
   const iconSize = {
     [CheckboxSize.Small]: IconSize.ExtraSmall,
@@ -60,16 +84,23 @@ export const Checkbox = (props: Testable<CheckboxProps>) => {
             type="checkbox"
             class="checkbox__input"
             disabled={mProps.isDisabled}
-            checked={mProps.isChecked}
-            onClick={() => {
-              mProps.handleClick();
-            }}
-            {...prepareARIALabel(mProps.ariaLabel)}
+            checked={getCheckedState()}
+            onChange={handleChange}
+            aria-checked={getState()}
+            aria-label={mProps.ariaLabel}
+            name={mProps.name}
           />
 
           <span class="checkbox__inner">
             <span class="checkbox__icon">
-              <Icon name={IconName.Check} size={iconSize[mProps.size]} />
+              <Switch>
+                <Match when={getState() === "mixed"}>
+                  <Icon name={IconName.Minus} size={iconSize[mProps.size]} />
+                </Match>
+                <Match when={getState() === true}>
+                  <Icon name={IconName.Check} size={iconSize[mProps.size]} />
+                </Match>
+              </Switch>
             </span>
           </span>
         </label>
@@ -87,16 +118,23 @@ export const Checkbox = (props: Testable<CheckboxProps>) => {
             type="checkbox"
             class="checkbox__input"
             disabled={mProps.isDisabled}
-            checked={mProps.isChecked}
-            onClick={() => {
-              mProps.handleClick();
-            }}
-            {...prepareARIALabel(mProps.ariaLabel)}
+            checked={getCheckedState()}
+            onChange={handleChange}
+            aria-checked={getState()}
+            aria-label={mProps.ariaLabel}
+            name={mProps.name}
           />
 
           <span class="checkbox__inner">
             <span class="checkbox__icon">
-              <Icon name={IconName.Check} size={iconSize[mProps.size]} />
+              <Switch>
+                <Match when={getState() === "mixed"}>
+                  <Icon name={IconName.Minus} size={iconSize[mProps.size]} />
+                </Match>
+                <Match when={getState() === true}>
+                  <Icon name={IconName.Check} size={iconSize[mProps.size]} />
+                </Match>
+              </Switch>
             </span>
           </span>
         </span>

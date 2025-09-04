@@ -90,6 +90,10 @@ html {
   border: 0.1rem solid var(--storybook-demo-border-color);
 }
 
+.demoThemeWrapper_white {
+  background: #fff;
+}
+
 .demoThemeWrapper__title {
   font-size: 2.4rem;
   margin-bottom: 1rem;

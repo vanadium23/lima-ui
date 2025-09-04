@@ -35,3 +35,7 @@
 .listItemImport_primary:active {
   background: var(--neutral-200);
 }
+
+.listItemImport_medium:last-of-type {
+  border-radius: 0 0 var(--size-x4) var(--size-x4);
+}
