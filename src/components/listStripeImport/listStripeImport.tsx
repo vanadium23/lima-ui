@@ -19,7 +19,6 @@ export enum ListStripeImportSize {
 
 export type ListItemData = {
   text: string;
-  isChecked?: boolean;
 };
 
 export type ListData = {
@@ -45,44 +44,40 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
   );
 
   const [getExpanded, setExpanded] = createSignal(false);
-  const [getItemsChecked, setItemsChecked] = createSignal<boolean[]>([]);
-  const [getMainCheckboxState, setMainCheckboxState] = createSignal<CheckedState>(false);
-
-  createEffect(() => {
-    if (getItemsChecked().length === 0) {
-      const initialStates = mProps.listData.items.map((item) => item.isChecked || false);
-      setItemsChecked(initialStates);
-    }
-  });
-
-  createEffect(() => {
-    const checkedItems = getItemsChecked();
-    const checkedCount = checkedItems.filter(Boolean).length;
-
-    if (checkedCount === 0) {
-      setMainCheckboxState(false);
-    } else if (checkedCount === checkedItems.length) {
-      setMainCheckboxState(true);
-    } else {
-      setMainCheckboxState("mixed");
-    }
-  });
 
   function toggleExpanded() {
     setExpanded(!getExpanded());
   }
 
-  function handleMainCheckboxChange(checked: boolean) {
-    const newState = new Array(mProps.listData.items.length).fill(checked);
-    setItemsChecked(newState);
-  }
+  const [getItemsCheckboxState, setItemsCheckboxState] = createSignal<boolean[]>([]);
+  const [getListCheckboxState, setListCheckboxState] = createSignal<CheckedState>(false);
 
   function handleItemCheckboxChange(index: number) {
+    // eslint-disable-next-line solid/reactivity
     return function (checked: boolean) {
-      const newItems = [...getItemsChecked()];
+      const newItems = [...getItemsCheckboxState()];
       newItems[index] = checked;
-      setItemsChecked(newItems);
+      setItemsCheckboxState(newItems);
     };
+  }
+
+  createEffect(() => {
+    const checkedItems = getItemsCheckboxState();
+
+    const checkedCount = checkedItems.filter(Boolean).length;
+
+    if (checkedCount === 0) {
+      setListCheckboxState(false);
+    } else if (checkedCount === checkedItems.length) {
+      setListCheckboxState(true);
+    } else {
+      setListCheckboxState("mixed");
+    }
+  });
+
+  function handleMainCheckboxChange(checked: boolean) {
+    const newState = new Array(mProps.listData.items.length).fill(checked);
+    setItemsCheckboxState(newState);
   }
 
   const iconSize = {
@@ -106,7 +101,7 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
           testId={DEFAULT_TEST_ID}
           testSubId={mProps.testSubId ?? ""}
           independent={true}
-          checked={getMainCheckboxState()}
+          checked={getListCheckboxState()}
           onChange={handleMainCheckboxChange}
           name={mProps.titleHTMLName}
         />
@@ -129,7 +124,7 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
               <ListItemImport
                 text={item().text}
                 testId={DEFAULT_TEST_ID}
-                isImported={getItemsChecked()[index] || false}
+                isImported={getItemsCheckboxState()[index] || false}
                 onCheckedChange={handleItemCheckboxChange(index)}
                 checkboxHTMLName={`item-${index}`}
               />

@@ -1,4 +1,4 @@
-import { createEffect, createSignal, Match, mergeProps, Switch, untrack } from "solid-js";
+import { createEffect, createSignal, Match, mergeProps, Switch } from "solid-js";
 
 import { Icon, IconSize } from "../icon/icon.tsx";
 import { IconName } from "../icon/types.ts";
@@ -43,7 +43,8 @@ export const Checkbox = (props: Testable<CheckboxProps>) => {
     props,
   );
 
-  const [getState, setState] = createSignal(untrack(() => mProps.checked));
+  // eslint-disable-next-line solid/reactivity
+  const [getState, setState] = createSignal(mProps.checked);
 
   createEffect(() => {
     setState(mProps.checked);
