@@ -16,7 +16,7 @@
 
 .userButton__capital {
   font-size: 1.6rem;
-  font-weight: 600;
+  font-weight: var(--semi-bold);
   flex-shrink: 0;
   line-height: var(--size-x10);
   text-transform: capitalize;
@@ -50,7 +50,7 @@
   color: var(--text-neutral-900, #05060f);
   font-size: 1.6rem;
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--semi-bold);
   line-height: var(--size-x12);
   white-space: nowrap;
   text-overflow: ellipsis;

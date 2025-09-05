@@ -19,7 +19,7 @@
 
 .dialog__title {
   font-size: 1.6rem;
-  font-weight: 600;
+  font-weight: var(--semi-bold);
   line-height: 2rem;
   padding: 0;
   margin: 0;
@@ -31,7 +31,7 @@
 }
 
 .dialog__content > p > strong {
-  font-weight: 600;
+  font-weight: var(--semi-bold);
 }
 
 .dialog__controls {

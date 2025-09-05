@@ -4,6 +4,12 @@
   width: 100%;
 }
 
+.listStripeImport__accordion {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
 .listStripeImport__header {
   display: flex;
   align-items: flex-start;
@@ -48,24 +54,17 @@
 
 .listStripeImport_medium .listStripeImport__title {
   font-size: 1.6rem;
-  font-weight: 600;
+  font-weight: var(--semi-bold);
   line-height: 2rem;
 }
 
 .listStripeImport_medium .listStripeImport__purpose {
   font-size: 1.4rem;
-  font-weight: 500;
   line-height: 1.8rem;
 }
 
 .listStripeImport_medium .listStripeImport__items {
   border-radius: var(--size-x4);
-}
-
-.listStripeImport__accordion {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
 }
 
 .listStripeImport_primary .listStripeImport__accordion {

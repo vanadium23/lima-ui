@@ -97,7 +97,7 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
       <div class="listStripeImport__checkbox">
         <Checkbox
           theme={CheckboxTheme.Primary}
-          size={CheckboxSize.Small}
+          size={CheckboxSize.Medium}
           testId={DEFAULT_TEST_ID}
           testSubId={mProps.testSubId ?? ""}
           independent={true}
@@ -124,7 +124,7 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
               <ListItemImport
                 text={item().text}
                 testId={DEFAULT_TEST_ID}
-                isImported={getItemsCheckboxState()[index] || false}
+                toImport={getItemsCheckboxState()[index] || false}
                 onCheckedChange={handleItemCheckboxChange(index)}
                 checkboxHTMLName={`item-${index}`}
               />

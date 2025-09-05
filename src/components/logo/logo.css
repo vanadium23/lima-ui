@@ -4,7 +4,7 @@
   gap: var(--size-x2);
   color: var(--text-neutral-100);
   font-size: 1.6rem;
-  font-weight: 700;
+  font-weight: var(--bold);
   line-height: 2.2rem;
   text-decoration: none;
 }
