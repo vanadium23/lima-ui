@@ -1,12 +1,8 @@
-import { createEffect, type JSX, mergeProps } from "solid-js";
+import { createEffect, type JSX, mergeProps, Show } from "solid-js";
 
 import { DIALOG_CLOSE_BUTTON } from "../../../features/testIds.ts";
 import { IconName } from "../icon/types.ts";
-import {
-  IconButton,
-  IconButtonSize,
-  IconButtonTheme,
-} from "../iconButton/iconButton.tsx";
+import { IconButton, IconButtonSize, IconButtonTheme } from "../iconButton/iconButton.tsx";
 import type { Testable } from "../utilities/testable.ts";
 
 import "./dialog.css";
@@ -23,7 +19,7 @@ type DialogProps = {
   theme?: DialogTheme;
   size?: DialogSize;
   children: JSX.Element;
-  controls: JSX.Element;
+  controls?: JSX.Element;
   onCancel: () => void;
   isOpen: boolean;
   title: string;
@@ -35,6 +31,7 @@ export const Dialog = (props: Testable<DialogProps>) => {
       theme: DialogTheme.Primary,
       size: DialogSize.Medium,
       isOpen: false,
+      controls: undefined,
     },
     props,
   );
@@ -97,7 +94,9 @@ export const Dialog = (props: Testable<DialogProps>) => {
         </div>
 
         <div class="dialog__content">{mProps.children}</div>
-        <div class="dialog__controls">{mProps.controls}</div>
+        <Show when={mProps.controls}>
+          <div class="dialog__controls">{mProps.controls}</div>
+        </Show>
       </div>
     </dialog>
   );
