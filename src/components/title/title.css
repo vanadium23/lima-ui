@@ -9,7 +9,7 @@
 
 .title_medium {
   font-size: 2.4rem;
-  font-weight: 600;
+  font-weight: var(--semi-bold);
   line-height: 2.8rem;
 }
 

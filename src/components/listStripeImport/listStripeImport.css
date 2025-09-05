@@ -1,0 +1,105 @@
+.listStripeImport {
+  display: flex;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.listStripeImport__accordion {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.listStripeImport__header {
+  display: flex;
+  align-items: flex-start;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.listStripeImport__headerIcon {
+  display: flex;
+}
+
+.listStripeImport__headerInner {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  text-align: left;
+}
+
+.listStripeImport__items {
+  display: flex;
+  flex-direction: column;
+}
+
+.listStripeImport_medium {
+  gap: var(--size-x1);
+}
+
+.listStripeImport_medium .listStripeImport__checkbox {
+  padding: var(--size-x3) var(--size-x1) 0;
+}
+
+.listStripeImport_medium .listStripeImport__accordion {
+  border-radius: var(--size-x4);
+  border-width: 0.1rem;
+}
+
+.listStripeImport_medium .listStripeImport__header {
+  border-radius: var(--size-x4);
+  padding: var(--size-x3) var(--size-x4);
+}
+
+.listStripeImport_medium .listStripeImport__title {
+  font-size: 1.6rem;
+  font-weight: var(--semi-bold);
+  line-height: 2rem;
+}
+
+.listStripeImport_medium .listStripeImport__purpose {
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+}
+
+.listStripeImport_medium .listStripeImport__items {
+  border-radius: var(--size-x4);
+}
+
+.listStripeImport_primary .listStripeImport__accordion {
+  background: var(--neutral-100);
+  border-color: var(--neutral-200);
+  border-style: solid;
+}
+
+.listStripeImport_primary .listStripeImport__headerInner {
+  color: var(--text-neutral-800);
+}
+
+@media (hover: hover) {
+  .listStripeImport_primary .listStripeImport__accordion:has(.listStripeImport__header:hover) {
+    border-color: var(--neutral-700);
+  }
+}
+
+.listStripeImport_expanded .listStripeImport__headerIcon {
+  transform: rotate(-180deg);
+}
+
+.listStripeImport_collapsed .listStripeImport__items {
+  display: none;
+}
+
+.listStripeImport_expanded .listStripeImport__items {
+  display: flex;
+}
+
+.listStripeImport__header:focus-visible {
+  outline: var(--outline-set);
+  outline-offset: -0.2rem;
+}
+
+.listStripeImport__header:focus:not(:focus-visible) {
+  outline: none;
+}

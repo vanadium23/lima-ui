@@ -90,6 +90,10 @@ html {
   border: 0.1rem solid var(--storybook-demo-border-color);
 }
 
+.demoThemeWrapper_white {
+  background: #fff;
+}
+
 .demoThemeWrapper__title {
   font-size: 2.4rem;
   margin-bottom: 1rem;
@@ -249,7 +253,7 @@ h2 {
 .storybookSidebar__sectionTitle {
   display: inline-block;
   font-size: 1.8rem;
-  font-weight: 600;
+  font-weight: var(--semi-bold);
   margin-top: 1rem;
   color: #989898;
 }

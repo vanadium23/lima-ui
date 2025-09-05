@@ -1,6 +1,7 @@
 /** @type {import("prettier").Config} */
 export default {
   plugins: ["prettier-plugin-astro", "prettier-plugin-gherkin"],
+  printWidth: 120, // Максимальная длина строки для переноса
   overrides: [
     {
       files: "*.astro",

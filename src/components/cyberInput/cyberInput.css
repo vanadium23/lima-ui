@@ -111,9 +111,7 @@
   background: var(--neutral-100);
 }
 
-.cyberInput_primary:not(.cyberInput_error, .cyberInput_disabled):has(
-    .cyberInput__inner:placeholder-shown
-  ) {
+.cyberInput_primary:not(.cyberInput_error, .cyberInput_disabled):has(.cyberInput__inner:placeholder-shown) {
   border-color: var(--neutral-500);
   background: var(--neutral-100);
 }
@@ -133,9 +131,7 @@
   background: var(--neutral-200);
 }
 
-.cyberInput_primary.cyberInput_disabled:has(
-    .cyberInput__inner:placeholder-shown
-  ) {
+.cyberInput_primary.cyberInput_disabled:has(.cyberInput__inner:placeholder-shown) {
   border-color: var(--neutral-500);
   background: var(--neutral-200);
 }
@@ -149,9 +145,7 @@
     border-color: var(--neutral-700);
   }
 
-  .cyberInput_primary:hover:not(.cyberInput_disabled):has(
-      .cyberInput__inner:placeholder-shown
-    ) {
+  .cyberInput_primary:hover:not(.cyberInput_disabled):has(.cyberInput__inner:placeholder-shown) {
     border-color: var(--neutral-700);
   }
 }
@@ -174,7 +168,7 @@
 
 .cyberInput_secondary .cyberInput__inner {
   color: var(--text-neutral-800);
-  font-weight: 600;
+  font-weight: var(--semi-bold);
 }
 
 .cyberInput_secondary.cyberInput_error .cyberInput__inner {
@@ -190,9 +184,7 @@
   background: var(--neutral-100);
 }
 
-.cyberInput_secondary:not(.cyberInput_error, .cyberInput_disabled):has(
-    .cyberInput__inner:placeholder-shown
-  ) {
+.cyberInput_secondary:not(.cyberInput_error, .cyberInput_disabled):has(.cyberInput__inner:placeholder-shown) {
   border-color: var(--neutral-500);
   background: var(--neutral-100);
 }
@@ -212,9 +204,7 @@
   background: var(--neutral-200);
 }
 
-.cyberInput_secondary.cyberInput_disabled:has(
-    .cyberInput__inner:placeholder-shown
-  ) {
+.cyberInput_secondary.cyberInput_disabled:has(.cyberInput__inner:placeholder-shown) {
   border-color: var(--neutral-500);
   background: var(--neutral-200);
 }
@@ -228,9 +218,7 @@
     border-color: var(--neutral-700);
   }
 
-  .cyberInput_secondary:hover:not(.cyberInput_disabled):has(
-      .cyberInput__inner:placeholder-shown
-    ) {
+  .cyberInput_secondary:hover:not(.cyberInput_disabled):has(.cyberInput__inner:placeholder-shown) {
     border-color: var(--neutral-700);
   }
 }

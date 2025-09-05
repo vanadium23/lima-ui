@@ -1,10 +1,6 @@
 ---
 import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
-import {
-  Checkbox,
-  CheckboxSize,
-  CheckboxTheme,
-} from "../../../components/checkbox/checkbox.tsx";
+import { Checkbox, CheckboxSize, CheckboxTheme } from "../../../components/checkbox/checkbox.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 const themes = Object.values(CheckboxTheme);
@@ -30,6 +26,8 @@ const sizes = Object.values(CheckboxSize);
                 theme={theme}
                 size={size}
                 testId={DEFAULT_TEST_ID}
+                checked={true}
+                ariaLabel={"Обязательный лейбл для типа чекбокса с встроенным лейблом"}
               />
               <Checkbox
                 client:only="solid-js"
@@ -37,7 +35,8 @@ const sizes = Object.values(CheckboxSize);
                 size={size}
                 testId={DEFAULT_TEST_ID}
                 isDisabled={true}
-                isChecked={true}
+                checked={true}
+                ariaLabel={"Обязательный лейбл для типа чекбокса с встроенным лейблом"}
               />
             </>
           ))}
@@ -67,7 +66,7 @@ const sizes = Object.values(CheckboxSize);
                   testId={DEFAULT_TEST_ID}
                   independent={false}
                 />
-                <span>Test</span>
+                <span>Outside test-label</span>
               </label>
               <label>
                 <Checkbox
@@ -76,10 +75,89 @@ const sizes = Object.values(CheckboxSize);
                   size={size}
                   testId={DEFAULT_TEST_ID}
                   isDisabled={true}
-                  isChecked={true}
                   independent={false}
                 />
-                <span>Test</span>
+                <span>Outside test-label</span>
+              </label>
+            </>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+
+  <h2>Type - Label included (Mixed state demo)</h2>
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 class="demoThemeWrapper__title">{theme}</h3>
+        <div class="grid grid_2Col">
+          <span class="chead" />
+          <span class="chead">Default</span>
+          <span class="chead">Disabled</span>
+
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <Checkbox
+                client:only="solid-js"
+                theme={theme}
+                size={size}
+                testId={DEFAULT_TEST_ID}
+                checked={"mixed"}
+                ariaLabel={"Обязательный лейбл для типа чекбокса с встроенным лейблом"}
+              />
+              <Checkbox
+                client:only="solid-js"
+                theme={theme}
+                size={size}
+                testId={DEFAULT_TEST_ID}
+                isDisabled={true}
+                checked={"mixed"}
+                ariaLabel={"Обязательный лейбл для типа чекбокса с встроенным лейблом"}
+              />
+            </>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+
+  <h2>Type - Outside label (Mixed state demo)</h2>
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 class="demoThemeWrapper__title">{theme}</h3>
+        <div class="grid grid_2Col">
+          <span class="chead" />
+          <span class="chead">Default</span>
+          <span class="chead">Disabled</span>
+
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <label>
+                <Checkbox
+                  client:only="solid-js"
+                  theme={theme}
+                  size={size}
+                  testId={DEFAULT_TEST_ID}
+                  independent={false}
+                  checked={"mixed"}
+                />
+                <span>Outside test-label</span>
+              </label>
+              <label>
+                <Checkbox
+                  client:only="solid-js"
+                  theme={theme}
+                  size={size}
+                  testId={DEFAULT_TEST_ID}
+                  isDisabled={true}
+                  independent={false}
+                  checked={"mixed"}
+                />
+                <span>Outside test-label</span>
               </label>
             </>
           ))}

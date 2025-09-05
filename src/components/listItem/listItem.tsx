@@ -14,11 +14,7 @@ import {
   REMOVE_ITEM_MENUITEM,
 } from "../../../features/testIds.ts";
 import type { DragSettings } from "../../widgets/editList/types.ts";
-import {
-  Checkbox,
-  CheckboxSize,
-  CheckboxTheme,
-} from "../checkbox/checkbox.tsx";
+import { Checkbox, CheckboxSize, CheckboxTheme } from "../checkbox/checkbox.tsx";
 import { CyberInput } from "../cyberInput/cyberInput.tsx";
 import { DragHandle } from "../dragHandle/dragHandle.tsx";
 import { DropdownMenuWrapper } from "../dropdownMenuWrapper/dropdownMenuWrapper.tsx";
@@ -150,7 +146,7 @@ export const ListItem = (props: Testable<ListItemProps>) => {
             testId={CHECKBOX}
             testSubId={getListItemTestSubId(mProps.testId, mProps.testSubId)}
             isDisabled={mProps.isDisabled}
-            isChecked={mProps.isChecked}
+            checked={mProps.isChecked}
           />
         </div>
       </Show>
@@ -183,9 +179,6 @@ export const ListItem = (props: Testable<ListItemProps>) => {
   );
 };
 
-function getListItemTestSubId(
-  testId: TestId,
-  testSubId: TestSubId | undefined,
-): TestSubId {
+function getListItemTestSubId(testId: TestId, testSubId: TestSubId | undefined): TestSubId {
   return testId === AUTO_LIST_ITEM ? AUTO_LIST_ITEM : testSubId || "0";
 }
