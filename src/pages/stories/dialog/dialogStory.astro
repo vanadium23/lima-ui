@@ -1,10 +1,6 @@
 ---
 import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
-import {
-  Dialog,
-  DialogSize,
-  DialogTheme,
-} from "../../../components/dialog/dialog.tsx";
+import { Dialog, DialogSize, DialogTheme } from "../../../components/dialog/dialog.tsx";
 import { PasteContent } from "../../../components/pasteContent/pasteContent.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 ---
@@ -22,7 +18,6 @@ import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
         title="Заголовок"
         isOpen={true}
         testId={DEFAULT_TEST_ID}
-        controls={[]}
         onCancel={() => {}}
       >
         <PasteContent />
@@ -30,3 +25,19 @@ import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
     </div>
   </div>
 </StorybookPage>
+
+<!--
+В пропсу controls, можно передать массив кнопок:
+[
+  <Button
+    theme={ButtonTheme.Dangerous}
+    size={ButtonSize.Medium}
+    text={"Удалить"}
+  />,
+  <Button
+    theme={ButtonTheme.Dangerous}
+    size={ButtonSize.Medium}
+    text={"Удалить всё нахой"}
+  />,
+]
+-->
