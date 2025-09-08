@@ -1,6 +1,7 @@
-import { createSignal, mergeProps } from "solid-js";
+import { createSignal, mergeProps, Show } from "solid-js";
 
 import {
+  DEFAULT_TEST_ID,
   DIALOG_REMOVE_BUTTON,
   LIST_STRIPE,
   LIST_STRIPE_CONTEXT_MENU,
@@ -14,9 +15,11 @@ import { soften } from "../../widgets/editList/utilities/soften.ts";
 import { Button, ButtonSize, ButtonTheme } from "../button/button.tsx";
 import { Dialog, DialogSize, DialogTheme } from "../dialog/dialog.tsx";
 import { DropdownMenuWrapper } from "../dropdownMenuWrapper/dropdownMenuWrapper.tsx";
+import { Icon, IconSize } from "../icon/icon.tsx";
 import { IconName } from "../icon/types.ts";
 import { IconButtonSize } from "../iconButton/iconButton.tsx";
 import { MenuItemTheme } from "../menuItem/menuItem.tsx";
+import { Tooltip } from "../tooltip/tooltip.tsx";
 import { type Testable } from "../utilities/testable.ts";
 
 import "./listStripe.css";
@@ -37,6 +40,7 @@ type ListStripeProps = {
   link: string;
   listId: string;
   isRemoving?: boolean;
+  isImported?: boolean;
   onRemoveSuccess: (listId: string) => void;
   onRemoveError: (removeError: boolean) => void;
 };
@@ -47,6 +51,7 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
       theme: ListStripeTheme.Primary,
       size: ListStripeSize.Medium,
       isRemoving: false,
+      isImported: false,
     },
     props,
   );
@@ -90,10 +95,7 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
       .catch((error) => {
         soften(() => {
           mProps.onRemoveError(true);
-          console.error(
-            "There has been a problem with your fetch operation:",
-            error,
-          );
+          console.error("There has been a problem with your fetch operation:", error);
           setIsRemoving(false);
         });
       });
@@ -108,6 +110,19 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
       data-test-id={LIST_STRIPE}
       data-test-sub-id={mProps.testSubId}
     >
+      <div class="listStripe__icon">
+        <Show when={mProps.isImported}>
+          <Tooltip content={"Список импортирован в другие списки"} testId={DEFAULT_TEST_ID}>
+            <Icon
+              name={IconName.Link}
+              size={IconSize.Small}
+              role={"img"}
+              ariaLabel={"Список импортирован в другие списки"}
+            />
+          </Tooltip>
+        </Show>
+      </div>
+
       {/* MAKSIM: Подумалось, что можно подменять сам тег <a> на какой-нибудь другой при помощи <Dynamic> во время удаления, чтобы не прыгать с #. */}
       <a
         class="listStripe__link"
@@ -158,8 +173,7 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
         }
       >
         <p>
-          Список <strong>{mProps.listTitle}</strong> будет удален без
-          возможности восстановления.
+          Список <strong>{mProps.listTitle}</strong> будет удален без возможности восстановления.
         </p>
       </Dialog>
     </div>

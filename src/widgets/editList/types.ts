@@ -8,10 +8,16 @@ export type Item = {
 
 export type Items = Item[];
 
+export type SimpleList = {
+  name: string;
+  id: string;
+};
+
 export type ListBase = {
   id: string;
   name: string;
   purpose: string;
+  importedTo?: SimpleList[];
 };
 
 export type List = ListBase & {
@@ -45,11 +51,6 @@ export type NewList = {
 export type UpdatedList = ListBase & {
   note: string;
   items: ItemToSend[];
-};
-
-export type DropdownListType = {
-  name: string;
-  id: string;
 };
 
 export type ScrollContainer = HTMLDivElement | undefined;

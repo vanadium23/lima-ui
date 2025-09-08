@@ -12,17 +12,11 @@ import {
   PAGE_TITLE,
 } from "../../../features/testIds.ts";
 import { URL_CREATE_LIST, URL_MY_LISTS } from "../../../utilities/addresses.ts";
-import {
-  Button,
-  ButtonComponentType,
-} from "../../components/button/button.tsx";
+import { Button, ButtonComponentType } from "../../components/button/button.tsx";
 import { ListStripe } from "../../components/listStripe/listStripe.tsx";
 import { PageError } from "../../components/pageError/pageError.tsx";
 import { Title } from "../../components/title/title.tsx";
-import {
-  isLimitReached,
-  setIsLimitReached,
-} from "../../state/reachListsLimit.ts";
+import { isLimitReached, setIsLimitReached } from "../../state/reachListsLimit.ts";
 import type { ListBase } from "../editList/types.ts";
 
 import "./lists.css";
@@ -49,9 +43,7 @@ export const Lists = (props: ListsProps) => {
   }
 
   function removingListInStore(listIdToRemove: string) {
-    setStore("lists", (lists: ListBase[]) =>
-      lists.filter((item) => item.id !== listIdToRemove),
-    );
+    setStore("lists", (lists: ListBase[]) => lists.filter((item) => item.id !== listIdToRemove));
     setIsLimitReached(checkListsLimitReached());
   }
 
@@ -73,9 +65,7 @@ export const Lists = (props: ListsProps) => {
         when={!mProps.listsRequestError}
         fallback={
           <div class="lists__errors">
-            <PageError testId={NETWORK_ERROR}>
-              Произошла ошибка соединения с сервером, попробуйте еще раз
-            </PageError>
+            <PageError testId={NETWORK_ERROR}>Произошла ошибка соединения с сервером, попробуйте еще раз</PageError>
           </div>
         }
       >
@@ -92,6 +82,7 @@ export const Lists = (props: ListsProps) => {
                   onRemoveError={setRemoveError}
                   testId={LIST_STRIPE}
                   testSubId={index()}
+                  isImported={Boolean(list.importedTo?.length)}
                 />
               </li>
             )}
@@ -100,14 +91,10 @@ export const Lists = (props: ListsProps) => {
 
         <div class="lists__errors">
           <Show when={isLimitReached()}>
-            <PageError testId={LISTS_LIMIT_REACHED_WARNING}>
-              Вы использовали лимит в {LISTS_LIMIT} списков
-            </PageError>
+            <PageError testId={LISTS_LIMIT_REACHED_WARNING}>Вы использовали лимит в {LISTS_LIMIT} списков</PageError>
           </Show>
           <Show when={store.removeError}>
-            <PageError testId={LIST_REMOVAL_ERROR}>
-              Не удалось удалить список. Попробуйте ещё раз.
-            </PageError>
+            <PageError testId={LIST_REMOVAL_ERROR}>Не удалось удалить список. Попробуйте ещё раз.</PageError>
           </Show>
         </div>
 

@@ -1,9 +1,12 @@
 .listStripe {
   display: flex;
   width: 100%;
-  border: 0.1rem solid var(--neutral-200);
-  border-radius: var(--size-x4);
   position: relative;
+}
+
+.listStripe__icon {
+  display: flex;
+  align-items: flex-start;
 }
 
 .listStripe__link {
@@ -12,12 +15,11 @@
   min-width: 0; /* Хитрый фикс для сжимания линка в мобильной версии */
   flex-direction: column;
   text-decoration: none;
-  border-radius: var(--size-x4);
   background: transparent;
   outline: none;
 }
 
-.listStripe:has(.listStripe__link:focus-visible) {
+.listStripe__link:focus-visible {
   outline: var(--outline-set);
   outline-offset: var(--outline-offset);
 }
@@ -31,6 +33,10 @@
   position: absolute;
   right: var(--size-x3);
   top: var(--size-x3);
+}
+
+.listStripe__link:active + .listStripe__controls {
+  transform: translateY(0.1rem);
 }
 
 @media (hover: hover) {
@@ -61,8 +67,15 @@
   white-space: nowrap;
 }
 
+.listStripe_medium .listStripe__icon {
+  width: 2.8rem;
+  padding: var(--size-x3) var(--size-x4) var(--size-x3) var(--size-x1);
+}
+
 .listStripe_medium .listStripe__link {
   padding: var(--size-x3) var(--size-x13) var(--size-x3) var(--size-x6);
+  border-width: 0.1rem;
+  border-radius: var(--size-x4);
 }
 
 .listStripe_medium .listStripe__title {
@@ -75,16 +88,29 @@
   line-height: 2rem;
 }
 
+.listStripe_primary.listStripe_removing .listStripe__icon {
+  color: var(--text-neutral-500);
+}
+
 .listStripe_primary.listStripe_removing .listStripe__link {
   background: var(--neutral-200);
 }
 
-.listStripe:not(.listStripe_removing):has(.listStripe__link:active) {
+.listStripe:not(.listStripe_removing) .listStripe__link:active {
   transform: translateY(0.1rem);
 }
 
 .listStripe_primary {
   background: var(--neutral-100);
+}
+
+.listStripe_primary .listStripe__icon {
+  color: var(--text-primary-500);
+}
+
+.listStripe_primary .listStripe__link {
+  border-style: solid;
+  border-color: var(--neutral-200);
 }
 
 .listStripe_primary .listStripe__title {
@@ -103,14 +129,14 @@
   color: var(--text-neutral-500);
 }
 
-.listStripe_primary:not(.listStripe_removing):has(.listStripe__link:active) {
-  background: var(--neutral-200);
-}
-
 @media (hover: hover) {
-  .listStripe_primary:not(.listStripe_removing):has(.listStripe__link:hover) {
+  .listStripe_primary:not(.listStripe_removing) .listStripe__link:hover {
     background: var(--neutral-150);
   }
+}
+
+.listStripe_primary:not(.listStripe_removing) .listStripe__link:active {
+  background: var(--neutral-200);
 }
 
 .listStripe:hover .listStripe__controls {
