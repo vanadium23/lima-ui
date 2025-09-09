@@ -68,7 +68,7 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
     setIsDialogOpen(false);
   };
 
-  const importedTooltipMessage = "Список импортирован в другие списки";
+  const exportedTooltipMessage = "Список экспортирован в другие списки";
 
   function listStripeIsRemoving() {
     return isRemoving() || mProps.isRemoving;
@@ -114,8 +114,8 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
     >
       <div class="listStripe__icon">
         <Show when={mProps.isExported}>
-          <Tooltip content={importedTooltipMessage} testId={DEFAULT_TEST_ID}>
-            <Icon name={IconName.Link} size={IconSize.Small} role={"img"} ariaLabel={importedTooltipMessage} />
+          <Tooltip content={exportedTooltipMessage} testId={DEFAULT_TEST_ID}>
+            <Icon name={IconName.Link} size={IconSize.Small} role={"img"} ariaLabel={exportedTooltipMessage} />
           </Tooltip>
         </Show>
       </div>
