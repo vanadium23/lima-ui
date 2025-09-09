@@ -35,7 +35,7 @@
   top: var(--size-x3);
 }
 
-.listStripe__link:active + .listStripe__controls {
+.listStripe:not(.listStripe_removing) .listStripe__link:active + .listStripe__controls {
   transform: translateY(0.1rem);
 }
 
