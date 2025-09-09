@@ -1,0 +1,23 @@
+---
+import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
+import { ImportedGroup } from "../../../components/importedGroup/importedGroup.tsx";
+import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
+---
+
+<StorybookPage title="List Stripe Import">
+  <div class="demoThemeWrapper demoThemeWrapper_white">
+    <h3 class="demoThemeWrapper__title">Primary</h3>
+    <div class="grid grid_1Col">
+      <span class="chead"></span>
+      <span class="chead">Medium</span>
+      <span class="rhead">List</span>
+      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID} />
+      <span class="rhead">List - Disabled</span>
+      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID} isDisabled={true} />
+      <span class="rhead">Checklist</span>
+      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID} isCheckable={true} />
+      <span class="rhead">Checklist - Disabled</span>
+      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID} isCheckable={true} isDisabled={true} />
+    </div>
+  </div>
+</StorybookPage>

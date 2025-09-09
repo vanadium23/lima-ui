@@ -1,0 +1,67 @@
+---
+import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
+import { ImportedItem, ImportedItemSize, ImportedItemTheme } from "../../../components/importedItem/importedItem.tsx";
+import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
+
+const themes = Object.values(ImportedItemTheme);
+const sizes = Object.values(ImportedItemSize);
+---
+
+<StorybookPage title="Imported Item">
+  <h2>Without Checkbox</h2>
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 class="demoThemeWrapper__title">{theme}</h3>
+        <div class="grid grid_2ColLarge">
+          <span class="chead" />
+          <span class="chead">Default</span>
+          <span class="chead">Disabled</span>
+
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <ImportedItem client:only="solid-js" testId={DEFAULT_TEST_ID} itemText={"Текст"} />
+              <ImportedItem client:only="solid-js" testId={DEFAULT_TEST_ID} itemText={"Текст"} isDisabled={true} />
+            </>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+
+  <h2>With Checkbox</h2>
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 class="demoThemeWrapper__title">{theme}</h3>
+        <div class="grid grid_2ColLarge">
+          <span class="chead" />
+          <span class="chead">Default</span>
+          <span class="chead">Disabled</span>
+
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <ImportedItem
+                client:only="solid-js"
+                testId={DEFAULT_TEST_ID}
+                itemText={"Текст для теста многострочного расположения текста в этом текстовом поле"}
+                isCheckable={true}
+                isChecked={false}
+              />
+              <ImportedItem
+                client:only="solid-js"
+                testId={DEFAULT_TEST_ID}
+                itemText={"Текст"}
+                isCheckable={true}
+                isChecked={false}
+                isDisabled={true}
+              />
+            </>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+</StorybookPage>
