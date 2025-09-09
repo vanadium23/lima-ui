@@ -82,7 +82,7 @@ export const Lists = (props: ListsProps) => {
                   onRemoveError={setRemoveError}
                   testId={LIST_STRIPE}
                   testSubId={index()}
-                  isImported={Boolean(list.importedTo?.length)}
+                  isExported={Boolean(list.importedTo?.length)}
                 />
               </li>
             )}

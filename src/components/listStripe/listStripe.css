@@ -28,6 +28,10 @@
   outline: none;
 }
 
+.listStripe:not(.listStripe_removing) .listStripe__link:active {
+  transform: translateY(0.1rem);
+}
+
 .listStripe__controls {
   display: inline-flex;
   position: absolute;
@@ -94,10 +98,6 @@
 
 .listStripe_primary.listStripe_removing .listStripe__link {
   background: var(--neutral-200);
-}
-
-.listStripe:not(.listStripe_removing) .listStripe__link:active {
-  transform: translateY(0.1rem);
 }
 
 .listStripe_primary {

@@ -40,7 +40,7 @@ type ListStripeProps = {
   link: string;
   listId: string;
   isRemoving?: boolean;
-  isImported?: boolean;
+  isExported?: boolean;
   onRemoveSuccess: (listId: string) => void;
   onRemoveError: (removeError: boolean) => void;
 };
@@ -51,7 +51,7 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
       theme: ListStripeTheme.Primary,
       size: ListStripeSize.Medium,
       isRemoving: false,
-      isImported: false,
+      isExported: false,
     },
     props,
   );
@@ -113,7 +113,7 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
       data-test-sub-id={mProps.testSubId}
     >
       <div class="listStripe__icon">
-        <Show when={mProps.isImported}>
+        <Show when={mProps.isExported}>
           <Tooltip content={importedTooltipMessage} testId={DEFAULT_TEST_ID}>
             <Icon name={IconName.Link} size={IconSize.Small} role={"img"} ariaLabel={importedTooltipMessage} />
           </Tooltip>

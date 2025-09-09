@@ -25,7 +25,7 @@ import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
         testId={DEFAULT_TEST_ID}
       />
 
-      <span class="rhead">Imported</span>
+      <span class="rhead">Exported</span>
       <ListStripe
         client:only="solid-js"
         theme={ListStripeTheme.Primary}
@@ -37,7 +37,7 @@ import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
         onRemoveSuccess={() => {}}
         onRemoveError={() => {}}
         testId={DEFAULT_TEST_ID}
-        isImported={true}
+        isExported={true}
       />
 
       <span class="rhead">Removing</span>
@@ -55,7 +55,7 @@ import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
         testId={DEFAULT_TEST_ID}
       />
 
-      <span class="rhead">Imported Removing</span>
+      <span class="rhead">Exported Removing</span>
       <ListStripe
         client:only="solid-js"
         theme={ListStripeTheme.Primary}
@@ -68,7 +68,7 @@ import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
         onRemoveSuccess={() => {}}
         onRemoveError={() => {}}
         testId={DEFAULT_TEST_ID}
-        isImported={true}
+        isExported={true}
       />
     </div>
   </div>
