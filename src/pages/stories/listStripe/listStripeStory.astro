@@ -1,15 +1,11 @@
 ---
 import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
-import {
-  ListStripe,
-  ListStripeSize,
-  ListStripeTheme,
-} from "../../../components/listStripe/listStripe.tsx";
+import { ListStripe, ListStripeSize, ListStripeTheme } from "../../../components/listStripe/listStripe.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 ---
 
 <StorybookPage title="List Stripe">
-  <div class="demoThemeWrapper">
+  <div class="demoThemeWrapper demoThemeWrapper_white">
     <h3 class="demoThemeWrapper__title">Primary</h3>
     <div class="grid grid_1Col">
       <span class="chead"></span>
@@ -29,6 +25,21 @@ import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
         testId={DEFAULT_TEST_ID}
       />
 
+      <span class="rhead">Exported</span>
+      <ListStripe
+        client:only="solid-js"
+        theme={ListStripeTheme.Primary}
+        size={ListStripeSize.Medium}
+        link="https://ya.ru"
+        listId="123"
+        listTitle="Название списка не вмещается в одну строку и это не проблема"
+        listPurpose="Цель списка не вмещается в одну строку, так и было задумано и это не проблема"
+        onRemoveSuccess={() => {}}
+        onRemoveError={() => {}}
+        testId={DEFAULT_TEST_ID}
+        isExported={true}
+      />
+
       <span class="rhead">Removing</span>
       <ListStripe
         client:only="solid-js"
@@ -42,6 +53,22 @@ import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
         onRemoveSuccess={() => {}}
         onRemoveError={() => {}}
         testId={DEFAULT_TEST_ID}
+      />
+
+      <span class="rhead">Exported Removing</span>
+      <ListStripe
+        client:only="solid-js"
+        theme={ListStripeTheme.Primary}
+        size={ListStripeSize.Medium}
+        link="https://ya.ru"
+        listId="123"
+        listTitle="Название списка не вмещается в одну строку и это не проблема"
+        listPurpose="Цель списка не вмещается в одну строку, так и было задумано и это не проблема"
+        isRemoving={true}
+        onRemoveSuccess={() => {}}
+        onRemoveError={() => {}}
+        testId={DEFAULT_TEST_ID}
+        isExported={true}
       />
     </div>
   </div>

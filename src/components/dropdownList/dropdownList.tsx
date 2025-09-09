@@ -1,7 +1,7 @@
 import { For, mergeProps } from "solid-js";
 
 import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
-import type { DropdownListType } from "../../widgets/editList/types.ts";
+import type { SimpleList } from "../../widgets/editList/types.ts";
 import { DropdownListItem } from "../dropdownListItem/dropdownListItem.tsx";
 import type { Testable } from "../utilities/testable.ts";
 
@@ -18,7 +18,7 @@ export enum DropdownListSize {
 export type DropdownListProps = {
   theme?: DropdownListTheme;
   size?: DropdownListSize;
-  lists: DropdownListType[];
+  lists: SimpleList[];
 };
 
 export const DropdownList = (props: Testable<DropdownListProps>) => {
@@ -31,23 +31,11 @@ export const DropdownList = (props: Testable<DropdownListProps>) => {
   );
 
   return (
-    <div
-      class={`dropdownList dropdownList_${props.theme} dropdownList_${mProps.size}`}
-    >
-      <ul
-        class="dropdownList__list scrollStyles"
-        data-test-id={DEFAULT_TEST_ID}
-      >
+    <div class={`dropdownList dropdownList_${props.theme} dropdownList_${mProps.size}`}>
+      <ul class="dropdownList__list scrollStyles" data-test-id={DEFAULT_TEST_ID}>
         <For each={mProps.lists}>
           {(list, index) => {
-            return (
-              <DropdownListItem
-                text={list.name}
-                listId={list.id}
-                testId={DEFAULT_TEST_ID}
-                testSubId={index()}
-              />
-            );
+            return <DropdownListItem text={list.name} listId={list.id} testId={DEFAULT_TEST_ID} testSubId={index()} />;
           }}
         </For>
       </ul>

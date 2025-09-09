@@ -7,7 +7,7 @@ import {
   SEARCH_RESULTS,
 } from "../../../features/testIds.ts";
 import { pluralizeRu } from "../../../utilities/pluralizeRussianWords.ts";
-import type { DropdownListType } from "../../widgets/editList/types.ts";
+import type { SimpleList } from "../../widgets/editList/types.ts";
 import { DropdownListItem } from "../dropdownListItem/dropdownListItem.tsx";
 import { Icon, IconSize } from "../icon/icon.tsx";
 import { IconName } from "../icon/types.ts";
@@ -25,7 +25,7 @@ export enum QuickSearchSize {
 export type QuickSearchProps = {
   theme?: QuickSearchTheme;
   size?: QuickSearchSize;
-  lists?: DropdownListType[];
+  lists?: SimpleList[];
   isLoading: boolean;
   query: string;
 };
@@ -41,16 +41,8 @@ export const QuickSearch = (props: QuickSearchProps) => {
   );
 
   function getResultPhrase() {
-    const firstWord = pluralizeRu(mProps.lists.length, [
-      "Найден",
-      "Найдено",
-      "Найдено",
-    ]);
-    const secondWord = pluralizeRu(mProps.lists.length, [
-      "результат",
-      "результата",
-      "результатов",
-    ]);
+    const firstWord = pluralizeRu(mProps.lists.length, ["Найден", "Найдено", "Найдено"]);
+    const secondWord = pluralizeRu(mProps.lists.length, ["результат", "результата", "результатов"]);
 
     return `${firstWord} ${mProps.lists.length} ${secondWord}`;
   }
@@ -79,19 +71,11 @@ export const QuickSearch = (props: QuickSearchProps) => {
           }
         >
           <div class="quickSearch__results">
-            <ul
-              class="quickSearch__list scrollStyles"
-              data-test-id={SEARCH_RESULTS}
-            >
+            <ul class="quickSearch__list scrollStyles" data-test-id={SEARCH_RESULTS}>
               <For each={mProps.lists}>
                 {(list, index) => {
                   return (
-                    <DropdownListItem
-                      text={list.name}
-                      listId={list.id}
-                      testId={SEARCH_RESULT}
-                      testSubId={index()}
-                    />
+                    <DropdownListItem text={list.name} listId={list.id} testId={SEARCH_RESULT} testSubId={index()} />
                   );
                 }}
               </For>
