@@ -22,7 +22,7 @@ const sizes = Object.values(ImportedItemSize);
             <>
               <span class="rhead">{size}</span>
               <ImportedItem client:only="solid-js" testId={DEFAULT_TEST_ID} itemText={"Текст"} />
-              <ImportedItem client:only="solid-js" testId={DEFAULT_TEST_ID} itemText={"Текст"} isDisabled={true} />
+              <ImportedItem client:only="solid-js" testId={DEFAULT_TEST_ID} itemText={"Текст"} disabled={true} />
             </>
           ))}
         </div>
@@ -48,15 +48,15 @@ const sizes = Object.values(ImportedItemSize);
                 testId={DEFAULT_TEST_ID}
                 itemText={"Текст для теста многострочного расположения текста в этом текстовом поле"}
                 isCheckable={true}
-                isChecked={false}
+                checked={false}
               />
               <ImportedItem
                 client:only="solid-js"
                 testId={DEFAULT_TEST_ID}
                 itemText={"Текст"}
                 isCheckable={true}
-                isChecked={false}
-                isDisabled={true}
+                checked={false}
+                disabled={true}
               />
             </>
           ))}

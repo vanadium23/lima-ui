@@ -14,25 +14,20 @@
   border-radius: 0.8rem 0.8rem 0 0;
 }
 
-.importedGroup__inner {
-  padding-bottom: 0.6rem;
-  border-radius: 0.8rem;
-}
-
 .importedGroup_medium {
-  gap: var(--size-x1);
-  padding: var(--size-x1);
+  gap: 0.2rem;
+  padding: 0.2rem;
   border-radius: 0.8rem;
 }
 
 .importedGroup_checkable .importedGroup__headerWrapper {
-  padding-left: var(--size-x18);
+  padding-left: 3.6rem;
 }
 
 .importedGroup_medium .importedGroup__header {
   display: flex;
   padding: 0.7rem 0.7rem 0 1.7rem;
-  gap: var(--size-x8);
+  gap: 1.6rem;
 }
 
 .importedGroup_disabled .importedGroup__header {

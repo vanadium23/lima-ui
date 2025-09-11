@@ -11,13 +11,13 @@ import {
   NO_SAVED_LISTS_MESSAGE,
   PAGE_TITLE,
 } from "../../../features/testIds.ts";
-import { URL_CREATE_LIST, URL_MY_LISTS } from "../../../utilities/addresses.ts";
+import { getListLink, URL_CREATE_LIST } from "../../../utilities/addresses.ts";
 import { Button, ButtonComponentType } from "../../components/button/button.tsx";
 import { ListStripe } from "../../components/listStripe/listStripe.tsx";
 import { PageError } from "../../components/pageError/pageError.tsx";
 import { Title } from "../../components/title/title.tsx";
 import { isLimitReached, setIsLimitReached } from "../../state/reachListsLimit.ts";
-import type { ListBase } from "../editList/types.ts";
+import type { ListBase } from "../../types/types.ts";
 
 import "./lists.css";
 
@@ -75,7 +75,7 @@ export const Lists = (props: ListsProps) => {
               <li class="lists__item">
                 <ListStripe
                   listId={list.id}
-                  link={`${URL_MY_LISTS}${list.id}`}
+                  link={getListLink(list.id)}
                   listTitle={list.name}
                   listPurpose={list.purpose}
                   onRemoveSuccess={removingListInStore}

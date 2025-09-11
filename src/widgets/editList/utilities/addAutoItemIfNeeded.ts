@@ -1,5 +1,5 @@
 import { ITEMS_LIMIT } from "../../../../configuration.ts";
-import type { DragItems } from "../types.ts";
+import type { DragItems } from "../../../types/types.ts";
 
 import { createDefaultItem } from "./createDefaultItem.ts";
 

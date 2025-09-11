@@ -1,7 +1,7 @@
 import type { CollisionDetector, Droppable } from "@thisbeyond/solid-dnd";
 import { onCleanup } from "solid-js";
 
-import type { EditListStore, List, ScrollContainer } from "../types";
+import type { EditListStore, List, ScrollContainer } from "../../../types/types.ts";
 
 import { createDragId } from "./createDefaultItem.ts";
 
@@ -29,35 +29,23 @@ export function createAutoScroll(options: AutoScrollOptions) {
     if (!scrollContainer || !isActive()) return;
 
     const containerRect = scrollContainer.getBoundingClientRect();
-    const clientY =
-      "touches" in event ? event.touches[0]?.clientY || 0 : event.clientY;
+    const clientY = "touches" in event ? event.touches[0]?.clientY || 0 : event.clientY;
 
     clearAutoScrollInterval();
 
-    const isPointerAtTheBottom =
-      clientY > containerRect.bottom - SCROLL_THRESHOLD;
+    const isPointerAtTheBottom = clientY > containerRect.bottom - SCROLL_THRESHOLD;
     const isPointerAtTheTop = clientY < containerRect.top + SCROLL_THRESHOLD;
 
     if (isPointerAtTheTop) {
-      const scrollSpeed = Math.max(
-        1,
-        SCROLL_SPEED * (1 - (clientY - containerRect.top) / SCROLL_THRESHOLD),
-      );
+      const scrollSpeed = Math.max(1, SCROLL_SPEED * (1 - (clientY - containerRect.top) / SCROLL_THRESHOLD));
 
       autoScrollInterval = setInterval(() => {
         if (!scrollContainer) return;
 
-        scrollContainer.scrollTop = Math.max(
-          0,
-          scrollContainer.scrollTop - scrollSpeed,
-        );
+        scrollContainer.scrollTop = Math.max(0, scrollContainer.scrollTop - scrollSpeed);
       }, MILLISECONDS_PER_FRAME);
     } else if (isPointerAtTheBottom) {
-      const scrollSpeed = Math.max(
-        1,
-        SCROLL_SPEED *
-          (1 - (containerRect.bottom - clientY) / SCROLL_THRESHOLD),
-      );
+      const scrollSpeed = Math.max(1, SCROLL_SPEED * (1 - (containerRect.bottom - clientY) / SCROLL_THRESHOLD));
 
       autoScrollInterval = setInterval(() => {
         if (!scrollContainer) return;
@@ -98,25 +86,16 @@ type DragPoint = {
   y: number;
 };
 
-const distanceBetweenPoints = (
-  firstPoint: DragPoint,
-  secondPoint: DragPoint,
-): number =>
-  Math.sqrt(
-    (firstPoint.x - secondPoint.x) ** 2 + (firstPoint.y - secondPoint.y) ** 2,
-  );
+const distanceBetweenPoints = (firstPoint: DragPoint, secondPoint: DragPoint): number =>
+  Math.sqrt((firstPoint.x - secondPoint.x) ** 2 + (firstPoint.y - secondPoint.y) ** 2);
 
-type ScrollableCollisionDetectorCreator = (
-  scrollContainer: ScrollContainer,
-  store: EditListStore,
-) => CollisionDetector;
+type ScrollableCollisionDetectorCreator = (scrollContainer: ScrollContainer, store: EditListStore) => CollisionDetector;
 
 export const createScrollableCollisionsDetector: ScrollableCollisionDetectorCreator =
   (scrollContainer, store) => (draggable, droppables) => {
     const draggableCenter = draggable.transformed.center;
     const itemsScrollCurrentPosition = scrollContainer?.scrollTop || 0;
-    const scrollChange =
-      itemsScrollCurrentPosition - store.itemsScrollStartPosition;
+    const scrollChange = itemsScrollCurrentPosition - store.itemsScrollStartPosition;
 
     let distanceToDroppable = Infinity;
     let droppable: Droppable | null = null;
@@ -127,10 +106,7 @@ export const createScrollableCollisionsDetector: ScrollableCollisionDetectorCrea
         y: droppableCandidate.layout.y - scrollChange,
       };
 
-      const distanceToDroppableCandidate = distanceBetweenPoints(
-        draggableCenter,
-        nodeCenter,
-      );
+      const distanceToDroppableCandidate = distanceBetweenPoints(draggableCenter, nodeCenter);
 
       if (distanceToDroppableCandidate < distanceToDroppable) {
         distanceToDroppable = distanceToDroppableCandidate;

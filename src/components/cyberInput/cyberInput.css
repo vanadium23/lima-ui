@@ -34,12 +34,23 @@
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
+  visibility: hidden;
+}
+
+@media (hover: none) {
+  .cyberInput__controls {
+    visibility: visible;
+  }
 }
 
 @media (hover: hover) {
-  .cyberInput__controls {
-    visibility: hidden;
+  .cyberInput:hover .cyberInput__controls {
+    visibility: visible;
   }
+}
+
+.cyberInput:focus-within .cyberInput__controls {
+  visibility: visible;
 }
 
 .cyberInput__counter {
@@ -221,14 +232,4 @@
   .cyberInput_secondary:hover:not(.cyberInput_disabled):has(.cyberInput__inner:placeholder-shown) {
     border-color: var(--neutral-700);
   }
-}
-
-@media (hover: hover) {
-  .cyberInput:hover .cyberInput__controls {
-    visibility: visible;
-  }
-}
-
-.cyberInput:focus-within .cyberInput__controls {
-  visibility: visible;
 }

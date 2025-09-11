@@ -1,6 +1,5 @@
 import { mergeProps, Show } from "solid-js";
 
-import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import { Checkbox } from "../checkbox/checkbox.tsx";
 import type { Testable } from "../utilities/testable.ts";
 
@@ -8,6 +7,7 @@ import "./importedItem.css";
 
 export enum ImportedItemTheme {
   Primary = "primary",
+  Disabled = "disabled",
 }
 
 export enum ImportedItemSize {
@@ -17,10 +17,10 @@ export enum ImportedItemSize {
 type ImportedItemProps = {
   theme?: ImportedItemTheme;
   size?: ImportedItemSize;
-  itemText?: string;
-  isDisabled?: boolean;
+  itemText: string;
+  disabled?: boolean;
   isCheckable?: boolean;
-  isChecked?: boolean;
+  checked?: boolean;
 };
 
 export const ImportedItem = (props: Testable<ImportedItemProps>) => {
@@ -28,25 +28,21 @@ export const ImportedItem = (props: Testable<ImportedItemProps>) => {
     {
       theme: ImportedItemTheme.Primary,
       size: ImportedItemSize.Medium,
-      itemText: "",
-      isDisabled: false,
+      disabled: false,
       isCheckable: false,
-      isChecked: false,
+      checked: false,
     },
     props,
   );
 
   return (
     <div
-      class={`importedItem importedItem_${mProps.theme} importedItem_${mProps.size}`}
+      class={`importedItem importedItem_${mProps.disabled ? ImportedItemTheme.Disabled : mProps.theme} importedItem_${mProps.size}`}
       data-test-id={mProps.testId}
-      classList={{
-        importedItem_disabled: mProps.isDisabled,
-      }}
     >
       <Show when={mProps.isCheckable}>
         <div class="importedItem__checkbox">
-          <Checkbox testId={DEFAULT_TEST_ID} isDisabled={mProps.isDisabled} checked={mProps.isChecked} />
+          <Checkbox testId={mProps.testId} disabled={mProps.disabled} checked={mProps.checked} />
         </div>
       </Show>
       <div class="importedItem__inner">{mProps.itemText}</div>

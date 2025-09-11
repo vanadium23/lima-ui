@@ -11,11 +11,7 @@ import {
 import { For, mergeProps, onCleanup, onMount, Show } from "solid-js";
 import { createStore } from "solid-js/store";
 
-import {
-  ITEMS_LIMIT,
-  LIST_PURPOSE_INPUT_LIMIT,
-  LIST_TITLE_INPUT_LIMIT,
-} from "../../../configuration.ts";
+import { ITEMS_LIMIT, LIST_PURPOSE_INPUT_LIMIT, LIST_TITLE_INPUT_LIMIT } from "../../../configuration.ts";
 import {
   AUTO_LIST_ITEM,
   CHECKLIST_SWITCH,
@@ -39,17 +35,8 @@ import {
 } from "../../../features/testIds.ts";
 import { URL_MY_LISTS } from "../../../utilities/addresses.ts";
 import { suffixTabTitle } from "../../../utilities/tabTitle.ts";
-import {
-  Button,
-  ButtonSize,
-  ButtonTheme,
-  ButtonType,
-} from "../../components/button/button.tsx";
-import {
-  CyberInput,
-  CyberInputSize,
-  CyberInputTheme,
-} from "../../components/cyberInput/cyberInput.tsx";
+import { Button, ButtonSize, ButtonTheme, ButtonType } from "../../components/button/button.tsx";
+import { CyberInput, CyberInputSize, CyberInputTheme } from "../../components/cyberInput/cyberInput.tsx";
 import { Dialog } from "../../components/dialog/dialog.tsx";
 import { Divider } from "../../components/divider/divider.tsx";
 import { IconName } from "../../components/icon/types.ts";
@@ -57,21 +44,9 @@ import { ListItem } from "../../components/listItem/listItem.tsx";
 import { Note } from "../../components/note/note.tsx";
 import { PageError } from "../../components/pageError/pageError.tsx";
 import { Switch } from "../../components/switch/switch.tsx";
-import {
-  ToolsButton,
-  ToolsButtonComponentType,
-  ToolsButtonTheme,
-} from "../../components/toolsButton/toolsButton.tsx";
-import {
-  ToolsPanel,
-  ToolsPanelSize,
-  ToolsPanelTheme,
-} from "../../organisms/toolsPanel/toolsPanel.tsx";
+import { ToolsButton, ToolsButtonComponentType, ToolsButtonTheme } from "../../components/toolsButton/toolsButton.tsx";
+import { ToolsPanel, ToolsPanelSize, ToolsPanelTheme } from "../../organisms/toolsPanel/toolsPanel.tsx";
 import { setLocation } from "../../state/locationState.ts";
-
-import { createList } from "./services/createList.ts";
-import { removeList } from "./services/removeList.ts";
-import { updateList } from "./services/updateList.ts";
 import {
   type DragItems,
   EditListFormNames,
@@ -80,7 +55,11 @@ import {
   type NewList,
   type ScrollContainer,
   type UpdatedList,
-} from "./types.ts";
+} from "../../types/types.ts";
+
+import { createList } from "./services/createList.ts";
+import { removeList } from "./services/removeList.ts";
+import { updateList } from "./services/updateList.ts";
 import { addAutoItemIfNeeded } from "./utilities/addAutoItemIfNeeded.ts";
 import { checkChanges } from "./utilities/checkChanges.ts";
 import { copyItemsToClipboard } from "./utilities/copyItemsToClipboard.ts";
@@ -147,9 +126,7 @@ export const EditList = (props: EditListProps) => {
     itemsScrollStartPosition: 0,
   });
 
-  type AddItemOptions =
-    | { mode: "end"; scroll?: boolean; auto: boolean }
-    | { mode: "before" | "after"; index: number };
+  type AddItemOptions = { mode: "end"; scroll?: boolean; auto: boolean } | { mode: "before" | "after"; index: number };
 
   const autoScroll = createAutoScroll({
     isActive: () => !!store.draggedItem,
@@ -186,11 +163,7 @@ export const EditList = (props: EditListProps) => {
       const items = store.items.filter((item) => !item.auto);
       const existingAutoItem = store.items.filter((item) => item.auto);
 
-      resultingItems = [
-        ...items,
-        createDefaultItem(options.auto),
-        ...existingAutoItem,
-      ];
+      resultingItems = [...items, createDefaultItem(options.auto), ...existingAutoItem];
 
       if (options.scroll) {
         requestAnimationFrame(scrollToBottom);
@@ -198,8 +171,7 @@ export const EditList = (props: EditListProps) => {
     }
 
     if (options.mode === "before" || options.mode === "after") {
-      const insertIndex =
-        options.mode === "before" ? options.index : options.index + 1;
+      const insertIndex = options.mode === "before" ? options.index : options.index + 1;
 
       resultingItems = [
         ...store.items.slice(0, insertIndex).map((item) => ({
@@ -311,10 +283,7 @@ export const EditList = (props: EditListProps) => {
         });
       })
       .catch((error) => {
-        console.error(
-          "There has been a problem with your fetch operation:",
-          error,
-        );
+        console.error("There has been a problem with your fetch operation:", error);
 
         soften(() => {
           setStore({ error: true, sendingNow: false });
@@ -344,10 +313,7 @@ export const EditList = (props: EditListProps) => {
         });
       })
       .catch((error) => {
-        console.error(
-          "There has been a problem with your fetch operation:",
-          error,
-        );
+        console.error("There has been a problem with your fetch operation:", error);
 
         soften(() => {
           setStore({ error: true, sendingNow: false });
@@ -378,9 +344,7 @@ export const EditList = (props: EditListProps) => {
       });
   }
 
-  const draggedItemData = () =>
-    store.items.find((item) => item.dragId === store.draggedItem) ||
-    createDefaultItem();
+  const draggedItemData = () => store.items.find((item) => item.dragId === store.draggedItem) || createDefaultItem();
   const ids = () => store.items.map((item) => item.dragId);
 
   const onDragStart = ({ draggable }: DragEvent) => {
@@ -397,12 +361,8 @@ export const EditList = (props: EditListProps) => {
 
     if (draggable && droppable) {
       const currentItems = [...store.items];
-      const fromIndex = currentItems.findIndex(
-        (item) => item.dragId === draggable.id,
-      );
-      const toIndex = currentItems.findIndex(
-        (item) => item.dragId === droppable.id,
-      );
+      const fromIndex = currentItems.findIndex((item) => item.dragId === draggable.id);
+      const toIndex = currentItems.findIndex((item) => item.dragId === droppable.id);
 
       if (fromIndex !== -1 && toIndex !== -1 && fromIndex !== toIndex) {
         const updatedItems = [...currentItems];
@@ -416,8 +376,7 @@ export const EditList = (props: EditListProps) => {
           "items",
           updatedItems.map((item, index) => ({
             ...item,
-            auto:
-              index === updatedItems.length - 1 && item.content.trim() === "",
+            auto: index === updatedItems.length - 1 && item.content.trim() === "",
           })),
         );
         checkChanges(store, setStore);
@@ -430,11 +389,7 @@ export const EditList = (props: EditListProps) => {
   return (
     <div class="editList">
       <div class="editList__main">
-        <form
-          class="editList__form"
-          method="post"
-          onSubmit={prepareAndSendListData}
-        >
+        <form class="editList__form" method="post" onSubmit={prepareAndSendListData}>
           <div class="editList__listHeader">
             <CyberInput
               theme={CyberInputTheme.Secondary}
@@ -476,10 +431,7 @@ export const EditList = (props: EditListProps) => {
             <DragDropProvider
               onDragStart={onDragStart}
               onDragEnd={onDragEnd}
-              collisionDetector={createScrollableCollisionsDetector(
-                scrollContainer,
-                store,
-              )}
+              collisionDetector={createScrollableCollisionsDetector(scrollContainer, store)}
             >
               <DragDropSensors />
               <SortableProvider ids={ids()}>
@@ -498,12 +450,8 @@ export const EditList = (props: EditListProps) => {
                         name={`${EditListFormNames.ListItem} ${index() + 1}`}
                         dataId={item.id}
                         onChange={(value) => handleItemChange(index(), value)}
-                        onAddBefore={() =>
-                          addItem({ mode: "before", index: index() })
-                        }
-                        onAddAfter={() =>
-                          addItem({ mode: "after", index: index() })
-                        }
+                        onAddBefore={() => addItem({ mode: "before", index: index() })}
+                        onAddAfter={() => addItem({ mode: "after", index: index() })}
                         canAddMore={!reachedItemsLimit()}
                         testId={item.auto ? AUTO_LIST_ITEM : LIST_ITEM}
                         testSubId={index()}
@@ -512,15 +460,11 @@ export const EditList = (props: EditListProps) => {
                           dragData,
                           dragProps: {
                             ref: dragData.ref,
-                            style: store.draggedItem
-                              ? transformStyle(dragData.transform)
-                              : {},
+                            style: store.draggedItem ? transformStyle(dragData.transform) : {},
                           },
                           dragState: useDragDropContext()?.[0] || null,
                         }}
-                        placeholder={
-                          item.auto ? "Добавить пункт списка" : "Пункт списка"
-                        }
+                        placeholder={item.auto ? "Добавить пункт списка" : "Пункт списка"}
                       />
                     );
                   }}
@@ -535,11 +479,7 @@ export const EditList = (props: EditListProps) => {
                   canAddMore={!reachedItemsLimit()}
                   testId={DRAGGED_LIST_ITEM}
                   isDraggingOverlay={true}
-                  placeholder={
-                    draggedItemData().auto
-                      ? "Добавить пункт списка"
-                      : "Пункт списка"
-                  }
+                  placeholder={draggedItemData().auto ? "Добавить пункт списка" : "Пункт списка"}
                 />
               </DragOverlay>
             </DragDropProvider>
@@ -547,9 +487,7 @@ export const EditList = (props: EditListProps) => {
           <Show when={store.error || reachedItemsLimit() || store.removeError}>
             <div class="editList__errors">
               <Show when={store.error}>
-                <PageError testId={NETWORK_ERROR}>
-                  Ошибка соединения с сервером, попробуйте еще раз
-                </PageError>
+                <PageError testId={NETWORK_ERROR}>Ошибка соединения с сервером, попробуйте еще раз</PageError>
               </Show>
               <Show when={reachedItemsLimit()}>
                 <PageError testId={ITEMS_LIMIT_REACHED_WARNING}>
@@ -557,9 +495,7 @@ export const EditList = (props: EditListProps) => {
                 </PageError>
               </Show>
               <Show when={store.removeError}>
-                <PageError testId={LIST_REMOVAL_ERROR}>
-                  Не удалось удалить список. Попробуйте ещё раз.
-                </PageError>
+                <PageError testId={LIST_REMOVAL_ERROR}>Не удалось удалить список. Попробуйте ещё раз.</PageError>
               </Show>
             </div>
           </Show>
@@ -576,18 +512,12 @@ export const EditList = (props: EditListProps) => {
         </form>
       </div>
       <aside class="editList__toolsPanel">
-        <ToolsPanel
-          size={ToolsPanelSize.Medium}
-          theme={ToolsPanelTheme.Primary}
-          testId={TOOLS_PANEL}
-        >
+        <ToolsPanel size={ToolsPanelSize.Medium} theme={ToolsPanelTheme.Primary} testId={TOOLS_PANEL}>
           <div class="toolsPanel__horizontalSection">
             <ToolsButton
               componentType={ToolsButtonComponentType.Button}
               iconName={IconName.RowsPlusBottom}
-              handleClick={() =>
-                addItem({ mode: "end", scroll: true, auto: false })
-              }
+              handleClick={() => addItem({ mode: "end", scroll: true, auto: false })}
               isDisabled={reachedItemsLimit() || store.sendingNow !== false}
               text={"Добавить пункт"}
               testId={TOOLS_PANEL_ADD_ITEM_BUTTON}
@@ -629,8 +559,7 @@ export const EditList = (props: EditListProps) => {
               testId={REMOVE_LIST_DIALOG}
             >
               <p>
-                Список <strong>{store.name}</strong> будет удален без
-                возможности восстановления.
+                Список <strong>{store.name}</strong> будет удален без возможности восстановления.
               </p>
             </Dialog>
           </div>

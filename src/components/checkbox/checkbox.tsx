@@ -20,7 +20,7 @@ export type CheckedState = true | false | "mixed";
 type CheckboxProps = {
   theme?: CheckboxTheme;
   size?: CheckboxSize;
-  isDisabled?: boolean;
+  disabled?: boolean;
   ariaLabel?: string | undefined;
   checked?: CheckedState;
   independent?: boolean;
@@ -33,7 +33,7 @@ export const Checkbox = (props: Testable<CheckboxProps>) => {
     {
       theme: CheckboxTheme.Primary,
       size: CheckboxSize.Medium,
-      isDisabled: false,
+      disabled: false,
       ariaLabel: undefined,
       checked: false,
       independent: true,
@@ -76,7 +76,7 @@ export const Checkbox = (props: Testable<CheckboxProps>) => {
         <label
           class={`checkbox checkbox_${mProps.theme} checkbox_${mProps.size}`}
           classList={{
-            checkbox_disabled: mProps.isDisabled,
+            checkbox_disabled: mProps.disabled,
           }}
           data-test-id={mProps.testId}
           data-test-sub-id={mProps.testSubId}
@@ -84,7 +84,7 @@ export const Checkbox = (props: Testable<CheckboxProps>) => {
           <input
             type="checkbox"
             class="checkbox__input"
-            disabled={mProps.isDisabled}
+            disabled={mProps.disabled}
             checked={getCheckedState()}
             onChange={handleChange}
             aria-checked={getState()}
@@ -110,7 +110,7 @@ export const Checkbox = (props: Testable<CheckboxProps>) => {
         <span
           class={`checkbox checkbox_${mProps.theme} checkbox_${mProps.size} checkbox_independent`}
           classList={{
-            checkbox_disabled: mProps.isDisabled,
+            checkbox_disabled: mProps.disabled,
           }}
           data-test-id={mProps.testId}
           data-test-sub-id={mProps.testSubId}
@@ -118,7 +118,7 @@ export const Checkbox = (props: Testable<CheckboxProps>) => {
           <input
             type="checkbox"
             class="checkbox__input"
-            disabled={mProps.isDisabled}
+            disabled={mProps.disabled}
             checked={getCheckedState()}
             onChange={handleChange}
             aria-checked={getState()}

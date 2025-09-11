@@ -15,7 +15,7 @@ import { Input, InputTheme } from "../../components/input/input.tsx";
 import { QuickSearch } from "../../components/quickSearch/quickSearch.tsx";
 import { notificationState } from "../../state/pushNotificationStateManager.ts";
 import { searchState } from "../../state/searchState.ts";
-import type { SimpleList } from "../editList/types.ts";
+import type { SimpleList } from "../../types/types.ts";
 import { soften } from "../editList/utilities/soften.ts";
 
 import "./search.css";

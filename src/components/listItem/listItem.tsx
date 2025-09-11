@@ -13,7 +13,7 @@ import {
   OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
   REMOVE_ITEM_MENUITEM,
 } from "../../../features/testIds.ts";
-import type { DragSettings } from "../../widgets/editList/types.ts";
+import type { DragSettings } from "../../types/types.ts";
 import { Checkbox, CheckboxSize, CheckboxTheme } from "../checkbox/checkbox.tsx";
 import { CyberInput } from "../cyberInput/cyberInput.tsx";
 import { DragHandle } from "../dragHandle/dragHandle.tsx";
@@ -145,7 +145,7 @@ export const ListItem = (props: Testable<ListItemProps>) => {
             size={CheckboxSize.Medium}
             testId={CHECKBOX}
             testSubId={getListItemTestSubId(mProps.testId, mProps.testSubId)}
-            isDisabled={mProps.isDisabled}
+            disabled={mProps.isDisabled}
             checked={mProps.isChecked}
           />
         </div>

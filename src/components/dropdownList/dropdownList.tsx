@@ -1,7 +1,7 @@
 import { For, mergeProps } from "solid-js";
 
 import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
-import type { SimpleList } from "../../widgets/editList/types.ts";
+import type { SimpleList } from "../../types/types.ts";
 import { DropdownListItem } from "../dropdownListItem/dropdownListItem.tsx";
 import type { Testable } from "../utilities/testable.ts";
 

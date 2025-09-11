@@ -1,11 +1,8 @@
 ---
-import {
-  BACKEND_URL_LISTS,
-  BACKEND_URL_NON_EXISTING,
-} from "../../../utilities/addresses.ts";
+import { BACKEND_URL_LISTS, BACKEND_URL_NON_EXISTING } from "../../../utilities/addresses.ts";
 import AppPage from "../../layouts/app/app.astro";
+import type { ListBase } from "../../types/types.ts";
 import { getLists } from "../../widgets/editList/services/getLists.ts";
-import type { ListBase } from "../../widgets/editList/types.ts";
 import { Lists } from "../../widgets/lists/lists.tsx";
 
 let lists: ListBase[] = [];
@@ -27,10 +24,5 @@ try {
 ---
 
 <AppPage titleName="Мои списки">
-  <Lists
-    client:only="solid-js"
-    defaultLists={lists}
-    slot="mainContent"
-    listsRequestError={listsRequestError}
-  />
+  <Lists client:only="solid-js" defaultLists={lists} slot="mainContent" listsRequestError={listsRequestError} />
 </AppPage>
