@@ -1,0 +1,55 @@
+.importedGroup {
+  display: flex;
+}
+
+.importedGroup__dragHandle,
+.importedGroup__button {
+  visibility: hidden;
+}
+
+.importedGroup__header {
+  display: flex;
+  justify-content: space-between;
+  background: var(--neutral-150);
+  border-radius: 0.8rem 0.8rem 0 0;
+}
+
+.importedGroup_medium {
+  gap: 0.2rem;
+  padding: 0.2rem;
+  border-radius: 0.8rem;
+}
+
+.importedGroup_checkable .importedGroup__headerWrapper {
+  padding-left: 3.6rem;
+}
+
+.importedGroup_medium .importedGroup__header {
+  display: flex;
+  padding: 0.7rem 0.7rem 0 1.7rem;
+  gap: 1.6rem;
+}
+
+.importedGroup_disabled .importedGroup__header {
+  background: var(--neutral-200);
+}
+
+.importedGroup:hover .importedGroup__dragHandle,
+.importedGroup:focus-within .importedGroup__dragHandle {
+  visibility: visible;
+}
+
+.importedGroup__inner:hover .importedGroup__button,
+.importedGroup__inner:focus-within .importedGroup__button {
+  visibility: visible;
+}
+
+@media (hover: none) {
+  .importedGroup__dragHandle {
+    visibility: visible;
+  }
+
+  .importedGroup__button {
+    visibility: visible;
+  }
+}

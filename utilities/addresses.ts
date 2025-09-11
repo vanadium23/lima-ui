@@ -18,8 +18,8 @@ export const ADDRESSES_MEANINGS = {
 };
 export type AddressMeaning = keyof typeof ADDRESSES_MEANINGS;
 
-export const PAGE_TYPES = [
-  URL_CREATE_LIST,
-  URL_MY_LISTS,
-  TESTS_URL_SOME_LIST,
-].sort();
+export const PAGE_TYPES = [URL_CREATE_LIST, URL_MY_LISTS, TESTS_URL_SOME_LIST].sort();
+
+export function getListLink(listId: string) {
+  return `${URL_MY_LISTS}${listId}`;
+}

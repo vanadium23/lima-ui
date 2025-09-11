@@ -1,8 +1,7 @@
-import type { ComparableList, Item, List } from "../types.ts";
+import type { ComparableList, Item, List } from "../../../types/types.ts";
 
 export function getComparableList(list: List): ComparableList {
-  const notAutoListItem = (item: Item, index: number) =>
-    index !== list.items.length - 1 || item.content.trim() !== "";
+  const notAutoListItem = (item: Item, index: number) => index !== list.items.length - 1 || item.content.trim() !== "";
 
   return {
     items: JSON.stringify(

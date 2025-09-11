@@ -130,6 +130,10 @@ html {
   grid-template-columns: 10rem repeat(2, 17rem);
 }
 
+.grid_2ColLarge {
+  grid-template-columns: 10rem repeat(2, 30rem);
+}
+
 .grid_3Col {
   grid-template-columns: 10rem repeat(3, 17rem);
 }

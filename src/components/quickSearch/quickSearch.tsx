@@ -7,7 +7,7 @@ import {
   SEARCH_RESULTS,
 } from "../../../features/testIds.ts";
 import { pluralizeRu } from "../../../utilities/pluralizeRussianWords.ts";
-import type { SimpleList } from "../../widgets/editList/types.ts";
+import type { SimpleList } from "../../types/types.ts";
 import { DropdownListItem } from "../dropdownListItem/dropdownListItem.tsx";
 import { Icon, IconSize } from "../icon/icon.tsx";
 import { IconName } from "../icon/types.ts";

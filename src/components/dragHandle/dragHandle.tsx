@@ -1,6 +1,6 @@
 import { mergeProps } from "solid-js";
 
-import type { Sortable } from "../../widgets/editList/types.ts";
+import type { Sortable } from "../../types/types.ts";
 import { Icon, IconSize } from "../icon/icon.tsx";
 import { IconName } from "../icon/types.ts";
 import type { Testable } from "../utilities/testable.ts";

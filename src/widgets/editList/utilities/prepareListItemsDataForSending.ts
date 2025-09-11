@@ -1,9 +1,6 @@
-import { EditListFormNames, type EditListStore, type Item } from "../types.ts";
+import { EditListFormNames, type EditListStore, type Item } from "../../../types/types.ts";
 
-export function prepareListItemsDataForSending(
-  elements: HTMLInputElement[],
-  store: EditListStore,
-) {
+export function prepareListItemsDataForSending(elements: HTMLInputElement[], store: EditListStore) {
   const itemsInputs = elements.filter((element) => {
     return element.name.startsWith(EditListFormNames.ListItem);
   });
@@ -19,19 +16,15 @@ export function prepareListItemsDataForSending(
         return { content };
       }
     })
-    .filter(
-      (item, index) => item.content !== "" || index < store.items.length - 1,
-    )
+    .filter((item, index) => item.content !== "" || index < store.items.length - 1)
     .map((item) => {
       if (!item.id) {
         return item;
       }
 
-      const initialItem = store.initialList.items.find(
-        (initialItemCandidate) => {
-          return initialItemCandidate.id === item.id;
-        },
-      );
+      const initialItem = store.initialList.items.find((initialItemCandidate) => {
+        return initialItemCandidate.id === item.id;
+      });
 
       if (!initialItem) {
         return item;
