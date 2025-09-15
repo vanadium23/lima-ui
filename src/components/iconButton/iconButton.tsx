@@ -91,24 +91,14 @@ export const IconButton = (props: Testable<IconButtonProps>) => {
           data-test-sub-id={mProps.testSubId}
           ref={mProps.ref}
         >
-          <Show
-            when={mProps.isLoading}
-            fallback={
-              <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
-            }
-          >
+          <Show when={mProps.isLoading} fallback={<Icon name={mProps.iconName} size={iconSize[mProps.size]} />}>
             <div class="iconButton__loadingIcon">
               <Icon name={IconName.CircleNotch} size={iconSize[mProps.size]} />
             </div>
           </Show>
         </button>
       </Match>
-      <Match
-        when={
-          mProps.componentType === IconButtonComponentType.Link &&
-          !mProps.isDisabled
-        }
-      >
+      <Match when={mProps.componentType === IconButtonComponentType.Link && !mProps.isDisabled}>
         <a
           href={mProps.link}
           class={`iconButton iconButton_${mProps.theme} iconButton_${mProps.size}`}
@@ -120,12 +110,7 @@ export const IconButton = (props: Testable<IconButtonProps>) => {
           <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
         </a>
       </Match>
-      <Match
-        when={
-          mProps.componentType === IconButtonComponentType.Link &&
-          mProps.isDisabled
-        }
-      >
+      <Match when={mProps.componentType === IconButtonComponentType.Link && mProps.isDisabled}>
         <span
           class={`iconButton iconButton_${mProps.theme} iconButton_${mProps.size}`}
           classList={{

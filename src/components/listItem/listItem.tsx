@@ -17,9 +17,9 @@ import type { DragSettings } from "../../types/types.ts";
 import { Checkbox, CheckboxSize, CheckboxTheme } from "../checkbox/checkbox.tsx";
 import { CyberInput } from "../cyberInput/cyberInput.tsx";
 import { DragHandle } from "../dragHandle/dragHandle.tsx";
-import { DropdownMenuWrapper } from "../dropdownMenuWrapper/dropdownMenuWrapper.tsx";
+import { DropdownMenu } from "../dropdownMenu/dropdownMenu.tsx";
 import { IconName } from "../icon/types.ts";
-import { IconButtonSize } from "../iconButton/iconButton.tsx";
+import { IconButton, IconButtonComponentType, IconButtonSize } from "../iconButton/iconButton.tsx";
 import { MenuItemTheme } from "../menuItem/menuItem.tsx";
 import type { Testable, TestId, TestSubId } from "../utilities/testable.ts";
 
@@ -81,7 +81,7 @@ export const ListItem = (props: Testable<ListItemProps>) => {
     props,
   );
 
-  const dropdownItems = () => [
+  const menuItems = () => [
     {
       text: "Добавить пункт выше",
       icon: IconName.Plus,
@@ -163,14 +163,24 @@ export const ListItem = (props: Testable<ListItemProps>) => {
           testId={buildListItemInputTestId(mProps.testId)}
           testSubId={getListItemTestSubId(mProps.testId, mProps.testSubId)}
           controlElements={
-            <DropdownMenuWrapper
-              iconSize={IconButtonSize.MediumEmbedded}
-              iconName={IconName.DotsThree}
+            <DropdownMenu
+              component={(props) => (
+                <IconButton
+                  ref={props.ref}
+                  componentType={IconButtonComponentType.Button}
+                  handleClick={props.handleClick}
+                  testId={DEFAULT_TEST_ID}
+                  size={IconButtonSize.MediumEmbedded}
+                  iconName={IconName.DotsThree}
+                  ariaLabel={"Выпадающее меню"}
+                  isDisabled={mProps.isDisabled}
+                />
+              )}
               testId={OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON}
               testSubId={getListItemTestSubId(mProps.testId, mProps.testSubId)}
               dropDownMenuTestId={LIST_ITEM_CONTEXT_MENU}
-              listOfButtons={dropdownItems()}
-              isDisabled={mProps.isDisabled}
+              menuItems={menuItems()}
+              disabled={mProps.isDisabled}
             />
           }
         />

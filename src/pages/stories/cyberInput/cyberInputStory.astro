@@ -1,13 +1,8 @@
 ---
 import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
-import {
-  CyberInput,
-  CyberInputSize,
-  CyberInputTheme,
-} from "../../../components/cyberInput/cyberInput.tsx";
+import { CyberInput, CyberInputSize, CyberInputTheme } from "../../../components/cyberInput/cyberInput.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
-import { dropdownItems } from "./cyberInputMenu.ts";
 import { CyberInputWrapper } from "./cyberInputWrapper.tsx";
 
 const themes = Object.values(CyberInputTheme);
@@ -30,23 +25,9 @@ const sizes = Object.values(CyberInputSize);
           {sizes.map((size) => (
             <>
               <span class="rhead">{size}</span>
-              <CyberInputWrapper
-                client:only="solid-js"
-                size={size}
-                theme={theme}
-              />
-              <CyberInputWrapper
-                client:only="solid-js"
-                size={size}
-                theme={theme}
-                listOfButtons={dropdownItems()}
-              />
-              <CyberInputWrapper
-                client:only="solid-js"
-                size={size}
-                theme={theme}
-                isError={true}
-              />
+              <CyberInputWrapper client:only="solid-js" size={size} theme={theme} />
+              <CyberInputWrapper client:only="solid-js" size={size} theme={theme} />
+              <CyberInputWrapper client:only="solid-js" size={size} theme={theme} isError={true} />
               <CyberInput
                 client:only="solid-js"
                 theme={theme}

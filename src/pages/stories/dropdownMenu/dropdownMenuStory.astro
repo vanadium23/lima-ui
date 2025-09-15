@@ -1,58 +1,58 @@
 ---
-import {
-  DEFAULT_TEST_ID,
-  REMOVE_ITEM_MENUITEM,
-} from "../../../../features/testIds.ts";
-import {
-  DropdownMenu,
-  DropdownMenuSize,
-  DropdownMenuTheme,
-} from "../../../components/dropdownMenu/dropdownMenu.tsx";
+import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
 import { IconName } from "../../../components/icon/types.ts";
-import {
-  MenuItem,
-  MenuItemTheme,
-} from "../../../components/menuItem/menuItem.tsx";
+import { MenuItemTheme } from "../../../components/menuItem/menuItem.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
-const themes = Object.values(DropdownMenuTheme);
-const sizes = Object.values(DropdownMenuSize);
+import { DropdownMenuWrapper } from "./dropdownMenuWrapper.tsx";
+
+const menuItems = () => [
+  {
+    text: "Добавить пункт выше",
+    icon: IconName.Plus,
+    handleClick: () => {},
+  },
+  {
+    text: "Добавить пункт ниже",
+    icon: IconName.Plus,
+    handleClick: () => {},
+  },
+  {
+    text: "Импортировать выше",
+    icon: IconName.SortDescending,
+    testId: DEFAULT_TEST_ID,
+    isDisabled: true,
+  },
+  {
+    text: "Импортировать ниже",
+    icon: IconName.SortAscending,
+    testId: DEFAULT_TEST_ID,
+    isDisabled: true,
+  },
+  {
+    text: "Удалить пункт",
+    icon: IconName.Trash,
+    handleClick: () => {},
+    theme: MenuItemTheme.Dangerous,
+  },
+];
 ---
 
 <StorybookPage title="DropdownMenu">
   {
-    themes.map((theme) => (
+    (
       <div class="demoThemeWrapper">
-        <h3 class="demoThemeWrapper__title">{theme}</h3>
+        <h3 class="demoThemeWrapper__title">Primary</h3>
         <div class="grid grid_1Col">
           <span class="chead" />
           <span class="chead">Default</span>
 
-          {sizes.map((size) => (
-            <>
-              <span class="rhead">{size}</span>
-              <DropdownMenu testId={DEFAULT_TEST_ID}>
-                <MenuItem
-                  text={"Добавить пункт выше"}
-                  icon={IconName.Plus}
-                  testId={DEFAULT_TEST_ID}
-                />
-                <MenuItem
-                  text={"Добавить пункт ниже"}
-                  icon={IconName.Plus}
-                  testId={DEFAULT_TEST_ID}
-                />
-                <MenuItem
-                  text={"Удалить пункт"}
-                  theme={MenuItemTheme.Dangerous}
-                  icon={IconName.Trash}
-                  testId={REMOVE_ITEM_MENUITEM}
-                />
-              </DropdownMenu>
-            </>
-          ))}
+          <>
+            <span class="rhead">Medium</span>
+            <DropdownMenuWrapper menuItems={menuItems()} />
+          </>
         </div>
       </div>
-    ))
+    )
   }
 </StorybookPage>

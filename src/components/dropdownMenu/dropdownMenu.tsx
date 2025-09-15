@@ -1,7 +1,11 @@
-import type { UseFloatingResult } from "solid-floating-ui";
-import { type JSX, mergeProps, type Ref } from "solid-js";
+import { For, type JSX, mergeProps, type Ref, Show } from "solid-js";
+import { Dynamic, Portal } from "solid-js/web";
 
-import type { Testable } from "../utilities/testable.ts";
+import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
+import type { MenuItemProps } from "../menuItem/menuItem.tsx";
+import { MenuItem } from "../menuItem/menuItem.tsx";
+import { createDroppable } from "../utilities/createDroppable.ts";
+import type { Testable, TestId } from "../utilities/testable";
 
 import "./dropdownMenu.css";
 
@@ -13,48 +17,73 @@ export enum DropdownMenuSize {
   Medium = "medium",
 }
 
-type DropdownMenuProps = {
+type DropdownMenu = {
   theme?: DropdownMenuTheme;
   size?: DropdownMenuSize;
-  children: JSX.Element;
-  ref?: Ref<HTMLUListElement>;
-  floatingStyles?: UseFloatingResult | null;
+  menuItems: MenuItemProps[];
+  dropDownMenuTestId: TestId;
+  disabled?: boolean;
+  loading?: boolean;
+  component: (props: { ref: Ref<HTMLButtonElement>; handleClick: () => void }) => JSX.Element;
 };
 
-export const DropdownMenu = (props: Testable<DropdownMenuProps>) => {
-  const mProps: Testable<Required<DropdownMenuProps>> = mergeProps(
+export const DropdownMenu = (props: Testable<DropdownMenu>) => {
+  const mProps: Testable<Required<DropdownMenu>> = mergeProps(
     {
       theme: DropdownMenuTheme.Primary,
       size: DropdownMenuSize.Medium,
-      isDisabled: false,
-      handleClick: () => {},
-      ref: () => {},
-      floatingStyles: null,
+      disabled: false,
+      loading: false,
     },
     props,
   );
 
+  const [isMenuOpen, setIsMenuOpen, setMenuButtonRef, setMenuRef, floatingPosition] = createDroppable();
+
   return (
-    <ul
-      role="menu"
-      class={`dropdownMenu dropdownMenu_${mProps.theme} dropdownMenu_${mProps.size}`}
-      style={
-        mProps.floatingStyles
-          ? {
-              position: mProps.floatingStyles.strategy,
-              top: `${(mProps.floatingStyles.y ?? 0) / 10}rem`,
-              left: `${(mProps.floatingStyles.x ?? 0) / 10}rem`,
-              display: mProps.floatingStyles.middlewareData.hide
-                ?.referenceHidden
-                ? "none"
-                : "flex",
+    <>
+      <Dynamic
+        component={mProps.component}
+        ref={setMenuButtonRef}
+        handleClick={() => {
+          setIsMenuOpen((prev) => !prev);
+        }}
+      />
+      <Show when={isMenuOpen()}>
+        <Portal mount={document.body}>
+          <ul
+            role="menu"
+            class={`dropdownMenu dropdownMenu_${mProps.theme} dropdownMenu_${mProps.size}`}
+            style={
+              floatingPosition
+                ? {
+                    position: floatingPosition.strategy,
+                    top: `${(floatingPosition.y ?? 0) / 10}rem`,
+                    left: `${(floatingPosition.x ?? 0) / 10}rem`,
+                    display: floatingPosition.middlewareData.hide?.referenceHidden ? "none" : "flex",
+                  }
+                : {}
             }
-          : {}
-      }
-      ref={mProps.ref}
-      data-test-id={mProps.testId}
-    >
-      {mProps.children}
-    </ul>
+            ref={setMenuRef}
+            data-test-id={mProps.dropDownMenuTestId}
+          >
+            <For each={mProps.menuItems}>
+              {(menuItem) => (
+                <MenuItem
+                  testId={DEFAULT_TEST_ID}
+                  testSubId={mProps.testSubId || "0"}
+                  {...menuItem}
+                  handleClick={() => {
+                    menuItem.handleClick?.();
+                    setIsMenuOpen(false);
+                  }}
+                  isDisabled={menuItem.isDisabled || mProps.disabled}
+                />
+              )}
+            </For>
+          </ul>
+        </Portal>
+      </Show>
+    </>
   );
 };
