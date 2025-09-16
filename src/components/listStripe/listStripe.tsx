@@ -143,9 +143,11 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
               componentType={IconButtonComponentType.Button}
               handleClick={props.handleClick}
               testId={OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON}
+              testSubId={mProps.testSubId || "0"}
               size={IconButtonSize.MediumEmbedded}
               iconName={IconName.DotsThree}
               ariaLabel={"Выпадающее меню"}
+              isLoading={listStripeIsRemoving()}
             />
           )}
           testId={LIST_ITEM_CONTEXT_MENU}

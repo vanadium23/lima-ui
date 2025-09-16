@@ -21,8 +21,6 @@ type DropdownMenu = {
   theme?: DropdownMenuTheme;
   size?: DropdownMenuSize;
   menuItems: MenuItemProps[];
-  disabled?: boolean;
-  loading?: boolean;
   component: (props: { ref: Ref<HTMLButtonElement>; handleClick: () => void }) => JSX.Element;
 };
 
@@ -31,8 +29,6 @@ export const DropdownMenu = (props: Testable<DropdownMenu>) => {
     {
       theme: DropdownMenuTheme.Primary,
       size: DropdownMenuSize.Medium,
-      disabled: false,
-      loading: false,
     },
     props,
   );
@@ -76,7 +72,7 @@ export const DropdownMenu = (props: Testable<DropdownMenu>) => {
                     menuItem.handleClick?.();
                     setIsMenuOpen(false);
                   }}
-                  isDisabled={menuItem.isDisabled || mProps.disabled}
+                  isDisabled={menuItem.isDisabled}
                 />
               )}
             </For>

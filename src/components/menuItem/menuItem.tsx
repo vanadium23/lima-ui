@@ -18,7 +18,7 @@ export enum MenuItemSize {
 export type MenuItemProps = {
   theme?: MenuItemTheme;
   size?: MenuItemSize;
-  isDisabled?: boolean;
+  isDisabled?: boolean | undefined;
   text: string;
   handleClick?: () => void;
   icon: IconName;

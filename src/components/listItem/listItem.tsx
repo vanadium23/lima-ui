@@ -180,7 +180,6 @@ export const ListItem = (props: Testable<ListItemProps>) => {
               testId={LIST_ITEM_CONTEXT_MENU}
               testSubId={getListItemTestSubId(mProps.testId, mProps.testSubId)}
               menuItems={menuItems()}
-              disabled={mProps.isDisabled}
             />
           }
         />

@@ -8,16 +8,10 @@ import { type MenuItemProps } from "../../../components/menuItem/menuItem.tsx";
 
 type DropdownMenuWrapperProps = {
   menuItems: MenuItemProps[];
-  disabled?: boolean;
 };
 
 export function DropdownMenuWrapper(props: DropdownMenuWrapperProps) {
-  const mProps = mergeProps(
-    {
-      disabled: false,
-    },
-    props,
-  );
+  const mProps = mergeProps(props);
 
   return (
     <DropdownMenu
@@ -30,12 +24,10 @@ export function DropdownMenuWrapper(props: DropdownMenuWrapperProps) {
           size={IconButtonSize.MediumEmbedded}
           iconName={IconName.DotsThree}
           ariaLabel={"Выпадающее меню"}
-          isDisabled={mProps.disabled}
         />
       )}
       testId={LIST_ITEM_CONTEXT_MENU}
       menuItems={mProps.menuItems}
-      disabled={mProps.disabled}
     />
   );
 }
