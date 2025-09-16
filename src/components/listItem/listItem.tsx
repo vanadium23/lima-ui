@@ -169,16 +169,16 @@ export const ListItem = (props: Testable<ListItemProps>) => {
                   ref={props.ref}
                   componentType={IconButtonComponentType.Button}
                   handleClick={props.handleClick}
-                  testId={DEFAULT_TEST_ID}
+                  testId={OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON}
+                  testSubId={getListItemTestSubId(mProps.testId, mProps.testSubId)}
                   size={IconButtonSize.MediumEmbedded}
                   iconName={IconName.DotsThree}
                   ariaLabel={"Выпадающее меню"}
                   isDisabled={mProps.isDisabled}
                 />
               )}
-              testId={OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON}
+              testId={LIST_ITEM_CONTEXT_MENU}
               testSubId={getListItemTestSubId(mProps.testId, mProps.testSubId)}
-              dropDownMenuTestId={LIST_ITEM_CONTEXT_MENU}
               menuItems={menuItems()}
               disabled={mProps.isDisabled}
             />

@@ -7,7 +7,7 @@ import {
   LIST_STRIPE,
   LIST_STRIPE_LINK_TO_VIEW,
   LIST_STRIPE_REMOVE_BUTTON,
-  OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
+  OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
   REMOVE_LIST_DIALOG,
 } from "../../../features/testIds.ts";
 import { removeList } from "../../widgets/editList/services/removeList.ts";
@@ -142,14 +142,13 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
               ref={props.ref}
               componentType={IconButtonComponentType.Button}
               handleClick={props.handleClick}
-              testId={DEFAULT_TEST_ID}
+              testId={OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON}
               size={IconButtonSize.MediumEmbedded}
               iconName={IconName.DotsThree}
               ariaLabel={"Выпадающее меню"}
             />
           )}
-          testId={OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON}
-          dropDownMenuTestId={LIST_ITEM_CONTEXT_MENU}
+          testId={LIST_ITEM_CONTEXT_MENU}
           menuItems={dropdownMenuItems()}
         />
       </div>

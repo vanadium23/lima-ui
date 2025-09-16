@@ -77,14 +77,13 @@ export function CyberInputWrapper(props: CyberInputWrapperProps) {
               ref={props.ref}
               componentType={IconButtonComponentType.Button}
               handleClick={props.handleClick}
-              testId={DEFAULT_TEST_ID}
+              testId={OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON}
               size={IconButtonSize.MediumEmbedded}
               iconName={IconName.DotsThree}
               ariaLabel={"Выпадающее меню"}
             />
           )}
-          testId={OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON}
-          dropDownMenuTestId={LIST_ITEM_CONTEXT_MENU}
+          testId={LIST_ITEM_CONTEXT_MENU}
           menuItems={menuItems()}
         />
       }

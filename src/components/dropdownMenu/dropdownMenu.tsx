@@ -5,7 +5,7 @@ import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import type { MenuItemProps } from "../menuItem/menuItem.tsx";
 import { MenuItem } from "../menuItem/menuItem.tsx";
 import { createDroppable } from "../utilities/createDroppable.ts";
-import type { Testable, TestId } from "../utilities/testable";
+import type { Testable } from "../utilities/testable";
 
 import "./dropdownMenu.css";
 
@@ -21,7 +21,6 @@ type DropdownMenu = {
   theme?: DropdownMenuTheme;
   size?: DropdownMenuSize;
   menuItems: MenuItemProps[];
-  dropDownMenuTestId: TestId;
   disabled?: boolean;
   loading?: boolean;
   component: (props: { ref: Ref<HTMLButtonElement>; handleClick: () => void }) => JSX.Element;
@@ -65,7 +64,7 @@ export const DropdownMenu = (props: Testable<DropdownMenu>) => {
                 : {}
             }
             ref={setMenuRef}
-            data-test-id={mProps.dropDownMenuTestId}
+            data-test-id={mProps.testId}
           >
             <For each={mProps.menuItems}>
               {(menuItem) => (
