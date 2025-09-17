@@ -121,6 +121,7 @@ Feature: Removing the lists on the Lists page
     And I press the visible "confirm list removal" button
     Then I expect not to see the "list removal" error
 
+  @heavy
   Scenario: Unsuccessful list removal accompanied by reached lists limit leads to error and warning at the same time
     When I add lists to their limit
     When I open "My Lists" page
@@ -132,6 +133,7 @@ Feature: Removing the lists on the Lists page
     Then I expect to see the "list removal" error
     Then I expect to see the warning about lists limit reached
 
+  @heavy
   Scenario: Successful list removal accompanied by reached lists limit leads to hiding the warning and enabling the "Create" button
     When I add lists to their limit
     When I open "My Lists" page

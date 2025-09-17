@@ -83,6 +83,7 @@ Feature: List items drag and drop functionality
     And I scroll to the bottom of the list items
     Then I expect to have the "automatic" item input enabled
 
+  @heavy
   Scenario: Drag item after automatic item when last item was deleted and recreated
     When I ensure the tools panel is open
     And I add list items to their limit

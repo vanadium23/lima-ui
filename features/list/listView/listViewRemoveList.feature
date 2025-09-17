@@ -67,6 +67,7 @@ Feature: Removing a list from the List view page
     And I press the visible "confirm list removal" button
     Then I expect not to see the "list removal" error
 
+  @heavy
   Scenario: Unsuccessful list removal accompanied by reached items limit leads to error and warning at the same time
     When I add a list
     And I ensure the tools panel is open

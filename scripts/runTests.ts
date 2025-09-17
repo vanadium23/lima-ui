@@ -3,10 +3,7 @@ import chalk from "chalk";
 import { spawn } from "child_process";
 import { Command } from "commander";
 
-import {
-  DEVICE_PROFILES,
-  DeviceProfiles,
-} from "../features/config/deviceProfiles.ts";
+import { DEVICE_PROFILES, DeviceProfiles } from "../features/config/deviceProfiles.ts";
 import { RESULTS_FOLDER } from "../features/config/results.ts";
 import { prepareEmptyScreenshotsFolder } from "../features/utilities/screenshot.ts";
 import { cleanupVideoFiles } from "../features/utilities/video.ts";
@@ -38,16 +35,11 @@ program
   .option("-m, --mobile", "Run tests for mobile.")
   .option("-b, --broken", "Run only tests with @broken tag.")
   .option("-c, --current", "Run only tests with @current tag.")
+  .option("-l, --light", "Run all tests except those with @heavy tag")
   .option("--debug", "Run in debug mode")
-  .option(
-    "--visible",
-    "Run browser in non-headless mode and keep it open after tests",
-  )
+  .option("--visible", "Run browser in non-headless mode and keep it open after tests")
   .option("--fail-fast", "Stop test execution after the first failure")
-  .option(
-    "--per-scenario-progress",
-    "Use per-scenario progress formatter (scenario name: dots)",
-  )
+  .option("--per-scenario-progress", "Use per-scenario progress formatter (scenario name: dots)")
   .option("--retry <number>", "Number of times to retry failed tests", "0")
   .addHelpText(
     "afterAll",
@@ -56,6 +48,7 @@ program
       "  npm run test -- --desktop               # Run tests only for desktop\n" +
       "  npm run test -- --broken                # Run only broken tests for all devices\n" +
       "  npm run test -- --current               # Run only current tests for all devices\n" +
+      "  npm run test -- --light                 # Run all tests except @heavy tests\n" +
       "  npm run test -- --desktop --debug       # Run desktop tests in debug mode\n" +
       "  npm run test -- --fail-fast             # Stop after first test failure\n" +
       "  npm run test -- --per-scenario-progress # Use per-scenario progress formatter\n" +
@@ -75,14 +68,10 @@ const config: TestConfig = {
   retry: parseInt(program.opts().retry || "0", 10),
 };
 
-const { desktop, tablet, mobile, broken, current, failFast } = program.opts();
+const { desktop, tablet, mobile, broken, current, light, failFast } = program.opts();
 
 if (!desktop && !tablet && !mobile) {
-  config.devices = [
-    DeviceProfiles.desktop,
-    DeviceProfiles.tablet,
-    DeviceProfiles.mobile,
-  ];
+  config.devices = [DeviceProfiles.desktop, DeviceProfiles.tablet, DeviceProfiles.mobile];
 } else {
   if (desktop) config.devices.push(DeviceProfiles.desktop);
   if (tablet) config.devices.push(DeviceProfiles.tablet);
@@ -93,6 +82,8 @@ if (broken) {
   config.tags = ["@broken"];
 } else if (current) {
   config.tags = ["@current"];
+} else if (light) {
+  config.tags = ["not @broken and not @heavy"];
 }
 
 runTests().catch((error) => {
@@ -106,10 +97,9 @@ async function runTests() {
   console.log(`- Tags: ${config.tags.join(", ")}`);
   console.log(`- Debug: ${config.debug ? "enabled" : "disabled"}`);
   console.log(`- Visible mode: ${config.visible ? "enabled" : "disabled"}`);
+  console.log(`- Light mode: ${light ? "enabled" : "disabled"}`);
   console.log(`- Fail fast: ${failFast ? "enabled" : "disabled"}`);
-  console.log(
-    `- Per-scenario progress: ${config.perScenarioProgress ? "enabled" : "disabled"}`,
-  );
+  console.log(`- Per-scenario progress: ${config.perScenarioProgress ? "enabled" : "disabled"}`);
   console.log(`- Retry: ${config.retry}\n`);
 
   console.log(chalk.greenBright("\nScreenshots folder cleared"));
@@ -144,10 +134,7 @@ async function runTests() {
 
       if (config.tags.length > 0) {
         const escapeTagsWithSpaces = (tag: string): string => `"${tag}"`;
-        args.push(
-          "--tags",
-          config.tags.map(escapeTagsWithSpaces).join(" and "),
-        );
+        args.push("--tags", config.tags.map(escapeTagsWithSpaces).join(" and "));
       }
 
       // Add import for TypeScript support
@@ -161,11 +148,7 @@ async function runTests() {
         args.push("--retry", config.retry.toString());
       }
 
-      const nodeOptions = [
-        process.env.NODE_OPTIONS || "",
-        "--no-warnings",
-        "--loader ts-node/esm",
-      ]
+      const nodeOptions = [process.env.NODE_OPTIONS || "", "--no-warnings", "--loader ts-node/esm"]
         .filter(Boolean)
         .join(" ");
 
@@ -200,10 +183,7 @@ async function runTests() {
         console.log(chalk.green(`\n✅ Tests passed for ${device}\n`));
       }
     } catch (error) {
-      console.error(
-        chalk.red(`\n❌ Error running tests for ${device}:`),
-        error,
-      );
+      console.error(chalk.red(`\n❌ Error running tests for ${device}:`), error);
       hasError = true;
       results.push({ device, success: false });
     }
@@ -232,8 +212,7 @@ process.on("uncaughtException", (error) => {
 });
 
 function logDeviceInfo(device: string) {
-  const deviceProfile =
-    DEVICE_PROFILES[device as DeviceProfiles] || DEVICE_PROFILES.desktop;
+  const deviceProfile = DEVICE_PROFILES[device as DeviceProfiles] || DEVICE_PROFILES.desktop;
 
   const header = chalk.bgBlue.bold(" TEST DEVICE: ");
   const deviceHeader = chalk.cyan.bold(device.toUpperCase());

@@ -20,6 +20,7 @@ Feature: Seeing the basis of the automatically added item
     And I clear the "first item" input
     Then I expect not to see the "automatic" item input
 
+  @heavy
   Scenario: Reaching limit via the automatically added item
     When I add list items to their limit via automatically added item
     Then I expect to see the warning about items inputs limit reached

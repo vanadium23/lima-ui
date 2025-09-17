@@ -21,6 +21,7 @@ Feature: Seeing the added lists on the Lists page
     Then I expect to see the following number of list stripes: 3
     Then I expect to see no other elements
 
+  @heavy
   Scenario: Adding lists to the limit
     When I add lists to their limit
     And I open "My Lists" page
