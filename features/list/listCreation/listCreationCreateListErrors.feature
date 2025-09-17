@@ -91,6 +91,7 @@ Feature: Failing to create a new list
     Then All necessary elements are on the "List Creation Item Added, Note Expanded, Connection Error" page
     Then I expect to see no other elements
 
+  @heavy
   Scenario: List creation with items at limit and connection error shows both problems
     Given There is no internet connection
     And I type some text with length less or equal to the one of "list title" input limit

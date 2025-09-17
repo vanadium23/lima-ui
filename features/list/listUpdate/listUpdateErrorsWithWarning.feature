@@ -1,5 +1,6 @@
 Feature: Errors and warnings during list update
 
+  @heavy
   Scenario: List update with items at limit and connection error shows both problems
     When I clear all data
     And I add a list

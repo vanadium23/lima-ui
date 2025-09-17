@@ -134,6 +134,7 @@ Feature: Searching for lists
     When I scroll to the bottom of the search results
     Then I expect to see the "last" search result
 
+  @heavy
   Scenario: Seeing the on-limit amount of search results
     When I clear all data
     And I add lists to their limit
