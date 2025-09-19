@@ -13,6 +13,7 @@
     "astro": "astro",
     "test": "tsx scripts/runTests.ts",
     "test-current": "tsx scripts/runTests.ts --current --desktop",
+    "test-light": "tsx scripts/runTests.ts --light --desktop",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prepare": "husky"

@@ -74,7 +74,7 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
     return isRemoving() || mProps.isRemoving;
   }
 
-  const dropdownMenuItems = () => [
+  const menuItems = () => [
     {
       text: "Удалить",
       icon: IconName.Trash,
@@ -151,7 +151,7 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
             />
           )}
           testId={LIST_ITEM_CONTEXT_MENU}
-          menuItems={dropdownMenuItems()}
+          menuItems={menuItems()}
         />
       </div>
 

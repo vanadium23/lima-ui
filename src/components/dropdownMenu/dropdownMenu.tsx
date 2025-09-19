@@ -17,15 +17,15 @@ export enum DropdownMenuSize {
   Medium = "medium",
 }
 
-type DropdownMenu = {
+type DropdownMenuProps = {
   theme?: DropdownMenuTheme;
   size?: DropdownMenuSize;
   menuItems: MenuItemProps[];
   component: (props: { ref: Ref<HTMLButtonElement>; handleClick: () => void }) => JSX.Element;
 };
 
-export const DropdownMenu = (props: Testable<DropdownMenu>) => {
-  const mProps: Testable<Required<DropdownMenu>> = mergeProps(
+export const DropdownMenu = (props: Testable<DropdownMenuProps>) => {
+  const mProps: Testable<Required<DropdownMenuProps>> = mergeProps(
     {
       theme: DropdownMenuTheme.Primary,
       size: DropdownMenuSize.Medium,
