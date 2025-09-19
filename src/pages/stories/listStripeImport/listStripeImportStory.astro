@@ -6,20 +6,24 @@ import {
   ListStripeImportTheme,
 } from "../../../components/listStripeImport/listStripeImport.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
+import type { List } from "../../../types/types.ts";
 
 const themes = Object.values(ListStripeImportTheme);
 const sizes = Object.values(ListStripeImportSize);
 
-const testListData = {
-  title: "Пример списка для импорта",
+const testListData: List = {
+  id: "123134",
+  name: "Пример списка для импорта",
   purpose: "Выберите элементы для импорта",
+  note: "",
   items: [
-    { text: "Ололо1" },
-    { text: "Ололо2" },
+    { id: "123", content: "Ололо1" },
+    { id: "123", content: "Ололо2" },
     {
-      text: "Длинный текст элемента списка для проверки отображения",
+      id: "123",
+      content: "Длинный текст элемента списка для проверки отображения",
     },
-    { text: "Ололо4" },
+    { id: "123", content: "Ололо4" },
   ],
 };
 ---

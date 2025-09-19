@@ -93,7 +93,7 @@ export const Dialog = (props: Testable<DialogProps>) => {
           />
         </div>
 
-        <div class="dialog__content">{mProps.children}</div>
+        <div class="dialog__content scrollStyles">{mProps.children}</div>
         <Show when={mProps.controls}>
           <div class="dialog__controls">{mProps.controls}</div>
         </Show>

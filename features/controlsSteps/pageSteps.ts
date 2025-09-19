@@ -14,8 +14,8 @@ import { getTimeoutOrCancelItIfDebugging } from "../utilities/getTimeoutOrCancel
 
 export const PAGES_MEANINGS = {
   "List Creation": URL_CREATE_LIST,
-  "My Lists": URL_MY_LISTS,
-  "My Lists without trailing /": URL_MY_LISTS.slice(0, -1),
+  "My Lists": `${URL_MY_LISTS}/`,
+  "My Lists without trailing /": URL_MY_LISTS,
   "My Lists with failed lists loading": TESTS_URL_LISTS_WITH_NETWORK_ERROR,
   "Latest List": TESTS_URL_SOME_LIST,
   "Some List": TESTS_URL_SOME_LIST,
@@ -34,11 +34,7 @@ When(
 When(
   "I open {string} page with {string} accounting",
   { timeout: getTimeoutOrCancelItIfDebugging(10000) },
-  async function (
-    this: ComplexWorld,
-    pageMeaning: PageMeaning,
-    accounting: string,
-  ) {
+  async function (this: ComplexWorld, pageMeaning: PageMeaning, accounting: string) {
     let accountedTesting = pagesAccounting[accounting];
 
     if (!accountedTesting) {
@@ -53,14 +49,11 @@ When(
   },
 );
 
-Then(
-  "I expect to be on the {string} page",
-  async function (this: ComplexWorld, pageMeaning: PageMeaning) {
-    throwIfUnknownPageMeaning(pageMeaning);
+Then("I expect to be on the {string} page", async function (this: ComplexWorld, pageMeaning: PageMeaning) {
+  throwIfUnknownPageMeaning(pageMeaning);
 
-    await expect(this.page).toHaveURL(new RegExp(PAGES_MEANINGS[pageMeaning]));
-  },
-);
+  await expect(this.page).toHaveURL(new RegExp(PAGES_MEANINGS[pageMeaning]));
+});
 
 async function navigate(complexWorld: ComplexWorld, pageMeaning: PageMeaning) {
   if (pageMeaning === "Latest List") {

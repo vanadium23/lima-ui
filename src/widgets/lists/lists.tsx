@@ -34,6 +34,8 @@ export const Lists = (props: ListsProps) => {
     removeError: false,
   });
 
+  console.log(store.lists);
+
   function checkListsLimitReached() {
     return store.lists.length >= LISTS_LIMIT;
   }
