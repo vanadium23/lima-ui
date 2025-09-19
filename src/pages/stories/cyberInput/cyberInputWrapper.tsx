@@ -2,23 +2,19 @@ import { createSignal, mergeProps } from "solid-js";
 
 import {
   DEFAULT_TEST_ID,
+  LIST_ITEM_CONTEXT_MENU,
   OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
 } from "../../../../features/testIds.ts";
-import {
-  CyberInput,
-  CyberInputSize,
-  CyberInputTheme,
-} from "../../../components/cyberInput/cyberInput.tsx";
-import { DropdownMenuWrapper } from "../../../components/dropdownMenuWrapper/dropdownMenuWrapper.tsx";
+import { CyberInput, CyberInputSize, CyberInputTheme } from "../../../components/cyberInput/cyberInput.tsx";
+import { DropdownMenu } from "../../../components/dropdownMenu/dropdownMenu.tsx";
 import { IconName } from "../../../components/icon/types.ts";
-import { IconButtonSize } from "../../../components/iconButton/iconButton.tsx";
-import type { MenuItemProps } from "../../../components/menuItem/menuItem.tsx";
+import { IconButton, IconButtonComponentType, IconButtonSize } from "../../../components/iconButton/iconButton.tsx";
+import { MenuItemTheme } from "../../../components/menuItem/menuItem.tsx";
 
 type CyberInputWrapperProps = {
   size: CyberInputSize;
   theme: CyberInputTheme;
   isError?: boolean;
-  listOfButtons?: MenuItemProps[] | null;
 };
 
 export function CyberInputWrapper(props: CyberInputWrapperProps) {
@@ -30,6 +26,37 @@ export function CyberInputWrapper(props: CyberInputWrapperProps) {
     props,
   );
   const [text, setText] = createSignal("");
+
+  const menuItems = () => [
+    {
+      text: "Добавить пункт выше",
+      icon: IconName.Plus,
+      handleClick: () => {},
+    },
+    {
+      text: "Добавить пункт ниже",
+      icon: IconName.Plus,
+      handleClick: () => {},
+    },
+    {
+      text: "Импортировать выше",
+      icon: IconName.SortDescending,
+      testId: DEFAULT_TEST_ID,
+      isDisabled: true,
+    },
+    {
+      text: "Импортировать ниже",
+      icon: IconName.SortAscending,
+      testId: DEFAULT_TEST_ID,
+      isDisabled: true,
+    },
+    {
+      text: "Удалить пункт",
+      icon: IconName.Trash,
+      handleClick: () => {},
+      theme: MenuItemTheme.Dangerous,
+    },
+  ];
 
   return (
     <CyberInput
@@ -44,17 +71,21 @@ export function CyberInputWrapper(props: CyberInputWrapperProps) {
       defaultIsError={mProps.isError}
       placeholder="Введите текст"
       controlElements={
-        mProps.listOfButtons ? (
-          <DropdownMenuWrapper
-            iconSize={IconButtonSize.MediumEmbedded}
-            iconName={IconName.DotsThree}
-            testId={OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON}
-            testSubId="0"
-            dropDownMenuTestId={DEFAULT_TEST_ID}
-            listOfButtons={mProps.listOfButtons}
-            isDisabled={false}
-          />
-        ) : null
+        <DropdownMenu
+          component={(props) => (
+            <IconButton
+              ref={props.ref}
+              componentType={IconButtonComponentType.Button}
+              handleClick={props.handleClick}
+              testId={OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON}
+              size={IconButtonSize.MediumEmbedded}
+              iconName={IconName.DotsThree}
+              ariaLabel={"Выпадающее меню"}
+            />
+          )}
+          testId={LIST_ITEM_CONTEXT_MENU}
+          menuItems={menuItems()}
+        />
       }
     />
   );
