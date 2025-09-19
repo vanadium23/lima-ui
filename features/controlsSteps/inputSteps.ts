@@ -8,10 +8,7 @@ import {
   LIST_TITLE_INPUT_LIMIT,
 } from "../../configuration.ts";
 import type { ComplexWorld } from "../context/hooks";
-import {
-  INPUT_TEST_IDS,
-  type InputMeaning,
-} from "../list/listCreation/testIds.ts";
+import { INPUT_TEST_IDS, type InputMeaning } from "../list/listCreation/testIds.ts";
 import {
   getStringCloseToLimit,
   getStringLongerThanLowerLimit,
@@ -36,14 +33,11 @@ When(
   },
 );
 
-Then(
-  "I expect to see the {string} input empty",
-  async function (this: ComplexWorld, inputName: InputMeaning) {
-    const input = locateInput(this, inputName);
+Then("I expect to see the {string} input empty", async function (this: ComplexWorld, inputName: InputMeaning) {
+  const input = locateInput(this, inputName);
 
-    await expect(input).toHaveValue("");
-  },
-);
+  await expect(input).toHaveValue("");
+});
 
 const INPUT_LIMIT_RELATION = {
   "list title": LIST_TITLE_INPUT_LIMIT,
@@ -73,9 +67,7 @@ When(
 When(
   "I type some text with length more than of {string} input limit",
   async function (this: ComplexWorld, inputMeaning: InputMeaning) {
-    await locateInput(this, inputMeaning).fill(
-      getStringLongerThanLowerLimit(INPUT_LIMIT_RELATION[inputMeaning]),
-    );
+    await locateInput(this, inputMeaning).fill(getStringLongerThanLowerLimit(INPUT_LIMIT_RELATION[inputMeaning]));
   },
 );
 
@@ -83,10 +75,7 @@ When(
   "I type some text with length close to the one of {string} input limit",
   async function (this: ComplexWorld, inputMeaning: InputMeaning) {
     await locateInput(this, inputMeaning).fill(
-      getStringCloseToLimit(
-        INPUT_LIMIT_RELATION[inputMeaning],
-        COUNTER_DISPLAY_LIMIT,
-      ),
+      getStringCloseToLimit(INPUT_LIMIT_RELATION[inputMeaning], COUNTER_DISPLAY_LIMIT),
     );
   },
 );
@@ -94,9 +83,7 @@ When(
 Then(
   "I expect {string} input content length to be equal to its limit",
   async function (this: ComplexWorld, inputMeaning: InputMeaning) {
-    const inputValueLength = (
-      await locateInput(this, inputMeaning).inputValue()
-    ).length;
+    const inputValueLength = (await locateInput(this, inputMeaning).inputValue()).length;
 
     expect(inputValueLength).toBe(INPUT_LIMIT_RELATION[inputMeaning]);
   },

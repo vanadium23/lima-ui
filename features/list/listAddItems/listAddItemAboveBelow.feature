@@ -15,11 +15,12 @@ Feature: Adding items above and below on the List page
     When I ensure the tools panel is open
     And I add list items till scroll appears plus one item input
     And I ensure the tools panel does not disturb
+    And I fill all items inputs with their index
     And I focus "last item" input
     And I open the corresponding list item context menu
     Then I expect to see the fully visible "list item" context menu
     And I press the visible "add item below" menu item
-    Then I expect to see the new last item
+    Then I expect to see the "last item" input empty
 
   @heavy
   Scenario: Reaching the limit of list items via adding items above and below

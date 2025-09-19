@@ -5,9 +5,7 @@ import { Command } from "commander";
 
 import { DEVICE_PROFILES, DeviceProfiles } from "../features/config/deviceProfiles.ts";
 import { RESULTS_FOLDER } from "../features/config/results.ts";
-import { prepareEmptyScreenshotsFolder } from "../features/utilities/screenshot.ts";
-import { cleanupVideoFiles } from "../features/utilities/video.ts";
-import { prepareEmptyVideosFolder } from "../features/utilities/video.ts";
+import { prepareEmptyTracesFolder } from "../features/utilities/traces.ts";
 
 interface TestConfig {
   tags: string[];
@@ -102,11 +100,8 @@ async function runTests() {
   console.log(`- Per-scenario progress: ${config.perScenarioProgress ? "enabled" : "disabled"}`);
   console.log(`- Retry: ${config.retry}\n`);
 
-  console.log(chalk.greenBright("\nScreenshots folder cleared"));
-  prepareEmptyScreenshotsFolder();
-
-  console.log(chalk.greenBright("\nVideos folder cleared"));
-  prepareEmptyVideosFolder();
+  console.log(chalk.greenBright("\nTraces folder cleared"));
+  prepareEmptyTracesFolder();
 
   const results: { device: DeviceProfiles; success: boolean }[] = [];
   let hasError = false;
@@ -195,8 +190,6 @@ async function runTests() {
     console.log(`${device.padEnd(10)} ${status}`);
   });
   console.log("=".repeat(30));
-
-  cleanupVideoFiles();
 
   process.exit(hasError ? 1 : 0);
 }

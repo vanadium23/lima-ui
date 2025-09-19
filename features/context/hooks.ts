@@ -9,41 +9,21 @@ import {
   setWorldConstructor,
   World,
 } from "@cucumber/cucumber";
-import {
-  type Browser,
-  type BrowserContext,
-  chromium,
-  expect,
-  type Page,
-} from "@playwright/test";
+import { type Browser, type BrowserContext, chromium, expect, type Page } from "@playwright/test";
+import chalk from "chalk";
 
-import type {
-  FullTestId,
-  TestId,
-  TestSubId,
-} from "../../src/components/utilities/testable.ts";
+import type { FullTestId, TestId, TestSubId } from "../../src/components/utilities/testable.ts";
 import { type AddressMeaning, PAGE_TYPES } from "../../utilities/addresses.ts";
 import {
   buildTestableSelector,
   buildTestableSubSelector,
   destructureFullTestId,
 } from "../utilities/buildTestableSelector.ts";
-import {
-  getDeviceProfile,
-  getDeviceProfileName,
-} from "../utilities/discoverDevice.ts";
+import { getDeviceProfile, getDeviceProfileName } from "../utilities/discoverDevice.ts";
 import { getTimeoutOrCancelItIfDebugging } from "../utilities/getTimeoutOrCancelItIfDebugging.ts";
-import { createScreenshotPath } from "../utilities/screenshot.ts";
-import {
-  createVideoPath,
-  renameFailedRemovePassedVideo,
-  VIDEOS_FOLDER,
-} from "../utilities/video.ts";
+import { createTracePath } from "../utilities/traces.ts";
 
-import {
-  type AccountedTesting,
-  createAccountedTesting,
-} from "./createAccountedTesting.ts";
+import { type AccountedTesting, createAccountedTesting } from "./createAccountedTesting.ts";
 
 let browser: Browser;
 
@@ -60,9 +40,7 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
   oldData: Record<string, string> = {};
   numbers: Record<string, number> = {};
   itemsValues: string[] = [];
-  responsesToWait: Partial<
-    Record<AddressMeaning, ReturnType<Page["waitForResponse"]>>
-  > = {};
+  responsesToWait: Partial<Record<AddressMeaning, ReturnType<Page["waitForResponse"]>>> = {};
 
   FRONTEND_ADDRESS = "http://localhost:4321";
   BACKEND_ADDRESS = "http://localhost:3000";
@@ -74,11 +52,14 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
   async setContextAndPage() {
     this.context = await browser.newContext({
       ...getDeviceProfile(),
-      recordVideo: {
-        dir: VIDEOS_FOLDER,
-      },
     });
     this.page = await this.context.newPage();
+
+    await this.context.tracing.start({
+      screenshots: true,
+      snapshots: true,
+      sources: true,
+    });
   }
 
   async navigate(address: string) {
@@ -92,15 +73,11 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
   }
 
   locateByIdParts(testId: TestId, testSubId?: TestSubId) {
-    const elementWithRequiredId = this.page.locator(
-      buildTestableSelector(testId),
-    );
+    const elementWithRequiredId = this.page.locator(buildTestableSelector(testId));
 
     if (testSubId == null) return elementWithRequiredId;
 
-    const elementWithRequiredSubId = this.page.locator(
-      buildTestableSubSelector(testSubId),
-    );
+    const elementWithRequiredSubId = this.page.locator(buildTestableSubSelector(testSubId));
 
     return elementWithRequiredId.and(elementWithRequiredSubId);
   }
@@ -147,36 +124,28 @@ Before(async function (this: ComplexWorld) {
   this.accounting.elements.clearTestIds();
 });
 
-After(
-  { timeout: 60000 },
-  async function (this: ComplexWorld, scenario: ITestCaseHookParameter) {
-    let failedVideoPath = "";
+After({ timeout: 60000 }, async function (this: ComplexWorld, scenario: ITestCaseHookParameter) {
+  if (scenario.result?.status === "FAILED") {
+    const tracePath = createTracePath(scenario.pickle.name, getDeviceProfileName());
 
-    if (scenario.result?.status === "FAILED") {
-      const scenarioName = scenario.pickle.name;
-      const deviceSuffix = getDeviceProfileName();
-      const screenshotPath = createScreenshotPath(scenarioName, deviceSuffix);
+    try {
+      await this.context.tracing.stop({ path: tracePath });
 
-      try {
-        await this.page.screenshot({ path: screenshotPath, fullPage: true });
-        console.log(`\nScreenshot saved to: ${screenshotPath}`);
-      } catch (error) {
-        console.error(`\nFailed to take screenshot: ${error}`);
-      }
-
-      // For failed tests, we'll keep the video.
-      // Set the target video path for renaming after context close.
-      // Playwright doesn't allow to rename video files, so we'll do it manually.
-      failedVideoPath = createVideoPath(scenarioName, deviceSuffix);
-
-      console.log(`\nVideo will be saved to: ${failedVideoPath}`);
+      console.log("\nПоказать трассировку:");
+      console.log(chalk.cyan("▶️  npx playwright show-trace " + tracePath));
+    } catch (error) {
+      console.error(`\nОшибка сохранения трассировки: ${error}`);
     }
+  } else {
+    try {
+      await this.context.tracing.stop();
+    } catch (error) {
+      console.error(`\nОшибка игнорирования трассировки: ${error}`);
+    }
+  }
 
-    isVisible() || (await this.context.close());
-
-    await renameFailedRemovePassedVideo(failedVideoPath);
-  },
-);
+  isVisible() || (await this.context.close());
+});
 
 AfterAll({ timeout: 60000 }, async function () {
   for (const accountedPagesSet of Object.values(pagesAccounting)) {
