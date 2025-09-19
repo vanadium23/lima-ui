@@ -8,7 +8,7 @@ export const TRACES_FOLDER = path.join(process.cwd(), ...RESULTS_FOLDER, "traces
 export function createTracePath(scenarioName: string, deviceSuffix: string): string {
   const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
   const sanitizedName = scenarioName.replace(/[^a-zA-Z0-9]/g, "_");
-  const traceName = `${timestamp}_${sanitizedName}_${deviceSuffix}.zip`;
+  const traceName = `${sanitizedName}_${deviceSuffix}_${timestamp}.zip`;
 
   return path.join(TRACES_FOLDER, traceName);
 }

@@ -10,6 +10,7 @@ import {
   World,
 } from "@cucumber/cucumber";
 import { type Browser, type BrowserContext, chromium, expect, type Page } from "@playwright/test";
+import chalk from "chalk";
 
 import type { FullTestId, TestId, TestSubId } from "../../src/components/utilities/testable.ts";
 import { type AddressMeaning, PAGE_TYPES } from "../../utilities/addresses.ts";
@@ -127,18 +128,19 @@ After({ timeout: 60000 }, async function (this: ComplexWorld, scenario: ITestCas
   if (scenario.result?.status === "FAILED") {
     const tracePath = createTracePath(scenario.pickle.name, getDeviceProfileName());
 
-    console.log(`\nTrace will be saved to: ${tracePath}`);
-
     try {
       await this.context.tracing.stop({ path: tracePath });
+
+      console.log("\nПоказать трассировку:");
+      console.log(chalk.cyan("▶️  npx playwright show-trace " + tracePath));
     } catch (error) {
-      console.error(`\nFailed to save trace: ${error}`);
+      console.error(`\nОшибка сохранения трассировки: ${error}`);
     }
   } else {
     try {
       await this.context.tracing.stop();
     } catch (error) {
-      console.error(`\nFailed to discard trace: ${error}`);
+      console.error(`\nОшибка игнорирования трассировки: ${error}`);
     }
   }
 
