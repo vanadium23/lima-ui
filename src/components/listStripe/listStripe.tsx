@@ -3,8 +3,8 @@ import { createSignal, mergeProps, Show } from "solid-js";
 import {
   DEFAULT_TEST_ID,
   DIALOG_REMOVE_BUTTON,
+  LIST_ITEM_CONTEXT_MENU,
   LIST_STRIPE,
-  LIST_STRIPE_CONTEXT_MENU,
   LIST_STRIPE_LINK_TO_VIEW,
   LIST_STRIPE_REMOVE_BUTTON,
   OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
@@ -14,10 +14,10 @@ import { removeList } from "../../widgets/editList/services/removeList.ts";
 import { soften } from "../../widgets/editList/utilities/soften.ts";
 import { Button, ButtonSize, ButtonTheme } from "../button/button.tsx";
 import { Dialog, DialogSize, DialogTheme } from "../dialog/dialog.tsx";
-import { DropdownMenuWrapper } from "../dropdownMenuWrapper/dropdownMenuWrapper.tsx";
+import { DropdownMenu } from "../dropdownMenu/dropdownMenu.tsx";
 import { Icon, IconSize } from "../icon/icon.tsx";
 import { IconName } from "../icon/types.ts";
-import { IconButtonSize } from "../iconButton/iconButton.tsx";
+import { IconButton, IconButtonComponentType, IconButtonSize } from "../iconButton/iconButton.tsx";
 import { MenuItemTheme } from "../menuItem/menuItem.tsx";
 import { Tooltip } from "../tooltip/tooltip.tsx";
 import { type Testable } from "../utilities/testable.ts";
@@ -74,7 +74,7 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
     return isRemoving() || mProps.isRemoving;
   }
 
-  const dropdownMenuItems = () => [
+  const menuItems = () => [
     {
       text: "Удалить",
       icon: IconName.Trash,
@@ -136,14 +136,22 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
       </a>
       {/* MAKSIM: Скрываются в состоянии Loading, когда нет Hover'а. */}
       <div class="listStripe__controls">
-        <DropdownMenuWrapper
-          iconSize={IconButtonSize.MediumEmbedded}
-          testId={OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON}
-          testSubId={mProps.testSubId || "0"}
-          dropDownMenuTestId={LIST_STRIPE_CONTEXT_MENU}
-          iconName={IconName.DotsThree}
-          listOfButtons={dropdownMenuItems()}
-          isLoading={listStripeIsRemoving()}
+        <DropdownMenu
+          component={(props) => (
+            <IconButton
+              ref={props.ref}
+              componentType={IconButtonComponentType.Button}
+              handleClick={props.handleClick}
+              testId={OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON}
+              testSubId={mProps.testSubId || "0"}
+              size={IconButtonSize.MediumEmbedded}
+              iconName={IconName.DotsThree}
+              ariaLabel={"Выпадающее меню"}
+              isLoading={listStripeIsRemoving()}
+            />
+          )}
+          testId={LIST_ITEM_CONTEXT_MENU}
+          menuItems={menuItems()}
         />
       </div>
 

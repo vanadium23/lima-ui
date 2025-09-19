@@ -12,7 +12,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "test": "tsx scripts/runTests.ts",
-    "test-desktop": "tsx scripts/runTests.ts --desktop --light",
+    "test-current": "tsx scripts/runTests.ts --current --desktop",
+    "test-light": "tsx scripts/runTests.ts --light --desktop",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prepare": "husky"
@@ -30,11 +31,11 @@
     "typescript": "^5.2.2"
   },
   "devDependencies": {
-    "@cucumber/cucumber": "^11.2.0",
-    "@playwright/test": "^1.50.1",
+    "@cucumber/cucumber": "^12.2.0",
+    "@playwright/test": "^1.55.0",
     "@types/chalk": "^2.2.4",
     "@types/commander": "^2.12.5",
-    "@types/node": "^20.17.50",
+    "@types/node": "^20.19.16",
     "@typescript-eslint/eslint-plugin": "^6.12.0",
     "@typescript-eslint/parser": "^6.12.0",
     "autoprefixer": "^10.4.16",
