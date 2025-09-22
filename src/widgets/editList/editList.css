@@ -78,9 +78,3 @@
     padding: 0;
   }
 }
-
-.editList__importDialog {
-  display: flex;
-  flex-direction: column;
-  gap: var(--size-x6);
-}

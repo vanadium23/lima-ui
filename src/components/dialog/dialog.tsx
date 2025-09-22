@@ -1,6 +1,7 @@
-import { createEffect, type JSX, mergeProps, Show } from "solid-js";
+import { createEffect, type JSX, Match, mergeProps, Show, Switch } from "solid-js";
 
 import { DIALOG_CLOSE_BUTTON } from "../../../features/testIds.ts";
+import { Icon, IconSize } from "../icon/icon.tsx";
 import { IconName } from "../icon/types.ts";
 import { IconButton, IconButtonSize, IconButtonTheme } from "../iconButton/iconButton.tsx";
 import type { Testable } from "../utilities/testable.ts";
@@ -23,6 +24,7 @@ type DialogProps = {
   onCancel: () => void;
   isOpen: boolean;
   title: string;
+  loading?: boolean;
 };
 
 export const Dialog = (props: Testable<DialogProps>) => {
@@ -32,6 +34,7 @@ export const Dialog = (props: Testable<DialogProps>) => {
       size: DialogSize.Medium,
       isOpen: false,
       controls: undefined,
+      loading: false,
     },
     props,
   );
@@ -92,8 +95,19 @@ export const Dialog = (props: Testable<DialogProps>) => {
             testSubId={mProps.testSubId ?? ""}
           />
         </div>
+        <Switch>
+          <Match when={mProps.loading}>
+            <div class="dialog__loadingIconWrapper">
+              <div class="dialog__loadingIcon">
+                <Icon name={IconName.CircleNotch} size={IconSize.Large} />
+              </div>
+            </div>
+          </Match>
+          <Match when={!mProps.loading}>
+            <div class="dialog__content scrollStyles">{mProps.children}</div>
+          </Match>
+        </Switch>
 
-        <div class="dialog__content scrollStyles">{mProps.children}</div>
         <Show when={mProps.controls}>
           <div class="dialog__controls">{mProps.controls}</div>
         </Show>

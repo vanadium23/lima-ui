@@ -1,0 +1,14 @@
+.importDialog {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: var(--size-x6);
+  padding-right: var(--size-x4);
+}
+
+.importDialog__emptyMessage {
+  font-size: 1.6rem;
+  line-height: 2rem;
+  color: var(--text-neutral-900);
+  padding-left: var(--size-x5);
+}

@@ -42,11 +42,11 @@ import { Dialog } from "../../components/dialog/dialog.tsx";
 import { Divider } from "../../components/divider/divider.tsx";
 import { IconName } from "../../components/icon/types.ts";
 import { ListItem } from "../../components/listItem/listItem.tsx";
-import { ListStripeImport } from "../../components/listStripeImport/listStripeImport.tsx";
 import { Note } from "../../components/note/note.tsx";
 import { PageError } from "../../components/pageError/pageError.tsx";
 import { Switch } from "../../components/switch/switch.tsx";
 import { ToolsButton, ToolsButtonComponentType, ToolsButtonTheme } from "../../components/toolsButton/toolsButton.tsx";
+import { ImportDialog } from "../../organisms/importDialog/importDialog.tsx";
 import { ToolsPanel, ToolsPanelSize, ToolsPanelTheme } from "../../organisms/toolsPanel/toolsPanel.tsx";
 import { setLocation } from "../../state/locationState.ts";
 import {
@@ -60,7 +60,6 @@ import {
 } from "../../types/types.ts";
 
 import { createList } from "./services/createList.ts";
-import { getLists } from "./services/getLists.ts";
 import { removeList } from "./services/removeList.ts";
 import { updateList } from "./services/updateList.ts";
 import { addAutoItemIfNeeded } from "./utilities/addAutoItemIfNeeded.ts";
@@ -130,7 +129,6 @@ export const EditList = (props: EditListProps) => {
     itemsScrollStartPosition: 0,
     listsForImport: [],
     loadingListsForImport: false,
-    errorListsForImport: false,
   });
 
   type AddItemOptions = { mode: "end"; scroll?: boolean; auto: boolean } | { mode: "before" | "after"; index: number };
@@ -160,43 +158,8 @@ export const EditList = (props: EditListProps) => {
   const toggleCheckable = () => setStore("isCheckable", !store.isCheckable);
   const openRemoveDialog = () => setStore("isRemoveDialogOpen", true);
   const closeRemoveDialog = () => setStore("isRemoveDialogOpen", false);
-
-  const openImportDialog = () => {
-    setStore("isImportDialogOpen", true);
-    getListsForImport();
-  };
-
-  const getListsForImport = async () => {
-    setStore({
-      loadingListsForImport: true,
-      errorListsForImport: false,
-    });
-
-    try {
-      const lists = await getLists();
-      const filteredLists = lists.filter((availableList) => availableList.id !== store.id);
-
-      setStore({
-        listsForImport: filteredLists,
-        loadingListsForImport: false,
-      });
-    } catch (error) {
-      console.error("Error loading lists:", error);
-      setStore({
-        errorListsForImport: true,
-        loadingListsForImport: false,
-      });
-    }
-  };
-
-  const closeImportDialog = () => {
-    setStore({
-      isImportDialogOpen: false,
-      listsForImport: [],
-      loadingListsForImport: false,
-      errorListsForImport: false,
-    });
-  };
+  const openImportDialog = () => setStore("isImportDialogOpen", true);
+  const closeImportDialog = () => setStore("isImportDialogOpen", false);
 
   function addItem(options: AddItemOptions) {
     if (reachedItemsLimit()) return;
@@ -496,6 +459,8 @@ export const EditList = (props: EditListProps) => {
                         onChange={(value) => handleItemChange(index(), value)}
                         onAddBefore={() => addItem({ mode: "before", index: index() })}
                         onAddAfter={() => addItem({ mode: "after", index: index() })}
+                        onImportAbove={openImportDialog}
+                        onImportBelow={openImportDialog}
                         canAddMore={!reachedItemsLimit()}
                         testId={item.auto ? AUTO_LIST_ITEM : LIST_ITEM}
                         testSubId={index()}
@@ -627,42 +592,13 @@ export const EditList = (props: EditListProps) => {
               testId={TOOLS_PANEL_BUTTON_IMPORT_LIST}
               handleClick={openImportDialog}
             />
-            <Dialog
-              title="Выбрать списки для импорта"
-              onCancel={closeImportDialog}
-              controls={
-                <Button
-                  theme={ButtonTheme.Primary}
-                  size={ButtonSize.Medium}
-                  text={"Импортировать"}
-                  handleClick={() => {
-                    closeImportDialog();
-                  }}
-                  testId={DEFAULT_TEST_ID}
-                  isLoading={store.loadingListsForImport}
-                  isDisabled={store.errorListsForImport}
-                />
-              }
-              isOpen={store.isImportDialogOpen}
+            <ImportDialog
+              currentListId={store.id}
               testId={DEFAULT_TEST_ID}
-            >
-              <div class="editList__importDialog scrollStyles">
-                <Show when={store.loadingListsForImport}>
-                  <div class="editList__importDialogLoadingMessage">Загрузка списков...</div>
-                </Show>
-                <Show when={store.errorListsForImport}>
-                  <PageError testId={NETWORK_ERROR}>Ошибка загрузки списков. Попробуйте еще раз.</PageError>
-                </Show>
-                <Show when={!store.loadingListsForImport && !store.errorListsForImport}>
-                  <Show when={store.listsForImport.length === 0}>
-                    <div class="editList__importDialogEmpty">У вас пока нет других списков для импорта.</div>
-                  </Show>
-                </Show>
-                <For each={store.listsForImport}>
-                  {(list) => <ListStripeImport listData={list} titleHTMLName={list.name} testId={DEFAULT_TEST_ID} />}
-                </For>
-              </div>
-            </Dialog>
+              isOpen={store.isImportDialogOpen}
+              onClose={closeImportDialog}
+            />
+
             <ToolsButton
               componentType={ToolsButtonComponentType.Link}
               iconName={IconName.Printer}
