@@ -74,8 +74,6 @@ export type EditListStore = DragList & {
   isNewList: boolean;
   draggedItem: string;
   itemsScrollStartPosition: number;
-  listsForImport: List[];
-  loadingListsForImport: boolean;
 };
 
 export enum EditListFormNames {

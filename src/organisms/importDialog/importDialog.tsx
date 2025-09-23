@@ -21,12 +21,14 @@ type ImportDialogProps = {
 
 type ImportDialogState = {
   listsForImport: List[];
+  elementsReadyToImport: List[];
   loadingListsForImport: boolean;
 };
 
 export const ImportDialog = (props: Testable<ImportDialogProps>) => {
   const [store, setStore] = createStore<ImportDialogState>({
     listsForImport: [],
+    elementsReadyToImport: [],
     loadingListsForImport: false,
   });
 
@@ -45,7 +47,7 @@ export const ImportDialog = (props: Testable<ImportDialogProps>) => {
     } catch (error) {
       console.error("Error loading lists:", error);
       soften(() => {
-        setStore("loadingListsForImport", false);
+        setStore({ loadingListsForImport: false, listsForImport: [] });
         props.onClose();
 
         notificationState.pushNetworkError(
@@ -60,6 +62,7 @@ export const ImportDialog = (props: Testable<ImportDialogProps>) => {
   const handleClose = () => {
     setStore({
       loadingListsForImport: false,
+      listsForImport: [],
     });
     props.onClose();
   };
@@ -82,7 +85,7 @@ export const ImportDialog = (props: Testable<ImportDialogProps>) => {
           text={"Импортировать"}
           handleClick={handleClose}
           testId={DEFAULT_TEST_ID}
-          isDisabled={store.loadingListsForImport || store.listsForImport.length === 0}
+          isDisabled={store.elementsReadyToImport.length === 0}
         />
       }
       isOpen={props.isOpen}

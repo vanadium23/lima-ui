@@ -127,8 +127,6 @@ export const EditList = (props: EditListProps) => {
     isNewList: list.id === "",
     draggedItem: "",
     itemsScrollStartPosition: 0,
-    listsForImport: [],
-    loadingListsForImport: false,
   });
 
   type AddItemOptions = { mode: "end"; scroll?: boolean; auto: boolean } | { mode: "before" | "after"; index: number };
@@ -592,6 +590,7 @@ export const EditList = (props: EditListProps) => {
               testId={TOOLS_PANEL_BUTTON_IMPORT_LIST}
               handleClick={openImportDialog}
             />
+
             <ImportDialog
               currentListId={store.id}
               testId={DEFAULT_TEST_ID}
