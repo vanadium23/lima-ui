@@ -12,7 +12,7 @@ interface TestConfig {
   debug: boolean;
   visible: boolean;
   devices: DeviceProfiles[];
-  perScenarioProgress: boolean;
+  verbose: boolean;
   retry: number;
 }
 
@@ -32,12 +32,12 @@ program
   .option("-t, --tablet", "Запуск тестов для планшета.")
   .option("-m, --mobile", "Запуск тестов для мобильного.")
   .option("-c, --current", "Запуск только тестов с тегом @current.")
-  .option("-l, --light", "Запуск всех тестов, кроме тех, что с тегом @heavy")
+  .option("--not-heavy", "Запуск всех тестов, кроме тех, что с тегом @heavy")
   .option("-b, --broken", "Запуск только тестов с тегом @broken.")
   .option("--debug", "Запуск в режиме отладки")
   .option("--visible", "Запуск браузера в видимом режиме и сохранение открытым после тестов")
   .option("--fail-fast", "Остановка выполнения тестов после первой ошибки")
-  .option("--per-scenario-progress", "Отображение имени сценария и прогресса в виде точек")
+  .option("--verbose", "Отображение имени сценария и прогресса в виде точек")
   .option("--retry <number>", "Количество попыток перезапуска упавших тестов", "0")
   .addHelpText(
     "afterAll",
@@ -47,11 +47,11 @@ program
       "  npm run test -- --tablet --mobile       # Запуск тестов для планшета и мобильного\n" +
       "  npm run test -- --current               # Запуск только текущих тестов\n" +
       "  npm run test -- --broken                # Запуск только сломанных тестов\n" +
-      "  npm run test -- --light                 # Запуск всех тестов, кроме тех, что с тегом @heavy\n" +
+      "  npm run test -- --not-heavy             # Запуск всех тестов, кроме тех, что с тегом @heavy\n" +
       "  npm run test -- --desktop --current     # Запуск текущих тестов для десктопа\n" +
       "  npm run test -- --desktop --debug       # Запуск десктоп тестов в режиме отладки\n" +
       "  npm run test -- --fail-fast             # Остановка после первой ошибки\n" +
-      "  npm run test -- --per-scenario-progress # Форматтер прогресса по сценариям\n" +
+      "  npm run test -- --verbose # Форматтер прогресса по сценариям\n" +
       "  npm run test -- --retry 2               # Перезапуск упавших тестов до 2 раз\n" +
       "  npm run test -- --help                  # Показать эту справку\n\n" +
       chalk.cyan("Использование тегов:\n") +
@@ -62,7 +62,7 @@ program
       "  @broken - добавьте к временно неработающим тестам:\n" +
       "    npm run test -- --broken\n" +
       "  @heavy - добавьте к тяжелым тестам, которые нужно исключить из облегчённого прогона:\n" +
-      "    npm run test -- --light\n\n",
+      "    npm run test -- --not-heavy\n\n",
   )
   .showHelpAfterError("(run `npm test -- --help` для справки)");
 
@@ -73,11 +73,11 @@ const config: TestConfig = {
   tags: ["not @broken"], // Default: exclude broken tests
   debug: program.opts().debug || false,
   visible: program.opts().visible || false,
-  perScenarioProgress: program.opts().perScenarioProgress || false,
+  verbose: program.opts().verbose || false,
   retry: parseInt(program.opts().retry || "0", 10),
 };
 
-const { desktop, tablet, mobile, broken, current, light, failFast } = program.opts();
+const { desktop, tablet, mobile, broken, current, notHeavy, failFast } = program.opts();
 
 if (!desktop && !tablet && !mobile) {
   config.devices = [DeviceProfiles.desktop, DeviceProfiles.tablet, DeviceProfiles.mobile];
@@ -91,7 +91,7 @@ if (broken) {
   config.tags = ["@broken"];
 } else if (current) {
   config.tags = ["@current"];
-} else if (light) {
+} else if (notHeavy) {
   config.tags = ["not @broken and not @heavy"];
 }
 
@@ -106,9 +106,9 @@ async function runTests() {
   console.log(`- Tags: ${config.tags.join(", ")}`);
   console.log(`- Debug: ${config.debug ? "enabled" : "disabled"}`);
   console.log(`- Visible mode: ${config.visible ? "enabled" : "disabled"}`);
-  console.log(`- Light mode: ${light ? "enabled" : "disabled"}`);
+  console.log(`- Not heavy mode: ${notHeavy ? "enabled" : "disabled"}`);
   console.log(`- Fail fast: ${failFast ? "enabled" : "disabled"}`);
-  console.log(`- Per-scenario progress: ${config.perScenarioProgress ? "enabled" : "disabled"}`);
+  console.log(`- Verbose: ${config.verbose ? "enabled" : "disabled"}`);
   console.log(`- Retry: ${config.retry}\n`);
 
   console.log(chalk.greenBright("\nTraces folder cleared"));
@@ -146,7 +146,7 @@ async function runTests() {
       // Add import for TypeScript support
       args.push("--import", "tsx/cucumber/import");
 
-      if (config.perScenarioProgress) {
+      if (config.verbose) {
         args.push("--format", "./scripts/perScenarioProgressFormatter.ts");
       }
 

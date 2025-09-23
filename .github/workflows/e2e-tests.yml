@@ -70,7 +70,7 @@ jobs:
         shell: bash
 
       - name: Run E2E tests
-        run: npm test -- --per-scenario-progress --retry 1
+        run: npm test -- --verbose --retry 1
         working-directory: svernik-UI
 
       - name: Stop front-end
