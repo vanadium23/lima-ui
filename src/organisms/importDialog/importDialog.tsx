@@ -82,7 +82,7 @@ export const ImportDialog = (props: Testable<ImportDialogProps>) => {
           text={"Импортировать"}
           handleClick={handleClose}
           testId={DEFAULT_TEST_ID}
-          isDisabled={store.loadingListsForImport}
+          isDisabled={store.loadingListsForImport || store.listsForImport.length === 0}
         />
       }
       isOpen={props.isOpen}
