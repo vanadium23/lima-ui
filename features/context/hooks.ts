@@ -125,7 +125,10 @@ Before(async function (this: ComplexWorld) {
 });
 
 After({ timeout: 60000 }, async function (this: ComplexWorld, scenario: ITestCaseHookParameter) {
-  if (scenario.result?.status === "FAILED") {
+  const hasTraceTag = scenario.pickle.tags.some((tag) => tag.name === "@trace");
+  const shouldSaveTrace = hasTraceTag || scenario.result?.status === "FAILED";
+
+  if (shouldSaveTrace) {
     const tracePath = createTracePath(scenario.pickle.name, getDeviceProfileName());
 
     try {

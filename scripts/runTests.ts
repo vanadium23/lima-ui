@@ -22,38 +22,49 @@ const program = new Command();
 program
   .addHelpText(
     "beforeAll",
-    chalk.blue.bold("\nTest Runner for Lima UI\n") +
-      chalk.blue("==========================\n\n") +
-      "Run tests for different devices with various options.\n",
+    chalk.blue.bold("\nЗапуск тестов для Lima UI\n") +
+      chalk.blue("============================\n\n") +
+      "Запуск тестов для различных устройств с различными опциями.\n",
   )
   .name("npm test")
-  .description("Run tests with various options.")
-  .option("-d, --desktop", "Run tests for desktop.")
-  .option("-t, --tablet", "Run tests for tablet.")
-  .option("-m, --mobile", "Run tests for mobile.")
-  .option("-b, --broken", "Run only tests with @broken tag.")
-  .option("-c, --current", "Run only tests with @current tag.")
-  .option("-l, --light", "Run all tests except those with @heavy tag")
-  .option("--debug", "Run in debug mode")
-  .option("--visible", "Run browser in non-headless mode and keep it open after tests")
-  .option("--fail-fast", "Stop test execution after the first failure")
-  .option("--per-scenario-progress", "Use per-scenario progress formatter (scenario name: dots)")
-  .option("--retry <number>", "Number of times to retry failed tests", "0")
+  .description("Запуск тестов с различными опциями.")
+  .option("-d, --desktop", "Запуск тестов для десктопа.")
+  .option("-t, --tablet", "Запуск тестов для планшета.")
+  .option("-m, --mobile", "Запуск тестов для мобильного.")
+  .option("-c, --current", "Запуск только тестов с тегом @current.")
+  .option("-l, --light", "Запуск всех тестов, кроме тех, что с тегом @heavy")
+  .option("-b, --broken", "Запуск только тестов с тегом @broken.")
+  .option("--debug", "Запуск в режиме отладки")
+  .option("--visible", "Запуск браузера в видимом режиме и сохранение открытым после тестов")
+  .option("--fail-fast", "Остановка выполнения тестов после первой ошибки")
+  .option("--per-scenario-progress", "Отображение имени сценария и прогресса в виде точек")
+  .option("--retry <number>", "Количество попыток перезапуска упавших тестов", "0")
   .addHelpText(
     "afterAll",
-    chalk.yellow("\nExamples:\n") +
-      "  npm run test                            # Run all tests for all devices\n" +
-      "  npm run test -- --desktop               # Run tests only for desktop\n" +
-      "  npm run test -- --broken                # Run only broken tests for all devices\n" +
-      "  npm run test -- --current               # Run only current tests for all devices\n" +
-      "  npm run test -- --light                 # Run all tests except @heavy tests\n" +
-      "  npm run test -- --desktop --debug       # Run desktop tests in debug mode\n" +
-      "  npm run test -- --fail-fast             # Stop after first test failure\n" +
-      "  npm run test -- --per-scenario-progress # Use per-scenario progress formatter\n" +
-      "  npm run test -- --retry 2               # Retry failed tests up to 2 times\n" +
-      "  npm run test -- --help                  # Show this help message\n",
+    chalk.yellow("\nПримеры использования:\n") +
+      "  npm run test                            # Запуск всех тестов для всех устройств\n" +
+      "  npm run test -- --desktop               # Запуск тестов только для десктопа\n" +
+      "  npm run test -- --tablet --mobile       # Запуск тестов для планшета и мобильного\n" +
+      "  npm run test -- --current               # Запуск только текущих тестов\n" +
+      "  npm run test -- --broken                # Запуск только сломанных тестов\n" +
+      "  npm run test -- --light                 # Запуск всех тестов, кроме тех, что с тегом @heavy\n" +
+      "  npm run test -- --desktop --current     # Запуск текущих тестов для десктопа\n" +
+      "  npm run test -- --desktop --debug       # Запуск десктоп тестов в режиме отладки\n" +
+      "  npm run test -- --fail-fast             # Остановка после первой ошибки\n" +
+      "  npm run test -- --per-scenario-progress # Форматтер прогресса по сценариям\n" +
+      "  npm run test -- --retry 2               # Перезапуск упавших тестов до 2 раз\n" +
+      "  npm run test -- --help                  # Показать эту справку\n\n" +
+      chalk.cyan("Использование тегов:\n") +
+      "  @current - добавьте к сценарию для запуска только его:\n" +
+      "    npm run test -- --current\n" +
+      "  @trace - добавьте для сохранения трассировки независимо от результата:\n" +
+      "    Добавьте тег к сценарию и запустите обычным способом\n" +
+      "  @broken - добавьте к временно неработающим тестам:\n" +
+      "    npm run test -- --broken\n" +
+      "  @heavy - добавьте к тяжелым тестам, которые нужно исключить из облегчённого прогона:\n" +
+      "    npm run test -- --light\n\n",
   )
-  .showHelpAfterError("(run `npm test -- --help` for additional information)");
+  .showHelpAfterError("(run `npm test -- --help` для справки)");
 
 program.parse(process.argv);
 
