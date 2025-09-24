@@ -563,6 +563,7 @@ export const EditList = (props: EditListProps) => {
               }
               isOpen={store.isRemoveDialogOpen}
               testId={REMOVE_LIST_DIALOG}
+              testSubId={REMOVE_LIST_DIALOG}
             >
               <p>
                 Список <strong>{store.name}</strong> будет удален без возможности восстановления.

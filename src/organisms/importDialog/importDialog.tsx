@@ -89,6 +89,7 @@ export const ImportDialog = (props: ImportDialogProps) => {
       }
       isOpen={props.isOpen}
       testId={IMPORT_DIALOG}
+      testSubId={IMPORT_DIALOG}
     >
       <div class="importDialog">
         <Show when={!store.loadingListsForImport && store.listsForImport.length === 0}>

@@ -92,7 +92,7 @@ export const Dialog = (props: Testable<DialogProps>) => {
               closeDialog();
             }}
             testId={DIALOG_CLOSE_BUTTON}
-            testSubId={mProps.testId}
+            testSubId={mProps.testSubId ?? ""}
           />
         </div>
         <Switch>
