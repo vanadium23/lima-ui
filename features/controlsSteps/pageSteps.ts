@@ -14,7 +14,7 @@ import { getTimeoutOrCancelItIfDebugging } from "../utilities/getTimeoutOrCancel
 
 export const PAGES_MEANINGS = {
   "List Creation": URL_CREATE_LIST,
-  "My Lists": `${URL_MY_LISTS}/`,
+  "My Lists": `${URL_MY_LISTS}`,
   "My Lists without trailing /": URL_MY_LISTS,
   "My Lists with failed lists loading": TESTS_URL_LISTS_WITH_NETWORK_ERROR,
   "Latest List": TESTS_URL_SOME_LIST,
