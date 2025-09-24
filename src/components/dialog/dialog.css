@@ -5,19 +5,22 @@
 .dialog {
   padding: 0;
   border: none;
+  background: transparent;
   box-shadow:
     rgb(17 17 26 / 10%) 0 0.4rem 1.6rem 0,
     rgb(17 17 26 / 10%) 0 0.8rem 2.4rem 0,
     rgb(17 17 26 / 10%) 0 1.6rem 5.6rem 0;
-  height: fit-content;
-  min-height: fit-content;
-  background: transparent;
+  max-height: min(50rem, calc(100% - 2rem));
+}
+
+.dialog[open] {
+  display: flex;
 }
 
 .dialog__wrapper {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  width: 100%;
 }
 
 .dialog__header {
@@ -73,7 +76,6 @@
 .dialog_medium .dialog__wrapper {
   gap: var(--size-x8);
   padding: var(--size-x10);
-  max-height: 53.6rem;
   border-radius: var(--size-x7);
 }
 

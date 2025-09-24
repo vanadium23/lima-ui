@@ -55,7 +55,7 @@ export const ImportDialog = (props: Testable<ImportDialogProps>) => {
           "Не удалось загрузить списки для импорта, попробуйте еще раз",
           DEFAULT_TEST_ID,
         );
-      });
+      }, 2000);
     }
   };
 
@@ -68,7 +68,7 @@ export const ImportDialog = (props: Testable<ImportDialogProps>) => {
   };
 
   createEffect(() => {
-    if (props.isOpen && store.listsForImport.length === 0) {
+    if (props.isOpen) {
       getListsForImport();
     }
   });
@@ -93,7 +93,7 @@ export const ImportDialog = (props: Testable<ImportDialogProps>) => {
     >
       <div class="importDialog">
         <Show when={!store.loadingListsForImport && store.listsForImport.length === 0}>
-          <div class="importDialog__messageEmpty">
+          <div class="importDialog__emptyMessage">
             Пока здесь пусто, но скоро появятся списки для импорта. Пожалуйста, создайте как минимум два списка для
             начала.
           </div>
