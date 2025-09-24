@@ -1,6 +1,7 @@
 import { createEffect, createSignal, Index, mergeProps } from "solid-js";
 
 import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
+import type { List } from "../../types/types.ts";
 import { Checkbox, CheckboxSize, CheckboxTheme, type CheckedState } from "../checkbox/checkbox.tsx";
 import { Icon, IconSize } from "../icon/icon.tsx";
 import { IconName } from "../icon/types.ts";
@@ -17,20 +18,10 @@ export enum ListStripeImportSize {
   Medium = "medium",
 }
 
-export type ListItemData = {
-  text: string;
-};
-
-export type ListData = {
-  title: string;
-  purpose?: string;
-  items: ListItemData[];
-};
-
 type ListStripeImportProps = {
   theme?: ListStripeImportTheme;
   size?: ListStripeImportSize;
-  listData: ListData;
+  listData: List;
   titleHTMLName: string;
 };
 
@@ -110,7 +101,7 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
       <div class="listStripeImport__accordion">
         <button type="button" class="listStripeImport__header" onClick={toggleExpanded}>
           <div class="listStripeImport__headerInner">
-            <span class="listStripeImport__title">{mProps.listData.title}</span>
+            <span class="listStripeImport__title">{mProps.listData.name}</span>
             {mProps.listData.purpose && <span class="listStripeImport__purpose">{mProps.listData.purpose}</span>}
           </div>
 
@@ -122,7 +113,7 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
           <Index each={mProps.listData.items}>
             {(item, index) => (
               <ListItemImport
-                text={item().text}
+                text={item().content}
                 testId={DEFAULT_TEST_ID}
                 toImport={getItemsCheckboxState()[index] || false}
                 onCheckedChange={handleItemCheckboxChange(index)}

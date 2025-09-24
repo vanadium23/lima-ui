@@ -68,7 +68,8 @@ export type EditListStore = DragList & {
   error: boolean;
   removeError: boolean;
   isCheckable: boolean;
-  isDialogOpen: boolean;
+  isRemoveDialogOpen: boolean;
+  isImportDialogOpen: boolean;
   isChanged: boolean;
   isNewList: boolean;
   draggedItem: string;

@@ -15,7 +15,6 @@ import { ITEMS_LIMIT, LIST_PURPOSE_INPUT_LIMIT, LIST_TITLE_INPUT_LIMIT } from ".
 import {
   AUTO_LIST_ITEM,
   CHECKLIST_SWITCH,
-  DIALOG_REMOVE_BUTTON,
   DRAGGED_LIST_ITEM,
   ITEMS_LIMIT_REACHED_WARNING,
   LIST_ITEM,
@@ -24,6 +23,7 @@ import {
   LIST_REMOVAL_ERROR,
   LIST_TITLE_INPUT,
   NETWORK_ERROR,
+  REMOVE_DIALOG_REMOVE_LIST_BUTTON,
   REMOVE_LIST_DIALOG,
   SAVE_LIST_BUTTON,
   TOOLS_PANEL,
@@ -45,6 +45,7 @@ import { Note } from "../../components/note/note.tsx";
 import { PageError } from "../../components/pageError/pageError.tsx";
 import { Switch } from "../../components/switch/switch.tsx";
 import { ToolsButton, ToolsButtonComponentType, ToolsButtonTheme } from "../../components/toolsButton/toolsButton.tsx";
+import { ImportDialog } from "../../organisms/importDialog/importDialog.tsx";
 import { ToolsPanel, ToolsPanelSize, ToolsPanelTheme } from "../../organisms/toolsPanel/toolsPanel.tsx";
 import { setLocation } from "../../state/locationState.ts";
 import {
@@ -119,7 +120,8 @@ export const EditList = (props: EditListProps) => {
     error: false,
     removeError: false,
     isCheckable: false,
-    isDialogOpen: false,
+    isRemoveDialogOpen: false,
+    isImportDialogOpen: false,
     isChanged: false,
     isNewList: list.id === "",
     draggedItem: "",
@@ -151,8 +153,10 @@ export const EditList = (props: EditListProps) => {
   });
 
   const toggleCheckable = () => setStore("isCheckable", !store.isCheckable);
-  const openDialog = () => setStore("isDialogOpen", true);
-  const closeDialog = () => setStore("isDialogOpen", false);
+  const openRemoveDialog = () => setStore("isRemoveDialogOpen", true);
+  const closeRemoveDialog = () => setStore("isRemoveDialogOpen", false);
+  const openImportDialog = () => setStore("isImportDialogOpen", true);
+  const closeImportDialog = () => setStore("isImportDialogOpen", false);
 
   function addItem(options: AddItemOptions) {
     if (reachedItemsLimit()) return;
@@ -267,7 +271,7 @@ export const EditList = (props: EditListProps) => {
     createList(data)
       .then((newList) => {
         soften(() => {
-          history.pushState({}, "", `${URL_MY_LISTS}${newList.id}`);
+          history.pushState({}, "", `${URL_MY_LISTS}/${newList.id}`);
           setLocation(window.location.pathname);
           document.title = suffixTabTitle(newList.name);
 
@@ -330,7 +334,7 @@ export const EditList = (props: EditListProps) => {
       .then(() => {
         soften(() => {
           setStore("sendingNow", false);
-          location.href = "/lists/";
+          location.href = URL_MY_LISTS;
         });
       })
       .catch((error) => {
@@ -452,6 +456,8 @@ export const EditList = (props: EditListProps) => {
                         onChange={(value) => handleItemChange(index(), value)}
                         onAddBefore={() => addItem({ mode: "before", index: index() })}
                         onAddAfter={() => addItem({ mode: "after", index: index() })}
+                        onImportAbove={openImportDialog}
+                        onImportBelow={openImportDialog}
                         canAddMore={!reachedItemsLimit()}
                         testId={item.auto ? AUTO_LIST_ITEM : LIST_ITEM}
                         testSubId={index()}
@@ -537,12 +543,12 @@ export const EditList = (props: EditListProps) => {
               text={"Удалить список"}
               isLoading={store.sendingNow === "deleting"}
               isDisabled={store.isNewList || store.sendingNow === "saving"}
-              handleClick={openDialog}
+              handleClick={openRemoveDialog}
               testId={TOOLS_PANEL_BUTTON_REMOVE_LIST}
             />
             <Dialog
               title="Удаление списка"
-              onCancel={closeDialog}
+              onCancel={closeRemoveDialog}
               controls={
                 <Button
                   theme={ButtonTheme.Dangerous}
@@ -550,13 +556,14 @@ export const EditList = (props: EditListProps) => {
                   text={"Удалить"}
                   handleClick={() => {
                     sendListRemove();
-                    closeDialog();
+                    closeRemoveDialog();
                   }}
-                  testId={DIALOG_REMOVE_BUTTON}
+                  testId={REMOVE_DIALOG_REMOVE_LIST_BUTTON}
                 />
               }
-              isOpen={store.isDialogOpen}
+              isOpen={store.isRemoveDialogOpen}
               testId={REMOVE_LIST_DIALOG}
+              testSubId={REMOVE_LIST_DIALOG}
             >
               <p>
                 Список <strong>{store.name}</strong> будет удален без возможности восстановления.
@@ -581,7 +588,11 @@ export const EditList = (props: EditListProps) => {
               isDisabled={reachedItemsLimit() || store.sendingNow !== false}
               text={"Импорт"}
               testId={TOOLS_PANEL_BUTTON_IMPORT_LIST}
+              handleClick={openImportDialog}
             />
+
+            <ImportDialog currentListId={store.id} isOpen={store.isImportDialogOpen} onClose={closeImportDialog} />
+
             <ToolsButton
               componentType={ToolsButtonComponentType.Link}
               iconName={IconName.Printer}

@@ -48,6 +48,8 @@ type ListItemProps = {
   onChange?: (value: string) => void;
   onAddBefore?: () => void;
   onAddAfter?: () => void;
+  onImportAbove?: () => void;
+  onImportBelow?: () => void;
   canAddMore: boolean;
   dragSettings?: DragSettings;
   isDraggingOverlay?: boolean;
@@ -68,6 +70,8 @@ export const ListItem = (props: Testable<ListItemProps>) => {
       onChange: () => {},
       onAddBefore: () => {},
       onAddAfter: () => {},
+      onImportAbove: () => {},
+      onImportBelow: () => {},
       removeItem: () => {},
       isDraggingOverlay: false,
       dragId: "",
@@ -99,12 +103,14 @@ export const ListItem = (props: Testable<ListItemProps>) => {
     {
       text: "Импортировать выше",
       icon: IconName.SortDescending,
+      handleClick: mProps.onImportAbove,
       testId: DEFAULT_TEST_ID,
       isDisabled: !mProps.canAddMore,
     },
     {
       text: "Импортировать ниже",
       icon: IconName.SortAscending,
+      handleClick: mProps.onImportBelow,
       testId: DEFAULT_TEST_ID,
       isDisabled: !mProps.canAddMore,
     },

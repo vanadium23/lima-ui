@@ -2,12 +2,12 @@ import { createSignal, mergeProps, Show } from "solid-js";
 
 import {
   DEFAULT_TEST_ID,
-  DIALOG_REMOVE_BUTTON,
   LIST_ITEM_CONTEXT_MENU,
   LIST_STRIPE,
   LIST_STRIPE_LINK_TO_VIEW,
   LIST_STRIPE_REMOVE_BUTTON,
   OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
+  REMOVE_DIALOG_REMOVE_LIST_BUTTON,
   REMOVE_LIST_DIALOG,
 } from "../../../features/testIds.ts";
 import { removeList } from "../../widgets/editList/services/removeList.ts";
@@ -172,7 +172,7 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
               removeListFromListStripe();
               closeDialog();
             }}
-            testId={DIALOG_REMOVE_BUTTON}
+            testId={REMOVE_DIALOG_REMOVE_LIST_BUTTON}
             testSubId={mProps.testSubId || "0"}
           />
         }

@@ -50,6 +50,8 @@
 
 .checkbox__input {
   outline: none;
+  width: 0;
+  height: 0;
 }
 
 .checkbox__input:focus-visible + .checkbox__inner {

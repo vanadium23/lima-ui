@@ -24,7 +24,7 @@ try {
     errorText = "Ошибка соединения с сервером, попробуйте еще раз";
     backendListsAddress = BACKEND_URL_NON_EXISTING;
   }
-  const response = await fetch(`${backendURL}${backendListsAddress}${Astro.params.id}`);
+  const response = await fetch(`${backendURL}${backendListsAddress}/${Astro.params.id}`);
 
   if (!response.ok) {
     errorText = "Список с указанным ID не найден!";

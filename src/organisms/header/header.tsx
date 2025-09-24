@@ -8,10 +8,7 @@ import {
 } from "../../../features/testIds.ts";
 import { URL_MY_LISTS } from "../../../utilities/addresses.ts";
 import { IconName } from "../../components/icon/types.ts";
-import {
-  IconButton,
-  IconButtonTheme,
-} from "../../components/iconButton/iconButton.tsx";
+import { IconButton, IconButtonTheme } from "../../components/iconButton/iconButton.tsx";
 import { Logo } from "../../components/logo/logo.tsx";
 import { ToggleIconButton } from "../../components/toggleIconButton/toggleIconButton.tsx";
 import { location } from "../../state/locationState.ts";
@@ -29,11 +26,7 @@ export const Header = (props: HeaderProps) => {
   const showToggleIconButton = (): boolean => {
     const currentLocation: string = location();
 
-    return (
-      !props.list404 &&
-      currentLocation !== URL_MY_LISTS &&
-      currentLocation !== URL_MY_LISTS.slice(0, -1)
-    );
+    return !props.list404 && currentLocation !== URL_MY_LISTS;
   };
 
   return (

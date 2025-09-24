@@ -3,13 +3,24 @@
 }
 
 .dialog {
-  border-radius: var(--size-x7);
   padding: 0;
   border: none;
+  background: transparent;
   box-shadow:
     rgb(17 17 26 / 10%) 0 0.4rem 1.6rem 0,
     rgb(17 17 26 / 10%) 0 0.8rem 2.4rem 0,
     rgb(17 17 26 / 10%) 0 1.6rem 5.6rem 0;
+  max-height: min(50rem, calc(100% - 2rem));
+}
+
+.dialog[open] {
+  display: flex;
+}
+
+.dialog__wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .dialog__header {
@@ -23,6 +34,11 @@
   line-height: 2rem;
   padding: 0;
   margin: 0;
+}
+
+.dialog__content {
+  display: flex;
+  width: 100%;
 }
 
 .dialog__content > p {
@@ -40,15 +56,27 @@
   justify-content: flex-end;
 }
 
+.dialog__loadingIconWrapper {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.dialog__loadingIcon {
+  display: flex;
+  animation: var(--preloader);
+  color: var(--neutral-500);
+}
+
 .dialog_medium {
   width: 64rem;
+  border-radius: var(--size-x7);
 }
 
 .dialog_medium .dialog__wrapper {
-  display: flex;
-  flex-direction: column;
   gap: var(--size-x8);
   padding: var(--size-x10);
+  border-radius: var(--size-x7);
 }
 
 .dialog_medium .dialog__header {

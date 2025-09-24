@@ -35,7 +35,7 @@ export const DropdownListItem = (props: Testable<DropdownListItemProps>) => {
       data-test-id={mProps.testId}
       data-test-sub-id={mProps.testSubId}
     >
-      <a class="dropdownListItem__text" href={URL_MY_LISTS + mProps.listId}>
+      <a class="dropdownListItem__text" href={`${URL_MY_LISTS}/${mProps.listId}`}>
         {mProps.text}
       </a>
     </li>

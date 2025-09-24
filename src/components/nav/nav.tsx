@@ -59,10 +59,7 @@ export const Nav = (props: NavProps) => {
             text="Мои списки"
             icon={IconName.List}
             testId={DEFAULT_TEST_ID}
-            isCurrent={
-              location() === URL_MY_LISTS ||
-              location().startsWith(`${URL_MY_LISTS}list-`)
-            }
+            isCurrent={location() === URL_MY_LISTS || location().startsWith(`${URL_MY_LISTS}/list-`)}
           />
         </li>
         <li role="none">
