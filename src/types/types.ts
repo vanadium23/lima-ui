@@ -17,7 +17,7 @@ export type ListBase = {
   id: string;
   name: string;
   purpose: string;
-  importedTo?: SimpleList[];
+  exportedTo?: SimpleList[];
 };
 
 export type List = ListBase & {
