@@ -1,11 +1,10 @@
 import { createEffect, For, Show } from "solid-js";
 import { createStore } from "solid-js/store";
 
-import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
+import { DEFAULT_TEST_ID, IMPORT_DIALOG, IMPORT_DIALOG_IMPORT_BUTTON } from "../../../features/testIds.ts";
 import { Button, ButtonSize, ButtonTheme } from "../../components/button/button.tsx";
 import { Dialog } from "../../components/dialog/dialog.tsx";
 import { ListStripeImport } from "../../components/listStripeImport/listStripeImport.tsx";
-import type { Testable } from "../../components/utilities/testable.ts";
 import { notificationState } from "../../state/pushNotificationStateManager.ts";
 import type { List } from "../../types/types.ts";
 import { getLists } from "../../widgets/editList/services/getLists.ts";
@@ -25,7 +24,7 @@ type ImportDialogState = {
   loadingListsForImport: boolean;
 };
 
-export const ImportDialog = (props: Testable<ImportDialogProps>) => {
+export const ImportDialog = (props: ImportDialogProps) => {
   const [store, setStore] = createStore<ImportDialogState>({
     listsForImport: [],
     elementsReadyToImport: [],
@@ -84,12 +83,12 @@ export const ImportDialog = (props: Testable<ImportDialogProps>) => {
           size={ButtonSize.Medium}
           text={"Импортировать"}
           handleClick={handleClose}
-          testId={DEFAULT_TEST_ID}
+          testId={IMPORT_DIALOG_IMPORT_BUTTON}
           isDisabled={store.elementsReadyToImport.length === 0}
         />
       }
       isOpen={props.isOpen}
-      testId={DEFAULT_TEST_ID}
+      testId={IMPORT_DIALOG}
     >
       <div class="importDialog">
         <Show when={!store.loadingListsForImport && store.listsForImport.length === 0}>

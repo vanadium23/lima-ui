@@ -20,16 +20,13 @@ const LIST_ITEM_INPUT_SUFFIX = "Input";
 export const LIST_ITEM = "listItem";
 export const LIST_ITEM_INPUT = buildListItemInputTestId(LIST_ITEM);
 export const DRAGGED_LIST_ITEM = "draggedListItem";
-export const DRAGGED_LIST_ITEM_INPUT =
-  buildListItemInputTestId(DRAGGED_LIST_ITEM);
+export const DRAGGED_LIST_ITEM_INPUT = buildListItemInputTestId(DRAGGED_LIST_ITEM);
 
 export function buildListItemInputTestId(listItemTestId: TestId): TestId {
   return `${listItemTestId}${LIST_ITEM_INPUT_SUFFIX}`;
 }
 
-export function extractListItemTestIdFromItsInputTestId(
-  listItemInoutTestId: TestId,
-): TestId {
+export function extractListItemTestIdFromItsInputTestId(listItemInoutTestId: TestId): TestId {
   return listItemInoutTestId.replace(LIST_ITEM_INPUT_SUFFIX, "");
 }
 
@@ -40,10 +37,8 @@ export const LIST_ITEM_CONTEXT_MENU = "listItemContextMenu";
 
 export const CREATE_LIST_BUTTON = "createListButton";
 export const SAVE_LIST_BUTTON = "saveListButton";
-export const OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON =
-  "openContextMenuListItemButton";
-export const OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON =
-  "openContextMenuListStripeButton";
+export const OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON = "openContextMenuListItemButton";
+export const OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON = "openContextMenuListStripeButton";
 export const REMOVE_ITEM_MENUITEM = "removeItemMenuitem";
 export const ADD_ITEM_ABOVE_MENUITEM = "addItemAboveMenuitem";
 export const ADD_ITEM_BELOW_MENUITEM = "addItemBelowMenuitem";
@@ -73,9 +68,7 @@ export function buildInputCounterTestId(inputId: TestId): TestId {
   return `${inputId}${COUNTER_SUFFIX}`;
 }
 
-export function extractInputTestIdFromItsCounterTestId(
-  counterTestId: TestId,
-): TestId {
+export function extractInputTestIdFromItsCounterTestId(counterTestId: TestId): TestId {
   return counterTestId.replace(COUNTER_SUFFIX, "");
 }
 
@@ -119,7 +112,10 @@ export const LIST_STRIPE_CONTEXT_MENU = "listStripeContextMenu";
 
 export const REMOVE_LIST_DIALOG = "removeListDialog";
 export const DIALOG_CLOSE_BUTTON = "dialogCloseButton";
-export const DIALOG_REMOVE_BUTTON = "dialogRemoveButton";
+export const REMOVE_DIALOG_REMOVE_LIST_BUTTON = "removeDialogRemoveListButton";
+
+export const IMPORT_DIALOG = "importDialog";
+export const IMPORT_DIALOG_IMPORT_BUTTON = "importDialogImportButton";
 
 export const DRAG_HANDLE = "dragHandle";
 

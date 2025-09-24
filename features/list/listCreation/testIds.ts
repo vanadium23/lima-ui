@@ -10,7 +10,6 @@ import {
   CLEAR_SEARCH_BUTTON,
   CREATE_LIST_BUTTON,
   DIALOG_CLOSE_BUTTON,
-  DIALOG_REMOVE_BUTTON,
   LIST_ITEM,
   LIST_ITEM_INPUT,
   LIST_PURPOSE_INPUT,
@@ -20,6 +19,7 @@ import {
   NOTE_TEXT_AREA,
   OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
   OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
+  REMOVE_DIALOG_REMOVE_LIST_BUTTON,
   REMOVE_ITEM_MENUITEM,
   SAVE_LIST_BUTTON,
   SEARCH_BUTTON,
@@ -39,42 +39,24 @@ export const BUTTON_TEST_IDS = {
   "add list item": TOOLS_PANEL_ADD_ITEM_BUTTON,
   "remove item": REMOVE_ITEM_MENUITEM,
   "open context menu list item": OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
-  "open context menu first item": buildFullTestId(
-    OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
-    0,
-  ),
-  "open context menu second item": buildFullTestId(
-    OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
-    1,
-  ),
-  "open context menu third item": buildFullTestId(
-    OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
-    2,
-  ),
-  "open context menu forth item": buildFullTestId(
-    OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
-    3,
-  ),
+  "open context menu first item": buildFullTestId(OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON, 0),
+  "open context menu second item": buildFullTestId(OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON, 1),
+  "open context menu third item": buildFullTestId(OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON, 2),
+  "open context menu forth item": buildFullTestId(OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON, 3),
   "open context menu for last list item of the limit": buildFullTestId(
     OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
     ITEMS_LIMIT - 1,
   ),
-  "open context menu for automatic list item": buildFullTestId(
-    OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
-    AUTO_LIST_ITEM,
-  ),
+  "open context menu for automatic list item": buildFullTestId(OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON, AUTO_LIST_ITEM),
   "remove list": LIST_STRIPE_REMOVE_BUTTON,
   "cancel list removal": DIALOG_CLOSE_BUTTON,
-  "confirm list removal": DIALOG_REMOVE_BUTTON,
+  "confirm list removal": REMOVE_DIALOG_REMOVE_LIST_BUTTON,
   "copy items": TOOLS_PANEL_BUTTON_COPY_ITEMS,
   import: TOOLS_PANEL_BUTTON_IMPORT_LIST,
   "remove list tools panel": TOOLS_PANEL_BUTTON_REMOVE_LIST,
   "print list": TOOLS_PANEL_BUTTON_PRINT_LIST,
   "open context menu list stripe": OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
-  "open context menu first list stripe": buildFullTestId(
-    OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
-    0,
-  ),
+  "open context menu first list stripe": buildFullTestId(OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON, 0),
   search: SEARCH_BUTTON,
   "clear search": CLEAR_SEARCH_BUTTON,
   "close search error notification": SEARCH_NETWORK_ERROR_CLOSE_BUTTON,
@@ -86,14 +68,8 @@ export const MENUITEM_TEST_IDS = {
   "remove first list item": buildFullTestId(REMOVE_ITEM_MENUITEM, 0),
   "remove second list item": buildFullTestId(REMOVE_ITEM_MENUITEM, 1),
   "remove third list item": buildFullTestId(REMOVE_ITEM_MENUITEM, 2),
-  "remove on the last list item of the limit": buildFullTestId(
-    REMOVE_ITEM_MENUITEM,
-    ITEMS_LIMIT - 1,
-  ),
-  "remove automatic list item": buildFullTestId(
-    REMOVE_ITEM_MENUITEM,
-    AUTO_LIST_ITEM,
-  ),
+  "remove on the last list item of the limit": buildFullTestId(REMOVE_ITEM_MENUITEM, ITEMS_LIMIT - 1),
+  "remove automatic list item": buildFullTestId(REMOVE_ITEM_MENUITEM, AUTO_LIST_ITEM),
   "add item above": ADD_ITEM_ABOVE_MENUITEM,
   "add item below": ADD_ITEM_BELOW_MENUITEM,
 };
@@ -116,10 +92,7 @@ export type InputMeaning = keyof typeof INPUT_TEST_IDS;
 export const COUNTER_TEST_IDS = {
   "list title input": buildInputCounterTestId(LIST_TITLE_INPUT),
   "list purpose input": buildInputCounterTestId(LIST_PURPOSE_INPUT),
-  "first item input": buildFullTestId(
-    buildInputCounterTestId(LIST_ITEM_INPUT),
-    0,
-  ),
+  "first item input": buildFullTestId(buildInputCounterTestId(LIST_ITEM_INPUT), 0),
   "list note text area": buildTextAreaCounterTestId(NOTE_TEXT_AREA),
 };
 export type CounterMeaning = keyof typeof COUNTER_TEST_IDS;
@@ -129,10 +102,7 @@ export const ELEMENT_TEST_IDS = {
   "second list item": buildFullTestId(LIST_ITEM, 1),
   "third list item": buildFullTestId(LIST_ITEM, 2),
   "forth list item": buildFullTestId(LIST_ITEM, 3),
-  "on the last list item of the limit": buildFullTestId(
-    LIST_ITEM,
-    ITEMS_LIMIT - 1,
-  ),
+  "on the last list item of the limit": buildFullTestId(LIST_ITEM, ITEMS_LIMIT - 1),
   "automatic list item": AUTO_LIST_ITEM,
 };
 export type ElementMeaning = keyof typeof ELEMENT_TEST_IDS;

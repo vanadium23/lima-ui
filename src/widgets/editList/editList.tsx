@@ -15,8 +15,6 @@ import { ITEMS_LIMIT, LIST_PURPOSE_INPUT_LIMIT, LIST_TITLE_INPUT_LIMIT } from ".
 import {
   AUTO_LIST_ITEM,
   CHECKLIST_SWITCH,
-  DEFAULT_TEST_ID,
-  DIALOG_REMOVE_BUTTON,
   DRAGGED_LIST_ITEM,
   ITEMS_LIMIT_REACHED_WARNING,
   LIST_ITEM,
@@ -25,6 +23,7 @@ import {
   LIST_REMOVAL_ERROR,
   LIST_TITLE_INPUT,
   NETWORK_ERROR,
+  REMOVE_DIALOG_REMOVE_LIST_BUTTON,
   REMOVE_LIST_DIALOG,
   SAVE_LIST_BUTTON,
   TOOLS_PANEL,
@@ -559,7 +558,7 @@ export const EditList = (props: EditListProps) => {
                     sendListRemove();
                     closeRemoveDialog();
                   }}
-                  testId={DIALOG_REMOVE_BUTTON}
+                  testId={REMOVE_DIALOG_REMOVE_LIST_BUTTON}
                 />
               }
               isOpen={store.isRemoveDialogOpen}
@@ -591,12 +590,7 @@ export const EditList = (props: EditListProps) => {
               handleClick={openImportDialog}
             />
 
-            <ImportDialog
-              currentListId={store.id}
-              testId={DEFAULT_TEST_ID}
-              isOpen={store.isImportDialogOpen}
-              onClose={closeImportDialog}
-            />
+            <ImportDialog currentListId={store.id} isOpen={store.isImportDialogOpen} onClose={closeImportDialog} />
 
             <ToolsButton
               componentType={ToolsButtonComponentType.Link}
