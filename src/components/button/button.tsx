@@ -1,4 +1,4 @@
-import { mergeProps, Show } from "solid-js";
+import { type JSX, mergeProps, Show } from "solid-js";
 
 import { Icon, IconSize } from "../icon/icon.tsx";
 import { IconName } from "../icon/types.ts";
@@ -33,12 +33,12 @@ type ButtonProps = {
   size?: ButtonSize;
   componentType?: ButtonComponentType;
   link?: string;
-  type?: ButtonType; //GERMAN - Подумать Герману как это сделать получше (может Union type)
+  type?: ButtonType;
   isDisabled?: boolean;
-  text: string;
   isLoading?: boolean;
   handleClick?: () => void;
   openInNewTab?: boolean;
+  children: JSX.Element;
 };
 
 export const Button = (props: Testable<ButtonProps>) => {
@@ -83,21 +83,13 @@ export const Button = (props: Testable<ButtonProps>) => {
         >
           <Show when={mProps.isLoading}>
             <div class="button__loadingIcon">
-              <Icon
-                name={IconName.CircleNotch}
-                size={loadingIconSize[mProps.size]}
-              />
+              <Icon name={IconName.CircleNotch} size={loadingIconSize[mProps.size]} />
             </div>
           </Show>
-          <span class="button__text">{mProps.text}</span>
+          <span class="button__text">{mProps.children}</span>
         </button>
       </Show>
-      <Show
-        when={
-          mProps.componentType === ButtonComponentType.Link &&
-          !mProps.isDisabled
-        }
-      >
+      <Show when={mProps.componentType === ButtonComponentType.Link && !mProps.isDisabled}>
         <a
           href={mProps.link}
           target={mProps.openInNewTab ? "_blank" : "_self"}
@@ -106,14 +98,10 @@ export const Button = (props: Testable<ButtonProps>) => {
           data-test-id={mProps.testId}
           data-test-sub-id={mProps.testSubId}
         >
-          <span class="button__text">{mProps.text}</span>
+          <span class="button__text">{mProps.children}</span>
         </a>
       </Show>
-      <Show
-        when={
-          mProps.componentType === ButtonComponentType.Link && mProps.isDisabled
-        }
-      >
+      <Show when={mProps.componentType === ButtonComponentType.Link && mProps.isDisabled}>
         <span
           class={`button button_${mProps.theme} button_${mProps.size}`}
           classList={{
@@ -123,7 +111,7 @@ export const Button = (props: Testable<ButtonProps>) => {
           data-test-id={mProps.testId}
           data-test-sub-id={mProps.testSubId}
         >
-          <span class="button__text">{mProps.text}</span>
+          <span class="button__text">{mProps.children}</span>
         </span>
       </Show>
     </>

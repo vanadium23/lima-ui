@@ -1,11 +1,6 @@
 ---
 import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
-import {
-  Button,
-  ButtonComponentType,
-  ButtonSize,
-  ButtonTheme,
-} from "../../../components/button/button.tsx";
+import { Button, ButtonComponentType, ButtonSize, ButtonTheme } from "../../../components/button/button.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 const themes = Object.values(ButtonTheme);
@@ -27,29 +22,15 @@ const sizes = Object.values(ButtonSize);
           {sizes.map((size) => (
             <>
               <span class="rhead">{size}</span>
-              <Button
-                client:only="solid-js"
-                theme={theme}
-                size={size}
-                text="Text"
-                testId={DEFAULT_TEST_ID}
-              />
-              <Button
-                client:only="solid-js"
-                theme={theme}
-                size={size}
-                text="Text"
-                testId={DEFAULT_TEST_ID}
-                isLoading={true}
-              />
-              <Button
-                client:only="solid-js"
-                theme={theme}
-                size={size}
-                text="Text"
-                testId={DEFAULT_TEST_ID}
-                isDisabled={true}
-              />
+              <Button client:only="solid-js" theme={theme} size={size} testId={DEFAULT_TEST_ID}>
+                Text
+              </Button>
+              <Button client:only="solid-js" theme={theme} size={size} testId={DEFAULT_TEST_ID} isLoading={true}>
+                Text
+              </Button>
+              <Button client:only="solid-js" theme={theme} size={size} testId={DEFAULT_TEST_ID} isDisabled={true}>
+                Text
+              </Button>
             </>
           ))}
         </div>
@@ -76,19 +57,21 @@ const sizes = Object.values(ButtonSize);
                 componentType={ButtonComponentType.Link}
                 theme={theme}
                 size={size}
-                text="Text"
                 testId={DEFAULT_TEST_ID}
-              />
+              >
+                Text
+              </Button>
               <span>Не предусмотрено</span>
               <Button
                 client:only="solid-js"
                 componentType={ButtonComponentType.Link}
                 theme={theme}
                 size={size}
-                text="Text"
                 testId={DEFAULT_TEST_ID}
                 isDisabled={true}
-              />
+              >
+                Text
+              </Button>
             </>
           ))}
         </div>

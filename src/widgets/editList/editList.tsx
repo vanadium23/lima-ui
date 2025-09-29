@@ -509,11 +509,12 @@ export const EditList = (props: EditListProps) => {
           <div class="editList__controls">
             <Button
               type={ButtonType.Submit}
-              text="Сохранить"
               isDisabled={!store.isChanged || store.sendingNow === "deleting"}
               isLoading={store.sendingNow === "saving"}
               testId={SAVE_LIST_BUTTON}
-            />
+            >
+              Сохранить
+            </Button>
           </div>
         </form>
       </div>
@@ -553,13 +554,14 @@ export const EditList = (props: EditListProps) => {
                 <Button
                   theme={ButtonTheme.Dangerous}
                   size={ButtonSize.Medium}
-                  text={"Удалить"}
                   handleClick={() => {
                     sendListRemove();
                     closeRemoveDialog();
                   }}
                   testId={REMOVE_DIALOG_REMOVE_LIST_BUTTON}
-                />
+                >
+                  Удалить
+                </Button>
               }
               isOpen={store.isRemoveDialogOpen}
               testId={REMOVE_LIST_DIALOG}

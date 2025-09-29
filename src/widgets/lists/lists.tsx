@@ -102,10 +102,11 @@ export const Lists = (props: ListsProps) => {
           <Button
             componentType={ButtonComponentType.Link}
             link={URL_CREATE_LIST}
-            text="Создать"
             testId={CREATE_LIST_BUTTON}
             isDisabled={checkListsLimitReached()}
-          />
+          >
+            Создать
+          </Button>
         </div>
       </Show>
     </div>
