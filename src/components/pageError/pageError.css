@@ -4,8 +4,8 @@
 
 .pageError_medium {
   border: 0.1rem;
-  padding: var(--size-x3) var(--size-x8);
-  border-radius: var(--size-x4);
+  padding: 0.6rem 1.6rem;
+  border-radius: 0.8rem;
   max-width: 50rem;
   font-size: 1.6rem;
   line-height: 2rem;

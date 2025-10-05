@@ -4,14 +4,14 @@
   flex-shrink: 0;
   width: 100%;
   flex-wrap: nowrap;
-  gap: var(--size-x4);
+  gap: 0.8rem;
   text-decoration: none;
 }
 
 .navItem_medium {
   font-size: 1.6rem;
   line-height: 2rem;
-  padding: var(--size-x3) var(--size-x8);
+  padding: 0.6rem 1.6rem;
 }
 
 .navItem_primary {
@@ -20,7 +20,7 @@
 
 .navItem_primary.navItem_current {
   color: var(--text-neutral-900);
-  font-weight: var(--semi-bold);
+  font-weight: 600;
 }
 
 .navItem_primary:active:not(.navItem_disabled) {
