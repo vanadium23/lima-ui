@@ -30,31 +30,31 @@
 
 .input__controls {
   display: none;
-  gap: var(--size-x6);
+  gap: 1.2rem;
 }
 
 .input_medium .input__inner {
   font-size: 1.6rem;
   line-height: 2rem;
-  padding: var(--size-x3) var(--size-x8);
+  padding: 0.6rem 1.6rem;
 }
 
 .input_medium .input__controls {
-  padding: var(--size-x3) var(--size-x8) var(--size-x3) 0;
+  padding: 0.6rem 1.6rem 0.6rem 0;
 }
 
 .input_medium .input__clearButton {
-  padding: var(--size-x3) var(--size-x3) var(--size-x3) 0;
+  padding: 0.6rem 0.6rem 0.6rem 0;
 }
 
 .input_medium .input__passwordToggle {
-  padding: var(--size-x3) var(--size-x3) var(--size-x3) 0;
+  padding: 0.6rem 0.6rem 0.6rem 0;
 }
 
 .input_primary {
   border-color: var(--neutral-500);
   background: var(--neutral-100);
-  border-radius: var(--size-x4);
+  border-radius: 0.8rem;
 }
 
 .input_primary:focus-within {
@@ -95,7 +95,7 @@
 .input_secondary {
   border-color: var(--primary-200);
   background: var(--primary-200);
-  border-radius: var(--size-x4);
+  border-radius: 0.8rem;
 }
 
 .input_secondary .input__inner::placeholder {

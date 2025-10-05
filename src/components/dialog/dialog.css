@@ -70,22 +70,22 @@
 
 .dialog_medium {
   width: 64rem;
-  border-radius: var(--size-x7);
+  border-radius: 1.4rem;
 }
 
 .dialog_medium .dialog__wrapper {
-  gap: var(--size-x8);
-  padding: var(--size-x10);
-  border-radius: var(--size-x7);
+  gap: 1.6rem;
+  padding: 2rem;
+  border-radius: 1.4rem;
 }
 
 .dialog_medium .dialog__header {
-  gap: var(--size-x8);
-  padding-left: var(--size-x5);
+  gap: 1.6rem;
+  padding-left: 1rem;
 }
 
 .dialog_medium .dialog__controls {
-  gap: var(--size-x12);
+  gap: 2.4rem;
 }
 
 .dialog_primary .dialog__wrapper {
@@ -110,6 +110,6 @@
   }
 
   .dialog_medium .dialog__controls {
-    gap: var(--size-x8);
+    gap: 1.6rem;
   }
 }

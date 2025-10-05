@@ -1,7 +1,7 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: var(--size-x2);
+  gap: 0.4rem;
   color: var(--text-neutral-100);
   font-size: 1.6rem;
   font-weight: var(--bold);
@@ -10,5 +10,5 @@
 }
 
 .logo__text {
-  padding: var(--size-x1) 0;
+  padding: 0.2rem 0;
 }

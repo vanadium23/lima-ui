@@ -7,7 +7,7 @@
   cursor: pointer;
   border: 0.1rem solid transparent;
   background: transparent;
-  border-radius: var(--size-x4);
+  border-radius: 0.8rem;
   appearance: none;
   text-decoration: none;
 }
@@ -20,15 +20,15 @@
 .textButton_extraSmallEmbedded {
   font-size: 1.4rem;
   line-height: 2rem;
-  gap: var(--size-x2);
+  gap: 0.4rem;
 }
 
 .textButton_medium {
   font-size: 1.6rem;
   line-height: 2rem;
   min-width: 9rem;
-  gap: var(--size-x2);
-  padding: var(--size-x3) var(--size-x8);
+  gap: 0.4rem;
+  padding: 0.6rem 1.6rem;
 }
 
 .textButton_primary {

@@ -3,7 +3,7 @@
   width: 100%;
   position: relative;
   border-style: solid;
-  box-shadow: 0 var(--size-x1) var(--size-x11) 0 rgba(0 0 0 / 25%);
+  box-shadow: 0 0.2rem 2.2rem 0 rgba(0 0 0 / 25%);
 }
 
 .pushNotification__title {
@@ -34,43 +34,43 @@
 }
 
 .pushNotification_medium {
-  gap: var(--size-x6);
-  border-radius: var(--size-x4);
+  gap: 1.2rem;
+  border-radius: 0.8rem;
   max-width: 30.6rem;
   border-width: 0.1rem;
-  padding-left: var(--size-x5);
+  padding-left: 1rem;
 }
 
 .pushNotification_medium .pushNotification__iconWrapper {
-  padding: var(--size-x4) 0;
+  padding: 0.8rem 0;
 }
 
 .pushNotification_medium .pushNotification__icon {
   border-width: 0.1rem;
-  width: var(--size-x18);
-  height: var(--size-x18);
-  border-radius: var(--size-x4);
-  padding: var(--size-x3);
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 0.8rem;
+  padding: 0.6rem;
 }
 
 .pushNotification_medium .pushNotification__header {
   display: flex;
-  gap: var(--size-x4);
+  gap: 0.8rem;
 }
 
 .pushNotification_medium .pushNotification__title {
-  padding-top: var(--size-x4);
+  padding-top: 0.8rem;
   font-size: 1.4rem;
   font-weight: var(--semi-bold);
   line-height: 1.8rem;
 }
 
 .pushNotification_medium .pushNotification__close {
-  padding: var(--size-x2) var(--size-x2) 0 0;
+  padding: 0.4rem 0.4rem 0 0;
 }
 
 .pushNotification_medium .pushNotification__text {
-  padding: 0 var(--size-x4) var(--size-x4) 0;
+  padding: 0 0.8rem 0.8rem 0;
   font-size: 1.4rem;
   line-height: 1.8rem;
 }

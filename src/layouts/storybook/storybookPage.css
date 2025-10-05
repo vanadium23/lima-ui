@@ -73,8 +73,8 @@ html {
 .storybookLogo {
   display: flex;
   align-items: center;
-  gap: var(--size-x8);
-  padding: var(--size-x5) var(--size-x10);
+  gap: 1.6rem;
+  padding: 1rem 2rem;
   color: var(--storybook-html-color);
   font-size: 2.4rem;
   font-weight: 800;
