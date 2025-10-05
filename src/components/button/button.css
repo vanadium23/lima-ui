@@ -111,7 +111,6 @@
   outline: var(--outline-set);
 }
 
-.button:disabled,
 .button_disabled {
   cursor: not-allowed;
   color: var(--text-neutral-100);

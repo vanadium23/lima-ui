@@ -101,9 +101,9 @@ export const Lists = (props: ListsProps) => {
         <div class="lists__new">
           <Button
             componentType={ButtonComponentType.Link}
-            link={URL_CREATE_LIST}
+            href={URL_CREATE_LIST}
             testId={CREATE_LIST_BUTTON}
-            isDisabled={checkListsLimitReached()}
+            disabled={checkListsLimitReached()}
           >
             Создать
           </Button>

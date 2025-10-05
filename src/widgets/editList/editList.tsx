@@ -509,8 +509,8 @@ export const EditList = (props: EditListProps) => {
           <div class="editList__controls">
             <Button
               type={ButtonType.Submit}
-              isDisabled={!store.isChanged || store.sendingNow === "deleting"}
-              isLoading={store.sendingNow === "saving"}
+              disabled={!store.isChanged || store.sendingNow === "deleting"}
+              loading={store.sendingNow === "saving"}
               testId={SAVE_LIST_BUTTON}
             >
               Сохранить

@@ -25,10 +25,10 @@ const sizes = Object.values(ButtonSize);
               <Button client:only="solid-js" theme={theme} size={size} testId={DEFAULT_TEST_ID}>
                 Text
               </Button>
-              <Button client:only="solid-js" theme={theme} size={size} testId={DEFAULT_TEST_ID} isLoading={true}>
+              <Button client:only="solid-js" theme={theme} size={size} testId={DEFAULT_TEST_ID} loading={true}>
                 Text
               </Button>
-              <Button client:only="solid-js" theme={theme} size={size} testId={DEFAULT_TEST_ID} isDisabled={true}>
+              <Button client:only="solid-js" theme={theme} size={size} testId={DEFAULT_TEST_ID} disabled={true}>
                 Text
               </Button>
             </>
@@ -68,7 +68,7 @@ const sizes = Object.values(ButtonSize);
                 theme={theme}
                 size={size}
                 testId={DEFAULT_TEST_ID}
-                isDisabled={true}
+                disabled={true}
               >
                 Text
               </Button>

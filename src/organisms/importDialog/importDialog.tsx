@@ -83,7 +83,7 @@ export const ImportDialog = (props: ImportDialogProps) => {
           size={ButtonSize.Medium}
           handleClick={handleClose}
           testId={IMPORT_DIALOG_IMPORT_BUTTON}
-          isDisabled={store.elementsReadyToImport.length === 0}
+          disabled={store.elementsReadyToImport.length === 0}
         >
           Импортировать
         </Button>
