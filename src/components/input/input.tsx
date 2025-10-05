@@ -1,16 +1,9 @@
 import { createSignal, mergeProps, Show } from "solid-js";
 
-import {
-  buildClearInputButtonTestId,
-  DEFAULT_TEST_ID,
-} from "../../../features/testIds.ts";
+import { buildClearInputButtonTestId, DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import { CharCounter } from "../charCounter/charCounter.tsx";
 import { IconName } from "../icon/types.ts";
-import {
-  IconButton,
-  IconButtonSize,
-  IconButtonTheme,
-} from "../iconButton/iconButton.tsx";
+import { IconButton, IconButtonSize, IconButtonTheme } from "../iconButton/iconButton.tsx";
 import type { Testable } from "../utilities/testable.ts";
 
 import "./input.css";
@@ -135,9 +128,7 @@ export const Input = (props: Testable<InputProps>) => {
         onKeyDown={(e) => mProps.onKeyDown(e)}
       />
 
-      <Show
-        when={mProps.isClearable && getValue().length > 0 && !mProps.isDisabled}
-      >
+      <Show when={mProps.isClearable && getValue().length > 0 && !mProps.isDisabled}>
         <div class="input__clearButton">
           <IconButton
             iconName={IconName.X}
@@ -155,11 +146,9 @@ export const Input = (props: Testable<InputProps>) => {
           <IconButton
             size={IconButtonSize.MediumEmbedded}
             iconName={getIsPasswordVisible() ? IconName.EyeSlash : IconName.Eye}
-            ariaLabel={
-              getIsPasswordVisible() ? "Скрыть пароль" : "Показать пароль"
-            }
+            ariaLabel={getIsPasswordVisible() ? "Скрыть пароль" : "Показать пароль"}
             theme={IconButtonTheme.Secondary}
-            isDisabled={mProps.isDisabled}
+            disabled={mProps.isDisabled}
             handleClick={togglePasswordVisibility}
             testId={DEFAULT_TEST_ID}
           />

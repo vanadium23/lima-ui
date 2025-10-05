@@ -68,13 +68,13 @@
 }
 
 @media (hover: hover) {
-  .iconButton_primary:hover:not(.iconButton_disabled, .iconButton_loading) {
+  .iconButton_primary:hover:not(.iconButton_loading) {
     color: var(--neutral-700);
     background: var(--neutral-200);
   }
 }
 
-.iconButton_primary:active:not(.iconButton_disabled, .iconButton_loading) {
+.iconButton_primary:active:not(.iconButton_loading) {
   color: var(--neutral-900);
   background: var(--neutral-300);
 }
@@ -84,13 +84,13 @@
 }
 
 @media (hover: hover) {
-  .iconButton_secondary:hover:not(.iconButton_disabled, .iconButton_loading) {
+  .iconButton_secondary:hover:not(.iconButton_loading) {
     color: var(--neutral-500);
     background: var(--neutral-200);
   }
 }
 
-.iconButton_secondary:active:not(.iconButton_disabled, .iconButton_loading) {
+.iconButton_secondary:active:not(.iconButton_loading) {
   color: var(--neutral-700);
   background: var(--neutral-300);
 }
@@ -100,13 +100,29 @@
 }
 
 @media (hover: hover) {
-  .iconButton_tertiary:hover:not(.iconButton_disabled, .iconButton_loading) {
+  .iconButton_tertiary:hover:not(.iconButton_loading) {
     background: var(--primary-250);
   }
 }
 
-.iconButton_tertiary:active:not(.iconButton_disabled, .iconButton_loading) {
+.iconButton_tertiary:active:not(.iconButton_loading) {
   background: var(--primary-500);
+}
+
+.iconButton_quaternary {
+  color: var(--primary-500);
+}
+
+@media (hover: hover) {
+  .iconButton_quaternary:hover:not(.iconButton_loading) {
+    color: var(--primary-400);
+    background: var(--neutral-200);
+  }
+}
+
+.iconButton_quaternary:active:not(.iconButton_loading) {
+  color: var(--primary-600);
+  background: var(--neutral-300);
 }
 
 .iconButton_dangerous {
@@ -114,13 +130,13 @@
 }
 
 @media (hover: hover) {
-  .iconButton_dangerous:hover:not(.iconButton_disabled, .iconButton_loading) {
+  .iconButton_dangerous:hover:not(.iconButton_loading) {
     color: var(--dangerous-400);
     background: var(--neutral-200);
   }
 }
 
-.iconButton_dangerous:active:not(.iconButton_disabled, .iconButton_loading) {
+.iconButton_dangerous:active:not(.iconButton_loading) {
   color: var(--dangerous-600);
   background: var(--neutral-300);
 }

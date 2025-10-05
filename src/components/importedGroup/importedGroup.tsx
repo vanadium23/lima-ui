@@ -67,7 +67,7 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
                 size={IconButtonSize.MediumEmbedded}
                 ariaLabel={"Лейбл"}
                 testId={DEFAULT_TEST_ID}
-                isDisabled={mProps.disabled}
+                disabled={mProps.disabled}
               />
             </div>
           </div>
