@@ -12,8 +12,8 @@
 }
 
 .listItemImport_medium {
-  gap: var(--size-x3);
-  padding: var(--size-x4) var(--size-x1);
+  gap: 0.6rem;
+  padding: 0.8rem 0.2rem;
 }
 
 .listItemImport_medium .listItemImport__text {
@@ -37,5 +37,5 @@
 }
 
 .listItemImport_medium:last-of-type {
-  border-radius: 0 0 var(--size-x4) var(--size-x4);
+  border-radius: 0 0 0.8rem 0.8rem;
 }

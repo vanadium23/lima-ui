@@ -4,9 +4,9 @@
   justify-content: center;
   width: 100%;
   min-width: 50rem;
-  padding: var(--size-x3) var(--size-x2) var(--size-x3) 0;
+  padding: 0.6rem 0.4rem 0.6rem 0;
   background: var(--neutral-100);
-  border-radius: var(--size-x4);
+  border-radius: 0.8rem;
   box-shadow: 0 0.2rem 1rem 0 rgb(0 0 0 / 15%);
   min-height: 4.4rem;
 }
@@ -18,7 +18,7 @@
   list-style: none;
   margin: 0;
   max-height: 17.7rem;
-  padding: 0 var(--size-x4) 0 0;
+  padding: 0 0.8rem 0 0;
 }
 
 @media (width <= 767px) {

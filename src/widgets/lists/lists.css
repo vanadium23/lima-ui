@@ -4,17 +4,17 @@
   height: 100%;
   width: 100%;
   max-width: 77.4rem;
-  padding-right: var(--size-x2);
+  padding-right: 0.4rem;
 }
 
 .lists__title {
   display: flex;
-  padding: var(--size-x6) var(--size-x4) var(--size-x3) var(--size-x18);
+  padding: 1.2rem 0.8rem 0.6rem 3.6rem;
 }
 
 .lists__emptyWarning {
   display: block;
-  padding: var(--size-x5) var(--size-x1);
+  padding: 1rem 0.2rem;
   font-size: 1.6rem;
   line-height: 2rem;
 }
@@ -23,9 +23,9 @@
   display: flex;
   width: 100%;
   flex-direction: column;
-  gap: var(--size-x4);
+  gap: 0.8rem;
   list-style: none;
-  padding: var(--size-x6) var(--size-x4) var(--size-x6) var(--size-x4);
+  padding: 1.2rem 0.8rem;
   margin: 0;
   scrollbar-gutter: stable;
   overflow-y: auto;
@@ -53,38 +53,38 @@
 .lists__errors {
   display: flex;
   flex-direction: column;
-  gap: var(--size-x3);
-  padding: 0 var(--size-x4) 0 var(--size-x13);
+  gap: 0.6rem;
+  padding: 0 0.8rem 0 2.6rem;
 }
 
 .lists__new {
   display: flex;
   flex-direction: row-reverse;
-  padding: var(--size-x6) var(--size-x26) var(--size-x10) var(--size-x1);
+  padding: 1.2rem 5.2rem 2rem 0.2rem;
 }
 
 @media (width <= 1023px) {
   .lists__title {
-    padding: var(--size-x3) var(--size-x4) var(--size-x3) var(--size-x13);
+    padding: 0.6rem 0.8rem 0.6rem 2.6rem;
   }
 
   .lists__list {
-    gap: var(--size-x3);
-    padding: var(--size-x3) var(--size-x4) var(--size-x6) var(--size-x13);
+    gap: 0.6rem;
+    padding: 0.6rem 0.8rem 1.2rem 2.6rem;
   }
 
   .lists__new {
     justify-content: center;
-    padding: var(--size-x8);
+    padding: 1.6rem;
   }
 }
 
 @media (width <= 767px) {
   .lists__list {
-    padding: 0 var(--size-x2) var(--size-x6) var(--size-x8);
+    padding: 0 0.4rem 1.2rem 1.6rem;
   }
 
   .lists__errors {
-    padding: 0 var(--size-x4) 0 var(--size-x8);
+    padding: 0 0.8rem 0 1.6rem;
   }
 }

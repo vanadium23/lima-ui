@@ -35,30 +35,30 @@
 /* Sizes */
 
 .iconButton_small {
-  width: var(--size-x12);
-  height: var(--size-x12);
-  padding: var(--size-x1);
-  border-radius: var(--size-x4);
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: 0.2rem;
+  border-radius: 0.8rem;
 }
 
 .iconButton_mediumEmbedded {
-  width: var(--size-x10);
-  height: var(--size-x10);
-  border-radius: var(--size-x3);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.6rem;
 }
 
 .iconButton_medium {
-  width: var(--size-x17);
-  height: var(--size-x17);
-  padding: var(--size-x3);
-  border-radius: var(--size-x4);
+  width: 3.4rem;
+  height: 3.4rem;
+  padding: 0.6rem;
+  border-radius: 0.8rem;
 }
 
 .iconButton_large {
-  width: var(--size-x20);
-  height: var(--size-x20);
-  padding: var(--size-x4);
-  border-radius: var(--size-x4);
+  width: 4rem;
+  height: 4rem;
+  padding: 0.8rem;
+  border-radius: 0.8rem;
 }
 
 /* Themes */

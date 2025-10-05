@@ -7,7 +7,7 @@
 
 .search__wrapper {
   display: flex;
-  gap: var(--size-x1);
+  gap: 0.2rem;
 }
 
 .search__dialog {
@@ -47,7 +47,7 @@
   }
 
   .search__wrapper {
-    padding: var(--size-x3) var(--size-x5);
+    padding: 0.6rem 1rem;
   }
 
   .search__dialog {

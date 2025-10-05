@@ -4,8 +4,8 @@
   align-items: center;
   width: 100%;
   background: linear-gradient(90deg, #0285f1 0%, #72bbf8 100%);
-  padding: var(--size-x3) var(--size-x5);
-  gap: var(--size-x5);
+  padding: 0.6rem 1rem;
+  gap: 1rem;
 }
 
 .header__inner {
@@ -13,7 +13,7 @@
 }
 
 .header__logo {
-  padding: var(--size-x2) var(--size-x4);
+  padding: 0.4rem 0.8rem;
 }
 
 .header__search {

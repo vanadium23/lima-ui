@@ -11,8 +11,8 @@
 }
 
 .dragHandle_medium {
-  padding: var(--size-x3);
-  border-radius: var(--size-x4);
+  padding: 0.6rem;
+  border-radius: 0.8rem;
   border-width: 0.1rem;
 }
 

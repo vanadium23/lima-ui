@@ -35,8 +35,8 @@
 .listStripe__controls {
   display: inline-flex;
   position: absolute;
-  right: var(--size-x3);
-  top: var(--size-x3);
+  right: 0.6rem;
+  top: 0.6rem;
 }
 
 .listStripe:not(.listStripe_removing) .listStripe__link:active + .listStripe__controls {
@@ -56,7 +56,7 @@
 .listStripe__title {
   display: inline-block;
   width: 100%;
-  font-weight: var(--semi-bold);
+  font-weight: 600;
 }
 
 .listStripe__purpose {
@@ -73,13 +73,13 @@
 
 .listStripe_medium .listStripe__icon {
   width: 2.8rem;
-  padding: var(--size-x3) var(--size-x4) var(--size-x3) var(--size-x1);
+  padding: 0.6rem 0.8rem 0.6rem 0.2rem;
 }
 
 .listStripe_medium .listStripe__link {
-  padding: var(--size-x3) var(--size-x13) var(--size-x3) var(--size-x6);
+  padding: 0.6rem 2.6rem 0.6rem 1.2rem;
   border-width: 0.1rem;
-  border-radius: var(--size-x4);
+  border-radius: 0.8rem;
 }
 
 .listStripe_medium .listStripe__title {

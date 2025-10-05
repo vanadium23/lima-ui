@@ -4,12 +4,12 @@
 }
 
 .importedItem_medium {
-  gap: var(--size-x1);
+  gap: 0.2rem;
 }
 
 .importedItem_medium .importedItem__checkbox {
   display: flex;
-  padding: var(--size-x5) var(--size-x3) var(--size-x4);
+  padding: 1rem 0.6rem 0.8rem;
 }
 
 .importedItem_medium .importedItem__inner {
@@ -17,7 +17,7 @@
   line-height: 2rem;
   flex-grow: 1;
   min-width: 0;
-  padding: var(--size-x5) 3.5rem var(--size-x5) 0.9rem;
+  padding: 1rem 3.5rem 1rem 0.9rem;
 }
 
 .importedItem_primary .importedItem__inner {
@@ -31,6 +31,6 @@
 }
 
 .importedItem_medium:last-of-type .importedItem__inner {
-  padding: var(--size-x5) 3.5rem var(--size-x8) 0.9rem;
-  border-radius: 0 0 var(--size-x4) var(--size-x4);
+  padding: 1rem 3.5rem 1.6rem 0.9rem;
+  border-radius: 0 0 0.8rem 0.8rem;
 }
