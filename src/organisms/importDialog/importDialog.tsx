@@ -87,7 +87,7 @@ export const ImportDialog = (props: ImportDialogProps) => {
           isDisabled={store.elementsReadyToImport.length === 0}
         />
       }
-      isOpen={props.isOpen}
+      open={props.isOpen}
       testId={IMPORT_DIALOG}
       testSubId={IMPORT_DIALOG}
     >

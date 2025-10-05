@@ -401,8 +401,8 @@ export const EditList = (props: EditListProps) => {
               maxLength={LIST_TITLE_INPUT_LIMIT}
               name={EditListFormNames.ListTitle}
               testId={LIST_TITLE_INPUT}
-              isRequired={true}
-              isDisabled={store.sendingNow !== false}
+              required={true}
+              disabled={store.sendingNow !== false}
               defaultValue={store.name}
               onChange={(value) => handleInputChange("name", value)}
               placeholder={"Название списка"}
@@ -414,7 +414,7 @@ export const EditList = (props: EditListProps) => {
               maxLength={LIST_PURPOSE_INPUT_LIMIT}
               name={EditListFormNames.ListPurpose}
               testId={LIST_PURPOSE_INPUT}
-              isDisabled={store.sendingNow !== false}
+              disabled={store.sendingNow !== false}
               defaultValue={store.purpose}
               onChange={(value) => handleInputChange("purpose", value)}
             />
@@ -561,7 +561,7 @@ export const EditList = (props: EditListProps) => {
                   testId={REMOVE_DIALOG_REMOVE_LIST_BUTTON}
                 />
               }
-              isOpen={store.isRemoveDialogOpen}
+              open={store.isRemoveDialogOpen}
               testId={REMOVE_LIST_DIALOG}
               testSubId={REMOVE_LIST_DIALOG}
             >

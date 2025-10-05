@@ -23,7 +23,7 @@ type CheckboxProps = {
   disabled?: boolean;
   ariaLabel?: string | undefined;
   checked?: CheckedState;
-  independent?: boolean;
+  independent?: boolean /* TODO Нужно описать в FE-документации как это у нас работает и для чего */;
   onChange?: (checked: boolean) => void;
   name?: string;
 };
@@ -74,10 +74,7 @@ export const Checkbox = (props: Testable<CheckboxProps>) => {
     <Switch>
       <Match when={mProps.independent}>
         <label
-          class={`checkbox checkbox_${mProps.theme} checkbox_${mProps.size}`}
-          classList={{
-            checkbox_disabled: mProps.disabled,
-          }}
+          class={`checkbox checkbox_${mProps.disabled ? "disabled" : mProps.theme} checkbox_${mProps.size}`}
           data-test-id={mProps.testId}
           data-test-sub-id={mProps.testSubId}
         >
@@ -108,10 +105,7 @@ export const Checkbox = (props: Testable<CheckboxProps>) => {
       </Match>
       <Match when={!mProps.independent}>
         <span
-          class={`checkbox checkbox_${mProps.theme} checkbox_${mProps.size} checkbox_independent`}
-          classList={{
-            checkbox_disabled: mProps.disabled,
-          }}
+          class={`checkbox checkbox_${mProps.disabled ? "disabled" : mProps.theme} checkbox_${mProps.size} checkbox_independent`}
           data-test-id={mProps.testId}
           data-test-sub-id={mProps.testSubId}
         >

@@ -49,7 +49,7 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
       data-test-id={mProps.testId}
     >
       <div class="importedGroup__dragHandle">
-        <DragHandle isDisabled={mProps.disabled} testId={DEFAULT_TEST_ID} />
+        <DragHandle disabled={mProps.disabled} testId={DEFAULT_TEST_ID} />
       </div>
       <div class="importedGroup__inner">
         <div class="importedGroup__headerWrapper">

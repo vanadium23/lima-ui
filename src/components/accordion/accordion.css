@@ -67,7 +67,7 @@
 }
 
 @media (hover: hover) {
-  .accordion_primary:not(.accordion_disabled):has(.accordion__header:hover) {
+  .accordion_primary:has(.accordion__header:hover) {
     border-color: var(--neutral-700);
   }
 }

@@ -138,7 +138,7 @@ export const ListItem = (props: Testable<ListItemProps>) => {
     >
       <div class="listItem__dragHandle">
         <DragHandle
-          isDisabled={mProps.isDisabled}
+          disabled={mProps.isDisabled}
           testId={DRAG_HANDLE}
           testSubId={getListItemTestSubId(mProps.testId, mProps.testSubId)}
           dragHandle={mProps.dragSettings.dragData}
@@ -161,10 +161,10 @@ export const ListItem = (props: Testable<ListItemProps>) => {
           maxLength={EDIT_LIST_INPUT_LIMIT}
           name={mProps.name}
           dataId={mProps.dataId}
-          isDisabled={mProps.isDisabled}
+          disabled={mProps.isDisabled}
           placeholder={mProps.placeholder}
           defaultValue={mProps.defaultValue}
-          isRequired={mProps.isRequired}
+          required={mProps.isRequired}
           onChange={mProps.onChange}
           testId={buildListItemInputTestId(mProps.testId)}
           testSubId={getListItemTestSubId(mProps.testId, mProps.testSubId)}

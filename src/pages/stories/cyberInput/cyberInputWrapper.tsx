@@ -66,7 +66,7 @@ export function CyberInputWrapper(props: CyberInputWrapperProps) {
       theme={mProps.theme}
       maxLength={50}
       name="Some-text"
-      isRequired={true}
+      required={true}
       testId={DEFAULT_TEST_ID}
       defaultIsError={mProps.isError}
       placeholder="Введите текст"

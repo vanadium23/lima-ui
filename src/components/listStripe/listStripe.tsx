@@ -159,7 +159,7 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
         theme={DialogTheme.Primary}
         size={DialogSize.Medium}
         onCancel={closeDialog}
-        isOpen={isDialogOpen()}
+        open={isDialogOpen()}
         title={"Удаление списка"}
         testId={REMOVE_LIST_DIALOG}
         testSubId={mProps.testSubId || "0"}
