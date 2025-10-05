@@ -179,7 +179,7 @@
 
 .cyberInput_secondary .cyberInput__inner {
   color: var(--text-neutral-800);
-  font-weight: var(--semi-bold);
+  font-weight: 600;
 }
 
 .cyberInput_secondary.cyberInput_error .cyberInput__inner {

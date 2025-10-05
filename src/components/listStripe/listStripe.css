@@ -56,7 +56,7 @@
 .listStripe__title {
   display: inline-block;
   width: 100%;
-  font-weight: var(--semi-bold);
+  font-weight: 600;
 }
 
 .listStripe__purpose {

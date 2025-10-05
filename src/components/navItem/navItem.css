@@ -20,7 +20,7 @@
 
 .navItem_primary.navItem_current {
   color: var(--text-neutral-900);
-  font-weight: var(--semi-bold);
+  font-weight: 600;
 }
 
 .navItem_primary:active:not(.navItem_disabled) {

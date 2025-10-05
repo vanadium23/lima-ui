@@ -61,7 +61,7 @@
 .pushNotification_medium .pushNotification__title {
   padding-top: 0.8rem;
   font-size: 1.4rem;
-  font-weight: var(--semi-bold);
+  font-weight: 600;
   line-height: 1.8rem;
 }
 

@@ -49,17 +49,6 @@
   --outline-set-alt: 0.1rem solid var(--outline-alt);
   --outline-offset: -0.1rem;
   --preloader: rotate-preloader 0.7s linear infinite;
-
-  /* Fonts weight */
-  --black: 900;
-  --extra-bold: 800;
-  --bold: 700;
-  --semi-bold: 600;
-  --medium: 500;
-  --regular: 400;
-  --light: 300;
-  --extra-light: 200;
-  --thin: 100;
 }
 
 *,
@@ -74,7 +63,7 @@ html {
   font-family: Montserrat, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-weight: var(--medium);
+  font-weight: 500;
 }
 
 input,

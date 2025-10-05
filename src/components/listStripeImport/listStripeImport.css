@@ -54,7 +54,7 @@
 
 .listStripeImport_medium .listStripeImport__title {
   font-size: 1.6rem;
-  font-weight: var(--semi-bold);
+  font-weight: 600;
   line-height: 2rem;
 }
 
