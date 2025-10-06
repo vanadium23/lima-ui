@@ -17,11 +17,11 @@ export enum NavItemSize {
 type NavItemProps = {
   theme?: NavItemTheme;
   size?: NavItemSize;
-  text: string;
-  url: string;
+  children: string;
+  href: string;
   icon: IconName;
-  isCurrent?: boolean;
-  isDisabled?: boolean;
+  current?: boolean;
+  disabled?: boolean;
 };
 
 export const NavItem = (props: Testable<NavItemProps>) => {
@@ -29,26 +29,25 @@ export const NavItem = (props: Testable<NavItemProps>) => {
     {
       theme: NavItemTheme.Primary,
       size: NavItemSize.Medium,
-      isCurrent: false,
-      isDisabled: false,
+      current: false,
+      disabled: false,
     },
     props,
   );
 
   return (
     <a
-      href={!mProps.isDisabled ? mProps.url : "#"}
+      href={!mProps.disabled ? mProps.href : "#"}
       role="menuitem"
-      aria-current={mProps.isCurrent ? "page" : "false"}
-      class={`navItem navItem_${mProps.theme} navItem_${mProps.size}`}
+      aria-current={mProps.current ? "page" : "false"}
+      class={`navItem navItem_${mProps.disabled ? "disabled" : mProps.theme} navItem_${mProps.size}`}
       classList={{
-        navItem_current: mProps.isCurrent,
-        navItem_disabled: mProps.isDisabled,
+        navItem_current: mProps.current,
       }}
-      aria-disabled={mProps.isDisabled}
+      aria-disabled={mProps.disabled}
     >
       <Icon name={mProps.icon} size={IconSize.Medium} />
-      <span class="navItem__text">{mProps.text}</span>
+      <span class="navItem__text">{mProps.children}</span>
     </a>
   );
 };

@@ -18,8 +18,8 @@ export enum MenuItemSize {
 export type MenuItemProps = {
   theme?: MenuItemTheme;
   size?: MenuItemSize;
-  isDisabled?: boolean | undefined;
-  text: string;
+  disabled?: boolean | undefined;
+  children: string;
   handleClick?: () => void;
   icon: IconName;
 };
@@ -29,7 +29,7 @@ export const MenuItem = (props: Testable<MenuItemProps>) => {
     {
       theme: MenuItemTheme.Primary,
       size: MenuItemSize.Medium,
-      isDisabled: false,
+      disabled: false,
       handleClick: () => {},
     },
     props,
@@ -38,14 +38,11 @@ export const MenuItem = (props: Testable<MenuItemProps>) => {
   return (
     <li
       role="menuitem"
-      class={`menuItem menuItem_${mProps.theme} menuItem_${mProps.size}`}
-      classList={{
-        menuItem_disabled: mProps.isDisabled,
-      }}
-      aria-disabled={mProps.isDisabled}
-      tabindex={mProps.isDisabled ? -1 : 0}
+      class={`menuItem menuItem_${mProps.disabled ? "disabled" : mProps.theme} menuItem_${mProps.size}`}
+      aria-disabled={mProps.disabled}
+      tabindex={mProps.disabled ? -1 : 0}
       onClick={() => {
-        if (!mProps.isDisabled) {
+        if (!mProps.disabled) {
           mProps.handleClick();
         }
       }}
@@ -53,7 +50,7 @@ export const MenuItem = (props: Testable<MenuItemProps>) => {
       data-test-sub-id={mProps.testSubId}
     >
       <Icon name={mProps.icon} size={IconSize.Small} />
-      <span class="menuItem__text">{mProps.text}</span>
+      <span class="menuItem__text">{mProps.children}</span>
     </li>
   );
 };

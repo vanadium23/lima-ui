@@ -18,7 +18,7 @@ export enum DropdownListSize {
 export type DropdownListProps = {
   theme?: DropdownListTheme;
   size?: DropdownListSize;
-  lists: SimpleList[];
+  children: SimpleList[];
 };
 
 export const DropdownList = (props: Testable<DropdownListProps>) => {
@@ -33,9 +33,13 @@ export const DropdownList = (props: Testable<DropdownListProps>) => {
   return (
     <div class={`dropdownList dropdownList_${props.theme} dropdownList_${mProps.size}`}>
       <ul class="dropdownList__list scrollStyles" data-test-id={DEFAULT_TEST_ID}>
-        <For each={mProps.lists}>
+        <For each={mProps.children}>
           {(list, index) => {
-            return <DropdownListItem text={list.name} listId={list.id} testId={DEFAULT_TEST_ID} testSubId={index()} />;
+            return (
+              <DropdownListItem listId={list.id} testId={DEFAULT_TEST_ID} testSubId={index()}>
+                {list.name}
+              </DropdownListItem>
+            );
           }}
         </For>
       </ul>

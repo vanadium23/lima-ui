@@ -1,11 +1,7 @@
 ---
 import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
 import { IconName } from "../../../components/icon/types.ts";
-import {
-  NavItem,
-  NavItemSize,
-  NavItemTheme,
-} from "../../../components/navItem/navItem.tsx";
+import { NavItem, NavItemSize, NavItemTheme } from "../../../components/navItem/navItem.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 const themes = Object.values(NavItemTheme);
@@ -27,31 +23,34 @@ const sizes = Object.values(NavItemSize);
             <>
               <span class="rhead">{size}</span>
               <NavItem
-                url="https://ya.ru"
+                href="https://ya.ru"
                 theme={theme}
                 size={size}
-                text="Text"
                 icon={IconName.CircleNotch}
                 testId={DEFAULT_TEST_ID}
-              />
+              >
+                Text
+              </NavItem>
               <NavItem
-                url="https://ya.ru"
+                href="https://ya.ru"
                 theme={theme}
                 size={size}
-                text="Text"
                 icon={IconName.CircleNotch}
-                isCurrent={true}
+                current={true}
                 testId={DEFAULT_TEST_ID}
-              />
+              >
+                Text
+              </NavItem>
               <NavItem
-                url="https://ya.ru"
+                href="https://ya.ru"
                 theme={theme}
                 size={size}
-                text="Text"
                 icon={IconName.CircleNotch}
-                isDisabled={true}
+                disabled={true}
                 testId={DEFAULT_TEST_ID}
-              />
+              >
+                Text
+              </NavItem>
             </>
           ))}
         </div>

@@ -13,7 +13,7 @@ export enum IconSize {
 type IconProps = {
   name: IconName;
   size?: IconSize;
-  role?: "img" | undefined;
+  role?: "img" | undefined /*TODO Необходимо описать в FE-документации*/;
   ariaLabel?: string | undefined;
 };
 

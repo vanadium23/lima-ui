@@ -7,7 +7,6 @@ import "./importedItem.css";
 
 export enum ImportedItemTheme {
   Primary = "primary",
-  Disabled = "disabled",
 }
 
 export enum ImportedItemSize {
@@ -17,9 +16,9 @@ export enum ImportedItemSize {
 type ImportedItemProps = {
   theme?: ImportedItemTheme;
   size?: ImportedItemSize;
-  itemText: string;
+  children: string;
   disabled?: boolean;
-  isCheckable?: boolean;
+  checkable?: boolean;
   checked?: boolean;
 };
 
@@ -29,7 +28,7 @@ export const ImportedItem = (props: Testable<ImportedItemProps>) => {
       theme: ImportedItemTheme.Primary,
       size: ImportedItemSize.Medium,
       disabled: false,
-      isCheckable: false,
+      checkable: false,
       checked: false,
     },
     props,
@@ -37,15 +36,15 @@ export const ImportedItem = (props: Testable<ImportedItemProps>) => {
 
   return (
     <div
-      class={`importedItem importedItem_${mProps.disabled ? ImportedItemTheme.Disabled : mProps.theme} importedItem_${mProps.size}`}
+      class={`importedItem importedItem_${mProps.disabled ? "disabled" : mProps.theme} importedItem_${mProps.size}`}
       data-test-id={mProps.testId}
     >
-      <Show when={mProps.isCheckable}>
+      <Show when={mProps.checkable}>
         <div class="importedItem__checkbox">
           <Checkbox testId={mProps.testId} disabled={mProps.disabled} checked={mProps.checked} />
         </div>
       </Show>
-      <div class="importedItem__inner">{mProps.itemText}</div>
+      <div class="importedItem__inner">{mProps.children}</div>
     </div>
   );
 };

@@ -16,7 +16,7 @@ export enum DropdownListItemSize {
 export type DropdownListItemProps = {
   theme?: DropdownListItemTheme;
   size?: DropdownListItemSize;
-  text: string;
+  children: string;
   listId: string;
 };
 
@@ -36,7 +36,7 @@ export const DropdownListItem = (props: Testable<DropdownListItemProps>) => {
       data-test-sub-id={mProps.testSubId}
     >
       <a class="dropdownListItem__text" href={`${URL_MY_LISTS}/${mProps.listId}`}>
-        {mProps.text}
+        {mProps.children}
       </a>
     </li>
   );

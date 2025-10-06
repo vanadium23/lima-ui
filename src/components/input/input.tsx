@@ -1,16 +1,9 @@
 import { createSignal, mergeProps, Show } from "solid-js";
 
-import {
-  buildClearInputButtonTestId,
-  DEFAULT_TEST_ID,
-} from "../../../features/testIds.ts";
+import { buildClearInputButtonTestId, DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import { CharCounter } from "../charCounter/charCounter.tsx";
 import { IconName } from "../icon/types.ts";
-import {
-  IconButton,
-  IconButtonSize,
-  IconButtonTheme,
-} from "../iconButton/iconButton.tsx";
+import { IconButton, IconButtonSize, IconButtonTheme } from "../iconButton/iconButton.tsx";
 import type { Testable } from "../utilities/testable.ts";
 
 import "./input.css";
@@ -37,18 +30,18 @@ export enum AutocompleteType {
 type InputProps = {
   theme?: InputTheme;
   size?: InputSize;
-  isError?: boolean;
-  isDisabled?: boolean;
+  error?: boolean;
+  disabled?: boolean;
   placeholder: string;
   name: string;
   maxLength: number;
-  isRequired?: boolean;
+  required?: boolean;
   type?: InputType;
-  defaultValue?: string;
+  children?: string;
   autocomplete?: AutocompleteType;
-  isCountable?: boolean;
-  isClearable?: boolean;
-  label?: string;
+  countable?: boolean;
+  clearable?: boolean;
+  ariaLabel?: string;
   onInput?: (e: InputEvent) => void;
   onKeyDown?: (e: KeyboardEvent) => void;
   onClear?: () => void;
@@ -60,14 +53,14 @@ export const Input = (props: Testable<InputProps>) => {
       theme: InputTheme.Primary,
       size: InputSize.Medium,
       autocomplete: AutocompleteType.Off,
-      isDisabled: false,
-      isError: false,
-      isRequired: false,
+      disabled: false,
+      error: false,
+      required: false,
       type: InputType.Text,
-      defaultValue: "",
-      isCountable: false,
-      isClearable: false,
-      label: "",
+      children: "",
+      countable: false,
+      clearable: false,
+      ariaLabel: "",
       onInput: () => {},
       onKeyDown: () => {},
       onClear: () => {},
@@ -75,7 +68,7 @@ export const Input = (props: Testable<InputProps>) => {
     props,
   );
 
-  const [getValue, setValue] = createSignal(mProps.defaultValue);
+  const [getValue, setValue] = createSignal(mProps.children);
   const [getIsPasswordVisible, setIsPasswordVisible] = createSignal(false);
 
   let inputRef: HTMLInputElement | undefined;
@@ -111,10 +104,9 @@ export const Input = (props: Testable<InputProps>) => {
 
   return (
     <div
-      class={`input input_${mProps.theme} input_${mProps.size}`}
+      class={`input input_${mProps.disabled ? "disabled" : mProps.theme} input_${mProps.size}`}
       classList={{
-        input_error: mProps.isError,
-        input_disabled: mProps.isDisabled,
+        input_error: mProps.error,
       }}
     >
       <input
@@ -122,22 +114,20 @@ export const Input = (props: Testable<InputProps>) => {
         type={getInputType()}
         name={mProps.name}
         class="input__inner"
-        disabled={mProps.isDisabled}
+        disabled={mProps.disabled}
         maxlength={mProps.maxLength}
         placeholder={mProps.placeholder}
-        required={mProps.isRequired}
+        required={mProps.required}
         value={getValue()}
         data-test-id={mProps.testId}
         data-test-sub-id={mProps.testSubId}
         autocomplete={mProps.autocomplete}
-        aria-label={mProps.label}
+        aria-label={mProps.ariaLabel}
         onInput={handleInput}
         onKeyDown={(e) => mProps.onKeyDown(e)}
       />
 
-      <Show
-        when={mProps.isClearable && getValue().length > 0 && !mProps.isDisabled}
-      >
+      <Show when={mProps.clearable && getValue().length > 0 && !mProps.disabled}>
         <div class="input__clearButton">
           <IconButton
             iconName={IconName.X}
@@ -155,25 +145,21 @@ export const Input = (props: Testable<InputProps>) => {
           <IconButton
             size={IconButtonSize.MediumEmbedded}
             iconName={getIsPasswordVisible() ? IconName.EyeSlash : IconName.Eye}
-            ariaLabel={
-              getIsPasswordVisible() ? "Скрыть пароль" : "Показать пароль"
-            }
+            ariaLabel={getIsPasswordVisible() ? "Скрыть пароль" : "Показать пароль"}
             theme={IconButtonTheme.Secondary}
-            isDisabled={mProps.isDisabled}
+            isDisabled={mProps.disabled}
             handleClick={togglePasswordVisibility}
             testId={DEFAULT_TEST_ID}
           />
         </div>
       </Show>
 
-      <Show when={mProps.isCountable}>
+      <Show when={mProps.countable}>
         <div class="input__controls">
-          <Show when={mProps.isCountable}>
-            <CharCounter
-              value={mProps.maxLength - getValue().length}
-              testId={mProps.testId}
-              testSubId={mProps.testSubId ?? ""}
-            />
+          <Show when={mProps.countable}>
+            <CharCounter testId={mProps.testId} testSubId={mProps.testSubId ?? ""}>
+              {mProps.maxLength - getValue().length}
+            </CharCounter>
           </Show>
         </div>
       </Show>

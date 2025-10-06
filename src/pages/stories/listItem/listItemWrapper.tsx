@@ -20,13 +20,14 @@ export function ListItemWrapper(props: ListItemWrapperProps) {
 
   return (
     <ListItem
-      isCheckable={isCheckable()}
-      isChecked={false}
+      checkable={isCheckable()}
+      checked={false}
       name="Item"
       testId={DEFAULT_TEST_ID}
       canAddMore={true}
-      defaultValue={text()}
       onChange={setText}
-    />
+    >
+      {text()}
+    </ListItem>
   );
 }

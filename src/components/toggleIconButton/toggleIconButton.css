@@ -42,12 +42,12 @@
 }
 
 @media (hover: hover) {
-  .toggleIconButton_secondary:hover:not(.toggleIconButton_disabled) {
+  .toggleIconButton_secondary:hover {
     background: var(--primary-250);
   }
 }
 
-.toggleIconButton_secondary:active:not(.toggleIconButton_disabled) {
+.toggleIconButton_secondary:active {
   background: var(--primary-500);
 }
 

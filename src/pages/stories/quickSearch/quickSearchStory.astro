@@ -1,8 +1,5 @@
 ---
-import {
-  QuickSearch,
-  QuickSearchTheme,
-} from "../../../components/quickSearch/quickSearch.tsx";
+import { QuickSearch, QuickSearchTheme } from "../../../components/quickSearch/quickSearch.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 const themes = Object.values(QuickSearchTheme);
@@ -69,28 +66,22 @@ const listsExample2 = [
 
           <span class="rhead">Default 1</span>
 
-          <QuickSearch
-            client:only="solid-js"
-            isLoading={false}
-            lists={listsExample1}
-            query="Тест"
-          />
+          <QuickSearch client:only="solid-js" loading={false} query="Тест">
+            {listsExample1}
+          </QuickSearch>
 
           <span class="rhead">Default 10</span>
 
-          <QuickSearch
-            client:only="solid-js"
-            isLoading={false}
-            lists={listsExample2}
-            query="Тест"
-          />
+          <QuickSearch client:only="solid-js" loading={false} query="Тест">
+            {listsExample2}
+          </QuickSearch>
           <span class="rhead">Loading</span>
 
-          <QuickSearch client:only="solid-js" isLoading={true} query="test" />
+          <QuickSearch client:only="solid-js" loading={true} query="test" />
 
           <span class="rhead">Empty</span>
 
-          <QuickSearch client:only="solid-js" isLoading={false} query="test" />
+          <QuickSearch client:only="solid-js" loading={false} query="test" />
         </div>
       </div>
     ))

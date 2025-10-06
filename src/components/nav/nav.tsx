@@ -41,48 +41,52 @@ export const Nav = (props: NavProps) => {
       <ul class="nav__list" role="menubar" aria-label="Navigation">
         <li class="nav__item" role="none">
           <NavItem
-            url={URL_CREATE_LIST}
+            href={URL_CREATE_LIST}
             theme={NavItemTheme.Primary}
             size={navItemSize[mProps.size]}
-            text="Новый список"
             icon={IconName.ListPlus}
             testId={DEFAULT_TEST_ID}
-            isCurrent={location() === URL_CREATE_LIST}
-            isDisabled={isLimitReached()}
-          />
+            current={location() === URL_CREATE_LIST}
+            disabled={isLimitReached()}
+          >
+            Новый список
+          </NavItem>
         </li>
         <li role="none">
           <NavItem
-            url={URL_MY_LISTS}
+            href={URL_MY_LISTS}
             theme={NavItemTheme.Primary}
             size={navItemSize[mProps.size]}
-            text="Мои списки"
             icon={IconName.List}
             testId={DEFAULT_TEST_ID}
-            isCurrent={location() === URL_MY_LISTS || location().startsWith(`${URL_MY_LISTS}/list-`)}
-          />
+            current={location() === URL_MY_LISTS || location().startsWith(`${URL_MY_LISTS}/list-`)}
+          >
+            Мои списки
+          </NavItem>
         </li>
         <li role="none">
           <NavItem
-            url={URL_MY_LISTS}
+            href={URL_MY_LISTS}
             theme={NavItemTheme.Primary}
             size={navItemSize[mProps.size]}
-            text="Мои чек-листы"
             icon={IconName.ListChecks}
             testId={DEFAULT_TEST_ID}
-            isCurrent={location() === URL_MY_LISTS}
-          />
+            current={location() === URL_MY_LISTS}
+          >
+            Мои чек-листы
+          </NavItem>
         </li>
         <Divider />
         <li role="none">
           <NavItem
-            url="/stories/button/buttonStory"
+            href="/stories/button/buttonStory"
             theme={NavItemTheme.Primary}
             size={navItemSize[mProps.size]}
-            text="Сторибук"
             icon={IconName.Books}
             testId={DEFAULT_TEST_ID}
-          />
+          >
+            Сторибук
+          </NavItem>
         </li>
       </ul>
     </nav>

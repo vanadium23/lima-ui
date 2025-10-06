@@ -9,10 +9,6 @@
   transform: translateY(0.1rem);
 }
 
-.switch_disabled {
-  cursor: not-allowed;
-}
-
 .switch__input {
   display: none;
 }
@@ -21,10 +17,16 @@
   outline: none;
 }
 
+.switch__input:checked + .switch__inner::before {
+  left: calc(100% - 0.2rem);
+  transform: translateX(-100%);
+}
+
 .switch_medium .switch__inner {
   position: relative;
   width: 4.4rem;
   height: 2.2rem;
+  border-radius: 2.2rem;
 }
 
 .switch_medium .switch__inner::before {
@@ -49,20 +51,41 @@
 
 .switch_primary .switch__inner {
   background: var(--neutral-400);
-  border-radius: 2.2rem;
   cursor: pointer;
 }
 
-.switch_primary.switch_disabled .switch__text {
-  color: var(--text-neutral-500);
-}
-
-.switch_primary:active:not(.switch_disabled) .switch__text {
+.switch_primary:active .switch__text {
   color: var(--text-neutral-900);
 }
 
-.switch_disabled .switch__inner {
-  cursor: not-allowed;
+.switch_primary .switch__inner::before {
+  background: var(--neutral-100);
+}
+
+.switch_primary .switch__input:checked + .switch__inner {
+  background: var(--primary-500);
+}
+
+@media (hover: hover) {
+  .switch_primary:hover .switch__text {
+    color: var(--text-neutral-700);
+  }
+
+  .switch_primary:hover .switch__inner {
+    background: var(--neutral-300);
+  }
+
+  .switch_primary:hover .switch__input:checked + .switch__inner {
+    background: var(--primary-400);
+  }
+}
+
+.switch_primary:active .switch__inner {
+  background: var(--neutral-500);
+}
+
+.switch_primary:active .switch__input:checked + .switch__inner {
+  background: var(--primary-600);
 }
 
 .switch__input:focus-visible + .switch__inner {
@@ -70,49 +93,23 @@
   outline-offset: var(--outline-offset);
 }
 
-.switch_primary .switch__inner::before {
-  background: var(--neutral-100);
+.switch_disabled,
+.switch_disabled .switch__inner {
+  cursor: not-allowed;
 }
 
-.switch_primary.switch_disabled .switch__inner {
+.switch_disabled .switch__inner {
   background: var(--neutral-300);
 }
 
-.switch_primary.switch_disabled .switch__inner::before {
-  background: var(--neutral-200);
-}
-
-.switch_primary .switch__input:checked + .switch__inner {
-  background: var(--primary-500);
-}
-
-.switch_primary:active:not(.switch_disabled) .switch__inner {
-  background: var(--neutral-500);
-}
-
-.switch_primary.switch_disabled .switch__input:checked + .switch__inner {
+.switch_disabled .switch__input:checked + .switch__inner {
   background: var(--primary-300);
 }
 
-@media (hover: hover) {
-  .switch_primary:hover:not(.switch_disabled) .switch__text {
-    color: var(--text-neutral-700);
-  }
-
-  .switch_primary:hover:not(.switch_disabled) .switch__inner {
-    background: var(--neutral-300);
-  }
-
-  .switch_primary:hover:not(.switch_disabled) .switch__input:checked + .switch__inner {
-    background: var(--primary-400);
-  }
+.switch_disabled .switch__inner::before {
+  background: var(--neutral-200);
 }
 
-.switch_primary:active:not(.switch_disabled) .switch__input:checked + .switch__inner {
-  background: var(--primary-600);
-}
-
-.switch__input:checked + .switch__inner::before {
-  left: calc(100% - 0.2rem);
-  transform: translateX(-100%);
+.switch_disabled .switch__text {
+  color: var(--text-neutral-500);
 }

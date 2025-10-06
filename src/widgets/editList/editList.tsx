@@ -403,10 +403,11 @@ export const EditList = (props: EditListProps) => {
               testId={LIST_TITLE_INPUT}
               required={true}
               disabled={store.sendingNow !== false}
-              defaultValue={store.name}
               onChange={(value) => handleInputChange("name", value)}
               placeholder={"Название списка"}
-            />
+            >
+              {store.name}
+            </CyberInput>
             <CyberInput
               theme={CyberInputTheme.Primary}
               size={CyberInputSize.Medium}
@@ -415,16 +416,18 @@ export const EditList = (props: EditListProps) => {
               name={EditListFormNames.ListPurpose}
               testId={LIST_PURPOSE_INPUT}
               disabled={store.sendingNow !== false}
-              defaultValue={store.purpose}
               onChange={(value) => handleInputChange("purpose", value)}
-            />
+            >
+              {store.purpose}
+            </CyberInput>
             <Note
               title="Заметка"
               name={EditListFormNames.ListNote}
-              isDisabled={store.sendingNow !== false}
-              defaultValue={store.note}
+              disabled={store.sendingNow !== false}
               onChange={(value) => handleInputChange("note", value)}
-            />
+            >
+              {store.note}
+            </Note>
           </div>
 
           <div
@@ -446,11 +449,10 @@ export const EditList = (props: EditListProps) => {
                     return (
                       <ListItem
                         removeItem={() => removeItem(index())}
-                        isDisabled={store.sendingNow !== false}
+                        disabled={store.sendingNow !== false}
                         isOnlyOneItem={isOnlyOneItem(store.items)}
-                        isCheckable={store.isCheckable}
-                        isChecked={false}
-                        defaultValue={item.content}
+                        checkable={store.isCheckable}
+                        checked={false}
                         name={`${EditListFormNames.ListItem} ${index() + 1}`}
                         dataId={item.id}
                         onChange={(value) => handleItemChange(index(), value)}
@@ -461,7 +463,7 @@ export const EditList = (props: EditListProps) => {
                         canAddMore={!reachedItemsLimit()}
                         testId={item.auto ? AUTO_LIST_ITEM : LIST_ITEM}
                         testSubId={index()}
-                        isRequired={!item.auto}
+                        required={!item.auto}
                         dragSettings={{
                           dragData,
                           dragProps: {
@@ -471,22 +473,25 @@ export const EditList = (props: EditListProps) => {
                           dragState: useDragDropContext()?.[0] || null,
                         }}
                         placeholder={item.auto ? "Добавить пункт списка" : "Пункт списка"}
-                      />
+                      >
+                        {item.content}
+                      </ListItem>
                     );
                   }}
                 </For>
               </SortableProvider>
               <DragOverlay>
                 <ListItem
-                  isCheckable={store.isCheckable}
-                  isChecked={false}
-                  defaultValue={draggedItemData().content}
+                  checkable={store.isCheckable}
+                  checked={false}
                   dataId={draggedItemData().dragId}
                   canAddMore={!reachedItemsLimit()}
                   testId={DRAGGED_LIST_ITEM}
                   isDraggingOverlay={true}
                   placeholder={draggedItemData().auto ? "Добавить пункт списка" : "Пункт списка"}
-                />
+                >
+                  {draggedItemData().content}
+                </ListItem>
               </DragOverlay>
             </DragDropProvider>
           </div>
@@ -524,28 +529,31 @@ export const EditList = (props: EditListProps) => {
               componentType={ToolsButtonComponentType.Button}
               iconName={IconName.RowsPlusBottom}
               handleClick={() => addItem({ mode: "end", scroll: true, auto: false })}
-              isDisabled={reachedItemsLimit() || store.sendingNow !== false}
-              text={"Добавить пункт"}
+              disabled={reachedItemsLimit() || store.sendingNow !== false}
               testId={TOOLS_PANEL_ADD_ITEM_BUTTON}
-            />
+            >
+              Добавить пункт
+            </ToolsButton>
             <ToolsButton
               componentType={ToolsButtonComponentType.Button}
               iconName={IconName.CopySimple}
-              text={"Копировать пункты"}
-              isDisabled={store.isNewList || store.sendingNow !== false}
+              disabled={store.isNewList || store.sendingNow !== false}
               handleClick={() => copyItemsToClipboard(store.items)}
               testId={TOOLS_PANEL_BUTTON_COPY_ITEMS}
-            />
+            >
+              Копировать пункты
+            </ToolsButton>
             <ToolsButton
               componentType={ToolsButtonComponentType.Button}
               iconName={IconName.Trash}
               theme={ToolsButtonTheme.Dangerous}
-              text={"Удалить список"}
-              isLoading={store.sendingNow === "deleting"}
-              isDisabled={store.isNewList || store.sendingNow === "saving"}
+              loading={store.sendingNow === "deleting"}
+              disabled={store.isNewList || store.sendingNow === "saving"}
               handleClick={openRemoveDialog}
               testId={TOOLS_PANEL_BUTTON_REMOVE_LIST}
-            />
+            >
+              Удалить список
+            </ToolsButton>
             <Dialog
               title="Удаление списка"
               onCancel={closeRemoveDialog}
@@ -574,34 +582,37 @@ export const EditList = (props: EditListProps) => {
           <div class="toolsPanel__verticalSection">
             <Switch
               testId={CHECKLIST_SWITCH}
-              text="Чек-лист"
-              isDisabled={store.sendingNow !== false}
-              isChecked={store.isCheckable}
+              disabled={store.sendingNow !== false}
+              checked={store.isCheckable}
               onChange={toggleCheckable}
-            />
+            >
+              Чек-лист
+            </Switch>
           </div>
           <Divider />
           <div class="toolsPanel__horizontalSection">
             <ToolsButton
               componentType={ToolsButtonComponentType.Button}
               iconName={IconName.SortAscending}
-              isDisabled={reachedItemsLimit() || store.sendingNow !== false}
-              text={"Импорт"}
+              disabled={reachedItemsLimit() || store.sendingNow !== false}
               testId={TOOLS_PANEL_BUTTON_IMPORT_LIST}
               handleClick={openImportDialog}
-            />
+            >
+              Импорт
+            </ToolsButton>
 
             <ImportDialog currentListId={store.id} isOpen={store.isImportDialogOpen} onClose={closeImportDialog} />
 
             <ToolsButton
               componentType={ToolsButtonComponentType.Link}
               iconName={IconName.Printer}
-              link={`./${store.id}/print?checkable=${store.isCheckable}`}
-              text={"Напечатать список"}
+              href={`./${store.id}/print?checkable=${store.isCheckable}`}
               testId={TOOLS_PANEL_BUTTON_PRINT_LIST}
-              isDisabled={store.isNewList || store.sendingNow !== false}
+              disabled={store.isNewList || store.sendingNow !== false}
               openInNewTab={true}
-            />
+            >
+              Напечатать список
+            </ToolsButton>
           </div>
         </ToolsPanel>
       </aside>

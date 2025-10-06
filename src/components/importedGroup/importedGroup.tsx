@@ -14,7 +14,6 @@ import "./importedGroup.css";
 
 export enum ImportedGroupTheme {
   Primary = "primary",
-  Disabled = "disabled",
 }
 
 export enum ImportedGroupSize {
@@ -25,8 +24,8 @@ type ImportedGroupProps = {
   theme?: ImportedGroupTheme;
   size?: ImportedGroupSize;
   disabled?: boolean;
-  isCheckable?: boolean;
-  list: List;
+  checkable?: boolean;
+  children: List;
 };
 
 export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
@@ -35,16 +34,16 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
       theme: ImportedGroupTheme.Primary,
       size: ImportedGroupSize.Medium,
       disabled: false,
-      isCheckable: false,
+      checkable: false,
     },
     props,
   );
 
   return (
     <div
-      class={`importedGroup importedGroup_${mProps.disabled ? ImportedGroupTheme.Disabled : mProps.theme} importedGroup_${mProps.size}`}
+      class={`importedGroup importedGroup_${mProps.disabled ? "disabled" : mProps.theme} importedGroup_${mProps.size}`}
       classList={{
-        importedGroup_checkable: mProps.isCheckable,
+        importedGroup_checkable: mProps.checkable,
       }}
       data-test-id={mProps.testId}
     >
@@ -56,11 +55,12 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
           <div class="importedGroup__header">
             <Link
               size={LinkSize.Small}
-              link={getListLink(mProps.list.id)}
-              text={mProps.list.name}
+              href={getListLink(mProps.children.id)}
               testId={DEFAULT_TEST_ID}
-              isDisabled={mProps.disabled}
-            />
+              disabled={mProps.disabled}
+            >
+              {mProps.children.name}
+            </Link>
             <div class="importedGroup__button">
               <IconButton
                 iconName={IconName.DotsThree}
@@ -72,15 +72,16 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
             </div>
           </div>
         </div>
-        <For each={mProps.list.items}>
+        <For each={mProps.children.items}>
           {(item) => (
             <ImportedItem
               testId={DEFAULT_TEST_ID}
-              itemText={item.content}
-              isCheckable={mProps.isCheckable}
+              checkable={mProps.checkable}
               checked={false}
               disabled={mProps.disabled}
-            />
+            >
+              {item.content}
+            </ImportedItem>
           )}
         </For>
       </div>

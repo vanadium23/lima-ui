@@ -23,7 +23,7 @@ type ItemInputProps = {
   name: string;
   maxLength: number;
   required?: boolean;
-  defaultValue?: string;
+  children?: string;
   dataId?: string;
   placeholder: string;
   onChange?: (value: string) => void;
@@ -43,7 +43,7 @@ export const CyberInput = (props: Testable<ItemInputProps>) => {
       disabled: false,
       defaultIsError: false,
       required: false,
-      defaultValue: "",
+      children: "",
       dataId: "",
       onChange: () => {},
       controlElements: null,
@@ -68,7 +68,7 @@ export const CyberInput = (props: Testable<ItemInputProps>) => {
     }
   };
 
-  const remainingChars = () => mProps.maxLength - mProps.defaultValue.length;
+  const remainingChars = () => mProps.maxLength - mProps.children.length;
 
   onMount(() => {
     handleResize();
@@ -86,7 +86,7 @@ export const CyberInput = (props: Testable<ItemInputProps>) => {
     <div
       class={`cyberInput cyberInput_${mProps.disabled ? "disabled" : mProps.theme} cyberInput_${mProps.size}`}
       classList={{
-        cyberInput_error: hasError() && mProps.defaultValue === "",
+        cyberInput_error: hasError() && mProps.children === "",
       }}
     >
       <textarea
@@ -107,13 +107,15 @@ export const CyberInput = (props: Testable<ItemInputProps>) => {
           mProps.onChange(event.target.value);
         }}
       >
-        {mProps.defaultValue}
+        {mProps.children}
       </textarea>
       <div class="cyberInput__controls">
         {mProps.controlElements}
         <Show when={remainingChars() <= COUNTER_DISPLAY_LIMIT}>
           <div class="cyberInput__counter">
-            <CharCounter value={remainingChars()} testId={mProps.testId} testSubId={mProps.testSubId ?? ""} />
+            <CharCounter testId={mProps.testId} testSubId={mProps.testSubId ?? ""}>
+              {remainingChars()}
+            </CharCounter>
           </div>
         </Show>
       </div>

@@ -17,9 +17,9 @@ export enum LinkSize {
 type LinkProps = {
   theme?: LinkTheme;
   size?: LinkSize;
-  link: string;
-  text: string;
-  isDisabled?: boolean;
+  href: string;
+  children: string;
+  disabled?: boolean;
 };
 
 export const Link = (props: Testable<LinkProps>) => {
@@ -27,24 +27,21 @@ export const Link = (props: Testable<LinkProps>) => {
     {
       theme: LinkTheme.Primary,
       size: LinkSize.Medium,
-      isDisabled: false,
+      disabled: false,
     },
     props,
   );
 
   return (
     <Dynamic
-      component={mProps.isDisabled ? "span" : "a"}
-      href={!mProps.isDisabled ? mProps.link : undefined}
-      class={`link link_${mProps.theme} link_${mProps.size}`}
-      classList={{
-        link_disabled: mProps.isDisabled,
-      }}
-      aria-disabled={mProps.isDisabled}
+      component={mProps.disabled ? "span" : "a"}
+      href={!mProps.disabled ? mProps.href : undefined}
+      class={`link link_${mProps.disabled ? "disabled" : mProps.theme} link_${mProps.size}`}
+      aria-disabled={mProps.disabled}
       data-test-id={mProps.testId}
       data-test-sub-id={mProps.testSubId}
     >
-      {mProps.text}
+      {mProps.children}
     </Dynamic>
   );
 };

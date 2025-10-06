@@ -18,9 +18,9 @@ type ToggleIconButtonProps = {
   theme?: ToggleIconButtonTheme;
   size?: ToggleIconButtonSize;
   iconName: IconName;
-  isDisabled?: boolean;
+  disabled?: boolean;
   ariaLabel: string;
-  isToggled: boolean;
+  toggled: boolean;
   setGlobalToggled: (isToggled: boolean) => void;
   id?: string;
 };
@@ -30,15 +30,15 @@ export const ToggleIconButton = (props: Testable<ToggleIconButtonProps>) => {
     {
       theme: ToggleIconButtonTheme.Secondary,
       size: ToggleIconButtonSize.Medium,
-      isDisabled: false,
+      disabled: false,
       id: "",
     },
     props,
   );
 
   const toggleToggled = () => {
-    if (!mProps.isDisabled) {
-      mProps.setGlobalToggled(!mProps.isToggled);
+    if (!mProps.disabled) {
+      mProps.setGlobalToggled(!mProps.toggled);
     }
   };
 
@@ -50,17 +50,16 @@ export const ToggleIconButton = (props: Testable<ToggleIconButtonProps>) => {
     <button
       type="button"
       onClick={toggleToggled}
-      class={`toggleIconButton toggleIconButton_${mProps.theme} toggleIconButton_${mProps.size}`}
+      class={`toggleIconButton toggleIconButton_${mProps.disabled ? "disabled" : mProps.theme} toggleIconButton_${mProps.size}`}
       classList={{
-        toggleIconButton_disabled: mProps.isDisabled,
-        toggleIconButton_toggled: mProps.isToggled,
+        toggleIconButton_toggled: mProps.toggled,
       }}
       title={mProps.ariaLabel}
-      disabled={mProps.isDisabled}
+      disabled={mProps.disabled}
       aria-label={mProps.ariaLabel}
       data-test-id={mProps.testId}
       data-test-sub-id={mProps.testSubId}
-      aria-pressed={mProps.isToggled}
+      aria-pressed={mProps.toggled}
       id={mProps.id}
     >
       <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
