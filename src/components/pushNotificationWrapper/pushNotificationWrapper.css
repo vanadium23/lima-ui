@@ -1,11 +1,11 @@
 .pushNotificationWrapper {
   position: fixed;
   top: 5.6rem;
-  right: var(--size-x4);
+  right: 0.8rem;
   z-index: 10;
   display: flex;
   flex-direction: column-reverse;
-  gap: var(--size-x4);
+  gap: 0.8rem;
   max-width: 30.6rem;
   pointer-events: none;
 }

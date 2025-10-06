@@ -1,32 +1,6 @@
 @import url("/fonts/montserrat/montserrat.css");
 
 :root {
-  /* Sizes (paddings, margins, gaps, heights) */
-  --size-x1: 0.2rem;
-  --size-x2: 0.4rem;
-  --size-x3: 0.6rem;
-  --size-x4: 0.8rem;
-  --size-x5: 1rem;
-  --size-x6: 1.2rem;
-  --size-x7: 1.4rem;
-  --size-x8: 1.6rem;
-  --size-x9: 1.8rem;
-  --size-x10: 2rem;
-  --size-x11: 2.2rem;
-  --size-x12: 2.4rem;
-  --size-x13: 2.6rem;
-  --size-x15: 3rem;
-  --size-x16: 3.2rem;
-  --size-x17: 3.4rem;
-  --size-x18: 3.6rem;
-  --size-x19: 3.8rem;
-  --size-x20: 4rem;
-  --size-x21: 4.2rem;
-  --size-x22: 4.4rem;
-  --size-x23: 4.6rem;
-  --size-x26: 5.2rem;
-  --size-x40: 8rem;
-
   /* Colors */
   --neutral-100: #fff;
   --neutral-150: #f9f9f9;
@@ -75,17 +49,6 @@
   --outline-set-alt: 0.1rem solid var(--outline-alt);
   --outline-offset: -0.1rem;
   --preloader: rotate-preloader 0.7s linear infinite;
-
-  /* Fonts weight */
-  --black: 900;
-  --extra-bold: 800;
-  --bold: 700;
-  --semi-bold: 600;
-  --medium: 500;
-  --regular: 400;
-  --light: 300;
-  --extra-light: 200;
-  --thin: 100;
 }
 
 *,
@@ -100,7 +63,7 @@ html {
   font-family: Montserrat, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-weight: var(--medium);
+  font-weight: 500;
 }
 
 input,

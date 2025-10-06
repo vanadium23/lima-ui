@@ -11,13 +11,13 @@
 }
 
 .dragHandle_medium {
-  padding: var(--size-x3);
+  padding: 0.6rem;
   border-width: 0.1rem;
 }
 
 .dragHandle_primary {
   color: var(--neutral-800);
-  border-radius: var(--size-x4);
+  border-radius: 0.8rem;
   background: transparent;
   border-color: transparent;
 }
