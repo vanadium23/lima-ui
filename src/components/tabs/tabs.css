@@ -1,0 +1,28 @@
+.tabs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.tabs__tablist {
+  display: flex;
+}
+
+.tabs__tabpanel {
+  border-style: solid;
+}
+
+.tabs__tabpanel_hidden {
+  display: none;
+}
+
+.tabs_primary .tabs__tabpanel {
+  border-color: var(--neutral-300);
+  background: var(--neutral-100);
+  color: var(--text-neutral-900);
+}
+
+.tabs_medium .tabs__tabpanel {
+  border-radius: 0 0 0.8rem 0.8rem;
+  border-width: 0 0.1rem 0.1rem;
+}

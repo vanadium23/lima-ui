@@ -1,0 +1,58 @@
+---
+import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
+import { Tabs, TabsSize, TabsTheme } from "../../../components/tabs/tabs.tsx";
+import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
+
+const themes = Object.values(TabsTheme);
+const sizes = Object.values(TabsSize);
+
+const demoTabs = [
+  {
+    ariaLabel: "Первая",
+    content: "Содержимое первой вкладки. Здесь может быть любой контент.",
+  },
+  {
+    ariaLabel: "Вторая",
+    content: "Содержимое второй вкладки с другой информацией.",
+  },
+  {
+    ariaLabel: "Третья",
+    content: "Содержимое третьей вкладки для полной демонстрации функционала.",
+  },
+  {
+    ariaLabel: "Disabled",
+    content: "Содержимое disabled вкладки для полной демонстрации функционала.",
+    disabled: true,
+  },
+];
+---
+
+<StorybookPage title="Tabs">
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 class="demoThemeWrapper__title">{theme}</h3>
+        <div class="grid grid_1Col">
+          <span class="chead" />
+          <span class="chead">Default</span>
+
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <Tabs
+                ariaLabel="Tabs"
+                client:only="solid-js"
+                theme={theme}
+                size={size}
+                tabs={demoTabs}
+                testId={DEFAULT_TEST_ID}
+              >
+                {demoTabs}
+              </Tabs>
+            </>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+</StorybookPage>
