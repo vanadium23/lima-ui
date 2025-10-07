@@ -199,7 +199,7 @@ export const AllVariants: Story = {
           </div>
         )}
       </For>
-      <Grid>{/*<Button testId={"123"}>Test</Button>*/}</Grid>
+      <Grid>{() => <Button testId={"123"}>Test</Button>}</Grid>
     </div>
   ),
   args: {

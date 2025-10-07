@@ -1,4 +1,4 @@
-import { type ValidComponent } from "solid-js";
+import { type JSX } from "solid-js";
 import { Dynamic } from "solid-js/web";
 
 export enum GridCol {
@@ -9,7 +9,7 @@ export enum GridCol {
 }
 
 type GridProps = {
-  children?: ValidComponent | undefined;
+  children?: () => JSX.Element;
 };
 
 export const Grid = (props: GridProps) => {
