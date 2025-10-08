@@ -10,6 +10,7 @@ export enum TitleTheme {
 
 export enum TitleSize {
   Medium = "medium",
+  Large = "large",
 }
 
 export enum TitlePosition {

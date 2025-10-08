@@ -3,7 +3,7 @@
   width: 100%;
   border-width: 0.1rem;
   border-style: solid;
-  border-radius: var(--size-x4);
+  border-radius: 0.8rem;
 }
 
 .cyberInput__inner {
@@ -67,26 +67,26 @@
   min-height: 2rem;
   font-size: 1.6rem;
   line-height: 2rem;
-  padding: var(--size-x3) var(--size-x8);
+  padding: 0.6rem 1.6rem;
 }
 
 .cyberInput_medium .cyberInput__controls {
-  gap: var(--size-x2);
+  gap: 0.4rem;
   min-width: 1.9rem;
-  padding: var(--size-x3) var(--size-x3) var(--size-x3) 0;
+  padding: 0.6rem 0.6rem 0.6rem 0;
 }
 
 .cyberInput_extraLarge .cyberInput__inner {
   min-height: 2.4rem;
   font-size: 2rem;
   line-height: 2.4rem;
-  padding: var(--size-x3) var(--size-x8);
+  padding: 0.6rem 1.6rem;
 }
 
 .cyberInput_extraLarge .cyberInput__controls {
-  gap: var(--size-x2);
+  gap: 0.4rem;
   min-width: 1.9rem;
-  padding: var(--size-x3) var(--size-x3) var(--size-x3) 0;
+  padding: 0.6rem 0.6rem 0.6rem 0;
 }
 
 .cyberInput_primary {
@@ -179,7 +179,7 @@
 
 .cyberInput_secondary .cyberInput__inner {
   color: var(--text-neutral-800);
-  font-weight: var(--semi-bold);
+  font-weight: 600;
 }
 
 .cyberInput_secondary.cyberInput_error .cyberInput__inner {

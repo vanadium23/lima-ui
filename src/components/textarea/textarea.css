@@ -5,7 +5,7 @@
   width: 100%;
   border-width: 0.1rem;
   border-style: solid;
-  border-radius: var(--size-x4);
+  border-radius: 0.8rem;
 }
 
 .textarea__inner {
@@ -41,12 +41,12 @@
   height: 10.6rem;
   font-size: 1.6rem;
   line-height: 2rem;
-  padding: var(--size-x1) var(--size-x8);
+  padding: 0.2rem 1.6rem;
 }
 
 .textarea_medium .textarea__controls {
   height: 2rem;
-  padding: 0 var(--size-x8) var(--size-x1);
+  padding: 0 1.6rem 0.2rem;
 }
 
 .textarea_primary {

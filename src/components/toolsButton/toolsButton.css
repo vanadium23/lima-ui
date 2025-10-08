@@ -36,23 +36,23 @@
 /* Sizes */
 
 .toolsButton_medium {
-  border-radius: var(--size-x4);
+  border-radius: 0.8rem;
 }
 
 .toolsButton_medium .toolsButton__iconWrapper {
-  padding: var(--size-x6) var(--size-x6) 0;
+  padding: 1.2rem 1.2rem 0;
 }
 
 .toolsButton_medium .toolsButton__icon {
   display: flex;
   border: 0.1rem solid var(--neutral-200);
-  padding: var(--size-x8);
-  border-radius: var(--size-x4);
+  padding: 1.6rem;
+  border-radius: 0.8rem;
 }
 
 .toolsButton_medium .toolsButton__text {
   display: inline-block;
-  padding: var(--size-x2) var(--size-x1) var(--size-x4);
+  padding: 0.4rem 0.2rem 0.8rem;
   text-align: center;
   font-size: 1.2rem;
   line-height: 1.4rem;

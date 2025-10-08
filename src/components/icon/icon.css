@@ -3,21 +3,21 @@
 }
 
 .icon_extraSmall {
-  width: var(--size-x8);
-  height: var(--size-x8);
+  width: 1.6rem;
+  height: 1.6rem;
 }
 
 .icon_small {
-  width: var(--size-x9);
-  height: var(--size-x9);
+  width: 1.8rem;
+  height: 1.8rem;
 }
 
 .icon_medium {
-  width: var(--size-x10);
-  height: var(--size-x10);
+  width: 2rem;
+  height: 2rem;
 }
 
 .icon_large {
-  width: var(--size-x11);
-  height: var(--size-x11);
+  width: 2.2rem;
+  height: 2.2rem;
 }
