@@ -13,7 +13,6 @@ export enum TextButtonTheme {
 }
 
 export enum TextButtonSize {
-  ExtraSmallEmbedded = "extraSmallEmbedded",
   Medium = "medium",
 }
 
@@ -41,7 +40,6 @@ export const TextButton = (props: Testable<TextButtonProps>) => {
   );
 
   const loadingIconSize = {
-    [TextButtonSize.ExtraSmallEmbedded]: IconSize.ExtraSmall,
     [TextButtonSize.Medium]: IconSize.Medium,
   };
 
