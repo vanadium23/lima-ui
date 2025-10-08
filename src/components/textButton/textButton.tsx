@@ -13,7 +13,6 @@ export enum TextButtonTheme {
 }
 
 export enum TextButtonSize {
-  ExtraSmallEmbedded = "extraSmallEmbedded",
   Medium = "medium",
 }
 
@@ -53,7 +52,6 @@ export const TextButton = (props: Testable<TextButtonProps>) => {
   );
 
   const loadingIconSize = {
-    [TextButtonSize.ExtraSmallEmbedded]: IconSize.ExtraSmall,
     [TextButtonSize.Medium]: IconSize.Medium,
   };
 
@@ -78,10 +76,7 @@ export const TextButton = (props: Testable<TextButtonProps>) => {
     >
       <Show when={mProps.isLoading}>
         <div class="textButton__loadingIcon">
-          <Icon
-            name={IconName.CircleNotch}
-            size={loadingIconSize[mProps.size]}
-          />
+          <Icon name={IconName.CircleNotch} size={loadingIconSize[mProps.size]} />
         </div>
       </Show>
       <span class="textButton__text">{mProps.text}</span>
