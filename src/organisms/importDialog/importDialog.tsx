@@ -1,12 +1,12 @@
 import { createEffect, For, Show } from "solid-js";
-import { createStore } from "solid-js/store";
+import { createStore, produce } from "solid-js/store";
 
 import { DEFAULT_TEST_ID, IMPORT_DIALOG, IMPORT_DIALOG_IMPORT_BUTTON } from "../../../features/testIds.ts";
 import { Button, ButtonSize, ButtonTheme } from "../../components/button/button.tsx";
 import { Dialog } from "../../components/dialog/dialog.tsx";
 import { ListStripeImport } from "../../components/listStripeImport/listStripeImport.tsx";
 import { notificationState } from "../../state/pushNotificationStateManager.ts";
-import type { List } from "../../types/types.ts";
+import type { Item, Items, List } from "../../types/types.ts";
 import { getLists } from "../../widgets/editList/services/getLists.ts";
 import { soften } from "../../widgets/editList/utilities/soften.ts";
 
@@ -16,11 +16,12 @@ type ImportDialogProps = {
   currentListId: string;
   isOpen: boolean;
   onClose: () => void;
+  addItems: (items: Items) => void;
 };
 
 type ImportDialogState = {
   listsForImport: List[];
-  elementsReadyToImport: List[];
+  elementsReadyToImport: Item[];
   loadingListsForImport: boolean;
 };
 
@@ -72,6 +73,10 @@ export const ImportDialog = (props: ImportDialogProps) => {
     }
   });
 
+  function addToReadyToImport(item: Item) {
+    setStore(produce((store) => store.elementsReadyToImport.push(item)));
+  }
+
   return (
     <Dialog
       title="Выбрать списки для импорта"
@@ -82,7 +87,10 @@ export const ImportDialog = (props: ImportDialogProps) => {
           theme={ButtonTheme.Primary}
           size={ButtonSize.Medium}
           text={"Импортировать"}
-          handleClick={handleClose}
+          handleClick={() => {
+            props.addItems(store.elementsReadyToImport);
+            handleClose();
+          }}
           testId={IMPORT_DIALOG_IMPORT_BUTTON}
           isDisabled={store.elementsReadyToImport.length === 0}
         />
@@ -99,7 +107,14 @@ export const ImportDialog = (props: ImportDialogProps) => {
           </div>
         </Show>
         <For each={store.listsForImport}>
-          {(list) => <ListStripeImport listData={list} titleHTMLName={list.name} testId={DEFAULT_TEST_ID} />}
+          {(list) => (
+            <ListStripeImport
+              listData={list}
+              titleHTMLName={list.name}
+              testId={DEFAULT_TEST_ID}
+              handleReadyToImport={addToReadyToImport}
+            />
+          )}
         </For>
       </div>
     </Dialog>

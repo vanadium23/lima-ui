@@ -1,7 +1,7 @@
 import { createEffect, createSignal, Index, mergeProps } from "solid-js";
 
 import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
-import type { List } from "../../types/types.ts";
+import type { Item, List } from "../../types/types.ts";
 import { Checkbox, CheckboxSize, CheckboxTheme, type CheckedState } from "../checkbox/checkbox.tsx";
 import { Icon, IconSize } from "../icon/icon.tsx";
 import { IconName } from "../icon/types.ts";
@@ -23,6 +23,7 @@ type ListStripeImportProps = {
   size?: ListStripeImportSize;
   listData: List;
   titleHTMLName: string;
+  handleReadyToImport: (item: Item) => void;
 };
 
 export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
@@ -43,12 +44,13 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
   const [getItemsCheckboxState, setItemsCheckboxState] = createSignal<boolean[]>([]);
   const [getListCheckboxState, setListCheckboxState] = createSignal<CheckedState>(false);
 
-  function handleItemCheckboxChange(index: number) {
+  function handleItemCheckboxChange(index: number, item: Item) {
     // eslint-disable-next-line solid/reactivity
     return function (checked: boolean) {
       const newItems = [...getItemsCheckboxState()];
       newItems[index] = checked;
       setItemsCheckboxState(newItems);
+      mProps.handleReadyToImport(item);
     };
   }
 
@@ -111,12 +113,12 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
         </button>
         <div class="listStripeImport__items">
           <Index each={mProps.listData.items}>
-            {(item, index) => (
+            {(getItem, index) => (
               <ListItemImport
-                text={item().content}
+                text={getItem().content}
                 testId={DEFAULT_TEST_ID}
                 toImport={getItemsCheckboxState()[index] || false}
-                onCheckedChange={handleItemCheckboxChange(index)}
+                onCheckedChange={handleItemCheckboxChange(index, getItem())}
                 checkboxHTMLName={`item-${index}`}
               />
             )}

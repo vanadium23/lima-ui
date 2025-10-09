@@ -17,13 +17,14 @@ const testListData: List = {
   purpose: "Выберите элементы для импорта",
   note: "",
   items: [
-    { id: "123", content: "Ололо1" },
-    { id: "123", content: "Ололо2" },
+    { id: "123", content: "Ололо1", originalListId: "1" },
+    { id: "123", content: "Ололо2", originalListId: "1" },
     {
       id: "123",
       content: "Длинный текст элемента списка для проверки отображения",
+      originalListId: "1",
     },
-    { id: "123", content: "Ололо4" },
+    { id: "123", content: "Ололо4", originalListId: "1" },
   ],
 };
 ---
@@ -45,6 +46,7 @@ const testListData: List = {
                 testId={DEFAULT_TEST_ID}
                 titleHTMLName={"Title"}
                 client:only="solid-js"
+                handleReadyToImport={() => {}}
               />
             </>
           ))}

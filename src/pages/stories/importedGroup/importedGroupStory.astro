@@ -2,20 +2,14 @@
 import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
 import { ImportedGroup } from "../../../components/importedGroup/importedGroup.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
-import { type List } from "../../../types/types.ts";
+import { type Item } from "../../../types/types.ts";
 
-const exampleList: List = {
-  note: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam debitis dolorem eos maiores minima nemo nesciunt quos reiciendis sunt veniam?",
-  id: "123141",
-  name: "Lorem ipsum dolor sit amet.",
-  purpose: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, reprehenderit.",
-  items: [
-    { id: "1", content: "Тестовый пункт 1" },
-    { id: "2", content: "Тестовый пункт 2" },
-    { id: "3", content: "Тестовый пункт 3" },
-    { id: "4", content: "Длинный тестовый пункт для проверки отображения" },
-  ],
-};
+const exampleList: Item[] = [
+  { id: "1", content: "Тестовый пункт 1", originalListId: "1" },
+  { id: "2", content: "Тестовый пункт 2", originalListId: "1" },
+  { id: "3", content: "Тестовый пункт 3", originalListId: "1" },
+  { id: "4", content: "Длинный тестовый пункт для проверки отображения", originalListId: "1" },
+];
 ---
 
 <StorybookPage title="List Stripe Import">
@@ -25,16 +19,17 @@ const exampleList: List = {
       <span class="chead"></span>
       <span class="chead">Medium</span>
       <span class="rhead">List</span>
-      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID} list={exampleList} />
+      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID} items={exampleList} id={"1"} />
       <span class="rhead">List - Disabled</span>
-      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID} list={exampleList} disabled={true} />
+      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID} items={exampleList} id={"1"} disabled={true} />
       <span class="rhead">Checklist</span>
-      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID} list={exampleList} isCheckable={true} />
+      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID} items={exampleList} id={"1"} isCheckable={true} />
       <span class="rhead">Checklist - Disabled</span>
       <ImportedGroup
         client:only="solid-js"
         testId={DEFAULT_TEST_ID}
-        list={exampleList}
+        id={"1"}
+        items={exampleList}
         isCheckable={true}
         disabled={true}
       />

@@ -1,6 +1,6 @@
 import type { SetStoreFunction } from "solid-js/store";
 
-import type { DragItems, EditListStore, Items } from "../../../types/types.ts";
+import type { DragItem, EditListStore, Items } from "../../../types/types.ts";
 
 import { createDefaultItem } from "./createDefaultItem.ts";
 
@@ -17,7 +17,7 @@ export function checkChanges(store: EditListStore, setStore: SetStoreFunction<Ed
   setStore("isChanged", hasChanges);
 }
 
-function itemsChanged(initialItems: Items, currentItemsWithAutoItem: DragItems) {
+function itemsChanged(initialItems: Items, currentItemsWithAutoItem: DragItem[]) {
   const currentItems = currentItemsWithAutoItem.filter((item) => !item.auto);
 
   if (initialItems.length !== currentItems.length) {

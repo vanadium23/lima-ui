@@ -1,4 +1,4 @@
-import { EditListFormNames, type EditListStore, type Item } from "../../../types/types.ts";
+import { EditListFormNames, type EditListStore, type Item, type SimpleItem } from "../../../types/types.ts";
 
 export function prepareListItemsDataForSending(elements: HTMLInputElement[], store: EditListStore) {
   const itemsInputs = elements.filter((element) => {
@@ -38,6 +38,6 @@ export function prepareListItemsDataForSending(elements: HTMLInputElement[], sto
     });
 }
 
-function isItemUnchanged(item: Item, initialItem: Item) {
+function isItemUnchanged(item: SimpleItem, initialItem: Item) {
   return item.id === initialItem.id && item.content === initialItem.content;
 }

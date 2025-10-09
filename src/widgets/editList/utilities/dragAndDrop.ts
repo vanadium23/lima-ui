@@ -1,7 +1,7 @@
 import type { CollisionDetector, Droppable } from "@thisbeyond/solid-dnd";
 import { onCleanup } from "solid-js";
 
-import type { EditListStore, List, ScrollContainer } from "../../../types/types.ts";
+import type { EditListStore, Items, ScrollContainer } from "../../../types/types.ts";
 
 import { createDragId } from "./createDefaultItem.ts";
 
@@ -117,8 +117,8 @@ export const createScrollableCollisionsDetector: ScrollableCollisionDetectorCrea
     return droppable;
   };
 
-export function convertItemsToDragItems(list: List) {
-  return list.items.map((item) => ({
+export function convertItemsToDragItems(items: Items) {
+  return items.map((item) => ({
     ...item,
     dragId: item.id || createDragId(),
     auto: false,

@@ -15,6 +15,7 @@ import { ITEMS_LIMIT, LIST_PURPOSE_INPUT_LIMIT, LIST_TITLE_INPUT_LIMIT } from ".
 import {
   AUTO_LIST_ITEM,
   CHECKLIST_SWITCH,
+  DEFAULT_TEST_ID,
   DRAGGED_LIST_ITEM,
   ITEMS_LIMIT_REACHED_WARNING,
   LIST_ITEM,
@@ -40,6 +41,7 @@ import { CyberInput, CyberInputSize, CyberInputTheme } from "../../components/cy
 import { Dialog } from "../../components/dialog/dialog.tsx";
 import { Divider } from "../../components/divider/divider.tsx";
 import { IconName } from "../../components/icon/types.ts";
+import { ImportedGroup } from "../../components/importedGroup/importedGroup.tsx";
 import { ListItem } from "../../components/listItem/listItem.tsx";
 import { Note } from "../../components/note/note.tsx";
 import { PageError } from "../../components/pageError/pageError.tsx";
@@ -49,9 +51,10 @@ import { ImportDialog } from "../../organisms/importDialog/importDialog.tsx";
 import { ToolsPanel, ToolsPanelSize, ToolsPanelTheme } from "../../organisms/toolsPanel/toolsPanel.tsx";
 import { setLocation } from "../../state/locationState.ts";
 import {
-  type DragItems,
+  type DragItem,
   EditListFormNames,
   type EditListStore,
+  type Items,
   type List,
   type NewList,
   type ScrollContainer,
@@ -93,7 +96,7 @@ export const EditList = (props: EditListProps) => {
         name: "",
         purpose: "",
         note: "",
-        items: [{ content: "", id: "" }],
+        items: [{ content: "", id: "", originalListId: "" }],
       },
     },
     props,
@@ -111,7 +114,7 @@ export const EditList = (props: EditListProps) => {
 
   const [store, setStore] = createStore<EditListStore>({
     id: list.id,
-    items: addAutoItemIfNeeded(convertItemsToDragItems(list)),
+    items: addAutoItemIfNeeded(list.id, convertItemsToDragItems(list.items)),
     name: list.name,
     purpose: list.purpose,
     note: list.note,
@@ -158,16 +161,16 @@ export const EditList = (props: EditListProps) => {
   const openImportDialog = () => setStore("isImportDialogOpen", true);
   const closeImportDialog = () => setStore("isImportDialogOpen", false);
 
-  function addItem(options: AddItemOptions) {
+  function addEmptyItem(options: AddItemOptions) {
     if (reachedItemsLimit()) return;
 
-    let resultingItems: DragItems = [];
+    let resultingItems: DragItem[] = [];
 
     if (options.mode === "end") {
       const items = store.items.filter((item) => !item.auto);
       const existingAutoItem = store.items.filter((item) => item.auto);
 
-      resultingItems = [...items, createDefaultItem(options.auto), ...existingAutoItem];
+      resultingItems = [...items, createDefaultItem(store.id, options.auto), ...existingAutoItem];
 
       if (options.scroll) {
         requestAnimationFrame(scrollToBottom);
@@ -182,13 +185,17 @@ export const EditList = (props: EditListProps) => {
           ...item,
           auto: false,
         })),
-        createDefaultItem(),
+        createDefaultItem(store.id),
         ...store.items.slice(insertIndex),
       ];
     }
 
     setStore("items", resultingItems.slice(0, ITEMS_LIMIT));
     checkChanges(store, setStore);
+  }
+
+  function addImportedItems(importedItems: Items) {
+    setStore("items", (items) => items.concat(convertItemsToDragItems(importedItems)));
   }
 
   function isLastItem(index: number) {
@@ -201,7 +208,7 @@ export const EditList = (props: EditListProps) => {
 
     if (isLastItem(index) && value.trim() !== "") {
       setStore("items", index, "auto", false);
-      addItem({ mode: "end", scroll: true, auto: true });
+      addEmptyItem({ mode: "end", scroll: true, auto: true });
     }
 
     const lastIndex = store.items.length - 1;
@@ -279,7 +286,7 @@ export const EditList = (props: EditListProps) => {
             id: newList.id,
             isNewList: false,
             sendingNow: false,
-            items: addAutoItemIfNeeded(convertItemsToDragItems(newList)),
+            items: addAutoItemIfNeeded(newList.id, convertItemsToDragItems(newList.items)),
             initialList: newList,
           });
 
@@ -309,7 +316,7 @@ export const EditList = (props: EditListProps) => {
           setStore({
             isNewList: false,
             sendingNow: false,
-            items: addAutoItemIfNeeded(convertItemsToDragItems(updatedList)),
+            items: addAutoItemIfNeeded(store.id, convertItemsToDragItems(updatedList.items)),
             initialList: updatedList,
           });
 
@@ -348,7 +355,8 @@ export const EditList = (props: EditListProps) => {
       });
   }
 
-  const draggedItemData = () => store.items.find((item) => item.dragId === store.draggedItem) || createDefaultItem();
+  const draggedItemData = () =>
+    store.items.find((item) => item.dragId === store.draggedItem) || createDefaultItem(store.id);
   const ids = () => store.items.map((item) => item.dragId);
 
   const onDragStart = ({ draggable }: DragEvent) => {
@@ -443,36 +451,54 @@ export const EditList = (props: EditListProps) => {
                   {(item, index) => {
                     const dragData = createSortable(item.dragId);
 
-                    return (
-                      <ListItem
-                        removeItem={() => removeItem(index())}
-                        isDisabled={store.sendingNow !== false}
-                        isOnlyOneItem={isOnlyOneItem(store.items)}
-                        isCheckable={store.isCheckable}
-                        isChecked={false}
-                        defaultValue={item.content}
-                        name={`${EditListFormNames.ListItem} ${index() + 1}`}
-                        dataId={item.id}
-                        onChange={(value) => handleItemChange(index(), value)}
-                        onAddBefore={() => addItem({ mode: "before", index: index() })}
-                        onAddAfter={() => addItem({ mode: "after", index: index() })}
-                        onImportAbove={openImportDialog}
-                        onImportBelow={openImportDialog}
-                        canAddMore={!reachedItemsLimit()}
-                        testId={item.auto ? AUTO_LIST_ITEM : LIST_ITEM}
-                        testSubId={index()}
-                        isRequired={!item.auto}
-                        dragSettings={{
-                          dragData,
-                          dragProps: {
-                            ref: dragData.ref,
-                            style: store.draggedItem ? transformStyle(dragData.transform) : {},
-                          },
-                          dragState: useDragDropContext()?.[0] || null,
-                        }}
-                        placeholder={item.auto ? "Добавить пункт списка" : "Пункт списка"}
-                      />
-                    );
+                    if (item.originalListId === store.id) {
+                      return (
+                        <ListItem
+                          removeItem={() => removeItem(index())}
+                          isDisabled={store.sendingNow !== false}
+                          isOnlyOneItem={isOnlyOneItem(store.items)}
+                          isCheckable={store.isCheckable}
+                          isChecked={false}
+                          defaultValue={item.content}
+                          name={`${EditListFormNames.ListItem} ${index() + 1}`}
+                          dataId={item.id}
+                          onChange={(value) => handleItemChange(index(), value)}
+                          onAddBefore={() => addEmptyItem({ mode: "before", index: index() })}
+                          onAddAfter={() => addEmptyItem({ mode: "after", index: index() })}
+                          onImportAbove={openImportDialog}
+                          onImportBelow={openImportDialog}
+                          canAddMore={!reachedItemsLimit()}
+                          testId={item.auto ? AUTO_LIST_ITEM : LIST_ITEM}
+                          testSubId={index()}
+                          isRequired={!item.auto}
+                          dragSettings={{
+                            dragData,
+                            dragProps: {
+                              ref: dragData.ref,
+                              style: store.draggedItem ? transformStyle(dragData.transform) : {},
+                            },
+                            dragState: useDragDropContext()?.[0] || null,
+                          }}
+                          placeholder={item.auto ? "Добавить пункт списка" : "Пункт списка"}
+                        />
+                      );
+                    } else {
+                      return (
+                        <ImportedGroup
+                          items={[item]}
+                          testId={DEFAULT_TEST_ID}
+                          id={item.originalListId}
+                          dragSettings={{
+                            dragData,
+                            dragProps: {
+                              ref: dragData.ref,
+                              style: store.draggedItem ? transformStyle(dragData.transform) : {},
+                            },
+                            dragState: useDragDropContext()?.[0] || null,
+                          }}
+                        />
+                      );
+                    }
                   }}
                 </For>
               </SortableProvider>
@@ -523,7 +549,7 @@ export const EditList = (props: EditListProps) => {
             <ToolsButton
               componentType={ToolsButtonComponentType.Button}
               iconName={IconName.RowsPlusBottom}
-              handleClick={() => addItem({ mode: "end", scroll: true, auto: false })}
+              handleClick={() => addEmptyItem({ mode: "end", scroll: true, auto: false })}
               isDisabled={reachedItemsLimit() || store.sendingNow !== false}
               text={"Добавить пункт"}
               testId={TOOLS_PANEL_ADD_ITEM_BUTTON}
@@ -591,7 +617,12 @@ export const EditList = (props: EditListProps) => {
               handleClick={openImportDialog}
             />
 
-            <ImportDialog currentListId={store.id} isOpen={store.isImportDialogOpen} onClose={closeImportDialog} />
+            <ImportDialog
+              currentListId={store.id}
+              isOpen={store.isImportDialogOpen}
+              onClose={closeImportDialog}
+              addItems={addImportedItems}
+            />
 
             <ToolsButton
               componentType={ToolsButtonComponentType.Link}
