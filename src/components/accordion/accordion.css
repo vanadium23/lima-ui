@@ -49,17 +49,8 @@
   background: var(--neutral-100);
 }
 
-.accordion_disabled {
-  background: var(--neutral-200);
-}
-
 .accordion_primary .accordion__header {
   color: var(--neutral-700);
-}
-
-.accordion_disabled .accordion__header {
-  color: var(--text-neutral-500);
-  cursor: not-allowed;
 }
 
 .accordion_primary .accordion__headerIcon {
@@ -70,6 +61,16 @@
   .accordion_primary:has(.accordion__header:hover) {
     border-color: var(--neutral-700);
   }
+}
+
+.accordion_disabled {
+  background: var(--neutral-200);
+  border-color: var(--neutral-500);
+}
+
+.accordion_disabled .accordion__header {
+  color: var(--text-neutral-500);
+  cursor: not-allowed;
 }
 
 .accordion_disabled .accordion__headerIcon {
