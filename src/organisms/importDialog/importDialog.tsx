@@ -81,11 +81,12 @@ export const ImportDialog = (props: ImportDialogProps) => {
         <Button
           theme={ButtonTheme.Primary}
           size={ButtonSize.Medium}
-          text={"Импортировать"}
           handleClick={handleClose}
           testId={IMPORT_DIALOG_IMPORT_BUTTON}
-          isDisabled={store.elementsReadyToImport.length === 0}
-        />
+          disabled={store.elementsReadyToImport.length === 0}
+        >
+          Импортировать
+        </Button>
       }
       isOpen={props.isOpen}
       testId={IMPORT_DIALOG}

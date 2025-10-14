@@ -7,7 +7,6 @@ import "./importedItem.css";
 
 export enum ImportedItemTheme {
   Primary = "primary",
-  Disabled = "disabled",
 }
 
 export enum ImportedItemSize {
@@ -37,7 +36,7 @@ export const ImportedItem = (props: Testable<ImportedItemProps>) => {
 
   return (
     <div
-      class={`importedItem importedItem_${mProps.disabled ? ImportedItemTheme.Disabled : mProps.theme} importedItem_${mProps.size}`}
+      class={`importedItem importedItem_${mProps.disabled ? "disabled" : mProps.theme} importedItem_${mProps.size}`}
       data-test-id={mProps.testId}
     >
       <Show when={mProps.isCheckable}>
