@@ -1,4 +1,4 @@
-export function soften<T>(act: () => T | Promise<T>, time = 500): Promise<T> {
+export function soften<T>(act: () => T | Promise<T>, time = 700): Promise<T> {
   return new Promise((resolve, reject) => {
     setTimeout(async () => {
       try {
