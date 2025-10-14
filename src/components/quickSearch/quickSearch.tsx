@@ -49,7 +49,11 @@ export const QuickSearch = (props: QuickSearchProps) => {
 
   return (
     <div
-      class={`quickSearch quickSearch_${props.theme} quickSearch_${mProps.size}`}
+      class="quickSearch"
+      classList={{
+        [`quickSearch_${mProps.size}`]: true,
+        [`quickSearch_${mProps.theme}`]: true,
+      }}
       tabIndex={-1}
       /* Tabindex чтобы сделать элемент псевдофокусабельными для фикса focus-within */
     >

@@ -36,7 +36,11 @@ export const ListItemImport = (props: Testable<ListItemImportProps>) => {
 
   return (
     <label
-      class={`listItemImport listItemImport_${mProps.theme} listItemImport_${mProps.size}`}
+      class="listItemImport"
+      classList={{
+        [`listItemImport_${mProps.size}`]: true,
+        [`listItemImport_${mProps.theme}`]: true,
+      }}
       data-test-id={mProps.testId}
       data-test-sub-id={mProps.testSubId}
     >

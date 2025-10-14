@@ -105,8 +105,10 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
 
   return (
     <div
-      class={`listStripe listStripe_${mProps.theme} listStripe_${mProps.size}`}
+      class="listStripe"
       classList={{
+        [`listStripe_${mProps.size}`]: true,
+        [`listStripe_${mProps.theme}`]: true,
         listStripe_removing: listStripeIsRemoving(),
       }}
       data-test-id={LIST_STRIPE}

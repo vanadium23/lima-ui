@@ -128,8 +128,10 @@ export const ListItem = (props: Testable<ListItemProps>) => {
   return (
     <div
       {...mProps.dragSettings.dragProps}
-      class={`listItem listItem_${mProps.theme} listItem_${mProps.size}`}
+      class="listItem"
       classList={{
+        [`listItem_${mProps.size}`]: true,
+        [`listItem_${mProps.theme}`]: true,
         listItem_dragging: mProps.isDraggingOverlay,
         listItem_transition: !!mProps.dragSettings.dragState?.active.draggable,
       }}

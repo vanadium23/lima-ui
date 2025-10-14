@@ -38,7 +38,12 @@ export const DragHandle = (props: Testable<DragHandleProps>) => {
   return (
     <button
       type="button"
-      class={`dragHandle dragHandle_${mProps.disabled ? "disabled" : mProps.theme} dragHandle_${mProps.size}`}
+      class="dragHandle"
+      classList={{
+        [`dragHandle_${mProps.size}`]: true,
+        [`dragHandle_${mProps.theme}`]: !mProps.disabled,
+        dragHandle_disabled: mProps.disabled,
+      }}
       disabled={mProps.disabled}
       onClick={() => {
         mProps.handleClick();

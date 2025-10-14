@@ -39,7 +39,12 @@ export const Switch = (props: Testable<SwitchProps>) => {
 
   return (
     <label
-      class={`switch switch_${mProps.disabled ? "disabled" : mProps.theme} switch_${mProps.size}`}
+      class="switch"
+      classList={{
+        [`switch_${mProps.size}`]: true,
+        [`switch_${mProps.theme}`]: !mProps.disabled,
+        switch_disabled: mProps.disabled,
+      }}
       data-test-id={mProps.testId}
     >
       <input

@@ -62,14 +62,7 @@ function createTooltip(placement: TooltipPlacement): TooltipTypes {
     middleware: [offset(8), shift(), flip(), hide()],
   });
 
-  return [
-    isTooltipOpen,
-    setIsTooltipOpen,
-    triggerRef,
-    setTriggerRef,
-    setTooltipRef,
-    floatingPosition,
-  ];
+  return [isTooltipOpen, setIsTooltipOpen, triggerRef, setTriggerRef, setTooltipRef, floatingPosition];
 }
 
 export const Tooltip = (props: Testable<TooltipProps>) => {
@@ -82,14 +75,9 @@ export const Tooltip = (props: Testable<TooltipProps>) => {
     props,
   );
 
-  const [
-    isTooltipOpen,
-    setIsTooltipOpen,
-    triggerRef,
-    setTriggerRef,
-    setTooltipRef,
-    floatingPosition,
-  ] = createTooltip(mProps.defaultPlacement);
+  const [isTooltipOpen, setIsTooltipOpen, triggerRef, setTriggerRef, setTooltipRef, floatingPosition] = createTooltip(
+    mProps.defaultPlacement,
+  );
 
   createEffect(() => {
     const triggerEl = triggerRef();
@@ -123,17 +111,18 @@ export const Tooltip = (props: Testable<TooltipProps>) => {
         <Portal mount={document.body}>
           <div
             ref={setTooltipRef}
-            class={`tooltip tooltip_${mProps.theme} tooltip_${mProps.size}`}
+            class="tooltip"
+            classList={{
+              [`tooltip_${mProps.size}`]: true,
+              [`tooltip_${mProps.theme}`]: true,
+            }}
             style={
               floatingPosition
                 ? {
                     position: floatingPosition.strategy,
                     top: `${(floatingPosition.y ?? 0) / 10}rem`,
                     left: `${(floatingPosition.x ?? 0) / 10}rem`,
-                    display: floatingPosition.middlewareData.hide
-                      ?.referenceHidden
-                      ? "none"
-                      : "block",
+                    display: floatingPosition.middlewareData.hide?.referenceHidden ? "none" : "block",
                   }
                 : {}
             }

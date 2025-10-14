@@ -31,7 +31,10 @@ export const Icon = (props: IconProps) => {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       data-id={IconValues[mProps.name]}
-      class={`icon icon_${mProps.size}`}
+      class="icon"
+      classList={{
+        [`icon_${mProps.size}`]: true,
+      }}
       aria-hidden={!mProps.role}
       aria-label={mProps.ariaLabel}
       role={mProps.role}

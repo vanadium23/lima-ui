@@ -45,8 +45,9 @@ export const Accordion = (props: Testable<AccordionProps>) => {
 
   return (
     <div
-      class={`accordion accordion_${mProps.size}`}
+      class="accordion"
       classList={{
+        [`accordion_${mProps.size}`]: true,
         [`accordion_${mProps.theme}`]: !mProps.disabled,
         accordion_disabled: mProps.disabled,
         accordion_expanded: getExpanded(),

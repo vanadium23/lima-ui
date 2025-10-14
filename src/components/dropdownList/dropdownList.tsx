@@ -31,7 +31,13 @@ export const DropdownList = (props: Testable<DropdownListProps>) => {
   );
 
   return (
-    <div class={`dropdownList dropdownList_${props.theme} dropdownList_${mProps.size}`}>
+    <div
+      class="dropdownList"
+      classList={{
+        [`dropdownList_${mProps.size}`]: true,
+        [`dropdownList_${mProps.theme}`]: true,
+      }}
+    >
       <ul class="dropdownList__list scrollStyles" data-test-id={DEFAULT_TEST_ID}>
         <For each={mProps.children}>
           {(list, index) => {

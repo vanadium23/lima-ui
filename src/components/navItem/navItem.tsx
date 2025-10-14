@@ -40,8 +40,11 @@ export const NavItem = (props: Testable<NavItemProps>) => {
       href={!mProps.disabled ? mProps.href : "#"}
       role="menuitem"
       aria-current={mProps.current ? "page" : "false"}
-      class={`navItem navItem_${mProps.disabled ? "disabled" : mProps.theme} navItem_${mProps.size}`}
+      class="navItem"
       classList={{
+        [`navItem_${mProps.size}`]: true,
+        [`navItem_${mProps.theme}`]: !mProps.disabled,
+        navItem_disabled: mProps.disabled,
         navItem_current: mProps.current,
       }}
       aria-disabled={mProps.disabled}

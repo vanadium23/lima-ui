@@ -48,7 +48,11 @@ export const DropdownMenu = (props: Testable<DropdownMenuProps>) => {
         <Portal mount={document.body}>
           <ul
             role="menu"
-            class={`dropdownMenu dropdownMenu_${mProps.theme} dropdownMenu_${mProps.size}`}
+            class="dropdownMenu"
+            classList={{
+              [`dropdownMenu_${mProps.size}`]: true,
+              [`dropdownMenu_${mProps.theme}`]: true,
+            }}
             style={
               floatingPosition
                 ? {

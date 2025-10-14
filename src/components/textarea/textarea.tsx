@@ -45,8 +45,11 @@ export const Textarea = (props: Testable<TextareaProps>) => {
 
   return (
     <div
-      class={`textarea textarea_${mProps.disabled ? "disabled" : mProps.theme} textarea_${mProps.size}`}
+      class="textarea"
       classList={{
+        [`textarea_${mProps.size}`]: true,
+        [`textarea_${mProps.theme}`]: !mProps.disabled,
+        textarea_disabled: mProps.disabled,
         textarea_error: mProps.error,
       }}
     >

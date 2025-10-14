@@ -50,8 +50,11 @@ export const ToggleIconButton = (props: Testable<ToggleIconButtonProps>) => {
     <button
       type="button"
       onClick={toggleToggled}
-      class={`toggleIconButton toggleIconButton_${mProps.disabled ? "disabled" : mProps.theme} toggleIconButton_${mProps.size}`}
+      class="toggleIconButton"
       classList={{
+        [`toggleIconButton_${mProps.size}`]: true,
+        [`toggleIconButton_${mProps.theme}`]: !mProps.disabled,
+        toggleIconButton_disabled: mProps.disabled,
         toggleIconButton_toggled: mProps.toggled,
       }}
       title={mProps.ariaLabel}

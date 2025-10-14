@@ -36,7 +36,12 @@ export const ImportedItem = (props: Testable<ImportedItemProps>) => {
 
   return (
     <div
-      class={`importedItem importedItem_${mProps.disabled ? "disabled" : mProps.theme} importedItem_${mProps.size}`}
+      class="importedItem"
+      classList={{
+        [`importedItem_${mProps.size}`]: true,
+        [`importedItem_${mProps.theme}`]: !mProps.disabled,
+        importedItem_disabled: mProps.disabled,
+      }}
       data-test-id={mProps.testId}
     >
       <Show when={mProps.checkable}>

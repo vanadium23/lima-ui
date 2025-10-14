@@ -62,8 +62,11 @@ export const ToolsButton = (props: Testable<ToolsButtonProps>) => {
               mProps.handleClick();
             }
           }}
-          class={`toolsButton toolsButton_${mProps.disabled ? "disabled" : mProps.theme} toolsButton_${mProps.size}`}
+          class="toolsButton"
           classList={{
+            [`toolsButton_${mProps.size}`]: true,
+            [`toolsButton_${mProps.theme}`]: !mProps.disabled,
+            toolsButton_disabled: mProps.disabled,
             toolsButton_loading: mProps.loading,
           }}
           aria-disabled={mProps.loading}
@@ -89,7 +92,11 @@ export const ToolsButton = (props: Testable<ToolsButtonProps>) => {
           href={mProps.href}
           target={mProps.openInNewTab ? "_blank" : "_self"}
           rel={mProps.openInNewTab ? "noopener noreferrer" : ""}
-          class={`toolsButton toolsButton_${mProps.theme} toolsButton_${mProps.size}`}
+          class="toolsButton"
+          classList={{
+            [`toolsButton_${mProps.size}`]: true,
+            [`toolsButton_${mProps.theme}`]: true,
+          }}
           data-test-id={mProps.testId}
           data-test-sub-id={mProps.testSubId}
         >
@@ -104,7 +111,11 @@ export const ToolsButton = (props: Testable<ToolsButtonProps>) => {
       </Show>
       <Show when={mProps.componentType === ToolsButtonComponentType.Link && mProps.disabled}>
         <span
-          class={`toolsButton toolsButton_disabled toolsButton_${mProps.size}`}
+          class="toolsButton"
+          classList={{
+            [`toolsButton_${mProps.size}`]: true,
+            toolsButton_disabled: mProps.disabled,
+          }}
           aria-disabled={mProps.disabled}
           data-test-id={mProps.testId}
           data-test-sub-id={mProps.testSubId}

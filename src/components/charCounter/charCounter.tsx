@@ -30,7 +30,11 @@ export const CharCounter = (props: Testable<CharCounterProps>) => {
 
   return (
     <span
-      class={`charCounter charCounter_${mProps.theme} charCounter_${mProps.size}`}
+      class="charCounter"
+      classList={{
+        [`charCounter_${mProps.theme}`]: true,
+        [`charCounter_${mProps.size}`]: true,
+      }}
       data-test-id={buildInputCounterTestId(props.testId)}
       data-test-sub-id={props.testSubId}
     >

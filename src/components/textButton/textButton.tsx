@@ -46,8 +46,11 @@ export const TextButton = (props: Testable<TextButtonProps>) => {
   return (
     <button
       type="button"
-      class={`textButton textButton_${mProps.disabled ? "disabled" : mProps.theme} textButton_${mProps.size}`}
+      class="textButton"
       classList={{
+        [`textButton_${mProps.size}`]: true,
+        [`textButton_${mProps.theme}`]: !mProps.disabled,
+        textButton_disabled: mProps.disabled,
         textButton_loading: mProps.loading,
       }}
       disabled={mProps.disabled}

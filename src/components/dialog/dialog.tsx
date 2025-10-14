@@ -71,7 +71,11 @@ export const Dialog = (props: Testable<DialogProps>) => {
 
   return (
     <dialog
-      class={`dialog dialog_${mProps.theme} dialog_${mProps.size}`}
+      class="dialog"
+      classList={{
+        [`dialog_${mProps.size}`]: true,
+        [`dialog_${mProps.theme}`]: true,
+      }}
       aria-label={mProps.title}
       aria-modal={mProps.open}
       ref={(el) => (dialogRef = el)}

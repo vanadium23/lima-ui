@@ -77,8 +77,10 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
 
   return (
     <div
-      class={`listStripeImport listStripeImport_${mProps.theme} listStripeImport_${mProps.size}`}
+      class="listStripeImport"
       classList={{
+        [`listStripeImport_${mProps.size}`]: true,
+        [`listStripeImport_${mProps.theme}`]: true,
         listStripeImport_expanded: getExpanded(),
         listStripeImport_collapsed: !getExpanded(),
       }}

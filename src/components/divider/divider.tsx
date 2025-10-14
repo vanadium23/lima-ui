@@ -35,7 +35,12 @@ export const Divider = (props: DividerProps) => {
     <hr
       role="separator"
       aria-orientation={mProps.orientation}
-      class={`divider divider_${mProps.theme} divider_${mProps.size} divider_${mProps.orientation}`}
+      class="divider"
+      classList={{
+        [`divider_${mProps.size}`]: true,
+        [`divider_${mProps.theme}`]: true,
+        [`divider_${mProps.orientation}`]: true,
+      }}
     />
   );
 };

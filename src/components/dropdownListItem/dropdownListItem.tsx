@@ -31,7 +31,11 @@ export const DropdownListItem = (props: Testable<DropdownListItemProps>) => {
 
   return (
     <li
-      class={`dropdownListItem dropdownListItem_${mProps.theme} dropdownListItem_${mProps.size}`}
+      class="dropdownListItem"
+      classList={{
+        [`dropdownListItem_${mProps.size}`]: true,
+        [`dropdownListItem_${mProps.theme}`]: true,
+      }}
       data-test-id={mProps.testId}
       data-test-sub-id={mProps.testSubId}
     >

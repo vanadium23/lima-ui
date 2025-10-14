@@ -36,7 +36,12 @@ export const Link = (props: Testable<LinkProps>) => {
     <Dynamic
       component={mProps.disabled ? "span" : "a"}
       href={!mProps.disabled ? mProps.href : undefined}
-      class={`link link_${mProps.disabled ? "disabled" : mProps.theme} link_${mProps.size}`}
+      class="link"
+      classList={{
+        [`link_${mProps.size}`]: true,
+        [`link_${mProps.theme}`]: !mProps.disabled,
+        link_disabled: mProps.disabled,
+      }}
       aria-disabled={mProps.disabled}
       data-test-id={mProps.testId}
       data-test-sub-id={mProps.testSubId}

@@ -41,8 +41,11 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
 
   return (
     <div
-      class={`importedGroup importedGroup_${mProps.disabled ? "disabled" : mProps.theme} importedGroup_${mProps.size}`}
+      class="importedGroup"
       classList={{
+        [`importedGroup_${mProps.size}`]: true,
+        [`importedGroup_${mProps.theme}`]: !mProps.disabled,
+        importedGroup_disabled: mProps.disabled,
         importedGroup_checkable: mProps.checkable,
       }}
       data-test-id={mProps.testId}

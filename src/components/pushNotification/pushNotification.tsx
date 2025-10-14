@@ -39,7 +39,11 @@ export const PushNotification = (props: Testable<PushNotificationProps>) => {
 
   return (
     <div
-      class={`pushNotification pushNotification_${mProps.theme} pushNotification_${mProps.size}`}
+      class="pushNotification"
+      classList={{
+        [`pushNotification_${mProps.size}`]: true,
+        [`pushNotification_${mProps.theme}`]: true,
+      }}
       data-test-id={mProps.testId}
       data-test-sub-id={mProps.testSubId}
     >

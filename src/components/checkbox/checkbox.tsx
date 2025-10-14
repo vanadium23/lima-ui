@@ -74,7 +74,12 @@ export const Checkbox = (props: Testable<CheckboxProps>) => {
     <Switch>
       <Match when={mProps.independent}>
         <label
-          class={`checkbox checkbox_${mProps.disabled ? "disabled" : mProps.theme} checkbox_${mProps.size}`}
+          class="checkbox"
+          classList={{
+            [`checkbox_${mProps.size}`]: true,
+            [`checkbox_${mProps.theme}`]: !mProps.disabled,
+            checkbox_disabled: mProps.disabled,
+          }}
           data-test-id={mProps.testId}
           data-test-sub-id={mProps.testSubId}
         >

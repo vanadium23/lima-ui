@@ -84,8 +84,11 @@ export const CyberInput = (props: Testable<ItemInputProps>) => {
 
   return (
     <div
-      class={`cyberInput cyberInput_${mProps.disabled ? "disabled" : mProps.theme} cyberInput_${mProps.size}`}
+      class="cyberInput"
       classList={{
+        [`cyberInput_${mProps.size}`]: true,
+        [`cyberInput_${mProps.theme}`]: !mProps.disabled,
+        cyberInput_disabled: mProps.disabled,
         cyberInput_error: hasError() && mProps.children === "",
       }}
     >

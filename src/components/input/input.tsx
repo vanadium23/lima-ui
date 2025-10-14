@@ -104,8 +104,11 @@ export const Input = (props: Testable<InputProps>) => {
 
   return (
     <div
-      class={`input input_${mProps.disabled ? "disabled" : mProps.theme} input_${mProps.size}`}
+      class="input"
       classList={{
+        [`input_${mProps.size}`]: true,
+        [`input_${mProps.theme}`]: !mProps.disabled,
+        input_disabled: mProps.disabled,
         input_error: mProps.error,
       }}
     >

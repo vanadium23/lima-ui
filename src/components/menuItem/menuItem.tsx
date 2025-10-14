@@ -38,7 +38,12 @@ export const MenuItem = (props: Testable<MenuItemProps>) => {
   return (
     <li
       role="menuitem"
-      class={`menuItem menuItem_${mProps.disabled ? "disabled" : mProps.theme} menuItem_${mProps.size}`}
+      class="menuItem"
+      classList={{
+        [`menuItem_${mProps.size}`]: true,
+        [`menuItem_${mProps.theme}`]: !mProps.disabled,
+        input_disabled: mProps.disabled,
+      }}
       aria-disabled={mProps.disabled}
       tabindex={mProps.disabled ? -1 : 0}
       onClick={() => {
