@@ -22,7 +22,7 @@ type DialogProps = {
   children: JSX.Element;
   controls?: JSX.Element;
   onCancel: () => void;
-  isOpen: boolean;
+  isOpen?: boolean;
   title: string;
   loading?: boolean;
 };

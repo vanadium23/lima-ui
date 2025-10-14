@@ -1,6 +1,7 @@
 import type { SetStoreFunction } from "solid-js/store";
 
-import type { DragItem, EditListStore, Items } from "../../../types/types.ts";
+import type { DragItem, Items } from "../../../types/types.ts";
+import type { EditListStore } from "../editList.store.tsx";
 
 import { createDefaultItem } from "./createDefaultItem.ts";
 

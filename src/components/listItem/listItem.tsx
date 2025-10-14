@@ -14,6 +14,7 @@ import {
   REMOVE_ITEM_MENUITEM,
 } from "../../../features/testIds.ts";
 import type { DragSettings } from "../../types/types.ts";
+import { openImportDialog } from "../../widgets/editList/components/importDialog/importDialog.tsx";
 import { Checkbox, CheckboxSize, CheckboxTheme } from "../checkbox/checkbox.tsx";
 import { CyberInput } from "../cyberInput/cyberInput.tsx";
 import { DragHandle } from "../dragHandle/dragHandle.tsx";
@@ -48,8 +49,6 @@ type ListItemProps = {
   onChange?: (value: string) => void;
   onAddBefore?: () => void;
   onAddAfter?: () => void;
-  onImportAbove?: () => void;
-  onImportBelow?: () => void;
   canAddMore: boolean;
   dragSettings?: DragSettings;
   isDraggingOverlay?: boolean;
@@ -70,8 +69,6 @@ export const ListItem = (props: Testable<ListItemProps>) => {
       onChange: () => {},
       onAddBefore: () => {},
       onAddAfter: () => {},
-      onImportAbove: () => {},
-      onImportBelow: () => {},
       removeItem: () => {},
       isDraggingOverlay: false,
       dragId: "",
@@ -103,14 +100,14 @@ export const ListItem = (props: Testable<ListItemProps>) => {
     {
       text: "Импортировать выше",
       icon: IconName.SortDescending,
-      handleClick: mProps.onImportAbove,
+      handleClick: openImportDialog,
       testId: DEFAULT_TEST_ID,
       isDisabled: !mProps.canAddMore,
     },
     {
       text: "Импортировать ниже",
       icon: IconName.SortAscending,
-      handleClick: mProps.onImportBelow,
+      handleClick: openImportDialog,
       testId: DEFAULT_TEST_ID,
       isDisabled: !mProps.canAddMore,
     },

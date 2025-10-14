@@ -55,20 +55,6 @@ export type UpdatedList = ListBase & {
 
 export type ScrollContainer = HTMLDivElement | undefined;
 
-export type EditListStore = DragList & {
-  initialList: List;
-  sendingNow: false | "saving" | "deleting";
-  error: boolean;
-  removeError: boolean;
-  isCheckable: boolean;
-  isRemoveDialogOpen: boolean;
-  isImportDialogOpen: boolean;
-  isChanged: boolean;
-  isNewList: boolean;
-  draggedItem: string;
-  itemsScrollStartPosition: number;
-};
-
 export enum EditListFormNames {
   ListTitle = "List Title",
   ListPurpose = "List Purpose",

@@ -1,9 +1,12 @@
-import type { CollisionDetector, Droppable } from "@thisbeyond/solid-dnd";
+import type { CollisionDetector, DragEvent, Droppable } from "@thisbeyond/solid-dnd";
 import { onCleanup } from "solid-js";
 
-import type { EditListStore, Items, ScrollContainer } from "../../../types/types.ts";
+import type { Items, ScrollContainer } from "../../../types/types.ts";
+import { type EditListStore, setStoreEditList, storeEditList } from "../editList.store.tsx";
 
-import { createDragId } from "./createDefaultItem.ts";
+import { checkChanges } from "./checkChanges.ts";
+import { createDefaultItem, createDragId } from "./createDefaultItem.ts";
+import { scroller } from "./scrollToBottom.ts";
 
 const SCROLL_SPEED = 10; // Base scrolling speed
 const SCROLL_THRESHOLD = 100; // Pixels from edge to trigger scrolling
@@ -11,6 +14,54 @@ const MILLISECONDS_PER_FRAME = 16; // For smooth 60fps-like scrolling
 
 type AutoScrollOptions = {
   isActive: () => boolean;
+};
+
+export const draggedItemData = () =>
+  storeEditList.items.find((item) => item.dragId === storeEditList.draggedItem) || createDefaultItem(storeEditList.id);
+
+export const dragIds = () => storeEditList.items.map((item) => item.dragId);
+
+export const onDragStart = ({ draggable }: DragEvent) => {
+  setStoreEditList({
+    draggedItem: String(draggable.id),
+    itemsScrollStartPosition: scroller.scrollContainer?.scrollTop || 0,
+  });
+
+  autoScroll.startListening(scroller.scrollContainer);
+};
+
+const autoScroll = createAutoScroll({
+  isActive: () => !!storeEditList.draggedItem,
+});
+
+export const onDragEnd = ({ draggable, droppable }: DragEvent) => {
+  autoScroll.stopListening();
+
+  if (draggable && droppable) {
+    const currentItems = [...storeEditList.items];
+    const fromIndex = currentItems.findIndex((item) => item.dragId === draggable.id);
+    const toIndex = currentItems.findIndex((item) => item.dragId === droppable.id);
+
+    if (fromIndex !== -1 && toIndex !== -1 && fromIndex !== toIndex) {
+      const updatedItems = [...currentItems];
+      const [movedItem] = updatedItems.splice(fromIndex, 1);
+
+      if (!movedItem) return;
+
+      updatedItems.splice(toIndex, 0, movedItem);
+
+      setStoreEditList(
+        "items",
+        updatedItems.map((item, index) => ({
+          ...item,
+          auto: index === updatedItems.length - 1 && item.content.trim() === "",
+        })),
+      );
+      checkChanges(storeEditList, setStoreEditList);
+    }
+  }
+
+  setStoreEditList({ draggedItem: "", itemsScrollStartPosition: 0 });
 };
 
 export function createAutoScroll(options: AutoScrollOptions) {

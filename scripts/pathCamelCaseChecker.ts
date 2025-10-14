@@ -38,7 +38,7 @@ function collectPathsData(filePaths: string[]): PathsData {
 function checkPaths(pathsData: PathsData): string[] {
   const errors: string[] = [];
 
-  const regExpFileName = /^([a-z][a-zA-Z]*|README)\.[a-z]+$/;
+  const regExpFileName = /^([a-z][a-zA-Z]*(?:\.[a-z][a-zA-Z]*)*|README)\.[a-z]+$/;
   const regExpDirectoryName = /^(\[[a-z][a-zA-Z]*]|[a-z][a-zA-Z]*)$/;
 
   for (const [fileName, filePath] of Object.entries(pathsData.files)) {
