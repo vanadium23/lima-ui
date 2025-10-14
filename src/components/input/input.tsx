@@ -147,7 +147,7 @@ export const Input = (props: Testable<InputProps>) => {
             iconName={getIsPasswordVisible() ? IconName.EyeSlash : IconName.Eye}
             ariaLabel={getIsPasswordVisible() ? "Скрыть пароль" : "Показать пароль"}
             theme={IconButtonTheme.Secondary}
-            isDisabled={mProps.disabled}
+            disabled={mProps.disabled}
             handleClick={togglePasswordVisibility}
             testId={DEFAULT_TEST_ID}
           />

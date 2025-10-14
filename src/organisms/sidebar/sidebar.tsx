@@ -38,12 +38,9 @@ export const Sidebar = () => {
             testId={ADD_GROUP_BUTTON}
           />
         </div>
-        <Button
-          theme={ButtonTheme.Successful}
-          size={ButtonSize.Medium}
-          text={"Версия PRO"}
-          testId={PRO_VERSION_BUTTON}
-        />
+        <Button theme={ButtonTheme.Successful} size={ButtonSize.Medium} testId={PRO_VERSION_BUTTON}>
+          Версия PRO
+        </Button>
       </div>
     </div>
   );

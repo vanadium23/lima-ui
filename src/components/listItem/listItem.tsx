@@ -179,7 +179,7 @@ export const ListItem = (props: Testable<ListItemProps>) => {
                   size={IconButtonSize.MediumEmbedded}
                   iconName={IconName.DotsThree}
                   ariaLabel={"Выпадающее меню"}
-                  isDisabled={mProps.disabled}
+                  disabled={mProps.disabled}
                 />
               )}
               testId={LIST_ITEM_CONTEXT_MENU}

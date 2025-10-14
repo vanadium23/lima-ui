@@ -3,16 +3,8 @@ import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
 import { Button } from "../../../components/button/button.tsx";
 import { Icon, IconSize } from "../../../components/icon/icon.tsx";
 import { IconName } from "../../../components/icon/types.ts";
-import {
-  IconButton,
-  IconButtonSize,
-} from "../../../components/iconButton/iconButton.tsx";
-import {
-  Tooltip,
-  TooltipPlacement,
-  TooltipSize,
-  TooltipTheme,
-} from "../../../components/tooltip/tooltip.tsx";
+import { IconButton, IconButtonSize } from "../../../components/iconButton/iconButton.tsx";
+import { Tooltip, TooltipPlacement, TooltipSize, TooltipTheme } from "../../../components/tooltip/tooltip.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 const themes = Object.values(TooltipTheme);
@@ -39,11 +31,9 @@ const sizes = Object.values(TooltipSize);
                   testId={DEFAULT_TEST_ID}
                   client:only="solid-js"
                 >
-                  <Button
-                    text="Наведи на меня"
-                    testId={DEFAULT_TEST_ID}
-                    client:only="solid-js"
-                  />
+                  <Button testId={DEFAULT_TEST_ID} client:only="solid-js">
+                    Наведи на меня
+                  </Button>
                 </Tooltip>
 
                 <Tooltip

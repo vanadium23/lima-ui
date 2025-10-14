@@ -147,7 +147,7 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
               size={IconButtonSize.MediumEmbedded}
               iconName={IconName.DotsThree}
               ariaLabel={"Выпадающее меню"}
-              isLoading={listStripeIsRemoving()}
+              loading={listStripeIsRemoving()}
             />
           )}
           testId={LIST_ITEM_CONTEXT_MENU}
@@ -168,14 +168,15 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
           <Button
             theme={ButtonTheme.Dangerous}
             size={ButtonSize.Medium}
-            text={"Удалить"}
             handleClick={() => {
               removeListFromListStripe();
               closeDialog();
             }}
             testId={REMOVE_DIALOG_REMOVE_LIST_BUTTON}
             testSubId={mProps.testSubId || "0"}
-          />
+          >
+            Удалить
+          </Button>
         }
       >
         <p>
