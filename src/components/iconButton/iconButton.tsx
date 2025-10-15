@@ -79,8 +79,11 @@ export const IconButton = (props: Testable<IconButtonProps>) => {
               mProps.handleClick();
             }
           }}
-          class={`iconButton iconButton_${mProps.disabled ? "disabled" : mProps.theme} iconButton_${mProps.size}`}
+          class="iconButton"
           classList={{
+            [`iconButton_${mProps.size}`]: true,
+            [`iconButton_${mProps.theme}`]: !mProps.disabled,
+            iconButton_disabled: mProps.disabled,
             iconButton_loading: mProps.loading,
           }}
           title={mProps.ariaLabel}
@@ -101,7 +104,11 @@ export const IconButton = (props: Testable<IconButtonProps>) => {
       <Match when={mProps.componentType === IconButtonComponentType.Link && !mProps.disabled}>
         <a
           href={mProps.link}
-          class={`iconButton iconButton_${mProps.theme} iconButton_${mProps.size}`}
+          class="iconButton"
+          classList={{
+            [`iconButton_${mProps.size}`]: true,
+            [`iconButton_${mProps.theme}`]: true,
+          }}
           title={mProps.ariaLabel}
           aria-label={mProps.ariaLabel}
           data-test-id={mProps.testId}
@@ -112,7 +119,11 @@ export const IconButton = (props: Testable<IconButtonProps>) => {
       </Match>
       <Match when={mProps.componentType === IconButtonComponentType.Link && mProps.disabled}>
         <span
-          class={`iconButton iconButton_disabled iconButton_${mProps.size}`}
+          class="iconButton"
+          classList={{
+            [`iconButton_${mProps.size}`]: true,
+            iconButton_disabled: mProps.disabled,
+          }}
           title={mProps.ariaLabel}
           aria-label={mProps.ariaLabel}
           aria-disabled={mProps.disabled}

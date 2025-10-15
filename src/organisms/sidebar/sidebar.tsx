@@ -20,7 +20,9 @@ export const Sidebar = () => {
     >
       <div class="sidebar__top">
         <div class="sidebar__user">
-          <UserButton userName="Ефросинья_Мыловареная" theme={UserButtonTheme.Primary} size={UserButtonSize.Medium} />
+          <UserButton theme={UserButtonTheme.Primary} size={UserButtonSize.Medium}>
+            Ефросинья_Мыловареная
+          </UserButton>
           <IconButton iconName={IconName.SignOut} ariaLabel="Выйти из аккаунта" testId={SIGN_OUT_BUTTON} />
         </div>
         <Divider theme={DividerTheme.Primary} size={DividerSize.Medium} orientation={DividerOrientation.Horizontal} />

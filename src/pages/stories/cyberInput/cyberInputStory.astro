@@ -27,17 +27,17 @@ const sizes = Object.values(CyberInputSize);
               <span class="rhead">{size}</span>
               <CyberInputWrapper client:only="solid-js" size={size} theme={theme} />
               <CyberInputWrapper client:only="solid-js" size={size} theme={theme} />
-              <CyberInputWrapper client:only="solid-js" size={size} theme={theme} isError={true} />
+              <CyberInputWrapper client:only="solid-js" size={size} theme={theme} error={true} />
               <CyberInput
                 client:only="solid-js"
                 theme={theme}
                 size={size}
                 maxLength={50}
                 name="Some-text"
-                isRequired={true}
+                required={true}
                 testId={DEFAULT_TEST_ID}
-                placeholder="Введите текст"
-                isDisabled={true}
+                placeholder="Введите текст в это поле"
+                disabled={true}
               />
               <CyberInput
                 client:only="solid-js"
@@ -45,12 +45,13 @@ const sizes = Object.values(CyberInputSize);
                 size={size}
                 maxLength={50}
                 name="Some-text"
-                isRequired={true}
-                defaultValue={"Text"}
+                required={true}
                 testId={DEFAULT_TEST_ID}
                 placeholder="Введите текст"
-                isDisabled={true}
-              />
+                disabled={true}
+              >
+                Длинный текст для теста
+              </CyberInput>
             </>
           ))}
         </div>

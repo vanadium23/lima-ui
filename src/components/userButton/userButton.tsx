@@ -13,7 +13,7 @@ export enum UserButtonSize {
 }
 
 type UserButtonProps = {
-  userName: string;
+  children: string;
   theme?: UserButtonTheme;
   size?: UserButtonSize;
 };
@@ -29,8 +29,8 @@ export const UserButton = (props: UserButtonProps) => {
 
   return (
     <button class="userButton" type="button" data-test-id={USER_BUTTON}>
-      <span class="userButton__capital">{mProps.userName?.[0]}</span>
-      <span class="userButton__userName">{mProps.userName}</span>
+      <span class="userButton__capital">{mProps.children?.[0]}</span>
+      <span class="userButton__userName">{mProps.children}</span>
     </button>
   );
 };

@@ -1,9 +1,6 @@
 import { createSignal, type JSX, mergeProps } from "solid-js";
 
-import {
-  buildAccordionButtonTestId,
-  buildAccordionContentTestId,
-} from "../../../features/testIds.ts";
+import { buildAccordionButtonTestId, buildAccordionContentTestId } from "../../../features/testIds.ts";
 import { Icon, IconSize } from "../icon/icon.tsx";
 import { IconName } from "../icon/types.ts";
 import type { Testable } from "../utilities/testable.ts";
@@ -21,7 +18,7 @@ export enum AccordionSize {
 type AccordionProps = {
   theme?: AccordionTheme;
   size?: AccordionSize;
-  isDisabled?: boolean;
+  disabled?: boolean;
   title: string;
   children: JSX.Element;
 };
@@ -33,7 +30,7 @@ export const Accordion = (props: Testable<AccordionProps>) => {
     {
       theme: AccordionTheme.Primary,
       size: AccordionSize.Medium,
-      isDisabled: false,
+      disabled: false,
     },
     props,
   );
@@ -48,9 +45,11 @@ export const Accordion = (props: Testable<AccordionProps>) => {
 
   return (
     <div
-      class={`accordion accordion_${mProps.theme} accordion_${mProps.size}`}
+      class="accordion"
       classList={{
-        accordion_disabled: mProps.isDisabled,
+        [`accordion_${mProps.size}`]: true,
+        [`accordion_${mProps.theme}`]: !mProps.disabled,
+        accordion_disabled: mProps.disabled,
         accordion_expanded: getExpanded(),
       }}
       data-test-id={mProps.testId}
@@ -60,7 +59,7 @@ export const Accordion = (props: Testable<AccordionProps>) => {
         class="accordion__header"
         aria-expanded={getExpanded()}
         onClick={toggleExpanded}
-        disabled={Boolean(mProps.isDisabled)}
+        disabled={Boolean(mProps.disabled)}
         data-test-id={buildAccordionButtonTestId(mProps.testId)}
       >
         <div class="accordion__headerIcon">
@@ -68,10 +67,7 @@ export const Accordion = (props: Testable<AccordionProps>) => {
         </div>
         <span class="accordion__title">{mProps.title}</span>
       </button>
-      <div
-        class="accordion__content"
-        data-test-id={buildAccordionContentTestId(mProps.testId)}
-      >
+      <div class="accordion__content" data-test-id={buildAccordionContentTestId(mProps.testId)}>
         {mProps.children}
       </div>
     </div>

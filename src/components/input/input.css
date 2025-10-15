@@ -14,11 +14,6 @@
   border: none;
 }
 
-.input__inner:disabled,
-.input_disabled .input__inner {
-  cursor: not-allowed;
-}
-
 .input__inner:focus {
   outline: none;
 }
@@ -31,6 +26,10 @@
 .input__controls {
   display: none;
   gap: 1.2rem;
+}
+
+.input_medium {
+  border-radius: 0.8rem;
 }
 
 .input_medium .input__inner {
@@ -54,7 +53,6 @@
 .input_primary {
   border-color: var(--neutral-500);
   background: var(--neutral-100);
-  border-radius: 0.8rem;
 }
 
 .input_primary:focus-within {
@@ -77,17 +75,8 @@
   color: var(--text-dangerous-500);
 }
 
-.input_primary.input_disabled {
-  border-color: var(--neutral-500);
-  background: var(--neutral-200);
-}
-
-.input_primary.input_disabled .input__inner {
-  color: var(--text-neutral-500);
-}
-
 @media (hover: hover) {
-  .input_primary:hover:not(.input_disabled) {
+  .input_primary:hover {
     border-color: var(--neutral-700);
   }
 }
@@ -95,7 +84,6 @@
 .input_secondary {
   border-color: var(--primary-200);
   background: var(--primary-200);
-  border-radius: 0.8rem;
 }
 
 .input_secondary .input__inner::placeholder {
@@ -110,22 +98,12 @@
   color: var(--text-dangerous-500);
 }
 
-.input_secondary.input_disabled .input__inner,
-.input_secondary.input_disabled .input__inner::placeholder {
-  color: var(--text-neutral-500);
-}
-
-.input_secondary.input_disabled {
-  background: var(--neutral-200);
-  border-color: var(--neutral-200);
-}
-
 .input_secondary .input__inner {
   color: var(--text-neutral-800);
 }
 
 @media (hover: hover) {
-  .input_secondary:hover:not(.input_disabled) {
+  .input_secondary:hover {
     background: var(--primary-100);
     border-color: var(--primary-100);
   }
@@ -133,4 +111,18 @@
 
 .input:has(.input__inner:focus) .input__controls {
   display: flex;
+}
+
+.input_disabled .input__inner {
+  cursor: not-allowed;
+}
+
+.input_disabled {
+  border-color: var(--neutral-200);
+  background: var(--neutral-200);
+}
+
+.input_disabled .input__inner,
+.input_disabled .input__inner::placeholder {
+  color: var(--text-neutral-500);
 }

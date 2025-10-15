@@ -21,8 +21,12 @@ const sizes = Object.values(ImportedItemSize);
           {sizes.map((size) => (
             <>
               <span class="rhead">{size}</span>
-              <ImportedItem client:only="solid-js" testId={DEFAULT_TEST_ID} itemText={"Текст"} />
-              <ImportedItem client:only="solid-js" testId={DEFAULT_TEST_ID} itemText={"Текст"} disabled={true} />
+              <ImportedItem client:only="solid-js" testId={DEFAULT_TEST_ID}>
+                Text
+              </ImportedItem>
+              <ImportedItem client:only="solid-js" testId={DEFAULT_TEST_ID} disabled={true}>
+                Text
+              </ImportedItem>
             </>
           ))}
         </div>
@@ -43,21 +47,18 @@ const sizes = Object.values(ImportedItemSize);
           {sizes.map((size) => (
             <>
               <span class="rhead">{size}</span>
+              <ImportedItem client:only="solid-js" testId={DEFAULT_TEST_ID} checkable={true} checked={false}>
+                Текст для теста многострочного расположения текста в этом текстовом поле
+              </ImportedItem>
               <ImportedItem
                 client:only="solid-js"
                 testId={DEFAULT_TEST_ID}
-                itemText={"Текст для теста многострочного расположения текста в этом текстовом поле"}
-                isCheckable={true}
-                checked={false}
-              />
-              <ImportedItem
-                client:only="solid-js"
-                testId={DEFAULT_TEST_ID}
-                itemText={"Текст"}
-                isCheckable={true}
+                checkable={true}
                 checked={false}
                 disabled={true}
-              />
+              >
+                Text
+              </ImportedItem>
             </>
           ))}
         </div>

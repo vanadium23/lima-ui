@@ -1,10 +1,6 @@
 ---
 import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
-import {
-  Accordion,
-  AccordionSize,
-  AccordionTheme,
-} from "../../../components/accordion/accordion.tsx";
+import { Accordion, AccordionSize, AccordionTheme } from "../../../components/accordion/accordion.tsx";
 import { PasteContent } from "../../../components/pasteContent/pasteContent.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
@@ -25,18 +21,12 @@ const sizes = Object.values(AccordionSize);
           {sizes.map((size) => (
             <>
               <span class="rhead">{size}</span>
-              <Accordion
-                client:only="solid-js"
-                theme={theme}
-                size={size}
-                title="Гармонь"
-                testId={DEFAULT_TEST_ID}
-              >
+              <Accordion client:only="solid-js" theme={theme} size={size} title="Гармонь" testId={DEFAULT_TEST_ID}>
                 <PasteContent />
               </Accordion>
               <Accordion
                 client:only="solid-js"
-                isDisabled={true}
+                disabled={true}
                 theme={theme}
                 size={size}
                 title="Гармонь"

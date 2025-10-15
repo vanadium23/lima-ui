@@ -1,12 +1,7 @@
 ---
 import { COUNTER_DISPLAY_LIMIT } from "../../../../configuration.ts";
 import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
-import {
-  Input,
-  InputSize,
-  InputTheme,
-  InputType,
-} from "../../../components/input/input.tsx";
+import { Input, InputSize, InputTheme, InputType } from "../../../components/input/input.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 const themes = Object.values(InputTheme);
@@ -38,51 +33,52 @@ const PLACEHOLDER_TEXT = "Enter text...";
                 size={size}
                 placeholder={PLACEHOLDER_TEXT}
                 maxLength={COUNTER_DISPLAY_LIMIT}
-                isRequired={true}
+                required={true}
                 name="Some-text"
                 testId={DEFAULT_TEST_ID}
-                label="Test"
-                isClearable={true}
+                ariaLabel="Test"
+                clearable={true}
               />
               <Input
                 client:only="solid-js"
                 theme={theme}
                 size={size}
-                isError={true}
+                error={true}
                 placeholder={PLACEHOLDER_TEXT}
                 maxLength={COUNTER_DISPLAY_LIMIT}
                 name="Some-text"
-                isRequired={true}
+                required={true}
                 testId={DEFAULT_TEST_ID}
-                label="Test"
-                isClearable={true}
+                ariaLabel="Test"
+                clearable={true}
               />
               <Input
                 client:only="solid-js"
                 theme={theme}
                 size={size}
-                isError={true}
+                error={true}
                 placeholder={PLACEHOLDER_TEXT}
                 maxLength={COUNTER_DISPLAY_LIMIT}
                 name="Some-text"
-                isRequired={true}
-                defaultValue={"Text"}
+                required={true}
                 testId={DEFAULT_TEST_ID}
-                label="Test"
-                isClearable={true}
-              />
+                ariaLabel="Test"
+                clearable={true}
+              >
+                Text
+              </Input>
               <Input
                 client:only="solid-js"
                 theme={theme}
                 size={size}
-                isDisabled={true}
+                disabled={true}
                 placeholder={PLACEHOLDER_TEXT}
                 maxLength={COUNTER_DISPLAY_LIMIT}
                 name="Some-text"
-                isRequired={true}
+                required={true}
                 testId={DEFAULT_TEST_ID}
-                label="Test"
-                isClearable={true}
+                ariaLabel="Test"
+                clearable={true}
               />
             </>
           ))}
@@ -112,51 +108,52 @@ const PLACEHOLDER_TEXT = "Enter text...";
                 size={size}
                 placeholder={PLACEHOLDER_TEXT}
                 maxLength={COUNTER_DISPLAY_LIMIT}
-                isRequired={true}
+                required={true}
                 name="Some-text"
                 testId={DEFAULT_TEST_ID}
-                label="Test"
-                isCountable={true}
+                ariaLabel="Test"
+                countable={true}
               />
               <Input
                 client:only="solid-js"
                 theme={theme}
                 size={size}
-                isError={true}
+                error={true}
                 placeholder={PLACEHOLDER_TEXT}
                 maxLength={COUNTER_DISPLAY_LIMIT}
                 name="Some-text"
-                isRequired={true}
+                required={true}
                 testId={DEFAULT_TEST_ID}
-                label="Test"
-                isCountable={true}
+                ariaLabel="Test"
+                countable={true}
               />
               <Input
                 client:only="solid-js"
                 theme={theme}
                 size={size}
-                isError={true}
+                error={true}
                 placeholder={PLACEHOLDER_TEXT}
                 maxLength={COUNTER_DISPLAY_LIMIT}
                 name="Some-text"
-                isRequired={true}
-                defaultValue={"Text"}
+                required={true}
                 testId={DEFAULT_TEST_ID}
-                label="Test"
-                isCountable={true}
-              />
+                ariaLabel="Test"
+                countable={true}
+              >
+                Text
+              </Input>
               <Input
                 client:only="solid-js"
                 theme={theme}
                 size={size}
-                isDisabled={true}
+                disabled={true}
                 placeholder={PLACEHOLDER_TEXT}
                 maxLength={COUNTER_DISPLAY_LIMIT}
                 name="Some-text"
-                isRequired={true}
+                required={true}
                 testId={DEFAULT_TEST_ID}
-                label="Test"
-                isCountable={true}
+                ariaLabel="Test"
+                countable={true}
               />
             </>
           ))}
@@ -187,50 +184,51 @@ const PLACEHOLDER_TEXT = "Enter text...";
                 size={size}
                 placeholder={PLACEHOLDER_TEXT}
                 maxLength={COUNTER_DISPLAY_LIMIT}
-                isRequired={true}
+                required={true}
                 name="Some-text"
                 testId={DEFAULT_TEST_ID}
-                label="Test"
+                ariaLabel="Test"
               />
               <Input
                 client:only="solid-js"
                 type={InputType.Password}
                 theme={theme}
                 size={size}
-                isError={true}
+                error={true}
                 placeholder={PLACEHOLDER_TEXT}
                 maxLength={COUNTER_DISPLAY_LIMIT}
                 name="Some-text"
-                isRequired={true}
+                required={true}
                 testId={DEFAULT_TEST_ID}
-                label="Test"
+                ariaLabel="Test"
               />
               <Input
                 client:only="solid-js"
                 type={InputType.Password}
                 theme={theme}
                 size={size}
-                isError={true}
+                error={true}
                 placeholder={PLACEHOLDER_TEXT}
                 maxLength={COUNTER_DISPLAY_LIMIT}
                 name="Some-text"
-                isRequired={true}
-                defaultValue={"Text"}
+                required={true}
                 testId={DEFAULT_TEST_ID}
-                label="Test"
-              />
+                ariaLabel="Test"
+              >
+                Text
+              </Input>
               <Input
                 client:only="solid-js"
                 type={InputType.Password}
                 theme={theme}
                 size={size}
-                isDisabled={true}
+                disabled={true}
                 placeholder={PLACEHOLDER_TEXT}
                 maxLength={COUNTER_DISPLAY_LIMIT}
                 name="Some-text"
-                isRequired={true}
+                required={true}
                 testId={DEFAULT_TEST_ID}
-                label="Test"
+                ariaLabel="Test"
               />
             </>
           ))}

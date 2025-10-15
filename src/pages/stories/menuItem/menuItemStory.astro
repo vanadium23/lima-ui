@@ -1,11 +1,7 @@
 ---
 import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
 import { IconName } from "../../../components/icon/types.ts";
-import {
-  MenuItem,
-  MenuItemSize,
-  MenuItemTheme,
-} from "../../../components/menuItem/menuItem.tsx";
+import { MenuItem, MenuItemSize, MenuItemTheme } from "../../../components/menuItem/menuItem.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 const themes = Object.values(MenuItemTheme);
@@ -25,23 +21,19 @@ const sizes = Object.values(MenuItemSize);
           {sizes.map((size) => (
             <>
               <span class="rhead">{size}</span>
+              <MenuItem client:only="solid-js" icon={IconName.Trash} theme={theme} size={size} testId={DEFAULT_TEST_ID}>
+                Text
+              </MenuItem>
               <MenuItem
                 client:only="solid-js"
                 icon={IconName.Trash}
                 theme={theme}
                 size={size}
-                text="Text"
                 testId={DEFAULT_TEST_ID}
-              />
-              <MenuItem
-                client:only="solid-js"
-                icon={IconName.Trash}
-                theme={theme}
-                size={size}
-                text="Text"
-                testId={DEFAULT_TEST_ID}
-                isDisabled={true}
-              />
+                disabled={true}
+              >
+                Text
+              </MenuItem>
             </>
           ))}
         </div>

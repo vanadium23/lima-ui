@@ -39,8 +39,8 @@ type ListStripeProps = {
   listPurpose: string;
   link: string;
   listId: string;
-  isRemoving?: boolean;
-  isExported?: boolean;
+  removing?: boolean;
+  exported?: boolean;
   onRemoveSuccess: (listId: string) => void;
   onRemoveError: (removeError: boolean) => void;
 };
@@ -50,8 +50,8 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
     {
       theme: ListStripeTheme.Primary,
       size: ListStripeSize.Medium,
-      isRemoving: false,
-      isExported: false,
+      removing: false,
+      exported: false,
     },
     props,
   );
@@ -71,12 +71,12 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
   const exportedTooltipMessage = "Список экспортирован в другие списки";
 
   function listStripeIsRemoving() {
-    return isRemoving() || mProps.isRemoving;
+    return isRemoving() || mProps.removing;
   }
 
   const menuItems = () => [
     {
-      text: "Удалить",
+      children: "Удалить",
       icon: IconName.Trash,
       handleClick: openDialog,
       theme: MenuItemTheme.Dangerous,
@@ -105,15 +105,17 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
 
   return (
     <div
-      class={`listStripe listStripe_${mProps.theme} listStripe_${mProps.size}`}
+      class="listStripe"
       classList={{
+        [`listStripe_${mProps.size}`]: true,
+        [`listStripe_${mProps.theme}`]: true,
         listStripe_removing: listStripeIsRemoving(),
       }}
       data-test-id={LIST_STRIPE}
       data-test-sub-id={mProps.testSubId}
     >
       <div class="listStripe__icon">
-        <Show when={mProps.isExported}>
+        <Show when={mProps.exported}>
           <Tooltip content={exportedTooltipMessage} testId={DEFAULT_TEST_ID}>
             <Icon name={IconName.Link} size={IconSize.Small} role={"img"} ariaLabel={exportedTooltipMessage} />
           </Tooltip>
@@ -151,15 +153,16 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
             />
           )}
           testId={LIST_ITEM_CONTEXT_MENU}
-          menuItems={menuItems()}
-        />
+        >
+          {menuItems()}
+        </DropdownMenu>
       </div>
 
       <Dialog
         theme={DialogTheme.Primary}
         size={DialogSize.Medium}
         onCancel={closeDialog}
-        isOpen={isDialogOpen()}
+        open={isDialogOpen()}
         title={"Удаление списка"}
         testId={REMOVE_LIST_DIALOG}
         testSubId={mProps.testSubId || "0"}

@@ -175,12 +175,12 @@ export const Search = (props: SearchProps) => {
           theme={InputTheme.Secondary}
           placeholder={"Поиск..."}
           name={"Поиск"}
-          isCountable={false}
+          countable={false}
           maxLength={LIST_TITLE_INPUT_LIMIT}
           testId={SEARCH_INPUT}
           onInput={handleInput}
           onKeyDown={(e) => e.key === "Enter" && handleSubmit(e)}
-          isClearable={true}
+          clearable={true}
           onClear={() => handleQueryUpdate("")}
         />
         <IconButton
@@ -203,7 +203,9 @@ export const Search = (props: SearchProps) => {
 
       <Show when={state.query.length >= LISTS_SEARCH_MINIMAL_QUERY && !state.serverError}>
         <div class="search__dialog" data-test-id={SEARCH_DIALOG}>
-          <QuickSearch query={state.query} isLoading={state.isLoading} lists={state.results} />
+          <QuickSearch query={state.query} loading={state.isLoading}>
+            {state.results}
+          </QuickSearch>
         </div>
       </Show>
     </div>

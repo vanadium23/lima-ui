@@ -1,11 +1,4 @@
-import {
-  createSignal,
-  type JSXElement,
-  mergeProps,
-  onCleanup,
-  onMount,
-  Show,
-} from "solid-js";
+import { createSignal, type JSXElement, mergeProps, onCleanup, onMount, Show } from "solid-js";
 
 import { COUNTER_DISPLAY_LIMIT } from "../../../configuration.ts";
 import { CharCounter } from "../charCounter/charCounter.tsx";
@@ -26,11 +19,11 @@ export enum CyberInputSize {
 type ItemInputProps = {
   theme?: CyberInputTheme;
   size?: CyberInputSize;
-  isDisabled?: boolean;
+  disabled?: boolean;
   name: string;
   maxLength: number;
-  isRequired?: boolean;
-  defaultValue?: string;
+  required?: boolean;
+  children?: string;
   dataId?: string;
   placeholder: string;
   onChange?: (value: string) => void;
@@ -47,10 +40,10 @@ export const CyberInput = (props: Testable<ItemInputProps>) => {
     {
       theme: CyberInputTheme.Primary,
       size: CyberInputSize.Medium,
-      isDisabled: false,
+      disabled: false,
       defaultIsError: false,
-      isRequired: false,
-      defaultValue: "",
+      required: false,
+      children: "",
       dataId: "",
       onChange: () => {},
       controlElements: null,
@@ -75,7 +68,7 @@ export const CyberInput = (props: Testable<ItemInputProps>) => {
     }
   };
 
-  const remainingChars = () => mProps.maxLength - mProps.defaultValue.length;
+  const remainingChars = () => mProps.maxLength - mProps.children.length;
 
   onMount(() => {
     handleResize();
@@ -91,20 +84,22 @@ export const CyberInput = (props: Testable<ItemInputProps>) => {
 
   return (
     <div
-      class={`cyberInput cyberInput_${mProps.theme} cyberInput_${mProps.size}`}
+      class="cyberInput"
       classList={{
-        cyberInput_error: hasError() && mProps.defaultValue === "",
-        cyberInput_disabled: mProps.isDisabled,
+        [`cyberInput_${mProps.size}`]: true,
+        [`cyberInput_${mProps.theme}`]: !mProps.disabled,
+        cyberInput_disabled: mProps.disabled,
+        cyberInput_error: hasError() && mProps.children === "",
       }}
     >
       <textarea
         ref={textareaRef}
         name={mProps.name}
         class="cyberInput__inner"
-        disabled={mProps.isDisabled}
+        disabled={mProps.disabled}
         maxlength={mProps.maxLength}
         placeholder={mProps.placeholder}
-        required={mProps.isRequired}
+        required={mProps.required}
         data-id={mProps.dataId}
         data-test-id={mProps.testId}
         data-test-sub-id={mProps.testSubId}
@@ -115,17 +110,15 @@ export const CyberInput = (props: Testable<ItemInputProps>) => {
           mProps.onChange(event.target.value);
         }}
       >
-        {mProps.defaultValue}
+        {mProps.children}
       </textarea>
       <div class="cyberInput__controls">
         {mProps.controlElements}
         <Show when={remainingChars() <= COUNTER_DISPLAY_LIMIT}>
           <div class="cyberInput__counter">
-            <CharCounter
-              value={remainingChars()}
-              testId={mProps.testId}
-              testSubId={mProps.testSubId ?? ""}
-            />
+            <CharCounter testId={mProps.testId} testSubId={mProps.testSubId ?? ""}>
+              {remainingChars()}
+            </CharCounter>
           </div>
         </Show>
       </div>

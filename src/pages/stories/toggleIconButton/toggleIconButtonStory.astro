@@ -33,19 +33,19 @@ const sizes = Object.values(ToggleIconButtonSize);
                 size={size}
                 iconName={IconName.Trash}
                 testId={DEFAULT_TEST_ID}
-                isToggled={false}
+                toggled={false}
                 setGlobalToggled={() => false}
               />
 
               <ToggleIconButton
                 client:only="solid-js"
-                isDisabled={true}
+                disabled={true}
                 ariaLabel={"text"}
                 theme={theme}
                 size={size}
                 iconName={IconName.Trash}
                 testId={DEFAULT_TEST_ID}
-                isToggled={false}
+                toggled={false}
                 setGlobalToggled={() => false}
               />
             </>
@@ -61,19 +61,19 @@ const sizes = Object.values(ToggleIconButtonSize);
                 size={size}
                 iconName={IconName.Trash}
                 testId={DEFAULT_TEST_ID}
-                isToggled={true}
+                toggled={true}
                 setGlobalToggled={() => false}
               />
 
               <ToggleIconButton
                 client:only="solid-js"
-                isDisabled={true}
+                disabled={true}
                 ariaLabel={"text"}
                 theme={theme}
                 size={size}
                 iconName={IconName.Trash}
                 testId={DEFAULT_TEST_ID}
-                isToggled={true}
+                toggled={true}
                 setGlobalToggled={() => false}
               />
             </>

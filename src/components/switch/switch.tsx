@@ -16,11 +16,11 @@ export enum SwitchSize {
 type SwitchProps = {
   theme?: SwitchTheme;
   size?: SwitchSize;
-  isDisabled?: boolean;
+  disabled?: boolean;
   ariaLabel?: string;
-  text?: string;
+  children?: string;
   onChange?: (checked: boolean) => void;
-  isChecked?: boolean;
+  checked?: boolean;
 };
 
 export const Switch = (props: Testable<SwitchProps>) => {
@@ -28,36 +28,38 @@ export const Switch = (props: Testable<SwitchProps>) => {
     {
       theme: SwitchTheme.Primary,
       size: SwitchSize.Medium,
-      isDisabled: false,
+      disabled: false,
       ariaLabel: "",
       onChange: () => {},
-      isChecked: false,
-      text: "",
+      checked: false,
+      children: "",
     },
     props,
   );
 
   return (
     <label
-      class={`switch switch_${mProps.theme} switch_${mProps.size}`}
+      class="switch"
       classList={{
-        switch_disabled: mProps.isDisabled,
+        [`switch_${mProps.size}`]: true,
+        [`switch_${mProps.theme}`]: !mProps.disabled,
+        switch_disabled: mProps.disabled,
       }}
       data-test-id={mProps.testId}
     >
       <input
         type="checkbox"
         class="switch__input"
-        disabled={mProps.isDisabled}
-        checked={mProps.isChecked}
+        disabled={mProps.disabled}
+        checked={mProps.checked}
         onChange={(e) => {
           mProps.onChange(e.currentTarget.checked);
         }}
         {...prepareARIALabel(mProps.ariaLabel)}
       />
       <span class="switch__inner" />
-      <Show when={mProps.text}>
-        <span class="switch__text">{mProps.text}</span>
+      <Show when={mProps.children}>
+        <span class="switch__text">{mProps.children}</span>
       </Show>
     </label>
   );

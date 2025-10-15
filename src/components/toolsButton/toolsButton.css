@@ -15,6 +15,10 @@
   cursor: wait;
 }
 
+.toolsButton__icon {
+  border-style: solid;
+}
+
 .toolsButton_loading .toolsButton__loadingIcon {
   display: flex;
   animation: var(--preloader);
@@ -45,7 +49,7 @@
 
 .toolsButton_medium .toolsButton__icon {
   display: flex;
-  border: 0.1rem solid var(--neutral-200);
+  border-width: 0.1rem;
   padding: 1.6rem;
   border-radius: 0.8rem;
 }
@@ -67,7 +71,7 @@
 
 .toolsButton_primary .toolsButton__icon {
   background: var(--neutral-100);
-  border: 0.1rem solid var(--neutral-200);
+  border-color: var(--neutral-200);
   color: var(--neutral-800);
 }
 
@@ -75,11 +79,13 @@
   color: var(--text-neutral-800);
 }
 
-.toolsButton_primary:hover:not(.toolsButton_disabled, .toolsButton_loading) {
-  background: var(--neutral-150);
+@media (hover: hover) {
+  .toolsButton_primary:hover:not(.toolsButton_loading) {
+    background: var(--neutral-150);
+  }
 }
 
-.toolsButton_primary:active:not(.toolsButton_disabled, .toolsButton_loading) {
+.toolsButton_primary:active:not(.toolsButton_loading) {
   background: var(--neutral-200);
 }
 
@@ -89,7 +95,7 @@
 
 .toolsButton_dangerous .toolsButton__icon {
   background: var(--neutral-100);
-  border: 0.1rem solid var(--neutral-200);
+  border-color: var(--neutral-200);
   color: var(--dangerous-500);
 }
 
@@ -97,20 +103,25 @@
   color: var(--text-dangerous-500);
 }
 
-.toolsButton_dangerous:hover:not(.toolsButton_disabled, .toolsButton_loading) {
-  background: var(--neutral-150);
+@media (hover: hover) {
+  .toolsButton_dangerous:hover:not(.toolsButton_loading) {
+    background: var(--neutral-150);
+  }
 }
 
-.toolsButton_dangerous:active:not(.toolsButton_disabled, .toolsButton_loading) {
+.toolsButton_dangerous:active:not(.toolsButton_loading) {
   background: var(--neutral-200);
 }
 
 .toolsButton_disabled {
+  background: var(--neutral-100);
   cursor: not-allowed;
 }
 
 .toolsButton_disabled .toolsButton__icon {
+  background: var(--neutral-100);
   color: var(--neutral-500);
+  border-color: var(--neutral-200);
 }
 
 .toolsButton_disabled .toolsButton__text {

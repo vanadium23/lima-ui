@@ -88,7 +88,7 @@ export const ImportDialog = (props: ImportDialogProps) => {
           Импортировать
         </Button>
       }
-      isOpen={props.isOpen}
+      open={props.isOpen}
       testId={IMPORT_DIALOG}
       testSubId={IMPORT_DIALOG}
     >
@@ -100,7 +100,11 @@ export const ImportDialog = (props: ImportDialogProps) => {
           </div>
         </Show>
         <For each={store.listsForImport}>
-          {(list) => <ListStripeImport listData={list} titleHTMLName={list.name} testId={DEFAULT_TEST_ID} />}
+          {(list) => (
+            <ListStripeImport titleHTMLName={list.name} testId={DEFAULT_TEST_ID}>
+              {list}
+            </ListStripeImport>
+          )}
         </For>
       </div>
     </Dialog>
