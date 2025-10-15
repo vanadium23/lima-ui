@@ -29,7 +29,11 @@ export const PageError = (props: Testable<PageErrorProps>) => {
 
   return (
     <div
-      class={`pageError pageError_${mProps.theme} pageError_${mProps.size}`}
+      class="pageError"
+      classList={{
+        [`pageError_${mProps.size}`]: true,
+        [`pageError_${mProps.theme}`]: true,
+      }}
       data-test-id={mProps.testId}
     >
       {mProps.children}

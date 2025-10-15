@@ -81,13 +81,14 @@ export const ImportDialog = (props: ImportDialogProps) => {
         <Button
           theme={ButtonTheme.Primary}
           size={ButtonSize.Medium}
-          text={"Импортировать"}
           handleClick={handleClose}
           testId={IMPORT_DIALOG_IMPORT_BUTTON}
-          isDisabled={store.elementsReadyToImport.length === 0}
-        />
+          disabled={store.elementsReadyToImport.length === 0}
+        >
+          Импортировать
+        </Button>
       }
-      isOpen={props.isOpen}
+      open={props.isOpen}
       testId={IMPORT_DIALOG}
       testSubId={IMPORT_DIALOG}
     >
@@ -99,7 +100,11 @@ export const ImportDialog = (props: ImportDialogProps) => {
           </div>
         </Show>
         <For each={store.listsForImport}>
-          {(list) => <ListStripeImport listData={list} titleHTMLName={list.name} testId={DEFAULT_TEST_ID} />}
+          {(list) => (
+            <ListStripeImport titleHTMLName={list.name} testId={DEFAULT_TEST_ID}>
+              {list}
+            </ListStripeImport>
+          )}
         </For>
       </div>
     </Dialog>

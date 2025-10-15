@@ -1,10 +1,6 @@
 ---
 import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
-import {
-  Switch,
-  SwitchSize,
-  SwitchTheme,
-} from "../../../components/switch/switch.tsx";
+import { Switch, SwitchSize, SwitchTheme } from "../../../components/switch/switch.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 const themes = Object.values(SwitchTheme);
@@ -24,20 +20,14 @@ const sizes = Object.values(SwitchSize);
           {sizes.map((size) => (
             <>
               <span class="rhead">{size}</span>
+              <Switch client:only="solid-js" theme={theme} size={size} testId={DEFAULT_TEST_ID} aria-label="Тыц-тыц" />
               <Switch
                 client:only="solid-js"
                 theme={theme}
                 size={size}
                 testId={DEFAULT_TEST_ID}
-                aria-label="Тыц-тыц"
-              />
-              <Switch
-                client:only="solid-js"
-                theme={theme}
-                size={size}
-                testId={DEFAULT_TEST_ID}
-                isDisabled={true}
-                isChecked={false}
+                disabled={true}
+                checked={false}
                 aria-label="Тыц-тыц"
               />
             </>
@@ -45,22 +35,19 @@ const sizes = Object.values(SwitchSize);
           {sizes.map((size) => (
             <>
               <span class="rhead">{size}</span>
+              <Switch client:only="solid-js" theme={theme} size={size} testId={DEFAULT_TEST_ID}>
+                Текст
+              </Switch>
               <Switch
                 client:only="solid-js"
                 theme={theme}
                 size={size}
                 testId={DEFAULT_TEST_ID}
-                text="Текст"
-              />
-              <Switch
-                client:only="solid-js"
-                theme={theme}
-                size={size}
-                testId={DEFAULT_TEST_ID}
-                text="Текст"
-                isDisabled={true}
-                isChecked={true}
-              />
+                disabled={true}
+                checked={true}
+              >
+                Текст
+              </Switch>
             </>
           ))}
         </div>

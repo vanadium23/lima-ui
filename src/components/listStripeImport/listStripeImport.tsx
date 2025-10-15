@@ -21,7 +21,7 @@ export enum ListStripeImportSize {
 type ListStripeImportProps = {
   theme?: ListStripeImportTheme;
   size?: ListStripeImportSize;
-  listData: List;
+  children: List;
   titleHTMLName: string;
 };
 
@@ -67,7 +67,7 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
   });
 
   function handleMainCheckboxChange(checked: boolean) {
-    const newState = new Array(mProps.listData.items.length).fill(checked);
+    const newState = new Array(mProps.children.items.length).fill(checked);
     setItemsCheckboxState(newState);
   }
 
@@ -77,8 +77,10 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
 
   return (
     <div
-      class={`listStripeImport listStripeImport_${mProps.theme} listStripeImport_${mProps.size}`}
+      class="listStripeImport"
       classList={{
+        [`listStripeImport_${mProps.size}`]: true,
+        [`listStripeImport_${mProps.theme}`]: true,
         listStripeImport_expanded: getExpanded(),
         listStripeImport_collapsed: !getExpanded(),
       }}
@@ -101,8 +103,8 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
       <div class="listStripeImport__accordion">
         <button type="button" class="listStripeImport__header" onClick={toggleExpanded}>
           <div class="listStripeImport__headerInner">
-            <span class="listStripeImport__title">{mProps.listData.name}</span>
-            {mProps.listData.purpose && <span class="listStripeImport__purpose">{mProps.listData.purpose}</span>}
+            <span class="listStripeImport__title">{mProps.children.name}</span>
+            {mProps.children.purpose && <span class="listStripeImport__purpose">{mProps.children.purpose}</span>}
           </div>
 
           <div class="listStripeImport__headerIcon">
@@ -110,15 +112,16 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
           </div>
         </button>
         <div class="listStripeImport__items">
-          <Index each={mProps.listData.items}>
+          <Index each={mProps.children.items}>
             {(item, index) => (
               <ListItemImport
-                text={item().content}
                 testId={DEFAULT_TEST_ID}
                 toImport={getItemsCheckboxState()[index] || false}
                 onCheckedChange={handleItemCheckboxChange(index)}
                 checkboxHTMLName={`item-${index}`}
-              />
+              >
+                {item().content}
+              </ListItemImport>
             )}
           </Index>
         </div>

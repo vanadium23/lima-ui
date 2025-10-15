@@ -40,12 +40,9 @@ const testListData: List = {
           {sizes.map((size) => (
             <>
               <span class="rhead">{size}</span>
-              <ListStripeImport
-                listData={testListData}
-                testId={DEFAULT_TEST_ID}
-                titleHTMLName={"Title"}
-                client:only="solid-js"
-              />
+              <ListStripeImport testId={DEFAULT_TEST_ID} titleHTMLName={"Title"} client:only="solid-js">
+                {testListData}
+              </ListStripeImport>
             </>
           ))}
         </div>

@@ -6,31 +6,31 @@ import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 import { DropdownMenuWrapper } from "./dropdownMenuWrapper.tsx";
 
-const menuItems = () => [
+const menuItems = [
   {
-    text: "Добавить пункт выше",
+    children: "Добавить пункт выше",
     icon: IconName.Plus,
     handleClick: () => {},
   },
   {
-    text: "Добавить пункт ниже",
+    children: "Добавить пункт ниже",
     icon: IconName.Plus,
     handleClick: () => {},
   },
   {
-    text: "Импортировать выше",
+    children: "Импортировать выше",
     icon: IconName.SortDescending,
     testId: DEFAULT_TEST_ID,
     isDisabled: true,
   },
   {
-    text: "Импортировать ниже",
+    children: "Импортировать ниже",
     icon: IconName.SortAscending,
     testId: DEFAULT_TEST_ID,
     isDisabled: true,
   },
   {
-    text: "Удалить пункт",
+    children: "Удалить пункт",
     icon: IconName.Trash,
     handleClick: () => {},
     theme: MenuItemTheme.Dangerous,
@@ -49,7 +49,7 @@ const menuItems = () => [
 
           <>
             <span class="rhead">Medium</span>
-            <DropdownMenuWrapper menuItems={menuItems()} client:only="solid-js" />
+            <DropdownMenuWrapper client:only="solid-js">{menuItems}</DropdownMenuWrapper>
           </>
         </div>
       </div>

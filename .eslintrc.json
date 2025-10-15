@@ -4,7 +4,13 @@
     "browser": true,
     "es2021": true
   },
-  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "plugin:astro/recommended", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:astro/recommended",
+    "prettier",
+    "plugin:storybook/recommended"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
@@ -28,8 +34,20 @@
       }
     ],
     // "no-unused-vars": "warn", // подсветка неиспользуемых переменных
-    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }], // Ignore unused variables that start with underscore
-    "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0, "maxBOF": 0 }],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_"
+      }
+    ], // Ignore unused variables that start with underscore
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1,
+        "maxEOF": 0,
+        "maxBOF": 0
+      }
+    ],
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -41,7 +59,13 @@
         "css": "always"
       }
     ],
-    "import/no-unresolved": ["error", { "caseSensitive": true, "ignore": ["^@astrojs/.*", "^astro/.*"] }],
+    "import/no-unresolved": [
+      "error",
+      {
+        "caseSensitive": true,
+        "ignore": ["^@astrojs/.*", "^astro/.*"]
+      }
+    ],
     "semi": ["error", "always"], // точка с запятой
     "@typescript-eslint/padding-line-between-statements": [
       "error",
@@ -50,9 +74,21 @@
         "prev": "*",
         "next": ["interface", "type", "block-like"]
       },
-      { "blankLine": "always", "prev": "import", "next": "*" },
-      { "blankLine": "any", "prev": "import", "next": "import" },
-      { "blankLine": "always", "prev": "*", "next": "return" }
+      {
+        "blankLine": "always",
+        "prev": "import",
+        "next": "*"
+      },
+      {
+        "blankLine": "any",
+        "prev": "import",
+        "next": "import"
+      },
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": "return"
+      }
     ]
   },
   "overrides": [

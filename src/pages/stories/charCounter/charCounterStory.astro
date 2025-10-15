@@ -1,9 +1,5 @@
 ---
-import {
-  CharCounter,
-  CharCounterSize,
-  CharCounterTheme,
-} from "../../../components/charCounter/charCounter.tsx";
+import { CharCounter, CharCounterSize, CharCounterTheme } from "../../../components/charCounter/charCounter.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 const themes = Object.values(CharCounterTheme);
@@ -22,14 +18,9 @@ const sizes = Object.values(CharCounterSize);
           {sizes.map((size) => (
             <>
               <span class="rhead">{size}</span>
-              <CharCounter
-                client:only="solid-js"
-                theme={theme}
-                size={size}
-                value={100}
-                testId=""
-                testSubId=""
-              />
+              <CharCounter client:only="solid-js" theme={theme} size={size} testId="" testSubId="">
+                {100}
+              </CharCounter>
             </>
           ))}
         </div>

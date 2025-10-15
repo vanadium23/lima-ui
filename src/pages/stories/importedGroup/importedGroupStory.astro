@@ -25,19 +25,15 @@ const exampleList: List = {
       <span class="chead"></span>
       <span class="chead">Medium</span>
       <span class="rhead">List</span>
-      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID} list={exampleList} />
+      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID}>{exampleList}</ImportedGroup>
       <span class="rhead">List - Disabled</span>
-      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID} list={exampleList} disabled={true} />
+      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID}>{exampleList}</ImportedGroup>
       <span class="rhead">Checklist</span>
-      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID} list={exampleList} isCheckable={true} />
+      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID} checkable={true}>{exampleList}</ImportedGroup>
       <span class="rhead">Checklist - Disabled</span>
-      <ImportedGroup
-        client:only="solid-js"
-        testId={DEFAULT_TEST_ID}
-        list={exampleList}
-        isCheckable={true}
-        disabled={true}
-      />
+      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID} checkable={true} disabled={true}
+        >{exampleList}</ImportedGroup
+      >
     </div>
   </div>
 </StorybookPage>

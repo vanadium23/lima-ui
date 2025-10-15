@@ -31,32 +31,35 @@ const sizes = Object.values(ToolsButtonSize);
               <ToolsButton
                 client:only="solid-js"
                 componentType={ToolsButtonComponentType.Button}
-                text={"text"}
                 theme={theme}
                 size={size}
                 iconName={IconName.Trash}
                 testId={DEFAULT_TEST_ID}
-              />
+              >
+                Text
+              </ToolsButton>
               <ToolsButton
                 client:only="solid-js"
                 componentType={ToolsButtonComponentType.Button}
-                text={"text"}
                 theme={theme}
                 size={size}
                 iconName={IconName.Trash}
                 testId={DEFAULT_TEST_ID}
-                isLoading={true}
-              />
+                loading={true}
+              >
+                Text
+              </ToolsButton>
               <ToolsButton
                 client:only="solid-js"
                 componentType={ToolsButtonComponentType.Button}
-                isDisabled={true}
-                text={"text"}
+                disabled={true}
                 theme={theme}
                 size={size}
                 iconName={IconName.Trash}
                 testId={DEFAULT_TEST_ID}
-              />
+              >
+                Text
+              </ToolsButton>
             </>
           ))}
         </div>
@@ -81,23 +84,27 @@ const sizes = Object.values(ToolsButtonSize);
               <ToolsButton
                 client:only="solid-js"
                 componentType={ToolsButtonComponentType.Link}
-                text={"text"}
+                href={"https://ya.ru"}
                 theme={theme}
                 size={size}
                 iconName={IconName.Trash}
                 testId={DEFAULT_TEST_ID}
-              />
+              >
+                Text
+              </ToolsButton>
               <span>Не предусмотрено</span>
               <ToolsButton
                 client:only="solid-js"
                 componentType={ToolsButtonComponentType.Link}
-                isDisabled={true}
-                text={"text"}
+                href={"https://ya.ru"}
+                disabled={true}
                 theme={theme}
                 size={size}
                 iconName={IconName.Trash}
                 testId={DEFAULT_TEST_ID}
-              />
+              >
+                Text
+              </ToolsButton>
             </>
           ))}
         </div>

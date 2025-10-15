@@ -18,7 +18,7 @@ export enum DragHandleSize {
 type DragHandleProps = {
   theme?: DragHandleTheme;
   size?: DragHandleSize;
-  isDisabled?: boolean;
+  disabled?: boolean;
   handleClick?: () => void;
   dragHandle?: Sortable | null;
 };
@@ -28,7 +28,7 @@ export const DragHandle = (props: Testable<DragHandleProps>) => {
     {
       theme: DragHandleTheme.Primary,
       size: DragHandleSize.Medium,
-      isDisabled: false,
+      disabled: false,
       handleClick: () => {},
       dragHandle: null,
     },
@@ -38,11 +38,13 @@ export const DragHandle = (props: Testable<DragHandleProps>) => {
   return (
     <button
       type="button"
-      class={`dragHandle dragHandle_${mProps.theme} dragHandle_${mProps.size}`}
+      class="dragHandle"
       classList={{
-        dragHandle_disabled: mProps.isDisabled,
+        [`dragHandle_${mProps.size}`]: true,
+        [`dragHandle_${mProps.theme}`]: !mProps.disabled,
+        dragHandle_disabled: mProps.disabled,
       }}
-      disabled={mProps.isDisabled}
+      disabled={mProps.disabled}
       onClick={() => {
         mProps.handleClick();
       }}

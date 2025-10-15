@@ -2,18 +2,8 @@ import { mergeProps } from "solid-js";
 
 import { NOTE_TEXT_AREA_LIMIT } from "../../../configuration.ts";
 import { NOTE_ACCORDION, NOTE_TEXT_AREA } from "../../../features/testIds.ts";
-import {
-  Accordion,
-  AccordionSize,
-  AccordionTheme,
-} from "../accordion/accordion.tsx";
-import {
-  Textarea,
-  TextareaSize,
-  TextareaTheme,
-} from "../textarea/textarea.tsx";
-
-import "./note.css";
+import { Accordion, AccordionSize, AccordionTheme } from "../accordion/accordion.tsx";
+import { Textarea, TextareaSize, TextareaTheme } from "../textarea/textarea.tsx";
 
 export enum NoteTheme {
   Primary = "primary",
@@ -26,10 +16,10 @@ export enum NoteSize {
 type NoteProps = {
   theme?: NoteTheme;
   size?: NoteSize;
-  isDisabled?: boolean;
+  disabled?: boolean;
   title?: string;
   name?: string;
-  defaultValue?: string;
+  children?: string;
   onChange?: (value: string) => void;
 };
 
@@ -40,9 +30,8 @@ export const Note = (props: NoteProps) => {
       size: NoteSize.Medium,
       title: "Заметка",
       name: "Note",
-      isDisabled: false,
-      isLoading: false,
-      defaultValue: "",
+      disabled: false,
+      children: "",
       onChange: () => {},
     },
     props,
@@ -61,7 +50,7 @@ export const Note = (props: NoteProps) => {
       theme={AccordionTheme.Primary}
       size={accordionSize[mProps.size]}
       title={mProps.title}
-      isDisabled={mProps.isDisabled}
+      disabled={mProps.disabled}
       testId={NOTE_ACCORDION}
     >
       <Textarea
@@ -70,9 +59,9 @@ export const Note = (props: NoteProps) => {
         placeholder={"Дополнительная информация о списке"}
         name={mProps.name}
         maxLength={NOTE_TEXT_AREA_LIMIT}
-        isDisabled={mProps.isDisabled}
+        disabled={mProps.disabled}
         testId={NOTE_TEXT_AREA}
-        defaultValue={mProps.defaultValue}
+        defaultValue={mProps.children}
         onChange={mProps.onChange}
       />
     </Accordion>

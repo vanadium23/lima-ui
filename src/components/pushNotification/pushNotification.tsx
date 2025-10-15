@@ -3,17 +3,15 @@ import { mergeProps } from "solid-js";
 import { SEARCH_NETWORK_ERROR_CLOSE_BUTTON } from "../../../features/testIds.ts";
 import { Icon, IconSize } from "../icon/icon.tsx";
 import { IconName } from "../icon/types.ts";
-import {
-  IconButton,
-  IconButtonSize,
-  IconButtonTheme,
-} from "../iconButton/iconButton.tsx";
+import { IconButton, IconButtonSize, IconButtonTheme } from "../iconButton/iconButton.tsx";
 import type { Testable } from "../utilities/testable";
 
 import "./pushNotification.css";
 
 export enum PushNotificationTheme {
+  Primary = "primary",
   Dangerous = "dangerous",
+  Successful = "successful",
 }
 
 export enum PushNotificationSize {
@@ -41,7 +39,11 @@ export const PushNotification = (props: Testable<PushNotificationProps>) => {
 
   return (
     <div
-      class={`pushNotification pushNotification_${mProps.theme} pushNotification_${mProps.size}`}
+      class="pushNotification"
+      classList={{
+        [`pushNotification_${mProps.size}`]: true,
+        [`pushNotification_${mProps.theme}`]: true,
+      }}
       data-test-id={mProps.testId}
       data-test-sub-id={mProps.testSubId}
     >

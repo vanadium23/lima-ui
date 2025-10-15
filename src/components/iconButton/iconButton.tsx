@@ -10,6 +10,7 @@ export enum IconButtonTheme {
   Primary = "primary",
   Secondary = "secondary",
   Tertiary = "tertiary",
+  Quaternary = "quaternary",
   Dangerous = "dangerous",
 }
 
@@ -38,9 +39,9 @@ type IconButtonProps = {
   type?: IconButtonType;
   link?: string;
   iconName: IconName;
-  isDisabled?: boolean;
+  disabled?: boolean;
   ariaLabel: string;
-  isLoading?: boolean;
+  loading?: boolean;
   handleClick?: () => void;
   ref?: Ref<HTMLButtonElement>;
 };
@@ -52,8 +53,8 @@ export const IconButton = (props: Testable<IconButtonProps>) => {
       type: IconButtonType.Button,
       theme: IconButtonTheme.Primary,
       size: IconButtonSize.Medium,
-      isDisabled: false,
-      isLoading: false,
+      disabled: false,
+      loading: false,
       handleClick: () => {},
       link: "",
       ref: () => {},
@@ -74,34 +75,40 @@ export const IconButton = (props: Testable<IconButtonProps>) => {
         <button
           type={mProps.type}
           onClick={() => {
-            if (!mProps.isLoading) {
+            if (!mProps.loading) {
               mProps.handleClick();
             }
           }}
-          class={`iconButton iconButton_${mProps.theme} iconButton_${mProps.size}`}
+          class="iconButton"
           classList={{
-            iconButton_disabled: mProps.isDisabled,
-            iconButton_loading: mProps.isLoading,
+            [`iconButton_${mProps.size}`]: true,
+            [`iconButton_${mProps.theme}`]: !mProps.disabled,
+            iconButton_disabled: mProps.disabled,
+            iconButton_loading: mProps.loading,
           }}
           title={mProps.ariaLabel}
-          disabled={mProps.isDisabled}
-          aria-disabled={mProps.isLoading ? true : undefined}
+          disabled={mProps.disabled}
+          aria-disabled={mProps.loading ? true : undefined}
           aria-label={mProps.ariaLabel}
           data-test-id={mProps.testId}
           data-test-sub-id={mProps.testSubId}
           ref={mProps.ref}
         >
-          <Show when={mProps.isLoading} fallback={<Icon name={mProps.iconName} size={iconSize[mProps.size]} />}>
+          <Show when={mProps.loading} fallback={<Icon name={mProps.iconName} size={iconSize[mProps.size]} />}>
             <div class="iconButton__loadingIcon">
               <Icon name={IconName.CircleNotch} size={iconSize[mProps.size]} />
             </div>
           </Show>
         </button>
       </Match>
-      <Match when={mProps.componentType === IconButtonComponentType.Link && !mProps.isDisabled}>
+      <Match when={mProps.componentType === IconButtonComponentType.Link && !mProps.disabled}>
         <a
           href={mProps.link}
-          class={`iconButton iconButton_${mProps.theme} iconButton_${mProps.size}`}
+          class="iconButton"
+          classList={{
+            [`iconButton_${mProps.size}`]: true,
+            [`iconButton_${mProps.theme}`]: true,
+          }}
           title={mProps.ariaLabel}
           aria-label={mProps.ariaLabel}
           data-test-id={mProps.testId}
@@ -110,15 +117,16 @@ export const IconButton = (props: Testable<IconButtonProps>) => {
           <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
         </a>
       </Match>
-      <Match when={mProps.componentType === IconButtonComponentType.Link && mProps.isDisabled}>
+      <Match when={mProps.componentType === IconButtonComponentType.Link && mProps.disabled}>
         <span
-          class={`iconButton iconButton_${mProps.theme} iconButton_${mProps.size}`}
+          class="iconButton"
           classList={{
-            iconButton_disabled: mProps.isDisabled,
+            [`iconButton_${mProps.size}`]: true,
+            iconButton_disabled: mProps.disabled,
           }}
           title={mProps.ariaLabel}
           aria-label={mProps.ariaLabel}
-          aria-disabled={mProps.isDisabled}
+          aria-disabled={mProps.disabled}
           data-test-id={mProps.testId}
           data-test-sub-id={mProps.testSubId}
         >

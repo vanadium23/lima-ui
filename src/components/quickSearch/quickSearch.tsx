@@ -25,8 +25,8 @@ export enum QuickSearchSize {
 export type QuickSearchProps = {
   theme?: QuickSearchTheme;
   size?: QuickSearchSize;
-  lists?: SimpleList[];
-  isLoading: boolean;
+  children?: SimpleList[];
+  loading: boolean;
   query: string;
 };
 
@@ -35,26 +35,30 @@ export const QuickSearch = (props: QuickSearchProps) => {
     {
       theme: QuickSearchTheme.Primary,
       size: QuickSearchSize.Medium,
-      lists: [],
+      children: [],
     },
     props,
   );
 
   function getResultPhrase() {
-    const firstWord = pluralizeRu(mProps.lists.length, ["Найден", "Найдено", "Найдено"]);
-    const secondWord = pluralizeRu(mProps.lists.length, ["результат", "результата", "результатов"]);
+    const firstWord = pluralizeRu(mProps.children.length, ["Найден", "Найдено", "Найдено"]);
+    const secondWord = pluralizeRu(mProps.children.length, ["результат", "результата", "результатов"]);
 
-    return `${firstWord} ${mProps.lists.length} ${secondWord}`;
+    return `${firstWord} ${mProps.children.length} ${secondWord}`;
   }
 
   return (
     <div
-      class={`quickSearch quickSearch_${props.theme} quickSearch_${mProps.size}`}
+      class="quickSearch"
+      classList={{
+        [`quickSearch_${mProps.size}`]: true,
+        [`quickSearch_${mProps.theme}`]: true,
+      }}
       tabIndex={-1}
       /* Tabindex чтобы сделать элемент псевдофокусабельными для фикса focus-within */
     >
       <Show
-        when={!mProps.isLoading}
+        when={!mProps.loading}
         fallback={
           <div class="quickSearch__loader" data-test-id={SEARCH_DIALOG_LOADING}>
             <Icon name={IconName.CircleNotch} size={IconSize.Large} />
@@ -62,7 +66,7 @@ export const QuickSearch = (props: QuickSearchProps) => {
         }
       >
         <Show
-          when={mProps.lists.length}
+          when={mProps.children.length}
           fallback={
             <span
               class="quickSearch__empty"
@@ -72,10 +76,12 @@ export const QuickSearch = (props: QuickSearchProps) => {
         >
           <div class="quickSearch__results">
             <ul class="quickSearch__list scrollStyles" data-test-id={SEARCH_RESULTS}>
-              <For each={mProps.lists}>
+              <For each={mProps.children}>
                 {(list, index) => {
                   return (
-                    <DropdownListItem text={list.name} listId={list.id} testId={SEARCH_RESULT} testSubId={index()} />
+                    <DropdownListItem listId={list.id} testId={SEARCH_RESULT} testSubId={index()}>
+                      {list.name}
+                    </DropdownListItem>
                   );
                 }}
               </For>
@@ -83,7 +89,7 @@ export const QuickSearch = (props: QuickSearchProps) => {
           </div>
         </Show>
 
-        <Show when={mProps.lists.length}>
+        <Show when={mProps.children.length}>
           <span class="quickSearch__totalResults">{getResultPhrase()}</span>
         </Show>
       </Show>

@@ -13,28 +13,16 @@ export enum TextButtonTheme {
 }
 
 export enum TextButtonSize {
-  ExtraSmallEmbedded = "extraSmallEmbedded",
   Medium = "medium",
-}
-
-export enum TextButtonType {
-  Button = "button",
-  Submit = "submit",
-  Reset = "reset",
-}
-
-export enum TextButtonComponentType {
-  Button = "button",
 }
 
 type TextButtonProps = {
   theme?: TextButtonTheme;
   size?: TextButtonSize;
-  type?: TextButtonType;
-  isDisabled?: boolean;
+  disabled?: boolean;
   ariaLabel?: string;
-  text: string;
-  isLoading?: boolean;
+  children: string;
+  loading?: boolean;
   handleClick?: () => void;
 };
 
@@ -43,9 +31,8 @@ export const TextButton = (props: Testable<TextButtonProps>) => {
     {
       theme: TextButtonTheme.Primary,
       size: TextButtonSize.Medium,
-      type: TextButtonType.Button,
-      isDisabled: false,
-      isLoading: false,
+      disabled: false,
+      loading: false,
       ariaLabel: "",
       handleClick: () => {},
     },
@@ -53,38 +40,36 @@ export const TextButton = (props: Testable<TextButtonProps>) => {
   );
 
   const loadingIconSize = {
-    [TextButtonSize.ExtraSmallEmbedded]: IconSize.ExtraSmall,
     [TextButtonSize.Medium]: IconSize.Medium,
   };
 
   return (
     <button
-      type={mProps.type}
-      class={`textButton textButton_${mProps.theme} textButton_${mProps.size}`}
+      type="button"
+      class="textButton"
       classList={{
-        textButton_disabled: mProps.isDisabled,
-        textButton_loading: mProps.isLoading,
+        [`textButton_${mProps.size}`]: true,
+        [`textButton_${mProps.theme}`]: !mProps.disabled,
+        textButton_disabled: mProps.disabled,
+        textButton_loading: mProps.loading,
       }}
-      disabled={mProps.isDisabled}
-      aria-disabled={mProps.isLoading ? true : undefined}
+      disabled={mProps.disabled}
+      aria-disabled={mProps.loading ? true : undefined}
       {...prepareARIALabel(mProps.ariaLabel)}
       onClick={() => {
-        if (!mProps.isLoading) {
+        if (!mProps.loading) {
           mProps.handleClick();
         }
       }}
       data-test-id={mProps.testId}
       data-test-sub-id={mProps.testSubId}
     >
-      <Show when={mProps.isLoading}>
+      <Show when={mProps.loading}>
         <div class="textButton__loadingIcon">
-          <Icon
-            name={IconName.CircleNotch}
-            size={loadingIconSize[mProps.size]}
-          />
+          <Icon name={IconName.CircleNotch} size={loadingIconSize[mProps.size]} />
         </div>
       </Show>
-      <span class="textButton__text">{mProps.text}</span>
+      <span class="textButton__text">{mProps.children}</span>
     </button>
   );
 };

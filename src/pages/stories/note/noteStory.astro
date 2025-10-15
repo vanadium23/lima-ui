@@ -19,21 +19,8 @@ const sizes = Object.values(NoteSize);
           {sizes.map((size) => (
             <>
               <span class="rhead">{size}</span>
-              <Note
-                client:only="solid-js"
-                theme={theme}
-                size={size}
-                title="Заметка"
-                name=""
-              />
-              <Note
-                client:only="solid-js"
-                theme={theme}
-                size={size}
-                title="Заметка"
-                isDisabled={true}
-                name=""
-              />
+              <Note client:only="solid-js" theme={theme} size={size} title="Заметка" name="" />
+              <Note client:only="solid-js" theme={theme} size={size} title="Заметка" disabled={true} name="" />
             </>
           ))}
         </div>
