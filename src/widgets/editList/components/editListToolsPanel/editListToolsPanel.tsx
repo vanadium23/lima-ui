@@ -65,6 +65,7 @@ export const EditListToolsPanel = () => {
             handleClick={openRemoveDialog}
             testId={TOOLS_PANEL_BUTTON_REMOVE_LIST}
           />
+          <RemoveDialog />
         </div>
         <Divider />
         <div class="toolsPanel__verticalSection">
@@ -86,6 +87,7 @@ export const EditListToolsPanel = () => {
             testId={TOOLS_PANEL_BUTTON_IMPORT_LIST}
             handleClick={openImportDialog}
           />
+          <ImportDialog currentListId={storeEditList.id} />
 
           <ToolsButton
             componentType={ToolsButtonComponentType.Link}
@@ -98,10 +100,6 @@ export const EditListToolsPanel = () => {
           />
         </div>
       </ToolsPanel>
-
-      <RemoveDialog />
-
-      <ImportDialog currentListId={storeEditList.id} />
     </aside>
   );
 };
