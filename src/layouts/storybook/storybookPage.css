@@ -4,6 +4,7 @@
   --storybook-html-bg: #fff;
   --storybook-html-color: #232323;
   --storybook-demo-wrapper-bg: #e3e3e3;
+  --storybook-demo-wrapper-white-bg: #fff;
   --storybook-sidebar-bg: #fff;
   --storybook-demo-nav-item-color: #000;
   --storybook-demo-border-color: #cdcdcd;
@@ -14,6 +15,7 @@
     --storybook-html-bg: #1c1c1c;
     --storybook-html-color: #fff;
     --storybook-demo-wrapper-bg: #282828;
+    --storybook-demo-wrapper-white-bg: #282828;
     --storybook-sidebar-bg: #282828;
     --storybook-demo-nav-item-color: #fff;
     --storybook-demo-border-color: #444;
@@ -91,7 +93,7 @@ html {
 }
 
 .demoThemeWrapper_white {
-  background: #fff;
+  background: var(--storybook-demo-wrapper-white-bg);
 }
 
 .demoThemeWrapper__title {

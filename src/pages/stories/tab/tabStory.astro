@@ -1,0 +1,39 @@
+---
+import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
+import { Tab, TabSize, TabTheme } from "../../../components/tab/tab.tsx";
+import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
+
+const themes = Object.values(TabTheme);
+const sizes = Object.values(TabSize);
+---
+
+<StorybookPage title="Tab">
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 class="demoThemeWrapper__title">{theme}</h3>
+        <div class="grid grid_3Col">
+          <span class="chead" />
+          <span class="chead">Default</span>
+          <span class="chead">Selected</span>
+          <span class="chead">Disabled</span>
+
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <Tab client:only="solid-js" theme={theme} size={size} testId={DEFAULT_TEST_ID}>
+                Вкладка
+              </Tab>
+              <Tab client:only="solid-js" theme={theme} size={size} testId={DEFAULT_TEST_ID} selected={true}>
+                Вкладка
+              </Tab>
+              <Tab client:only="solid-js" theme={theme} size={size} testId={DEFAULT_TEST_ID} disabled={true}>
+                Вкладка
+              </Tab>
+            </>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+</StorybookPage>
