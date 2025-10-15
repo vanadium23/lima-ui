@@ -2,7 +2,7 @@ import { For, mergeProps } from "solid-js";
 
 import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import { getListLink } from "../../../utilities/addresses.ts";
-import type { List } from "../../types/types.ts";
+import type { DragSettings, Item } from "../../types/types.ts";
 import { DragHandle } from "../dragHandle/dragHandle.tsx";
 import { IconName } from "../icon/types.ts";
 import { IconButton, IconButtonSize } from "../iconButton/iconButton.tsx";
@@ -25,7 +25,11 @@ type ImportedGroupProps = {
   size?: ImportedGroupSize;
   disabled?: boolean;
   checkable?: boolean;
-  children: List;
+  children: Item[];
+  name?: string;
+  id: string;
+  dragSettings?: DragSettings;
+  isDraggingOverlay?: boolean;
 };
 
 export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
@@ -35,12 +39,21 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
       size: ImportedGroupSize.Medium,
       disabled: false,
       checkable: false,
+      dragSettings: {
+        dragData: null,
+        dragProps: {},
+        dragState: null,
+      },
+      isDraggingOverlay: false,
+      dragId: "",
+      name: "Тест",
     },
     props,
   );
 
   return (
     <div
+      {...mProps.dragSettings.dragProps}
       class="importedGroup"
       classList={{
         [`importedGroup_${mProps.size}`]: true,
@@ -51,18 +64,18 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
       data-test-id={mProps.testId}
     >
       <div class="importedGroup__dragHandle">
-        <DragHandle disabled={mProps.disabled} testId={DEFAULT_TEST_ID} />
+        <DragHandle disabled={mProps.disabled} testId={DEFAULT_TEST_ID} dragHandle={mProps.dragSettings.dragData} />
       </div>
       <div class="importedGroup__inner">
         <div class="importedGroup__headerWrapper">
           <div class="importedGroup__header">
             <Link
               size={LinkSize.Small}
-              href={getListLink(mProps.children.id)}
+              href={getListLink(mProps.id)}
               testId={DEFAULT_TEST_ID}
               disabled={mProps.disabled}
             >
-              {mProps.children.name}
+              Тест
             </Link>
             <div class="importedGroup__button">
               <IconButton
@@ -75,7 +88,7 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
             </div>
           </div>
         </div>
-        <For each={mProps.children.items}>
+        <For each={mProps.children}>
           {(item) => (
             <ImportedItem
               testId={DEFAULT_TEST_ID}

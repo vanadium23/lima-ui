@@ -1,9 +1,13 @@
 import type { createSortable, useDragDropContext } from "@thisbeyond/solid-dnd";
 import type { JSX } from "solid-js";
 
-export type Item = {
+export type SimpleItem = {
   content: string;
   id: string;
+};
+
+export type Item = SimpleItem & {
+  originalListId: string;
 };
 
 export type Items = Item[];
@@ -25,17 +29,13 @@ export type List = ListBase & {
   note: string;
 };
 
-export type DragItem = {
+export type DragItem = Item & {
   dragId: string;
-  content: string;
-  id: string;
   auto: boolean;
 };
 
-export type DragItems = DragItem[];
-
 export type DragList = ListBase & {
-  items: DragItems;
+  items: DragItem[];
   note: string;
 };
 
@@ -54,27 +54,6 @@ export type UpdatedList = ListBase & {
 };
 
 export type ScrollContainer = HTMLDivElement | undefined;
-
-export type ComparableList = {
-  items: string;
-  name: string;
-  purpose: string;
-  note: string;
-};
-
-export type EditListStore = DragList & {
-  initialList: List;
-  sendingNow: false | "saving" | "deleting";
-  error: boolean;
-  removeError: boolean;
-  isCheckable: boolean;
-  isRemoveDialogOpen: boolean;
-  isImportDialogOpen: boolean;
-  isChanged: boolean;
-  isNewList: boolean;
-  draggedItem: string;
-  itemsScrollStartPosition: number;
-};
 
 export enum EditListFormNames {
   ListTitle = "List Title",

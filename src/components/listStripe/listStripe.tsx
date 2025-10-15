@@ -10,8 +10,8 @@ import {
   REMOVE_DIALOG_REMOVE_LIST_BUTTON,
   REMOVE_LIST_DIALOG,
 } from "../../../features/testIds.ts";
+import { soften } from "../../../utilities/soften.ts";
 import { removeList } from "../../widgets/editList/services/removeList.ts";
-import { soften } from "../../widgets/editList/utilities/soften.ts";
 import { Button, ButtonSize, ButtonTheme } from "../button/button.tsx";
 import { Dialog, DialogSize, DialogTheme } from "../dialog/dialog.tsx";
 import { DropdownMenu } from "../dropdownMenu/dropdownMenu.tsx";

@@ -9,6 +9,7 @@ import {
   SEARCH_INPUT,
   SEARCH_NETWORK_ERROR,
 } from "../../../features/testIds.ts";
+import { soften } from "../../../utilities/soften.ts";
 import { IconName } from "../../components/icon/types.ts";
 import { IconButton, IconButtonTheme, IconButtonType } from "../../components/iconButton/iconButton.tsx";
 import { Input, InputTheme } from "../../components/input/input.tsx";
@@ -16,7 +17,6 @@ import { QuickSearch } from "../../components/quickSearch/quickSearch.tsx";
 import { notificationState } from "../../state/pushNotificationStateManager.ts";
 import { searchState } from "../../state/searchState.ts";
 import type { SimpleList } from "../../types/types.ts";
-import { soften } from "../editList/utilities/soften.ts";
 
 import "./search.css";
 

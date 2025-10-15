@@ -1,5 +1,6 @@
 .importedGroup {
   display: flex;
+  width: 100%;
 }
 
 .importedGroup__dragHandle,
@@ -12,6 +13,10 @@
   justify-content: space-between;
   background: var(--neutral-150);
   border-radius: 0.8rem 0.8rem 0 0;
+}
+
+.importedGroup__inner {
+  flex-grow: 1;
 }
 
 .importedGroup_medium {
