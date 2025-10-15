@@ -20,7 +20,7 @@ export enum DropdownMenuSize {
 type DropdownMenuProps = {
   theme?: DropdownMenuTheme;
   size?: DropdownMenuSize;
-  menuItems: MenuItemProps[];
+  children: MenuItemProps[];
   component: (props: { ref: Ref<HTMLButtonElement>; handleClick: () => void }) => JSX.Element;
 };
 
@@ -48,7 +48,11 @@ export const DropdownMenu = (props: Testable<DropdownMenuProps>) => {
         <Portal mount={document.body}>
           <ul
             role="menu"
-            class={`dropdownMenu dropdownMenu_${mProps.theme} dropdownMenu_${mProps.size}`}
+            class="dropdownMenu"
+            classList={{
+              [`dropdownMenu_${mProps.size}`]: true,
+              [`dropdownMenu_${mProps.theme}`]: true,
+            }}
             style={
               floatingPosition
                 ? {
@@ -62,7 +66,7 @@ export const DropdownMenu = (props: Testable<DropdownMenuProps>) => {
             ref={setMenuRef}
             data-test-id={mProps.testId}
           >
-            <For each={mProps.menuItems}>
+            <For each={mProps.children}>
               {(menuItem) => (
                 <MenuItem
                   testId={DEFAULT_TEST_ID}
@@ -72,8 +76,10 @@ export const DropdownMenu = (props: Testable<DropdownMenuProps>) => {
                     menuItem.handleClick?.();
                     setIsMenuOpen(false);
                   }}
-                  isDisabled={menuItem.isDisabled}
-                />
+                  disabled={menuItem.disabled}
+                >
+                  {menuItem.children}
+                </MenuItem>
               )}
             </For>
           </ul>

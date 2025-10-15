@@ -22,7 +22,7 @@ type DialogProps = {
   children: JSX.Element;
   controls?: JSX.Element;
   onCancel: () => void;
-  isOpen?: boolean;
+  open: boolean;
   title: string;
   loading?: boolean;
 };
@@ -32,7 +32,7 @@ export const Dialog = (props: Testable<DialogProps>) => {
     {
       theme: DialogTheme.Primary,
       size: DialogSize.Medium,
-      isOpen: false,
+      open: false,
       controls: undefined,
       loading: false,
     },
@@ -42,11 +42,11 @@ export const Dialog = (props: Testable<DialogProps>) => {
   let dialogRef: HTMLDialogElement | undefined;
 
   createEffect(() => {
-    if (mProps.isOpen && dialogRef) {
+    if (mProps.open && dialogRef) {
       dialogRef.showModal();
     }
 
-    if (!mProps.isOpen && dialogRef) {
+    if (!mProps.open && dialogRef) {
       closeDialog();
     }
   });
@@ -71,9 +71,13 @@ export const Dialog = (props: Testable<DialogProps>) => {
 
   return (
     <dialog
-      class={`dialog dialog_${mProps.theme} dialog_${mProps.size}`}
+      class="dialog"
+      classList={{
+        [`dialog_${mProps.size}`]: true,
+        [`dialog_${mProps.theme}`]: true,
+      }}
       aria-label={mProps.title}
-      aria-modal={mProps.isOpen}
+      aria-modal={mProps.open}
       ref={(el) => (dialogRef = el)}
       onClick={closeOnBackDropClick}
       data-test-id={mProps.testId}

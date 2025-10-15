@@ -20,23 +20,19 @@ const sizes = Object.values(LinkSize);
           {sizes.map((size) => (
             <>
               <span class="rhead">{size}</span>
+              <Link client:only="solid-js" href="https://ya.ru" theme={theme} size={size} testId={DEFAULT_TEST_ID}>
+                Text
+              </Link>
               <Link
                 client:only="solid-js"
-                link="https://ya.ru"
+                href="https://ya.ru"
                 theme={theme}
                 size={size}
-                text="Text"
                 testId={DEFAULT_TEST_ID}
-              />
-              <Link
-                client:only="solid-js"
-                link="https://ya.ru"
-                theme={theme}
-                size={size}
-                text="Text"
-                testId={DEFAULT_TEST_ID}
-                isDisabled={true}
-              />
+                disabled={true}
+              >
+                Text
+              </Link>
             </>
           ))}
         </div>

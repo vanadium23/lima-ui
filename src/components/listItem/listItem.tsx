@@ -38,14 +38,14 @@ type ListItemProps = {
   theme?: ListItemTheme;
   size?: ListItemSize;
   removeItem?: () => void;
-  isDisabled?: boolean;
-  isCheckable: boolean;
-  isChecked: boolean;
-  defaultValue?: string;
+  disabled?: boolean;
+  checkable: boolean;
+  checked: boolean;
+  children?: string;
   name?: string;
   dataId?: string;
   isOnlyOneItem?: boolean;
-  isRequired?: boolean;
+  required?: boolean;
   onChange?: (value: string) => void;
   onAddBefore?: () => void;
   onAddAfter?: () => void;
@@ -62,9 +62,9 @@ export const ListItem = (props: Testable<ListItemProps>) => {
       size: ListItemSize.Medium,
       name: "",
       isOnlyOneItem: false,
-      isDisabled: false,
-      isRequired: true,
-      defaultValue: "",
+      disabled: false,
+      required: true,
+      children: "",
       dataId: "",
       onChange: () => {},
       onAddBefore: () => {},
@@ -84,38 +84,38 @@ export const ListItem = (props: Testable<ListItemProps>) => {
 
   const menuItems = () => [
     {
-      text: "Добавить пункт выше",
+      children: "Добавить пункт выше",
       icon: IconName.Plus,
       handleClick: mProps.onAddBefore,
       testId: ADD_ITEM_ABOVE_MENUITEM,
-      isDisabled: !mProps.canAddMore,
+      disabled: !mProps.canAddMore,
     },
     {
-      text: "Добавить пункт ниже",
+      children: "Добавить пункт ниже",
       icon: IconName.Plus,
       handleClick: mProps.onAddAfter,
       testId: ADD_ITEM_BELOW_MENUITEM,
-      isDisabled: !mProps.canAddMore,
+      disabled: !mProps.canAddMore,
     },
     {
-      text: "Импортировать выше",
+      children: "Импортировать выше",
       icon: IconName.SortDescending,
       handleClick: openImportDialog,
       testId: DEFAULT_TEST_ID,
-      isDisabled: !mProps.canAddMore,
+      disabled: !mProps.canAddMore,
     },
     {
-      text: "Импортировать ниже",
+      children: "Импортировать ниже",
       icon: IconName.SortAscending,
       handleClick: openImportDialog,
       testId: DEFAULT_TEST_ID,
-      isDisabled: !mProps.canAddMore,
+      disabled: !mProps.canAddMore,
     },
     {
-      text: "Удалить пункт",
+      children: "Удалить пункт",
       icon: IconName.Trash,
       handleClick: mProps.removeItem,
-      isDisabled: mProps.isOnlyOneItem,
+      disabled: mProps.isOnlyOneItem,
       theme: MenuItemTheme.Dangerous,
       testId: REMOVE_ITEM_MENUITEM,
       testSubId: getListItemTestSubId(mProps.testId, mProps.testSubId),
@@ -125,8 +125,10 @@ export const ListItem = (props: Testable<ListItemProps>) => {
   return (
     <div
       {...mProps.dragSettings.dragProps}
-      class={`listItem listItem_${mProps.theme} listItem_${mProps.size}`}
+      class="listItem"
       classList={{
+        [`listItem_${mProps.size}`]: true,
+        [`listItem_${mProps.theme}`]: true,
         listItem_dragging: mProps.isDraggingOverlay,
         listItem_transition: !!mProps.dragSettings.dragState?.active.draggable,
       }}
@@ -135,21 +137,21 @@ export const ListItem = (props: Testable<ListItemProps>) => {
     >
       <div class="listItem__dragHandle">
         <DragHandle
-          isDisabled={mProps.isDisabled}
+          disabled={mProps.disabled}
           testId={DRAG_HANDLE}
           testSubId={getListItemTestSubId(mProps.testId, mProps.testSubId)}
           dragHandle={mProps.dragSettings.dragData}
         />
       </div>
-      <Show when={mProps.isCheckable}>
+      <Show when={mProps.checkable}>
         <div class="listItem__checkbox">
           <Checkbox
             theme={CheckboxTheme.Primary}
             size={CheckboxSize.Medium}
             testId={CHECKBOX}
             testSubId={getListItemTestSubId(mProps.testId, mProps.testSubId)}
-            disabled={mProps.isDisabled}
-            checked={mProps.isChecked}
+            disabled={mProps.disabled}
+            checked={mProps.checked}
           />
         </div>
       </Show>
@@ -158,10 +160,9 @@ export const ListItem = (props: Testable<ListItemProps>) => {
           maxLength={EDIT_LIST_INPUT_LIMIT}
           name={mProps.name}
           dataId={mProps.dataId}
-          isDisabled={mProps.isDisabled}
+          disabled={mProps.disabled}
           placeholder={mProps.placeholder}
-          defaultValue={mProps.defaultValue}
-          isRequired={mProps.isRequired}
+          required={mProps.required}
           onChange={mProps.onChange}
           testId={buildListItemInputTestId(mProps.testId)}
           testSubId={getListItemTestSubId(mProps.testId, mProps.testSubId)}
@@ -177,15 +178,18 @@ export const ListItem = (props: Testable<ListItemProps>) => {
                   size={IconButtonSize.MediumEmbedded}
                   iconName={IconName.DotsThree}
                   ariaLabel={"Выпадающее меню"}
-                  isDisabled={mProps.isDisabled}
+                  disabled={mProps.disabled}
                 />
               )}
               testId={LIST_ITEM_CONTEXT_MENU}
               testSubId={getListItemTestSubId(mProps.testId, mProps.testSubId)}
-              menuItems={menuItems()}
-            />
+            >
+              {menuItems()}
+            </DropdownMenu>
           }
-        />
+        >
+          {mProps.children}
+        </CyberInput>
       </div>
     </div>
   );

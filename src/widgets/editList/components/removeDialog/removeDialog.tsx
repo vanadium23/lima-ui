@@ -27,15 +27,16 @@ export const RemoveDialog = () => {
         <Button
           theme={ButtonTheme.Dangerous}
           size={ButtonSize.Medium}
-          text={"Удалить"}
           handleClick={() => {
             sendListRemove();
             closeRemoveDialog();
           }}
           testId={REMOVE_DIALOG_REMOVE_LIST_BUTTON}
-        />
+        >
+          Удалить
+        </Button>
       }
-      isOpen={storeRemoveDialog.openRemoveDialog}
+      open={storeRemoveDialog.openRemoveDialog}
       testId={REMOVE_LIST_DIALOG}
       testSubId={REMOVE_LIST_DIALOG}
     >

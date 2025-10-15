@@ -7,7 +7,7 @@ import { IconButton, IconButtonComponentType, IconButtonSize } from "../../../co
 import { type MenuItemProps } from "../../../components/menuItem/menuItem.tsx";
 
 type DropdownMenuWrapperProps = {
-  menuItems: MenuItemProps[];
+  children: MenuItemProps[];
 };
 
 export function DropdownMenuWrapper(props: DropdownMenuWrapperProps) {
@@ -27,7 +27,8 @@ export function DropdownMenuWrapper(props: DropdownMenuWrapperProps) {
         />
       )}
       testId={LIST_ITEM_CONTEXT_MENU}
-      menuItems={mProps.menuItems}
-    />
+    >
+      {mProps.children}
+    </DropdownMenu>
   );
 }

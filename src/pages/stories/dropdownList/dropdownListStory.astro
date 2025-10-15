@@ -1,9 +1,6 @@
 ---
 import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
-import {
-  DropdownList,
-  DropdownListTheme,
-} from "../../../components/dropdownList/dropdownList.tsx";
+import { DropdownList, DropdownListTheme } from "../../../components/dropdownList/dropdownList.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 const themes = Object.values(DropdownListTheme);
@@ -70,19 +67,15 @@ const listsExample2 = [
 
           <span class="rhead">Default 1</span>
 
-          <DropdownList
-            client:only="solid-js"
-            lists={listsExample1}
-            testId={DEFAULT_TEST_ID}
-          />
+          <DropdownList client:only="solid-js" testId={DEFAULT_TEST_ID}>
+            {listsExample1}
+          </DropdownList>
 
           <span class="rhead">Default 10</span>
 
-          <DropdownList
-            client:only="solid-js"
-            lists={listsExample2}
-            testId={DEFAULT_TEST_ID}
-          />
+          <DropdownList client:only="solid-js" testId={DEFAULT_TEST_ID}>
+            {listsExample2}
+          </DropdownList>
         </div>
       </div>
     ))

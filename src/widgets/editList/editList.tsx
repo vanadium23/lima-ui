@@ -28,7 +28,7 @@ import { PageError } from "../../components/pageError/pageError.tsx";
 import { EditListFormNames, type List } from "../../types/types.ts";
 
 import { EditListHeader } from "./components/editListHeader/editListHeader.tsx";
-import { EditListToolsPanel } from "./components/editListToolsPanel/editListToolsPanel.tsx";
+import EditListToolsPanel from "./components/editListToolsPanel/editListToolsPanel.tsx";
 import { emptyList, initStoreEditList, setStoreEditList, storeEditList } from "./editList.store.tsx";
 import { addEmptyItem } from "./utilities/addEmptyItem.ts";
 import { checkChanges } from "./utilities/checkChanges.ts";
@@ -129,11 +129,10 @@ export const EditList = (props: EditListProps) => {
                       return (
                         <ListItem
                           removeItem={() => removeItem(index())}
-                          isDisabled={storeEditList.sendingNow !== false}
+                          disabled={storeEditList.sendingNow !== false}
                           isOnlyOneItem={storeEditList.items.length === 1}
-                          isCheckable={storeEditList.isCheckable}
-                          isChecked={false}
-                          defaultValue={item.content}
+                          checkable={storeEditList.isCheckable}
+                          checked={false}
                           name={`${EditListFormNames.ListItem} ${index() + 1}`}
                           dataId={item.id}
                           onChange={(value) => handleItemChange(index(), value)}
@@ -142,7 +141,7 @@ export const EditList = (props: EditListProps) => {
                           canAddMore={!reachedItemsLimit()}
                           testId={item.auto ? AUTO_LIST_ITEM : LIST_ITEM}
                           testSubId={index()}
-                          isRequired={!item.auto}
+                          required={!item.auto}
                           dragSettings={{
                             dragData,
                             dragProps: {
@@ -152,12 +151,13 @@ export const EditList = (props: EditListProps) => {
                             dragState: useDragDropContext()?.[0] || null,
                           }}
                           placeholder={item.auto ? "Добавить пункт списка" : "Пункт списка"}
-                        />
+                        >
+                          {item.content}
+                        </ListItem>
                       );
                     } else {
                       return (
                         <ImportedGroup
-                          items={[item]}
                           testId={DEFAULT_TEST_ID}
                           id={item.originalListId}
                           dragSettings={{
@@ -168,7 +168,9 @@ export const EditList = (props: EditListProps) => {
                             },
                             dragState: useDragDropContext()?.[0] || null,
                           }}
-                        />
+                        >
+                          {[item]}
+                        </ImportedGroup>
                       );
                     }
                   }}
@@ -176,15 +178,16 @@ export const EditList = (props: EditListProps) => {
               </SortableProvider>
               <DragOverlay>
                 <ListItem
-                  isCheckable={storeEditList.isCheckable}
-                  isChecked={false}
-                  defaultValue={draggedItemData().content}
+                  checkable={storeEditList.isCheckable}
+                  checked={false}
                   dataId={draggedItemData().dragId}
                   canAddMore={!reachedItemsLimit()}
                   testId={DRAGGED_LIST_ITEM}
                   isDraggingOverlay={true}
                   placeholder={draggedItemData().auto ? "Добавить пункт списка" : "Пункт списка"}
-                />
+                >
+                  {draggedItemData().content}
+                </ListItem>
               </DragOverlay>
             </DragDropProvider>
           </div>
@@ -208,11 +211,12 @@ export const EditList = (props: EditListProps) => {
           <div class="editList__controls">
             <Button
               type={ButtonType.Submit}
-              text="Сохранить"
-              isDisabled={!storeEditList.isChanged || storeEditList.sendingNow === "deleting"}
-              isLoading={storeEditList.sendingNow === "saving"}
+              disabled={!storeEditList.isChanged || storeEditList.sendingNow === "deleting"}
+              loading={storeEditList.sendingNow === "saving"}
               testId={SAVE_LIST_BUTTON}
-            />
+            >
+              Сохранить
+            </Button>
           </div>
         </form>
       </div>

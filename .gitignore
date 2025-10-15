@@ -26,3 +26,6 @@ pnpm-debug.log*
 
 # Cucumber test artifacts
 /features/results/
+
+*storybook.log
+storybook-static

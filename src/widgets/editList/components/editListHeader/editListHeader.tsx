@@ -23,12 +23,13 @@ export const EditListHeader = () => {
         maxLength={LIST_TITLE_INPUT_LIMIT}
         name={EditListFormNames.ListTitle}
         testId={LIST_TITLE_INPUT}
-        isRequired={true}
-        isDisabled={storeEditList.sendingNow !== false}
-        defaultValue={storeEditList.name}
+        required={true}
+        disabled={storeEditList.sendingNow !== false}
         onChange={(value) => handleHeaderDataChange("name", value)}
         placeholder={"Название списка"}
-      />
+      >
+        {storeEditList.name}
+      </CyberInput>
       <CyberInput
         theme={CyberInputTheme.Primary}
         size={CyberInputSize.Medium}
@@ -36,17 +37,19 @@ export const EditListHeader = () => {
         maxLength={LIST_PURPOSE_INPUT_LIMIT}
         name={EditListFormNames.ListPurpose}
         testId={LIST_PURPOSE_INPUT}
-        isDisabled={storeEditList.sendingNow !== false}
-        defaultValue={storeEditList.purpose}
+        disabled={storeEditList.sendingNow !== false}
         onChange={(value) => handleHeaderDataChange("purpose", value)}
-      />
+      >
+        {storeEditList.name}
+      </CyberInput>
       <Note
         title="Заметка"
         name={EditListFormNames.ListNote}
-        isDisabled={storeEditList.sendingNow !== false}
-        defaultValue={storeEditList.note}
+        disabled={storeEditList.sendingNow !== false}
         onChange={(value) => handleHeaderDataChange("note", value)}
-      />
+      >
+        {storeEditList.name}
+      </Note>
     </div>
   );
 };

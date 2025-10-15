@@ -29,12 +29,12 @@
   color: var(--text-primary-500);
 }
 
-.textButton_primary:active:not(.textButton_disabled, .textButton_loading) {
+.textButton_primary:active:not(.textButton_loading) {
   color: var(--text-primary-600);
 }
 
 @media (hover: hover) {
-  .textButton_primary:hover:not(.textButton_disabled, .textButton_loading) {
+  .textButton_primary:hover:not(.textButton_loading) {
     color: var(--text-primary-400);
   }
 }
@@ -43,17 +43,16 @@
   color: var(--text-dangerous-500);
 }
 
-.textButton_dangerous:active:not(.textButton_disabled, .textButton_loading) {
+.textButton_dangerous:active:not(.textButton_loading) {
   color: var(--text-dangerous-600);
 }
 
 @media (hover: hover) {
-  .textButton_dangerous:hover:not(.textButton_disabled, .textButton_loading) {
+  .textButton_dangerous:hover:not(.textButton_loading) {
     color: var(--text-dangerous-400);
   }
 }
 
-.textButton:disabled,
 .textButton_disabled {
   cursor: not-allowed;
   color: var(--text-neutral-300);

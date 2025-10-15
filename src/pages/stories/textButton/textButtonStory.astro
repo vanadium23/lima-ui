@@ -1,10 +1,6 @@
 ---
 import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
-import {
-  TextButton,
-  TextButtonSize,
-  TextButtonTheme,
-} from "../../../components/textButton/textButton.tsx";
+import { TextButton, TextButtonSize, TextButtonTheme } from "../../../components/textButton/textButton.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 const themes = Object.values(TextButtonTheme);
@@ -26,29 +22,15 @@ const sizes = Object.values(TextButtonSize);
           {sizes.map((size) => (
             <>
               <span class="rhead">{size}</span>
-              <TextButton
-                client:only="solid-js"
-                theme={theme}
-                size={size}
-                text="Text"
-                testId={DEFAULT_TEST_ID}
-              />
-              <TextButton
-                client:only="solid-js"
-                theme={theme}
-                size={size}
-                text="Text"
-                testId={DEFAULT_TEST_ID}
-                isLoading={true}
-              />
-              <TextButton
-                client:only="solid-js"
-                theme={theme}
-                size={size}
-                text="Text"
-                testId={DEFAULT_TEST_ID}
-                isDisabled={true}
-              />
+              <TextButton client:only="solid-js" theme={theme} size={size} testId={DEFAULT_TEST_ID}>
+                Text
+              </TextButton>
+              <TextButton client:only="solid-js" theme={theme} size={size} testId={DEFAULT_TEST_ID} loading={true}>
+                Text
+              </TextButton>
+              <TextButton client:only="solid-js" theme={theme} size={size} testId={DEFAULT_TEST_ID} disabled={true}>
+                Text
+              </TextButton>
             </>
           ))}
         </div>

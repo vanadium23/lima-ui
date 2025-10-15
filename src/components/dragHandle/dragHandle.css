@@ -12,27 +12,29 @@
 
 .dragHandle_medium {
   padding: 0.6rem;
+  border-radius: 0.8rem;
   border-width: 0.1rem;
 }
 
 .dragHandle_primary {
   color: var(--neutral-800);
-  border-radius: 0.8rem;
   background: transparent;
   border-color: transparent;
 }
 
-.dragHandle_primary:hover:not(.dragHandle_disabled) {
+.dragHandle_primary:hover {
   background-color: var(--primary-100);
   border-color: var(--primary-100);
 }
 
-.dragHandle_primary:active:not(.dragHandle_disabled) {
+.dragHandle_primary:active {
   background-color: var(--primary-200);
   border-color: var(--primary-200);
 }
 
 .dragHandle_disabled {
   color: var(--neutral-500);
+  background: transparent;
+  border-color: transparent;
   cursor: not-allowed;
 }

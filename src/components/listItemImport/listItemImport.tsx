@@ -17,7 +17,7 @@ export enum ListItemImportSize {
 type ListItemImportProps = {
   theme?: ListItemImportTheme;
   size?: ListItemImportSize;
-  text: string;
+  children: string;
   toImport?: boolean;
   onCheckedChange?: (checked: boolean) => void;
   checkboxHTMLName: string;
@@ -36,7 +36,11 @@ export const ListItemImport = (props: Testable<ListItemImportProps>) => {
 
   return (
     <label
-      class={`listItemImport listItemImport_${mProps.theme} listItemImport_${mProps.size}`}
+      class="listItemImport"
+      classList={{
+        [`listItemImport_${mProps.size}`]: true,
+        [`listItemImport_${mProps.theme}`]: true,
+      }}
       data-test-id={mProps.testId}
       data-test-sub-id={mProps.testSubId}
     >
@@ -52,7 +56,7 @@ export const ListItemImport = (props: Testable<ListItemImportProps>) => {
           name={mProps.checkboxHTMLName}
         />
       </span>
-      <span class="listItemImport__text">{mProps.text}</span>
+      <span class="listItemImport__text">{mProps.children}</span>
     </label>
   );
 };

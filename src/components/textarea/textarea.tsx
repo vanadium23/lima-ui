@@ -17,12 +17,12 @@ export enum TextareaSize {
 type TextareaProps = {
   theme?: TextareaTheme;
   size?: TextareaSize;
-  isError?: boolean;
-  isDisabled?: boolean;
+  error?: boolean;
+  disabled?: boolean;
   placeholder: string;
   name: string;
   maxLength: number;
-  isRequired?: boolean;
+  required?: boolean;
   defaultValue?: string;
   onChange?: (value: string) => void;
 };
@@ -32,9 +32,9 @@ export const Textarea = (props: Testable<TextareaProps>) => {
     {
       theme: TextareaTheme.Primary,
       size: TextareaSize.Medium,
-      isDisabled: false,
-      isError: false,
-      isRequired: false,
+      disabled: false,
+      error: false,
+      required: false,
       defaultValue: "",
       onChange: () => {},
     },
@@ -45,19 +45,21 @@ export const Textarea = (props: Testable<TextareaProps>) => {
 
   return (
     <div
-      class={`textarea textarea_${mProps.theme} textarea_${mProps.size}`}
+      class="textarea"
       classList={{
-        textarea_error: mProps.isError,
-        textarea_disabled: mProps.isDisabled,
+        [`textarea_${mProps.size}`]: true,
+        [`textarea_${mProps.theme}`]: !mProps.disabled,
+        textarea_disabled: mProps.disabled,
+        textarea_error: mProps.error,
       }}
     >
       <textarea
         name={mProps.name}
         class="textarea__inner"
-        disabled={mProps.isDisabled}
+        disabled={mProps.disabled}
         maxlength={mProps.maxLength}
         placeholder={mProps.placeholder}
-        required={mProps.isRequired}
+        required={mProps.required}
         onInput={(event) => {
           const value = event.target.value;
           setCounter(value.length);
@@ -68,10 +70,7 @@ export const Textarea = (props: Testable<TextareaProps>) => {
         {mProps.defaultValue}
       </textarea>
       <div class="textarea__controls">
-        <CharCounter
-          value={mProps.maxLength - getCounter()}
-          testId={mProps.testId}
-        />
+        <CharCounter testId={mProps.testId}>{mProps.maxLength - getCounter()}</CharCounter>
       </div>
     </div>
   );

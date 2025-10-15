@@ -82,7 +82,7 @@ export const Lists = (props: ListsProps) => {
                   onRemoveError={setRemoveError}
                   testId={LIST_STRIPE}
                   testSubId={index()}
-                  isExported={Boolean(list.exportedTo?.length)}
+                  exported={Boolean(list.exportedTo?.length)}
                 />
               </li>
             )}
@@ -101,11 +101,12 @@ export const Lists = (props: ListsProps) => {
         <div class="lists__new">
           <Button
             componentType={ButtonComponentType.Link}
-            link={URL_CREATE_LIST}
-            text="Создать"
+            href={URL_CREATE_LIST}
             testId={CREATE_LIST_BUTTON}
-            isDisabled={checkListsLimitReached()}
-          />
+            disabled={checkListsLimitReached()}
+          >
+            Создать
+          </Button>
         </div>
       </Show>
     </div>

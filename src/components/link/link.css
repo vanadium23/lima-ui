@@ -17,12 +17,12 @@
   color: var(--text-primary-500);
 }
 
-.link_primary:active:not(.link_disabled) {
+.link_primary:active {
   color: var(--text-primary-600);
 }
 
 @media (hover: hover) {
-  .link_primary:hover:not(.link_disabled) {
+  .link_primary:hover {
     color: var(--text-primary-400);
   }
 }
@@ -39,8 +39,4 @@
 
 .link:focus:not(:focus-visible) {
   outline: none;
-}
-
-.link:active:not(.link_disabled) {
-  transform: translateY(0.1rem);
 }

@@ -14,13 +14,13 @@ import { MenuItemTheme } from "../../../components/menuItem/menuItem.tsx";
 type CyberInputWrapperProps = {
   size: CyberInputSize;
   theme: CyberInputTheme;
-  isError?: boolean;
+  error?: boolean;
 };
 
 export function CyberInputWrapper(props: CyberInputWrapperProps) {
   const mProps = mergeProps(
     {
-      isError: false,
+      error: false,
       listOfButtons: null,
     },
     props,
@@ -29,29 +29,29 @@ export function CyberInputWrapper(props: CyberInputWrapperProps) {
 
   const menuItems = () => [
     {
-      text: "Добавить пункт выше",
+      children: "Добавить пункт выше",
       icon: IconName.Plus,
       handleClick: () => {},
     },
     {
-      text: "Добавить пункт ниже",
+      children: "Добавить пункт ниже",
       icon: IconName.Plus,
       handleClick: () => {},
     },
     {
-      text: "Импортировать выше",
+      children: "Импортировать выше",
       icon: IconName.SortDescending,
       testId: DEFAULT_TEST_ID,
-      isDisabled: true,
+      disabled: true,
     },
     {
-      text: "Импортировать ниже",
+      children: "Импортировать ниже",
       icon: IconName.SortAscending,
       testId: DEFAULT_TEST_ID,
-      isDisabled: true,
+      disabled: true,
     },
     {
-      text: "Удалить пункт",
+      children: "Удалить пункт",
       icon: IconName.Trash,
       handleClick: () => {},
       theme: MenuItemTheme.Dangerous,
@@ -61,14 +61,13 @@ export function CyberInputWrapper(props: CyberInputWrapperProps) {
   return (
     <CyberInput
       onChange={setText}
-      defaultValue={text()}
       size={mProps.size}
       theme={mProps.theme}
       maxLength={50}
       name="Some-text"
-      isRequired={true}
+      required={true}
       testId={DEFAULT_TEST_ID}
-      defaultIsError={mProps.isError}
+      defaultIsError={mProps.error}
       placeholder="Введите текст"
       controlElements={
         <DropdownMenu
@@ -84,9 +83,12 @@ export function CyberInputWrapper(props: CyberInputWrapperProps) {
             />
           )}
           testId={LIST_ITEM_CONTEXT_MENU}
-          menuItems={menuItems()}
-        />
+        >
+          {menuItems()}
+        </DropdownMenu>
       }
-    />
+    >
+      {text()}
+    </CyberInput>
   );
 }

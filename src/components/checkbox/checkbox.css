@@ -6,6 +6,14 @@
   display: inline-flex;
   width: 100%;
   height: 100%;
+  cursor: pointer;
+  border-style: solid;
+}
+
+.checkbox__input {
+  outline: none;
+  width: 0;
+  height: 0;
 }
 
 .checkbox__icon {
@@ -25,6 +33,7 @@
 
 .checkbox_small .checkbox__inner {
   border-radius: 0.6rem;
+  border-width: 0.1rem;
 }
 
 .checkbox_medium {
@@ -34,37 +43,15 @@
 
 .checkbox_medium .checkbox__inner {
   border-radius: 0.8rem;
+  border-width: 0.1rem;
 }
 
 .checkbox_primary .checkbox__inner {
   border-color: var(--neutral-500);
   background: var(--neutral-100);
-  cursor: pointer;
-  border-width: 0.1rem;
-  border-style: solid;
 }
 
-.checkbox_disabled .checkbox__inner {
-  cursor: not-allowed;
-}
-
-.checkbox__input {
-  outline: none;
-  width: 0;
-  height: 0;
-}
-
-.checkbox__input:focus-visible + .checkbox__inner {
-  outline: var(--outline-set);
-  outline-offset: var(--outline-offset);
-}
-
-.checkbox_primary.checkbox_disabled .checkbox__inner {
-  border-color: var(--neutral-500);
-  background: var(--neutral-200);
-}
-
-.checkbox_primary:active:not(.checkbox_disabled) .checkbox__inner {
+.checkbox_primary:active .checkbox__inner {
   border-color: var(--neutral-800);
 }
 
@@ -72,19 +59,30 @@
   color: var(--primary-500);
 }
 
-.checkbox_primary.checkbox_disabled .checkbox__icon {
-  color: var(--neutral-500);
-}
-
 .checkbox_primary .checkbox__input:focus-visible + .checkbox__inner {
   border-color: var(--neutral-700);
 }
 
 @media (hover: hover) {
-  .checkbox_primary:hover:not(.checkbox_disabled) .checkbox__inner,
-  label:hover .checkbox_primary:not(.checkbox_disabled) .checkbox__inner {
+  .checkbox_primary:hover .checkbox__inner,
+  label:hover .checkbox_primary .checkbox__inner {
     border-color: var(--neutral-700);
   }
+}
+
+.checkbox__input:focus-visible + .checkbox__inner {
+  outline: var(--outline-set);
+  outline-offset: var(--outline-offset);
+}
+
+.checkbox_disabled .checkbox__inner {
+  border-color: var(--neutral-500);
+  background: var(--neutral-200);
+  cursor: not-allowed;
+}
+
+.checkbox_disabled .checkbox__icon {
+  color: var(--neutral-500);
 }
 
 .checkbox__input:checked + .checkbox__inner .checkbox__icon {

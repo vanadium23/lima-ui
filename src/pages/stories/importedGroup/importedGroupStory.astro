@@ -19,20 +19,19 @@ const exampleList: Item[] = [
       <span class="chead"></span>
       <span class="chead">Medium</span>
       <span class="rhead">List</span>
-      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID} items={exampleList} id={"1"} />
+      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID} id={"1"}>{exampleList}</ImportedGroup>
       <span class="rhead">List - Disabled</span>
-      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID} items={exampleList} id={"1"} disabled={true} />
+      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID} id={"1"} disabled={true}
+        >{exampleList}</ImportedGroup
+      >
       <span class="rhead">Checklist</span>
-      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID} items={exampleList} id={"1"} isCheckable={true} />
+      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID} id={"1"} checkable={true}
+        >{exampleList}</ImportedGroup
+      >
       <span class="rhead">Checklist - Disabled</span>
-      <ImportedGroup
-        client:only="solid-js"
-        testId={DEFAULT_TEST_ID}
-        id={"1"}
-        items={exampleList}
-        isCheckable={true}
-        disabled={true}
-      />
+      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID} id={"1"} checkable={true} disabled={true}
+        >{exampleList}</ImportedGroup
+      >
     </div>
   </div>
 </StorybookPage>

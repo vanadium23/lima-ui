@@ -14,7 +14,6 @@ import "./importedGroup.css";
 
 export enum ImportedGroupTheme {
   Primary = "primary",
-  Disabled = "disabled",
 }
 
 export enum ImportedGroupSize {
@@ -25,8 +24,8 @@ type ImportedGroupProps = {
   theme?: ImportedGroupTheme;
   size?: ImportedGroupSize;
   disabled?: boolean;
-  isCheckable?: boolean;
-  items: Item[];
+  checkable?: boolean;
+  children: Item[];
   name?: string;
   id: string;
   dragSettings?: DragSettings;
@@ -39,7 +38,7 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
       theme: ImportedGroupTheme.Primary,
       size: ImportedGroupSize.Medium,
       disabled: false,
-      isCheckable: false,
+      checkable: false,
       dragSettings: {
         dragData: null,
         dragProps: {},
@@ -55,45 +54,50 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
   return (
     <div
       {...mProps.dragSettings.dragProps}
-      class={`importedGroup importedGroup_${mProps.disabled ? ImportedGroupTheme.Disabled : mProps.theme} importedGroup_${mProps.size}`}
+      class="importedGroup"
       classList={{
-        importedGroup_checkable: mProps.isCheckable,
+        [`importedGroup_${mProps.size}`]: true,
+        [`importedGroup_${mProps.theme}`]: !mProps.disabled,
+        importedGroup_disabled: mProps.disabled,
+        importedGroup_checkable: mProps.checkable,
       }}
       data-test-id={mProps.testId}
     >
       <div class="importedGroup__dragHandle">
-        <DragHandle isDisabled={mProps.disabled} testId={DEFAULT_TEST_ID} dragHandle={mProps.dragSettings.dragData} />
+        <DragHandle disabled={mProps.disabled} testId={DEFAULT_TEST_ID} dragHandle={mProps.dragSettings.dragData} />
       </div>
       <div class="importedGroup__inner">
         <div class="importedGroup__headerWrapper">
           <div class="importedGroup__header">
             <Link
               size={LinkSize.Small}
-              link={getListLink(mProps.id)}
-              text={"Тест"}
+              href={getListLink(mProps.id)}
               testId={DEFAULT_TEST_ID}
-              isDisabled={mProps.disabled}
-            />
+              disabled={mProps.disabled}
+            >
+              Тест
+            </Link>
             <div class="importedGroup__button">
               <IconButton
                 iconName={IconName.DotsThree}
                 size={IconButtonSize.MediumEmbedded}
                 ariaLabel={"Лейбл"}
                 testId={DEFAULT_TEST_ID}
-                isDisabled={mProps.disabled}
+                disabled={mProps.disabled}
               />
             </div>
           </div>
         </div>
-        <For each={mProps.items}>
+        <For each={mProps.children}>
           {(item) => (
             <ImportedItem
               testId={DEFAULT_TEST_ID}
-              itemText={item.content}
-              isCheckable={mProps.isCheckable}
+              checkable={mProps.checkable}
               checked={false}
               disabled={mProps.disabled}
-            />
+            >
+              {item.content}
+            </ImportedItem>
           )}
         </For>
       </div>

@@ -34,7 +34,7 @@ function copyItemsToClipboard(items: Item[]) {
   navigator.clipboard.writeText(textToCopy).catch(() => {});
 }
 
-export const EditListToolsPanel = () => {
+const EditListToolsPanel = () => {
   return (
     <aside class="editList__toolsPanel">
       <ToolsPanel size={ToolsPanelSize.Medium} theme={ToolsPanelTheme.Primary} testId={TOOLS_PANEL}>
@@ -43,63 +43,70 @@ export const EditListToolsPanel = () => {
             componentType={ToolsButtonComponentType.Button}
             iconName={IconName.RowsPlusBottom}
             handleClick={() => addEmptyItem({ mode: "end", scroll: true, auto: false })}
-            isDisabled={reachedItemsLimit() || storeEditList.sendingNow !== false}
-            text={"Добавить пункт"}
+            disabled={reachedItemsLimit() || storeEditList.sendingNow !== false}
             testId={TOOLS_PANEL_ADD_ITEM_BUTTON}
-          />
+          >
+            Добавить пункт
+          </ToolsButton>
           <ToolsButton
             componentType={ToolsButtonComponentType.Button}
             iconName={IconName.CopySimple}
-            text={"Копировать пункты"}
-            isDisabled={storeEditList.isNewList || storeEditList.sendingNow !== false}
+            disabled={storeEditList.isNewList || storeEditList.sendingNow !== false}
             handleClick={() => copyItemsToClipboard(storeEditList.items)}
             testId={TOOLS_PANEL_BUTTON_COPY_ITEMS}
-          />
+          >
+            Копировать пункты
+          </ToolsButton>
           <ToolsButton
             componentType={ToolsButtonComponentType.Button}
             iconName={IconName.Trash}
             theme={ToolsButtonTheme.Dangerous}
-            text={"Удалить список"}
-            isLoading={storeEditList.sendingNow === "deleting"}
-            isDisabled={storeEditList.isNewList || storeEditList.sendingNow === "saving"}
+            loading={storeEditList.sendingNow === "deleting"}
+            disabled={storeEditList.isNewList || storeEditList.sendingNow === "saving"}
             handleClick={openRemoveDialog}
             testId={TOOLS_PANEL_BUTTON_REMOVE_LIST}
-          />
+          >
+            Удалить список
+          </ToolsButton>
           <RemoveDialog />
         </div>
         <Divider />
         <div class="toolsPanel__verticalSection">
           <Switch
             testId={CHECKLIST_SWITCH}
-            text="Чек-лист"
-            isDisabled={storeEditList.sendingNow !== false}
-            isChecked={storeEditList.isCheckable}
+            disabled={storeEditList.sendingNow !== false}
+            checked={storeEditList.isCheckable}
             onChange={toggleCheckable}
-          />
+          >
+            Чек-лист
+          </Switch>
         </div>
         <Divider />
         <div class="toolsPanel__horizontalSection">
           <ToolsButton
             componentType={ToolsButtonComponentType.Button}
             iconName={IconName.SortAscending}
-            isDisabled={reachedItemsLimit() || storeEditList.sendingNow !== false}
-            text={"Импорт"}
+            disabled={reachedItemsLimit() || storeEditList.sendingNow !== false}
             testId={TOOLS_PANEL_BUTTON_IMPORT_LIST}
             handleClick={openImportDialog}
-          />
+          >
+            Импорт
+          </ToolsButton>
           <ImportDialog currentListId={storeEditList.id} />
 
           <ToolsButton
             componentType={ToolsButtonComponentType.Link}
             iconName={IconName.Printer}
-            link={`./${storeEditList.id}/print?checkable=${storeEditList.isCheckable}`}
-            text={"Напечатать список"}
+            href={`./${storeEditList.id}/print?checkable=${storeEditList.isCheckable}`}
             testId={TOOLS_PANEL_BUTTON_PRINT_LIST}
-            isDisabled={storeEditList.isNewList || storeEditList.sendingNow !== false}
+            disabled={storeEditList.isNewList || storeEditList.sendingNow !== false}
             openInNewTab={true}
-          />
+          >
+            Напечатать список
+          </ToolsButton>
         </div>
       </ToolsPanel>
     </aside>
   );
 };
+export default EditListToolsPanel;

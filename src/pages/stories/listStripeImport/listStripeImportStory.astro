@@ -42,12 +42,13 @@ const testListData: List = {
             <>
               <span class="rhead">{size}</span>
               <ListStripeImport
-                listData={testListData}
                 testId={DEFAULT_TEST_ID}
                 titleHTMLName={"Title"}
                 client:only="solid-js"
                 handleReadyToImport={() => {}}
-              />
+              >
+                {testListData}
+              </ListStripeImport>
             </>
           ))}
         </div>
