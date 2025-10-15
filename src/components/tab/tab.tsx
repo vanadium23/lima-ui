@@ -37,8 +37,11 @@ export const Tab = (props: Testable<TabProps>) => {
     <button
       type="button"
       role="tab"
-      class={`tab tab_${mProps.disabled ? "disabled" : mProps.theme} tab_${mProps.size}`}
+      class="tab"
       classList={{
+        [`tab_${mProps.size}`]: true,
+        [`tab_${mProps.theme}`]: !mProps.disabled,
+        tab_disabled: mProps.disabled,
         tab_selected: mProps.selected,
       }}
       aria-selected={mProps.selected}

@@ -14,7 +14,7 @@ export enum TabsSize {
 }
 
 export type TabData = {
-  ariaLabel: string;
+  tabName: string;
   content: JSX.Element;
   disabled?: boolean;
 };
@@ -44,18 +44,24 @@ export const Tabs = (props: Testable<TabsProps>) => {
   };
 
   return (
-    <div class={`tabs tabs_${mProps.theme} tabs_${mProps.size}`}>
+    <div
+      class="tabs"
+      classList={{
+        [`tabs_${mProps.size}`]: true,
+        [`tabs_${mProps.theme}`]: true,
+      }}
+    >
       <div role="tablist" class="tabs__tablist" aria-label={mProps.ariaLabel} data-test-id={mProps.testId}>
         <For each={mProps.tabs}>
           {(tabData, index) => (
             <Tab
               selected={activeTabIndex() === index()}
-              disabled={tabData.disabled ? tabData.disabled : false}
+              disabled={tabData.disabled || false}
               handleClick={() => handleTabClick(index())}
               testId={`${mProps.testId}-tab`}
               testSubId={index()}
             >
-              {tabData.ariaLabel}
+              {tabData.tabName}
             </Tab>
           )}
         </For>
@@ -65,7 +71,7 @@ export const Tabs = (props: Testable<TabsProps>) => {
         {(tabData, index) => (
           <div
             role="tabpanel"
-            aria-label={tabData.ariaLabel}
+            aria-label={tabData.tabName}
             class="tabs__tabpanel"
             classList={{
               tabs__tabpanel_hidden: activeTabIndex() !== index(),
