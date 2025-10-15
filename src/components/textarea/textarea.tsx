@@ -23,7 +23,7 @@ type TextareaProps = {
   name: string;
   maxLength: number;
   required?: boolean;
-  defaultValue?: string;
+  children?: string;
   onChange?: (value: string) => void;
 };
 
@@ -35,13 +35,13 @@ export const Textarea = (props: Testable<TextareaProps>) => {
       disabled: false,
       error: false,
       required: false,
-      defaultValue: "",
+      children: "",
       onChange: () => {},
     },
     props,
   );
 
-  const [getCounter, setCounter] = createSignal(mProps.defaultValue.length);
+  const [getCounter, setCounter] = createSignal(mProps.children.length);
 
   return (
     <div
@@ -67,7 +67,7 @@ export const Textarea = (props: Testable<TextareaProps>) => {
         }}
         data-test-id={mProps.testId}
       >
-        {mProps.defaultValue}
+        {mProps.children}
       </textarea>
       <div class="textarea__controls">
         <CharCounter testId={mProps.testId}>{mProps.maxLength - getCounter()}</CharCounter>

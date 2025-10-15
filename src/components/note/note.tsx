@@ -61,9 +61,10 @@ export const Note = (props: NoteProps) => {
         maxLength={NOTE_TEXT_AREA_LIMIT}
         disabled={mProps.disabled}
         testId={NOTE_TEXT_AREA}
-        defaultValue={mProps.children}
         onChange={mProps.onChange}
-      />
+      >
+        {mProps.children}
+      </Textarea>
     </Accordion>
   );
 };

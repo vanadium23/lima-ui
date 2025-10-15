@@ -40,7 +40,7 @@ export const EditListHeader = () => {
         disabled={storeEditList.sendingNow !== false}
         onChange={(value) => handleHeaderDataChange("purpose", value)}
       >
-        {storeEditList.name}
+        {storeEditList.purpose}
       </CyberInput>
       <Note
         title="Заметка"
@@ -48,7 +48,7 @@ export const EditListHeader = () => {
         disabled={storeEditList.sendingNow !== false}
         onChange={(value) => handleHeaderDataChange("note", value)}
       >
-        {storeEditList.name}
+        {storeEditList.note}
       </Note>
     </div>
   );
