@@ -16,6 +16,7 @@ import { Button, ButtonComponentType } from "../../components/button/button.tsx"
 import { ListStripe } from "../../components/listStripe/listStripe.tsx";
 import { PageError } from "../../components/pageError/pageError.tsx";
 import { Title } from "../../components/title/title.tsx";
+import { notificationState } from "../../state/pushNotificationStateManager.ts";
 import { isLimitReached, setIsLimitReached } from "../../state/reachListsLimit.ts";
 import type { ListBase } from "../../types/types.ts";
 
@@ -40,6 +41,11 @@ export const Lists = (props: ListsProps) => {
 
   function setRemoveError(removeError: boolean) {
     setStore("removeError", removeError);
+    notificationState.pushNetworkError(
+      "Ошибка удаления",
+      "Не удалось удалить список. Попробуйте ещё раз",
+      LIST_REMOVAL_ERROR,
+    );
   }
 
   function removingListInStore(listIdToRemove: string) {
@@ -92,9 +98,6 @@ export const Lists = (props: ListsProps) => {
         <div class="lists__errors">
           <Show when={isLimitReached()}>
             <PageError testId={LISTS_LIMIT_REACHED_WARNING}>Вы использовали лимит в {LISTS_LIMIT} списков</PageError>
-          </Show>
-          <Show when={store.removeError}>
-            <PageError testId={LIST_REMOVAL_ERROR}>Не удалось удалить список. Попробуйте ещё раз.</PageError>
           </Show>
         </div>
 

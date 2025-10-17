@@ -86,7 +86,7 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
   ];
 
   function removeListFromListStripe() {
-    mProps.onRemoveError(false);
+    mProps.onRemoveError(true);
     setIsRemoving(true);
     setIsDialogOpen(false);
 
