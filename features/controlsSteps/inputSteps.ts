@@ -80,6 +80,13 @@ When(
   },
 );
 
+When(
+  "I type the following text into the {string} input: {string}",
+  async function (this: ComplexWorld, inputMeaning: InputMeaning, text: string) {
+    await locateInput(this, inputMeaning).fill(text);
+  },
+);
+
 Then(
   "I expect {string} input content length to be equal to its limit",
   async function (this: ComplexWorld, inputMeaning: InputMeaning) {

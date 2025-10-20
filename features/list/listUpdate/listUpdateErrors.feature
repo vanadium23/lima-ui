@@ -5,6 +5,22 @@ Feature: Failing to update a list
     And I add a list
     And I refresh the page
 
+  Scenario: "Save" button stays disabled when only spaces was added to fields
+    And I type the following text into the "list title" input: "test"
+    And I type the following text into the "list purpose" input: "test"
+    And I type the following text into the "first item" input: "test"
+    And I press on the "list note" accordion
+    And I type the following text into the "list note" text area: "test"
+    Then I expect to see the "save" button enabled
+    When I press the "save" button
+    And I wait for the list update to complete
+    Then I expect to see the "save" button disabled
+    And I type the following text into the "list title" input: "test  "
+    And I type the following text into the "list purpose" input: "test  "
+    And I type the following text into the "first item" input: "test  "
+    And I type the following text into the "list note" text area: "test  "
+    Then I expect to see the "save" button disabled
+
   Scenario: Seeing connection error on list update when the browser is offline
     Given There is no internet connection
     And I type some text with length less or equal to the one of "list title" input limit
