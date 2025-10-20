@@ -13,3 +13,14 @@ When(
     await this.locateByFullId(TEXT_AREA_TEST_IDS[textAreaMeaning]).fill(text);
   },
 );
+
+When(
+  "I add the following text into the {string} text area: {string}",
+  async function (this: ComplexWorld, textAreaMeaning: TextAreaMeaning, text: string) {
+    const textArea = this.locateByFullId(TEXT_AREA_TEST_IDS[textAreaMeaning]);
+
+    for (const char of text) {
+      await textArea.press(char);
+    }
+  },
+);

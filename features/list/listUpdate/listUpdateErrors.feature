@@ -15,10 +15,10 @@ Feature: Failing to update a list
     When I press the "save" button
     And I wait for the list update to complete
     Then I expect to see the "save" button disabled
-    And I type the following text into the "list title" input: "test  "
-    And I type the following text into the "list purpose" input: "test  "
-    And I type the following text into the "first item" input: "test  "
-    And I type the following text into the "list note" text area: "test  "
+    And I add the following text into the "list title" input: "  "
+    And I add the following text into the "list purpose" input: "  "
+    And I add the following text into the "first item" input: "  "
+    And I add the following text into the "list note" text area: "  "
     Then I expect to see the "save" button disabled
 
   Scenario: Seeing connection error on list update when the browser is offline

@@ -16,14 +16,14 @@ import {
 } from "../utilities/getStringOfLength.ts";
 
 When(
-  "I type the following text into the {string}: {string}",
+  "I type the following text into the {string} input: {string}",
   async function (this: ComplexWorld, inputName: InputMeaning, text: string) {
     await locateInput(this, inputName).fill(text);
   },
 );
 
 When(
-  "I add the following text into the {string}: {string}",
+  "I add the following text into the {string} input: {string}",
   async function (this: ComplexWorld, inputName: InputMeaning, text: string) {
     const input = locateInput(this, inputName);
 
@@ -77,13 +77,6 @@ When(
     await locateInput(this, inputMeaning).fill(
       getStringCloseToLimit(INPUT_LIMIT_RELATION[inputMeaning], COUNTER_DISPLAY_LIMIT),
     );
-  },
-);
-
-When(
-  "I type the following text into the {string} input: {string}",
-  async function (this: ComplexWorld, inputMeaning: InputMeaning, text: string) {
-    await locateInput(this, inputMeaning).fill(text);
   },
 );
 
