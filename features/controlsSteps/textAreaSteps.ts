@@ -19,6 +19,8 @@ When(
   async function (this: ComplexWorld, textAreaMeaning: TextAreaMeaning, text: string) {
     const textArea = this.locateByFullId(TEXT_AREA_TEST_IDS[textAreaMeaning]);
 
+    textArea.press("End");
+
     for (const char of text) {
       await textArea.press(char);
     }

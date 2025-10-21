@@ -27,6 +27,8 @@ When(
   async function (this: ComplexWorld, inputName: InputMeaning, text: string) {
     const input = locateInput(this, inputName);
 
+    input.press("End");
+
     for (const char of text) {
       await input.press(char);
     }
