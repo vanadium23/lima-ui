@@ -7,7 +7,7 @@ import {
   transformStyle,
   useDragDropContext,
 } from "@thisbeyond/solid-dnd";
-import { For, mergeProps, onCleanup, onMount, Show } from "solid-js";
+import { createEffect, For, mergeProps, onCleanup, onMount, Show } from "solid-js";
 
 import { ITEMS_LIMIT } from "../../../configuration.ts";
 import {
@@ -30,7 +30,7 @@ import { EditListFormNames, type List } from "../../types/types.ts";
 import { EditListHeader } from "./components/editListHeader/editListHeader.tsx";
 import EditListToolsPanel from "./components/editListToolsPanel/editListToolsPanel.tsx";
 import { emptyList, initStoreEditList, setStoreEditList, storeEditList } from "./editList.store.tsx";
-import { addEmptyItem } from "./utilities/addEmptyItem.ts";
+import { addNewItemBeforeOrAfter, addNewItemEndOrAutoItem } from "./utilities/addEmptyItem.ts";
 import { checkChanges } from "./utilities/checkChanges.ts";
 import {
   createScrollableCollisionsDetector,
@@ -59,6 +59,11 @@ export const EditList = (props: EditListProps) => {
 
   initStoreEditList(mProps.defaultList);
 
+  // Отслеживаем изменения в items, name, note, purpose, для активации кнопки Сохранить
+  createEffect(() => {
+    checkChanges(storeEditList.name, storeEditList.purpose, storeEditList.note, storeEditList.items);
+  });
+
   onMount(() => {
     const handleLeave = (event: BeforeUnloadEvent) => {
       if (storeEditList.isChanged) {
@@ -83,11 +88,10 @@ export const EditList = (props: EditListProps) => {
 
   function handleItemChange(index: number, value: string) {
     setStoreEditList("items", index, "content", value);
-    checkChanges(storeEditList, setStoreEditList);
 
     if (isLastItem(index) && value.trim() !== "") {
       setStoreEditList("items", index, "auto", false);
-      addEmptyItem({ mode: "end", scroll: true, auto: true });
+      addNewItemEndOrAutoItem(true);
     }
 
     const lastIndex = storeEditList.items.length - 1;
@@ -136,8 +140,8 @@ export const EditList = (props: EditListProps) => {
                           name={`${EditListFormNames.ListItem} ${index() + 1}`}
                           dataId={item.id}
                           onChange={(value) => handleItemChange(index(), value)}
-                          onAddBefore={() => addEmptyItem({ mode: "before", index: index() })}
-                          onAddAfter={() => addEmptyItem({ mode: "after", index: index() })}
+                          onAddAfter={() => addNewItemBeforeOrAfter(index(), "after")}
+                          onAddBefore={() => addNewItemBeforeOrAfter(index(), "before")}
                           canAddMore={!reachedItemsLimit()}
                           testId={item.auto ? AUTO_LIST_ITEM : LIST_ITEM}
                           testSubId={index()}

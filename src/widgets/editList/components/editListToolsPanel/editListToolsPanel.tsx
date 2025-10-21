@@ -18,7 +18,7 @@ import {
 import { ToolsPanel, ToolsPanelSize, ToolsPanelTheme } from "../../../../organisms/toolsPanel/toolsPanel.tsx";
 import type { Item } from "../../../../types/types.ts";
 import { setStoreEditList, storeEditList } from "../../editList.store.tsx";
-import { addEmptyItem } from "../../utilities/addEmptyItem.ts";
+import { addNewItemEndOrAutoItem } from "../../utilities/addEmptyItem.ts";
 import { reachedItemsLimit } from "../../utilities/reachedItemsLimit.ts";
 import { ImportDialog, setStoreImportDialog } from "../importDialog/importDialog.tsx";
 import { RemoveDialog, setStoreRemoveDialog } from "../removeDialog/removeDialog.tsx";
@@ -42,7 +42,9 @@ const EditListToolsPanel = () => {
           <ToolsButton
             componentType={ToolsButtonComponentType.Button}
             iconName={IconName.RowsPlusBottom}
-            handleClick={() => addEmptyItem({ mode: "end", scroll: true, auto: false })}
+            handleClick={() => {
+              addNewItemEndOrAutoItem(false);
+            }}
             disabled={reachedItemsLimit() || storeEditList.sendingNow !== false}
             testId={TOOLS_PANEL_ADD_ITEM_BUTTON}
           >

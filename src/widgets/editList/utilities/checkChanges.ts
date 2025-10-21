@@ -1,21 +1,26 @@
-import type { SetStoreFunction } from "solid-js/store";
-
-import type { DragItem, Items } from "../../../types/types.ts";
-import type { EditListStore } from "../editList.store.tsx";
+import type { DragItem, Items, List } from "../../../types/types.ts";
+import { setStoreEditList, storeEditList } from "../editList.store.tsx";
 
 import { createDefaultItem } from "./createDefaultItem.ts";
 
-export function checkChanges(store: EditListStore, setStore: SetStoreFunction<EditListStore>) {
-  const initialData = store.initialList;
-  const currentData = store;
+// Идет проверка списка на изменения относительно содержания
+// ИЗНАЧАЛЬНО инициализированного списка при загрузке страницы
+
+export function checkChanges(
+  currentListName: List["name"],
+  currentListPurpose: List["purpose"],
+  currentListNote: List["note"],
+  currentListItems: DragItem[],
+) {
+  const initialData = storeEditList.initialList;
 
   const hasChanges =
-    initialData.name !== currentData.name ||
-    initialData.purpose !== currentData.purpose ||
-    initialData.note !== currentData.note ||
-    itemsChanged(initialData.items, currentData.items);
+    initialData.name !== currentListName ||
+    initialData.purpose !== currentListPurpose ||
+    initialData.note !== currentListNote ||
+    itemsChanged(initialData.items, currentListItems);
 
-  setStore("isChanged", hasChanges);
+  setStoreEditList("isChanged", hasChanges);
 }
 
 function itemsChanged(initialItems: Items, currentItemsWithAutoItem: DragItem[]) {

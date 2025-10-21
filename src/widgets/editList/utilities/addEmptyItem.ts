@@ -2,42 +2,52 @@ import { ITEMS_LIMIT } from "../../../../configuration.ts";
 import type { DragItem } from "../../../types/types.ts";
 import { setStoreEditList, storeEditList } from "../editList.store.tsx";
 
-import { checkChanges } from "./checkChanges.ts";
 import { createDefaultItem } from "./createDefaultItem.ts";
 import { reachedItemsLimit } from "./reachedItemsLimit.ts";
 import { scroller } from "./scrollToBottom.ts";
 
-type AddItemOptions = { mode: "end"; scroll?: boolean; auto: boolean } | { mode: "before" | "after"; index: number };
+function removeAutoItemIfItemsLimitReached(resultingItems: DragItem[]) {
+  return resultingItems.slice(0, ITEMS_LIMIT);
+}
 
-export function addEmptyItem(options: AddItemOptions) {
+export function addNewItemEndOrAutoItem(auto: boolean) {
   if (reachedItemsLimit()) return;
 
   let resultingItems: DragItem[] = [];
 
-  if (options.mode === "end") {
-    const items = storeEditList.items.filter((item) => !item.auto);
-    const existingAutoItem = storeEditList.items.filter((item) => item.auto);
+  const items = storeEditList.items.filter((item) => !item.auto);
+  const existingAutoItem = storeEditList.items.filter((item) => item.auto);
 
-    resultingItems = [...items, createDefaultItem(storeEditList.id, options.auto), ...existingAutoItem];
+  resultingItems = [...items, createDefaultItem(storeEditList.id, auto), ...existingAutoItem];
 
-    if (options.scroll) {
-      scroller.scrollToBottom();
-    }
+  setStoreEditList("items", removeAutoItemIfItemsLimitReached(resultingItems));
+
+  if (!auto) {
+    scroller.scrollToBottom();
+  }
+}
+
+export function addNewItemBeforeOrAfter(index: number, place: "after" | "before") {
+  if (reachedItemsLimit()) return;
+
+  let insertIndex: number;
+
+  if (place === "after") {
+    insertIndex = index + 1;
+  } else {
+    insertIndex = index;
   }
 
-  if (options.mode === "before" || options.mode === "after") {
-    const insertIndex = options.mode === "before" ? options.index : options.index + 1;
+  let resultingItems: DragItem[] = [];
 
-    resultingItems = [
-      ...storeEditList.items.slice(0, insertIndex).map((item) => ({
-        ...item,
-        auto: false,
-      })),
-      createDefaultItem(storeEditList.id),
-      ...storeEditList.items.slice(insertIndex),
-    ];
-  }
+  const separatedItemsBeforeNewItem = storeEditList.items.slice(0, insertIndex).map((item) => ({
+    ...item,
+    auto: false,
+  }));
 
-  setStoreEditList("items", resultingItems.slice(0, ITEMS_LIMIT));
-  checkChanges(storeEditList, setStoreEditList);
+  const separatedItemsAfterNewItem = storeEditList.items.slice(insertIndex);
+
+  resultingItems = [...separatedItemsBeforeNewItem, createDefaultItem(storeEditList.id), ...separatedItemsAfterNewItem];
+
+  setStoreEditList("items", removeAutoItemIfItemsLimitReached(resultingItems));
 }
