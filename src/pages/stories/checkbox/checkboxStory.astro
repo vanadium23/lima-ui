@@ -59,13 +59,7 @@ const sizes = Object.values(CheckboxSize);
             <>
               <span class="rhead">{size}</span>
               <label>
-                <Checkbox
-                  client:only="solid-js"
-                  theme={theme}
-                  size={size}
-                  testId={DEFAULT_TEST_ID}
-                  independent={false}
-                />
+                <Checkbox client:only="solid-js" theme={theme} size={size} testId={DEFAULT_TEST_ID} dependent={true} />
                 <span>Outside test-label</span>
               </label>
               <label>
@@ -75,7 +69,7 @@ const sizes = Object.values(CheckboxSize);
                   size={size}
                   testId={DEFAULT_TEST_ID}
                   disabled={true}
-                  independent={false}
+                  dependent={true}
                 />
                 <span>Outside test-label</span>
               </label>
@@ -142,7 +136,7 @@ const sizes = Object.values(CheckboxSize);
                   theme={theme}
                   size={size}
                   testId={DEFAULT_TEST_ID}
-                  independent={false}
+                  dependent={true}
                   checked={"mixed"}
                 />
                 <span>Outside test-label</span>
@@ -154,7 +148,7 @@ const sizes = Object.values(CheckboxSize);
                   size={size}
                   testId={DEFAULT_TEST_ID}
                   disabled={true}
-                  independent={false}
+                  dependent={true}
                   checked={"mixed"}
                 />
                 <span>Outside test-label</span>

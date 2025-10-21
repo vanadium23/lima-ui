@@ -50,7 +50,7 @@ export const ListItemImport = (props: Testable<ListItemImportProps>) => {
           size={CheckboxSize.Small}
           testId={DEFAULT_TEST_ID}
           testSubId={mProps.testSubId ?? ""}
-          independent={false}
+          dependent={true}
           checked={mProps.toImport}
           onChange={mProps.onCheckedChange}
           name={mProps.checkboxHTMLName}
