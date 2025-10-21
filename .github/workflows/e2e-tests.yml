@@ -20,48 +20,48 @@ jobs:
       - name: Checkout UI repository
         uses: actions/checkout@v4
         with:
-          path: svernik-UI
+          path: lima-UI
 
       - name: Checkout Lima backend repository
         uses: actions/checkout@v4
         with:
-          repository: ${{ github.repository_owner }}/svernik
+          repository: ${{ github.repository_owner }}/lima
           token: ${{ secrets.LIMA_BACKEND_REPO_TOKEN }}
-          path: svernik
+          path: lima
 
       - name: Configure backend environment
         run: |
-          cp svernik/.env.example svernik/.env
+          cp lima/.env.example lima/.env
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version-file: svernik-UI/package.json
+          node-version-file: lima-UI/package.json
           cache: "npm"
-          cache-dependency-path: svernik-UI/package-lock.json
+          cache-dependency-path: lima-UI/package-lock.json
 
       - name: Install UI dependencies
         run: npm ci
-        working-directory: svernik-UI
+        working-directory: lima-UI
 
       - name: Install Playwright browsers
         run: npx playwright install --with-deps
-        working-directory: svernik-UI
+        working-directory: lima-UI
 
       - name: Start server and database
         run: |
           docker compose up -d
           # Verify backend API is responding with expected data
           timeout 180 bash -c 'until curl -s http://localhost:3000/ | jq -e ".greeting" > /dev/null; do sleep 10; done'
-        working-directory: svernik
+        working-directory: lima
 
       - name: Build front-end
         run: npm run build
-        working-directory: svernik-UI
+        working-directory: lima-UI
 
       - name: Start front-end in background
         run: npm run start & echo $! > frontend.pid
-        working-directory: svernik-UI
+        working-directory: lima-UI
 
       - name: Wait for front-end to be ready
         run: |
@@ -71,7 +71,7 @@ jobs:
 
       - name: Run E2E tests
         run: npm test -- --verbose --retry 1
-        working-directory: svernik-UI
+        working-directory: lima-UI
 
       - name: Stop front-end
         if: always()
@@ -85,7 +85,7 @@ jobs:
       - name: Stop services
         if: always()
         run: docker compose down
-        working-directory: svernik
+        working-directory: lima
 
       # Set variables for the artifact name that doesn't contain invalid characters
       - name: Set artifact variables
@@ -101,4 +101,4 @@ jobs:
         with:
           name: "e2e-test-artifacts-${{ github.run_number }}-${{ github.run_attempt }}-${{ steps.artifact_vars.outputs.short_sha }}-PR${{ github.event.pull_request.number }}-${{ steps.artifact_vars.outputs.timestamp }}"
           path: |
-            svernik-UI/features/results/
+            lima-UI/features/results/
