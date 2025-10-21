@@ -3,6 +3,7 @@ import type { DragItem } from "../../../types/types.ts";
 import { setStoreEditList, storeEditList } from "../editList.store.tsx";
 
 import { createDefaultItem } from "./createDefaultItem.ts";
+import { insertItemsBeforeAutoListItem } from "./insertItemsBeforeAutoListItem.ts";
 import { reachedItemsLimit } from "./reachedItemsLimit.ts";
 import { scroller } from "./scrollToBottom.ts";
 
@@ -13,12 +14,7 @@ function removeAutoItemIfItemsLimitReached(resultingItems: DragItem[]) {
 export function addNewItemEndOrAutoItem(auto: boolean) {
   if (reachedItemsLimit()) return;
 
-  let resultingItems: DragItem[] = [];
-
-  const items = storeEditList.items.filter((item) => !item.auto);
-  const existingAutoItem = storeEditList.items.filter((item) => item.auto);
-
-  resultingItems = [...items, createDefaultItem(storeEditList.id, auto), ...existingAutoItem];
+  const resultingItems: DragItem[] = insertItemsBeforeAutoListItem([createDefaultItem(storeEditList.id, auto)]);
 
   setStoreEditList("items", removeAutoItemIfItemsLimitReached(resultingItems));
 
@@ -38,8 +34,6 @@ export function addNewItemBeforeOrAfter(index: number, place: "after" | "before"
     insertIndex = index;
   }
 
-  let resultingItems: DragItem[] = [];
-
   const separatedItemsBeforeNewItem = storeEditList.items.slice(0, insertIndex).map((item) => ({
     ...item,
     auto: false,
@@ -47,7 +41,11 @@ export function addNewItemBeforeOrAfter(index: number, place: "after" | "before"
 
   const separatedItemsAfterNewItem = storeEditList.items.slice(insertIndex);
 
-  resultingItems = [...separatedItemsBeforeNewItem, createDefaultItem(storeEditList.id), ...separatedItemsAfterNewItem];
+  const resultingItems = [
+    ...separatedItemsBeforeNewItem,
+    createDefaultItem(storeEditList.id),
+    ...separatedItemsAfterNewItem,
+  ];
 
   setStoreEditList("items", removeAutoItemIfItemsLimitReached(resultingItems));
 }

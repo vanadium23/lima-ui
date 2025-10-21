@@ -11,6 +11,7 @@ import { type Item, type List } from "../../../../types/types.ts";
 import { setStoreEditList } from "../../editList.store.tsx";
 import { getLists } from "../../services/getLists.ts";
 import { convertItemsToDragItems } from "../../utilities/dragAndDrop.ts";
+import { insertItemsBeforeAutoListItem } from "../../utilities/insertItemsBeforeAutoListItem.ts";
 
 import "./importDialog.css";
 
@@ -67,7 +68,7 @@ export const ImportDialog = (props: ImportDialogProps) => {
     }
   };
 
-  const handleClose = (): void => {
+  const handleClose = () => {
     setStoreImportDialog({
       loadingListsForImport: false,
       listsForImport: [],
@@ -81,7 +82,7 @@ export const ImportDialog = (props: ImportDialogProps) => {
     }
   });
 
-  const addImportedItems = (event: SubmitEvent): void => {
+  const addImportedItems = (event: SubmitEvent) => {
     event.preventDefault();
     const target = event.target as HTMLFormElement;
 
@@ -99,7 +100,7 @@ export const ImportDialog = (props: ImportDialogProps) => {
       .map((id) => storeImportDialog.itemsCache[id])
       .filter((item): item is Item => Boolean(item));
 
-    setStoreEditList("items", (items) => items.concat(convertItemsToDragItems(checkedItems)));
+    setStoreEditList("items", insertItemsBeforeAutoListItem(convertItemsToDragItems(checkedItems)));
 
     handleClose();
   };
