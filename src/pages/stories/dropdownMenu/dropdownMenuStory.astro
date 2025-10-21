@@ -1,41 +1,7 @@
 ---
-import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
-import { IconName } from "../../../components/icon/types.ts";
-import { MenuItemTheme } from "../../../components/menuItem/menuItem.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
 import { DropdownMenuWrapper } from "./dropdownMenuWrapper.tsx";
-
-const menuItems = [
-  {
-    children: "Добавить пункт выше",
-    icon: IconName.Plus,
-    handleClick: () => {},
-  },
-  {
-    children: "Добавить пункт ниже",
-    icon: IconName.Plus,
-    handleClick: () => {},
-  },
-  {
-    children: "Импортировать выше",
-    icon: IconName.SortDescending,
-    testId: DEFAULT_TEST_ID,
-    isDisabled: true,
-  },
-  {
-    children: "Импортировать ниже",
-    icon: IconName.SortAscending,
-    testId: DEFAULT_TEST_ID,
-    isDisabled: true,
-  },
-  {
-    children: "Удалить пункт",
-    icon: IconName.Trash,
-    handleClick: () => {},
-    theme: MenuItemTheme.Dangerous,
-  },
-];
 ---
 
 <StorybookPage title="DropdownMenu">
@@ -49,7 +15,7 @@ const menuItems = [
 
           <>
             <span class="rhead">Medium</span>
-            <DropdownMenuWrapper client:only="solid-js">{menuItems}</DropdownMenuWrapper>
+            <DropdownMenuWrapper client:only="solid-js" />
           </>
         </div>
       </div>

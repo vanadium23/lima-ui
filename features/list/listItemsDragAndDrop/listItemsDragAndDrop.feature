@@ -3,8 +3,8 @@ Feature: List items drag and drop functionality
   Background:
     When I clear all data
     And I add a list
-    When I type the following text into the "list title": "Small title and purpose"
-    And I type the following text into the "list purpose": "To avoid flakiness on mobile"
+    When I type the following text into the "list title" input: "Small title and purpose"
+    And I type the following text into the "list purpose" input: "To avoid flakiness on mobile"
     And I ensure the tools panel is open
     And I add list items till scroll appears plus one item input
     And I ensure the tools panel does not disturb

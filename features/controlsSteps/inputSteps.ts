@@ -16,16 +16,18 @@ import {
 } from "../utilities/getStringOfLength.ts";
 
 When(
-  "I type the following text into the {string}: {string}",
+  "I type the following text into the {string} input: {string}",
   async function (this: ComplexWorld, inputName: InputMeaning, text: string) {
     await locateInput(this, inputName).fill(text);
   },
 );
 
 When(
-  "I add the following text into the {string}: {string}",
+  "I add the following text into the {string} input: {string}",
   async function (this: ComplexWorld, inputName: InputMeaning, text: string) {
     const input = locateInput(this, inputName);
+
+    input.press("End");
 
     for (const char of text) {
       await input.press(char);
