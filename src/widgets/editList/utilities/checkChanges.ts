@@ -10,9 +10,9 @@ export function checkChanges(store: EditListStore, setStore: SetStoreFunction<Ed
   const currentData = store;
 
   const hasChanges =
-    initialData.name !== currentData.name ||
-    initialData.purpose !== currentData.purpose ||
-    initialData.note !== currentData.note ||
+    initialData.name.trimEnd() !== currentData.name.trimEnd() ||
+    initialData.purpose.trimEnd() !== currentData.purpose.trimEnd() ||
+    initialData.note.trimEnd() !== currentData.note.trimEnd() ||
     itemsChanged(initialData.items, currentData.items);
 
   setStore("isChanged", hasChanges);
@@ -28,6 +28,6 @@ function itemsChanged(initialItems: Items, currentItemsWithAutoItem: DragItem[])
   return initialItems.some((initialItem, index) => {
     const currentItem = currentItems[index] || createDefaultItem();
 
-    return initialItem.id !== currentItem.id || initialItem.content !== currentItem.content;
+    return initialItem.id !== currentItem.id || initialItem.content.trimEnd() !== currentItem.content.trimEnd();
   });
 }
