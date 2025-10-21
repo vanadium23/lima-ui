@@ -10,14 +10,14 @@ Feature: Searching for lists
     And I focus "search bar" input
     And I wait for "dialog to remain hidden" for the following number of seconds: 0.5
     Then I expect not to see the search "dialog"
-    And I add the following text into the "search bar": "a"
+    And I add the following text into the "search bar" input: "a"
     And I wait for "dialog to remain hidden" for the following number of seconds: 0.5
     Then I expect not to see the search "dialog"
-    And I add the following text into the "search bar": "b"
+    And I add the following text into the "search bar" input: "b"
     Then I expect to see the search "dialog loading"
-    And I add the following text into the "search bar": "c"
+    And I add the following text into the "search bar" input: "c"
     Then I expect to see the search "dialog loading"
-    And I add the following text into the "search bar": "d"
+    And I add the following text into the "search bar" input: "d"
     Then I expect to see the search "dialog loading"
     And I clear the "search bar" input
     And I wait for "dialog to remain hidden" for the following number of seconds: 0.5
@@ -38,7 +38,7 @@ Feature: Searching for lists
     When I add a list with the following title: "Пробуем поиск"
     When I open <PageMeaning> page with <AccountingName> accounting
     And I ensure search is visible
-    And I type the following text into the "search bar": <SearchQuery>
+    And I type the following text into the "search bar" input: <SearchQuery>
     Then I expect to see the search "dialog"
     Then I expect to have the following number of search results: 1
     Then I expect to see the search result with the following text: "Пробуем поиск"
@@ -58,7 +58,7 @@ Feature: Searching for lists
     When I add a list with the following title: "Пробуем поиск"
     And I open "My Lists without trailing /" page
     And I ensure search is visible
-    And I type the following text into the "search bar": "Пробуем"
+    And I type the following text into the "search bar" input: "Пробуем"
     Then I expect to see the search "dialog"
     And I press the "first" search result
     Then I expect to be on the "Some List" page
@@ -69,7 +69,7 @@ Feature: Searching for lists
     And I add a list with the following title: "Пробуем поиск 3"
     And I add a list with the following title: "Пробуем поиск 4"
     And I ensure search is visible
-    And I type the following text into the "search bar": <SearchQuery>
+    And I type the following text into the "search bar" input: <SearchQuery>
     Then I expect to see the search "dialog"
     Then I expect to have the following number of search results: 4
     Then I expect to see the search result with the following text: "Пробуем поиск"
@@ -88,7 +88,7 @@ Feature: Searching for lists
     And I add a list with the following title: "Пробуем поиск"
     And I add a list with the following title: "Пробуем поиск 2"
     And I ensure search is visible
-    And I type the following text into the "search bar": "Проб"
+    And I type the following text into the "search bar" input: "Проб"
     Then I expect to see the search "dialog"
     Then I expect to have the following number of search results: 4
     Then I expect to see the search result with the following text: "Проб поиск"
@@ -102,7 +102,7 @@ Feature: Searching for lists
     And I add a list with the following title: "Hello world"
     And I add a list with the following title: "Hello world 2"
     And I ensure search is visible
-    And I type the following text into the "search bar": "Проба Hello"
+    And I type the following text into the "search bar" input: "Проба Hello"
     Then I expect to see the search "dialog"
     Then I expect to have the following number of search results: 4
     Then I expect to see the search result with the following text: "Проба поиска"
@@ -112,7 +112,7 @@ Feature: Searching for lists
 
   Scenario: Seeing empty search results
     When I ensure search is visible
-    And I type the following text into the "search bar": "Проб"
+    And I type the following text into the "search bar" input: "Проб"
     Then I expect to see the search "dialog empty"
     Then I expect to have the following number of search results: 0
 
@@ -128,7 +128,7 @@ Feature: Searching for lists
     And I add a list with the following title: "Проба поиска 9"
     And I add a list with the following title: "Проба поиска 10"
     And I ensure search is visible
-    And I type the following text into the "search bar": "Проба"
+    And I type the following text into the "search bar" input: "Проба"
     Then I expect to see the search "dialog"
     Then I expect to have the following number of search results: 10
     When I scroll to the bottom of the search results
@@ -139,14 +139,14 @@ Feature: Searching for lists
     When I clear all data
     And I add lists to their limit
     And I ensure search is visible
-    And I type the following text into the "search bar": "Здесь"
+    And I type the following text into the "search bar" input: "Здесь"
     Then I expect to see the search "dialog"
     Then I expect to have the following number of search results: 200
 
   Scenario: Seeing error notification when search request fails
     Given Data server is not available
     And I ensure search is visible
-    And I type the following text into the "search bar": "test search"
+    And I type the following text into the "search bar" input: "test search"
     And I wait for "search error to appear" for the following number of seconds: 2
     Then I expect to see the search "error notification"
     When I press the "close search error notification" button
@@ -155,7 +155,7 @@ Feature: Searching for lists
   Scenario: Pressing search button runs search again
     When I add a list with the following title: "Проба поиска"
     When I ensure search is visible
-    And I type the following text into the "search bar": "Проба"
+    And I type the following text into the "search bar" input: "Проба"
     And I wait for "search to complete" for the following number of seconds: 2
     And I press the "search" button
     Then I expect to see the search "dialog loading"
@@ -165,7 +165,7 @@ Feature: Searching for lists
 
   Scenario: Pressing clear search button clears it
     When I ensure search is visible
-    And I type the following text into the "search bar": "Проба"
+    And I type the following text into the "search bar" input: "Проба"
     And I press the "clear search" button
     Then I expect to see the "search bar" input empty
     And I wait for "unwanted search to complete" for the following number of seconds: 1

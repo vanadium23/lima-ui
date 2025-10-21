@@ -3,6 +3,14 @@ Feature: Failing to create a new list
   Background:
     When I open "List Creation" page
 
+  Scenario: "Save" button stays disabled when fields contain only spaces
+    And I type the following text into the "list title" input: "   "
+    And I type the following text into the "list purpose" input: "   "
+    And I type the following text into the "first item" input: "   "
+    And I press on the "list note" accordion
+    And I type the following text into the "list note" text area: "   "
+    Then I expect to see the "save" button disabled
+
   Scenario: Seeing connection error when the browser is offline
     Given There is no internet connection
     And I type some text with length less or equal to the one of "list title" input limit

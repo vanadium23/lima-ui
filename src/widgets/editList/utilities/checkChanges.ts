@@ -15,9 +15,9 @@ export function checkChanges(
   const initialData = storeEditList.initialList;
 
   const hasChanges =
-    initialData.name !== currentListName ||
-    initialData.purpose !== currentListPurpose ||
-    initialData.note !== currentListNote ||
+    initialData.name.trimEnd() !== currentListName.trimEnd() ||
+    initialData.purpose.trimEnd() !== currentListPurpose.trimEnd() ||
+    initialData.note.trimEnd() !== currentListNote.trimEnd() ||
     itemsChanged(initialData.items, currentListItems);
 
   setStoreEditList("isChanged", hasChanges);
@@ -33,6 +33,6 @@ function itemsChanged(initialItems: Items, currentItemsWithAutoItem: DragItem[])
   return initialItems.some((initialItem, index) => {
     const currentItem = currentItems[index] || createDefaultItem();
 
-    return initialItem.id !== currentItem.id || initialItem.content !== currentItem.content;
+    return initialItem.id !== currentItem.id || initialItem.content.trimEnd() !== currentItem.content.trimEnd();
   });
 }
