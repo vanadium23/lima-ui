@@ -17,6 +17,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Verify required secrets
+        run: |
+          MISSING_SECRETS=()
+
+          if [ -z "${{ secrets.LIMA_BACKEND_REPO_TOKEN }}" ]; then
+            MISSING_SECRETS+=("LIMA_BACKEND_REPO_TOKEN")
+          fi
+
+          if [ ${#MISSING_SECRETS[@]} -gt 0 ]; then
+            echo "❌ Error: The following required secrets are missing:"
+            printf '  - %s\n' "${MISSING_SECRETS[@]}"
+            echo ""
+            echo "Please configure these secrets in:"
+            echo "https://github.com/${{ github.repository }}/settings/secrets/actions"
+            exit 1
+          fi
+
+          echo "✅ All required secrets are configured"
+
       - name: Checkout UI repository
         uses: actions/checkout@v4
         with:
