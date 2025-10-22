@@ -20,14 +20,12 @@ import type { Item } from "../../../../types/types.ts";
 import { setStoreEditList, storeEditList } from "../../editList.store.tsx";
 import { addNewItemEndOrAutoItem } from "../../utilities/addEmptyItem.ts";
 import { reachedItemsLimit } from "../../utilities/reachedItemsLimit.ts";
-import { ImportDialog, setStoreImportDialog } from "../importDialog/importDialog.tsx";
+import { ImportDialog, openImportDialogAtTheEnd } from "../importDialog/importDialog.tsx";
 import { RemoveDialog, setStoreRemoveDialog } from "../removeDialog/removeDialog.tsx";
 
 const toggleCheckable = () => setStoreEditList("isCheckable", !storeEditList.isCheckable);
 
 const openRemoveDialog = () => setStoreRemoveDialog("openRemoveDialog", true);
-
-const openImportDialog = () => setStoreImportDialog("openImportDialog", true);
 
 function copyItemsToClipboard(items: Item[]) {
   const textToCopy = items.map((item) => item.content.trim()).join("\n");
@@ -90,7 +88,7 @@ const EditListToolsPanel = () => {
             iconName={IconName.SortAscending}
             disabled={reachedItemsLimit() || storeEditList.sendingNow !== false}
             testId={TOOLS_PANEL_BUTTON_IMPORT_LIST}
-            handleClick={openImportDialog}
+            handleClick={openImportDialogAtTheEnd}
           >
             Импорт
           </ToolsButton>

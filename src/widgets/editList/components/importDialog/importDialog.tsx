@@ -23,6 +23,7 @@ type ImportDialogState = {
   listsForImport: List[];
   loadingListsForImport: boolean;
   openImportDialog: boolean;
+  insertMethod: "before" | "after" | "end";
   itemsCache: Record<Item["id"], Item>;
 };
 
@@ -30,11 +31,20 @@ export const [storeImportDialog, setStoreImportDialog] = createStore<ImportDialo
   listsForImport: [],
   loadingListsForImport: false,
   openImportDialog: false,
+  insertMethod: "end",
   itemsCache: {},
 });
 
-export const openImportDialog = () => {
+export const openImportDialogAtTheEnd = () => {
   setStoreImportDialog("openImportDialog", true);
+};
+
+export const openImportDialogBefore = () => {
+  setStoreImportDialog({ openImportDialog: true, insertMethod: "before" });
+};
+
+export const openImportDialogAfter = () => {
+  setStoreImportDialog({ openImportDialog: true, insertMethod: "after" });
 };
 
 export const ImportDialog = (props: ImportDialogProps) => {
@@ -73,6 +83,7 @@ export const ImportDialog = (props: ImportDialogProps) => {
       loadingListsForImport: false,
       listsForImport: [],
       openImportDialog: false,
+      insertMethod: "end",
     });
   };
 
@@ -100,7 +111,13 @@ export const ImportDialog = (props: ImportDialogProps) => {
       .map((id) => storeImportDialog.itemsCache[id])
       .filter((item): item is Item => Boolean(item));
 
-    setStoreEditList("items", insertItemsBeforeAutoListItem(convertItemsToDragItems(checkedItems)));
+    if (storeImportDialog.insertMethod === "after") {
+      setStoreEditList("items", insertItemsBeforeAutoListItem(convertItemsToDragItems(checkedItems)));
+    } else if (storeImportDialog.insertMethod === "before") {
+      setStoreEditList("items", insertItemsBeforeAutoListItem(convertItemsToDragItems(checkedItems)));
+    } else {
+      setStoreEditList("items", insertItemsBeforeAutoListItem(convertItemsToDragItems(checkedItems)));
+    }
 
     handleClose();
   };

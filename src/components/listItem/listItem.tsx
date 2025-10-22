@@ -14,7 +14,10 @@ import {
   REMOVE_ITEM_MENUITEM,
 } from "../../../features/testIds.ts";
 import type { DragSettings } from "../../types/types.ts";
-import { openImportDialog } from "../../widgets/editList/components/importDialog/importDialog.tsx";
+import {
+  openImportDialogAfter,
+  openImportDialogBefore,
+} from "../../widgets/editList/components/importDialog/importDialog.tsx";
 import { Checkbox, CheckboxSize, CheckboxTheme } from "../checkbox/checkbox.tsx";
 import { CyberInput } from "../cyberInput/cyberInput.tsx";
 import { DragHandle } from "../dragHandle/dragHandle.tsx";
@@ -100,14 +103,14 @@ export const ListItem = (props: Testable<ListItemProps>) => {
     {
       children: "Импортировать выше",
       icon: IconName.SortDescending,
-      handleClick: openImportDialog,
+      handleClick: openImportDialogBefore,
       testId: DEFAULT_TEST_ID,
       disabled: !mProps.canAddMore,
     },
     {
       children: "Импортировать ниже",
       icon: IconName.SortAscending,
-      handleClick: openImportDialog,
+      handleClick: openImportDialogAfter,
       testId: DEFAULT_TEST_ID,
       disabled: !mProps.canAddMore,
     },
