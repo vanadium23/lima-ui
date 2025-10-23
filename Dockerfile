@@ -2,10 +2,7 @@ FROM node:20.17.0-alpine
 
 WORKDIR /app
 
-# Copy package files
 COPY package*.json ./
-
-# Install dependencies
 RUN npm ci
 
 # Copy the rest of the application
