@@ -10,7 +10,7 @@ import { URL_MY_LISTS } from "../../../../../utilities/addresses.ts";
 import "./style.css";
 import "normalize.css";
 
-const response = await fetch(`${import.meta.env.PUBLIC_API_URL}${URL_MY_LISTS}/${Astro.params.id}`);
+const response = await fetch(`${import.meta.env.SERVER_API_URL}${URL_MY_LISTS}/${Astro.params.id}`);
 
 type Item = {
   content: string;

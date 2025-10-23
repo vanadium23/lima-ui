@@ -27,7 +27,7 @@ import { type AccountedTesting, createAccountedTesting } from "./createAccounted
 
 let browser: Browser;
 
-interface ComplexWorldParameters {}
+type ComplexWorldParameters = Record<string, never>;
 
 export class ComplexWorld extends World<ComplexWorldParameters> {
   context!: BrowserContext;
@@ -147,7 +147,7 @@ After({ timeout: 60000 }, async function (this: ComplexWorld, scenario: ITestCas
     }
   }
 
-  isVisible() || (await this.context.close());
+  void (isVisible() || (await this.context.close()));
 });
 
 AfterAll({ timeout: 60000 }, async function () {
@@ -155,7 +155,7 @@ AfterAll({ timeout: 60000 }, async function () {
     expect(accountedPagesSet.getTestIds()).toEqual(PAGE_TYPES);
   }
 
-  isVisible() || (await browser.close());
+  void (isVisible() || (await browser.close()));
 });
 
 function isVisible() {

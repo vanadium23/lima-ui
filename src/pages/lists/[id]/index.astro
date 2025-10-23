@@ -17,7 +17,7 @@ function undefinedListId() {
 }
 
 try {
-  let backendURL = import.meta.env.PUBLIC_API_URL;
+  let backendURL = import.meta.env.SERVER_API_URL;
   let backendListsAddress = URL_MY_LISTS;
 
   if (Astro.url.searchParams.get("error") === "true") {
@@ -32,7 +32,7 @@ try {
   }
 
   list = await response.json();
-} catch (error) {
+} catch {
   listRequestError = true;
   list = {
     name: "",
