@@ -122,17 +122,3 @@ jobs:
           name: "e2e-test-artifacts-${{ matrix.device }}-${{ github.run_number }}-${{ github.run_attempt }}-${{ steps.artifact_vars.outputs.short_sha }}-PR${{ github.event.pull_request.number }}-${{ steps.artifact_vars.outputs.timestamp }}"
           path: |
             lima-UI/features/results/
-
-  # Summary job that reports the overall status
-  e2e-tests-summary:
-    runs-on: ubuntu-latest
-    needs: e2e-tests
-    if: always()
-    steps:
-      - name: Check test results
-        run: |
-          if [ "${{ needs.e2e-tests.result }}" != "success" ]; then
-            echo "❌ E2E tests failed or were cancelled"
-            exit 1
-          fi
-          echo "✅ All E2E tests passed successfully"
