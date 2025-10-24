@@ -11,6 +11,7 @@ import {
 } from "@cucumber/cucumber";
 import { type Browser, type BrowserContext, chromium, expect, type Page } from "@playwright/test";
 import chalk from "chalk";
+import { execSync } from "child_process";
 
 import type { FullTestId, TestId, TestSubId } from "../../src/components/utilities/testable.ts";
 import { type AddressMeaning, PAGE_TYPES } from "../../utilities/addresses.ts";
@@ -113,11 +114,39 @@ setWorldConstructor(ComplexWorld);
 
 export const pagesAccounting: Record<string, AccountedTesting> = {};
 
-BeforeAll(async function () {
-  browser = await chromium.launch({
+BeforeAll({ timeout: 240000 }, async function () {
+  try {
+    browser = await getRunningChromium();
+  } catch (noBrowsersError) {
+    const errorMessage = noBrowsersError instanceof Error ? noBrowsersError.message : String(noBrowsersError);
+
+    if (errorMessage.includes("Executable doesn't exist") || errorMessage.includes("npx playwright install")) {
+      console.log(chalk.yellow("\n⚠️  Playwright browsers not found. Installing..."));
+
+      try {
+        execSync("npx playwright install", {
+          stdio: "inherit",
+          timeout: 120000,
+        });
+
+        console.log(chalk.green("\n✅ Playwright browsers installed successfully. Retrying browser launch..."));
+
+        browser = await getRunningChromium();
+      } catch (installationError) {
+        console.error(chalk.red("\n❌ Failed to install Playwright browsers:"), installationError);
+        throw installationError;
+      }
+    } else {
+      throw noBrowsersError;
+    }
+  }
+});
+
+async function getRunningChromium() {
+  return await chromium.launch({
     headless: !isVisible(),
   });
-});
+}
 
 Before(async function (this: ComplexWorld) {
   await this.setContextAndPage();
