@@ -1,7 +1,7 @@
 import { mergeProps, onCleanup, Show } from "solid-js";
 import { createStore } from "solid-js/store";
 
-import { LIST_TITLE_INPUT_LIMIT, LISTS_SEARCH_MINIMAL_QUERY } from "../../../configuration.ts";
+import { INPUT_DEBOUNCE, LIST_TITLE_INPUT_LIMIT, LISTS_SEARCH_MINIMAL_QUERY } from "../../../configuration.ts";
 import {
   CLOSE_SEARCH_BUTTON,
   SEARCH_BUTTON,
@@ -9,6 +9,7 @@ import {
   SEARCH_INPUT,
   SEARCH_NETWORK_ERROR,
 } from "../../../features/testIds.ts";
+import { debounce } from "../../../utilities/debounce.ts";
 import { soften } from "../../../utilities/soften.ts";
 import { IconName } from "../../components/icon/types.ts";
 import { IconButton, IconButtonTheme, IconButtonType } from "../../components/iconButton/iconButton.tsx";
@@ -52,7 +53,6 @@ export const Search = (props: SearchProps) => {
     serverError: false,
   });
 
-  let debounceTimer: ReturnType<typeof setTimeout>;
   let abortController: AbortController | null = null;
 
   const executeSearch = async (query: string, forceSubmit = false, backendURL?: string) => {
@@ -100,7 +100,9 @@ export const Search = (props: SearchProps) => {
         setState({
           results: searchResults,
           serverError: false,
+          isLoading: false,
         });
+        abortController = null;
 
         notificationState.clearNetworkErrors();
       });
@@ -117,20 +119,22 @@ export const Search = (props: SearchProps) => {
         SEARCH_NETWORK_ERROR,
       );
 
-      setState("results", []);
-    } finally {
-      setState("isLoading", false);
+      setState({
+        results: [],
+        isLoading: false,
+      });
       abortController = null;
     }
   };
 
   const handleQueryUpdate = (query: string) => {
-    setState("query", query);
-    clearTimeout(debounceTimer);
+    setState({
+      query: query,
+      isLoading: true,
+    });
 
     if (query.length >= LISTS_SEARCH_MINIMAL_QUERY) {
-      setState("isLoading", true);
-      debounceTimer = setTimeout(() => executeSearch(query), 350);
+      executeSearch(query);
     } else {
       if (abortController) {
         abortController.abort();
@@ -145,9 +149,11 @@ export const Search = (props: SearchProps) => {
     }
   };
 
+  const debouncedHandleQueryUpdate = debounce(handleQueryUpdate, INPUT_DEBOUNCE);
+
   const handleInput = (e: InputEvent) => {
     const value = (e.target as HTMLInputElement).value.trim();
-    handleQueryUpdate(value);
+    debouncedHandleQueryUpdate(value);
   };
 
   const handleSubmit = (e: Event) => {
@@ -156,8 +162,6 @@ export const Search = (props: SearchProps) => {
   };
 
   onCleanup(() => {
-    clearTimeout(debounceTimer);
-
     if (abortController) {
       abortController.abort();
     }
