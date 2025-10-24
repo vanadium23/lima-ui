@@ -15,6 +15,20 @@ permissions:
 jobs:
   e2e-tests:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        device: [desktop, tablet, mobile]
+        include:
+          - device: desktop
+            backend-port: 3000
+            frontend-port: 4321
+          - device: tablet
+            backend-port: 3001
+            frontend-port: 4322
+          - device: mobile
+            backend-port: 3002
+            frontend-port: 4323
 
     steps:
       - name: Verify required secrets
@@ -69,20 +83,26 @@ jobs:
 
       - name: Start backend, database, and front-end
         run: |
-          docker compose -f docker-compose.prod-test.yml up -d --build
+          docker compose -f docker-compose.prod-test.yml -p lima-${{ matrix.device }} up -d --build
           # Verify backend API is responding with expected data
-          timeout 180 bash -c 'until curl -s http://localhost:3000/ | jq -e ".greeting" > /dev/null; do sleep 10; done'
+          timeout 180 bash -c 'until curl -s http://localhost:${{ matrix.backend-port }}/ | jq -e ".greeting" > /dev/null; do sleep 10; done'
           # Wait for the front-end to be available
-          timeout 120 bash -c 'until curl -s http://localhost:4321/ > /dev/null; do sleep 5; done'
+          timeout 120 bash -c 'until curl -s http://localhost:${{ matrix.frontend-port }}/ > /dev/null; do sleep 5; done'
         working-directory: lima-UI
+        env:
+          PORT: ${{ matrix.backend-port }}
+          FRONTEND_PORT: ${{ matrix.frontend-port }}
 
       - name: Run E2E tests
-        run: npm test -- --verbose --retry 1
+        run: npm test -- --${{ matrix.device }} --verbose --retry 1
         working-directory: lima-UI
+        env:
+          PUBLIC_API_URL: http://localhost:${{ matrix.backend-port }}
+          FRONTEND_URL: http://localhost:${{ matrix.frontend-port }}
 
       - name: Stop services
         if: always()
-        run: docker compose -f docker-compose.prod-test.yml down
+        run: docker compose -f docker-compose.prod-test.yml -p lima-${{ matrix.device }} down
         working-directory: lima-UI
 
       # Set variables for the artifact name that doesn't contain invalid characters
@@ -97,6 +117,6 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: "e2e-test-artifacts-${{ github.run_number }}-${{ github.run_attempt }}-${{ steps.artifact_vars.outputs.short_sha }}-PR${{ github.event.pull_request.number }}-${{ steps.artifact_vars.outputs.timestamp }}"
+          name: "e2e-test-artifacts-${{ matrix.device }}-${{ github.run_number }}-${{ github.run_attempt }}-${{ steps.artifact_vars.outputs.short_sha }}-PR${{ github.event.pull_request.number }}-${{ steps.artifact_vars.outputs.timestamp }}"
           path: |
             lima-UI/features/results/

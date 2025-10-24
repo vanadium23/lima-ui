@@ -111,8 +111,8 @@ async function runTests() {
   console.log(`- Verbose: ${config.verbose ? "enabled" : "disabled"}`);
   console.log(`- Retry: ${config.retry}\n`);
 
-  console.log(chalk.greenBright("\nTraces folder cleared"));
   prepareEmptyTracesFolder();
+  console.log(chalk.greenBright("\nTraces folder cleared"));
 
   const results: { device: DeviceProfiles; success: boolean }[] = [];
   let hasError = false;

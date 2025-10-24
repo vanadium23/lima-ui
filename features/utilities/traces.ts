@@ -3,7 +3,9 @@ import * as path from "path";
 
 import { RESULTS_FOLDER } from "../config/results.ts";
 
-export const TRACES_FOLDER = path.join(process.cwd(), ...RESULTS_FOLDER, "traces");
+import { getDeviceProfileName } from "./discoverDevice.ts";
+
+export const TRACES_FOLDER = path.join(process.cwd(), ...RESULTS_FOLDER, "traces", getDeviceProfileName());
 
 export function createTracePath(scenarioName: string, deviceSuffix: string): string {
   const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
