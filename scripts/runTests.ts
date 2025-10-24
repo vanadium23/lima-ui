@@ -5,7 +5,6 @@ import { Command } from "commander";
 
 import { DEVICE_PROFILES, DeviceProfiles } from "../features/config/deviceProfiles.ts";
 import { RESULTS_FOLDER } from "../features/config/results.ts";
-import { getDeviceProfileName } from "../features/utilities/discoverDevice.ts";
 import { prepareEmptyTracesFolder } from "../features/utilities/traces.ts";
 
 interface TestConfig {
@@ -112,14 +111,14 @@ async function runTests() {
   console.log(`- Verbose: ${config.verbose ? "enabled" : "disabled"}`);
   console.log(`- Retry: ${config.retry}\n`);
 
-  prepareEmptyTracesFolder();
-  console.log(chalk.greenBright("\nTraces folder cleared for" + getDeviceProfileName() + ".\n"));
-
   const results: { device: DeviceProfiles; success: boolean }[] = [];
   let hasError = false;
 
   for (const device of config.devices) {
     logDeviceInfo(device);
+
+    prepareEmptyTracesFolder(device);
+    console.log(chalk.greenBright("\nTraces folder cleared for " + device + ".\n"));
 
     try {
       const command = "npx";

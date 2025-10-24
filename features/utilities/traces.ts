@@ -3,24 +3,26 @@ import * as path from "path";
 
 import { RESULTS_FOLDER } from "../config/results.ts";
 
-import { getDeviceProfileName } from "./discoverDevice.ts";
-
-export const TRACES_FOLDER = path.join(process.cwd(), ...RESULTS_FOLDER, "traces", getDeviceProfileName());
+function getTracesFolder(device: string) {
+  return path.join(process.cwd(), ...RESULTS_FOLDER, "traces", device);
+}
 
 export function createTracePath(scenarioName: string, deviceSuffix: string): string {
   const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
   const sanitizedName = scenarioName.replace(/[^a-zA-Z0-9]/g, "_");
   const traceName = `${sanitizedName}_${deviceSuffix}_${timestamp}.zip`;
 
-  return path.join(TRACES_FOLDER, traceName);
+  return path.join(getTracesFolder(deviceSuffix), traceName);
 }
 
-export function prepareEmptyTracesFolder(): void {
-  if (fs.existsSync(TRACES_FOLDER)) {
-    for (const file of fs.readdirSync(TRACES_FOLDER)) {
-      fs.unlinkSync(path.join(TRACES_FOLDER, file));
+export function prepareEmptyTracesFolder(device: string): void {
+  const tracesFolder = getTracesFolder(device);
+
+  if (fs.existsSync(tracesFolder)) {
+    for (const file of fs.readdirSync(tracesFolder)) {
+      fs.unlinkSync(path.join(tracesFolder, file));
     }
   } else {
-    fs.mkdirSync(TRACES_FOLDER, { recursive: true });
+    fs.mkdirSync(tracesFolder, { recursive: true });
   }
 }
