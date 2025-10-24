@@ -10,7 +10,7 @@ services:
       - .:/app
       - /app/node_modules
     environment:
-      - PUBLIC_API_URL=http://localhost:${PORT:-3000}
+      - PUBLIC_API_URL=http://localhost:${HOST_PORT:-3000}
       - SERVER_API_URL=http://svernik:${PORT:-3000}
     depends_on:
       - svernik

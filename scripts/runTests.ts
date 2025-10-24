@@ -5,6 +5,7 @@ import { Command } from "commander";
 
 import { DEVICE_PROFILES, DeviceProfiles } from "../features/config/deviceProfiles.ts";
 import { RESULTS_FOLDER } from "../features/config/results.ts";
+import { getDeviceProfileName } from "../features/utilities/discoverDevice.ts";
 import { prepareEmptyTracesFolder } from "../features/utilities/traces.ts";
 
 interface TestConfig {
@@ -112,7 +113,7 @@ async function runTests() {
   console.log(`- Retry: ${config.retry}\n`);
 
   prepareEmptyTracesFolder();
-  console.log(chalk.greenBright("\nTraces folder cleared"));
+  console.log(chalk.greenBright("\nTraces folder cleared for" + getDeviceProfileName() + ".\n"));
 
   const results: { device: DeviceProfiles; success: boolean }[] = [];
   let hasError = false;

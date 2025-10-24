@@ -8,6 +8,7 @@ services:
       dockerfile: Dockerfile.prod-test
       args:
         - SERVER_API_URL=http://svernik:${PORT:-3000}
+        - PUBLIC_API_URL=http://localhost:${HOST_PORT:-3000}
     ports:
       - "${FRONTEND_PORT:-4321}:4321"
     environment:
