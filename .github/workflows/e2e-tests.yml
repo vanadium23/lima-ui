@@ -90,15 +90,17 @@ jobs:
           timeout 120 bash -c 'until curl -s http://localhost:${{ matrix.frontend-port }}/ > /dev/null; do sleep 5; done'
         working-directory: lima-UI
         env:
-          PORT: ${{ matrix.backend-port }}
+          HOST_PORT: ${{ matrix.backend-port }}
+          PORT: 3000
           FRONTEND_PORT: ${{ matrix.frontend-port }}
+          CLIENT_ADDRESS: http://localhost:${{ matrix.frontend-port }}
 
       - name: Run E2E tests
         run: npm test -- --${{ matrix.device }} --verbose --retry 1
         working-directory: lima-UI
         env:
           PUBLIC_API_URL: http://localhost:${{ matrix.backend-port }}
-          FRONTEND_URL: http://localhost:${{ matrix.frontend-port }}
+          CLIENT_ADDRESS: http://localhost:${{ matrix.frontend-port }}
 
       - name: Stop services
         if: always()

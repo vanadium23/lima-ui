@@ -43,7 +43,7 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
   itemsValues: string[] = [];
   responsesToWait: Partial<Record<AddressMeaning, ReturnType<Page["waitForResponse"]>>> = {};
 
-  FRONTEND_ADDRESS = process.env.FRONTEND_URL || "http://localhost:4321";
+  FRONTEND_ADDRESS = process.env.CLIENT_ADDRESS || "http://localhost:4321";
   BACKEND_ADDRESS = process.env.PUBLIC_API_URL || "http://localhost:3000";
 
   constructor(options: IWorldOptions<ComplexWorldParameters>) {
