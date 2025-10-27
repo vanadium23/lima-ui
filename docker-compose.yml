@@ -1,0 +1,16 @@
+include:
+  - path: ../lima/docker-compose.yml
+
+services:
+  lima-ui:
+    build: .
+    ports:
+      - "${FRONTEND_PORT:-4321}:4321"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - PUBLIC_API_URL=http://localhost:${HOST_PORT:-3000}
+      - SERVER_API_URL=http://svernik:${PORT:-3000}
+    depends_on:
+      - svernik

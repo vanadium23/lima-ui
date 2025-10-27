@@ -111,14 +111,14 @@ async function runTests() {
   console.log(`- Verbose: ${config.verbose ? "enabled" : "disabled"}`);
   console.log(`- Retry: ${config.retry}\n`);
 
-  console.log(chalk.greenBright("\nTraces folder cleared"));
-  prepareEmptyTracesFolder();
-
   const results: { device: DeviceProfiles; success: boolean }[] = [];
   let hasError = false;
 
   for (const device of config.devices) {
     logDeviceInfo(device);
+
+    prepareEmptyTracesFolder(device);
+    console.log(chalk.greenBright("\nTraces folder cleared for " + device + ".\n"));
 
     try {
       const command = "npx";
