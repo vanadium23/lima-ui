@@ -185,7 +185,7 @@ export const Search = (props: SearchProps) => {
           onInput={handleInput}
           onKeyDown={(e) => e.key === "Enter" && handleSubmit(e)}
           clearable={true}
-          onClear={() => handleQueryUpdate("")}
+          onClear={() => debouncedHandleQueryUpdate("")}
         />
         <IconButton
           type={IconButtonType.Submit}
