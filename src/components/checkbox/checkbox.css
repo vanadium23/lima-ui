@@ -22,7 +22,7 @@
   height: 100%;
 }
 
-.checkbox:active:not(.checkbox_disabled, .checkbox_independent) {
+.checkbox:active:not(.checkbox_disabled, .checkbox_dependent) {
   transform: translateY(0.1rem);
 }
 
