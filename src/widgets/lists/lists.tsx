@@ -41,11 +41,14 @@ export const Lists = (props: ListsProps) => {
 
   function setRemoveError(removeError: boolean) {
     setStore("removeError", removeError);
-    notificationState.pushNetworkError(
-      "Ошибка удаления",
-      "Не удалось удалить список. Попробуйте ещё раз",
-      LIST_REMOVAL_ERROR,
-    );
+
+    if (removeError) {
+      notificationState.pushNetworkError(
+        "Ошибка удаления",
+        "Не удалось удалить список. Попробуйте ещё раз",
+        LIST_REMOVAL_ERROR,
+      );
+    }
   }
 
   function removingListInStore(listIdToRemove: string) {
