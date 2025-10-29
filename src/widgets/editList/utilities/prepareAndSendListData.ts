@@ -62,13 +62,13 @@ function sendNewList(data: NewList) {
   });
 
   createList(data)
-    .then((newList) => {
+    .then((updatedListFromBackendAnswer) => {
       soften(() => {
-        history.pushState({}, "", `${URL_MY_LISTS}/${newList.id}`);
+        history.pushState({}, "", `${URL_MY_LISTS}/${updatedListFromBackendAnswer.id}`);
         setLocation(window.location.pathname);
-        document.title = suffixTabTitle(newList.name);
+        document.title = suffixTabTitle(updatedListFromBackendAnswer.name);
 
-        updateStoreEditList(newList);
+        updateStoreEditList(updatedListFromBackendAnswer);
       });
     })
     .catch((error) => {
@@ -87,11 +87,11 @@ function sendUpdatedList(data: UpdatedList) {
   });
 
   updateList(data)
-    .then((updatedList) => {
+    .then((updatedListFromBackendAnswer) => {
       soften(() => {
-        document.title = suffixTabTitle(updatedList.name);
+        document.title = suffixTabTitle(updatedListFromBackendAnswer.name);
 
-        updateStoreEditList(updatedList);
+        updateStoreEditList(updatedListFromBackendAnswer);
       });
     })
     .catch((error) => {

@@ -55,13 +55,6 @@ export type UpdatedList = ListBase & {
 
 export type ScrollContainer = HTMLDivElement | undefined;
 
-export enum EditListFormNames {
-  ListTitle = "List Title",
-  ListPurpose = "List Purpose",
-  ListNote = "List Note",
-  ListItem = "List Item",
-}
-
 export type Sortable = ReturnType<typeof createSortable>;
 
 type RefDrag = Sortable["ref"];

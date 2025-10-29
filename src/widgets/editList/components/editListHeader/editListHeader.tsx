@@ -2,7 +2,6 @@ import { LIST_PURPOSE_INPUT_LIMIT, LIST_TITLE_INPUT_LIMIT } from "../../../../..
 import { LIST_PURPOSE_INPUT, LIST_TITLE_INPUT } from "../../../../../features/testIds.ts";
 import { CyberInput, CyberInputSize, CyberInputTheme } from "../../../../components/cyberInput/cyberInput.tsx";
 import { Note } from "../../../../components/note/note.tsx";
-import { EditListFormNames } from "../../../../types/types.ts";
 import { setStoreEditList, storeEditList } from "../../editList.store.tsx";
 
 import "./editListHeader.css";
@@ -14,7 +13,7 @@ export const EditListHeader = () => {
         theme={CyberInputTheme.Secondary}
         size={CyberInputSize.ExtraLarge}
         maxLength={LIST_TITLE_INPUT_LIMIT}
-        name={EditListFormNames.ListTitle}
+        name={"List Title"}
         testId={LIST_TITLE_INPUT}
         required={true}
         disabled={storeEditList.sendingNow !== false}
@@ -28,7 +27,7 @@ export const EditListHeader = () => {
         size={CyberInputSize.Medium}
         placeholder="Цель списка"
         maxLength={LIST_PURPOSE_INPUT_LIMIT}
-        name={EditListFormNames.ListPurpose}
+        name={"List Purpose"}
         testId={LIST_PURPOSE_INPUT}
         disabled={storeEditList.sendingNow !== false}
         onChange={(value) => setStoreEditList("purpose", value)}
@@ -37,7 +36,7 @@ export const EditListHeader = () => {
       </CyberInput>
       <Note
         title="Заметка"
-        name={EditListFormNames.ListNote}
+        name={"List Purpose"}
         disabled={storeEditList.sendingNow !== false}
         onChange={(value) => setStoreEditList("note", value)}
       >

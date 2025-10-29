@@ -11,7 +11,7 @@ import { type Item, type List } from "../../../../types/types.ts";
 import { setStoreEditList } from "../../editList.store.tsx";
 import { getLists } from "../../services/getLists.ts";
 import { convertItemsToDragItems } from "../../utilities/dragAndDrop.ts";
-import { insertItemsBeforeAutoListItem } from "../../utilities/insertItemsBeforeAutoListItem.ts";
+import { pasteItemsBeforeAutoListItem } from "../../utilities/pasteItemsBeforeAutoListItem.ts";
 
 import "./importDialog.css";
 
@@ -23,7 +23,7 @@ type ImportDialogState = {
   listsForImport: List[];
   loadingListsForImport: boolean;
   openImportDialog: boolean;
-  insertMethod: "before" | "after" | "end";
+  pasteMethod: "before" | "after" | "end";
   itemsCache: Record<Item["id"], Item>;
 };
 
@@ -31,20 +31,20 @@ export const [storeImportDialog, setStoreImportDialog] = createStore<ImportDialo
   listsForImport: [],
   loadingListsForImport: false,
   openImportDialog: false,
-  insertMethod: "end",
+  pasteMethod: "end",
   itemsCache: {},
 });
 
-export const openImportDialogAtTheEnd = () => {
-  setStoreImportDialog("openImportDialog", true);
+export const openImportDialogPasteEnd = () => {
+  setStoreImportDialog({ openImportDialog: true, pasteMethod: "end" });
 };
 
-export const openImportDialogBefore = () => {
-  setStoreImportDialog({ openImportDialog: true, insertMethod: "before" });
+export const openImportDialogPasteBefore = () => {
+  setStoreImportDialog({ openImportDialog: true, pasteMethod: "before" });
 };
 
-export const openImportDialogAfter = () => {
-  setStoreImportDialog({ openImportDialog: true, insertMethod: "after" });
+export const openImportDialogPasteAfter = () => {
+  setStoreImportDialog({ openImportDialog: true, pasteMethod: "after" });
 };
 
 export const ImportDialog = (props: ImportDialogProps) => {
@@ -83,7 +83,7 @@ export const ImportDialog = (props: ImportDialogProps) => {
       loadingListsForImport: false,
       listsForImport: [],
       openImportDialog: false,
-      insertMethod: "end",
+      pasteMethod: "end",
     });
   };
 
@@ -111,12 +111,12 @@ export const ImportDialog = (props: ImportDialogProps) => {
       .map((id) => storeImportDialog.itemsCache[id])
       .filter((item): item is Item => Boolean(item));
 
-    if (storeImportDialog.insertMethod === "after") {
-      setStoreEditList("items", insertItemsBeforeAutoListItem(convertItemsToDragItems(checkedItems)));
-    } else if (storeImportDialog.insertMethod === "before") {
-      setStoreEditList("items", insertItemsBeforeAutoListItem(convertItemsToDragItems(checkedItems)));
-    } else {
-      setStoreEditList("items", insertItemsBeforeAutoListItem(convertItemsToDragItems(checkedItems)));
+    if (storeImportDialog.pasteMethod === "after") {
+      setStoreEditList("items", pasteItemsBeforeAutoListItem(convertItemsToDragItems(checkedItems)));
+    } else if (storeImportDialog.pasteMethod === "before") {
+      setStoreEditList("items", pasteItemsBeforeAutoListItem(convertItemsToDragItems(checkedItems)));
+    } else if (storeImportDialog.pasteMethod === "end") {
+      setStoreEditList("items", pasteItemsBeforeAutoListItem(convertItemsToDragItems(checkedItems)));
     }
 
     handleClose();

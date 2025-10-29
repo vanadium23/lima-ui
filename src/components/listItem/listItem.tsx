@@ -15,9 +15,13 @@ import {
 } from "../../../features/testIds.ts";
 import type { DragSettings } from "../../types/types.ts";
 import {
-  openImportDialogAfter,
-  openImportDialogBefore,
+  openImportDialogPasteAfter,
+  openImportDialogPasteBefore,
 } from "../../widgets/editList/components/importDialog/importDialog.tsx";
+import { storeEditList } from "../../widgets/editList/editList.store.tsx";
+import { handleItemChange } from "../../widgets/editList/utilities/handleItemChange.ts";
+import { pasteItemAfter, pasteItemBefore } from "../../widgets/editList/utilities/pasteItem.ts";
+import { removeItem } from "../../widgets/editList/utilities/removeItem.ts";
 import { Checkbox, CheckboxSize, CheckboxTheme } from "../checkbox/checkbox.tsx";
 import { CyberInput } from "../cyberInput/cyberInput.tsx";
 import { DragHandle } from "../dragHandle/dragHandle.tsx";
@@ -40,18 +44,17 @@ export enum ListItemSize {
 type ListItemProps = {
   theme?: ListItemTheme;
   size?: ListItemSize;
-  removeItem?: () => void;
+  index: number;
+  dataId?: string;
   disabled?: boolean;
+  auto?: boolean;
+
   checkable: boolean;
   checked: boolean;
   children?: string;
   name?: string;
-  dataId?: string;
-  isOnlyOneItem?: boolean;
+
   required?: boolean;
-  onChange?: (value: string) => void;
-  onAddBefore?: () => void;
-  onAddAfter?: () => void;
   canAddMore: boolean;
   dragSettings?: DragSettings;
   isDraggingOverlay?: boolean;
@@ -63,16 +66,14 @@ export const ListItem = (props: Testable<ListItemProps>) => {
     {
       theme: ListItemTheme.Primary,
       size: ListItemSize.Medium,
+      dataId: "",
       name: "",
-      isOnlyOneItem: false,
       disabled: false,
+      auto: false,
+
       required: true,
       children: "",
-      dataId: "",
-      onChange: () => {},
-      onAddBefore: () => {},
-      onAddAfter: () => {},
-      removeItem: () => {},
+
       isDraggingOverlay: false,
       dragId: "",
       dragSettings: {
@@ -89,41 +90,51 @@ export const ListItem = (props: Testable<ListItemProps>) => {
     {
       children: "Добавить пункт выше",
       icon: IconName.Plus,
-      handleClick: mProps.onAddBefore,
+      handleClick: () => {
+        pasteItemBefore(mProps.index);
+      },
       testId: ADD_ITEM_ABOVE_MENUITEM,
       disabled: !mProps.canAddMore,
     },
     {
       children: "Добавить пункт ниже",
       icon: IconName.Plus,
-      handleClick: mProps.onAddAfter,
+      handleClick: () => {
+        pasteItemAfter(mProps.index);
+      },
       testId: ADD_ITEM_BELOW_MENUITEM,
       disabled: !mProps.canAddMore,
     },
     {
       children: "Импортировать выше",
       icon: IconName.SortDescending,
-      handleClick: openImportDialogBefore,
+      handleClick: openImportDialogPasteBefore,
       testId: DEFAULT_TEST_ID,
       disabled: !mProps.canAddMore,
     },
     {
       children: "Импортировать ниже",
       icon: IconName.SortAscending,
-      handleClick: openImportDialogAfter,
+      handleClick: openImportDialogPasteAfter,
       testId: DEFAULT_TEST_ID,
       disabled: !mProps.canAddMore,
     },
     {
       children: "Удалить пункт",
       icon: IconName.Trash,
-      handleClick: mProps.removeItem,
-      disabled: mProps.isOnlyOneItem,
+      handleClick: () => {
+        removeItem(mProps.index);
+      },
+      disabled: isOnlyOneItem() || mProps.auto,
       theme: MenuItemTheme.Dangerous,
       testId: REMOVE_ITEM_MENUITEM,
       testSubId: getListItemTestSubId(mProps.testId, mProps.testSubId),
     },
   ];
+
+  function isOnlyOneItem() {
+    return storeEditList.items.length === 1;
+  }
 
   return (
     <div
@@ -161,12 +172,12 @@ export const ListItem = (props: Testable<ListItemProps>) => {
       <div class="listItem__inner">
         <CyberInput
           maxLength={EDIT_LIST_INPUT_LIMIT}
-          name={mProps.name}
+          name={`List Item ${mProps.index + 1}`}
           dataId={mProps.dataId}
           disabled={mProps.disabled}
           placeholder={mProps.placeholder}
-          required={mProps.required}
-          onChange={mProps.onChange}
+          required={!mProps.auto || isOnlyOneItem()}
+          onChange={(value) => handleItemChange(mProps.index, value)}
           testId={buildListItemInputTestId(mProps.testId)}
           testSubId={getListItemTestSubId(mProps.testId, mProps.testSubId)}
           controlElements={

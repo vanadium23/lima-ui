@@ -18,9 +18,9 @@ import {
 import { ToolsPanel, ToolsPanelSize, ToolsPanelTheme } from "../../../../organisms/toolsPanel/toolsPanel.tsx";
 import type { Item } from "../../../../types/types.ts";
 import { setStoreEditList, storeEditList } from "../../editList.store.tsx";
-import { addNewItemEndOrAutoItem } from "../../utilities/addEmptyItem.ts";
+import { addNewItem } from "../../utilities/addNewItem.ts";
 import { reachedItemsLimit } from "../../utilities/reachedItemsLimit.ts";
-import { ImportDialog, openImportDialogAtTheEnd } from "../importDialog/importDialog.tsx";
+import { ImportDialog, openImportDialogPasteEnd } from "../importDialog/importDialog.tsx";
 import { RemoveDialog, setStoreRemoveDialog } from "../removeDialog/removeDialog.tsx";
 
 const toggleCheckable = () => setStoreEditList("isCheckable", !storeEditList.isCheckable);
@@ -41,7 +41,7 @@ const EditListToolsPanel = () => {
             componentType={ToolsButtonComponentType.Button}
             iconName={IconName.RowsPlusBottom}
             handleClick={() => {
-              addNewItemEndOrAutoItem(false);
+              addNewItem();
             }}
             disabled={reachedItemsLimit() || storeEditList.sendingNow !== false}
             testId={TOOLS_PANEL_ADD_ITEM_BUTTON}
@@ -88,7 +88,7 @@ const EditListToolsPanel = () => {
             iconName={IconName.SortAscending}
             disabled={reachedItemsLimit() || storeEditList.sendingNow !== false}
             testId={TOOLS_PANEL_BUTTON_IMPORT_LIST}
-            handleClick={openImportDialogAtTheEnd}
+            handleClick={openImportDialogPasteEnd}
           >
             Импорт
           </ToolsButton>

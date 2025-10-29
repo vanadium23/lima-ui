@@ -25,12 +25,12 @@ import { Button, ButtonType } from "../../components/button/button.tsx";
 import { ImportedGroup } from "../../components/importedGroup/importedGroup.tsx";
 import { ListItem } from "../../components/listItem/listItem.tsx";
 import { PageError } from "../../components/pageError/pageError.tsx";
-import { EditListFormNames, type List } from "../../types/types.ts";
+import { type List } from "../../types/types.ts";
 
 import { EditListHeader } from "./components/editListHeader/editListHeader.tsx";
 import EditListToolsPanel from "./components/editListToolsPanel/editListToolsPanel.tsx";
-import { emptyList, initStoreEditList, setStoreEditList, storeEditList } from "./editList.store.tsx";
-import { addNewItemBeforeOrAfter, addNewItemEndOrAutoItem } from "./utilities/addEmptyItem.ts";
+import { emptyList, initStoreEditList, storeEditList } from "./editList.store.tsx";
+import { addAutoItem } from "./utilities/addAutoItem.ts";
 import { checkChanges } from "./utilities/checkChanges.ts";
 import {
   createScrollableCollisionsDetector,
@@ -41,7 +41,6 @@ import {
 } from "./utilities/dragAndDrop.ts";
 import { prepareAndSendListData } from "./utilities/prepareAndSendListData.ts";
 import { reachedItemsLimit } from "./utilities/reachedItemsLimit.ts";
-import { removeItem } from "./utilities/removeItem.ts";
 import { scroller } from "./utilities/scrollToBottom.ts";
 import "./editList.css";
 
@@ -59,9 +58,16 @@ export const EditList = (props: EditListProps) => {
 
   initStoreEditList(mProps.defaultList);
 
-  // Отслеживаем изменения в items, name, note, purpose, для активации кнопки Сохранить
   createEffect(() => {
     checkChanges(storeEditList.name, storeEditList.purpose, storeEditList.note, storeEditList.items);
+  });
+
+  createEffect(() => {
+    const lastItem = storeEditList.items.at(-1);
+
+    if (lastItem) {
+      addAutoItem();
+    }
   });
 
   onMount(() => {
@@ -81,31 +87,6 @@ export const EditList = (props: EditListProps) => {
       window.removeEventListener("beforeunload", handleLeave);
     });
   });
-
-  function isLastItem(index: number) {
-    return index === storeEditList.items.length - 1;
-  }
-
-  function handleItemChange(index: number, value: string) {
-    setStoreEditList("items", index, "content", value);
-
-    if (isLastItem(index) && value.trim() !== "") {
-      setStoreEditList("items", index, "auto", false);
-      addNewItemEndOrAutoItem(true);
-    }
-
-    const lastIndex = storeEditList.items.length - 1;
-    const beforeLastIndex = lastIndex - 1;
-
-    if (
-      storeEditList.items.length !== 1 &&
-      index === beforeLastIndex &&
-      storeEditList.items[lastIndex]?.content.trim() === "" &&
-      storeEditList.items[beforeLastIndex]?.content.trim() === ""
-    ) {
-      removeItem(lastIndex);
-    }
-  }
 
   return (
     <div class="editList">
@@ -132,20 +113,15 @@ export const EditList = (props: EditListProps) => {
                     if (item.originalListId === storeEditList.id) {
                       return (
                         <ListItem
-                          removeItem={() => removeItem(index())}
+                          index={index()}
+                          dataId={item.id}
                           disabled={storeEditList.sendingNow !== false}
-                          isOnlyOneItem={storeEditList.items.length === 1}
+                          auto={item.auto}
                           checkable={storeEditList.isCheckable}
                           checked={false}
-                          name={`${EditListFormNames.ListItem} ${index() + 1}`}
-                          dataId={item.id}
-                          onChange={(value) => handleItemChange(index(), value)}
-                          onAddAfter={() => addNewItemBeforeOrAfter(index(), "after")}
-                          onAddBefore={() => addNewItemBeforeOrAfter(index(), "before")}
                           canAddMore={!reachedItemsLimit()}
                           testId={item.auto ? AUTO_LIST_ITEM : LIST_ITEM}
                           testSubId={index()}
-                          required={!item.auto}
                           dragSettings={{
                             dragData,
                             dragProps: {
@@ -182,9 +158,10 @@ export const EditList = (props: EditListProps) => {
               </SortableProvider>
               <DragOverlay>
                 <ListItem
+                  index={-1}
+                  dataId={draggedItemData().dragId}
                   checkable={storeEditList.isCheckable}
                   checked={false}
-                  dataId={draggedItemData().dragId}
                   canAddMore={!reachedItemsLimit()}
                   testId={DRAGGED_LIST_ITEM}
                   isDraggingOverlay={true}

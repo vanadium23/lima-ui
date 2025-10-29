@@ -14,20 +14,18 @@ export function ListItemWrapper(props: ListItemWrapperProps) {
     },
     props,
   );
-
-  const [text, setText] = createSignal("");
   const [isCheckable] = createSignal(mProps.staticIsCheckable);
 
   return (
     <ListItem
+      index={1}
       checkable={isCheckable()}
       checked={false}
       name="Item"
       testId={DEFAULT_TEST_ID}
       canAddMore={true}
-      onChange={setText}
     >
-      {text()}
+      Тест
     </ListItem>
   );
 }

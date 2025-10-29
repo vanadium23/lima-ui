@@ -19,7 +19,7 @@
 
 .menuItem_primary {
   background-color: var(--neutral-100);
-  color: var(--neutral-800);
+  color: var(--text-neutral-800);
 }
 
 .menuItem_primary:focus-visible {
@@ -37,7 +37,7 @@
 }
 
 .menuItem_dangerous {
-  color: var(--dangerous-500);
+  color: var(--text-dangerous-500);
   background-color: var(--neutral-100);
 }
 
@@ -46,7 +46,7 @@
 }
 
 @media (hover: hover) {
-  .menuItem_dangerous {
+  .menuItem_dangerous:hover {
     background-color: var(--neutral-150);
   }
 }
@@ -56,6 +56,6 @@
 }
 
 .menuItem_disabled {
-  color: var(--neutral-500);
+  color: var(--text-neutral-500);
   cursor: not-allowed;
 }

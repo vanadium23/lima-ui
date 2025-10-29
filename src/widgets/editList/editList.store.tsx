@@ -48,8 +48,13 @@ function addAutoItemIfNeeded(listId: List["id"], items: DragItem[]): DragItem[] 
     return items;
   }
 
-  if (items.length === 0 || items.at(-1)?.content.trim() !== "") {
+  if (items.length === 0 || lastItemIsNotEmpty(items)) {
     return [...items, createDefaultItem(listId, true)];
+    // че-то поломано, добавляется пункт в новый список но он не является автопунктом
+  }
+
+  function lastItemIsNotEmpty(items: DragItem[]) {
+    return items.at(-1)?.content.trim() !== "";
   }
 
   return items;
