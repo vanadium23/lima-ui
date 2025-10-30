@@ -43,7 +43,7 @@ const EditListToolsPanel = () => {
             handleClick={() => {
               addNewItem();
             }}
-            disabled={reachedItemsLimit() || storeEditList.sendingNow !== false}
+            disabled={reachedItemsLimit() || Boolean(storeEditList.sendingNow)}
             testId={TOOLS_PANEL_ADD_ITEM_BUTTON}
           >
             Добавить пункт
@@ -51,7 +51,7 @@ const EditListToolsPanel = () => {
           <ToolsButton
             componentType={ToolsButtonComponentType.Button}
             iconName={IconName.CopySimple}
-            disabled={storeEditList.isNewList || storeEditList.sendingNow !== false}
+            disabled={storeEditList.isNewList || Boolean(storeEditList.sendingNow)}
             handleClick={() => copyItemsToClipboard(storeEditList.items)}
             testId={TOOLS_PANEL_BUTTON_COPY_ITEMS}
           >
@@ -74,7 +74,7 @@ const EditListToolsPanel = () => {
         <div class="toolsPanel__verticalSection">
           <Switch
             testId={CHECKLIST_SWITCH}
-            disabled={storeEditList.sendingNow !== false}
+            disabled={Boolean(storeEditList.sendingNow)}
             checked={storeEditList.isCheckable}
             onChange={toggleCheckable}
           >
@@ -86,7 +86,7 @@ const EditListToolsPanel = () => {
           <ToolsButton
             componentType={ToolsButtonComponentType.Button}
             iconName={IconName.SortAscending}
-            disabled={reachedItemsLimit() || storeEditList.sendingNow !== false}
+            disabled={reachedItemsLimit() || Boolean(storeEditList.sendingNow)}
             testId={TOOLS_PANEL_BUTTON_IMPORT_LIST}
             handleClick={openImportDialogPasteEnd}
           >
@@ -99,7 +99,7 @@ const EditListToolsPanel = () => {
             iconName={IconName.Printer}
             href={`./${storeEditList.id}/print?checkable=${storeEditList.isCheckable}`}
             testId={TOOLS_PANEL_BUTTON_PRINT_LIST}
-            disabled={storeEditList.isNewList || storeEditList.sendingNow !== false}
+            disabled={storeEditList.isNewList || Boolean(storeEditList.sendingNow)}
             openInNewTab={true}
           >
             Напечатать список

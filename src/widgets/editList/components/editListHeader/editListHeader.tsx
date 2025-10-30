@@ -16,7 +16,7 @@ export const EditListHeader = () => {
         name={"List Title"}
         testId={LIST_TITLE_INPUT}
         required={true}
-        disabled={storeEditList.sendingNow !== false}
+        disabled={Boolean(storeEditList.sendingNow)}
         onChange={(value) => setStoreEditList("name", value)}
         placeholder={"Название списка"}
       >
@@ -29,7 +29,7 @@ export const EditListHeader = () => {
         maxLength={LIST_PURPOSE_INPUT_LIMIT}
         name={"List Purpose"}
         testId={LIST_PURPOSE_INPUT}
-        disabled={storeEditList.sendingNow !== false}
+        disabled={Boolean(storeEditList.sendingNow)}
         onChange={(value) => setStoreEditList("purpose", value)}
       >
         {storeEditList.purpose}
@@ -37,7 +37,7 @@ export const EditListHeader = () => {
       <Note
         title="Заметка"
         name={"List Purpose"}
-        disabled={storeEditList.sendingNow !== false}
+        disabled={Boolean(storeEditList.sendingNow)}
         onChange={(value) => setStoreEditList("note", value)}
       >
         {storeEditList.note}

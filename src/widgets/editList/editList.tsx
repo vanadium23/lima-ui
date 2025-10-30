@@ -11,11 +11,8 @@ import { createEffect, For, mergeProps, onCleanup, onMount, Show } from "solid-j
 
 import { ITEMS_LIMIT } from "../../../configuration.ts";
 import {
-  AUTO_LIST_ITEM,
   DEFAULT_TEST_ID,
-  DRAGGED_LIST_ITEM,
   ITEMS_LIMIT_REACHED_WARNING,
-  LIST_ITEM,
   LIST_ITEMS,
   LIST_REMOVAL_ERROR,
   NETWORK_ERROR,
@@ -115,13 +112,7 @@ export const EditList = (props: EditListProps) => {
                         <ListItem
                           index={index()}
                           dataId={item.id}
-                          disabled={storeEditList.sendingNow !== false}
                           auto={item.auto}
-                          checkable={storeEditList.isCheckable}
-                          checked={false}
-                          canAddMore={!reachedItemsLimit()}
-                          testId={item.auto ? AUTO_LIST_ITEM : LIST_ITEM}
-                          testSubId={index()}
                           dragSettings={{
                             dragData,
                             dragProps: {
@@ -130,7 +121,6 @@ export const EditList = (props: EditListProps) => {
                             },
                             dragState: useDragDropContext()?.[0] || null,
                           }}
-                          placeholder={item.auto ? "Добавить пункт списка" : "Пункт списка"}
                         >
                           {item.content}
                         </ListItem>
@@ -158,14 +148,10 @@ export const EditList = (props: EditListProps) => {
               </SortableProvider>
               <DragOverlay>
                 <ListItem
-                  index={-1}
+                  index={ITEMS_LIMIT + 1}
+                  auto={draggedItemData().auto}
                   dataId={draggedItemData().dragId}
-                  checkable={storeEditList.isCheckable}
-                  checked={false}
-                  canAddMore={!reachedItemsLimit()}
-                  testId={DRAGGED_LIST_ITEM}
                   isDraggingOverlay={true}
-                  placeholder={draggedItemData().auto ? "Добавить пункт списка" : "Пункт списка"}
                 >
                   {draggedItemData().content}
                 </ListItem>
