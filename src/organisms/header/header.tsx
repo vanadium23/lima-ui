@@ -1,4 +1,4 @@
-import { Show } from "solid-js";
+import { mergeProps, Show } from "solid-js";
 
 import {
   HEADER,
@@ -24,16 +24,24 @@ type HeaderProps = {
 };
 
 export const Header = (props: HeaderProps) => {
+  const mProps = mergeProps(
+    {
+      list404: false,
+      isLanding: false,
+    },
+    props,
+  );
+
   const showToggleIconButton = (): boolean => {
     const currentLocation: string = location();
 
-    return !props.list404 && currentLocation !== URL_MY_LISTS;
+    return !mProps.list404 && currentLocation !== URL_MY_LISTS;
   };
 
   return (
     <header class="header" data-test-id={HEADER}>
       <div class="header__inner">
-        <Show when={!props.isLanding}>
+        <Show when={!mProps.isLanding}>
           <div class="header__burger">
             <ToggleIconButton
               iconName={IconName.List}
@@ -49,12 +57,12 @@ export const Header = (props: HeaderProps) => {
           <Logo />
         </div>
       </div>
-      <Show when={!props.isLanding}>
+      <Show when={!mProps.isLanding}>
         <div class="header__search">
           <Search />
         </div>
       </Show>
-      <Show when={!props.isLanding}>
+      <Show when={!mProps.isLanding}>
         <div class="header__controls">
           <div class="header__searchOpen">
             <IconButton
