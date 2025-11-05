@@ -24,18 +24,16 @@ type HeaderProps = {
 };
 
 export const Header = (props: HeaderProps) => {
-  const { isLanding = false, list404 = false } = props;
-
   const showToggleIconButton = (): boolean => {
     const currentLocation: string = location();
 
-    return !list404 && currentLocation !== URL_MY_LISTS;
+    return !props.list404 && currentLocation !== URL_MY_LISTS;
   };
 
   return (
     <header class="header" data-test-id={HEADER}>
       <div class="header__inner">
-        {!isLanding && (
+        <Show when={!props.isLanding}>
           <div class="header__burger">
             <ToggleIconButton
               iconName={IconName.List}
@@ -46,17 +44,17 @@ export const Header = (props: HeaderProps) => {
               id="sidebarToggle"
             />
           </div>
-        )}
+        </Show>
         <div class="header__logo">
           <Logo />
         </div>
       </div>
-      {!isLanding && (
+      <Show when={!props.isLanding}>
         <div class="header__search">
           <Search />
         </div>
-      )}
-      {!isLanding && (
+      </Show>
+      <Show when={!props.isLanding}>
         <div class="header__controls">
           <div class="header__searchOpen">
             <IconButton
@@ -80,7 +78,7 @@ export const Header = (props: HeaderProps) => {
             </Show>
           </div>
         </div>
-      )}
+      </Show>
     </header>
   );
 };
