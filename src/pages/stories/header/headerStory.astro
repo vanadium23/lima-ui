@@ -10,9 +10,12 @@ import { Header } from "../../../organisms/header/header.tsx";
       <span class="chead"></span>
       <span class="chead">Default</span>
 
-      <span class="rhead">Medium</span>
+      <span class="rhead">Medium(App)</span>
 
       <Header client:only="solid-js" />
+
+      <span class="rhead">Medium(Landing)</span>
+      <Header isLanding={true} client:only="solid-js" />
     </div>
   </div>
 </StorybookPage>
