@@ -18,7 +18,8 @@
     "lint:fix": "eslint . --fix",
     "prepare": "husky",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "show-trace": "playwright show-trace"
   },
   "dependencies": {
     "@astrojs/solid-js": "^5.1.1",

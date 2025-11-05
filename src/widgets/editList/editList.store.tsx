@@ -43,6 +43,7 @@ export const [storeEditList, setStoreEditList] = createStore<EditListStore>({
   itemsScrollStartPosition: 0,
 });
 
+//TODO Где то тут запряталась проблема что создается пустой пункт с dragId а потом вместо него создается автопунк
 function addAutoItemIfNeeded(listId: List["id"], items: DragItem[]): DragItem[] {
   if (items.length >= ITEMS_LIMIT) {
     return items;
@@ -50,7 +51,6 @@ function addAutoItemIfNeeded(listId: List["id"], items: DragItem[]): DragItem[] 
 
   if (items.length === 0 || lastItemIsNotEmpty(items)) {
     return [...items, createDefaultItem(listId, true)];
-    // че-то поломано, добавляется пункт в новый список но он не является автопунктом
   }
 
   function lastItemIsNotEmpty(items: DragItem[]) {

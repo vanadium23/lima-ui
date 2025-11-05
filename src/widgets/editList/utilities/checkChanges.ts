@@ -23,10 +23,13 @@ export function checkChanges(
   setStoreEditList("isChanged", hasChanges);
 }
 
-function itemsChanged(initialItems: Items, currentItemsWithAutoItem: DragItem[]) {
-  const currentItems = currentItemsWithAutoItem.filter((item) => !item.auto);
+function itemsChanged(initialItems: Items, currentItems: DragItem[]) {
+  const currentItemsWithoutAutoItem = currentItems.filter((item) => !item.auto);
+  console.log(
+    `инициал ${JSON.stringify(initialItems, null, 2)}, текущие ${JSON.stringify(currentItemsWithoutAutoItem, null, 2)}`,
+  );
 
-  if (initialItems.length !== currentItems.length) {
+  if (initialItems.length !== currentItemsWithoutAutoItem.length) {
     return true;
   }
 
