@@ -8,7 +8,7 @@ Feature: Successfully creating list with correct data
     And I type some text with length less or equal to the one of "list note" text area limit
 
   Scenario: Disabling form controls when pressing the "Save" button
-    When I type some text with length less or equal to the one of "first item" input limit
+    When I type some text with length less or equal to the one of "auto item" input limit
     And I press the "save" button
     Then I expect to see the following suffixed tab title: "Новый список"
     Then I expect to see sidebar or its button

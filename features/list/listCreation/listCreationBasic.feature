@@ -13,7 +13,7 @@ Feature: Seeing the basis of List Creation page
     Then I expect to see the "list purpose" input enabled
     Then I expect to fully see the collapsed "list note" accordion ready for expanding
     Then I expect to see list items area
-    Then I expect to see the "single" item input enabled
+    Then I expect to see the "automatic" item input enabled
     Then I expect to see the "save" button disabled
     And I ensure the tools panel is open
     Then I expect to see the "add list item" button enabled

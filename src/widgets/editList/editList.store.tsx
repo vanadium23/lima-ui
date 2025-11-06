@@ -1,9 +1,8 @@
 import { createStore } from "solid-js/store";
 
-import { ITEMS_LIMIT } from "../../../configuration.ts";
-import type { DragItem, DragList, List } from "../../types/types.ts";
+import type { DragList, List } from "../../types/types.ts";
 
-import { createDefaultItem } from "./utilities/createDefaultItem.ts";
+import { addAutoItem } from "./utilities/addAutoItem.ts";
 import { convertItemsToDragItems } from "./utilities/dragAndDrop.ts";
 
 export type EditListStore = DragList & {
@@ -23,7 +22,7 @@ export const emptyList: List = {
   name: "",
   purpose: "",
   note: "",
-  items: [{ content: "", id: "", originalListId: "" }],
+  items: [],
 };
 
 export const [storeEditList, setStoreEditList] = createStore<EditListStore>({
@@ -43,31 +42,15 @@ export const [storeEditList, setStoreEditList] = createStore<EditListStore>({
   itemsScrollStartPosition: 0,
 });
 
-//TODO Где то тут запряталась проблема что создается пустой пункт с dragId а потом вместо него создается автопунк
-function addAutoItemIfNeeded(listId: List["id"], items: DragItem[]): DragItem[] {
-  if (items.length >= ITEMS_LIMIT) {
-    return items;
-  }
-
-  if (items.length === 0 || lastItemIsNotEmpty(items)) {
-    return [...items, createDefaultItem(listId, true)];
-  }
-
-  function lastItemIsNotEmpty(items: DragItem[]) {
-    return items.at(-1)?.content.trim() !== "";
-  }
-
-  return items;
-}
-
 export function initStoreEditList(defaultList: List) {
   updateStoreEditList(defaultList);
+  addAutoItem();
 }
 
 export function updateStoreEditList(updatedList: List) {
   setStoreEditList({
     id: updatedList.id,
-    items: addAutoItemIfNeeded(updatedList.id, convertItemsToDragItems(updatedList.items)),
+    items: convertItemsToDragItems(updatedList.items),
     name: updatedList.name,
     purpose: updatedList.purpose,
     note: updatedList.note,

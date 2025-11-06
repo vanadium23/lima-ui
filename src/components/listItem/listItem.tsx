@@ -22,7 +22,7 @@ import {
 } from "../../widgets/editList/components/importDialog/importDialog.tsx";
 import { storeEditList } from "../../widgets/editList/editList.store.tsx";
 import { handleItemChange } from "../../widgets/editList/utilities/handleItemChange.ts";
-import { pasteItemAfter, pasteItemBefore } from "../../widgets/editList/utilities/pasteItem.ts";
+import { pasteItemAfter, pasteItemBefore } from "../../widgets/editList/utilities/pasteNewItem.ts";
 import { reachedItemsLimit } from "../../widgets/editList/utilities/reachedItemsLimit.ts";
 import { removeItem } from "../../widgets/editList/utilities/removeItem.ts";
 import { Checkbox, CheckboxSize, CheckboxTheme } from "../checkbox/checkbox.tsx";
@@ -102,14 +102,18 @@ export const ListItem = (props: ListItemProps) => {
     {
       children: "Импортировать выше",
       icon: IconName.SortDescending,
-      handleClick: openImportDialogPasteBefore,
+      handleClick: () => {
+        openImportDialogPasteBefore(mProps.index);
+      },
       testId: DEFAULT_TEST_ID,
       disabled: reachedItemsLimit(),
     },
     {
       children: "Импортировать ниже",
       icon: IconName.SortAscending,
-      handleClick: openImportDialogPasteAfter,
+      handleClick: () => {
+        openImportDialogPasteAfter(mProps.index);
+      },
       testId: DEFAULT_TEST_ID,
       disabled: reachedItemsLimit(),
     },

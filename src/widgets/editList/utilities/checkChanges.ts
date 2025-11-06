@@ -25,9 +25,6 @@ export function checkChanges(
 
 function itemsChanged(initialItems: Items, currentItems: DragItem[]) {
   const currentItemsWithoutAutoItem = currentItems.filter((item) => !item.auto);
-  console.log(
-    `инициал ${JSON.stringify(initialItems, null, 2)}, текущие ${JSON.stringify(currentItemsWithoutAutoItem, null, 2)}`,
-  );
 
   if (initialItems.length !== currentItemsWithoutAutoItem.length) {
     return true;

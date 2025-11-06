@@ -4,14 +4,14 @@ import { createDefaultItem } from "./createDefaultItem.ts";
 import { reachedItemsLimit } from "./reachedItemsLimit.ts";
 
 export function pasteItemBefore(index: number) {
-  pasteItem(index);
+  pasteNewItem(index);
 }
 
 export function pasteItemAfter(index: number) {
-  pasteItem(index + 1);
+  pasteNewItem(index + 1);
 }
 
-function pasteItem(insertIndex: number) {
+function pasteNewItem(insertIndex: number) {
   if (reachedItemsLimit()) return;
 
   const separatedItemsBeforeNewItem = storeEditList.items.slice(0, insertIndex).map((item) => ({

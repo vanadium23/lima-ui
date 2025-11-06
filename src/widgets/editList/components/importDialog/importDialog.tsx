@@ -8,10 +8,9 @@ import { Dialog } from "../../../../components/dialog/dialog.tsx";
 import { ListStripeImport } from "../../../../components/listStripeImport/listStripeImport.tsx";
 import { notificationState } from "../../../../state/pushNotificationStateManager.ts";
 import { type Item, type List } from "../../../../types/types.ts";
-import { setStoreEditList } from "../../editList.store.tsx";
 import { getLists } from "../../services/getLists.ts";
-import { convertItemsToDragItems } from "../../utilities/dragAndDrop.ts";
-import { pasteItemsBeforeAutoListItem } from "../../utilities/pasteItemsBeforeAutoListItem.ts";
+import { addImportItems } from "../../utilities/addImportItems.ts";
+import { pasteImportItemsAfter, pasteImportItemsBefore } from "../../utilities/pasteImportItems.ts";
 
 import "./importDialog.css";
 
@@ -23,7 +22,8 @@ type ImportDialogState = {
   listsForImport: List[];
   loadingListsForImport: boolean;
   openImportDialog: boolean;
-  pasteMethod: "before" | "after" | "end";
+  pasteMethod?: "before" | "after" | "end";
+  pasteIndex?: number;
   itemsCache: Record<Item["id"], Item>;
 };
 
@@ -39,12 +39,12 @@ export const openImportDialogPasteEnd = () => {
   setStoreImportDialog({ openImportDialog: true, pasteMethod: "end" });
 };
 
-export const openImportDialogPasteBefore = () => {
-  setStoreImportDialog({ openImportDialog: true, pasteMethod: "before" });
+export const openImportDialogPasteBefore = (pasteIndex: number) => {
+  setStoreImportDialog({ openImportDialog: true, pasteMethod: "before", pasteIndex: pasteIndex });
 };
 
-export const openImportDialogPasteAfter = () => {
-  setStoreImportDialog({ openImportDialog: true, pasteMethod: "after" });
+export const openImportDialogPasteAfter = (pasteIndex: number) => {
+  setStoreImportDialog({ openImportDialog: true, pasteMethod: "after", pasteIndex: pasteIndex });
 };
 
 export const ImportDialog = (props: ImportDialogProps) => {
@@ -111,12 +111,12 @@ export const ImportDialog = (props: ImportDialogProps) => {
       .map((id) => storeImportDialog.itemsCache[id])
       .filter((item): item is Item => Boolean(item));
 
-    if (storeImportDialog.pasteMethod === "after") {
-      setStoreEditList("items", pasteItemsBeforeAutoListItem(convertItemsToDragItems(checkedItems)));
-    } else if (storeImportDialog.pasteMethod === "before") {
-      setStoreEditList("items", pasteItemsBeforeAutoListItem(convertItemsToDragItems(checkedItems)));
+    if (storeImportDialog.pasteMethod === "after" && storeImportDialog.pasteIndex) {
+      pasteImportItemsAfter(storeImportDialog.pasteIndex, checkedItems);
+    } else if (storeImportDialog.pasteMethod === "before" && storeImportDialog.pasteIndex) {
+      pasteImportItemsBefore(storeImportDialog.pasteIndex, checkedItems);
     } else if (storeImportDialog.pasteMethod === "end") {
-      setStoreEditList("items", pasteItemsBeforeAutoListItem(convertItemsToDragItems(checkedItems)));
+      addImportItems(checkedItems);
     }
 
     handleClose();
