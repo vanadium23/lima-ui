@@ -1,4 +1,5 @@
 import type { Preview } from "storybook-solidjs-vite";
+
 import "normalize.css/normalize.css";
 import "../src/layouts/main.css";
 

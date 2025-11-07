@@ -85,7 +85,6 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
           size={CheckboxSize.Medium}
           testId={DEFAULT_TEST_ID}
           testSubId={mProps.testSubId ?? ""}
-          independent={true}
           checked={getListCheckboxState()}
           onChange={handleMainCheckboxChange}
           name={mProps.titleHTMLName}

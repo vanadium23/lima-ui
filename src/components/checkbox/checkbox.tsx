@@ -23,7 +23,7 @@ type CheckboxProps = {
   disabled?: boolean;
   ariaLabel?: string | undefined;
   checked?: CheckedState;
-  independent?: boolean /* TODO Нужно описать в FE-документации как это у нас работает и для чего */;
+  dependent?: boolean /* TODO Нужно описать в FE-документации как это у нас работает и для чего */;
   onChange?: (checked: boolean) => void;
   name?: string;
 };
@@ -36,7 +36,7 @@ export const Checkbox = (props: Testable<CheckboxProps>) => {
       disabled: false,
       ariaLabel: undefined,
       checked: false,
-      independent: true,
+      dependent: false,
       onChange: () => {},
       name: "",
     },
@@ -72,7 +72,7 @@ export const Checkbox = (props: Testable<CheckboxProps>) => {
 
   return (
     <Switch>
-      <Match when={mProps.independent}>
+      <Match when={!mProps.dependent}>
         <label
           class="checkbox"
           classList={{
@@ -108,9 +108,15 @@ export const Checkbox = (props: Testable<CheckboxProps>) => {
           </span>
         </label>
       </Match>
-      <Match when={!mProps.independent}>
+      <Match when={mProps.dependent}>
         <span
-          class={`checkbox checkbox_${mProps.disabled ? "disabled" : mProps.theme} checkbox_${mProps.size} checkbox_independent`}
+          class="checkbox"
+          classList={{
+            [`checkbox_${mProps.size}`]: true,
+            [`checkbox_${mProps.theme}`]: !mProps.disabled,
+            checkbox_disabled: mProps.disabled,
+            checkbox_dependent: mProps.dependent,
+          }}
           data-test-id={mProps.testId}
           data-test-sub-id={mProps.testSubId}
         >

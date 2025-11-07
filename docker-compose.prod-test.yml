@@ -1,0 +1,20 @@
+include:
+  - path: ../lima/docker-compose.yml
+
+services:
+  lima-ui-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod-test
+      args:
+        - SERVER_API_URL=http://svernik:${PORT:-3000}
+        - PUBLIC_API_URL=http://localhost:${HOST_PORT:-3000}
+    ports:
+      - "${FRONTEND_PORT:-4321}:4321"
+    environment:
+      - PUBLIC_API_URL=http://localhost:${HOST_PORT:-3000}
+      - SERVER_API_URL=http://svernik:${PORT:-3000}
+      - NODE_ENV=production
+      - HOST=0.0.0.0
+    depends_on:
+      - svernik
