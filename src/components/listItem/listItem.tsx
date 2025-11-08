@@ -193,25 +193,27 @@ export const ListItem = (props: ListItemProps) => {
           testId={buildListItemInputTestId(getTestId())}
           testSubId={getListItemTestSubId(getTestId(), mProps.index)}
           controlElements={
-            <DropdownMenu
-              component={(props) => (
-                <IconButton
-                  ref={props.ref}
-                  componentType={IconButtonComponentType.Button}
-                  handleClick={props.handleClick}
-                  testId={OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON}
-                  testSubId={getListItemTestSubId(getTestId(), mProps.index)}
-                  size={IconButtonSize.MediumEmbedded}
-                  iconName={IconName.DotsThree}
-                  ariaLabel={"Выпадающее меню"}
-                  disabled={mProps.disabled}
-                />
-              )}
-              testId={LIST_ITEM_CONTEXT_MENU}
-              testSubId={getListItemTestSubId(getTestId(), mProps.index)}
-            >
-              {menuItems()}
-            </DropdownMenu>
+            <Show when={!mProps.auto}>
+              <DropdownMenu
+                component={(props) => (
+                  <IconButton
+                    ref={props.ref}
+                    componentType={IconButtonComponentType.Button}
+                    handleClick={props.handleClick}
+                    testId={OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON}
+                    testSubId={getListItemTestSubId(getTestId(), mProps.index)}
+                    size={IconButtonSize.MediumEmbedded}
+                    iconName={IconName.DotsThree}
+                    ariaLabel={"Выпадающее меню"}
+                    disabled={mProps.disabled}
+                  />
+                )}
+                testId={LIST_ITEM_CONTEXT_MENU}
+                testSubId={getListItemTestSubId(getTestId(), mProps.index)}
+              >
+                {menuItems()}
+              </DropdownMenu>
+            </Show>
           }
         >
           {mProps.children}
