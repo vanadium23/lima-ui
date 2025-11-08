@@ -6,7 +6,7 @@ Feature: Failing to create a new list
   Scenario: "Save" button stays disabled when fields contain only spaces
     And I type the following text into the "list title" input: "   "
     And I type the following text into the "list purpose" input: "   "
-    And I type the following text into the "first item" input: "   "
+    And I type the following text into the "automatic item" input: "   "
     And I press on the "list note" accordion
     And I type the following text into the "list note" text area: "   "
     Then I expect to see the "save" button disabled
@@ -15,7 +15,7 @@ Feature: Failing to create a new list
     Given There is no internet connection
     And I type some text with length less or equal to the one of "list title" input limit
     And I type some text with length less or equal to the one of "list purpose" input limit
-    And I type some text with length less or equal to the one of "first item" input limit
+    And I type some text with length less or equal to the one of "automatic item" input limit
     And I press the "save" button
     Then I expect to see the "connection" error
 
@@ -23,7 +23,7 @@ Feature: Failing to create a new list
     Given Data server is not available
     And I type some text with length less or equal to the one of "list title" input limit
     And I type some text with length less or equal to the one of "list purpose" input limit
-    And I type some text with length less or equal to the one of "first item" input limit
+    And I type some text with length less or equal to the one of "automatic item" input limit
     And I press the "save" button
     Then I expect to see the "connection" error
 
@@ -31,7 +31,7 @@ Feature: Failing to create a new list
     Given There is no internet connection
     And I type some text with length less or equal to the one of "list title" input limit
     And I type some text with length less or equal to the one of "list purpose" input limit
-    And I type some text with length less or equal to the one of "first item" input limit
+    And I type some text with length less or equal to the one of "automatic item" input limit
     And I press the "save" button
     And I wait for the page to load
     And I press the "save" button
@@ -39,7 +39,7 @@ Feature: Failing to create a new list
 
   Scenario: Sending is not allowed when list title is empty
     And I type some text with length less or equal to the one of "list purpose" input limit
-    And I type some text with length less or equal to the one of "first item" input limit
+    And I type some text with length less or equal to the one of "automatic item" input limit
     And I start counting the "list creation" requests
     And I press the "save" button
     Then I expect to be focused on the "list title" input
@@ -50,7 +50,7 @@ Feature: Failing to create a new list
     And I type some text with length less or equal to the one of "list purpose" input limit
     And I start counting the "list creation" requests
     And I press the "save" button
-    Then I expect to be focused on the "first item" input
+    Then I expect to be focused on the "automatic item" input
     Then I expect to see the following number of "list creation" request: 0
 
   Scenario: Hidden empty item input is shown when attempting to create a new list
@@ -70,7 +70,7 @@ Feature: Failing to create a new list
     And I type some text with length less or equal to the one of "list purpose" input limit
     And I press on the "list note" accordion
     And I type some text with length less or equal to the one of "list note" text area limit
-    And I type some text with length less or equal to the one of "first item" input limit
+    And I type some text with length less or equal to the one of "automatic item" input limit
     And I press the "save" button
     And I wait for the page to load
     Then I expect to see the following suffixed tab title: "Новый список"
