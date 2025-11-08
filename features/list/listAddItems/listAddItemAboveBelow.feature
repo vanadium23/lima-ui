@@ -4,11 +4,14 @@ Feature: Adding items above and below on the List page
     When I open "List Creation" page
 
   Scenario: Adding an item above the first one via context menu
-    When I hover "automatic list item"
-    And I press the "open context menu for automatic list item" button
+    And I ensure the tools panel is open
+    And I press the "add list item" button
+    When I hover "first list item"
+    And I press the "open context menu first item" button
     Then I expect to see the fully visible "list item" context menu
     And I press the visible "add item above" menu item
     Then I expect to see the "first" item input enabled
+    Then I expect to see the "second" item input enabled
     Then I expect to see the "automatic" item input enabled
 
   Scenario: Adding an item below the last added one via context menu

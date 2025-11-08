@@ -3,7 +3,7 @@ import { expect } from "@playwright/test";
 
 import { ITEMS_LIMIT } from "../../../configuration.ts";
 import type { ComplexWorld } from "../../context/hooks.ts";
-import { AUTO_LIST_ITEM_INPUT, LIST_ITEM_INPUT } from "../../testIds.ts";
+import { AUTO_LIST_ITEM_INPUT } from "../../testIds.ts";
 import { getTimeoutOrCancelItIfDebugging } from "../../utilities/getTimeoutOrCancelItIfDebugging.ts";
 
 import { ITEM_ADDERS, type ItemInputMeaning, LIST_ITEM_INPUT_TEST_IDS } from "./testIds.ts";
@@ -21,9 +21,7 @@ When(
   "I add list items to their limit via automatically added item",
   { timeout: getTimeoutOrCancelItIfDebugging(60000) },
   async function (this: ComplexWorld) {
-    await this.locateByIdParts(LIST_ITEM_INPUT).fill("0");
-
-    for (let i = 1; i < ITEMS_LIMIT; i++) {
+    for (let i = 0; i < ITEMS_LIMIT; i++) {
       await this.locateByIdParts(AUTO_LIST_ITEM_INPUT).fill(`${i}`);
     }
   },
