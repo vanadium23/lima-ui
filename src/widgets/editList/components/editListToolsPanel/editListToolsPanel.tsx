@@ -1,3 +1,4 @@
+import { ITEMS_LIMIT } from "../../../../../configuration.ts";
 import {
   CHECKLIST_SWITCH,
   TOOLS_PANEL,
@@ -43,7 +44,9 @@ const EditListToolsPanel = () => {
             handleClick={() => {
               addNewItem();
             }}
-            disabled={reachedItemsLimit() || Boolean(storeEditList.sendingNow)}
+            disabled={
+              reachedItemsLimit() || Boolean(storeEditList.sendingNow || storeEditList.items.length === ITEMS_LIMIT)
+            }
             testId={TOOLS_PANEL_ADD_ITEM_BUTTON}
           >
             Добавить пункт

@@ -44,6 +44,15 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
   const [getItemsCheckboxState, setItemsCheckboxState] = createSignal<boolean[]>([]);
   const [getListCheckboxState, setListCheckboxState] = createSignal<CheckedState>(false);
 
+  function handleItemCheckboxChange(index: number) {
+    // eslint-disable-next-line solid/reactivity
+    return function (checked: boolean) {
+      const newItems = [...getItemsCheckboxState()];
+      newItems[index] = checked;
+      setItemsCheckboxState(newItems);
+    };
+  }
+
   createEffect(() => {
     const checkedItems = getItemsCheckboxState();
 
@@ -51,7 +60,7 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
 
     if (checkedCount === 0) {
       setListCheckboxState(false);
-    } else if (checkedCount === checkedItems.length) {
+    } else if (checkedCount === mProps.children.items.length) {
       setListCheckboxState(true);
     } else {
       setListCheckboxState("mixed");
@@ -60,7 +69,6 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
 
   function handleMainCheckboxChange(checked: boolean) {
     const newState = new Array(mProps.children.items.length).fill(checked);
-    console.log(newState);
     setItemsCheckboxState(newState);
   }
 
@@ -105,11 +113,16 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
         </button>
         <div class="listStripeImport__items">
           <Index each={mProps.children.items}>
-            {(getItem) => {
+            {(getItem, index) => {
               setStoreImportDialog("itemsCache", getItem().id, getItem());
 
               return (
-                <ListItemImport testId={DEFAULT_TEST_ID} checkboxHTMLName={getItem().id}>
+                <ListItemImport
+                  testId={DEFAULT_TEST_ID}
+                  checkboxHTMLName={getItem().id}
+                  checked={getItemsCheckboxState()[index] || false}
+                  onCheckedChange={handleItemCheckboxChange(index)}
+                >
                   {getItem().content}
                 </ListItemImport>
               );

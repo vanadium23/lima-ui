@@ -22,7 +22,7 @@ import { Button, ButtonType } from "../../components/button/button.tsx";
 import { ImportedGroup } from "../../components/importedGroup/importedGroup.tsx";
 import { ListItem } from "../../components/listItem/listItem.tsx";
 import { PageError } from "../../components/pageError/pageError.tsx";
-import { type List } from "../../types/types.ts";
+import { type Item, type List } from "../../types/types.ts";
 
 import { EditListHeader } from "./components/editListHeader/editListHeader.tsx";
 import EditListToolsPanel from "./components/editListToolsPanel/editListToolsPanel.tsx";
@@ -40,6 +40,22 @@ import { prepareAndSendListData } from "./utilities/prepareAndSendListData.ts";
 import { reachedItemsLimit } from "./utilities/reachedItemsLimit.ts";
 import { scroller } from "./utilities/scrollToBottom.ts";
 import "./editList.css";
+
+export type ItemToSend = Item | { id: string } | { content: string };
+
+// Добавляем новый тип для импортированного списка
+export type ImportedListReference = {
+  id: string;
+  originalListId: string;
+  type: "importedList";
+  listData: List;
+};
+
+// Обновляем DragItem чтобы включить импортированные списки
+export type DragItem = (Item | ImportedListReference) & {
+  dragId: string;
+  auto: boolean;
+};
 
 type EditListProps = {
   defaultList?: List;
