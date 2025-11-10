@@ -4,6 +4,7 @@ import { expect } from "@playwright/test";
 import { ITEMS_LIMIT } from "../../../configuration.ts";
 import type { ComplexWorld } from "../../context/hooks.ts";
 import {
+  AUTO_LIST_ITEM_INPUT,
   ITEMS_LIMIT_REACHED_WARNING,
   LIST_ITEM_INPUT,
   LIST_ITEMS,
@@ -13,36 +14,25 @@ import { noVerticalScroll } from "../../utilities/checkScroll.ts";
 import { getTimeoutOrCancelItIfDebugging } from "../../utilities/getTimeoutOrCancelItIfDebugging.ts";
 import { calculateCurrentItemsCount } from "../utilities/calculateCurrentItemsCount.ts";
 
-When(
-  "I add list items till scroll appears plus one item input",
-  async function (this: ComplexWorld) {
-    const addItemButton = this.locateByIdParts(TOOLS_PANEL_ADD_ITEM_BUTTON);
-    const itemsInputs = this.locateByIdParts(LIST_ITEMS);
+When("I add list items till scroll appears plus one item input", async function (this: ComplexWorld) {
+  const addItemButton = this.locateByIdParts(TOOLS_PANEL_ADD_ITEM_BUTTON);
+  const itemsInputs = this.locateByIdParts(LIST_ITEMS);
 
-    while (
-      (await itemsInputs.evaluate(noVerticalScroll)) &&
-      (await addItemButton.isEnabled())
-    ) {
-      await addItemButton.click();
-    }
+  while ((await itemsInputs.evaluate(noVerticalScroll)) && (await addItemButton.isEnabled())) {
+    await addItemButton.click();
+  }
 
-    if (await addItemButton.isEnabled()) {
-      await addItemButton.click();
-    }
-  },
-);
+  if (await addItemButton.isEnabled()) {
+    await addItemButton.click();
+  }
+});
 
-Then(
-  "I expect to see the last added item input",
-  async function (this: ComplexWorld) {
-    await expect(this.locateByIdParts(LIST_ITEM_INPUT).last()).toBeInViewport();
-  },
-);
+Then("I expect to see the last added item input", async function (this: ComplexWorld) {
+  await expect(this.locateByIdParts(LIST_ITEM_INPUT).last()).toBeInViewport();
+});
 
 Then("I expect not to see the first item input", async function () {
-  await expect(
-    this.locateByIdParts(LIST_ITEM_INPUT).first(),
-  ).not.toBeInViewport();
+  await expect(this.locateByIdParts(LIST_ITEM_INPUT).first()).not.toBeInViewport();
 });
 
 When(
@@ -51,18 +41,19 @@ When(
   async function (this: ComplexWorld) {
     const addItemButton = this.locateByIdParts(TOOLS_PANEL_ADD_ITEM_BUTTON);
 
-    for (let i = await calculateCurrentItemsCount(this); i < ITEMS_LIMIT; i++) {
+    for (let i = await calculateCurrentItemsCount(this); i < ITEMS_LIMIT - 1; i++) {
       await addItemButton.click();
     }
+
+    const autoItem = this.locateByIdParts(AUTO_LIST_ITEM_INPUT);
+    await autoItem.focus();
+    await autoItem.fill("LastItem");
   },
 );
 
-Then(
-  "I expect to see the warning about items inputs limit reached",
-  async function (this: ComplexWorld) {
-    await this.expectLocated(ITEMS_LIMIT_REACHED_WARNING).toBeInViewport();
-  },
-);
+Then("I expect to see the warning about items inputs limit reached", async function (this: ComplexWorld) {
+  await this.expectLocated(ITEMS_LIMIT_REACHED_WARNING).toBeInViewport();
+});
 
 When(
   "I fill all items inputs with their index",
