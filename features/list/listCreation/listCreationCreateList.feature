@@ -7,7 +7,6 @@ Feature: Successfully creating list with correct data
     And I press on the "list note" accordion
     And I type some text with length less or equal to the one of "list note" text area limit
 
-  @broken
   Scenario: Disabling form controls when pressing the "Save" button
     When I type some text with length less or equal to the one of "automatic item" input limit
     And I press the "save" button
@@ -65,7 +64,6 @@ Feature: Successfully creating list with correct data
     Then All necessary elements are on the "List Creation Item Added, Note Expanded" page
     Then I expect to see no other elements
 
-  @broken
   Scenario: All items inputs are disabled on list creation
     When I ensure the tools panel is open
     And I add list items till scroll appears plus one item input
