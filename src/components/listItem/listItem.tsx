@@ -51,7 +51,6 @@ type ListItemProps = {
   dataId?: string;
   name?: string;
   children?: string;
-  disabled?: boolean;
   auto?: boolean;
   checked?: boolean;
   dragSettings?: DragSettings;
@@ -66,7 +65,6 @@ export const ListItem = (props: ListItemProps) => {
       dataId: "",
       name: "",
       children: "",
-      disabled: false,
       auto: false,
       checked: false,
       isDraggingOverlay: false,
@@ -163,7 +161,7 @@ export const ListItem = (props: ListItemProps) => {
     >
       <div class="listItem__dragHandle">
         <DragHandle
-          disabled={mProps.disabled}
+          disabled={storeEditList.sendingNow !== false}
           testId={DRAG_HANDLE}
           testSubId={getListItemTestSubId(getTestId(), mProps.index)}
           dragHandle={mProps.dragSettings.dragData}
@@ -176,7 +174,7 @@ export const ListItem = (props: ListItemProps) => {
             size={CheckboxSize.Medium}
             testId={CHECKBOX}
             testSubId={getListItemTestSubId(getTestId(), mProps.index)}
-            disabled={mProps.disabled}
+            disabled={storeEditList.sendingNow !== false}
             checked={mProps.checked}
           />
         </div>
@@ -186,7 +184,7 @@ export const ListItem = (props: ListItemProps) => {
           maxLength={EDIT_LIST_INPUT_LIMIT}
           name={mProps.isDraggingOverlay ? "Drag Overlay Item" : `List Item ${mProps.index + 1}`}
           dataId={mProps.dataId}
-          disabled={mProps.disabled}
+          disabled={storeEditList.sendingNow !== false}
           placeholder={mProps.auto ? "Добавить пункт списка" : "Пункт списка"}
           required={!mProps.auto || isOnlyOneItem()}
           onChange={(value) => handleItemChange(mProps.index, value)}
@@ -205,7 +203,7 @@ export const ListItem = (props: ListItemProps) => {
                     size={IconButtonSize.MediumEmbedded}
                     iconName={IconName.DotsThree}
                     ariaLabel={"Выпадающее меню"}
-                    disabled={mProps.disabled}
+                    disabled={storeEditList.sendingNow !== false}
                   />
                 )}
                 testId={LIST_ITEM_CONTEXT_MENU}

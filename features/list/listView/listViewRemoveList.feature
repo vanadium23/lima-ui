@@ -72,7 +72,6 @@ Feature: Removing a list from the List view page
     Then I expect to see the warning about items inputs limit reached
     Then I expect to see the "list removal" error
 
-  @broken
   Scenario: Disabling form controls when pressing the "Confirm list removal" button
     And I press on the "list note" accordion
     And I ensure the tools panel is open
