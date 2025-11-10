@@ -6,6 +6,7 @@ Feature: Adding items above and below on the List page
   Scenario: Adding an item above the first one via context menu
     And I ensure the tools panel is open
     And I press the "add list item" button
+    And I ensure the tools panel does not disturb
     When I hover "first list item"
     And I press the "open context menu first item" button
     Then I expect to see the fully visible "list item" context menu
