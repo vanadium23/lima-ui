@@ -5,7 +5,8 @@ Feature: Seeing the basis of the automatically added item
 
   Scenario: Seeing the new item automatically added
     When I type some text with length less or equal to the one of "automatic item" input limit
-    Then I expect to have the "automatic" item input enabled
+    Then I expect to have the "first" item input enabled
+    Then I expect to have the "new automatic" item input enabled
 
   Scenario: Seeing the automatically added item when the first item is removed
     When I type some text with length less or equal to the one of "automatic item" input limit

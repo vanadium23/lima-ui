@@ -85,7 +85,8 @@ Feature: Successfully creating list with correct data
     Then I expect to see the following number of "list creation" request: 1
 
   Scenario: Created list contains all data provided during creation
-    When I type some text with length less or equal to the one of "automatic item" input limit
+    And I press the "add list item" button
+    When I type some text with length less or equal to the one of "first item" input limit
     And I ensure the tools panel is open
     And I press the "add list item" button
     And I ensure the tools panel does not disturb
@@ -100,7 +101,8 @@ Feature: Successfully creating list with correct data
     Then I expect to see the "list note" text area with the text I provided
 
   Scenario: Created list data persists after page refresh
-    When I type some text with length less or equal to the one of "automatic item" input limit
+    And I press the "add list item" button
+    When I type some text with length less or equal to the one of "first item" input limit
     And I ensure the tools panel is open
     And I press the "add list item" button
     And I ensure the tools panel does not disturb

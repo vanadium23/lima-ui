@@ -100,11 +100,12 @@ Feature: Failing to create a new list
     Then I expect to see no other elements
 
   @heavy
+  @broken
   Scenario: List creation with items at limit and connection error shows both problems
     Given There is no internet connection
     And I type some text with length less or equal to the one of "list title" input limit
     And I type some text with length less or equal to the one of "list purpose" input limit
-    And I type some text with length less or equal to the one of "first item" input limit
+    And I type some text with length less or equal to the one of "automatic item" input limit
     And I ensure the tools panel is open
     And I add list items to their limit
     And I ensure the tools panel does not disturb

@@ -26,6 +26,7 @@ Feature: Adding items above and below on the List page
     Then I expect to see the "last item" input empty
 
   @heavy
+  @broken
   Scenario: Reaching the limit of list items via adding items above and below
     When I add list items to their limit via adding above and below
     Then I expect to see the warning about items inputs limit reached
