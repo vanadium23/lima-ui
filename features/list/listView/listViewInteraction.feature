@@ -2,9 +2,9 @@ Feature: Interacting with the List view page
 
   Background:
     When I clear all data
+    And I add a list
 
   Scenario: Copying items to clipboard
-    When I add a list
     And I ensure the tools panel is open
     And I type some text with length less or equal to the one of "first item" input limit
     And I press the "add list item" button
@@ -19,7 +19,6 @@ Feature: Interacting with the List view page
     And I expect clipboard to contain items content
 
   Scenario: Displaying checkboxes when pressing the checklist switch
-    When I add a list
     And I type some text with length less or equal to the one of "first item" input limit
     And I ensure the tools panel is open
     And I press the "add list item" button
@@ -31,7 +30,6 @@ Feature: Interacting with the List view page
     Then I expect to see checkboxes for all list items
 
   Scenario: Hiding checkboxes when pressing the checklist switch again
-    When I add a list
     And I type some text with length less or equal to the one of "first item" input limit
     And I ensure the tools panel is open
     And I press the "add list item" button
@@ -44,7 +42,6 @@ Feature: Interacting with the List view page
     Then I expect not to see checkboxes for any list item
 
   Scenario: Checking checkboxes when pressing them
-    When I add a list
     And I type some text with length less or equal to the one of "first item" input limit
     And I ensure the tools panel is open
     And I press the "add list item" button
@@ -58,7 +55,6 @@ Feature: Interacting with the List view page
     And I expect other checkboxes not to be checked
 
   Scenario: Unchecking checkboxes when pressing them again
-    When I add a list
     And I type some text with length less or equal to the one of "first item" input limit
     And I ensure the tools panel is open
     And I press the "add list item" button

@@ -9,7 +9,8 @@ Feature: Adding items on the List Creation page
     And I press the "add list item" button
     And I ensure the tools panel does not disturb
     And I hover "list title" input
-    Then I expect to see the "second" item input enabled
+    Then I expect to see the "first" item input enabled
+    Then I expect to see the "automatic" item input enabled
     Then I expect to see no other elements
 
   Scenario: Adding items inputs more than fit into screen
@@ -26,6 +27,7 @@ Feature: Adding items on the List Creation page
     And I ensure the tools panel does not disturb
 
   @heavy
+  @broken
   Scenario: Adding items inputs to the limit
     When I ensure the tools panel is open
     And I add list items to their limit

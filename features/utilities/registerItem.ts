@@ -23,6 +23,10 @@ export async function registerItem(complexWorld: ComplexWorld, itemInputMeaning:
 
   if (isTablet() || isMobile()) {
     complexWorld.accounting.elements.registerTestId(DRAG_HANDLE_TEST_IDS[itemInputMeaning]);
+
+    // У автопункта нет выпадающего меню.
+    if (["automatic", "new automatic", "old automatic"].includes(itemInputMeaning)) return;
+
     complexWorld.accounting.elements.registerTestId(OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON_TEST_IDS[itemInputMeaning]);
   }
 }

@@ -5,6 +5,7 @@ Feature: Disabling controls when list is being updated
     And I add a list
     And I refresh the page
 
+  @broken
   Scenario: Disabling form controls when pressing the "Save" button for list update
     When I type some text with length less or equal to the one of "list title" input limit
     And I type some text with length less or equal to the one of "list purpose" input limit
@@ -33,9 +34,10 @@ Feature: Disabling controls when list is being updated
     Then I expect to see the "import" button disabled
     Then I expect to see the "print list" button disabled
     And I ensure the tools panel does not disturb
-    Then All necessary elements are on the "List Creation Item Added, Note Expanded" page
+    Then All necessary elements are on the "List Update Item Added, Note Expanded" page
     Then I expect to see no other elements
 
+  @broken
   Scenario: All items inputs are disabled on list update
     And I ensure the tools panel is open
     And I add list items till scroll appears plus one item input

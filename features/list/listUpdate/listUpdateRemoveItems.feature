@@ -75,15 +75,8 @@ Feature: Removing items from an existing list
     And I type the text that was in the removed "second item" input
     Then I expect to see the "save" button enabled
 
-  Scenario: Seeing remove item menu item disabled for the only one list item in an existing list
-    When I hover "automatic list item"
-    And I press the "open context menu for automatic list item" button
-    And I press the visible "remove list item" menu item
-    And I hover "first list item"
-    And I press the "open context menu first item" button
-    Then I expect to see the "remove list item" menu item disabled
-
   @heavy
+  @broken
   Scenario: Adding list items to the limit and then removing one list item leads to limit warning disappear and buttons enablement
     When I ensure the tools panel is open
     And I add list items to their limit

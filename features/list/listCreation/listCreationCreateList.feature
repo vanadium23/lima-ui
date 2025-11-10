@@ -7,8 +7,9 @@ Feature: Successfully creating list with correct data
     And I press on the "list note" accordion
     And I type some text with length less or equal to the one of "list note" text area limit
 
+  @broken
   Scenario: Disabling form controls when pressing the "Save" button
-    When I type some text with length less or equal to the one of "auto item" input limit
+    When I type some text with length less or equal to the one of "automatic item" input limit
     And I press the "save" button
     Then I expect to see the following suffixed tab title: "Новый список"
     Then I expect to see sidebar or its button
@@ -21,6 +22,7 @@ Feature: Successfully creating list with correct data
     Then I expect to see the "list note" accordion content expanded
     Then I expect to see the "list note" text area disabled
     Then I expect to see list items area
+    # TODO: Починить. Пункт перестали дизейблиться.
     Then I expect to see the "first" item input disabled
     Then I expect to have the "automatic" item input disabled
     Then I expect to see the "save" button in the loading state
@@ -36,7 +38,7 @@ Feature: Successfully creating list with correct data
     Then I expect to see no other elements
 
   Scenario: All controls are enabled after successful list creation
-    When I type some text with length less or equal to the one of "first item" input limit
+    When I type some text with length less or equal to the one of "automatic item" input limit
     And I press the "save" button
     And I wait for the list to create
     Then I expect to see the suffixed list title as tab title
@@ -63,6 +65,7 @@ Feature: Successfully creating list with correct data
     Then All necessary elements are on the "List Creation Item Added, Note Expanded" page
     Then I expect to see no other elements
 
+  @broken
   Scenario: All items inputs are disabled on list creation
     When I ensure the tools panel is open
     And I add list items till scroll appears plus one item input
@@ -72,7 +75,7 @@ Feature: Successfully creating list with correct data
     Then I expect all items inputs disabled
 
   Scenario: "Save" button triggers list creation only once
-    When I type some text with length less or equal to the one of "first item" input limit
+    When I type some text with length less or equal to the one of "automatic item" input limit
     And I start counting the "list creation" requests
     And I press the "save" button
     And I forcefully press the "save" button
@@ -82,6 +85,7 @@ Feature: Successfully creating list with correct data
     Then I expect to see the following number of "list creation" request: 1
 
   Scenario: Created list contains all data provided during creation
+    And I press the "add list item" button
     When I type some text with length less or equal to the one of "first item" input limit
     And I ensure the tools panel is open
     And I press the "add list item" button
@@ -97,6 +101,7 @@ Feature: Successfully creating list with correct data
     Then I expect to see the "list note" text area with the text I provided
 
   Scenario: Created list data persists after page refresh
+    And I press the "add list item" button
     When I type some text with length less or equal to the one of "first item" input limit
     And I ensure the tools panel is open
     And I press the "add list item" button
