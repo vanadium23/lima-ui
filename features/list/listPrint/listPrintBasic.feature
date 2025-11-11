@@ -6,7 +6,7 @@ Feature: Basic list printing functionality
   Scenario: Print button enables after creating a list
     When I type some text with length less or equal to the one of "list title" input limit
     And I type some text with length less or equal to the one of "list purpose" input limit
-    And I type some text with length less or equal to the one of "first item" input limit
+    And I type some text with length less or equal to the one of "automatic item" input limit
     And I press the "save" button
     And I wait for the list to create
     And I ensure the tools panel is open
@@ -18,6 +18,8 @@ Feature: Basic list printing functionality
     And I type some text with length less or equal to the one of "list purpose" input limit
     And I press on the "list note" accordion
     And I type some text with length less or equal to the one of "list note" text area limit
+    And I ensure the tools panel is open
+    And I press the "add list item" button
     And I type some text with length less or equal to the one of "first item" input limit
     And I ensure the tools panel is open
     And I press the "add list item" button
@@ -40,6 +42,9 @@ Feature: Basic list printing functionality
     When I type some text with length less or equal to the one of "list title" input limit
     And I press on the "list note" accordion
     And I type some text with length less or equal to the one of "list note" text area limit
+    And I ensure the tools panel is open
+    And I press the "add list item" button
+    And I ensure the tools panel does not disturb
     And I type some text with length less or equal to the one of "first item" input limit
     And I press the "save" button
     And I wait for the list to create
@@ -53,6 +58,9 @@ Feature: Basic list printing functionality
   Scenario: List note is not visible on the print page when not provided
     When I type some text with length less or equal to the one of "list title" input limit
     And I type some text with length less or equal to the one of "list purpose" input limit
+    And I ensure the tools panel is open
+    And I press the "add list item" button
+    And I ensure the tools panel does not disturb
     And I type some text with length less or equal to the one of "first item" input limit
     And I press the "save" button
     And I wait for the list to create
@@ -65,6 +73,9 @@ Feature: Basic list printing functionality
 
   Scenario: Both list purpose and list note are not visible on the print page when not provided
     When I type some text with length less or equal to the one of "list title" input limit
+    And I ensure the tools panel is open
+    And I press the "add list item" button
+    And I ensure the tools panel does not disturb
     And I type some text with length less or equal to the one of "first item" input limit
     And I press the "save" button
     And I wait for the list to create
@@ -78,6 +89,9 @@ Feature: Basic list printing functionality
   Scenario: Checklist printing displays checkboxes instead of bullets
     When I type some text with length less or equal to the one of "list title" input limit
     And I type some text with length less or equal to the one of "list purpose" input limit
+    And I ensure the tools panel is open
+    And I press the "add list item" button
+    And I ensure the tools panel does not disturb
     And I type some text with length less or equal to the one of "first item" input limit
     And I ensure the tools panel is open
     And I press the "add list item" button
@@ -92,6 +106,9 @@ Feature: Basic list printing functionality
 
   Scenario: System print dialog appears when print page is opened
     When I type some text with length less or equal to the one of "list title" input limit
+    And I ensure the tools panel is open
+    And I press the "add list item" button
+    And I ensure the tools panel does not disturb
     And I type some text with length less or equal to the one of "first item" input limit
     And I press the "save" button
     And I wait for the list to create

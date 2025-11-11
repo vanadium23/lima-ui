@@ -1,33 +1,9 @@
-import { createSignal, mergeProps } from "solid-js";
-
-import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
 import { ListItem } from "../../../components/listItem/listItem.tsx";
 
-type ListItemWrapperProps = {
-  staticIsCheckable?: boolean;
-};
-
-export function ListItemWrapper(props: ListItemWrapperProps) {
-  const mProps: Required<ListItemWrapperProps> = mergeProps(
-    {
-      staticIsCheckable: false,
-    },
-    props,
-  );
-
-  const [text, setText] = createSignal("");
-  const [isCheckable] = createSignal(mProps.staticIsCheckable);
-
+export function ListItemWrapper() {
   return (
-    <ListItem
-      checkable={isCheckable()}
-      checked={false}
-      name="Item"
-      testId={DEFAULT_TEST_ID}
-      canAddMore={true}
-      onChange={setText}
-    >
-      {text()}
+    <ListItem index={1} checked={false} name="Item">
+      Тест
     </ListItem>
   );
 }

@@ -52,7 +52,7 @@ Feature: Failing to update a list
     When I clear the "first item" input
     And I start counting the "list update" requests
     And I press the "save" button
-    Then I expect to be focused on the "first item" input
+    Then I expect to be focused on the "automatic item" input
     Then I expect to see the following number of "list update" request: 0
 
   Scenario: Hidden empty item input is shown when attempting to update a list

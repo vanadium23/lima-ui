@@ -18,16 +18,14 @@ import {
 import { ToolsPanel, ToolsPanelSize, ToolsPanelTheme } from "../../../../organisms/toolsPanel/toolsPanel.tsx";
 import type { Item } from "../../../../types/types.ts";
 import { setStoreEditList, storeEditList } from "../../editList.store.tsx";
-import { addEmptyItem } from "../../utilities/addEmptyItem.ts";
+import { addNewItem } from "../../utilities/addNewItem.ts";
 import { reachedItemsLimit } from "../../utilities/reachedItemsLimit.ts";
-import { ImportDialog, setStoreImportDialog } from "../importDialog/importDialog.tsx";
+import { ImportDialog, openImportDialogPasteEnd } from "../importDialog/importDialog.tsx";
 import { RemoveDialog, setStoreRemoveDialog } from "../removeDialog/removeDialog.tsx";
 
 const toggleCheckable = () => setStoreEditList("isCheckable", !storeEditList.isCheckable);
 
 const openRemoveDialog = () => setStoreRemoveDialog("openRemoveDialog", true);
-
-const openImportDialog = () => setStoreImportDialog("openImportDialog", true);
 
 function copyItemsToClipboard(items: Item[]) {
   const textToCopy = items.map((item) => item.content.trim()).join("\n");
@@ -42,8 +40,8 @@ const EditListToolsPanel = () => {
           <ToolsButton
             componentType={ToolsButtonComponentType.Button}
             iconName={IconName.RowsPlusBottom}
-            handleClick={() => addEmptyItem({ mode: "end", scroll: true, auto: false })}
-            disabled={reachedItemsLimit() || storeEditList.sendingNow !== false}
+            handleClick={addNewItem}
+            disabled={reachedItemsLimit() || Boolean(storeEditList.sendingNow)}
             testId={TOOLS_PANEL_ADD_ITEM_BUTTON}
           >
             Добавить пункт
@@ -51,7 +49,7 @@ const EditListToolsPanel = () => {
           <ToolsButton
             componentType={ToolsButtonComponentType.Button}
             iconName={IconName.CopySimple}
-            disabled={storeEditList.isNewList || storeEditList.sendingNow !== false}
+            disabled={storeEditList.isNewList || Boolean(storeEditList.sendingNow)}
             handleClick={() => copyItemsToClipboard(storeEditList.items)}
             testId={TOOLS_PANEL_BUTTON_COPY_ITEMS}
           >
@@ -74,7 +72,7 @@ const EditListToolsPanel = () => {
         <div class="toolsPanel__verticalSection">
           <Switch
             testId={CHECKLIST_SWITCH}
-            disabled={storeEditList.sendingNow !== false}
+            disabled={Boolean(storeEditList.sendingNow)}
             checked={storeEditList.isCheckable}
             onChange={toggleCheckable}
           >
@@ -86,9 +84,9 @@ const EditListToolsPanel = () => {
           <ToolsButton
             componentType={ToolsButtonComponentType.Button}
             iconName={IconName.SortAscending}
-            disabled={reachedItemsLimit() || storeEditList.sendingNow !== false}
+            disabled={reachedItemsLimit() || Boolean(storeEditList.sendingNow)}
             testId={TOOLS_PANEL_BUTTON_IMPORT_LIST}
-            handleClick={openImportDialog}
+            handleClick={openImportDialogPasteEnd}
           >
             Импорт
           </ToolsButton>
@@ -99,7 +97,7 @@ const EditListToolsPanel = () => {
             iconName={IconName.Printer}
             href={`./${storeEditList.id}/print?checkable=${storeEditList.isCheckable}`}
             testId={TOOLS_PANEL_BUTTON_PRINT_LIST}
-            disabled={storeEditList.isNewList || storeEditList.sendingNow !== false}
+            disabled={storeEditList.isNewList || Boolean(storeEditList.sendingNow)}
             openInNewTab={true}
           >
             Напечатать список

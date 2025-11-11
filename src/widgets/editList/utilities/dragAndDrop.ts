@@ -4,7 +4,6 @@ import { onCleanup } from "solid-js";
 import type { Items, ScrollContainer } from "../../../types/types.ts";
 import { type EditListStore, setStoreEditList, storeEditList } from "../editList.store.tsx";
 
-import { checkChanges } from "./checkChanges.ts";
 import { createDefaultItem, createDragId } from "./createDefaultItem.ts";
 import { scroller } from "./scrollToBottom.ts";
 
@@ -57,7 +56,6 @@ export const onDragEnd = ({ draggable, droppable }: DragEvent) => {
           auto: index === updatedItems.length - 1 && item.content.trim() === "",
         })),
       );
-      checkChanges(storeEditList, setStoreEditList);
     }
   }
 

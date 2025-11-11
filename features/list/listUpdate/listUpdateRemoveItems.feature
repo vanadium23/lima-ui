@@ -75,14 +75,6 @@ Feature: Removing items from an existing list
     And I type the text that was in the removed "second item" input
     Then I expect to see the "save" button enabled
 
-  Scenario: Seeing remove item menu item disabled for the only one list item in an existing list
-    When I hover "automatic list item"
-    And I press the "open context menu for automatic list item" button
-    And I press the visible "remove list item" menu item
-    And I hover "first list item"
-    And I press the "open context menu first item" button
-    Then I expect to see the "remove list item" menu item disabled
-
   @heavy
   Scenario: Adding list items to the limit and then removing one list item leads to limit warning disappear and buttons enablement
     When I ensure the tools panel is open
@@ -104,12 +96,18 @@ Feature: Removing items from an existing list
     And I press the visible "remove list item" menu item
     Then I expect not to see the warning about items inputs limit reached
     And I ensure the tools panel is open
-    And I expect to see the "add list item" button enabled
+    Then I expect to see the "add list item" button enabled
     And I ensure the tools panel does not disturb
     When I press the "save" button
     And I wait for the list update to complete
     And I refresh the page
     Then I expect not to see the warning about items inputs limit reached
     And I ensure the tools panel is open
-    And I expect to see the "add list item" button enabled
+    Then I expect to see the "add list item" button enabled
     And I ensure the tools panel does not disturb
+    Then I expect to have the "automatic" item input enabled
+    And I focus "some item" input
+    And I open the corresponding list item context menu
+    Then I expect to see the "add item above" menu item enabled
+    Then I expect to see the "add item below" menu item enabled
+    Then I reviewed all item addition method of the list page

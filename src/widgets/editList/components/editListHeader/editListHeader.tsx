@@ -2,17 +2,9 @@ import { LIST_PURPOSE_INPUT_LIMIT, LIST_TITLE_INPUT_LIMIT } from "../../../../..
 import { LIST_PURPOSE_INPUT, LIST_TITLE_INPUT } from "../../../../../features/testIds.ts";
 import { CyberInput, CyberInputSize, CyberInputTheme } from "../../../../components/cyberInput/cyberInput.tsx";
 import { Note } from "../../../../components/note/note.tsx";
-import { EditListFormNames, type List } from "../../../../types/types.ts";
 import { setStoreEditList, storeEditList } from "../../editList.store.tsx";
-import { checkChanges } from "../../utilities/checkChanges.ts";
 
 import "./editListHeader.css";
-
-function handleHeaderDataChange(key: keyof List, value: string) {
-  setStoreEditList(key, value);
-  checkChanges(storeEditList, setStoreEditList);
-  // TODO впилить сторы внутрь функции
-}
 
 export const EditListHeader = () => {
   return (
@@ -21,11 +13,11 @@ export const EditListHeader = () => {
         theme={CyberInputTheme.Secondary}
         size={CyberInputSize.ExtraLarge}
         maxLength={LIST_TITLE_INPUT_LIMIT}
-        name={EditListFormNames.ListTitle}
+        name={"List Title"}
         testId={LIST_TITLE_INPUT}
         required={true}
-        disabled={storeEditList.sendingNow !== false}
-        onChange={(value) => handleHeaderDataChange("name", value)}
+        disabled={Boolean(storeEditList.sendingNow)}
+        onChange={(value) => setStoreEditList("name", value)}
         placeholder={"Название списка"}
       >
         {storeEditList.name}
@@ -35,18 +27,18 @@ export const EditListHeader = () => {
         size={CyberInputSize.Medium}
         placeholder="Цель списка"
         maxLength={LIST_PURPOSE_INPUT_LIMIT}
-        name={EditListFormNames.ListPurpose}
+        name={"List Purpose"}
         testId={LIST_PURPOSE_INPUT}
-        disabled={storeEditList.sendingNow !== false}
-        onChange={(value) => handleHeaderDataChange("purpose", value)}
+        disabled={Boolean(storeEditList.sendingNow)}
+        onChange={(value) => setStoreEditList("purpose", value)}
       >
         {storeEditList.purpose}
       </CyberInput>
       <Note
         title="Заметка"
-        name={EditListFormNames.ListNote}
-        disabled={storeEditList.sendingNow !== false}
-        onChange={(value) => handleHeaderDataChange("note", value)}
+        name={"List Purpose"}
+        disabled={Boolean(storeEditList.sendingNow)}
+        onChange={(value) => setStoreEditList("note", value)}
       >
         {storeEditList.note}
       </Note>
