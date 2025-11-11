@@ -40,9 +40,7 @@ const EditListToolsPanel = () => {
           <ToolsButton
             componentType={ToolsButtonComponentType.Button}
             iconName={IconName.RowsPlusBottom}
-            handleClick={() => {
-              addNewItem();
-            }}
+            handleClick={addNewItem}
             disabled={reachedItemsLimit() || Boolean(storeEditList.sendingNow)}
             testId={TOOLS_PANEL_ADD_ITEM_BUTTON}
           >

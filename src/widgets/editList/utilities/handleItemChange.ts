@@ -8,6 +8,7 @@ export function handleItemChange(index: number, value: string) {
   const lastIndex = storeEditList.items.length - 1;
   const beforeLastIndex = lastIndex - 1;
 
+  //TODO Разобраться не относиться ли это к удалению автопункта которое уже описано в его функции
   if (
     storeEditList.items.length !== 1 &&
     index === beforeLastIndex &&

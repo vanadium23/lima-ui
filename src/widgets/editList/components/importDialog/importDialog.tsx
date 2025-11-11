@@ -48,7 +48,7 @@ export const openImportDialogPasteAfter = (pasteIndex: number) => {
 };
 
 export const ImportDialog = (props: ImportDialogProps) => {
-  const getListsForImport = async (): Promise<void> => {
+  const getListsForImport = async () => {
     setStoreImportDialog("loadingListsForImport", true);
 
     try {
@@ -101,9 +101,9 @@ export const ImportDialog = (props: ImportDialogProps) => {
 
     const checkedItemsIds: string[] = [];
 
-    for (const [key, value] of formData.entries()) {
+    for (const [checkboxNameHTML, value] of formData.entries()) {
       if (value === "on") {
-        checkedItemsIds.push(key);
+        checkedItemsIds.push(checkboxNameHTML);
       }
     }
 

@@ -17,7 +17,7 @@ Then(
   async function (this: ComplexWorld, menuItemMeaning: MenuitemMeaning) {
     const element = this.locateByFullId(this.accounting.itemAdders.registerTestId(MENUITEM_TEST_IDS[menuItemMeaning]));
 
-    await expect(element).toHaveAttribute("aria-disabled", "true");
+    await expect(element).toHaveClass(/menuItem_disabled/);
   },
 );
 
@@ -26,6 +26,6 @@ Then(
   async function (this: ComplexWorld, menuItemMeaning: MenuitemMeaning) {
     const element = this.locateByFullId(this.accounting.itemAdders.registerTestId(MENUITEM_TEST_IDS[menuItemMeaning]));
 
-    await expect(element).toHaveAttribute("aria-disabled", "false");
+    await expect(element).not.toHaveClass(/menuItem_disabled/);
   },
 );

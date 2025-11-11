@@ -121,7 +121,6 @@ export const ListItem = (props: ListItemProps) => {
       handleClick: () => {
         removeItem(mProps.index);
       },
-      disabled: isOnlyOneItem() || mProps.auto,
       theme: MenuItemTheme.Dangerous,
       testId: REMOVE_ITEM_MENUITEM,
       testSubId: getListItemTestSubId(getTestId(), mProps.index),
@@ -161,7 +160,7 @@ export const ListItem = (props: ListItemProps) => {
     >
       <div class="listItem__dragHandle">
         <DragHandle
-          disabled={storeEditList.sendingNow !== false}
+          disabled={Boolean(storeEditList.sendingNow)}
           testId={DRAG_HANDLE}
           testSubId={getListItemTestSubId(getTestId(), mProps.index)}
           dragHandle={mProps.dragSettings.dragData}
@@ -174,7 +173,7 @@ export const ListItem = (props: ListItemProps) => {
             size={CheckboxSize.Medium}
             testId={CHECKBOX}
             testSubId={getListItemTestSubId(getTestId(), mProps.index)}
-            disabled={storeEditList.sendingNow !== false}
+            disabled={Boolean(storeEditList.sendingNow)}
             checked={mProps.checked}
           />
         </div>
@@ -184,7 +183,7 @@ export const ListItem = (props: ListItemProps) => {
           maxLength={EDIT_LIST_INPUT_LIMIT}
           name={mProps.isDraggingOverlay ? "Drag Overlay Item" : `List Item ${mProps.index + 1}`}
           dataId={mProps.dataId}
-          disabled={storeEditList.sendingNow !== false}
+          disabled={Boolean(storeEditList.sendingNow)}
           placeholder={mProps.auto ? "Добавить пункт списка" : "Пункт списка"}
           required={!mProps.auto || isOnlyOneItem()}
           onChange={(value) => handleItemChange(mProps.index, value)}
@@ -203,7 +202,7 @@ export const ListItem = (props: ListItemProps) => {
                     size={IconButtonSize.MediumEmbedded}
                     iconName={IconName.DotsThree}
                     ariaLabel={"Выпадающее меню"}
-                    disabled={storeEditList.sendingNow !== false}
+                    disabled={Boolean(storeEditList.sendingNow)}
                   />
                 )}
                 testId={LIST_ITEM_CONTEXT_MENU}

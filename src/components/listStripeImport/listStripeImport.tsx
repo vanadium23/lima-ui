@@ -115,6 +115,7 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
           <Index each={mProps.children.items}>
             {(getItem, index) => {
               setStoreImportDialog("itemsCache", getItem().id, getItem());
+              // TODO Разобраться вместе с Германом зачем нужен itemsCache
 
               return (
                 <ListItemImport

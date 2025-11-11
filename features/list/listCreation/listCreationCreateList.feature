@@ -21,7 +21,6 @@ Feature: Successfully creating list with correct data
     Then I expect to see the "list note" accordion content expanded
     Then I expect to see the "list note" text area disabled
     Then I expect to see list items area
-    # TODO: Починить. Пункт перестали дизейблиться.
     Then I expect to see the "first" item input disabled
     Then I expect to have the "automatic" item input disabled
     Then I expect to see the "save" button in the loading state
