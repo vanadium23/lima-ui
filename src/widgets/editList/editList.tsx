@@ -119,7 +119,7 @@ export const EditList = (props: EditListProps) => {
             >
               <DragDropSensors />
               <SortableProvider ids={dragIds()}>
-                <For each={storeEditList.items}>
+                <For each={storeEditList.items.slice(0, ITEMS_LIMIT)}>
                   {(item, index) => {
                     const dragData = createSortable(item.dragId);
 

@@ -14,7 +14,6 @@ Feature: Removing items on the List Creation page
     Then I expect to see the only one list item left on the page
 
   @heavy
-  @broken
   Scenario: Adding list item to the limit and then removing one list item leads to limit warning disappear and buttons enablement
     When I ensure the tools panel is open
     And I add list items to their limit

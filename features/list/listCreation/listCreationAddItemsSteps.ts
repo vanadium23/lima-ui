@@ -4,7 +4,6 @@ import { expect } from "@playwright/test";
 import { ITEMS_LIMIT } from "../../../configuration.ts";
 import type { ComplexWorld } from "../../context/hooks.ts";
 import {
-  AUTO_LIST_ITEM_INPUT,
   ITEMS_LIMIT_REACHED_WARNING,
   LIST_ITEM_INPUT,
   LIST_ITEMS,
@@ -41,13 +40,9 @@ When(
   async function (this: ComplexWorld) {
     const addItemButton = this.locateByIdParts(TOOLS_PANEL_ADD_ITEM_BUTTON);
 
-    for (let i = await calculateCurrentItemsCount(this); i < ITEMS_LIMIT - 1; i++) {
+    for (let i = await calculateCurrentItemsCount(this); i < ITEMS_LIMIT; i++) {
       await addItemButton.click();
     }
-
-    const autoItem = this.locateByIdParts(AUTO_LIST_ITEM_INPUT);
-    await autoItem.focus();
-    await autoItem.fill("LastItem");
   },
 );
 

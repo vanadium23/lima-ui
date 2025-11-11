@@ -27,7 +27,6 @@ Feature: Adding items on the List Creation page
     And I ensure the tools panel does not disturb
 
   @heavy
-  @broken
   Scenario: Adding items inputs to the limit
     When I ensure the tools panel is open
     And I add list items to their limit
