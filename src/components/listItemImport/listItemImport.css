@@ -7,6 +7,10 @@
   transform: translateY(0.1rem);
 }
 
+.listItemImport__checkbox {
+  display: flex;
+}
+
 .listItemImport__text {
   display: flex;
 }
