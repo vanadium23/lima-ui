@@ -201,7 +201,9 @@ export const ListItem = (props: ListItemProps) => {
                     testSubId={getListItemTestSubId(getTestId(), mProps.index)}
                     size={IconButtonSize.MediumEmbedded}
                     iconName={IconName.DotsThree}
-                    ariaLabel={"Выпадающее меню"}
+                    ariaLabel={
+                      mProps.children ? `Меню пункта ${mProps.children.slice(0, 20)}...` : "Меню пустого пункта"
+                    }
                     disabled={Boolean(storeEditList.sendingNow)}
                   />
                 )}

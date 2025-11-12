@@ -24,6 +24,6 @@ export function addAutoItem() {
     }
   });
 
-  const autoItem = createDefaultItem(storeEditList.id, true);
+  const autoItem = createDefaultItem(storeEditList.id, storeEditList.name, true);
   setStoreEditList("items", items.length, autoItem);
 }
