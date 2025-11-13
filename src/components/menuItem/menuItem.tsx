@@ -1,4 +1,4 @@
-import { mergeProps } from "solid-js";
+import { Match, mergeProps, Switch } from "solid-js";
 
 import { Icon, IconSize } from "../icon/icon.tsx";
 import { IconName } from "../icon/types.ts";
@@ -15,9 +15,16 @@ export enum MenuItemSize {
   Medium = "medium",
 }
 
+export enum MenuItemComponentType {
+  Button = "button",
+  Link = "link",
+}
+
 export type MenuItemProps = {
   theme?: MenuItemTheme;
   size?: MenuItemSize;
+  componentType?: MenuItemComponentType;
+  href?: string;
   disabled?: boolean | undefined;
   children: string;
   handleClick?: () => void;
@@ -29,6 +36,8 @@ export const MenuItem = (props: Testable<MenuItemProps>) => {
     {
       theme: MenuItemTheme.Primary,
       size: MenuItemSize.Medium,
+      href: "",
+      componentType: MenuItemComponentType.Button,
       disabled: false,
       handleClick: () => {},
     },
@@ -37,25 +46,56 @@ export const MenuItem = (props: Testable<MenuItemProps>) => {
 
   return (
     <li
-      role="menuitem"
+      role="none"
       class="menuItem"
       classList={{
         [`menuItem_${mProps.size}`]: true,
         [`menuItem_${mProps.theme}`]: !mProps.disabled,
         menuItem_disabled: mProps.disabled,
       }}
-      aria-disabled={mProps.disabled}
-      tabindex={mProps.disabled ? -1 : 0}
-      onClick={() => {
-        if (!mProps.disabled) {
-          mProps.handleClick();
-        }
-      }}
-      data-test-id={mProps.testId}
-      data-test-sub-id={mProps.testSubId}
     >
-      <Icon name={mProps.icon} size={IconSize.Small} />
-      <span class="menuItem__text">{mProps.children}</span>
+      <Switch>
+        <Match when={mProps.componentType === MenuItemComponentType.Link && !mProps.disabled}>
+          <a
+            class="menuItem__button"
+            role="menuitem"
+            href={mProps.href}
+            data-test-id={mProps.testId}
+            data-test-sub-id={mProps.testSubId}
+          >
+            <Icon name={mProps.icon} size={IconSize.Small} />
+            <span class="menuItem__text">{mProps.children}</span>
+          </a>
+        </Match>
+        <Match when={mProps.componentType === MenuItemComponentType.Link && mProps.disabled}>
+          <span
+            class="menuItem__button"
+            role="menuitem"
+            aria-disabled={mProps.disabled}
+            data-test-id={mProps.testId}
+            data-test-sub-id={mProps.testSubId}
+          >
+            <Icon name={mProps.icon} size={IconSize.Small} />
+            <span class="menuItem__text">{mProps.children}</span>
+          </span>
+        </Match>
+        <Match when={mProps.componentType === MenuItemComponentType.Button}>
+          <button
+            type="button"
+            class="menuItem__button"
+            role="menuitem"
+            disabled={mProps.disabled}
+            onClick={() => {
+              mProps.handleClick();
+            }}
+            data-test-id={mProps.testId}
+            data-test-sub-id={mProps.testSubId}
+          >
+            <Icon name={mProps.icon} size={IconSize.Small} />
+            <span class="menuItem__text">{mProps.children}</span>
+          </button>
+        </Match>
+      </Switch>
     </li>
   );
 };

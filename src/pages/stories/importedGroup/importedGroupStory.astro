@@ -4,11 +4,15 @@ import { ImportedGroup } from "../../../components/importedGroup/importedGroup.t
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 import { type Item } from "../../../types/types.ts";
 
-const exampleList: Item[] = [
-  { id: "1", content: "Тестовый пункт 1", originalListId: "1" },
-  { id: "2", content: "Тестовый пункт 2", originalListId: "1" },
-  { id: "3", content: "Тестовый пункт 3", originalListId: "1" },
-  { id: "4", content: "Длинный тестовый пункт для проверки отображения", originalListId: "1" },
+const exampleItems: Item[] = [
+  { id: "1", content: "Тестовый пункт 1", originalList: { id: "", name: "" } },
+  { id: "2", content: "Тестовый пункт 2", originalList: { id: "", name: "" } },
+  { id: "3", content: "Тестовый пункт 3", originalList: { id: "", name: "" } },
+  {
+    id: "4",
+    content: "Длинный тестовый пункт для проверки отображения",
+    originalList: { id: "", name: "" },
+  },
 ];
 ---
 
@@ -19,18 +23,37 @@ const exampleList: Item[] = [
       <span class="chead"></span>
       <span class="chead">Medium</span>
       <span class="rhead">List</span>
-      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID} id={"1"}>{exampleList}</ImportedGroup>
+      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID} itemIndex={1} id={"1"} name="" disabled={false}
+        >{exampleItems}</ImportedGroup
+      >
       <span class="rhead">List - Disabled</span>
-      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID} id={"1"} disabled={true}
-        >{exampleList}</ImportedGroup
+      <ImportedGroup
+        client:only="solid-js"
+        testId={DEFAULT_TEST_ID}
+        itemIndex={1}
+        id={"1"}
+        name="Название родительского списка"
+        disabled={true}>{exampleItems}</ImportedGroup
       >
       <span class="rhead">Checklist</span>
-      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID} id={"1"} checkable={true}
-        >{exampleList}</ImportedGroup
+      <ImportedGroup
+        client:only="solid-js"
+        testId={DEFAULT_TEST_ID}
+        itemIndex={1}
+        id={"1"}
+        name="Название родительского списка"
+        disabled={false}
+        checkable={true}>{exampleItems}</ImportedGroup
       >
       <span class="rhead">Checklist - Disabled</span>
-      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID} id={"1"} checkable={true} disabled={true}
-        >{exampleList}</ImportedGroup
+      <ImportedGroup
+        client:only="solid-js"
+        testId={DEFAULT_TEST_ID}
+        itemIndex={1}
+        id={"1"}
+        name="Название родительского списка"
+        checkable={true}
+        disabled={true}>{exampleItems}</ImportedGroup
       >
     </div>
   </div>
