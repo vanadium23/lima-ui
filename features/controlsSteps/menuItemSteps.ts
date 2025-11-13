@@ -15,17 +15,17 @@ Then("I press the {string} menu item", async function (this: ComplexWorld, menuI
 Then(
   "I expect to see the {string} menu item disabled",
   async function (this: ComplexWorld, menuItemMeaning: MenuitemMeaning) {
-    const element = this.locateByFullId(this.accounting.itemAdders.registerTestId(MENUITEM_TEST_IDS[menuItemMeaning]));
+    const menuItem = this.locateByFullId(this.accounting.itemAdders.registerTestId(MENUITEM_TEST_IDS[menuItemMeaning]));
 
-    await expect(element).toHaveClass(/menuItem_disabled/);
+    await expect(menuItem).toBeDisabled();
   },
 );
 
 Then(
   "I expect to see the {string} menu item enabled",
   async function (this: ComplexWorld, menuItemMeaning: MenuitemMeaning) {
-    const element = this.locateByFullId(this.accounting.itemAdders.registerTestId(MENUITEM_TEST_IDS[menuItemMeaning]));
+    const menuItem = this.locateByFullId(this.accounting.itemAdders.registerTestId(MENUITEM_TEST_IDS[menuItemMeaning]));
 
-    await expect(element).not.toHaveClass(/menuItem_disabled/);
+    await expect(menuItem).toBeEnabled();
   },
 );
