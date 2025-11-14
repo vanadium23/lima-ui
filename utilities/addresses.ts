@@ -1,6 +1,7 @@
 /* Client routing URLs */
 export const URL_MY_LISTS = "/lists";
 export const URL_CREATE_LIST = `${URL_MY_LISTS}/create`;
+export const URL_AUTH = "/auth";
 
 /* Test URLs */
 export const TESTS_URL_SOME_LIST = `${URL_MY_LISTS}/list-*`;
