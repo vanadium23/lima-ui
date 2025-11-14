@@ -1,0 +1,8 @@
+---
+import AppPage from "../../layouts/app/app.astro";
+import { Auth } from "../../widgets/auth/auth.tsx";
+---
+
+<AppPage titleName="Регистрация">
+  <Auth client:only="solid-js" slot="mainContent" />
+</AppPage>

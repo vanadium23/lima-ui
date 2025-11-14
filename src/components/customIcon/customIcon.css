@@ -1,0 +1,28 @@
+.icon {
+  flex-shrink: 0;
+}
+
+.custom_icon {
+  width: 100%;
+  height: 100%;
+}
+
+.icon_extraSmall {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.icon_small {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.icon_medium {
+  width: 2rem;
+  height: 2rem;
+}
+
+.icon_large {
+  width: 2.2rem;
+  height: 2.2rem;
+}

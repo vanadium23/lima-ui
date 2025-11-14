@@ -1,0 +1,114 @@
+.regForm {
+  display: flex;
+  padding: var(--size-x10, 2rem) var(--size-x15, 3rem);
+  flex-direction: column;
+  align-items: center;
+  gap: var(--size-x10, 2rem);
+  flex: 1 0 0;
+  align-self: stretch;
+}
+
+.regForm__success {
+  height: 66.5rem;
+  padding: var(--size-x15, 3rem);
+  color: var(--text-neutral-800, #222);
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 2rem;
+}
+
+.regForm__socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.regForm__separator {
+  align-self: stretch;
+  color: var(--text-neutral-800, #222);
+  text-align: center;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 2rem;
+}
+
+.regForm__inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  flex: 1 0 0;
+  align-self: stretch;
+}
+
+.regForm__goToAuth_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
+}
+
+.regForm__goToAuth_text {
+  color: var(--text-neutral-800, #222);
+  text-align: center;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 2rem;
+}
+
+.regInput__container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--size-x4, 0.8rem);
+  align-self: stretch;
+}
+
+.regInput__label {
+  color: var(--text-neutral-800, #222);
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 2rem;
+}
+
+.regInput__sub_label {
+  color: var(--text-neutral-800, #222);
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.4rem;
+}
+
+.regCheckbox__label {
+  color: var(--text-neutral-800, #222);
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.8rem;
+  flex: 1 0 0;
+}
+
+.regInput__error {
+  display: flex;
+  height: 1.8rem;
+  justify-content: start;
+  align-items: center;
+  align-self: stretch;
+  color: var(--dangerous-500, #eb0000);
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.8rem;
+}
+
+.regCheckbox__container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--size-x5, 1rem);
+  align-self: stretch;
+}

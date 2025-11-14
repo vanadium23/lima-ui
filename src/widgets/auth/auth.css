@@ -1,0 +1,94 @@
+.auth {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding: var(--size-x10, 2rem) var(--size-x30, 6rem) var(--size-x5, 1rem) var(--size-x30, 6rem);
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--size-x10, 2rem);
+  flex: 1 0 0;
+  align-self: stretch;
+}
+
+.authGreeting {
+  display: flex;
+  padding-top: var(--size-x10, 2rem);
+  flex-direction: column;
+  align-items: center;
+  flex: 1 0 0;
+  align-self: stretch;
+}
+
+.authGreeting__titleContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-x10, 2rem);
+  align-self: stretch;
+}
+
+.authGreeting__title {
+  color: var(--text-neutral-900, #05060f);
+  text-align: center;
+  font-size: 3.2rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 3.6rem;
+}
+
+.authGreeting__description {
+  color: var(--text-primary-500, #0285f1);
+  text-align: center;
+  font-size: 2.4rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 2.8rem;
+}
+
+.authGreeting__body {
+  font-size: 5.8rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 5.8rem;
+}
+
+.auth_tabs {
+  display: flex;
+  max-width: 50rem;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1 0 0;
+  align-self: stretch;
+}
+
+@media (width <= 768px) {
+  .auth {
+    padding: var(--size-x6, 1.2rem) 0 var(--size-x10, 2rem) 0;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 0 0;
+    align-self: stretch;
+  }
+
+  .authGreeting {
+    padding-top: 0;
+    flex: 0 0 0;
+  }
+
+  .authGreeting__title {
+    font-size: 2rem;
+    line-height: 2.4rem;
+  }
+
+  .authGreeting__description {
+    display: none;
+  }
+
+  .authGreeting__img {
+    display: none;
+  }
+
+  .auth_tabs {
+    align-self: center;
+  }
+}

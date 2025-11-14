@@ -15,6 +15,7 @@ export const Sidebar = () => {
       class="sidebar"
       classList={{
         sidebar_hidden: panelState.isSidebarHidden(),
+        sidebar_alwaysHidden: panelState.isSidebarAlwaysHidden(),
       }}
       data-test-id={SIDEBAR}
     >

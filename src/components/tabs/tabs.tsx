@@ -25,6 +25,8 @@ type TabsProps = {
   tabs: TabData[];
   ariaLabel: string;
   defaultActiveIndex?: number;
+  activeTab?: number;
+  onSwitchActiveTab?: (index: number) => void;
 };
 
 export const Tabs = (props: Testable<TabsProps>) => {
@@ -33,14 +35,23 @@ export const Tabs = (props: Testable<TabsProps>) => {
       theme: TabsTheme.Primary,
       size: TabsSize.Medium,
       defaultActiveIndex: 0,
+      activeTab: -1,
+      onSwitchActiveTab: () => undefined,
     },
     props,
   );
 
-  const [activeTabIndex, setActiveTabIndex] = createSignal(mProps.defaultActiveIndex);
+  const [activeTabIndex, setActiveTabIndex] = createSignal(
+    props.onSwitchActiveTab && mProps.activeTab !== -1 ? mProps.activeTab : mProps.defaultActiveIndex,
+  );
+  const isControlled = Boolean(props.onSwitchActiveTab);
 
   const handleTabClick = (index: number) => {
-    setActiveTabIndex(index);
+    if (isControlled) {
+      mProps.onSwitchActiveTab(index);
+    } else {
+      setActiveTabIndex(index);
+    }
   };
 
   return (
