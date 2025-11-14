@@ -1,7 +1,7 @@
 import { createStore } from "solid-js/store";
 
 import {
-  REG_ACCEPT_POLICE,
+  REG_ACCEPT_AGREEMENT,
   REG_EMAIL_INPUT,
   REG_NETWORK_ERROR,
   REG_PASS_INPUT,
@@ -75,8 +75,8 @@ export const handleChange = (e: InputEvent) => {
       case REG_REPEAT_PASS_INPUT:
         inputName = "repeat_pass";
         break;
-      case REG_ACCEPT_POLICE:
-        inputName = "accept_police";
+      case REG_ACCEPT_AGREEMENT:
+        inputName = "accept_agreement";
     }
 
     if (inputName) {
@@ -88,7 +88,7 @@ export const handleChange = (e: InputEvent) => {
 };
 
 export const handleCheckboxChange = (value: boolean) => {
-  setRegistrationFormStore("inputs", "accept_police", "isValid", true);
-  setRegistrationFormStore("inputs", "accept_police", "error", "");
-  setRegistrationFormStore("inputs", "accept_police", "value", value);
+  setRegistrationFormStore("inputs", "accept_agreement", "isValid", true);
+  setRegistrationFormStore("inputs", "accept_agreement", "error", "");
+  setRegistrationFormStore("inputs", "accept_agreement", "value", value);
 };

@@ -1,7 +1,7 @@
 import { type JSXElement, Match, Switch } from "solid-js";
 
 import {
-  REG_ACCEPT_POLICE,
+  REG_ACCEPT_AGREEMENT,
   REG_CONFIDENTIAL_POLICY_LINK,
   REG_EMAIL_INPUT,
   REG_GO_TO_AUTH_LINK,
@@ -32,7 +32,7 @@ import "./registrationForm.css";
 function onSubmit(e: SubmitEvent) {
   e.preventDefault();
 
-  if (registrationFormStore.inputs.accept_police.value) {
+  if (registrationFormStore.inputs.accept_agreement.value) {
     const validatedInputs = validateRegistrationForm(registrationFormStore.inputs);
     setRegistrationFormStore("inputs", validatedInputs);
 
@@ -40,13 +40,13 @@ function onSubmit(e: SubmitEvent) {
       handleRegister("email");
     }
   } else {
-    setRegistrationFormStore("inputs", "accept_police", "isValid", true);
-    setRegistrationFormStore("inputs", "accept_police", "error", "Необходимо принять пользовательское соглашение");
+    setRegistrationFormStore("inputs", "accept_agreement", "isValid", true);
+    setRegistrationFormStore("inputs", "accept_agreement", "error", "Необходимо принять пользовательское соглашение");
   }
 }
 
 function renderRegInputs(inputs: RegistrationFormInputs): JSXElement {
-  const { email, pass, repeat_pass, accept_police } = inputs;
+  const { email, pass, repeat_pass, accept_agreement } = inputs;
 
   return (
     <>
@@ -104,10 +104,10 @@ function renderRegInputs(inputs: RegistrationFormInputs): JSXElement {
       </label>
       <label class="regCheckbox__container">
         <Checkbox
-          testId={REG_ACCEPT_POLICE}
+          testId={REG_ACCEPT_AGREEMENT}
           //required={true}
-          error={accept_police.error || ""}
-          checked={Boolean(accept_police.value)}
+          error={accept_agreement.error || ""}
+          checked={Boolean(accept_agreement.value)}
           onChange={handleCheckboxChange}
           disabled={registrationFormStore.isLoading}
         />

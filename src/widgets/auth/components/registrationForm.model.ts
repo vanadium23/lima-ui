@@ -1,5 +1,5 @@
 import {
-  REG_ACCEPT_POLICE,
+  REG_ACCEPT_AGREEMENT,
   REG_EMAIL_INPUT,
   REG_PASS_INPUT,
   REG_REPEAT_PASS_INPUT,
@@ -7,7 +7,7 @@ import {
 import { InputType } from "../../../components/input/input.tsx";
 import type { AuthFormInput } from "../auth.model.ts";
 
-export type RegistrationFormInputsNames = "email" | "pass" | "repeat_pass" | "accept_police";
+export type RegistrationFormInputsNames = "email" | "pass" | "repeat_pass" | "accept_agreement";
 export type RegistrationFormInputs = Record<RegistrationFormInputsNames, AuthFormInput>;
 
 export const initialRegistrationFormInputs: RegistrationFormInputs = {
@@ -29,8 +29,8 @@ export const initialRegistrationFormInputs: RegistrationFormInputs = {
     type: InputType.Password,
     isValid: true,
   },
-  accept_police: {
-    id: REG_ACCEPT_POLICE,
+  accept_agreement: {
+    id: REG_ACCEPT_AGREEMENT,
     value: false,
     type: "checkbox",
     isValid: true,

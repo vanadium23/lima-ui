@@ -7,7 +7,7 @@ export const isRegistrationFormValid = (inputs: RegistrationFormInputs) => {
 };
 
 export const validateRegistrationForm = (inputs: RegistrationFormInputs) => {
-  const { email, pass, repeat_pass, accept_police } = inputs;
+  const { email, pass, repeat_pass, accept_agreement } = inputs;
 
   const emailInput = document.getElementsByName(REG_EMAIL_INPUT).item(0) as HTMLInputElement;
   const isEmailValid = emailInput.checkValidity();
@@ -15,7 +15,7 @@ export const validateRegistrationForm = (inputs: RegistrationFormInputs) => {
   const passRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*]{8,}$/;
   const isPassValid = passRegex.test(pass.value.toString());
   const isRepeatPassValid = !isPassValid || pass.value === repeat_pass.value;
-  const isAcceptPoliceValid = Boolean(accept_police.value);
+  const isAcceptPoliceValid = Boolean(accept_agreement.value);
 
   const result: RegistrationFormInputs = {
     email: {
@@ -33,8 +33,8 @@ export const validateRegistrationForm = (inputs: RegistrationFormInputs) => {
       isValid: isRepeatPassValid,
       error: !isRepeatPassValid ? "Пароли не совпадают" : "",
     },
-    accept_police: {
-      ...accept_police,
+    accept_agreement: {
+      ...accept_agreement,
       isValid: isAcceptPoliceValid,
       error: !isAcceptPoliceValid ? "Необходимо принять пользовательское соглашение" : "",
     },

@@ -17,7 +17,7 @@ const authTabs = [
     content: "Форма входа",
   },
   {
-    tabName: "Регистарция",
+    tabName: "Регистрация",
     content: <RegistrationForm onSwitchForm={() => setActiveAuthForm("login")} />,
   },
 ];
@@ -50,7 +50,7 @@ export const Auth = () => {
           <div class="authGreeting__title">{"Начните работу с Лимой"}</div>
           <div class="authGreeting__description">{"Держите порядок всегда под рукой!"}</div>
         </div>
-        <img class="authGreeting__img" src="/old_man.png" height="603px" alt="=Lima" />
+        <img class="authGreeting__img" src="/old_man.png" height="603px" alt="Lima" />
       </div>
       <div class="auth_tabs">
         <Switch>
