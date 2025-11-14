@@ -1,8 +1,11 @@
 import { createEffect, createSignal, Index, mergeProps } from "solid-js";
 
+import { ITEMS_LIMIT } from "../../../configuration.ts";
 import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import type { List } from "../../types/types.ts";
 import { setStoreImportDialog } from "../../widgets/editList/components/importDialog/importDialog.tsx";
+import { importItemsLimitReached } from "../../widgets/editList/components/importDialog/utilities/importItemsLimitReached.ts";
+import { storeEditList } from "../../widgets/editList/editList.store.tsx";
 import { Checkbox, CheckboxSize, CheckboxTheme, type CheckedState } from "../checkbox/checkbox.tsx";
 import { Icon, IconSize } from "../icon/icon.tsx";
 import { IconName } from "../icon/types.ts";
@@ -24,6 +27,10 @@ type ListStripeImportProps = {
   size?: ListStripeImportSize;
   children: List;
   titleHTMLName: string;
+  disabled?: boolean;
+  currentItemsCount?: number;
+  maxAllowedItems?: number;
+  onSelectionChange?: () => void;
 };
 
 export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
@@ -31,6 +38,10 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
     {
       theme: ListStripeImportTheme.Primary,
       size: ListStripeImportSize.Medium,
+      disabled: false,
+      currentItemsCount: 0,
+      maxAllowedItems: Infinity,
+      onSelectionChange: () => {},
     },
     props,
   );
@@ -50,6 +61,12 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
       const newItems = [...getItemsCheckboxState()];
       newItems[index] = checked;
       setItemsCheckboxState(newItems);
+
+      if (checked) {
+        setStoreImportDialog("checkedItemsCount", (counter) => counter + 1);
+      } else if (!checked) {
+        setStoreImportDialog("checkedItemsCount", (counter) => counter - 1);
+      }
     };
   }
 
@@ -70,6 +87,15 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
   function handleMainCheckboxChange(checked: boolean) {
     const newState = new Array(mProps.children.items.length).fill(checked);
     setItemsCheckboxState(newState);
+    mProps.onSelectionChange();
+  }
+
+  const listItemsCount = mProps.children.items.length;
+
+  const availableItemSlots = ITEMS_LIMIT - storeEditList.items.filter((item) => !item.auto).length;
+
+  function isMainCheckboxDisabled() {
+    return (!getListCheckboxState() && importItemsLimitReached()) || listItemsCount > availableItemSlots;
   }
 
   const iconSize = {
@@ -97,6 +123,7 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
           checked={getListCheckboxState()}
           onChange={handleMainCheckboxChange}
           name={mProps.titleHTMLName}
+          disabled={isMainCheckboxDisabled()}
         />
       </div>
 
@@ -115,7 +142,6 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
           <Index each={mProps.children.items}>
             {(getItem, index) => {
               setStoreImportDialog("itemsCache", getItem().id, getItem());
-              // TODO Разобраться вместе с Германом зачем нужен itemsCache
 
               return (
                 <ListItemImport
@@ -123,6 +149,7 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
                   checkboxHTMLName={getItem().id}
                   checked={getItemsCheckboxState()[index] || false}
                   onCheckedChange={handleItemCheckboxChange(index)}
+                  disabled={!getItemsCheckboxState()[index] && importItemsLimitReached()}
                 >
                   {getItem().content}
                 </ListItemImport>
