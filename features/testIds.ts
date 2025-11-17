@@ -1,5 +1,7 @@
 import type { TestId } from "../src/components/utilities/testable.ts";
 
+import { buildFullTestId } from "./utilities/buildTestableSelector.ts";
+
 export type SeveralTestIds = TestId[];
 
 export const DEFAULT_TEST_ID = "defaultTestId";
@@ -95,12 +97,25 @@ export const WARNINGS_TEST_IDS = {
 export type WarningMeaning = keyof typeof WARNINGS_TEST_IDS;
 
 export const NETWORK_ERROR = "networkError";
+export const NETWORK_ERROR_CLOSE_BUTTON = buildErrorCloseButtonTestId(NETWORK_ERROR);
 export const LIST_REMOVAL_ERROR = "listRemovalError";
+export const LIST_REMOVAL_ERROR_CLOSE_BUTTON = buildErrorCloseButtonTestId(LIST_REMOVAL_ERROR);
+
+export function buildErrorCloseButtonTestId(errorTestId: TestId): TestId {
+  return `${errorTestId}CloseButton`;
+}
+
 export const ERRORS_TEST_IDS = {
   connection: NETWORK_ERROR,
-  "list removal": LIST_REMOVAL_ERROR,
+  "single connection": buildFullTestId(NETWORK_ERROR, 1),
+  "single list removal": buildFullTestId(LIST_REMOVAL_ERROR, 1),
 };
 export type ErrorMeaning = keyof typeof ERRORS_TEST_IDS;
+export const ERROR_CLOSE_BUTTONS_TEST_IDS: Record<ErrorMeaning, TestId> = {
+  connection: NETWORK_ERROR_CLOSE_BUTTON,
+  "single connection": buildFullTestId(NETWORK_ERROR_CLOSE_BUTTON, 1),
+  "single list removal": buildFullTestId(LIST_REMOVAL_ERROR_CLOSE_BUTTON, 1),
+};
 
 export const NO_SAVED_LISTS_MESSAGE = "noSavedListsMessage";
 

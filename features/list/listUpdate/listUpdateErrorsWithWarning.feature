@@ -14,4 +14,4 @@ Feature: Errors and warnings during list update
     And I press the "save" button
     And I wait for the page to load
     Then I expect to see the warning about items inputs limit reached
-    Then I expect to see the "connection" error
+    Then I expect to see the "single connection" error

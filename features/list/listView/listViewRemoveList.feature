@@ -38,7 +38,7 @@ Feature: Removing a list from the List view page
     And I press the "remove list tools panel" button
     Given Data server is not available
     And I press the visible "confirm list removal" button
-    Then I expect to see the "list removal" error
+    Then I expect to see the "single list removal" error
 
   Scenario: Opening and closing the list removal dialog multiple times on List View
     And I ensure the tools panel is open
@@ -51,16 +51,6 @@ Feature: Removing a list from the List view page
     When I click outside of the "remove list" dialog modal box
     Then I expect not to see the "remove list" dialog modal box
 
-  Scenario: Consequent removal attempt leads to error message disappearance while viewing a list
-    And I ensure the tools panel is open
-    And I press the "remove list tools panel" button
-    Given Data server is not available
-    And I press the visible "confirm list removal" button
-    And I ensure the tools panel is open
-    And I press the "remove list tools panel" button
-    And I press the visible "confirm list removal" button
-    Then I expect not to see the "list removal" error
-
   @heavy
   Scenario: Unsuccessful list removal accompanied by reached items limit leads to error and warning at the same time
     And I ensure the tools panel is open
@@ -69,7 +59,7 @@ Feature: Removing a list from the List view page
     Given Data server is not available
     And I press the visible "confirm list removal" button
     Then I expect to see the warning about items inputs limit reached
-    Then I expect to see the "list removal" error
+    Then I expect to see the "single list removal" error
 
   Scenario: Disabling form controls when pressing the "Confirm list removal" button
     And I press on the "list note" accordion

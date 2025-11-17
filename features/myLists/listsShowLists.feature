@@ -35,6 +35,6 @@ Feature: Seeing the added lists on the Lists page
     Then I expect to see header
     Then I expect to see search
     Then I expect to see the following title: "Мои списки"
-    Then I expect to see the "connection" error
+    Then I expect to see the "single connection" error
     Then All necessary elements are on the "Lists with Error" page
     Then I expect to see no other elements
