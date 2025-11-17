@@ -7,7 +7,7 @@ import {
   transformStyle,
   useDragDropContext,
 } from "@thisbeyond/solid-dnd";
-import { For, mergeProps, onCleanup, onMount, Show } from "solid-js";
+import { createEffect, For, mergeProps, onCleanup, onMount, Show } from "solid-js";
 
 import { ITEMS_LIMIT } from "../../../configuration.ts";
 import {
@@ -25,6 +25,7 @@ import { Button, ButtonType } from "../../components/button/button.tsx";
 import { ImportedGroup } from "../../components/importedGroup/importedGroup.tsx";
 import { ListItem } from "../../components/listItem/listItem.tsx";
 import { PageError } from "../../components/pageError/pageError.tsx";
+import { notificationState } from "../../state/pushNotificationStateManager.ts";
 import { EditListFormNames, type List } from "../../types/types.ts";
 
 import { EditListHeader } from "./components/editListHeader/editListHeader.tsx";
@@ -47,19 +48,47 @@ import "./editList.css";
 
 type EditListProps = {
   defaultList?: List;
+  requestError?: boolean;
+  errorText?: string;
 };
 
 export const EditList = (props: EditListProps) => {
   const mProps: Required<EditListProps> = mergeProps(
     {
       defaultList: emptyList,
+      requestError: false,
+      errorText: "",
     },
     props,
   );
 
   initStoreEditList(mProps.defaultList);
 
+  createEffect(() => {
+    if (storeEditList.error) {
+      notificationState.pushNetworkError(
+        "Ошибка соединения",
+        "Ошибка соединения с сервером, попробуйте еще раз",
+        NETWORK_ERROR,
+      );
+      setStoreEditList("error", false);
+    }
+
+    if (storeEditList.removeError) {
+      notificationState.pushNetworkError(
+        "Ошибка удаления",
+        "Не удалось удалить список. Попробуйте ещё раз",
+        LIST_REMOVAL_ERROR,
+      );
+      setStoreEditList("removeError", false);
+    }
+  });
+
   onMount(() => {
+    if (mProps.requestError) {
+      notificationState.pushNetworkError("Ошибка соединения", mProps.errorText, NETWORK_ERROR);
+    }
+
     const handleLeave = (event: BeforeUnloadEvent) => {
       if (storeEditList.isChanged) {
         event.preventDefault();
@@ -194,16 +223,10 @@ export const EditList = (props: EditListProps) => {
 
           <Show when={storeEditList.error || reachedItemsLimit() || storeEditList.removeError}>
             <div class="editList__errors">
-              <Show when={storeEditList.error}>
-                <PageError testId={NETWORK_ERROR}>Ошибка соединения с сервером, попробуйте еще раз</PageError>
-              </Show>
               <Show when={reachedItemsLimit()}>
                 <PageError testId={ITEMS_LIMIT_REACHED_WARNING}>
                   Вы использовали лимит в {ITEMS_LIMIT} пунктов
                 </PageError>
-              </Show>
-              <Show when={storeEditList.removeError}>
-                <PageError testId={LIST_REMOVAL_ERROR}>Не удалось удалить список. Попробуйте ещё раз.</PageError>
               </Show>
             </div>
           </Show>

@@ -3,6 +3,7 @@ import { createSignal, mergeProps, Show } from "solid-js";
 import {
   DEFAULT_TEST_ID,
   LIST_ITEM_CONTEXT_MENU,
+  LIST_REMOVAL_ERROR,
   LIST_STRIPE,
   LIST_STRIPE_LINK_TO_VIEW,
   LIST_STRIPE_REMOVE_BUTTON,
@@ -11,6 +12,7 @@ import {
   REMOVE_LIST_DIALOG,
 } from "../../../features/testIds.ts";
 import { soften } from "../../../utilities/soften.ts";
+import { notificationState } from "../../state/pushNotificationStateManager.ts";
 import { removeList } from "../../widgets/editList/services/removeList.ts";
 import { Button, ButtonSize, ButtonTheme } from "../button/button.tsx";
 import { Dialog, DialogSize, DialogTheme } from "../dialog/dialog.tsx";
@@ -42,7 +44,6 @@ type ListStripeProps = {
   removing?: boolean;
   exported?: boolean;
   onRemoveSuccess: (listId: string) => void;
-  onRemoveError: (removeError: boolean) => void;
 };
 
 export const ListStripe = (props: Testable<ListStripeProps>) => {
@@ -86,7 +87,6 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
   ];
 
   function removeListFromListStripe() {
-    mProps.onRemoveError(true);
     setIsRemoving(true);
     setIsDialogOpen(false);
 
@@ -96,7 +96,11 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
       })
       .catch((error) => {
         soften(() => {
-          mProps.onRemoveError(true);
+          notificationState.pushNetworkError(
+            "Ошибка удаления",
+            "Не удалось удалить список. Попробуйте ещё раз",
+            LIST_REMOVAL_ERROR,
+          );
           console.error("There has been a problem with your fetch operation:", error);
           setIsRemoving(false);
         });
