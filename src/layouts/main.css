@@ -52,6 +52,8 @@
   --preloader: rotate-preloader 0.7s linear infinite;
 }
 
+/* 1. Кастомный reset.css где мы настраиваем стили только для реально необходимых в проекте тегов */
+
 *,
 *::before,
 *::after {
@@ -87,6 +89,12 @@ th {
   font-weight: inherit;
 }
 
+button {
+  border: none;
+}
+
+/* 2. Анимации прелоадера */
+
 @keyframes rotate-preloader {
   from {
     transform: rotate(0deg);
@@ -96,6 +104,8 @@ th {
     transform: rotate(360deg);
   }
 }
+
+/* 3. Стилизация скролбаров */
 
 .scrollStyles {
   overflow: auto;

@@ -33,6 +33,7 @@ type ButtonProps = {
   size?: ButtonSize;
   componentType?: ButtonComponentType;
   href?: string;
+  form?: string | undefined;
   type?: ButtonType;
   disabled?: boolean;
   loading?: boolean;
@@ -51,6 +52,7 @@ export const Button = (props: Testable<ButtonProps>) => {
       disabled: false,
       loading: false,
       href: "",
+      form: undefined,
       openInNewTab: false,
       handleClick: () => {},
     },
@@ -73,6 +75,7 @@ export const Button = (props: Testable<ButtonProps>) => {
             button_disabled: mProps.disabled,
             button_loading: mProps.loading,
           }}
+          form={mProps.form}
           disabled={mProps.disabled}
           aria-disabled={mProps.loading ? true : undefined}
           onClick={() => {

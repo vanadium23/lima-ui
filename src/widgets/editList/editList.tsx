@@ -11,11 +11,8 @@ import { createEffect, For, mergeProps, onCleanup, onMount, Show } from "solid-j
 
 import { ITEMS_LIMIT } from "../../../configuration.ts";
 import {
-  AUTO_LIST_ITEM,
   DEFAULT_TEST_ID,
-  DRAGGED_LIST_ITEM,
   ITEMS_LIMIT_REACHED_WARNING,
-  LIST_ITEM,
   LIST_ITEMS,
   LIST_REMOVAL_ERROR,
   NETWORK_ERROR,
@@ -26,12 +23,12 @@ import { ImportedGroup } from "../../components/importedGroup/importedGroup.tsx"
 import { ListItem } from "../../components/listItem/listItem.tsx";
 import { PageError } from "../../components/pageError/pageError.tsx";
 import { notificationState } from "../../state/pushNotificationStateManager.ts";
-import { EditListFormNames, type List } from "../../types/types.ts";
+import { type List } from "../../types/types.ts";
 
 import { EditListHeader } from "./components/editListHeader/editListHeader.tsx";
 import EditListToolsPanel from "./components/editListToolsPanel/editListToolsPanel.tsx";
 import { emptyList, initStoreEditList, setStoreEditList, storeEditList } from "./editList.store.tsx";
-import { addEmptyItem } from "./utilities/addEmptyItem.ts";
+import { addAutoItem } from "./utilities/addAutoItem.ts";
 import { checkChanges } from "./utilities/checkChanges.ts";
 import {
   createScrollableCollisionsDetector,
@@ -42,7 +39,6 @@ import {
 } from "./utilities/dragAndDrop.ts";
 import { prepareAndSendListData } from "./utilities/prepareAndSendListData.ts";
 import { reachedItemsLimit } from "./utilities/reachedItemsLimit.ts";
-import { removeItem } from "./utilities/removeItem.ts";
 import { scroller } from "./utilities/scrollToBottom.ts";
 import "./editList.css";
 
@@ -82,6 +78,16 @@ export const EditList = (props: EditListProps) => {
       );
       setStoreEditList("removeError", false);
     }
+
+    checkChanges(storeEditList.name, storeEditList.purpose, storeEditList.note, storeEditList.items);
+  });
+
+  createEffect(() => {
+    const lastItem = storeEditList.items.at(-1);
+
+    if (lastItem) {
+      addAutoItem();
+    }
   });
 
   onMount(() => {
@@ -106,32 +112,6 @@ export const EditList = (props: EditListProps) => {
     });
   });
 
-  function isLastItem(index: number) {
-    return index === storeEditList.items.length - 1;
-  }
-
-  function handleItemChange(index: number, value: string) {
-    setStoreEditList("items", index, "content", value);
-    checkChanges(storeEditList, setStoreEditList);
-
-    if (isLastItem(index) && value.trim() !== "") {
-      setStoreEditList("items", index, "auto", false);
-      addEmptyItem({ mode: "end", scroll: true, auto: true });
-    }
-
-    const lastIndex = storeEditList.items.length - 1;
-    const beforeLastIndex = lastIndex - 1;
-
-    if (
-      storeEditList.items.length !== 1 &&
-      index === beforeLastIndex &&
-      storeEditList.items[lastIndex]?.content.trim() === "" &&
-      storeEditList.items[beforeLastIndex]?.content.trim() === ""
-    ) {
-      removeItem(lastIndex);
-    }
-  }
-
   return (
     <div class="editList">
       <div class="editList__main">
@@ -150,27 +130,16 @@ export const EditList = (props: EditListProps) => {
             >
               <DragDropSensors />
               <SortableProvider ids={dragIds()}>
-                <For each={storeEditList.items}>
+                <For each={storeEditList.items.slice(0, ITEMS_LIMIT)}>
                   {(item, index) => {
                     const dragData = createSortable(item.dragId);
 
-                    if (item.originalListId === storeEditList.id) {
+                    if (item.originalList.id === storeEditList.id) {
                       return (
                         <ListItem
-                          removeItem={() => removeItem(index())}
-                          disabled={storeEditList.sendingNow !== false}
-                          isOnlyOneItem={storeEditList.items.length === 1}
-                          checkable={storeEditList.isCheckable}
-                          checked={false}
-                          name={`${EditListFormNames.ListItem} ${index() + 1}`}
+                          index={index()}
                           dataId={item.id}
-                          onChange={(value) => handleItemChange(index(), value)}
-                          onAddBefore={() => addEmptyItem({ mode: "before", index: index() })}
-                          onAddAfter={() => addEmptyItem({ mode: "after", index: index() })}
-                          canAddMore={!reachedItemsLimit()}
-                          testId={item.auto ? AUTO_LIST_ITEM : LIST_ITEM}
-                          testSubId={index()}
-                          required={!item.auto}
+                          auto={item.auto}
                           dragSettings={{
                             dragData,
                             dragProps: {
@@ -179,7 +148,6 @@ export const EditList = (props: EditListProps) => {
                             },
                             dragState: useDragDropContext()?.[0] || null,
                           }}
-                          placeholder={item.auto ? "Добавить пункт списка" : "Пункт списка"}
                         >
                           {item.content}
                         </ListItem>
@@ -188,7 +156,10 @@ export const EditList = (props: EditListProps) => {
                       return (
                         <ImportedGroup
                           testId={DEFAULT_TEST_ID}
-                          id={item.originalListId}
+                          itemIndex={index()}
+                          id={item.originalList.id}
+                          name={item.originalList.name}
+                          disabled={Boolean(storeEditList.sendingNow)}
                           dragSettings={{
                             dragData,
                             dragProps: {
@@ -207,13 +178,10 @@ export const EditList = (props: EditListProps) => {
               </SortableProvider>
               <DragOverlay>
                 <ListItem
-                  checkable={storeEditList.isCheckable}
-                  checked={false}
+                  index={ITEMS_LIMIT + 1}
+                  auto={draggedItemData().auto}
                   dataId={draggedItemData().dragId}
-                  canAddMore={!reachedItemsLimit()}
-                  testId={DRAGGED_LIST_ITEM}
                   isDraggingOverlay={true}
-                  placeholder={draggedItemData().auto ? "Добавить пункт списка" : "Пункт списка"}
                 >
                   {draggedItemData().content}
                 </ListItem>

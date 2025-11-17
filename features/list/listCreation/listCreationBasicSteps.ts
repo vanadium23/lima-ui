@@ -26,7 +26,7 @@ import {
 import { isDesktop, isMobile, isTablet } from "../../utilities/discoverDevice.ts";
 import { type PageAlias, PAGES_TEST_IDS } from "../../utilities/testIds.ts";
 
-import { ACCORDION_TEST_IDS, type AccordionMeaning, BUTTON_TEST_IDS, type ButtonMeaning } from "./testIds.ts";
+import { ACCORDION_TEST_IDS, type AccordionMeaning } from "./testIds.ts";
 
 Then("I expect to see sidebar or its button", async function (this: ComplexWorld) {
   if (isDesktop()) {
@@ -75,13 +75,6 @@ Then("I expect to see the following title: {string}", async function (this: Comp
 
 Then("I expect to see list items area", async function (this: ComplexWorld) {
   await this.expectLocated(this.accounting.elements.registerTestId(LIST_ITEMS)).toBeInViewport();
-});
-
-Then("I expect to see the {string} button enabled", async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
-  const expectButton = this.expectLocated(this.accounting.elements.registerTestId(BUTTON_TEST_IDS[buttonMeaning]));
-
-  await expectButton.toBeInViewport();
-  await expectButton.toBeEnabled();
 });
 
 Then("All necessary elements are on the {string} page", async function (this: ComplexWorld, pageAlias: PageAlias) {

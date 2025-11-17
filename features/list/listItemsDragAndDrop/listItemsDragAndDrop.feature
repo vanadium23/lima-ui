@@ -74,7 +74,7 @@ Feature: List items drag and drop functionality
     And I complete the drag operation
     And I scroll to the bottom of the list items
     Then I expect to see the dragged list item on the "last" position
-    Then I expect not to see the "automatic" item input
+    Then I expect to see the "automatic" item input enabled
 
   Scenario: Automatic item remains if dragged before it
     When I start dragging the "first" list item

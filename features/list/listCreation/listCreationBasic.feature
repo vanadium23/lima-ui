@@ -13,7 +13,7 @@ Feature: Seeing the basis of List Creation page
     Then I expect to see the "list purpose" input enabled
     Then I expect to fully see the collapsed "list note" accordion ready for expanding
     Then I expect to see list items area
-    Then I expect to see the "single" item input enabled
+    Then I expect to see the "automatic" item input enabled
     Then I expect to see the "save" button disabled
     And I ensure the tools panel is open
     Then I expect to see the "add list item" button enabled
@@ -27,15 +27,15 @@ Feature: Seeing the basis of List Creation page
     Then I expect to see no other elements
 
   Scenario Outline: Restoring default List Creation page state
-    And I type some text with length less or equal to the one of <input> input limit
-    And I clear the <input> input
+    And I type some text with length less or equal to the one of <input to fill> input limit
+    And I clear the <input to clear> input
     Then I expect to see the "save" button disabled
 
     Examples:
-      | input          |
-      | "list title"   |
-      | "list purpose" |
-      | "first item"   |
+      | input to fill    | input to clear |
+      | "list title"     | "list title"   |
+      | "list purpose"   | "list purpose" |
+      | "automatic item" | "first item"   |
 
   Scenario: Restoring default List Creation page state after list note change
     When I press on the "list note" accordion
