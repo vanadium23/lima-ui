@@ -4,7 +4,6 @@ import { createStore } from "solid-js/store";
 import { LISTS_LIMIT } from "../../../configuration.ts";
 import {
   CREATE_LIST_BUTTON,
-  LIST_REMOVAL_ERROR,
   LIST_STRIPE,
   LISTS_LIMIT_REACHED_WARNING,
   NETWORK_ERROR,
@@ -16,6 +15,7 @@ import { Button, ButtonComponentType } from "../../components/button/button.tsx"
 import { ListStripe } from "../../components/listStripe/listStripe.tsx";
 import { PageError } from "../../components/pageError/pageError.tsx";
 import { Title } from "../../components/title/title.tsx";
+import { notificationState } from "../../state/pushNotificationStateManager.ts";
 import { isLimitReached, setIsLimitReached } from "../../state/reachListsLimit.ts";
 import type { ListBase } from "../../types/types.ts";
 
@@ -38,10 +38,6 @@ export const Lists = (props: ListsProps) => {
     return store.lists.length >= LISTS_LIMIT;
   }
 
-  function setRemoveError(removeError: boolean) {
-    setStore("removeError", removeError);
-  }
-
   function removingListInStore(listIdToRemove: string) {
     setStore("lists", (lists: ListBase[]) => lists.filter((item) => item.id !== listIdToRemove));
     setIsLimitReached(checkListsLimitReached());
@@ -49,6 +45,14 @@ export const Lists = (props: ListsProps) => {
 
   onMount(() => {
     setIsLimitReached(checkListsLimitReached());
+
+    if (mProps.listsRequestError) {
+      notificationState.pushNetworkError(
+        "Ошибка соединения",
+        "Произошла ошибка соединения с сервером, попробуйте ещё раз",
+        NETWORK_ERROR,
+      );
+    }
   });
 
   return (
@@ -61,14 +65,7 @@ export const Lists = (props: ListsProps) => {
           У вас еще нет сохраненных списков
         </span>
       </Show>
-      <Show
-        when={!mProps.listsRequestError}
-        fallback={
-          <div class="lists__errors">
-            <PageError testId={NETWORK_ERROR}>Произошла ошибка соединения с сервером, попробуйте еще раз</PageError>
-          </div>
-        }
-      >
+      <Show when={!mProps.listsRequestError}>
         <ul class="lists__list">
           <For each={store.lists.slice().reverse()}>
             {(list, index) => (
@@ -79,7 +76,6 @@ export const Lists = (props: ListsProps) => {
                   listTitle={list.name}
                   listPurpose={list.purpose}
                   onRemoveSuccess={removingListInStore}
-                  onRemoveError={setRemoveError}
                   testId={LIST_STRIPE}
                   testSubId={index()}
                   exported={Boolean(list.exportedTo?.length)}
@@ -92,9 +88,6 @@ export const Lists = (props: ListsProps) => {
         <div class="lists__errors">
           <Show when={isLimitReached()}>
             <PageError testId={LISTS_LIMIT_REACHED_WARNING}>Вы использовали лимит в {LISTS_LIMIT} списков</PageError>
-          </Show>
-          <Show when={store.removeError}>
-            <PageError testId={LIST_REMOVAL_ERROR}>Не удалось удалить список. Попробуйте ещё раз.</PageError>
           </Show>
         </div>
 

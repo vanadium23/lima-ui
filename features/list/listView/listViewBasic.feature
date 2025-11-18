@@ -80,7 +80,7 @@ Feature: Seeing the basis of List view page
     Then I expect to see header
     Then I expect to see search
     Then I expect not to see tools panel
-    Then I expect to see the "connection" error
+    Then I expect to see the "single connection" error
     Then I expect not to see the "save" button
     Then All necessary elements are on the "List View with Error" page
     Then I expect to see no other elements

@@ -17,7 +17,7 @@ Feature: Failing to create a new list
     And I type some text with length less or equal to the one of "list purpose" input limit
     And I type some text with length less or equal to the one of "automatic item" input limit
     And I press the "save" button
-    Then I expect to see the "connection" error
+    Then I expect to see the "single connection" error
 
   Scenario: Seeing connection error when the server is not available
     Given Data server is not available
@@ -25,9 +25,9 @@ Feature: Failing to create a new list
     And I type some text with length less or equal to the one of "list purpose" input limit
     And I type some text with length less or equal to the one of "automatic item" input limit
     And I press the "save" button
-    Then I expect to see the "connection" error
+    Then I expect to see the "single connection" error
 
-  Scenario: Connection error is hidden for the new "Save" button pressing
+  Scenario: The new connection error is shown for every new "Save" button pressing
     Given There is no internet connection
     And I type some text with length less or equal to the one of "list title" input limit
     And I type some text with length less or equal to the one of "list purpose" input limit
@@ -35,7 +35,7 @@ Feature: Failing to create a new list
     And I press the "save" button
     And I wait for the page to load
     And I press the "save" button
-    Then I expect not to see the "connection" error
+    Then I expect to see the following number of "connection" errors: 2
 
   Scenario: Sending is not allowed when list title is empty
     And I type some text with length less or equal to the one of "list purpose" input limit
@@ -95,7 +95,7 @@ Feature: Failing to create a new list
     Then I expect to see the "import" button enabled
     Then I expect to see the "print list" button disabled
     And I ensure the tools panel does not disturb
-    Then I expect to see the "connection" error
+    Then I expect to see the "single connection" error
     Then All necessary elements are on the "List Creation Item Added, Note Expanded, Connection Error" page
     Then I expect to see no other elements
 
@@ -111,4 +111,4 @@ Feature: Failing to create a new list
     And I press the "save" button
     And I wait for the page to load
     Then I expect to see the warning about items inputs limit reached
-    Then I expect to see the "connection" error
+    Then I expect to see the "single connection" error

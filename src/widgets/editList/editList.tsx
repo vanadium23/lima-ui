@@ -22,11 +22,12 @@ import { Button, ButtonType } from "../../components/button/button.tsx";
 import { ImportedGroup } from "../../components/importedGroup/importedGroup.tsx";
 import { ListItem } from "../../components/listItem/listItem.tsx";
 import { PageError } from "../../components/pageError/pageError.tsx";
+import { notificationState } from "../../state/pushNotificationStateManager.ts";
 import { type List } from "../../types/types.ts";
 
 import { EditListHeader } from "./components/editListHeader/editListHeader.tsx";
 import EditListToolsPanel from "./components/editListToolsPanel/editListToolsPanel.tsx";
-import { emptyList, initStoreEditList, storeEditList } from "./editList.store.tsx";
+import { emptyList, initStoreEditList, setStoreEditList, storeEditList } from "./editList.store.tsx";
 import { addAutoItem } from "./utilities/addAutoItem.ts";
 import { checkChanges } from "./utilities/checkChanges.ts";
 import {
@@ -43,12 +44,16 @@ import "./editList.css";
 
 type EditListProps = {
   defaultList?: List;
+  requestError?: boolean;
+  errorText?: string;
 };
 
 export const EditList = (props: EditListProps) => {
   const mProps: Required<EditListProps> = mergeProps(
     {
       defaultList: emptyList,
+      requestError: false,
+      errorText: "",
     },
     props,
   );
@@ -56,6 +61,24 @@ export const EditList = (props: EditListProps) => {
   initStoreEditList(mProps.defaultList);
 
   createEffect(() => {
+    if (storeEditList.error) {
+      notificationState.pushNetworkError(
+        "Ошибка соединения",
+        "Ошибка соединения с сервером, попробуйте еще раз",
+        NETWORK_ERROR,
+      );
+      setStoreEditList("error", false);
+    }
+
+    if (storeEditList.removeError) {
+      notificationState.pushNetworkError(
+        "Ошибка удаления",
+        "Не удалось удалить список. Попробуйте ещё раз",
+        LIST_REMOVAL_ERROR,
+      );
+      setStoreEditList("removeError", false);
+    }
+
     checkChanges(storeEditList.name, storeEditList.purpose, storeEditList.note, storeEditList.items);
   });
 
@@ -68,6 +91,10 @@ export const EditList = (props: EditListProps) => {
   });
 
   onMount(() => {
+    if (mProps.requestError) {
+      notificationState.pushNetworkError("Ошибка соединения", mProps.errorText, NETWORK_ERROR);
+    }
+
     const handleLeave = (event: BeforeUnloadEvent) => {
       if (storeEditList.isChanged) {
         event.preventDefault();
@@ -86,111 +113,107 @@ export const EditList = (props: EditListProps) => {
   });
 
   return (
-    <div class="editList">
-      <div class="editList__main">
-        <form class="editList__form" method="post" onSubmit={prepareAndSendListData}>
-          <EditListHeader />
+    <Show when={!mProps.requestError}>
+      <div class="editList">
+        <div class="editList__main">
+          <form class="editList__form" method="post" onSubmit={prepareAndSendListData}>
+            <EditListHeader />
 
-          <div
-            class="editList__scrollContainer scrollStyles"
-            ref={(el) => (scroller.scrollContainer = el)}
-            data-test-id={LIST_ITEMS}
-          >
-            <DragDropProvider
-              onDragStart={onDragStart}
-              onDragEnd={onDragEnd}
-              collisionDetector={createScrollableCollisionsDetector(scroller.scrollContainer, storeEditList)}
+            <div
+              class="editList__scrollContainer scrollStyles"
+              ref={(el) => (scroller.scrollContainer = el)}
+              data-test-id={LIST_ITEMS}
             >
-              <DragDropSensors />
-              <SortableProvider ids={dragIds()}>
-                <For each={storeEditList.items.slice(0, ITEMS_LIMIT)}>
-                  {(item, index) => {
-                    const dragData = createSortable(item.dragId);
+              <DragDropProvider
+                onDragStart={onDragStart}
+                onDragEnd={onDragEnd}
+                collisionDetector={createScrollableCollisionsDetector(scroller.scrollContainer, storeEditList)}
+              >
+                <DragDropSensors />
+                <SortableProvider ids={dragIds()}>
+                  <For each={storeEditList.items.slice(0, ITEMS_LIMIT)}>
+                    {(item, index) => {
+                      const dragData = createSortable(item.dragId);
 
-                    if (item.originalList.id === storeEditList.id) {
-                      return (
-                        <ListItem
-                          index={index()}
-                          dataId={item.id}
-                          auto={item.auto}
-                          dragSettings={{
-                            dragData,
-                            dragProps: {
-                              ref: dragData.ref,
-                              style: storeEditList.draggedItem ? transformStyle(dragData.transform) : {},
-                            },
-                            dragState: useDragDropContext()?.[0] || null,
-                          }}
-                        >
-                          {item.content}
-                        </ListItem>
-                      );
-                    } else {
-                      return (
-                        <ImportedGroup
-                          testId={DEFAULT_TEST_ID}
-                          itemIndex={index()}
-                          id={item.originalList.id}
-                          name={item.originalList.name}
-                          disabled={Boolean(storeEditList.sendingNow)}
-                          dragSettings={{
-                            dragData,
-                            dragProps: {
-                              ref: dragData.ref,
-                              style: storeEditList.draggedItem ? transformStyle(dragData.transform) : {},
-                            },
-                            dragState: useDragDropContext()?.[0] || null,
-                          }}
-                        >
-                          {[item]}
-                        </ImportedGroup>
-                      );
-                    }
-                  }}
-                </For>
-              </SortableProvider>
-              <DragOverlay>
-                <ListItem
-                  index={ITEMS_LIMIT + 1}
-                  auto={draggedItemData().auto}
-                  dataId={draggedItemData().dragId}
-                  isDraggingOverlay={true}
-                >
-                  {draggedItemData().content}
-                </ListItem>
-              </DragOverlay>
-            </DragDropProvider>
-          </div>
-
-          <Show when={storeEditList.error || reachedItemsLimit() || storeEditList.removeError}>
-            <div class="editList__errors">
-              <Show when={storeEditList.error}>
-                <PageError testId={NETWORK_ERROR}>Ошибка соединения с сервером, попробуйте еще раз</PageError>
-              </Show>
-              <Show when={reachedItemsLimit()}>
-                <PageError testId={ITEMS_LIMIT_REACHED_WARNING}>
-                  Вы использовали лимит в {ITEMS_LIMIT} пунктов
-                </PageError>
-              </Show>
-              <Show when={storeEditList.removeError}>
-                <PageError testId={LIST_REMOVAL_ERROR}>Не удалось удалить список. Попробуйте ещё раз.</PageError>
-              </Show>
+                      if (item.originalList.id === storeEditList.id) {
+                        return (
+                          <ListItem
+                            index={index()}
+                            dataId={item.id}
+                            auto={item.auto}
+                            dragSettings={{
+                              dragData,
+                              dragProps: {
+                                ref: dragData.ref,
+                                style: storeEditList.draggedItem ? transformStyle(dragData.transform) : {},
+                              },
+                              dragState: useDragDropContext()?.[0] || null,
+                            }}
+                          >
+                            {item.content}
+                          </ListItem>
+                        );
+                      } else {
+                        return (
+                          <ImportedGroup
+                            testId={DEFAULT_TEST_ID}
+                            itemIndex={index()}
+                            id={item.originalList.id}
+                            name={item.originalList.name}
+                            disabled={Boolean(storeEditList.sendingNow)}
+                            dragSettings={{
+                              dragData,
+                              dragProps: {
+                                ref: dragData.ref,
+                                style: storeEditList.draggedItem ? transformStyle(dragData.transform) : {},
+                              },
+                              dragState: useDragDropContext()?.[0] || null,
+                            }}
+                          >
+                            {[item]}
+                          </ImportedGroup>
+                        );
+                      }
+                    }}
+                  </For>
+                </SortableProvider>
+                <DragOverlay>
+                  <ListItem
+                    index={ITEMS_LIMIT + 1}
+                    auto={draggedItemData().auto}
+                    dataId={draggedItemData().dragId}
+                    isDraggingOverlay={true}
+                  >
+                    {draggedItemData().content}
+                  </ListItem>
+                </DragOverlay>
+              </DragDropProvider>
             </div>
-          </Show>
 
-          <div class="editList__controls">
-            <Button
-              type={ButtonType.Submit}
-              disabled={!storeEditList.isChanged || storeEditList.sendingNow === "deleting"}
-              loading={storeEditList.sendingNow === "saving"}
-              testId={SAVE_LIST_BUTTON}
-            >
-              Сохранить
-            </Button>
-          </div>
-        </form>
+            <Show when={storeEditList.error || reachedItemsLimit() || storeEditList.removeError}>
+              <div class="editList__errors">
+                <Show when={reachedItemsLimit()}>
+                  <PageError testId={ITEMS_LIMIT_REACHED_WARNING}>
+                    Вы использовали лимит в {ITEMS_LIMIT} пунктов
+                  </PageError>
+                </Show>
+              </div>
+            </Show>
+
+            <div class="editList__controls">
+              <Button
+                type={ButtonType.Submit}
+                disabled={!storeEditList.isChanged || storeEditList.sendingNow === "deleting"}
+                loading={storeEditList.sendingNow === "saving"}
+                testId={SAVE_LIST_BUTTON}
+              >
+                Сохранить
+              </Button>
+            </div>
+          </form>
+        </div>
+        <EditListToolsPanel />
       </div>
-      <EditListToolsPanel />
-    </div>
+    </Show>
   );
 };

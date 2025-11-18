@@ -25,21 +25,21 @@ Feature: Failing to update a list
     Given There is no internet connection
     And I type some text with length less or equal to the one of "list title" input limit
     And I press the "save" button
-    Then I expect to see the "connection" error
+    Then I expect to see the "single connection" error
 
   Scenario: Seeing connection error on list update when the server is not available
     Given Data server is not available
     And I type some text with length less or equal to the one of "list title" input limit
     And I press the "save" button
-    Then I expect to see the "connection" error
+    Then I expect to see the "single connection" error
 
-  Scenario: Connection error is hidden for the new "Save" button pressing on list update
+  Scenario: The new connection error is shown for every new "Save" button pressing on list update
     Given There is no internet connection
     And I type some text with length less or equal to the one of "list title" input limit
     And I press the "save" button
     And I wait for the page to load
     And I press the "save" button
-    Then I expect not to see the "connection" error
+    Then I expect to see the following number of "connection" errors: 2
 
   Scenario: Sending is not allowed when list title is empty on list update
     When I clear the "list title" input

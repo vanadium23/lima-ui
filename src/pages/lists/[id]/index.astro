@@ -1,7 +1,5 @@
 ---
-import { NETWORK_ERROR } from "../../../../features/testIds.ts";
 import { BACKEND_URL_NON_EXISTING, URL_MY_LISTS } from "../../../../utilities/addresses.ts";
-import { PageError } from "../../../components/pageError/pageError.tsx";
 import AppPage from "../../../layouts/app/app.astro";
 import type { List } from "../../../types/types";
 import { EditList } from "../../../widgets/editList/editList.tsx";
@@ -45,13 +43,11 @@ try {
 ---
 
 <AppPage titleName={list.name} list404={listRequestError}>
-  {
-    listRequestError ? (
-      <div class="listPageError">
-        <PageError testId={NETWORK_ERROR}>{errorText}</PageError>
-      </div>
-    ) : (
-      <EditList client:only="solid-js" slot="mainContent" defaultList={list} />
-    )
-  }
+  <EditList
+    client:only="solid-js"
+    slot="mainContent"
+    defaultList={list}
+    requestError={listRequestError}
+    errorText={errorText}
+  />
 </AppPage>
