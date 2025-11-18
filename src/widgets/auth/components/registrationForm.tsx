@@ -10,12 +10,12 @@ import {
   REG_SUBMIT_BUTTON,
   REG_USERS_AGREEMENT_LINK,
 } from "../../../../features/testIds.ts";
+import { AuthButton } from "../../../components/authButton/authButton.tsx";
 import { Button, ButtonType } from "../../../components/button/button.tsx";
 import { Checkbox } from "../../../components/checkbox/checkbox.tsx";
 import { Input, InputType } from "../../../components/input/input.tsx";
 import { Link } from "../../../components/link/link.tsx";
 import { TextButton } from "../../../components/textButton/textButton.tsx";
-import { ToolsButton, ToolsButtonComponentType } from "../../../components/toolsButton/toolsButton.tsx";
 
 import { type RegistrationFormInputs } from "./registrationForm.model.ts";
 import {
@@ -40,7 +40,7 @@ function onSubmit(e: SubmitEvent) {
       handleRegister("email");
     }
   } else {
-    setRegistrationFormStore("inputs", "accept_agreement", "isValid", true);
+    setRegistrationFormStore("inputs", "accept_agreement", "isValid", false);
     setRegistrationFormStore("inputs", "accept_agreement", "error", "Необходимо принять пользовательское соглашение");
   }
 }
@@ -105,8 +105,7 @@ function renderRegInputs(inputs: RegistrationFormInputs): JSXElement {
       <label class="regCheckbox__container">
         <Checkbox
           testId={REG_ACCEPT_AGREEMENT}
-          //required={true}
-          error={accept_agreement.error || ""}
+          error={!accept_agreement.isValid}
           checked={Boolean(accept_agreement.value)}
           onChange={handleCheckboxChange}
           disabled={registrationFormStore.isLoading}
@@ -129,8 +128,7 @@ function renderRegInputs(inputs: RegistrationFormInputs): JSXElement {
 function renderRegSocials(): JSXElement {
   return (
     <div class="regForm__socials">
-      <ToolsButton
-        componentType={ToolsButtonComponentType.Button}
+      <AuthButton
         iconName={"google"}
         testId={"google_auth"}
         loading={registrationFormStore.authType === "google" && registrationFormStore.isLoading}
@@ -138,9 +136,8 @@ function renderRegSocials(): JSXElement {
         handleClick={() => handleRegister("google")}
       >
         {"Google"}
-      </ToolsButton>
-      <ToolsButton
-        componentType={ToolsButtonComponentType.Button}
+      </AuthButton>
+      <AuthButton
         iconName={"vk"}
         testId={"vk_auth"}
         loading={registrationFormStore.authType === "vk" && registrationFormStore.isLoading}
@@ -148,9 +145,8 @@ function renderRegSocials(): JSXElement {
         handleClick={() => handleRegister("vk")}
       >
         {"ВК"}
-      </ToolsButton>
-      <ToolsButton
-        componentType={ToolsButtonComponentType.Button}
+      </AuthButton>
+      <AuthButton
         iconName={"yandex"}
         testId={"yandex_auth"}
         loading={registrationFormStore.authType === "yandex" && registrationFormStore.isLoading}
@@ -158,7 +154,7 @@ function renderRegSocials(): JSXElement {
         handleClick={() => handleRegister("yandex")}
       >
         {"Яндекс"}
-      </ToolsButton>
+      </AuthButton>
     </div>
   );
 }

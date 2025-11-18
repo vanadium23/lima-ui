@@ -1,10 +1,11 @@
 import { Match, mergeProps, Switch } from "solid-js";
 
-import { IconSize } from "../icon/icon.tsx";
+import { IconSize } from "../../../icon/icon.tsx";
 
 import { GoogleIcon } from "./icons/googleIcon.tsx";
 import { VkIcon } from "./icons/vkIcon.tsx";
 import { YandexIcon } from "./icons/yandexIcon.tsx";
+import "./customIcon.css";
 
 const customIconNames = ["google", "yandex", "vk"] as const;
 export type CustomIconName = (typeof customIconNames)[number];

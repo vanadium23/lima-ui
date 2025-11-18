@@ -24,9 +24,8 @@ type TabsProps = {
   size?: TabsSize;
   tabs: TabData[];
   ariaLabel: string;
-  defaultActiveIndex?: number;
   activeTab?: number;
-  onSwitchActiveTab?: (index: number) => void;
+  onSwitchActiveTab?: ((index: number) => void) | undefined;
 };
 
 export const Tabs = (props: Testable<TabsProps>) => {
@@ -34,20 +33,18 @@ export const Tabs = (props: Testable<TabsProps>) => {
     {
       theme: TabsTheme.Primary,
       size: TabsSize.Medium,
-      defaultActiveIndex: 0,
-      activeTab: -1,
-      onSwitchActiveTab: () => undefined,
+      activeTab: 0,
+      onSwitchActiveTab: undefined,
     },
     props,
   );
 
-  const [activeTabIndex, setActiveTabIndex] = createSignal(
-    props.onSwitchActiveTab && mProps.activeTab !== -1 ? mProps.activeTab : mProps.defaultActiveIndex,
-  );
-  const isControlled = Boolean(props.onSwitchActiveTab);
+  const [activeTabIndex, setActiveTabIndex] = createSignal(mProps.activeTab);
+
+  const isControlled = typeof mProps.onSwitchActiveTab === "function";
 
   const handleTabClick = (index: number) => {
-    if (isControlled) {
+    if (isControlled && mProps.onSwitchActiveTab) {
       mProps.onSwitchActiveTab(index);
     } else {
       setActiveTabIndex(index);
@@ -66,7 +63,7 @@ export const Tabs = (props: Testable<TabsProps>) => {
         <For each={mProps.tabs}>
           {(tabData, index) => (
             <Tab
-              selected={activeTabIndex() === index()}
+              selected={isControlled ? mProps.activeTab === index() : activeTabIndex() === index()}
               disabled={tabData.disabled || false}
               handleClick={() => handleTabClick(index())}
               testId={`${mProps.testId}-tab`}
@@ -85,7 +82,7 @@ export const Tabs = (props: Testable<TabsProps>) => {
             aria-label={tabData.tabName}
             class="tabs__tabpanel"
             classList={{
-              tabs__tabpanel_hidden: activeTabIndex() !== index(),
+              tabs__tabpanel_hidden: isControlled ? mProps.activeTab !== index() : activeTabIndex() !== index(),
             }}
             data-test-id={`${mProps.testId}-tabpanel`}
             data-test-sub-id={index()}

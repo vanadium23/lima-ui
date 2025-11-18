@@ -1,9 +1,8 @@
-import { createEffect, createSignal, Match, Switch } from "solid-js";
+import { createEffect, createSignal } from "solid-js";
 
 import { AUTH_TABS } from "../../../features/testIds.ts";
 import { Tabs } from "../../components/tabs/tabs.tsx";
 import { setUrlHash, urlHash } from "../../state/locationState.ts";
-import { panelState } from "../../state/sidebarsStateManager.ts";
 
 import { registrationFormStore } from "./components/registrationForm.store.ts";
 import { RegistrationForm } from "./components/registrationForm.tsx";
@@ -23,8 +22,23 @@ const authTabs = [
 ];
 
 export const Auth = () => {
-  /* TODO: This is just before we implement Normal basic page template */
-  panelState.closeSidebar();
+  const getActiveTabIdx = () => {
+    const tab = activeAuthForm();
+
+    if (tab === "register") {
+      return 1;
+    } else {
+      return 0;
+    }
+  };
+
+  const switchActiveTabIdx = (index: number) => {
+    if (index === 0) {
+      setActiveAuthForm("login");
+    } else if (index === 1) {
+      setActiveAuthForm("register");
+    }
+  };
 
   createEffect(() => {
     if (urlHash() !== activeAuthForm()) {
@@ -53,36 +67,13 @@ export const Auth = () => {
         <img class="authGreeting__img" src="/old_man.png" height="603px" alt="Lima" />
       </div>
       <div class="auth_tabs">
-        <Switch>
-          <Match when={activeAuthForm() === "register"}>
-            <Tabs
-              ariaLabel="Auth"
-              tabs={tabs()}
-              testId={AUTH_TABS}
-              defaultActiveIndex={1}
-              activeTab={1}
-              onSwitchActiveTab={(index) => {
-                if (index === 0) {
-                  setActiveAuthForm("login");
-                }
-              }}
-            />
-          </Match>
-          <Match when={activeAuthForm() === "login"}>
-            <Tabs
-              ariaLabel="Auth"
-              tabs={tabs()}
-              testId={AUTH_TABS}
-              defaultActiveIndex={0}
-              activeTab={0}
-              onSwitchActiveTab={(index) => {
-                if (index === 1) {
-                  setActiveAuthForm("register");
-                }
-              }}
-            />
-          </Match>
-        </Switch>
+        <Tabs
+          ariaLabel="Auth"
+          tabs={tabs()}
+          testId={AUTH_TABS}
+          activeTab={getActiveTabIdx()}
+          onSwitchActiveTab={switchActiveTabIdx}
+        />
       </div>
     </div>
   );

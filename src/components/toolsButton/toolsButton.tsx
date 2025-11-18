@@ -1,6 +1,5 @@
 import { Match, mergeProps, Show, Switch } from "solid-js";
 
-import { CustomIcon, type CustomIconName, isCustomIconName } from "../customIcon/customIcon.tsx";
 import { Icon, IconSize } from "../icon/icon.tsx";
 import { IconName } from "../icon/types.ts";
 import type { Testable } from "../utilities/testable.ts";
@@ -25,7 +24,7 @@ type ToolsButtonProps = {
   theme?: ToolsButtonTheme;
   size?: ToolsButtonSize;
   componentType?: ToolsButtonComponentType;
-  iconName: IconName | CustomIconName;
+  iconName: IconName;
   disabled?: boolean;
   loading?: boolean;
   handleClick?: () => void;
@@ -84,18 +83,7 @@ export const ToolsButton = (props: Testable<ToolsButtonProps>) => {
                   </div>
                 </Match>
                 <Match when={!mProps.loading}>
-                  <Switch>
-                    <Match when={isCustomIconName(mProps.iconName)}>
-                      <CustomIcon
-                        name={mProps.iconName as CustomIconName}
-                        size={iconSize[mProps.size]}
-                        disabled={mProps.disabled}
-                      />
-                    </Match>
-                    <Match when={!isCustomIconName(mProps.iconName)}>
-                      <Icon name={mProps.iconName as IconName} size={iconSize[mProps.size]} />
-                    </Match>
-                  </Switch>
+                  <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
                 </Match>
               </Switch>
             </div>

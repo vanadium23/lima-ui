@@ -1,0 +1,14 @@
+.appContainer {
+  display: flex;
+  height: calc(100dvh - 4.8rem);
+}
+
+body {
+  height: 100dvh;
+}
+
+.main {
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
+}

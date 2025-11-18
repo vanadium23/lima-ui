@@ -2,7 +2,6 @@ import { createRoot, createSignal, onCleanup } from "solid-js";
 
 export const panelState = createRoot(() => {
   const [isSidebarHidden, setIsSidebarHidden] = createSignal(true);
-  const [isSidebarAlwaysHidden, setIsSidebarAlwaysHidden] = createSignal(false);
   const [isToolsPanelHidden, setIsToolsPanelHidden] = createSignal(true);
 
   const handleClickOutside = (event: MouseEvent) => {
@@ -44,21 +43,10 @@ export const panelState = createRoot(() => {
     if (willOpen) setIsSidebarHidden(true);
   };
 
-  const closeSidebar = () => {
-    setIsSidebarAlwaysHidden(true);
-  };
-
-  const openSidebar = () => {
-    setIsSidebarAlwaysHidden(false);
-  };
-
   return {
     isSidebarHidden,
-    isSidebarAlwaysHidden,
     isToolsPanelHidden,
     toggleSidebar,
     toggleToolsPanel,
-    closeSidebar,
-    openSidebar,
   };
 });

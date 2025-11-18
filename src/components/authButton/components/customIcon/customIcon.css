@@ -1,0 +1,8 @@
+.customIcon {
+  width: 100%;
+  height: 100%;
+}
+
+.customIcon__disabled .core_path {
+  fill: var(--neutral-500);
+}

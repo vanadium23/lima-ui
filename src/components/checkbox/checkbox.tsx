@@ -27,7 +27,7 @@ type CheckboxProps = {
   onChange?: (checked: boolean) => void;
   name?: string;
   required?: boolean;
-  error?: string;
+  error?: boolean;
 };
 
 export const Checkbox = (props: Testable<CheckboxProps>) => {
@@ -42,10 +42,12 @@ export const Checkbox = (props: Testable<CheckboxProps>) => {
       onChange: () => {},
       name: "",
       required: false,
-      error: "",
+      error: false,
     },
     props,
   );
+
+  const [hasError, setHasError] = createSignal(mProps.error);
 
   // eslint-disable-next-line solid/reactivity
   const [getState, setState] = createSignal(mProps.checked);
@@ -83,7 +85,7 @@ export const Checkbox = (props: Testable<CheckboxProps>) => {
             [`checkbox_${mProps.size}`]: true,
             [`checkbox_${mProps.theme}`]: !mProps.disabled,
             checkbox_disabled: mProps.disabled,
-            checkbox_error: Boolean(mProps.error),
+            checkbox_error: hasError() || mProps.error,
           }}
           data-test-id={mProps.testId}
           data-test-sub-id={mProps.testSubId}
@@ -97,6 +99,8 @@ export const Checkbox = (props: Testable<CheckboxProps>) => {
             aria-checked={getState()}
             aria-label={mProps.ariaLabel}
             name={mProps.name}
+            required={mProps.required}
+            onInvalid={() => setHasError(true)}
           />
 
           <span class="checkbox__inner">
@@ -121,6 +125,7 @@ export const Checkbox = (props: Testable<CheckboxProps>) => {
             [`checkbox_${mProps.theme}`]: !mProps.disabled,
             checkbox_disabled: mProps.disabled,
             checkbox_dependent: mProps.dependent,
+            checkbox_error: hasError() || mProps.error,
           }}
           data-test-id={mProps.testId}
           data-test-sub-id={mProps.testSubId}
@@ -134,6 +139,8 @@ export const Checkbox = (props: Testable<CheckboxProps>) => {
             aria-checked={getState()}
             aria-label={mProps.ariaLabel}
             name={mProps.name}
+            required={mProps.required}
+            onInvalid={() => setHasError(true)}
           />
 
           <span class="checkbox__inner">
