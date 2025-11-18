@@ -107,7 +107,7 @@ export const ToolsButton = (props: Testable<ToolsButtonProps>) => {
         >
           <div class="toolsButton__iconWrapper">
             <div class="toolsButton__icon">
-              <Icon name={mProps.iconName as IconName} size={iconSize[mProps.size]} />
+              <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
             </div>
           </div>
 
@@ -127,7 +127,7 @@ export const ToolsButton = (props: Testable<ToolsButtonProps>) => {
         >
           <div class="toolsButton__iconWrapper">
             <div class="toolsButton__icon">
-              <Icon name={mProps.iconName as IconName} size={iconSize[mProps.size]} />
+              <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
             </div>
           </div>
 
