@@ -1,14 +1,14 @@
 ---
-import { DEFAULT_TAB_TITLE, suffixTabTitle } from "../../../utilities/tabTitle.ts";
 import { PushNotificationWrapper } from "../../components/pushNotificationWrapper/pushNotificationWrapper.tsx";
 import { Header } from "../../organisms/header/header.tsx";
+import Head from "../head/head.astro";
 
 import "normalize.css";
 import "../main.css";
 import "./landing.css";
 
 interface Props {
-  titleName?: string;
+  titleName: string;
   list404?: boolean;
 }
 
@@ -17,60 +17,14 @@ const { titleName, list404 = false } = Astro.props as Props;
 
 <!doctype html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <meta content="#ffffff" name="msapplication-TileColor" />
-    <meta content="img/favicon/ms-icon-144x144.png" name="msapplication-TileImage" />
-    <meta content="#ffffff" name="theme-color" />
-
-    <!--
-Ensures no FOUT (Flash of Unstyled Text).
-Font changes also influence how our stretching text areas are initially drawn.
--->
-    <link
-      rel="preload"
-      href="/fonts/montserrat/files/montserrat-normal-cyrillic.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/montserrat/files/montserrat-normal-cyrillic-ext.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/montserrat/files/montserrat-normal-latin.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/montserrat/files/montserrat-normal-latin-ext.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-
-    <title>
-      {titleName ? `${suffixTabTitle(titleName)}` : DEFAULT_TAB_TITLE}
-    </title>
-  </head>
+  <Head titleName={titleName} />
   <body>
     <Header client:only="solid-js" isLanding={true} list404={list404} />
 
-    <div class="appContainer">
-      <main class="main">
-        <slot name="mainContent" />
-      </main>
-
-      <PushNotificationWrapper client:only="solid-js" />
-    </div>
+    <main class="main">
+      <slot name="mainContent" />
+    </main>
+    <PushNotificationWrapper client:only="solid-js" />
 
     <footer></footer>
   </body>

@@ -1,19 +1,16 @@
 .regForm {
   display: flex;
-  padding: var(--size-x10, 2rem) var(--size-x15, 3rem);
+  padding: 2rem 3rem;
   flex-direction: column;
   align-items: center;
-  gap: var(--size-x10, 2rem);
-  flex: 1 0 0;
-  align-self: stretch;
+  gap: 2rem;
 }
 
 .regForm__success {
   height: 66.5rem;
-  padding: var(--size-x15, 3rem);
-  color: var(--text-neutral-800, #222);
+  padding: 3rem;
+  color: var(--text-neutral-800);
   font-size: 1.6rem;
-  font-style: normal;
   font-weight: 500;
   line-height: 2rem;
 }
@@ -25,11 +22,9 @@
 }
 
 .regForm__separator {
-  align-self: stretch;
-  color: var(--text-neutral-800, #222);
+  color: var(--text-neutral-800);
   text-align: center;
   font-size: 1.6rem;
-  font-style: normal;
   font-weight: 500;
   line-height: 2rem;
 }
@@ -39,22 +34,18 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  flex: 1 0 0;
-  align-self: stretch;
 }
 
-.regForm__goToAuth_container {
+.regForm__goToAuthContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  align-self: stretch;
 }
 
-.regForm__goToAuth_text {
-  color: var(--text-neutral-800, #222);
+.regForm__goToAuthText {
+  color: var(--text-neutral-800);
   text-align: center;
   font-size: 1.6rem;
-  font-style: normal;
   font-weight: 500;
   line-height: 2rem;
 }
@@ -63,30 +54,27 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--size-x4, 0.8rem);
+  gap: 0.8rem;
   align-self: stretch;
 }
 
 .regInput__label {
-  color: var(--text-neutral-800, #222);
+  color: var(--text-neutral-800);
   font-size: 1.6rem;
-  font-style: normal;
   font-weight: 600;
   line-height: 2rem;
 }
 
-.regInput__sub_label {
-  color: var(--text-neutral-800, #222);
+.regInput__subLabel {
+  color: var(--text-neutral-800);
   font-size: 1.2rem;
-  font-style: normal;
   font-weight: 500;
   line-height: 1.4rem;
 }
 
 .regCheckbox__label {
-  color: var(--text-neutral-800, #222);
+  color: var(--text-neutral-800);
   font-size: 1.4rem;
-  font-style: normal;
   font-weight: 500;
   line-height: 1.8rem;
   flex: 1 0 0;
@@ -97,10 +85,8 @@
   height: 1.8rem;
   justify-content: start;
   align-items: center;
-  align-self: stretch;
-  color: var(--dangerous-500, #eb0000);
+  color: var(--dangerous-500);
   font-size: 1.4rem;
-  font-style: normal;
   font-weight: 500;
   line-height: 1.8rem;
 }
@@ -109,6 +95,5 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: var(--size-x5, 1rem);
-  align-self: stretch;
+  gap: 1rem;
 }

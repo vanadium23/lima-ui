@@ -4,12 +4,19 @@ import { Icon, IconSize } from "../icon/icon.tsx";
 import { IconName } from "../icon/types.ts";
 import type { Testable } from "../utilities/testable.ts";
 
-import { CustomIcon, type CustomIconName } from "./components/customIcon/customIcon.tsx";
+import { GoogleIcon } from "./components/icons/googleIcon.tsx";
+import { VkIcon } from "./components/icons/vkIcon.tsx";
+import { YandexIcon } from "./components/icons/yandexIcon.tsx";
 import "./authButton.css";
+
+export type AuthButtonIconName = "google" | "yandex" | "vk";
+
+export type AuthButtonIconProps = {
+  disabled?: boolean;
+};
 
 export enum AuthButtonTheme {
   Primary = "primary",
-  Dangerous = "dangerous",
 }
 
 export enum AuthButtonSize {
@@ -19,7 +26,7 @@ export enum AuthButtonSize {
 type AuthButtonProps = {
   theme?: AuthButtonTheme;
   size?: AuthButtonSize;
-  iconName: CustomIconName;
+  iconName: AuthButtonIconName;
   disabled?: boolean;
   loading?: boolean;
   handleClick?: () => void;
@@ -41,10 +48,6 @@ export const AuthButton = (props: Testable<AuthButtonProps>) => {
     },
     props,
   );
-
-  const iconSize = {
-    [AuthButtonSize.Medium]: IconSize.Medium,
-  };
 
   return (
     <button
@@ -71,11 +74,17 @@ export const AuthButton = (props: Testable<AuthButtonProps>) => {
           <Switch>
             <Match when={mProps.loading}>
               <div class="authButton__loadingIcon">
-                <Icon name={IconName.CircleNotch} size={iconSize[mProps.size]} />
+                <Icon name={IconName.CircleNotch} size={IconSize.Medium} />
               </div>
             </Match>
-            <Match when={!mProps.loading}>
-              <CustomIcon name={mProps.iconName} size={iconSize[mProps.size]} disabled={mProps.disabled} />
+            <Match when={mProps.iconName === "google"}>
+              <GoogleIcon disabled={mProps.disabled} />
+            </Match>
+            <Match when={mProps.iconName === "yandex"}>
+              <YandexIcon disabled={mProps.disabled} />
+            </Match>
+            <Match when={mProps.iconName === "vk"}>
+              <VkIcon disabled={mProps.disabled} />
             </Match>
           </Switch>
         </div>

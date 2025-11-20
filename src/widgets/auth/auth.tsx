@@ -8,6 +8,14 @@ import { registrationFormStore } from "./components/registrationForm.store.ts";
 import { RegistrationForm } from "./components/registrationForm.tsx";
 import "./auth.css";
 
+export type AuthType = "email" | "google" | "yandex" | "vk";
+
+export type AuthFormInput = {
+  value: string | boolean;
+  isValid: boolean;
+  error?: string;
+};
+
 export const [activeAuthForm, setActiveAuthForm] = createSignal(urlHash() ? urlHash().slice(1) : "login");
 
 const authTabs = [
@@ -59,14 +67,14 @@ export const Auth = () => {
 
   return (
     <div class="auth">
-      <div class="authGreeting">
-        <div class="authGreeting__titleContainer">
-          <div class="authGreeting__title">{"Начните работу с Лимой"}</div>
-          <div class="authGreeting__description">{"Держите порядок всегда под рукой!"}</div>
+      <div class="auth__greeting">
+        <div class="auth__greetingTitleContainer">
+          <div class="auth__greetingTitle">{"Начните работу с Лимой"}</div>
+          <div class="auth__greetingDescription">{"Держите порядок всегда под рукой!"}</div>
         </div>
-        <img class="authGreeting__img" src="/old_man.png" height="603px" alt="Lima" />
+        <img class="auth__greetingImg" src="/old_man.png" alt="Lima" />
       </div>
-      <div class="auth_tabs">
+      <div class="auth__tabs">
         <Tabs
           ariaLabel="Auth"
           tabs={tabs()}

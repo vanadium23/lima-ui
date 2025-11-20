@@ -89,30 +89,6 @@
   background: var(--neutral-200);
 }
 
-.authButton_dangerous {
-  background: var(--neutral-100);
-}
-
-.authButton_dangerous .authButton__icon {
-  background: var(--neutral-100);
-  border-color: var(--neutral-200);
-  color: var(--dangerous-500);
-}
-
-.authButton_dangerous .authButton__text {
-  color: var(--text-dangerous-500);
-}
-
-@media (hover: hover) {
-  .authButton_dangerous:hover:not(.authButton_loading) {
-    background: var(--neutral-150);
-  }
-}
-
-.authButton_dangerous:active:not(.authButton_loading) {
-  background: var(--neutral-200);
-}
-
 .authButton_disabled {
   background: var(--neutral-100);
   cursor: not-allowed;
@@ -126,4 +102,13 @@
 
 .authButton_disabled .authButton__text {
   color: var(--text-neutral-500);
+}
+
+.authButtonIcon {
+  width: 100%;
+  height: 100%;
+}
+
+.authButtonIcon_disabled .authButtonIcon__corePath {
+  fill: var(--neutral-500);
 }

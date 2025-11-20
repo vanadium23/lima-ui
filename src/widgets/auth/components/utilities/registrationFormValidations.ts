@@ -1,6 +1,4 @@
-import { REG_EMAIL_INPUT } from "../../../../features/testIds.ts";
-
-import type { RegistrationFormInputs } from "./registrationForm.model.ts";
+import type { RegistrationFormInputs } from "../registrationForm.store.ts";
 
 export const isRegistrationFormValid = (inputs: RegistrationFormInputs) => {
   return Object.values(inputs).every((value) => value.isValid);
@@ -9,7 +7,7 @@ export const isRegistrationFormValid = (inputs: RegistrationFormInputs) => {
 export const validateRegistrationForm = (inputs: RegistrationFormInputs) => {
   const { email, pass, repeat_pass, accept_agreement } = inputs;
 
-  const emailInput = document.getElementsByName(REG_EMAIL_INPUT).item(0) as HTMLInputElement;
+  const emailInput = document.getElementsByName("Электронная почта").item(0) as HTMLInputElement;
   const isEmailValid = emailInput.checkValidity();
 
   const passRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*]{8,}$/;

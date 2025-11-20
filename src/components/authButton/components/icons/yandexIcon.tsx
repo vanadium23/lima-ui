@@ -1,9 +1,9 @@
 import { mergeProps } from "solid-js";
 
-import type { CustomIconInnerProps } from "../customIcon.tsx";
+import type { AuthButtonIconProps } from "../../authButton.tsx";
 
-export const YandexIcon = (props: CustomIconInnerProps) => {
-  const mProps: Required<CustomIconInnerProps> = mergeProps(
+export const YandexIcon = (props: AuthButtonIconProps) => {
+  const mProps: Required<AuthButtonIconProps> = mergeProps(
     {
       disabled: false,
     },
@@ -14,16 +14,16 @@ export const YandexIcon = (props: CustomIconInnerProps) => {
     <svg
       width="20"
       height="20"
-      class="customIcon"
+      class="authButtonIcon"
       classList={{
-        customIcon__disabled: mProps.disabled,
+        authButtonIcon_disabled: mProps.disabled,
       }}
       viewBox="0 0 20 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        class="core_path"
+        class="authButtonIcon__corePath"
         d="M1.7002 10C1.7002 5.39751 5.4302 1.66667 10.0335 1.66667C14.6352 1.66667 18.3669 5.39751 18.3669 10C18.3669 14.6025 14.6352 18.3333 10.0335 18.3333C5.4302 18.3333 1.7002 14.6025 1.7002 10Z"
         fill="#FC3F1D"
       />

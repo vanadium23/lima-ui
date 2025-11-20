@@ -1,17 +1,31 @@
 import { createStore } from "solid-js/store";
 
-import {
-  REG_ACCEPT_AGREEMENT,
-  REG_EMAIL_INPUT,
-  REG_NETWORK_ERROR,
-  REG_PASS_INPUT,
-  REG_REPEAT_PASS_INPUT,
-} from "../../../../features/testIds.ts";
+import { REG_NETWORK_ERROR } from "../../../../features/testIds.ts";
 import { notificationState } from "../../../state/pushNotificationStateManager.ts";
-import type { AuthType } from "../auth.model.ts";
+import type { AuthFormInput, AuthType } from "../auth.ts";
 import { registerNewAccount } from "../services/register.ts";
 
-import { initialRegistrationFormInputs, type RegistrationFormInputs } from "./registrationForm.model.ts";
+export type RegistrationFormInputsNames = "email" | "pass" | "repeat_pass" | "accept_agreement";
+export type RegistrationFormInputs = Record<RegistrationFormInputsNames, AuthFormInput>;
+
+export const initialRegistrationFormInputs: RegistrationFormInputs = {
+  email: {
+    value: "",
+    isValid: true,
+  },
+  pass: {
+    value: "",
+    isValid: true,
+  },
+  repeat_pass: {
+    value: "",
+    isValid: true,
+  },
+  accept_agreement: {
+    value: false,
+    isValid: true,
+  },
+};
 
 type RegistrationFormState = {
   inputs: RegistrationFormInputs;
@@ -60,30 +74,11 @@ export function handleRegister(authType: AuthType) {
     });
 }
 
-export const handleChange = (e: InputEvent) => {
+export const handleChange = (inputName: RegistrationFormInputsNames) => (e: InputEvent) => {
   if (e.target instanceof HTMLInputElement) {
-    const name = e.target.getAttribute("name");
-    let inputName = "";
-
-    switch (name) {
-      case REG_EMAIL_INPUT:
-        inputName = "email";
-        break;
-      case REG_PASS_INPUT:
-        inputName = "pass";
-        break;
-      case REG_REPEAT_PASS_INPUT:
-        inputName = "repeat_pass";
-        break;
-      case REG_ACCEPT_AGREEMENT:
-        inputName = "accept_agreement";
-    }
-
-    if (inputName) {
-      setRegistrationFormStore("inputs", inputName as keyof RegistrationFormInputs, "isValid", true);
-      setRegistrationFormStore("inputs", inputName as keyof RegistrationFormInputs, "error", "");
-      setRegistrationFormStore("inputs", inputName as keyof RegistrationFormInputs, "value", e.target.value);
-    }
+    setRegistrationFormStore("inputs", inputName, "isValid", true);
+    setRegistrationFormStore("inputs", inputName, "error", "");
+    setRegistrationFormStore("inputs", inputName, "value", e.target.value);
   }
 };
 

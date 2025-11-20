@@ -41,7 +41,7 @@ export const Tabs = (props: Testable<TabsProps>) => {
 
   const [activeTabIndex, setActiveTabIndex] = createSignal(mProps.activeTab);
 
-  const isControlled = typeof mProps.onSwitchActiveTab === "function";
+  const isControlled = Boolean(mProps.onSwitchActiveTab);
 
   const handleTabClick = (index: number) => {
     if (isControlled && mProps.onSwitchActiveTab) {

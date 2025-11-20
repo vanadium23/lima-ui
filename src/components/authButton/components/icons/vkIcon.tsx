@@ -1,9 +1,9 @@
 import { mergeProps } from "solid-js";
 
-import type { CustomIconInnerProps } from "../customIcon.tsx";
+import type { AuthButtonIconProps } from "../../authButton.tsx";
 
-export const VkIcon = (props: CustomIconInnerProps) => {
-  const mProps: Required<CustomIconInnerProps> = mergeProps(
+export const VkIcon = (props: AuthButtonIconProps) => {
+  const mProps: Required<AuthButtonIconProps> = mergeProps(
     {
       disabled: false,
     },
@@ -14,16 +14,16 @@ export const VkIcon = (props: CustomIconInnerProps) => {
     <svg
       width="20"
       height="20"
-      class="customIcon"
+      class="authButtonIcon"
       classList={{
-        customIcon__disabled: mProps.disabled,
+        authButtonIcon_disabled: mProps.disabled,
       }}
       viewBox="0 0 20 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        class="core_path"
+        class="authButtonIcon__corePath"
         d="M17.5 15.4167C17.5 16.5675 16.5675 17.5 15.4167 17.5H4.58333C3.43292 17.5 2.5 16.5675 2.5 15.4167V4.58333C2.5 3.4325 3.43292 2.5 4.58333 2.5H15.4167C16.5675 2.5 17.5 3.4325 17.5 4.58333V15.4167Z"
         fill="#1976D2"
       />

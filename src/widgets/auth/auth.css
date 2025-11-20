@@ -2,93 +2,76 @@
   width: 100%;
   height: 100%;
   display: flex;
-  padding: var(--size-x10, 2rem) var(--size-x30, 6rem) var(--size-x5, 1rem) var(--size-x30, 6rem);
+  padding: 2rem 6rem 1rem;
   justify-content: center;
   align-items: flex-start;
-  gap: var(--size-x10, 2rem);
-  flex: 1 0 0;
-  align-self: stretch;
+  gap: 2rem;
 }
 
-.authGreeting {
+.auth__greeting {
   display: flex;
-  padding-top: var(--size-x10, 2rem);
+  padding-top: 2rem;
   flex-direction: column;
   align-items: center;
-  flex: 1 0 0;
-  align-self: stretch;
+  flex-grow: 1;
 }
 
-.authGreeting__titleContainer {
+.auth__greetingTitleContainer {
   display: flex;
   flex-direction: column;
-  gap: var(--size-x10, 2rem);
-  align-self: stretch;
+  gap: 2rem;
 }
 
-.authGreeting__title {
-  color: var(--text-neutral-900, #05060f);
+.auth__greetingTitle {
+  color: var(--text-neutral-900);
   text-align: center;
   font-size: 3.2rem;
-  font-style: normal;
   font-weight: 600;
   line-height: 3.6rem;
 }
 
-.authGreeting__description {
-  color: var(--text-primary-500, #0285f1);
+.auth__greetingDescription {
+  color: var(--text-primary-500);
   text-align: center;
   font-size: 2.4rem;
-  font-style: normal;
   font-weight: 600;
   line-height: 2.8rem;
 }
 
-.authGreeting__body {
-  font-size: 5.8rem;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 5.8rem;
+.auth__greetingImg {
+  height: 60.3rem;
 }
 
-.auth_tabs {
+.auth__tabs {
   display: flex;
   max-width: 50rem;
   width: 100%;
   flex-direction: column;
   align-items: flex-start;
-  flex: 1 0 0;
-  align-self: stretch;
 }
 
-@media (width <= 768px) {
+@media (width <= 1023px) {
   .auth {
-    padding: var(--size-x6, 1.2rem) 0 var(--size-x10, 2rem) 0;
+    padding: 1.2rem 0 2rem;
     flex-direction: column;
     align-items: center;
-    flex: 1 0 0;
-    align-self: stretch;
   }
 
-  .authGreeting {
+  .auth__greeting {
     padding-top: 0;
-    flex: 0 0 0;
+    flex-grow: 0;
   }
 
-  .authGreeting__title {
+  .auth__greetingTitle {
     font-size: 2rem;
     line-height: 2.4rem;
   }
 
-  .authGreeting__description {
+  .auth__greetingDescription {
     display: none;
   }
 
-  .authGreeting__img {
+  .auth__greetingImg {
     display: none;
-  }
-
-  .auth_tabs {
-    align-self: center;
   }
 }
