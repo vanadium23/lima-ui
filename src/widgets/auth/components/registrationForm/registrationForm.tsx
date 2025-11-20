@@ -9,13 +9,13 @@ import {
   REG_REPEAT_PASS_INPUT,
   REG_SUBMIT_BUTTON,
   REG_USERS_AGREEMENT_LINK,
-} from "../../../../features/testIds.ts";
-import { AuthButton } from "../../../components/authButton/authButton.tsx";
-import { Button, ButtonType } from "../../../components/button/button.tsx";
-import { Checkbox } from "../../../components/checkbox/checkbox.tsx";
-import { Input, InputType } from "../../../components/input/input.tsx";
-import { Link } from "../../../components/link/link.tsx";
-import { TextButton } from "../../../components/textButton/textButton.tsx";
+} from "../../../../../features/testIds.ts";
+import { AuthButton } from "../../../../components/authButton/authButton.tsx";
+import { Button, ButtonType } from "../../../../components/button/button.tsx";
+import { Checkbox } from "../../../../components/checkbox/checkbox.tsx";
+import { Input, InputType } from "../../../../components/input/input.tsx";
+import { Link } from "../../../../components/link/link.tsx";
+import { TextButton } from "../../../../components/textButton/textButton.tsx";
 
 import {
   handleChange,

@@ -1,9 +1,9 @@
 import { createStore } from "solid-js/store";
 
-import { REG_NETWORK_ERROR } from "../../../../features/testIds.ts";
-import { notificationState } from "../../../state/pushNotificationStateManager.ts";
-import type { AuthFormInput, AuthType } from "../auth.ts";
-import { registerNewAccount } from "../services/register.ts";
+import { REG_NETWORK_ERROR } from "../../../../../features/testIds.ts";
+import { notificationState } from "../../../../state/pushNotificationStateManager.ts";
+import type { AuthFormInput, AuthType } from "../../auth.tsx";
+import { registerNewAccount } from "../../services/register.ts";
 
 export type RegistrationFormInputsNames = "email" | "pass" | "repeat_pass" | "accept_agreement";
 export type RegistrationFormInputs = Record<RegistrationFormInputsNames, AuthFormInput>;

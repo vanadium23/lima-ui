@@ -4,8 +4,8 @@ import { AUTH_TABS } from "../../../features/testIds.ts";
 import { Tabs } from "../../components/tabs/tabs.tsx";
 import { setUrlHash, urlHash } from "../../state/locationState.ts";
 
-import { registrationFormStore } from "./components/registrationForm.store.ts";
-import { RegistrationForm } from "./components/registrationForm.tsx";
+import { registrationFormStore } from "./components/registrationForm/registrationForm.store.ts";
+import { RegistrationForm } from "./components/registrationForm/registrationForm.tsx";
 import "./auth.css";
 
 export type AuthType = "email" | "google" | "yandex" | "vk";
