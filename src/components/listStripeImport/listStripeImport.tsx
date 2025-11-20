@@ -1,11 +1,8 @@
-import { createEffect, createSignal, Index, mergeProps } from "solid-js";
+import { createSignal, Index, mergeProps } from "solid-js";
 
-import { ITEMS_LIMIT } from "../../../configuration.ts";
 import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import type { List } from "../../types/types.ts";
 import { setStoreImportDialog } from "../../widgets/editList/components/importDialog/importDialog.tsx";
-import { importItemsLimitReached } from "../../widgets/editList/components/importDialog/utilities/importItemsLimitReached.ts";
-import { storeEditList } from "../../widgets/editList/editList.store.tsx";
 import { Checkbox, CheckboxSize, CheckboxTheme, type CheckedState } from "../checkbox/checkbox.tsx";
 import { Icon, IconSize } from "../icon/icon.tsx";
 import { IconName } from "../icon/types.ts";
@@ -55,6 +52,17 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
   const [getItemsCheckboxState, setItemsCheckboxState] = createSignal<boolean[]>([]);
   const [getListCheckboxState, setListCheckboxState] = createSignal<CheckedState>(false);
 
+  function calculateListCheckboxState() {
+    const checkedItems = getItemsCheckboxState();
+    const checkedCount = checkedItems.filter(Boolean).length;
+
+    if (mProps.children.items.length === checkedCount) {
+      setStoreImportDialog("checkedItemsCount", mProps.children.id, 1);
+    } else {
+      setStoreImportDialog("checkedItemsCount", mProps.children.id, checkedCount);
+    }
+  }
+
   function handleItemCheckboxChange(index: number) {
     // eslint-disable-next-line solid/reactivity
     return function (checked: boolean) {
@@ -62,40 +70,26 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
       newItems[index] = checked;
       setItemsCheckboxState(newItems);
 
-      if (checked) {
-        setStoreImportDialog("checkedItemsCount", (counter) => counter + 1);
-      } else if (!checked) {
-        setStoreImportDialog("checkedItemsCount", (counter) => counter - 1);
+      calculateListCheckboxState();
+
+      const checkedItems = getItemsCheckboxState();
+      const checkedCount = checkedItems.filter(Boolean).length;
+
+      if (checkedCount === 0) {
+        setListCheckboxState(false);
+      } else if (checkedCount === mProps.children.items.length) {
+        setListCheckboxState(true);
+      } else {
+        setListCheckboxState("mixed");
       }
     };
   }
 
-  createEffect(() => {
-    const checkedItems = getItemsCheckboxState();
-
-    const checkedCount = checkedItems.filter(Boolean).length;
-
-    if (checkedCount === 0) {
-      setListCheckboxState(false);
-    } else if (checkedCount === mProps.children.items.length) {
-      setListCheckboxState(true);
-    } else {
-      setListCheckboxState("mixed");
-    }
-  });
-
   function handleMainCheckboxChange(checked: boolean) {
     const newState = new Array(mProps.children.items.length).fill(checked);
     setItemsCheckboxState(newState);
+    calculateListCheckboxState();
     mProps.onSelectionChange();
-  }
-
-  const listItemsCount = mProps.children.items.length;
-
-  const availableItemSlots = ITEMS_LIMIT - storeEditList.items.filter((item) => !item.auto).length;
-
-  function isMainCheckboxDisabled() {
-    return (!getListCheckboxState() && importItemsLimitReached()) || listItemsCount > availableItemSlots;
   }
 
   const iconSize = {
@@ -123,7 +117,6 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
           checked={getListCheckboxState()}
           onChange={handleMainCheckboxChange}
           name={mProps.titleHTMLName}
-          disabled={isMainCheckboxDisabled()}
         />
       </div>
 
@@ -149,7 +142,6 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
                   checkboxHTMLName={getItem().id}
                   checked={getItemsCheckboxState()[index] || false}
                   onCheckedChange={handleItemCheckboxChange(index)}
-                  disabled={!getItemsCheckboxState()[index] && importItemsLimitReached()}
                 >
                   {getItem().content}
                 </ListItemImport>
