@@ -28,6 +28,7 @@ function getTotalCheckedItemsCount() {
   return (
     Object.values(storeImportDialog.checkedItemsCount).reduce((sum, count) => sum + count, 0) +
     storeEditList.items.filter((item) => !item.auto).length
+    //TODO Задуматься на тем чтобы вынести в стор в отдельное свойство счетчик текущего количества пунктов без автопункта так как это используется в нескольких утилитах
   );
 }
 
@@ -48,7 +49,6 @@ export const ImportDialogCounter = (props: Testable<ImportDialogCounterProps>) =
         [`importDialogCounter_${mProps.theme}`]: true,
         importDialogCounter_limitReached: isImportDialogLimitReached(),
       }}
-      tabIndex={0}
     >
       {`Элементов: ${getTotalCheckedItemsCount()}/${ITEMS_LIMIT}`}
     </div>

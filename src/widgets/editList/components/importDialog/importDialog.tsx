@@ -1,7 +1,6 @@
 import { createEffect, For, Show } from "solid-js";
 import { createStore } from "solid-js/store";
 
-import { ITEMS_LIMIT } from "../../../../../configuration.ts";
 import { DEFAULT_TEST_ID, IMPORT_DIALOG, IMPORT_DIALOG_IMPORT_BUTTON } from "../../../../../features/testIds.ts";
 import { soften } from "../../../../../utilities/soften.ts";
 import { Button, ButtonSize, ButtonTheme, ButtonType } from "../../../../components/button/button.tsx";
@@ -27,7 +26,7 @@ type ImportDialogState = {
   pasteMethod?: "before" | "after" | "end";
   pasteIndex?: number;
   itemsCache: Record<Item["id"], Item>;
-  checkedItemsCount: Record<string, number>;
+  checkedItemsCount: Record<List["id"], number>;
 };
 
 export const [storeImportDialog, setStoreImportDialog] = createStore<ImportDialogState>({
@@ -160,7 +159,7 @@ export const ImportDialog = (props: ImportDialogProps) => {
         </Show>
         <For each={storeImportDialog.listsForImport}>
           {(list) => (
-            <ListStripeImport titleHTMLName={list.name} testId={DEFAULT_TEST_ID} maxAllowedItems={ITEMS_LIMIT}>
+            <ListStripeImport titleHTMLName={list.name} testId={DEFAULT_TEST_ID}>
               {list}
             </ListStripeImport>
           )}

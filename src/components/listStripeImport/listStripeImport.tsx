@@ -26,7 +26,6 @@ type ListStripeImportProps = {
   titleHTMLName: string;
   disabled?: boolean;
   currentItemsCount?: number;
-  maxAllowedItems?: number;
   onSelectionChange?: () => void;
 };
 
@@ -37,7 +36,6 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
       size: ListStripeImportSize.Medium,
       disabled: false,
       currentItemsCount: 0,
-      maxAllowedItems: Infinity,
       onSelectionChange: () => {},
     },
     props,
