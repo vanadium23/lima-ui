@@ -15,3 +15,9 @@
 .importDialogCounter_limitReached {
   color: var(--text-dangerous-500);
 }
+
+@media (width <= 767px) {
+  .importDialogCounter_medium {
+    padding: 0 0.4rem 0 0;
+  }
+}

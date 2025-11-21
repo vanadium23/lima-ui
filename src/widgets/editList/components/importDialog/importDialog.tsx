@@ -13,7 +13,7 @@ import { getLists } from "../../services/getLists.ts";
 import { addImportItems } from "../../utilities/addImportItems.ts";
 import { pasteImportItemsAfter, pasteImportItemsBefore } from "../../utilities/pasteImportItems.ts";
 
-import { ImportDialogCounter } from "./components/importDialogCounter.tsx";
+import { ImportDialogCounter, isImportDialogLimitReached } from "./components/importDialogCounter.tsx";
 import "./importDialog.css";
 
 type ImportDialogProps = {
@@ -141,6 +141,7 @@ export const ImportDialog = (props: ImportDialogProps) => {
             size={ButtonSize.Medium}
             form="importDialog"
             testId={IMPORT_DIALOG_IMPORT_BUTTON}
+            disabled={isImportDialogLimitReached()}
           >
             Импортировать
           </Button>
