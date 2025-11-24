@@ -21,6 +21,7 @@ type ListItemImportProps = {
   checked?: boolean;
   onCheckedChange?: (checked: boolean) => void;
   checkboxHTMLName: string;
+  disabled?: boolean;
 };
 
 export const ListItemImport = (props: Testable<ListItemImportProps>) => {
@@ -30,6 +31,7 @@ export const ListItemImport = (props: Testable<ListItemImportProps>) => {
       size: ListItemImportSize.Medium,
       checked: false,
       onCheckedChange: () => {},
+      disabled: false,
     },
     props,
   );
@@ -54,6 +56,7 @@ export const ListItemImport = (props: Testable<ListItemImportProps>) => {
           checked={mProps.checked}
           onChange={mProps.onCheckedChange}
           name={mProps.checkboxHTMLName}
+          disabled={mProps.disabled}
         />
       </span>
       <span class="listItemImport__text">{mProps.children}</span>

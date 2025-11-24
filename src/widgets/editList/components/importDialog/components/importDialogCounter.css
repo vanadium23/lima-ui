@@ -1,0 +1,23 @@
+.importDialogCounter {
+  cursor: default;
+}
+
+.importDialogCounter_medium {
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  padding: 0.8rem 0;
+}
+
+.importDialogCounter_primary {
+  color: var(--text-neutral-800);
+}
+
+.importDialogCounter_limitReached {
+  color: var(--text-dangerous-500);
+}
+
+@media (width <= 767px) {
+  .importDialogCounter_medium {
+    padding: 0 0.4rem 0 0;
+  }
+}

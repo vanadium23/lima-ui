@@ -1,3 +1,5 @@
+import { Portal } from "solid-js/web";
+
 import {
   CHECKLIST_SWITCH,
   TOOLS_PANEL,
@@ -66,7 +68,9 @@ const EditListToolsPanel = () => {
           >
             Удалить список
           </ToolsButton>
-          <RemoveDialog />
+          <Portal>
+            <RemoveDialog />
+          </Portal>
         </div>
         <Divider />
         <div class="toolsPanel__verticalSection">
@@ -90,7 +94,9 @@ const EditListToolsPanel = () => {
           >
             Импорт
           </ToolsButton>
-          <ImportDialog currentListId={storeEditList.id} />
+          <Portal>
+            <ImportDialog currentListId={storeEditList.id} />
+          </Portal>
 
           <ToolsButton
             componentType={ToolsButtonComponentType.Link}

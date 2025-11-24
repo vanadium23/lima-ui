@@ -12,6 +12,7 @@ import { getLists } from "../../services/getLists.ts";
 import { addImportItems } from "../../utilities/addImportItems.ts";
 import { pasteImportItemsAfter, pasteImportItemsBefore } from "../../utilities/pasteImportItems.ts";
 
+import { ImportDialogCounter, isImportDialogLimitReached } from "./components/importDialogCounter.tsx";
 import "./importDialog.css";
 
 type ImportDialogProps = {
@@ -25,6 +26,7 @@ type ImportDialogState = {
   pasteMethod?: "before" | "after" | "end";
   pasteIndex?: number;
   itemsCache: Record<Item["id"], Item>;
+  checkedItemsCount: Record<List["id"], number>;
 };
 
 export const [storeImportDialog, setStoreImportDialog] = createStore<ImportDialogState>({
@@ -33,6 +35,7 @@ export const [storeImportDialog, setStoreImportDialog] = createStore<ImportDialo
   openImportDialog: false,
   pasteMethod: "end",
   itemsCache: {},
+  checkedItemsCount: {},
 });
 
 export const openImportDialogPasteEnd = () => {
@@ -84,6 +87,7 @@ export const ImportDialog = (props: ImportDialogProps) => {
       listsForImport: [],
       openImportDialog: false,
       pasteMethod: "end",
+      checkedItemsCount: {},
     });
   };
 
@@ -128,15 +132,19 @@ export const ImportDialog = (props: ImportDialogProps) => {
       onCancel={handleClose}
       loading={storeImportDialog.loadingListsForImport}
       controls={
-        <Button
-          theme={ButtonTheme.Primary}
-          type={ButtonType.Submit}
-          size={ButtonSize.Medium}
-          form="importDialog"
-          testId={IMPORT_DIALOG_IMPORT_BUTTON}
-        >
-          Импортировать
-        </Button>
+        <>
+          <ImportDialogCounter testId={DEFAULT_TEST_ID} />
+          <Button
+            theme={ButtonTheme.Primary}
+            type={ButtonType.Submit}
+            size={ButtonSize.Medium}
+            form="importDialog"
+            testId={IMPORT_DIALOG_IMPORT_BUTTON}
+            disabled={isImportDialogLimitReached()}
+          >
+            Импортировать
+          </Button>
+        </>
       }
       open={storeImportDialog.openImportDialog}
       testId={IMPORT_DIALOG}

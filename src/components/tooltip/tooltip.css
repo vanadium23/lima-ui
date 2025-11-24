@@ -5,7 +5,7 @@
 .tooltip {
   display: inline-flex;
   align-items: flex-start;
-  word-wrap: break-word;
+  overflow-wrap: break-word;
   z-index: 100;
   pointer-events: none;
 }

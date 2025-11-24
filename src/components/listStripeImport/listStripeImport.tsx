@@ -1,4 +1,4 @@
-import { createEffect, createSignal, Index, mergeProps } from "solid-js";
+import { createSignal, Index, mergeProps, untrack } from "solid-js";
 
 import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import type { List } from "../../types/types.ts";
@@ -24,6 +24,9 @@ type ListStripeImportProps = {
   size?: ListStripeImportSize;
   children: List;
   titleHTMLName: string;
+  disabled?: boolean;
+  currentItemsCount?: number;
+  onSelectionChange?: () => void;
 };
 
 export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
@@ -31,6 +34,9 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
     {
       theme: ListStripeImportTheme.Primary,
       size: ListStripeImportSize.Medium,
+      disabled: false,
+      currentItemsCount: 0,
+      onSelectionChange: () => {},
     },
     props,
   );
@@ -44,32 +50,44 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
   const [getItemsCheckboxState, setItemsCheckboxState] = createSignal<boolean[]>([]);
   const [getListCheckboxState, setListCheckboxState] = createSignal<CheckedState>(false);
 
+  function getCheckedItemsCount() {
+    const checkedItems = getItemsCheckboxState();
+
+    return checkedItems.filter(Boolean).length;
+  }
+
+  function calculateListCheckboxState() {
+    if (mProps.children.items.length === getCheckedItemsCount()) {
+      setStoreImportDialog("checkedItemsCount", mProps.children.id, 1);
+    } else {
+      setStoreImportDialog("checkedItemsCount", mProps.children.id, getCheckedItemsCount());
+    }
+  }
+
   function handleItemCheckboxChange(index: number) {
     // eslint-disable-next-line solid/reactivity
     return function (checked: boolean) {
       const newItems = [...getItemsCheckboxState()];
       newItems[index] = checked;
       setItemsCheckboxState(newItems);
+
+      calculateListCheckboxState();
+
+      if (getCheckedItemsCount() === 0) {
+        setListCheckboxState(false);
+      } else if (getCheckedItemsCount() === mProps.children.items.length) {
+        setListCheckboxState(true);
+      } else {
+        setListCheckboxState("mixed");
+      }
     };
   }
 
-  createEffect(() => {
-    const checkedItems = getItemsCheckboxState();
-
-    const checkedCount = checkedItems.filter(Boolean).length;
-
-    if (checkedCount === 0) {
-      setListCheckboxState(false);
-    } else if (checkedCount === mProps.children.items.length) {
-      setListCheckboxState(true);
-    } else {
-      setListCheckboxState("mixed");
-    }
-  });
-
-  function handleMainCheckboxChange(checked: boolean) {
+  function handleListCheckboxChange(checked: boolean) {
     const newState = new Array(mProps.children.items.length).fill(checked);
     setItemsCheckboxState(newState);
+    calculateListCheckboxState();
+    mProps.onSelectionChange();
   }
 
   const iconSize = {
@@ -95,7 +113,7 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
           testId={DEFAULT_TEST_ID}
           testSubId={mProps.testSubId ?? ""}
           checked={getListCheckboxState()}
-          onChange={handleMainCheckboxChange}
+          onChange={handleListCheckboxChange}
           name={mProps.titleHTMLName}
         />
       </div>
@@ -114,8 +132,11 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
         <div class="listStripeImport__items">
           <Index each={mProps.children.items}>
             {(getItem, index) => {
-              setStoreImportDialog("itemsCache", getItem().id, getItem());
-              // TODO Разобраться вместе с Германом зачем нужен itemsCache
+              setStoreImportDialog(
+                "itemsCache",
+                untrack(() => getItem().id),
+                untrack(getItem),
+              );
 
               return (
                 <ListItemImport
