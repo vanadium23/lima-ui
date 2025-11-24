@@ -38,6 +38,7 @@
 .auth__tabs {
   width: 100%;
   max-width: 50rem;
+  min-height: 70.5rem;
 }
 
 @media (width <= 1023px) {
@@ -45,6 +46,7 @@
     padding: 1.2rem 0 2rem;
     flex-direction: column;
     align-items: center;
+    width: 100%;
   }
 
   .auth__greeting {
@@ -62,5 +64,10 @@
 
   .auth__greetingDescription {
     display: none;
+  }
+
+  .registrationsForm__goToAuth {
+    display: flex;
+    flex-direction: column;
   }
 }

@@ -1,4 +1,4 @@
-.regForm {
+.registrationsForm__wrapper {
   display: flex;
   padding: 2rem 3rem;
   flex-direction: column;
@@ -6,8 +6,7 @@
   gap: 2rem;
 }
 
-.regForm__success {
-  height: 66.5rem;
+.registrationsForm__success {
   padding: 3rem;
   color: var(--text-neutral-800);
   font-size: 1.6rem;
@@ -15,13 +14,13 @@
   line-height: 2rem;
 }
 
-.regForm__socials {
+.registrationsForm__socials {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.regForm__separator {
+.registrationsForm__separator {
   color: var(--text-neutral-800);
   text-align: center;
   font-size: 1.6rem;
@@ -29,20 +28,21 @@
   line-height: 2rem;
 }
 
-.regForm__inputs {
+.registrationsForm__inputs {
   display: flex;
+  width: 100%;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
 }
 
-.regForm__goToAuthContainer {
+.registrationsForm__goToAuth {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.regForm__goToAuthText {
+.registrationsForm__goToAuthText {
   color: var(--text-neutral-800);
   text-align: center;
   font-size: 1.6rem;
@@ -50,7 +50,7 @@
   line-height: 2rem;
 }
 
-.regInput__container {
+.registrationsForm__label {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -58,29 +58,28 @@
   align-self: stretch;
 }
 
-.regInput__label {
+.registrationsForm__labelText {
   color: var(--text-neutral-800);
   font-size: 1.6rem;
   font-weight: 600;
   line-height: 2rem;
 }
 
-.regInput__subLabel {
+.registrationsForm__hintText {
   color: var(--text-neutral-800);
   font-size: 1.2rem;
   font-weight: 500;
   line-height: 1.4rem;
 }
 
-.regCheckbox__label {
+.registrationsForm__policyLabelText {
   color: var(--text-neutral-800);
   font-size: 1.4rem;
   font-weight: 500;
   line-height: 1.8rem;
-  flex: 1 0 0;
 }
 
-.regInput__error {
+.registrationsForm__error {
   display: flex;
   height: 1.8rem;
   justify-content: start;
@@ -91,9 +90,15 @@
   line-height: 1.8rem;
 }
 
-.regCheckbox__container {
+.registrationsForm__policyLabel {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   gap: 1rem;
+}
+
+@media (width <= 767px) {
+  .registrationsForm__wrapper {
+    padding: 1rem 2rem;
+  }
 }
