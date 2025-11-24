@@ -1,6 +1,7 @@
 import { createStore } from "solid-js/store";
 
 import { REG_NETWORK_ERROR } from "../../../../../features/testIds.ts";
+import { URL_MY_LISTS } from "../../../../../utilities/addresses.ts";
 import { notificationState } from "../../../../state/pushNotificationStateManager.ts";
 import type { AuthFormInput, AuthType } from "../../auth.tsx";
 import { registerNewAccount } from "../../services/register.ts";
@@ -51,6 +52,7 @@ export function initRegistrationFormStore() {
 }
 
 export function handleRegister(authType: AuthType) {
+  let isRedirecting = false;
   setRegistrationFormStore("authType", authType);
   setRegistrationFormStore("isLoading", true);
   notificationState.clearNetworkErrors();
@@ -63,14 +65,21 @@ export function handleRegister(authType: AuthType) {
   )
     .then((result) => {
       if (result) {
-        setRegistrationFormStore("isSuccessful", true);
+        if (authType !== "email") {
+          isRedirecting = true;
+          window.location.replace(URL_MY_LISTS);
+        } else {
+          setRegistrationFormStore("isSuccessful", true);
+        }
       }
     })
     .catch(() => {
       notificationState.pushNetworkError("Ошибка", "Нет соединения с сервером, попробуйте еще раз", REG_NETWORK_ERROR);
     })
     .finally(() => {
-      setRegistrationFormStore("isLoading", false);
+      if (!isRedirecting) {
+        setRegistrationFormStore("isLoading", false);
+      }
     });
 }
 
