@@ -4,6 +4,7 @@ import { AUTH_TABS } from "../../../features/testIds.ts";
 import { Tabs } from "../../components/tabs/tabs.tsx";
 import { setUrlHash, urlHash } from "../../state/locationState.ts";
 
+import { LoginForm } from "./components/loginForm/loginForm.tsx";
 import { registrationFormStore } from "./components/registrationForm/registrationForm.store.ts";
 import { RegistrationForm } from "./components/registrationForm/registrationForm.tsx";
 import "./auth.css";
@@ -21,7 +22,7 @@ export const [activeAuthForm, setActiveAuthForm] = createSignal(urlHash() ? urlH
 const authTabs = [
   {
     tabName: "Вход",
-    content: "Форма входа",
+    content: <LoginForm onSwitchForm={() => setActiveAuthForm("register")} />,
   },
   {
     tabName: "Регистрация",
@@ -72,7 +73,7 @@ export const Auth = () => {
           <div class="auth__greetingTitle">{"Начните работу с Лимой"}</div>
           <div class="auth__greetingDescription">{"Держите порядок всегда под рукой!"}</div>
         </div>
-        <img class="auth__greetingImg" src="/old_man.png" alt="Lima" />
+        <img class="auth__greetingImg" src="/adult_women.png" alt="Lima" />
       </div>
       <div class="auth__tabs">
         <Tabs
