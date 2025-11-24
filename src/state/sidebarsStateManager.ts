@@ -11,19 +11,16 @@ export const panelState = createRoot(() => {
 
     const isSidebarToggleButton = target.closest("#sidebarToggle");
     const isToolsPanelToggleButton = target.closest("#toolsPanelToggle");
+    const isDialog = target.closest(".dialog");
 
-    if (isSidebarToggleButton || isToolsPanelToggleButton) {
+    if (isSidebarToggleButton || isToolsPanelToggleButton || isDialog) {
       return;
     }
 
     const isOutsideSidebar = !target.closest(".sidebar");
     const isOutsideToolsPanel = !target.closest(".toolsPanel");
 
-    if (
-      isOutsideSidebar &&
-      isOutsideToolsPanel &&
-      (!isSidebarHidden() || !isToolsPanelHidden())
-    ) {
+    if (isOutsideSidebar && isOutsideToolsPanel && (!isSidebarHidden() || !isToolsPanelHidden())) {
       setIsSidebarHidden(true);
       setIsToolsPanelHidden(true);
     }
