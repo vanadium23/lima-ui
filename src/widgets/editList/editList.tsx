@@ -7,7 +7,7 @@ import {
   transformStyle,
   useDragDropContext,
 } from "@thisbeyond/solid-dnd";
-import { createEffect, For, mergeProps, onCleanup, onMount, Show } from "solid-js";
+import { createEffect, For, Match, mergeProps, onCleanup, onMount, Show, Switch } from "solid-js";
 
 import { ITEMS_LIMIT } from "../../../configuration.ts";
 import {
@@ -139,7 +139,6 @@ export const EditList = (props: EditListProps) => {
                         return (
                           <ListItem
                             index={index()}
-                            dataId={item.id}
                             auto={item.auto}
                             dragSettings={{
                               dragData,
@@ -160,7 +159,6 @@ export const EditList = (props: EditListProps) => {
                             itemIndex={index()}
                             id={item.originalList.id}
                             name={item.originalList.name}
-                            disabled={Boolean(storeEditList.sendingNow)}
                             dragSettings={{
                               dragData,
                               dragProps: {
@@ -178,14 +176,24 @@ export const EditList = (props: EditListProps) => {
                   </For>
                 </SortableProvider>
                 <DragOverlay>
-                  <ListItem
-                    index={ITEMS_LIMIT + 1}
-                    auto={draggedItemData().auto}
-                    dataId={draggedItemData().dragId}
-                    isDraggingOverlay={true}
-                  >
-                    {draggedItemData().content}
-                  </ListItem>
+                  <Switch>
+                    <Match when={draggedItemData().originalList.id === storeEditList.id}>
+                      <ListItem index={ITEMS_LIMIT + 1} auto={draggedItemData().auto} isDraggingOverlay={true}>
+                        {draggedItemData().content}
+                      </ListItem>
+                    </Match>
+                    <Match when={draggedItemData().originalList.id !== storeEditList.id}>
+                      <ImportedGroup
+                        testId={DEFAULT_TEST_ID}
+                        itemIndex={ITEMS_LIMIT + 1}
+                        id={draggedItemData().originalList.id}
+                        name={draggedItemData().originalList.name}
+                        isDraggingOverlay={true}
+                      >
+                        {[draggedItemData()]}
+                      </ImportedGroup>
+                    </Match>
+                  </Switch>
                 </DragOverlay>
               </DragDropProvider>
             </div>

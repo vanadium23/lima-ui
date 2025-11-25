@@ -3,6 +3,7 @@ import { For, mergeProps } from "solid-js";
 import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import { getListLink } from "../../../utilities/addresses.ts";
 import type { DragSettings, Item } from "../../types/types.ts";
+import { storeEditList } from "../../widgets/editList/editList.store.tsx";
 import { reachedItemsLimit } from "../../widgets/editList/utilities/reachedItemsLimit.ts";
 import { removeItem } from "../../widgets/editList/utilities/removeItem.ts";
 import { DragHandle } from "../dragHandle/dragHandle.tsx";
@@ -28,7 +29,6 @@ type ImportedGroupProps = {
   theme?: ImportedGroupTheme;
   size?: ImportedGroupSize;
   itemIndex: number;
-  disabled: boolean;
   checkable?: boolean;
   children: Item[];
   name: string;
@@ -86,14 +86,20 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
       class="importedGroup"
       classList={{
         [`importedGroup_${mProps.size}`]: true,
-        [`importedGroup_${mProps.theme}`]: !mProps.disabled,
-        importedGroup_disabled: mProps.disabled,
+        [`importedGroup_${mProps.theme}`]: !storeEditList.sendingNow,
+        importedGroup_disabled: Boolean(storeEditList.sendingNow),
         importedGroup_checkable: mProps.checkable,
+        importedGroup_dragging: mProps.isDraggingOverlay,
+        importedGroup_transition: Boolean(mProps.dragSettings.dragState?.active.draggable),
       }}
       data-test-id={mProps.testId}
     >
       <div class="importedGroup__dragHandle">
-        <DragHandle disabled={mProps.disabled} testId={DEFAULT_TEST_ID} dragHandle={mProps.dragSettings.dragData} />
+        <DragHandle
+          disabled={Boolean(storeEditList.sendingNow)}
+          testId={DEFAULT_TEST_ID}
+          dragHandle={mProps.dragSettings.dragData}
+        />
       </div>
       <div class="importedGroup__inner">
         <div class="importedGroup__headerWrapper">
@@ -102,7 +108,7 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
               size={LinkSize.Small}
               href={getListLink(mProps.id)}
               testId={DEFAULT_TEST_ID}
-              disabled={mProps.disabled}
+              disabled={Boolean(storeEditList.sendingNow)}
             >
               {mProps.name}
             </Link>
@@ -116,7 +122,7 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
                     size={IconButtonSize.MediumEmbedded}
                     ariaLabel={`Меню импорта из списка ${mProps.name}`}
                     testId={DEFAULT_TEST_ID}
-                    disabled={mProps.disabled}
+                    disabled={Boolean(storeEditList.sendingNow)}
                   />
                 )}
                 testId={DEFAULT_TEST_ID}
@@ -132,7 +138,7 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
               testId={DEFAULT_TEST_ID}
               checkable={mProps.checkable}
               checked={false}
-              disabled={mProps.disabled}
+              disabled={Boolean(storeEditList.sendingNow)}
             >
               {item.content}
             </ImportedItem>

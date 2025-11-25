@@ -24,7 +24,6 @@ type ItemInputProps = {
   maxLength: number;
   required?: boolean;
   children?: string;
-  dataId?: string;
   placeholder: string;
   onChange?: (value: string) => void;
   defaultIsError?: boolean;
@@ -44,7 +43,6 @@ export const CyberInput = (props: Testable<ItemInputProps>) => {
       defaultIsError: false,
       required: false,
       children: "",
-      dataId: "",
       onChange: () => {},
       controlElements: null,
     },
@@ -100,7 +98,6 @@ export const CyberInput = (props: Testable<ItemInputProps>) => {
         maxlength={mProps.maxLength}
         placeholder={mProps.placeholder}
         required={mProps.required}
-        data-id={mProps.dataId}
         data-test-id={mProps.testId}
         data-test-sub-id={mProps.testSubId}
         rows={1}

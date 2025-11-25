@@ -23,18 +23,10 @@ const exampleItems: Item[] = [
       <span class="chead"></span>
       <span class="chead">Medium</span>
       <span class="rhead">List</span>
-      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID} itemIndex={1} id={"1"} name="" disabled={false}
+      <ImportedGroup client:only="solid-js" testId={DEFAULT_TEST_ID} itemIndex={1} id={"1"} name=""
         >{exampleItems}</ImportedGroup
       >
-      <span class="rhead">List - Disabled</span>
-      <ImportedGroup
-        client:only="solid-js"
-        testId={DEFAULT_TEST_ID}
-        itemIndex={1}
-        id={"1"}
-        name="Название родительского списка"
-        disabled={true}>{exampleItems}</ImportedGroup
-      >
+
       <span class="rhead">Checklist</span>
       <ImportedGroup
         client:only="solid-js"
@@ -42,19 +34,12 @@ const exampleItems: Item[] = [
         itemIndex={1}
         id={"1"}
         name="Название родительского списка"
-        disabled={false}
         checkable={true}>{exampleItems}</ImportedGroup
       >
-      <span class="rhead">Checklist - Disabled</span>
-      <ImportedGroup
-        client:only="solid-js"
-        testId={DEFAULT_TEST_ID}
-        itemIndex={1}
-        id={"1"}
-        name="Название родительского списка"
-        checkable={true}
-        disabled={true}>{exampleItems}</ImportedGroup
-      >
+    </div>
+    <div>
+      Дизейбледа в этой сторе нет, но он существует, потому что он смотрит на стор списка из компонента, нужно будет
+      придумать что делать когда будем переносить в сторибук
     </div>
   </div>
 </StorybookPage>

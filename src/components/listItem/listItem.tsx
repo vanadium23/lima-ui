@@ -48,7 +48,6 @@ type ListItemProps = {
   theme?: ListItemTheme;
   size?: ListItemSize;
   index: number;
-  dataId?: string;
   name?: string;
   children?: string;
   auto?: boolean;
@@ -62,13 +61,11 @@ export const ListItem = (props: ListItemProps) => {
     {
       theme: ListItemTheme.Primary,
       size: ListItemSize.Medium,
-      dataId: "",
       name: "",
       children: "",
       auto: false,
       checked: false,
       isDraggingOverlay: false,
-      dragId: "",
       dragSettings: {
         dragData: null,
         dragProps: {},
@@ -152,8 +149,9 @@ export const ListItem = (props: ListItemProps) => {
       classList={{
         [`listItem_${mProps.size}`]: true,
         [`listItem_${mProps.theme}`]: true,
+        listItem_disabled: Boolean(storeEditList.sendingNow),
         listItem_dragging: mProps.isDraggingOverlay,
-        listItem_transition: !!mProps.dragSettings.dragState?.active.draggable,
+        listItem_transition: Boolean(mProps.dragSettings.dragState?.active.draggable),
       }}
       data-test-id={getTestId()}
       data-test-sub-id={getListItemTestSubId(getTestId(), mProps.index)}
@@ -182,7 +180,6 @@ export const ListItem = (props: ListItemProps) => {
         <CyberInput
           maxLength={EDIT_LIST_INPUT_LIMIT}
           name={mProps.isDraggingOverlay ? "Drag Overlay Item" : `List Item ${mProps.index + 1}`}
-          dataId={mProps.dataId}
           disabled={Boolean(storeEditList.sendingNow)}
           placeholder={mProps.auto ? "Добавить пункт списка" : "Пункт списка"}
           required={!mProps.auto || isOnlyOneItem()}
