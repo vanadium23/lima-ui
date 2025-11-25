@@ -50,6 +50,9 @@
   --outline-set-alt: 0.1rem solid var(--outline-alt);
   --outline-offset: -0.1rem;
   --preloader: rotate-preloader 0.7s linear infinite;
+  --shadow-dragging: 0 0.2rem 1.6rem 0 rgb(0 0 0 / 15%);
+  --opacity-dragging: 0.2;
+  --transition-dragging: transform 0.3s ease;
 }
 
 /* 1. Кастомный reset.css где мы настраиваем стили только для реально необходимых в проекте тегов */
