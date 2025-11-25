@@ -151,3 +151,15 @@ export const PRINT_LIST_TITLE = "printListTitle";
 export const PRINT_LIST_PURPOSE = "printListPurpose";
 export const PRINT_LIST_NOTE = "printListNote";
 export const PRINT_LIST_ITEM = "printListItem";
+
+export const AUTH_TABS = "authTabs";
+export const AUTH_GREETING_TITLE = "authGreetingTitle";
+export const REG_EMAIL_INPUT = "registrationEmailInput";
+export const REG_PASS_INPUT = "registrationPasswordInput";
+export const REG_REPEAT_PASS_INPUT = "registrationRepeatPasswordInput";
+export const REG_ACCEPT_AGREEMENT = "registrationAcceptAgreementCheckbox";
+export const REG_SUBMIT_BUTTON = "registrationSubmitButton";
+export const REG_GO_TO_AUTH_LINK = "registrationGoToAuthLink";
+export const REG_NETWORK_ERROR = "registrationNetworkError";
+export const REG_CONFIDENTIAL_POLICY_LINK = "registrationPolicyLink";
+export const REG_USERS_AGREEMENT_LINK = "registrationAgreementLink";

@@ -1,4 +1,4 @@
-import { mergeProps, Show } from "solid-js";
+import { Match, mergeProps, Show, Switch } from "solid-js";
 
 import { Icon, IconSize } from "../icon/icon.tsx";
 import { IconName } from "../icon/types.ts";
@@ -76,11 +76,16 @@ export const ToolsButton = (props: Testable<ToolsButtonProps>) => {
         >
           <div class="toolsButton__iconWrapper">
             <div class="toolsButton__icon">
-              <Show when={mProps.loading} fallback={<Icon name={mProps.iconName} size={iconSize[mProps.size]} />}>
-                <div class="toolsButton__loadingIcon">
-                  <Icon name={IconName.CircleNotch} size={iconSize[mProps.size]} />
-                </div>
-              </Show>
+              <Switch>
+                <Match when={mProps.loading}>
+                  <div class="toolsButton__loadingIcon">
+                    <Icon name={IconName.CircleNotch} size={iconSize[mProps.size]} />
+                  </div>
+                </Match>
+                <Match when={!mProps.loading}>
+                  <Icon name={mProps.iconName} size={iconSize[mProps.size]} />
+                </Match>
+              </Switch>
             </div>
           </div>
 

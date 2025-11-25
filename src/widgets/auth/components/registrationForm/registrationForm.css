@@ -1,0 +1,104 @@
+.registrationsForm__wrapper {
+  display: flex;
+  padding: 2rem 3rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.registrationsForm__success {
+  padding: 3rem;
+  color: var(--text-neutral-800);
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 2rem;
+}
+
+.registrationsForm__socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.registrationsForm__separator {
+  color: var(--text-neutral-800);
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 2rem;
+}
+
+.registrationsForm__inputs {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.registrationsForm__goToAuth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.registrationsForm__goToAuthText {
+  color: var(--text-neutral-800);
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 2rem;
+}
+
+.registrationsForm__label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+  align-self: stretch;
+}
+
+.registrationsForm__labelText {
+  color: var(--text-neutral-800);
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 2rem;
+}
+
+.registrationsForm__hintText {
+  color: var(--text-neutral-800);
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.4rem;
+}
+
+.registrationsForm__policyLabelText {
+  color: var(--text-neutral-800);
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.8rem;
+}
+
+.registrationsForm__error {
+  display: flex;
+  height: 1.8rem;
+  justify-content: start;
+  align-items: center;
+  color: var(--dangerous-500);
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.8rem;
+}
+
+.registrationsForm__policyLabel {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+@media (width <= 767px) {
+  .registrationsForm__wrapper {
+    padding: 1rem 2rem;
+  }
+}

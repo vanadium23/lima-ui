@@ -19,12 +19,15 @@ export enum InputSize {
 
 export enum InputType {
   Text = "text",
+  Email = "email",
   Password = "password",
 }
 
 export enum AutocompleteType {
   On = "on",
   Off = "off",
+  Email = "email",
+  NewPassword = "new-password",
 }
 
 type InputProps = {

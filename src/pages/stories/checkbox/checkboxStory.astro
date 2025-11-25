@@ -13,10 +13,11 @@ const sizes = Object.values(CheckboxSize);
     themes.map((theme) => (
       <div class="demoThemeWrapper">
         <h3 class="demoThemeWrapper__title">{theme}</h3>
-        <div class="grid grid_2Col">
+        <div class="grid grid_3Col">
           <span class="chead" />
           <span class="chead">Default</span>
           <span class="chead">Disabled</span>
+          <span class="chead">Error</span>
 
           {sizes.map((size) => (
             <>
@@ -38,6 +39,15 @@ const sizes = Object.values(CheckboxSize);
                 checked={true}
                 ariaLabel={"Обязательный лейбл для типа чекбокса с встроенным лейблом"}
               />
+              <Checkbox
+                client:only="solid-js"
+                theme={theme}
+                size={size}
+                testId={DEFAULT_TEST_ID}
+                checked={true}
+                error={true}
+                ariaLabel={"Обязательный лейбл для типа чекбокса с встроенным лейблом"}
+              />
             </>
           ))}
         </div>
@@ -50,10 +60,11 @@ const sizes = Object.values(CheckboxSize);
     themes.map((theme) => (
       <div class="demoThemeWrapper">
         <h3 class="demoThemeWrapper__title">{theme}</h3>
-        <div class="grid grid_2Col">
+        <div class="grid grid_3Col">
           <span class="chead" />
           <span class="chead">Default</span>
           <span class="chead">Disabled</span>
+          <span class="chead">Error</span>
 
           {sizes.map((size) => (
             <>
@@ -73,6 +84,17 @@ const sizes = Object.values(CheckboxSize);
                 />
                 <span>Outside test-label</span>
               </label>
+              <label>
+                <Checkbox
+                  client:only="solid-js"
+                  error={true}
+                  theme={theme}
+                  size={size}
+                  testId={DEFAULT_TEST_ID}
+                  dependent={true}
+                />
+                <span>Outside test-label</span>
+              </label>
             </>
           ))}
         </div>
@@ -85,10 +107,11 @@ const sizes = Object.values(CheckboxSize);
     themes.map((theme) => (
       <div class="demoThemeWrapper">
         <h3 class="demoThemeWrapper__title">{theme}</h3>
-        <div class="grid grid_2Col">
+        <div class="grid grid_3Col">
           <span class="chead" />
           <span class="chead">Default</span>
           <span class="chead">Disabled</span>
+          <span class="chead">Error</span>
 
           {sizes.map((size) => (
             <>
@@ -110,6 +133,15 @@ const sizes = Object.values(CheckboxSize);
                 checked={"mixed"}
                 ariaLabel={"Обязательный лейбл для типа чекбокса с встроенным лейблом"}
               />
+              <Checkbox
+                client:only="solid-js"
+                theme={theme}
+                size={size}
+                testId={DEFAULT_TEST_ID}
+                error={true}
+                checked={"mixed"}
+                ariaLabel={"Обязательный лейбл для типа чекбокса с встроенным лейблом"}
+              />
             </>
           ))}
         </div>
@@ -122,10 +154,11 @@ const sizes = Object.values(CheckboxSize);
     themes.map((theme) => (
       <div class="demoThemeWrapper">
         <h3 class="demoThemeWrapper__title">{theme}</h3>
-        <div class="grid grid_2Col">
+        <div class="grid grid_3Col">
           <span class="chead" />
           <span class="chead">Default</span>
           <span class="chead">Disabled</span>
+          <span class="chead">Error</span>
 
           {sizes.map((size) => (
             <>
@@ -149,6 +182,18 @@ const sizes = Object.values(CheckboxSize);
                   testId={DEFAULT_TEST_ID}
                   disabled={true}
                   dependent={true}
+                  checked={"mixed"}
+                />
+                <span>Outside test-label</span>
+              </label>
+              <label>
+                <Checkbox
+                  client:only="solid-js"
+                  theme={theme}
+                  size={size}
+                  testId={DEFAULT_TEST_ID}
+                  dependent={true}
+                  error={true}
                   checked={"mixed"}
                 />
                 <span>Outside test-label</span>

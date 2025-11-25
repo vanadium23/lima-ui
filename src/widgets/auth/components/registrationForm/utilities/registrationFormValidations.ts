@@ -1,0 +1,42 @@
+import type { RegistrationFormInputs } from "../registrationForm.store.ts";
+
+export const isRegistrationFormValid = (inputs: RegistrationFormInputs) => {
+  return Object.values(inputs).every((value) => value.isValid);
+};
+
+export const validateRegistrationForm = (inputs: RegistrationFormInputs) => {
+  const { email, pass, repeat_pass, accept_agreement } = inputs;
+
+  const emailInput = document.getElementsByName("Электронная почта").item(0) as HTMLInputElement;
+  const isEmailValid = emailInput.checkValidity();
+
+  const passRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*]{8,}$/;
+  const isPassValid = passRegex.test(pass.value.toString());
+  const isRepeatPassValid = !isPassValid || pass.value === repeat_pass.value;
+  const isAcceptPoliceValid = Boolean(accept_agreement.value);
+
+  const result: RegistrationFormInputs = {
+    email: {
+      ...email,
+      isValid: isEmailValid,
+      error: !isEmailValid ? "Неверный формат" : "",
+    },
+    pass: {
+      ...pass,
+      isValid: isPassValid,
+      error: !isPassValid ? "Неверный формат" : "",
+    },
+    repeat_pass: {
+      ...repeat_pass,
+      isValid: isRepeatPassValid,
+      error: !isRepeatPassValid ? "Пароли не совпадают" : "",
+    },
+    accept_agreement: {
+      ...accept_agreement,
+      isValid: isAcceptPoliceValid,
+      error: !isAcceptPoliceValid ? "Необходимо принять пользовательское соглашение" : "",
+    },
+  };
+
+  return result;
+};
