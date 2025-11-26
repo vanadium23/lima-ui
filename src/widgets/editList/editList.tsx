@@ -23,7 +23,7 @@ import { ImportedGroup } from "../../components/importedGroup/importedGroup.tsx"
 import { ListItem } from "../../components/listItem/listItem.tsx";
 import { PageError } from "../../components/pageError/pageError.tsx";
 import { notificationState } from "../../state/pushNotificationStateManager.ts";
-import { type List } from "../../types/types.ts";
+import { type DragItem, type EditListItem, type List } from "../../types/types.ts";
 
 import { EditListHeader } from "./components/editListHeader/editListHeader.tsx";
 import EditListToolsPanel from "./components/editListToolsPanel/editListToolsPanel.tsx";
@@ -135,30 +135,51 @@ export const EditList = (props: EditListProps) => {
                     {(item, index) => {
                       const dragData = createSortable(item.dragId);
 
-                      if (item.originalList.id === storeEditList.id) {
-                        return (
-                          <ListItem
-                            index={index()}
-                            auto={item.auto}
-                            dragSettings={{
-                              dragData,
-                              dragProps: {
-                                ref: dragData.ref,
-                                style: storeEditList.draggedItem ? transformStyle(dragData.transform) : {},
-                              },
-                              dragState: useDragDropContext()?.[0] || null,
-                            }}
-                          >
-                            {item.content}
-                          </ListItem>
-                        );
+                      if (isItem(item)) {
+                        if (isOwnItem(item)) {
+                          return (
+                            <ListItem
+                              index={index()}
+                              auto={item.auto}
+                              dragSettings={{
+                                dragData,
+                                dragProps: {
+                                  ref: dragData.ref,
+                                  style: storeEditList.draggedItem ? transformStyle(dragData.transform) : {},
+                                },
+                                dragState: useDragDropContext()?.[0] || null,
+                              }}
+                            >
+                              {item.content}
+                            </ListItem>
+                          );
+                        } else {
+                          return (
+                            <ImportedGroup
+                              testId={DEFAULT_TEST_ID}
+                              itemIndex={index()}
+                              id={item.originalList.id}
+                              name={item.originalList.name}
+                              dragSettings={{
+                                dragData,
+                                dragProps: {
+                                  ref: dragData.ref,
+                                  style: storeEditList.draggedItem ? transformStyle(dragData.transform) : {},
+                                },
+                                dragState: useDragDropContext()?.[0] || null,
+                              }}
+                            >
+                              {[item]}
+                            </ImportedGroup>
+                          );
+                        }
                       } else {
                         return (
                           <ImportedGroup
                             testId={DEFAULT_TEST_ID}
                             itemIndex={index()}
-                            id={item.originalList.id}
-                            name={item.originalList.name}
+                            id={item.id}
+                            name={item.name}
                             dragSettings={{
                               dragData,
                               dragProps: {
@@ -168,7 +189,7 @@ export const EditList = (props: EditListProps) => {
                               dragState: useDragDropContext()?.[0] || null,
                             }}
                           >
-                            {[item]}
+                            {item.items}
                           </ImportedGroup>
                         );
                       }

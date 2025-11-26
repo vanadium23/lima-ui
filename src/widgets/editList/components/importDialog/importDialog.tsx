@@ -1,4 +1,4 @@
-import { createEffect, For, Show } from "solid-js";
+import { createEffect, For, Show, untrack } from "solid-js";
 import { createStore } from "solid-js/store";
 
 import { DEFAULT_TEST_ID, IMPORT_DIALOG, IMPORT_DIALOG_IMPORT_BUTTON } from "../../../../../features/testIds.ts";
@@ -26,6 +26,7 @@ type ImportDialogState = {
   pasteMethod?: "before" | "after" | "end";
   pasteIndex?: number;
   itemsCache: Record<Item["id"], Item>;
+  listsCache: Record<List["id"], List>;
   checkedItemsCount: Record<List["id"], number>;
 };
 
@@ -35,6 +36,7 @@ export const [storeImportDialog, setStoreImportDialog] = createStore<ImportDialo
   openImportDialog: false,
   pasteMethod: "end",
   itemsCache: {},
+  listsCache: {},
   checkedItemsCount: {},
 });
 
@@ -101,19 +103,27 @@ export const ImportDialog = (props: ImportDialogProps) => {
     event.preventDefault();
     const target = event.target as HTMLFormElement;
 
-    const formData = new FormData(target);
-
+    const checkedInputs = target.querySelectorAll<HTMLInputElement>("input[type='checkbox']:checked");
     const checkedItemsIds: string[] = [];
+    const ignoredGroupIds = new Set<string>();
 
-    for (const [checkboxNameHTML, value] of formData.entries()) {
-      if (value === "on") {
-        checkedItemsIds.push(checkboxNameHTML);
+    checkedInputs.forEach((input) => {
+      const dataId = input.dataset.id;
+      const groupId = input.dataset.groupId;
+
+      if (dataId?.startsWith("list")) {
+        checkedItemsIds.push(dataId);
+        ignoredGroupIds.add(dataId);
+      } else if (dataId) {
+        if (!groupId || !ignoredGroupIds.has(groupId)) {
+          checkedItemsIds.push(dataId);
+        }
       }
-    }
+    });
 
-    const checkedItems: Item[] = checkedItemsIds
-      .map((id) => storeImportDialog.itemsCache[id])
-      .filter((item): item is Item => Boolean(item));
+    const checkedItems: (Item | List)[] = checkedItemsIds
+      .map((id) => storeImportDialog.itemsCache[id] ?? storeImportDialog.listsCache[id])
+      .filter((item): item is Item | List => Boolean(item));
 
     if (storeImportDialog.pasteMethod === "after" && storeImportDialog.pasteIndex) {
       pasteImportItemsAfter(storeImportDialog.pasteIndex, checkedItems);
@@ -122,6 +132,8 @@ export const ImportDialog = (props: ImportDialogProps) => {
     } else if (storeImportDialog.pasteMethod === "end") {
       addImportItems(checkedItems);
     }
+
+    console.log(checkedItems);
 
     handleClose();
   };
@@ -158,11 +170,19 @@ export const ImportDialog = (props: ImportDialogProps) => {
           </div>
         </Show>
         <For each={storeImportDialog.listsForImport}>
-          {(list) => (
-            <ListStripeImport titleHTMLName={list.name} testId={DEFAULT_TEST_ID}>
-              {list}
-            </ListStripeImport>
-          )}
+          {(list) => {
+            setStoreImportDialog(
+              "listsCache",
+              untrack(() => list.id),
+              untrack(() => list),
+            );
+
+            return (
+              <ListStripeImport titleHTMLName={list.name} testId={DEFAULT_TEST_ID}>
+                {list}
+              </ListStripeImport>
+            );
+          }}
         </For>
       </form>
     </Dialog>

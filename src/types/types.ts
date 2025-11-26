@@ -31,8 +31,14 @@ export type DragItem = Item & {
   auto: boolean;
 };
 
+export type EditListItem = List & {
+  dragId: string;
+};
+
+export type EditListItems = (DragItem | EditListItem)[];
+
 export type DragList = ListBase & {
-  items: DragItem[];
+  items: EditListItems;
   note: string;
 };
 

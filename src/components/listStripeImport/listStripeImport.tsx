@@ -110,6 +110,7 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
         <Checkbox
           theme={CheckboxTheme.Primary}
           size={CheckboxSize.Medium}
+          dataId={mProps.children.id}
           testId={DEFAULT_TEST_ID}
           testSubId={mProps.testSubId ?? ""}
           checked={getListCheckboxState()}
@@ -131,21 +132,23 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
         </button>
         <div class="listStripeImport__items">
           <Index each={mProps.children.items}>
-            {(getItem, index) => {
+            {(item, index) => {
               setStoreImportDialog(
                 "itemsCache",
-                untrack(() => getItem().id),
-                untrack(getItem),
+                untrack(() => item().id),
+                untrack(item),
               );
 
               return (
                 <ListItemImport
                   testId={DEFAULT_TEST_ID}
-                  checkboxHTMLName={getItem().id}
+                  itemId={item().id}
+                  listId={mProps.children.id}
+                  checkboxHTMLName={item().content}
                   checked={getItemsCheckboxState()[index] || false}
                   onCheckedChange={handleItemCheckboxChange(index)}
                 >
-                  {getItem().content}
+                  {item().content}
                 </ListItemImport>
               );
             }}

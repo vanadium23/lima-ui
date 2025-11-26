@@ -17,6 +17,8 @@ export enum ListItemImportSize {
 type ListItemImportProps = {
   theme?: ListItemImportTheme;
   size?: ListItemImportSize;
+  itemId: string;
+  listId: string;
   children: string;
   checked?: boolean;
   onCheckedChange?: (checked: boolean) => void;
@@ -50,6 +52,8 @@ export const ListItemImport = (props: Testable<ListItemImportProps>) => {
         <Checkbox
           theme={CheckboxTheme.Primary}
           size={CheckboxSize.Small}
+          dataId={mProps.itemId}
+          dataGroupId={mProps.listId}
           testId={DEFAULT_TEST_ID}
           testSubId={mProps.testSubId ?? ""}
           dependent={true}
