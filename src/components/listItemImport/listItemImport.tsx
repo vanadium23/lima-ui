@@ -18,9 +18,10 @@ type ListItemImportProps = {
   theme?: ListItemImportTheme;
   size?: ListItemImportSize;
   children: string;
-  toImport?: boolean;
+  checked?: boolean;
   onCheckedChange?: (checked: boolean) => void;
   checkboxHTMLName: string;
+  disabled?: boolean;
 };
 
 export const ListItemImport = (props: Testable<ListItemImportProps>) => {
@@ -28,8 +29,9 @@ export const ListItemImport = (props: Testable<ListItemImportProps>) => {
     {
       theme: ListItemImportTheme.Primary,
       size: ListItemImportSize.Medium,
-      toImport: false,
+      checked: false,
       onCheckedChange: () => {},
+      disabled: false,
     },
     props,
   );
@@ -51,9 +53,10 @@ export const ListItemImport = (props: Testable<ListItemImportProps>) => {
           testId={DEFAULT_TEST_ID}
           testSubId={mProps.testSubId ?? ""}
           dependent={true}
-          checked={mProps.toImport}
+          checked={mProps.checked}
           onChange={mProps.onCheckedChange}
           name={mProps.checkboxHTMLName}
+          disabled={mProps.disabled}
         />
       </span>
       <span class="listItemImport__text">{mProps.children}</span>

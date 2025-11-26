@@ -1,61 +1,67 @@
 .menuItem {
   display: flex;
   width: 100%;
+}
+
+.menuItem__button {
+  display: flex;
+  width: 100%;
+  text-decoration: none;
   cursor: pointer;
   user-select: none;
   white-space: nowrap;
 }
 
-.menuItem:focus {
+.menuItem .menuItem__button:focus {
   outline: none;
 }
 
-.menuItem_medium {
+.menuItem_medium .menuItem__button {
   padding: 1rem 1.2rem;
   gap: 0.6rem;
   font-size: 1.4rem;
   line-height: 1.8rem;
 }
 
-.menuItem_primary {
+.menuItem_primary .menuItem__button {
   background-color: var(--neutral-100);
-  color: var(--neutral-800);
+  color: var(--text-neutral-800);
 }
 
-.menuItem_primary:focus-visible {
+.menuItem_primary .menuItem__button:focus-visible {
   background-color: var(--neutral-200);
 }
 
 @media (hover: hover) {
-  .menuItem_primary:hover {
+  .menuItem_primary .menuItem__button:hover {
     background-color: var(--neutral-150);
   }
 }
 
-.menuItem_primary:active {
+.menuItem_primary .menuItem__button:active {
   background-color: var(--neutral-200);
 }
 
-.menuItem_dangerous {
-  color: var(--dangerous-500);
+.menuItem_dangerous .menuItem__button {
+  color: var(--text-dangerous-500);
   background-color: var(--neutral-100);
 }
 
-.menuItem_dangerous:focus-visible {
+.menuItem_dangerous .menuItem__button:focus-visible {
   background-color: var(--neutral-200);
 }
 
 @media (hover: hover) {
-  .menuItem_dangerous {
+  .menuItem_dangerous .menuItem__button:hover {
     background-color: var(--neutral-150);
   }
 }
 
-.menuItem_dangerous:active {
+.menuItem_dangerous .menuItem__button:active {
   background-color: var(--neutral-200);
 }
 
-.menuItem_disabled {
-  color: var(--neutral-500);
+.menuItem_disabled .menuItem__button {
+  color: var(--text-neutral-500);
   cursor: not-allowed;
 }

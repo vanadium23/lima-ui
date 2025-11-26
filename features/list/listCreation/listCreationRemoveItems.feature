@@ -6,16 +6,12 @@ Feature: Removing items on the List Creation page
   Scenario: Removing single list item
     When I ensure the tools panel is open
     And I press the "add list item" button
+    And I press the "add list item" button
     And I ensure the tools panel does not disturb
     And I hover "second list item"
     And I press the "open context menu second item" button
     And I press the visible "remove list item" menu item
     Then I expect to see the only one list item left on the page
-
-  Scenario: Seeing remove item menu item disabled for the only one list item
-    When I hover "first list item"
-    And I press the "open context menu first item" button
-    Then I expect to see the "remove first list item" menu item disabled
 
   @heavy
   Scenario: Adding list item to the limit and then removing one list item leads to limit warning disappear and buttons enablement

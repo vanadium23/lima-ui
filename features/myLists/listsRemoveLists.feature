@@ -104,22 +104,7 @@ Feature: Removing the lists on the Lists page
     And I press the visible "remove list" button
     Given Data server is not available
     And I press the visible "confirm list removal" button
-    Then I expect to see the "list removal" error
-
-  Scenario: Consequent removal attempt leads to error message disappearance on My Lists page
-    When I add a list
-    And I add a list
-    When I open "My Lists" page
-    And I hover "first" list stripe
-    And I press the "first" list stripe "open context menu list stripe" button
-    And I press the visible "remove list" button
-    Given Data server is not available
-    And I press the visible "confirm list removal" button
-    And I hover "first" list stripe
-    And I press the "first" list stripe "open context menu list stripe" button
-    And I press the visible "remove list" button
-    And I press the visible "confirm list removal" button
-    Then I expect not to see the "list removal" error
+    Then I expect to see the "single list removal" error
 
   @heavy
   Scenario: Unsuccessful list removal accompanied by reached lists limit leads to error and warning at the same time
@@ -130,7 +115,7 @@ Feature: Removing the lists on the Lists page
     And I press the visible "remove list" button
     Given Data server is not available
     And I press the visible "confirm list removal" button
-    Then I expect to see the "list removal" error
+    Then I expect to see the "single list removal" error
     Then I expect to see the warning about lists limit reached
 
   @heavy

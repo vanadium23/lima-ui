@@ -11,8 +11,9 @@ export const panelState = createRoot(() => {
 
     const isSidebarToggleButton = target.closest("#sidebarToggle");
     const isToolsPanelToggleButton = target.closest("#toolsPanelToggle");
+    const isDialog = target.closest(".dialog");
 
-    if (isSidebarToggleButton || isToolsPanelToggleButton) {
+    if (isSidebarToggleButton || isToolsPanelToggleButton || isDialog) {
       return;
     }
 

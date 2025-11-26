@@ -2,32 +2,21 @@ import { URL_MY_LISTS } from "../../../../utilities/addresses.ts";
 import { soften } from "../../../../utilities/soften.ts";
 import { suffixTabTitle } from "../../../../utilities/tabTitle.ts";
 import { setLocation } from "../../../state/locationState.ts";
-import { EditListFormNames, type Item, type NewList, type SimpleItem, type UpdatedList } from "../../../types/types.ts";
-import { type EditListStore, setStoreEditList, storeEditList, updateStoreEditList } from "../editList.store.tsx";
+import { type NewList, type UpdatedList } from "../../../types/types.ts";
+import { setStoreEditList, storeEditList, updateStoreEditList } from "../editList.store.tsx";
 import { createList } from "../services/createList.ts";
 import { updateList } from "../services/updateList.ts";
-
-import { checkChanges } from "./checkChanges.ts";
-
-type EditListForm = {
-  [EditListFormNames.ListTitle]: HTMLInputElement;
-  [EditListFormNames.ListPurpose]: HTMLInputElement;
-  [EditListFormNames.ListNote]: HTMLInputElement;
-};
 
 export function prepareAndSendListData(event: SubmitEvent) {
   event.preventDefault();
 
   if (!storeEditList.sendingNow) {
-    const target = event.target as HTMLFormElement & EditListForm;
-
-    const elements = Array.from(target.elements) as HTMLInputElement[];
-    const inputsValues = prepareListItemsDataForSending(elements, storeEditList);
+    const inputsValues = prepareListItemsDataForSending();
     const data = {
-      name: target[EditListFormNames.ListTitle].value,
-      purpose: target[EditListFormNames.ListPurpose].value,
+      name: storeEditList.name,
+      purpose: storeEditList.purpose,
       items: inputsValues,
-      note: target[EditListFormNames.ListNote].value,
+      note: storeEditList.note,
       noDocumentedReasonForLatestUpdate: true,
     };
 
@@ -39,46 +28,31 @@ export function prepareAndSendListData(event: SubmitEvent) {
   }
 }
 
-function prepareListItemsDataForSending(elements: HTMLInputElement[], store: EditListStore) {
-  const itemsInputs = elements.filter((element) => {
-    return element.name.startsWith(EditListFormNames.ListItem);
-  });
+function prepareListItemsDataForSending() {
+  function removeAutoItem() {
+    return storeEditList.items.filter((item) => !item.auto);
+  }
 
-  return itemsInputs
-    .map((itemInput) => {
-      const content = itemInput.value.trim();
-      const id = String(itemInput.dataset.id?.trim());
+  return removeAutoItem().map((item) => {
+    const isNewItem = !item.id;
 
-      if (id) {
-        return { id, content };
-      } else {
-        return { content };
-      }
-    })
-    .filter((item, index) => item.content !== "" || index < store.items.length - 1)
-    .map((item) => {
-      if (!item.id) {
-        return item;
-      }
+    if (isNewItem) {
+      return { content: item.content };
+    }
 
-      const initialItem = store.initialList.items.find((initialItemCandidate) => {
-        return initialItemCandidate.id === item.id;
-      });
-
-      if (!initialItem) {
-        return item;
-      }
-
-      if (isItemUnchanged(item, initialItem)) {
-        return { id: item.id };
-      }
-
-      return item;
+    /* Ищем среди всех InitialItems тот InitialItem который является текущим Item'ом.*/
+    const initialItem = storeEditList.initialList.items.find((initialItemCandidate) => {
+      return initialItemCandidate.id === item.id;
     });
-}
 
-function isItemUnchanged(item: SimpleItem, initialItem: Item) {
-  return item.id === initialItem.id && item.content === initialItem.content;
+    const itemIsImported = !initialItem;
+
+    if (itemIsImported || item.content === initialItem.content) {
+      return { id: item.id };
+    }
+
+    return item;
+  });
 }
 
 function sendNewList(data: NewList) {
@@ -88,15 +62,13 @@ function sendNewList(data: NewList) {
   });
 
   createList(data)
-    .then((newList) => {
+    .then((updatedListFromBackendAnswer) => {
       soften(() => {
-        history.pushState({}, "", `${URL_MY_LISTS}/${newList.id}`);
+        history.pushState({}, "", `${URL_MY_LISTS}/${updatedListFromBackendAnswer.id}`);
         setLocation(window.location.pathname);
-        document.title = suffixTabTitle(newList.name);
+        document.title = suffixTabTitle(updatedListFromBackendAnswer.name);
 
-        updateStoreEditList(newList);
-
-        checkChanges(storeEditList, setStoreEditList);
+        updateStoreEditList(updatedListFromBackendAnswer);
       });
     })
     .catch((error) => {
@@ -115,13 +87,11 @@ function sendUpdatedList(data: UpdatedList) {
   });
 
   updateList(data)
-    .then((updatedList) => {
+    .then((updatedListFromBackendAnswer) => {
       soften(() => {
-        document.title = suffixTabTitle(updatedList.name);
+        document.title = suffixTabTitle(updatedListFromBackendAnswer.name);
 
-        updateStoreEditList(updatedList);
-
-        checkChanges(storeEditList, setStoreEditList);
+        updateStoreEditList(updatedListFromBackendAnswer);
       });
     })
     .catch((error) => {

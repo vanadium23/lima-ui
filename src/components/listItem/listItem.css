@@ -7,20 +7,15 @@
 }
 
 .listItem_transition {
-  transition: transform 0.3s ease;
+  transition: var(--transition-dragging);
 }
 
 .listItem_dragging {
-  box-shadow: 0 0.2rem 1.6rem 0 rgb(0 0 0 / 15%);
+  box-shadow: var(--shadow-dragging);
 }
 
-.listItem:has(.listItem__dragHandle:active) {
-  opacity: 0.2;
-}
-
-.listItem_medium {
-  padding: 0.2rem;
-  gap: 0.2rem;
+.listItem:not(.listItem_disabled):has(.listItem__dragHandle:active) {
+  opacity: var(--opacity-dragging);
 }
 
 .listItem__dragHandle {
@@ -36,6 +31,11 @@
   display: flex;
   gap: 0.2rem;
   flex-grow: 1;
+}
+
+.listItem_medium {
+  padding: 0.2rem;
+  gap: 0.2rem;
 }
 
 .listItem:hover .listItem__dragHandle,

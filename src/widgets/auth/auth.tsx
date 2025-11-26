@@ -69,15 +69,15 @@ export const Auth = () => {
   return (
     <div class="auth">
       <div class="auth__greeting">
-        <div class="auth__greetingTitleContainer">
-          <div class="auth__greetingTitle">{"Начните работу с Лимой"}</div>
-          <div class="auth__greetingDescription">{"Держите порядок всегда под рукой!"}</div>
+        <div class="auth__greetingInner">
+          <div class="auth__greetingTitle">Начните работу с Лимой</div>
+          <div class="auth__greetingDescription">Держите порядок всегда под рукой!</div>
         </div>
         <img class="auth__greetingImg" src="/adult_women.png" alt="Lima" />
       </div>
       <div class="auth__tabs">
         <Tabs
-          ariaLabel="Auth"
+          ariaLabel="Переключение форм входа\регистрации"
           tabs={tabs()}
           testId={AUTH_TABS}
           activeTab={getActiveTabIdx()}

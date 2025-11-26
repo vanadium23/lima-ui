@@ -1,6 +1,7 @@
 import { Match, Switch } from "solid-js";
 
 import {
+  DEFAULT_TEST_ID,
   REG_ACCEPT_AGREEMENT,
   REG_CONFIDENTIAL_POLICY_LINK,
   REG_EMAIL_INPUT,
@@ -13,7 +14,7 @@ import {
 import { AuthButton } from "../../../../components/authButton/authButton.tsx";
 import { Button, ButtonType } from "../../../../components/button/button.tsx";
 import { Checkbox } from "../../../../components/checkbox/checkbox.tsx";
-import { Input, InputType } from "../../../../components/input/input.tsx";
+import { AutocompleteType, Input, InputType } from "../../../../components/input/input.tsx";
 import { Link } from "../../../../components/link/link.tsx";
 import { TextButton } from "../../../../components/textButton/textButton.tsx";
 
@@ -56,137 +57,152 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
   };
 
   return (
-    <Switch>
-      <Match when={registrationFormStore.isSuccessful === true}>
-        <div class="regForm__success">
-          {"Мы отправили ссылку для входа на указанный адрес. Пожалуйста, проверьте вашу электронную почту."}
-        </div>
-      </Match>
-      <Match when={registrationFormStore.isSuccessful !== true}>
-        <form class="regForm" method="post" onSubmit={onSubmit}>
-          <div class="regForm__socials">
-            <AuthButton
-              iconName={"google"}
-              testId={"google_auth"}
-              loading={registrationFormStore.authType === "google" && registrationFormStore.isLoading}
-              disabled={registrationFormStore.isLoading}
-              handleClick={() => handleRegister("google")}
-            >
-              {"Google"}
-            </AuthButton>
-            <AuthButton
-              iconName={"vk"}
-              testId={"vk_auth"}
-              loading={registrationFormStore.authType === "vk" && registrationFormStore.isLoading}
-              disabled={registrationFormStore.isLoading}
-              handleClick={() => handleRegister("vk")}
-            >
-              {"ВК"}
-            </AuthButton>
-            <AuthButton
-              iconName={"yandex"}
-              testId={"yandex_auth"}
-              loading={registrationFormStore.authType === "yandex" && registrationFormStore.isLoading}
-              disabled={registrationFormStore.isLoading}
-              handleClick={() => handleRegister("yandex")}
-            >
-              {"Яндекс"}
-            </AuthButton>
+    <div class="registrationsForm">
+      <Switch>
+        <Match when={registrationFormStore.isSuccessful}>
+          <div class="registrationsForm__success">
+            Мы отправили ссылку для входа на указанный адрес. Пожалуйста, проверьте вашу электронную почту.
           </div>
-          <span class="regForm__separator">{"или"}</span>
-          <div class="regForm__inputs">
-            <label class="regInput__container">
-              <span class="regInput__label">{"Введите адрес вашей электронной почты"}</span>
-              <Input
-                type={InputType.Email}
-                placeholder="Электронная почта"
-                name="Электронная почта"
-                maxLength={360}
-                testId={REG_EMAIL_INPUT}
-                required={true}
-                error={!registrationFormStore.inputs.email.isValid}
-                onInput={handleChange("email")}
+        </Match>
+        <Match when={!registrationFormStore.isSuccessful}>
+          <form class="registrationsForm__wrapper" method="post" onSubmit={onSubmit}>
+            <div class="registrationsForm__socials">
+              <AuthButton
+                iconName={"google"}
+                testId={DEFAULT_TEST_ID}
+                loading={registrationFormStore.authType === "google" && registrationFormStore.isLoading}
                 disabled={registrationFormStore.isLoading}
+                handleClick={() => handleRegister("google")}
               >
-                {registrationFormStore.inputs.email.value.toString()}
-              </Input>
-              <span class="regInput__error">{registrationFormStore.inputs.email.error}</span>
-            </label>
-            <label class="regInput__container">
-              <span class="regInput__label">{"Придумайте пароль"}</span>
-              <span class="regInput__subLabel">{"минимум 8 символов, включая буквы латинского алфавита и цифры"}</span>
-              <Input
-                type={InputType.Password}
-                placeholder="Пароль"
-                name="Пароль"
-                maxLength={360}
-                testId={REG_PASS_INPUT}
-                required={true}
-                error={!registrationFormStore.inputs.pass.isValid}
-                onInput={handleChange("pass")}
+                Google
+              </AuthButton>
+              <AuthButton
+                iconName={"vk"}
+                testId={DEFAULT_TEST_ID}
+                loading={registrationFormStore.authType === "vk" && registrationFormStore.isLoading}
                 disabled={registrationFormStore.isLoading}
+                handleClick={() => handleRegister("vk")}
               >
-                {registrationFormStore.inputs.pass.value.toString()}
-              </Input>
-              <span class="regInput__error">{registrationFormStore.inputs.pass.error}</span>
-            </label>
-            <label class="regInput__container">
-              <span class="regInput__label">{"Повторите пароль"}</span>
-              <Input
-                type={InputType.Password}
-                placeholder="Пароль"
-                name="Повторный пароль"
-                maxLength={360}
-                testId={REG_REPEAT_PASS_INPUT}
-                required={true}
-                error={!registrationFormStore.inputs.repeat_pass.isValid}
-                onInput={handleChange("repeat_pass")}
+                ВК
+              </AuthButton>
+              <AuthButton
+                iconName={"yandex"}
+                testId={DEFAULT_TEST_ID}
+                loading={registrationFormStore.authType === "yandex" && registrationFormStore.isLoading}
                 disabled={registrationFormStore.isLoading}
+                handleClick={() => handleRegister("yandex")}
               >
-                {registrationFormStore.inputs.repeat_pass.value.toString()}
-              </Input>
-              <span class="regInput__error">{registrationFormStore.inputs.repeat_pass.error}</span>
-            </label>
-            <label class="regCheckbox__container">
-              <Checkbox
-                testId={REG_ACCEPT_AGREEMENT}
-                error={!registrationFormStore.inputs.accept_agreement.isValid}
-                checked={Boolean(registrationFormStore.inputs.accept_agreement.value)}
-                onChange={handleCheckboxChange}
-                disabled={registrationFormStore.isLoading}
-              />
-              <div class="regCheckbox__label">
-                <span>{"Я даю согласие на обработку моих персональных данных в соответствии с "}</span>
-                <Link href="#" testId={REG_CONFIDENTIAL_POLICY_LINK} disabled={registrationFormStore.isLoading}>
-                  {"Политикой конфиденциальности"}
-                </Link>
-                <span>{" и "}</span>
-                <Link href="#" testId={REG_USERS_AGREEMENT_LINK} disabled={registrationFormStore.isLoading}>
-                  {"Пользовательским соглашением"}
-                </Link>
-              </div>
-            </label>
-            <Button
-              testId={REG_SUBMIT_BUTTON}
-              type={ButtonType.Submit}
-              loading={registrationFormStore.authType === "email" && registrationFormStore.isLoading}
-              disabled={registrationFormStore.authType !== "email" && registrationFormStore.isLoading}
-            >
-              {"Зарегистрироваться"}
-            </Button>
-            <div class="regForm__goToAuthContainer">
-              <span class="regForm__goToAuthText">{"Уже зарегистрированы?"}</span>
-              <TextButton
-                testId={REG_GO_TO_AUTH_LINK}
-                handleClick={handleGoToAuth}
-                disabled={registrationFormStore.isLoading}
-              >
-                {"Войдите"}
-              </TextButton>
+                Яндекс
+              </AuthButton>
             </div>
-          </div>
-        </form>
-      </Match>
-    </Switch>
+            <span class="registrationsForm__separator">или</span>
+            <div class="registrationsForm__inputs">
+              <label class="registrationsForm__label">
+                <span class="registrationsForm__labelText">Электронная почта</span>
+                <Input
+                  type={InputType.Email}
+                  placeholder="example@email.ru"
+                  name="Электронная почта"
+                  maxLength={360}
+                  testId={REG_EMAIL_INPUT}
+                  required={true}
+                  error={!registrationFormStore.inputs.email.isValid}
+                  onInput={handleChange("email")}
+                  disabled={registrationFormStore.isLoading}
+                  autocomplete={AutocompleteType.Email}
+                >
+                  {registrationFormStore.inputs.email.value.toString()}
+                </Input>
+                <span class="registrationsForm__error" aria-live="polite" aria-atomic="true">
+                  {registrationFormStore.inputs.email.error}
+                </span>
+              </label>
+              <label class="registrationsForm__label">
+                <span class="registrationsForm__labelText">Придумайте пароль</span>
+                <span class="registrationsForm__hintText">
+                  минимум 8 символов, включая буквы латинского алфавита и цифры
+                </span>
+                <Input
+                  type={InputType.Password}
+                  placeholder="Пароль"
+                  name="Пароль"
+                  maxLength={360}
+                  testId={REG_PASS_INPUT}
+                  required={true}
+                  error={!registrationFormStore.inputs.pass.isValid}
+                  onInput={handleChange("pass")}
+                  disabled={registrationFormStore.isLoading}
+                  autocomplete={AutocompleteType.NewPassword}
+                >
+                  {registrationFormStore.inputs.pass.value.toString()}
+                </Input>
+                <span class="registrationsForm__error" aria-live="polite" aria-atomic="true">
+                  {registrationFormStore.inputs.pass.error}
+                </span>
+              </label>
+              <label class="registrationsForm__label">
+                <span class="registrationsForm__labelText">Повторите пароль</span>
+                <Input
+                  type={InputType.Password}
+                  placeholder="Пароль"
+                  name="Повторный пароль"
+                  maxLength={360}
+                  testId={REG_REPEAT_PASS_INPUT}
+                  required={true}
+                  error={!registrationFormStore.inputs.repeat_pass.isValid}
+                  onInput={handleChange("repeat_pass")}
+                  disabled={registrationFormStore.isLoading}
+                  autocomplete={AutocompleteType.NewPassword}
+                >
+                  {registrationFormStore.inputs.repeat_pass.value.toString()}
+                </Input>
+                <span class="registrationsForm__error" aria-live="polite" aria-atomic="true">
+                  {registrationFormStore.inputs.repeat_pass.error}
+                </span>
+              </label>
+              <label class="registrationsForm__policyLabel">
+                <Checkbox
+                  testId={REG_ACCEPT_AGREEMENT}
+                  error={!registrationFormStore.inputs.accept_agreement.isValid}
+                  checked={Boolean(registrationFormStore.inputs.accept_agreement.value)}
+                  onChange={handleCheckboxChange}
+                  disabled={registrationFormStore.isLoading}
+                  dependent={true}
+                  name={"Пользовательское соглашение"}
+                />
+                <span class="registrationsForm__policyLabelText">
+                  Я даю согласие на обработку моих персональных данных в соответствии с{" "}
+                  <Link href="#" testId={REG_CONFIDENTIAL_POLICY_LINK} disabled={registrationFormStore.isLoading}>
+                    Политикой конфиденциальности
+                  </Link>{" "}
+                  и{" "}
+                  <Link href="#" testId={REG_USERS_AGREEMENT_LINK} disabled={registrationFormStore.isLoading}>
+                    Пользовательским соглашением
+                  </Link>
+                </span>
+              </label>
+              <Button
+                testId={REG_SUBMIT_BUTTON}
+                type={ButtonType.Submit}
+                loading={registrationFormStore.authType === "email" && registrationFormStore.isLoading}
+                disabled={registrationFormStore.authType !== "email" && registrationFormStore.isLoading}
+              >
+                Зарегистрироваться
+              </Button>
+              <div class="registrationsForm__goToAuth">
+                <span class="registrationsForm__goToAuthText">Уже зарегистрированы?</span>
+                <TextButton
+                  testId={REG_GO_TO_AUTH_LINK}
+                  handleClick={handleGoToAuth}
+                  disabled={registrationFormStore.isLoading}
+                >
+                  Войдите
+                </TextButton>
+              </div>
+            </div>
+          </form>
+        </Match>
+      </Switch>
+    </div>
   );
 };

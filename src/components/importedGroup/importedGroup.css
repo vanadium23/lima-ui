@@ -15,8 +15,24 @@
   border-radius: 0.8rem 0.8rem 0 0;
 }
 
+.importedGroup_transition {
+  transition: var(--transition-dragging);
+}
+
+.importedGroup_dragging {
+  box-shadow: var(--shadow-dragging);
+}
+
+.importedGroup:not(.importedGroup_disabled):has(.importedGroup__dragHandle:active) {
+  opacity: var(--opacity-dragging);
+}
+
 .importedGroup__inner {
   flex-grow: 1;
+}
+
+.importedGroup_checkable .importedGroup__headerWrapper {
+  padding-left: 3.6rem;
 }
 
 .importedGroup_medium {
@@ -25,13 +41,9 @@
   border-radius: 0.8rem;
 }
 
-.importedGroup_checkable .importedGroup__headerWrapper {
-  padding-left: 3.6rem;
-}
-
 .importedGroup_medium .importedGroup__header {
   display: flex;
-  padding: 0.7rem 0.7rem 0 1.7rem;
+  padding: 0.7rem 0.7rem 0 0.9rem;
   gap: 1.6rem;
 }
 

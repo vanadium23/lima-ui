@@ -8,7 +8,7 @@ Feature: Successfully creating list with correct data
     And I type some text with length less or equal to the one of "list note" text area limit
 
   Scenario: Disabling form controls when pressing the "Save" button
-    When I type some text with length less or equal to the one of "first item" input limit
+    When I type some text with length less or equal to the one of "automatic item" input limit
     And I press the "save" button
     Then I expect to see the following suffixed tab title: "Новый список"
     Then I expect to see sidebar or its button
@@ -36,7 +36,7 @@ Feature: Successfully creating list with correct data
     Then I expect to see no other elements
 
   Scenario: All controls are enabled after successful list creation
-    When I type some text with length less or equal to the one of "first item" input limit
+    When I type some text with length less or equal to the one of "automatic item" input limit
     And I press the "save" button
     And I wait for the list to create
     Then I expect to see the suffixed list title as tab title
@@ -72,7 +72,7 @@ Feature: Successfully creating list with correct data
     Then I expect all items inputs disabled
 
   Scenario: "Save" button triggers list creation only once
-    When I type some text with length less or equal to the one of "first item" input limit
+    When I type some text with length less or equal to the one of "automatic item" input limit
     And I start counting the "list creation" requests
     And I press the "save" button
     And I forcefully press the "save" button
@@ -82,6 +82,9 @@ Feature: Successfully creating list with correct data
     Then I expect to see the following number of "list creation" request: 1
 
   Scenario: Created list contains all data provided during creation
+    And I ensure the tools panel is open
+    And I press the "add list item" button
+    And I ensure the tools panel does not disturb
     When I type some text with length less or equal to the one of "first item" input limit
     And I ensure the tools panel is open
     And I press the "add list item" button
@@ -97,6 +100,9 @@ Feature: Successfully creating list with correct data
     Then I expect to see the "list note" text area with the text I provided
 
   Scenario: Created list data persists after page refresh
+    And I ensure the tools panel is open
+    And I press the "add list item" button
+    And I ensure the tools panel does not disturb
     When I type some text with length less or equal to the one of "first item" input limit
     And I ensure the tools panel is open
     And I press the "add list item" button

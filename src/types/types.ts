@@ -1,13 +1,10 @@
 import type { createSortable, useDragDropContext } from "@thisbeyond/solid-dnd";
 import type { JSX } from "solid-js";
 
-export type SimpleItem = {
+export type Item = {
   content: string;
   id: string;
-};
-
-export type Item = SimpleItem & {
-  originalListId: string;
+  originalList: { id: string; name: string };
 };
 
 export type Items = Item[];
@@ -54,13 +51,6 @@ export type UpdatedList = ListBase & {
 };
 
 export type ScrollContainer = HTMLDivElement | undefined;
-
-export enum EditListFormNames {
-  ListTitle = "List Title",
-  ListPurpose = "List Purpose",
-  ListNote = "List Note",
-  ListItem = "List Item",
-}
 
 export type Sortable = ReturnType<typeof createSortable>;
 

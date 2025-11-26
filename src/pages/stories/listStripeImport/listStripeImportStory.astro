@@ -17,14 +17,14 @@ const testListData: List = {
   purpose: "Выберите элементы для импорта",
   note: "",
   items: [
-    { id: "123", content: "Ололо1", originalListId: "1" },
-    { id: "123", content: "Ололо2", originalListId: "1" },
+    { id: "123", content: "Ололо1", originalList: { id: "1", name: "Название родительского списка" } },
+    { id: "123", content: "Ололо2", originalList: { id: "1", name: "Название родительского списка" } },
     {
       id: "123",
       content: "Длинный текст элемента списка для проверки отображения",
-      originalListId: "1",
+      originalList: { id: "1", name: "Название родительского списка" },
     },
-    { id: "123", content: "Ололо4", originalListId: "1" },
+    { id: "123", content: "Ололо4", originalList: { id: "1", name: "Название родительского списка" } },
   ],
 };
 ---
@@ -41,12 +41,7 @@ const testListData: List = {
           {sizes.map((size) => (
             <>
               <span class="rhead">{size}</span>
-              <ListStripeImport
-                testId={DEFAULT_TEST_ID}
-                titleHTMLName={"Title"}
-                client:only="solid-js"
-                handleReadyToImport={() => {}}
-              >
+              <ListStripeImport testId={DEFAULT_TEST_ID} titleHTMLName={"Title"} client:only="solid-js">
                 {testListData}
               </ListStripeImport>
             </>

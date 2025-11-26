@@ -1,7 +1,4 @@
-import type {
-  TestId,
-  TestSubId,
-} from "../../src/components/utilities/testable.ts";
+import type { TestId, TestSubId } from "../../src/components/utilities/testable.ts";
 import type { SeveralTestIds } from "../testIds.ts";
 import { buildFullTestId } from "../utilities/buildTestableSelector.ts";
 
@@ -10,10 +7,7 @@ export interface AccountedTesting {
 
   registerTestId(testId: TestId): TestId;
 
-  registerTestIdAndSubId(
-    testId: TestId,
-    testSubId: TestSubId | null | undefined,
-  ): TestId;
+  registerTestIdAndSubId(testId: TestId, testSubId: TestSubId | null | undefined): TestId;
 
   registerSeveralTestIds(severalTestIds: SeveralTestIds): void;
 
@@ -27,7 +21,9 @@ export function createAccountedTesting(): AccountedTesting {
     testIds: [],
 
     registerTestId(testId) {
-      this.testIds.push(testId);
+      if (!this.testIds.includes(testId)) {
+        this.testIds.push(testId);
+      }
 
       return testId;
     },
