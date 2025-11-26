@@ -1,4 +1,4 @@
-.loginForm {
+.loginForm__wrapper {
   display: flex;
   padding: 2rem 3rem;
   flex-direction: column;
@@ -22,19 +22,20 @@
 
 .loginForm__inputs {
   display: flex;
+  width: 100%;
   flex-direction: column;
   align-items: center;
   align-self: stretch;
   gap: 1rem;
 }
 
-.loginForm__goToRegContainer {
+.loginForm__goToRegistration {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.loginForm__goToRegText {
+.loginForm__goToRegistrationText {
   color: var(--text-neutral-800);
   text-align: center;
   font-size: 1.6rem;
@@ -42,7 +43,7 @@
   line-height: 2rem;
 }
 
-.loginInput__container {
+.loginForm__label {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -50,7 +51,7 @@
   align-self: stretch;
 }
 
-.loginInput__label {
+.loginForm__labelText {
   color: var(--text-neutral-800);
   font-size: 1.6rem;
   font-weight: 600;
@@ -66,4 +67,10 @@
   font-size: 1.4rem;
   font-weight: 500;
   line-height: 1.8rem;
+}
+
+@media (width <= 767px) {
+  .loginForm__wrapper {
+    padding: 1rem 2rem;
+  }
 }

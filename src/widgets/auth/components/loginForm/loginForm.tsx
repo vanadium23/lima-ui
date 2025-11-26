@@ -47,7 +47,7 @@ export const LoginForm = (props: LoginFormProps) => {
   };
 
   return (
-    <form class="loginForm" method="post" onSubmit={onSubmit}>
+    <form class="loginForm__wrapper" method="post" onSubmit={onSubmit}>
       <div class="loginForm__socials">
         <AuthButton
           iconName={"google"}
@@ -79,8 +79,8 @@ export const LoginForm = (props: LoginFormProps) => {
       </div>
       <span class="loginForm__separator">{"или"}</span>
       <div class="loginForm__inputs">
-        <label class="loginInput__container">
-          <span class="loginInput__label">{"Введите адрес вашей электронной почты"}</span>
+        <label class="loginForm__label">
+          <span class="loginForm__labelText">{"Введите адрес вашей электронной почты"}</span>
           <Input
             type={InputType.Email}
             placeholder="Электронная почта"
@@ -96,8 +96,8 @@ export const LoginForm = (props: LoginFormProps) => {
           </Input>
           <span class="loginInput__error">{loginFormStore.inputs.email.error}</span>
         </label>
-        <label class="loginInput__container">
-          <span class="loginInput__label">{"Введите пароль"}</span>
+        <label class="loginForm__label">
+          <span class="loginForm__labelText">{"Введите пароль"}</span>
           <Input
             type={InputType.Password}
             placeholder="Пароль"
@@ -128,8 +128,8 @@ export const LoginForm = (props: LoginFormProps) => {
         >
           {"Восстановить пароль"}
         </TextButton>
-        <div class="loginForm__goToRegContainer">
-          <span class="loginForm__goToRegText">{"Нет аккаунта?"}</span>
+        <div class="loginForm__goToRegistration">
+          <span class="loginForm__goToRegistrationText">{"Нет аккаунта?"}</span>
           <TextButton
             testId={LOGIN_GO_TO_REG_LINK}
             handleClick={handleGoToRegistration}
