@@ -26,13 +26,13 @@ const demoTabs = [
   },
 ];
 
-const demoTabsEqualWidth = [
+const demoTabsWithLongTitle = [
   {
     tabName: "Первая",
     content: "Содержимое первой вкладки. Здесь может быть любой контент.",
   },
   {
-    tabName: "Вторая вкалдка (широкая)",
+    tabName: "Вторая вкладка (широкая)",
     content: "Содержимое второй вкладки с другой информацией.",
   },
   {
@@ -68,14 +68,13 @@ const demoTabsEqualWidth = [
           ))}
 
           <>
-            <span class="rhead">{"isEqualWidth"}</span>
+            <span class="rhead">{"With long title"}</span>
             <Tabs
               ariaLabel="Tabs"
               client:only="solid-js"
               theme={theme}
               size={TabsSize.Medium}
-              isEqualWidth={true}
-              tabs={demoTabsEqualWidth}
+              tabs={demoTabsWithLongTitle}
               testId={DEFAULT_TEST_ID}
             >
               {demoTabs}

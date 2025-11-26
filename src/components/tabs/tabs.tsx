@@ -23,7 +23,6 @@ type TabsProps = {
   theme?: TabsTheme;
   size?: TabsSize;
   tabs: TabData[];
-  isEqualWidth?: boolean;
   ariaLabel: string;
   activeTab?: number;
   onSwitchActiveTab?: ((index: number) => void) | undefined;
@@ -36,7 +35,6 @@ export const Tabs = (props: Testable<TabsProps>) => {
       size: TabsSize.Medium,
       activeTab: 0,
       onSwitchActiveTab: undefined,
-      isEqualWidth: false,
     },
     props,
   );
@@ -59,7 +57,6 @@ export const Tabs = (props: Testable<TabsProps>) => {
       classList={{
         [`tabs_${mProps.size}`]: true,
         [`tabs_${mProps.theme}`]: true,
-        tabs_equalWidth: mProps.isEqualWidth,
       }}
     >
       <div role="tablist" class="tabs__tablist" aria-label={mProps.ariaLabel} data-test-id={mProps.testId}>
