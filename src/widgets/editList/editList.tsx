@@ -135,6 +135,14 @@ export const EditList = (props: EditListProps) => {
                     {(item, index) => {
                       const dragData = createSortable(item.dragId);
 
+                      const isItem = (itemCandidate: DragItem | EditListItem): itemCandidate is DragItem => {
+                        return "originalList" in itemCandidate;
+                      };
+
+                      const isOwnItem = (ownItemCandidate: DragItem) => {
+                        return ownItemCandidate.originalList.id === storeEditList.id;
+                      };
+
                       if (isItem(item)) {
                         if (isOwnItem(item)) {
                           return (
