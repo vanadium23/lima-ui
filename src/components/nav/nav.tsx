@@ -3,7 +3,7 @@ import { mergeProps } from "solid-js";
 import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import { URL_CREATE_LIST, URL_MY_LISTS } from "../../../utilities/addresses.ts";
 import { location } from "../../state/locationState.ts";
-import { isLimitReached } from "../../state/reachListsLimit.ts";
+import { reachListsLimit } from "../../state/reachListsLimit.ts";
 import { Divider } from "../divider/divider.tsx";
 import { IconName } from "../icon/types.ts";
 import { NavItem, NavItemSize, NavItemTheme } from "../navItem/navItem.tsx";
@@ -47,7 +47,7 @@ export const Nav = (props: NavProps) => {
             icon={IconName.ListPlus}
             testId={DEFAULT_TEST_ID}
             current={location() === URL_CREATE_LIST}
-            disabled={isLimitReached()}
+            disabled={reachListsLimit()}
           >
             Новый список
           </NavItem>

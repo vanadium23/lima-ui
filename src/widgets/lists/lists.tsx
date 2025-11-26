@@ -16,7 +16,7 @@ import { ListStripe } from "../../components/listStripe/listStripe.tsx";
 import { PageError } from "../../components/pageError/pageError.tsx";
 import { Title } from "../../components/title/title.tsx";
 import { notificationState } from "../../state/pushNotificationStateManager.ts";
-import { isLimitReached, setIsLimitReached } from "../../state/reachListsLimit.ts";
+import { reachListsLimit, setReachListsLimit } from "../../state/reachListsLimit.ts";
 import type { ListBase } from "../../types/types.ts";
 
 import "./lists.css";
@@ -40,11 +40,11 @@ export const Lists = (props: ListsProps) => {
 
   function removingListInStore(listIdToRemove: string) {
     setStore("lists", (lists: ListBase[]) => lists.filter((item) => item.id !== listIdToRemove));
-    setIsLimitReached(checkListsLimitReached());
+    setReachListsLimit(checkListsLimitReached());
   }
 
   onMount(() => {
-    setIsLimitReached(checkListsLimitReached());
+    setReachListsLimit(checkListsLimitReached());
 
     if (mProps.listsRequestError) {
       notificationState.pushNetworkError(
@@ -86,7 +86,7 @@ export const Lists = (props: ListsProps) => {
         </ul>
 
         <div class="lists__errors">
-          <Show when={isLimitReached()}>
+          <Show when={reachListsLimit()}>
             <PageError testId={LISTS_LIMIT_REACHED_WARNING}>Вы использовали лимит в {LISTS_LIMIT} списков</PageError>
           </Show>
         </div>
