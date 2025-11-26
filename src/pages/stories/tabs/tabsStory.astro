@@ -25,6 +25,21 @@ const demoTabs = [
     disabled: true,
   },
 ];
+
+const demoTabsEqualWidth = [
+  {
+    tabName: "Первая",
+    content: "Содержимое первой вкладки. Здесь может быть любой контент.",
+  },
+  {
+    tabName: "Вторая вкалдка (широкая)",
+    content: "Содержимое второй вкладки с другой информацией.",
+  },
+  {
+    tabName: "Третья",
+    content: "Содержимое третьей вкладки для полной демонстрации функционала.",
+  },
+];
 ---
 
 <StorybookPage title="Tabs">
@@ -51,6 +66,21 @@ const demoTabs = [
               </Tabs>
             </>
           ))}
+
+          <>
+            <span class="rhead">{"isEqualWidth"}</span>
+            <Tabs
+              ariaLabel="Tabs"
+              client:only="solid-js"
+              theme={theme}
+              size={TabsSize.Medium}
+              isEqualWidth={true}
+              tabs={demoTabsEqualWidth}
+              testId={DEFAULT_TEST_ID}
+            >
+              {demoTabs}
+            </Tabs>
+          </>
         </div>
       </div>
     ))
