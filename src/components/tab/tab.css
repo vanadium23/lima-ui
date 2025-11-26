@@ -1,10 +1,11 @@
 .tab {
   display: flex;
   justify-content: center;
-  flex-grow: 1;
   text-align: center;
   border-style: solid;
   cursor: pointer;
+  flex: 1 1 0;
+  white-space: nowrap;
 }
 
 .tab_medium {

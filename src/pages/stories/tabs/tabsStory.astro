@@ -25,6 +25,21 @@ const demoTabs = [
     disabled: true,
   },
 ];
+
+const demoTabsWithLongTitle = [
+  {
+    tabName: "Первая",
+    content: "Содержимое первой вкладки. Здесь может быть любой контент.",
+  },
+  {
+    tabName: "Вторая вкладка (широкая)",
+    content: "Содержимое второй вкладки с другой информацией.",
+  },
+  {
+    tabName: "Третья",
+    content: "Содержимое третьей вкладки для полной демонстрации функционала.",
+  },
+];
 ---
 
 <StorybookPage title="Tabs">
@@ -51,6 +66,20 @@ const demoTabs = [
               </Tabs>
             </>
           ))}
+
+          <>
+            <span class="rhead">{"With long title"}</span>
+            <Tabs
+              ariaLabel="Tabs"
+              client:only="solid-js"
+              theme={theme}
+              size={TabsSize.Medium}
+              tabs={demoTabsWithLongTitle}
+              testId={DEFAULT_TEST_ID}
+            >
+              {demoTabs}
+            </Tabs>
+          </>
         </div>
       </div>
     ))
