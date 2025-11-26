@@ -56,7 +56,7 @@ export const LoginForm = (props: LoginFormProps) => {
           disabled={loginFormStore.isLoading}
           handleClick={() => handleRegister("google")}
         >
-          {"Google"}
+          Google
         </AuthButton>
         <AuthButton
           iconName={"vk"}
@@ -65,7 +65,7 @@ export const LoginForm = (props: LoginFormProps) => {
           disabled={loginFormStore.isLoading}
           handleClick={() => handleRegister("vk")}
         >
-          {"ВК"}
+          ВК
         </AuthButton>
         <AuthButton
           iconName={"yandex"}
@@ -74,13 +74,13 @@ export const LoginForm = (props: LoginFormProps) => {
           disabled={loginFormStore.isLoading}
           handleClick={() => handleRegister("yandex")}
         >
-          {"Яндекс"}
+          Яндекс
         </AuthButton>
       </div>
-      <span class="loginForm__separator">{"или"}</span>
+      <span class="loginForm__separator">или</span>
       <div class="loginForm__inputs">
         <label class="loginForm__label">
-          <span class="loginForm__labelText">{"Введите адрес вашей электронной почты"}</span>
+          <span class="loginForm__labelText">Введите адрес вашей электронной почты</span>
           <Input
             type={InputType.Email}
             placeholder="Электронная почта"
@@ -97,7 +97,7 @@ export const LoginForm = (props: LoginFormProps) => {
           <span class="loginInput__error">{loginFormStore.inputs.email.error}</span>
         </label>
         <label class="loginForm__label">
-          <span class="loginForm__labelText">{"Введите пароль"}</span>
+          <span class="loginForm__labelText">Введите пароль</span>
           <Input
             type={InputType.Password}
             placeholder="Пароль"
@@ -119,23 +119,23 @@ export const LoginForm = (props: LoginFormProps) => {
           loading={loginFormStore.authType === "email" && loginFormStore.isLoading}
           disabled={loginFormStore.authType !== "email" && loginFormStore.isLoading}
         >
-          {"Войти"}
+          Войти
         </Button>
         <TextButton
           testId={LOGIN_RESTORE_PASS_LINK}
           handleClick={handleRestorePass}
           disabled={loginFormStore.isLoading}
         >
-          {"Восстановить пароль"}
+          Восстановить пароль
         </TextButton>
         <div class="loginForm__goToRegistration">
-          <span class="loginForm__goToRegistrationText">{"Нет аккаунта?"}</span>
+          <span class="loginForm__goToRegistrationText">Нет аккаунта?</span>
           <TextButton
             testId={LOGIN_GO_TO_REG_LINK}
             handleClick={handleGoToRegistration}
             disabled={loginFormStore.isLoading}
           >
-            {"Зарегистрируйтесь"}
+            Зарегистрируйтесь
           </TextButton>
         </div>
       </div>
