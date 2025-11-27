@@ -65,14 +65,4 @@
   .auth__greetingDescription {
     display: none;
   }
-
-  .registrationsForm__goToAuth {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .loginForm__goToRegistration {
-    display: flex;
-    flex-direction: column;
-  }
 }

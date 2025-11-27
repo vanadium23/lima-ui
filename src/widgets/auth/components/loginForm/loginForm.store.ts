@@ -44,7 +44,6 @@ export function initLoginFormStore() {
 }
 
 export function handleRegister(authType: AuthType) {
-  let isRedirecting = false;
   setLoginFormStore("authType", authType);
   setLoginFormStore("isLoading", true);
   notificationState.clearNetworkErrors();
@@ -57,17 +56,12 @@ export function handleRegister(authType: AuthType) {
   )
     .then((result) => {
       if (result) {
-        isRedirecting = true;
         window.location.replace(URL_MY_LISTS);
       }
     })
     .catch(() => {
+      setLoginFormStore("isLoading", false);
       notificationState.pushNetworkError("Ошибка", "Нет соединения с сервером, попробуйте еще раз", REG_NETWORK_ERROR);
-    })
-    .finally(() => {
-      if (!isRedirecting) {
-        setLoginFormStore("isLoading", false);
-      }
     });
 }
 

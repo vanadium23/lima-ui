@@ -58,7 +58,7 @@
   line-height: 2rem;
 }
 
-.loginInput__error {
+.loginForm__error {
   display: flex;
   height: 1.8rem;
   justify-content: start;
@@ -72,5 +72,11 @@
 @media (width <= 767px) {
   .loginForm__wrapper {
     padding: 1rem 2rem;
+  }
+}
+
+@media (width <= 1023px) {
+  .loginForm__goToRegistration {
+    flex-direction: column;
   }
 }

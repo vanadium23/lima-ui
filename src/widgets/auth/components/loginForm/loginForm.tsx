@@ -7,7 +7,7 @@ import {
 } from "../../../../../features/testIds.ts";
 import { AuthButton } from "../../../../components/authButton/authButton.tsx";
 import { Button, ButtonType } from "../../../../components/button/button.tsx";
-import { Input, InputType } from "../../../../components/input/input.tsx";
+import { AutocompleteType, Input, InputType } from "../../../../components/input/input.tsx";
 import { TextButton } from "../../../../components/textButton/textButton.tsx";
 
 import {
@@ -53,7 +53,7 @@ export const LoginForm = (props: LoginFormProps) => {
           iconName={"google"}
           testId={"google_auth"}
           loading={loginFormStore.authType === "google" && loginFormStore.isLoading}
-          disabled={loginFormStore.isLoading}
+          disabled={loginFormStore.authType !== "google" && loginFormStore.isLoading}
           handleClick={() => handleRegister("google")}
         >
           Google
@@ -62,7 +62,7 @@ export const LoginForm = (props: LoginFormProps) => {
           iconName={"vk"}
           testId={"vk_auth"}
           loading={loginFormStore.authType === "vk" && loginFormStore.isLoading}
-          disabled={loginFormStore.isLoading}
+          disabled={loginFormStore.authType !== "vk" && loginFormStore.isLoading}
           handleClick={() => handleRegister("vk")}
         >
           ВК
@@ -71,7 +71,7 @@ export const LoginForm = (props: LoginFormProps) => {
           iconName={"yandex"}
           testId={"yandex_auth"}
           loading={loginFormStore.authType === "yandex" && loginFormStore.isLoading}
-          disabled={loginFormStore.isLoading}
+          disabled={loginFormStore.authType !== "yandex" && loginFormStore.isLoading}
           handleClick={() => handleRegister("yandex")}
         >
           Яндекс
@@ -80,7 +80,7 @@ export const LoginForm = (props: LoginFormProps) => {
       <span class="loginForm__separator">или</span>
       <div class="loginForm__inputs">
         <label class="loginForm__label">
-          <span class="loginForm__labelText">Введите адрес вашей электронной почты</span>
+          <span class="loginForm__labelText">{"Электронная почта"}</span>
           <Input
             type={InputType.Email}
             placeholder="Электронная почта"
@@ -91,16 +91,17 @@ export const LoginForm = (props: LoginFormProps) => {
             error={!loginFormStore.inputs.email.isValid}
             onInput={handleChange("email")}
             disabled={loginFormStore.isLoading}
+            autocomplete={AutocompleteType.Email}
           >
             {loginFormStore.inputs.email.value.toString()}
           </Input>
-          <span class="loginInput__error">{loginFormStore.inputs.email.error}</span>
+          <span class="loginForm__error">{loginFormStore.inputs.email.error}</span>
         </label>
         <label class="loginForm__label">
-          <span class="loginForm__labelText">Введите пароль</span>
+          <span class="loginForm__labelText">{"Пароль"}</span>
           <Input
             type={InputType.Password}
-            placeholder="Пароль"
+            placeholder="Введите пароль"
             name="Пароль"
             maxLength={360}
             testId={LOGIN_PASS_INPUT}
@@ -108,10 +109,11 @@ export const LoginForm = (props: LoginFormProps) => {
             error={!loginFormStore.inputs.pass.isValid}
             onInput={handleChange("pass")}
             disabled={loginFormStore.isLoading}
+            autocomplete={AutocompleteType.Password}
           >
             {loginFormStore.inputs.pass.value.toString()}
           </Input>
-          <span class="loginInput__error">{loginFormStore.inputs.pass.error}</span>
+          <span class="loginForm__error">{loginFormStore.inputs.pass.error}</span>
         </label>
         <Button
           testId={LOGIN_SUBMIT_BUTTON}
