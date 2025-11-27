@@ -9,10 +9,12 @@ import "./accordion.css";
 
 export enum AccordionTheme {
   Primary = "primary",
+  Secondary = "secondary",
 }
 
 export enum AccordionSize {
   Medium = "medium",
+  Large = "large",
 }
 
 type AccordionProps = {
@@ -41,6 +43,7 @@ export const Accordion = (props: Testable<AccordionProps>) => {
 
   const iconSize = {
     [AccordionSize.Medium]: IconSize.Medium,
+    [AccordionSize.Large]: IconSize.Large,
   };
 
   return (
@@ -48,7 +51,7 @@ export const Accordion = (props: Testable<AccordionProps>) => {
       class="accordion"
       classList={{
         [`accordion_${mProps.size}`]: true,
-        [`accordion_${mProps.theme}`]: !mProps.disabled,
+        [`accordion_${mProps.theme}`]: true,
         accordion_disabled: mProps.disabled,
         accordion_expanded: getExpanded(),
       }}
