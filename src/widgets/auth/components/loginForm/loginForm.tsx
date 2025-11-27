@@ -10,13 +10,7 @@ import { Button, ButtonType } from "../../../../components/button/button.tsx";
 import { AutocompleteType, Input, InputType } from "../../../../components/input/input.tsx";
 import { TextButton } from "../../../../components/textButton/textButton.tsx";
 
-import {
-  handleChange,
-  handleRegister,
-  initLoginFormStore,
-  loginFormStore,
-  setLoginFormStore,
-} from "./loginForm.store.ts";
+import { handleChange, handleLogin, initLoginFormStore, loginFormStore, setLoginFormStore } from "./loginForm.store.ts";
 import { isLoginFormValid, validateLoginForm } from "./utilities/loginFormValidations.ts";
 import "./loginForm.css";
 
@@ -27,7 +21,7 @@ function onSubmit(e: SubmitEvent) {
   setLoginFormStore("inputs", validatedInputs);
 
   if (isLoginFormValid(validatedInputs)) {
-    handleRegister("email");
+    handleLogin("email");
   }
 }
 
@@ -54,7 +48,7 @@ export const LoginForm = (props: LoginFormProps) => {
           testId={"google_auth"}
           loading={loginFormStore.authType === "google" && loginFormStore.isLoading}
           disabled={loginFormStore.authType !== "google" && loginFormStore.isLoading}
-          handleClick={() => handleRegister("google")}
+          handleClick={() => handleLogin("google")}
         >
           Google
         </AuthButton>
@@ -63,7 +57,7 @@ export const LoginForm = (props: LoginFormProps) => {
           testId={"vk_auth"}
           loading={loginFormStore.authType === "vk" && loginFormStore.isLoading}
           disabled={loginFormStore.authType !== "vk" && loginFormStore.isLoading}
-          handleClick={() => handleRegister("vk")}
+          handleClick={() => handleLogin("vk")}
         >
           ВК
         </AuthButton>
@@ -72,7 +66,7 @@ export const LoginForm = (props: LoginFormProps) => {
           testId={"yandex_auth"}
           loading={loginFormStore.authType === "yandex" && loginFormStore.isLoading}
           disabled={loginFormStore.authType !== "yandex" && loginFormStore.isLoading}
-          handleClick={() => handleRegister("yandex")}
+          handleClick={() => handleLogin("yandex")}
         >
           Яндекс
         </AuthButton>

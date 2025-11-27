@@ -4,7 +4,7 @@ import { REG_NETWORK_ERROR } from "../../../../../features/testIds.ts";
 import { URL_MY_LISTS } from "../../../../../utilities/addresses.ts";
 import { notificationState } from "../../../../state/pushNotificationStateManager.ts";
 import type { AuthFormInput, AuthType } from "../../auth.tsx";
-import { registerNewAccount } from "../../services/register.ts";
+import { loginToAccount } from "../../services/register.ts";
 
 export type LoginFormInputsNames = "email" | "pass";
 export type LoginFormInputs = Record<LoginFormInputsNames, AuthFormInput>;
@@ -43,11 +43,11 @@ export function initLoginFormStore() {
   });
 }
 
-export function handleRegister(authType: AuthType) {
+export function handleLogin(authType: AuthType) {
   setLoginFormStore("authType", authType);
   setLoginFormStore("isLoading", true);
   notificationState.clearNetworkErrors();
-  registerNewAccount(
+  loginToAccount(
     {
       email: loginFormStore.inputs.email.value.toString(),
       password: loginFormStore.inputs.pass.value.toString(),

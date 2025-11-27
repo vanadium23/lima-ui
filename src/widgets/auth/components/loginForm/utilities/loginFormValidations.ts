@@ -1,3 +1,4 @@
+import { validatePassword } from "../../../../../../utilities/validatePassword.ts";
 import type { LoginFormInputs } from "../loginForm.store.ts";
 
 export const isLoginFormValid = (inputs: LoginFormInputs) => {
@@ -7,18 +8,10 @@ export const isLoginFormValid = (inputs: LoginFormInputs) => {
 export const validateLoginForm = (inputs: LoginFormInputs) => {
   const { email, pass } = inputs;
 
-  const emailInput = document.getElementsByName("Электронная почта").item(0) as HTMLInputElement;
-  const isEmailValid = emailInput.checkValidity();
-
-  const passRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*]{8,}$/;
-  const isPassValid = passRegex.test(pass.value.toString());
+  const isPassValid = validatePassword(pass.value.toString());
 
   const result: LoginFormInputs = {
-    email: {
-      ...email,
-      isValid: isEmailValid,
-      error: !isEmailValid ? "Неверный формат" : "",
-    },
+    email,
     pass: {
       ...pass,
       isValid: isPassValid,
