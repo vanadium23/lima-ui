@@ -28,6 +28,7 @@ export enum AutocompleteType {
   Off = "off",
   Email = "email",
   NewPassword = "new-password",
+  Password = "password",
 }
 
 type InputProps = {

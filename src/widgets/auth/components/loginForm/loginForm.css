@@ -1,0 +1,82 @@
+.loginForm__wrapper {
+  display: flex;
+  padding: 2rem 3rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.loginForm__socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginForm__separator {
+  color: var(--text-neutral-800);
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 2rem;
+}
+
+.loginForm__inputs {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  align-self: stretch;
+  gap: 1rem;
+}
+
+.loginForm__goToRegistration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginForm__goToRegistrationText {
+  color: var(--text-neutral-800);
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 2rem;
+}
+
+.loginForm__label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+  align-self: stretch;
+}
+
+.loginForm__labelText {
+  color: var(--text-neutral-800);
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 2rem;
+}
+
+.loginForm__error {
+  display: flex;
+  height: 1.8rem;
+  justify-content: start;
+  align-items: center;
+  color: var(--dangerous-500);
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.8rem;
+}
+
+@media (width <= 767px) {
+  .loginForm__wrapper {
+    padding: 1rem 2rem;
+  }
+}
+
+@media (width <= 1023px) {
+  .loginForm__goToRegistration {
+    flex-direction: column;
+  }
+}

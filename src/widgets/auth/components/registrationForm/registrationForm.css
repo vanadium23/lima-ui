@@ -102,3 +102,9 @@
     padding: 1rem 2rem;
   }
 }
+
+@media (width <= 1023px) {
+  .registrationsForm__goToAuth {
+    flex-direction: column;
+  }
+}

@@ -169,6 +169,7 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
                   disabled={registrationFormStore.isLoading}
                   dependent={true}
                   name={"Пользовательское соглашение"}
+                  required={true}
                 />
                 <span class="registrationsForm__policyLabelText">
                   Я даю согласие на обработку моих персональных данных в соответствии с{" "}
