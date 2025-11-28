@@ -1,10 +1,10 @@
 import type { CollisionDetector, DragEvent, Droppable } from "@thisbeyond/solid-dnd";
 import { onCleanup } from "solid-js";
 
-import type { Items, ScrollContainer } from "../../../types/types.ts";
+import type { ScrollContainer } from "../../../types/types.ts";
 import { type EditListStore, setStoreEditList, storeEditList } from "../editList.store.tsx";
 
-import { createDefaultItem, createDragId } from "./createDefaultItem.ts";
+import { createDefaultItem } from "./createDefaultItem.ts";
 import { scroller } from "./scrollToBottom.ts";
 
 const SCROLL_SPEED = 10; // Base scrolling speed
@@ -165,11 +165,3 @@ export const createScrollableCollisionsDetector: ScrollableCollisionDetectorCrea
 
     return droppable;
   };
-
-export function convertItemsToDragItems(items: Items) {
-  return items.map((item) => ({
-    ...item,
-    dragId: item.id || createDragId(),
-    auto: false,
-  }));
-}

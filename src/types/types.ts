@@ -7,7 +7,7 @@ export type Item = {
   originalList: { id: string; name: string };
 };
 
-export type Items = Item[];
+export type ItemFromBackend = Item;
 
 export type SimpleList = {
   name: string;
@@ -22,29 +22,29 @@ export type ListBase = {
 };
 
 export type List = ListBase & {
-  items: Items;
+  items: Item[];
   note: string;
 };
 
-export type DragItem = Item & {
+export type ListFromBackend = List;
+
+export type EditListItem = ItemFromBackend & {
   dragId: string;
   auto: boolean;
 };
 
-export type EditListItem = List & {
+export type EditListList = List & {
   dragId: string;
 };
 
-export type EditListItems = (DragItem | EditListItem)[];
-
 export type DragList = ListBase & {
-  items: EditListItems;
+  items: EditListItem[];
   note: string;
 };
 
 export type ItemToSend = Item | { id: string } | { content: string };
 
-export type NewList = {
+export type NewListData = {
   name: string;
   purpose: string;
   note: string;

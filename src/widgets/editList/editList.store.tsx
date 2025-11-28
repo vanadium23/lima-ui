@@ -1,12 +1,12 @@
 import { createStore } from "solid-js/store";
 
-import type { DragList, List } from "../../types/types.ts";
+import type { DragList, ListFromBackend } from "../../types/types.ts";
 
 import { addAutoItem } from "./utilities/addAutoItem.ts";
-import { convertItemsToDragItems } from "./utilities/dragAndDrop.ts";
+import { convertItemsFromBackendToEditListItems } from "./utilities/convertItemsFromBackendToEditListItems.ts";
 
 export type EditListStore = DragList & {
-  initialList: List;
+  initialList: ListFromBackend;
   sendingNow: false | "saving" | "deleting";
   error: boolean;
   removeError: boolean;
@@ -17,7 +17,7 @@ export type EditListStore = DragList & {
   itemsScrollStartPosition: number;
 };
 
-export const emptyList: List = {
+export const emptyList: ListFromBackend = {
   id: "",
   name: "",
   purpose: "",
@@ -42,15 +42,15 @@ export const [storeEditList, setStoreEditList] = createStore<EditListStore>({
   itemsScrollStartPosition: 0,
 });
 
-export function initStoreEditList(defaultList: List) {
+export function initStoreEditList(defaultList: ListFromBackend) {
   updateStoreEditList(defaultList);
   addAutoItem();
 }
 
-export function updateStoreEditList(updatedList: List) {
+export function updateStoreEditList(updatedList: ListFromBackend) {
   setStoreEditList({
     id: updatedList.id,
-    items: convertItemsToDragItems(updatedList.items),
+    items: convertItemsFromBackendToEditListItems(updatedList.items),
     name: updatedList.name,
     purpose: updatedList.purpose,
     note: updatedList.note,

@@ -2,7 +2,7 @@ import { URL_MY_LISTS } from "../../../../utilities/addresses.ts";
 import { soften } from "../../../../utilities/soften.ts";
 import { suffixTabTitle } from "../../../../utilities/tabTitle.ts";
 import { setLocation } from "../../../state/locationState.ts";
-import { type NewList, type UpdatedList } from "../../../types/types.ts";
+import { type NewListData, type UpdatedList } from "../../../types/types.ts";
 import { setStoreEditList, storeEditList, updateStoreEditList } from "../editList.store.tsx";
 import { createList } from "../services/createList.ts";
 import { updateList } from "../services/updateList.ts";
@@ -55,7 +55,7 @@ function prepareListItemsDataForSending() {
   });
 }
 
-function sendNewList(data: NewList) {
+function sendNewList(data: NewListData) {
   setStoreEditList({
     error: false,
     sendingNow: "saving",

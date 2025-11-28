@@ -1,16 +1,16 @@
-import type { Items } from "../../../types/types.ts";
+import type { Item } from "../../../types/types.ts";
 import { setStoreEditList, storeEditList } from "../editList.store.tsx";
 
-import { convertItemsToDragItems } from "./dragAndDrop.ts";
+import { convertItemsFromBackendToEditListItems } from "./convertItemsFromBackendToEditListItems.ts";
 import { scroller } from "./scrollToBottom.ts";
 
-export function addImportItems(importItems: Items) {
+export function addImportItems(importItems: Item[]) {
   const currentItems = storeEditList.items;
   const autoItemIndex = currentItems.findIndex((item) => item.auto);
 
   setStoreEditList("items", [
     ...currentItems.slice(0, autoItemIndex),
-    ...convertItemsToDragItems(importItems),
+    ...convertItemsFromBackendToEditListItems(importItems),
     ...currentItems.slice(autoItemIndex),
   ]);
 

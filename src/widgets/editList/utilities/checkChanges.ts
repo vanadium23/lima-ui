@@ -1,4 +1,4 @@
-import type { DragItem, Items, List } from "../../../types/types.ts";
+import type { EditListItem, Item, List } from "../../../types/types.ts";
 import { setStoreEditList, storeEditList } from "../editList.store.tsx";
 
 import { createDefaultItem } from "./createDefaultItem.ts";
@@ -10,7 +10,7 @@ export function checkChanges(
   currentListName: List["name"],
   currentListPurpose: List["purpose"],
   currentListNote: List["note"],
-  currentListItems: DragItem[],
+  currentListItems: EditListItem[],
 ) {
   const initialData = storeEditList.initialList;
 
@@ -23,7 +23,7 @@ export function checkChanges(
   setStoreEditList("isChanged", hasChanges);
 }
 
-function itemsChanged(initialItems: Items, currentItems: DragItem[]) {
+function itemsChanged(initialItems: Item[], currentItems: EditListItem[]) {
   const currentItemsWithoutAutoItem = currentItems.filter((item) => !item.auto);
 
   if (initialItems.length !== currentItemsWithoutAutoItem.length) {

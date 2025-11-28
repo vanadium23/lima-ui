@@ -1,17 +1,17 @@
-import type { Items } from "../../../types/types.ts";
+import type { Item } from "../../../types/types.ts";
 import { setStoreEditList, storeEditList } from "../editList.store.tsx";
 
-import { convertItemsToDragItems } from "./dragAndDrop.ts";
+import { convertItemsFromBackendToEditListItems } from "./convertItemsFromBackendToEditListItems.ts";
 
-export function pasteImportItemsBefore(index: number, importItems: Items) {
+export function pasteImportItemsBefore(index: number, importItems: Item[]) {
   pasteImportItems(index, importItems);
 }
 
-export function pasteImportItemsAfter(index: number, importItems: Items) {
+export function pasteImportItemsAfter(index: number, importItems: Item[]) {
   pasteImportItems(index + 1, importItems);
 }
 
-function pasteImportItems(insertIndex: number, importItems: Items) {
+function pasteImportItems(insertIndex: number, importItems: Item[]) {
   const separatedItemsBeforeNewItem = storeEditList.items.slice(0, insertIndex).map((item) => ({
     ...item,
     auto: false,
@@ -21,7 +21,7 @@ function pasteImportItems(insertIndex: number, importItems: Items) {
 
   const resultingItems = [
     ...separatedItemsBeforeNewItem,
-    ...convertItemsToDragItems(importItems),
+    ...convertItemsFromBackendToEditListItems(importItems),
     ...separatedItemsAfterNewItem,
   ];
 

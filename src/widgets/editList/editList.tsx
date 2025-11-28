@@ -23,7 +23,7 @@ import { ImportedGroup } from "../../components/importedGroup/importedGroup.tsx"
 import { ListItem } from "../../components/listItem/listItem.tsx";
 import { PageError } from "../../components/pageError/pageError.tsx";
 import { notificationState } from "../../state/pushNotificationStateManager.ts";
-import { type DragItem, type EditListItem, type List } from "../../types/types.ts";
+import { type EditListItem, type EditListList, type ListFromBackend } from "../../types/types.ts";
 
 import { EditListHeader } from "./components/editListHeader/editListHeader.tsx";
 import EditListToolsPanel from "./components/editListToolsPanel/editListToolsPanel.tsx";
@@ -43,7 +43,7 @@ import { scroller } from "./utilities/scrollToBottom.ts";
 import "./editList.css";
 
 type EditListProps = {
-  defaultList?: List;
+  defaultList?: ListFromBackend;
   requestError?: boolean;
   errorText?: string;
 };
@@ -135,11 +135,11 @@ export const EditList = (props: EditListProps) => {
                     {(item, index) => {
                       const dragData = createSortable(item.dragId);
 
-                      const isItem = (itemCandidate: DragItem | EditListItem): itemCandidate is DragItem => {
+                      const isItem = (itemCandidate: EditListItem | EditListList): itemCandidate is EditListItem => {
                         return "originalList" in itemCandidate;
                       };
 
-                      const isOwnItem = (ownItemCandidate: DragItem) => {
+                      const isOwnItem = (ownItemCandidate: EditListItem) => {
                         return ownItemCandidate.originalList.id === storeEditList.id;
                       };
 
