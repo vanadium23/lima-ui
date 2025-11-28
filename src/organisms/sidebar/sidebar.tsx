@@ -1,3 +1,5 @@
+import { mergeProps } from "solid-js";
+
 import { ADD_GROUP_BUTTON, PRO_VERSION_BUTTON, SIDEBAR, SIGN_OUT_BUTTON } from "../../../features/testIds.ts";
 import { Button, ButtonSize, ButtonTheme } from "../../components/button/button.tsx";
 import { Divider, DividerOrientation, DividerSize, DividerTheme } from "../../components/divider/divider.tsx";
@@ -9,7 +11,18 @@ import { panelState } from "../../state/sidebarsStateManager.ts";
 
 import "./sidebar.css";
 
-export const Sidebar = () => {
+type SidebarProps = {
+  isListsLimitReached?: boolean;
+};
+
+export const Sidebar = (props: SidebarProps) => {
+  const mProps: Required<SidebarProps> = mergeProps(
+    {
+      isListsLimitReached: false,
+    },
+    props,
+  );
+
   return (
     <div
       class="sidebar"
@@ -26,7 +39,7 @@ export const Sidebar = () => {
           <IconButton iconName={IconName.SignOut} ariaLabel="Выйти из аккаунта" testId={SIGN_OUT_BUTTON} />
         </div>
         <Divider theme={DividerTheme.Primary} size={DividerSize.Medium} orientation={DividerOrientation.Horizontal} />
-        <Nav />
+        <Nav isListsLimitReached={mProps.isListsLimitReached} />
       </div>
       <div class="sidebar__bottom">
         <div class="sidebar__profile">

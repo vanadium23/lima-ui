@@ -6,9 +6,9 @@ import { soften } from "../../../../../utilities/soften.ts";
 import { Button, ButtonSize, ButtonTheme, ButtonType } from "../../../../components/button/button.tsx";
 import { Dialog } from "../../../../components/dialog/dialog.tsx";
 import { ListStripeImport } from "../../../../components/listStripeImport/listStripeImport.tsx";
+import { getLists } from "../../../../services/getLists.ts";
 import { notificationState } from "../../../../state/pushNotificationStateManager.ts";
 import { type Item, type List } from "../../../../types/types.ts";
-import { getLists } from "../../services/getLists.ts";
 import { addImportItems } from "../../utilities/addImportItems.ts";
 import { pasteImportItemsAfter, pasteImportItemsBefore } from "../../utilities/pasteImportItems.ts";
 

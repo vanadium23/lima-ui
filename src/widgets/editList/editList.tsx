@@ -23,7 +23,6 @@ import { ImportedGroup } from "../../components/importedGroup/importedGroup.tsx"
 import { ListItem } from "../../components/listItem/listItem.tsx";
 import { PageError } from "../../components/pageError/pageError.tsx";
 import { notificationState } from "../../state/pushNotificationStateManager.ts";
-import { reachListsLimit } from "../../state/reachListsLimit.ts";
 import { type List } from "../../types/types.ts";
 
 import { EditListHeader } from "./components/editListHeader/editListHeader.tsx";
@@ -47,6 +46,7 @@ type EditListProps = {
   defaultList?: List;
   requestError?: boolean;
   errorText?: string;
+  isListsLimitReached?: boolean;
 };
 
 export const EditList = (props: EditListProps) => {
@@ -55,6 +55,7 @@ export const EditList = (props: EditListProps) => {
       defaultList: emptyList,
       requestError: false,
       errorText: "",
+      isListsLimitReached: false,
     },
     props,
   );
@@ -115,7 +116,7 @@ export const EditList = (props: EditListProps) => {
 
   return (
     <Switch>
-      <Match when={!reachListsLimit()}>
+      <Match when={mProps.isListsLimitReached}>
         <div>Лимит списков превышен</div>
       </Match>
       <Match when={!mProps.requestError}>

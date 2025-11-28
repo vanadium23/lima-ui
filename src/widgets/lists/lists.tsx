@@ -16,7 +16,6 @@ import { ListStripe } from "../../components/listStripe/listStripe.tsx";
 import { PageError } from "../../components/pageError/pageError.tsx";
 import { Title } from "../../components/title/title.tsx";
 import { notificationState } from "../../state/pushNotificationStateManager.ts";
-import { reachListsLimit, setReachListsLimit } from "../../state/reachListsLimit.ts";
 import type { ListBase } from "../../types/types.ts";
 
 import "./lists.css";
@@ -24,28 +23,22 @@ import "./lists.css";
 type ListsProps = {
   defaultLists: ListBase[];
   listsRequestError: boolean;
+  isListsLimitReached: boolean;
 };
 
 export const Lists = (props: ListsProps) => {
   const mProps: Required<ListsProps> = mergeProps(props);
 
-  const [store, setStore] = createStore({
+  const [storeLists, setStoreLists] = createStore({
     lists: mProps.defaultLists,
     removeError: false,
   });
 
-  function checkListsLimitReached() {
-    return store.lists.length >= LISTS_LIMIT;
-  }
-
   function removingListInStore(listIdToRemove: string) {
-    setStore("lists", (lists: ListBase[]) => lists.filter((item) => item.id !== listIdToRemove));
-    setReachListsLimit(checkListsLimitReached());
+    setStoreLists("lists", (lists: ListBase[]) => lists.filter((item) => item.id !== listIdToRemove));
   }
 
   onMount(() => {
-    setReachListsLimit(checkListsLimitReached());
-
     if (mProps.listsRequestError) {
       notificationState.pushNetworkError(
         "Ошибка соединения",
@@ -60,14 +53,14 @@ export const Lists = (props: ListsProps) => {
       <div class="lists__title">
         <Title testId={PAGE_TITLE}>Мои списки</Title>
       </div>
-      <Show when={store.lists.length === 0 && !mProps.listsRequestError}>
+      <Show when={storeLists.lists.length === 0 && !mProps.listsRequestError}>
         <span class="lists__emptyWarning" data-test-id={NO_SAVED_LISTS_MESSAGE}>
           У вас еще нет сохраненных списков
         </span>
       </Show>
       <Show when={!mProps.listsRequestError}>
         <ul class="lists__list">
-          <For each={store.lists.slice().reverse()}>
+          <For each={storeLists.lists.slice().reverse()}>
             {(list, index) => (
               <li class="lists__item">
                 <ListStripe
@@ -86,7 +79,7 @@ export const Lists = (props: ListsProps) => {
         </ul>
 
         <div class="lists__errors">
-          <Show when={reachListsLimit()}>
+          <Show when={mProps.isListsLimitReached}>
             <PageError testId={LISTS_LIMIT_REACHED_WARNING}>Вы использовали лимит в {LISTS_LIMIT} списков</PageError>
           </Show>
         </div>
@@ -96,7 +89,7 @@ export const Lists = (props: ListsProps) => {
             componentType={ButtonComponentType.Link}
             href={URL_CREATE_LIST}
             testId={CREATE_LIST_BUTTON}
-            disabled={checkListsLimitReached()}
+            disabled={mProps.isListsLimitReached}
           >
             Создать
           </Button>
