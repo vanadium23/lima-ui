@@ -15,6 +15,7 @@
   width: 100%;
   border: none;
   resize: none;
+  scrollbar-gutter: stable;
 }
 
 .textarea__inner:focus {
@@ -36,7 +37,7 @@
   height: 10.6rem;
   font-size: 1.6rem;
   line-height: 2rem;
-  padding: 0.2rem 1.6rem;
+  padding: 0.2rem 0 0.2rem 1.6rem;
 }
 
 .textarea_medium .textarea__controls {
