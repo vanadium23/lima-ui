@@ -4,17 +4,12 @@
   flex-shrink: 0;
   flex-grow: 1;
   width: 100%;
-  border-width: 0.1rem;
-  border-style: solid;
-  border-radius: 0.8rem;
 }
 
 .accordion__header {
   display: flex;
-  gap: 0.4rem;
   background: transparent;
   cursor: pointer;
-  border-radius: 0.8rem;
 }
 
 .accordion__headerIcon {
@@ -37,19 +32,45 @@
   padding: 0.6rem 1.6rem;
   font-size: 1.6rem;
   line-height: 2rem;
+  gap: 0.4rem;
 }
 
 .accordion_medium .accordion__content {
   min-height: 3rem;
 }
 
+.accordion_large .accordion__header {
+  padding-top: 1rem;
+  padding-bottom: 1.1rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 2.2rem;
+  gap: 0.4rem;
+}
+
+.accordion_large .accordion__content {
+  min-height: 3rem;
+}
+
 .accordion_primary {
+  border-width: 0.1rem;
+  border-style: solid;
   border-color: var(--neutral-500);
   background: var(--neutral-100);
+  border-radius: 0.8rem;
+}
+
+.accordion_primary:active {
+  border-color: var(--neutral-900);
 }
 
 .accordion_primary .accordion__header {
-  color: var(--neutral-700);
+  color: var(--text-neutral-700);
+  border-radius: 0.8rem;
+}
+
+.accordion_primary .accordion__header:active {
+  color: var(--neutral-900);
 }
 
 .accordion_primary .accordion__headerIcon {
@@ -58,6 +79,33 @@
 
 @media (hover: hover) {
   .accordion_primary:has(.accordion__header:hover) {
+    border-color: var(--neutral-700);
+  }
+}
+
+.accordion_secondary {
+  border-top: 0.1rem solid var(--neutral-500);
+  background: var(--neutral-100);
+}
+
+.accordion_secondary:active {
+  border-color: var(--neutral-900);
+}
+
+.accordion_secondary .accordion__header {
+  color: var(--text-neutral-800);
+}
+
+.accordion_secondary .accordion__header:active {
+  color: var(--text-neutral-900);
+}
+
+.accordion_secondary .accordion__headerIcon {
+  color: var(--neutral-800);
+}
+
+@media (hover: hover) {
+  .accordion_secondary:has(.accordion__header:hover) {
     border-color: var(--neutral-700);
   }
 }
@@ -83,4 +131,8 @@
 
 .accordion__header:focus:not(:focus-visible) {
   outline: none;
+}
+
+.accordion_primary:not(.accordion_disabled):has(.accordion__header:active) {
+  border-color: var(--neutral-900);
 }

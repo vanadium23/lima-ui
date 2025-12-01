@@ -9,10 +9,12 @@ import "./accordion.css";
 
 export enum AccordionTheme {
   Primary = "primary",
+  Secondary = "secondary",
 }
 
 export enum AccordionSize {
   Medium = "medium",
+  Large = "large",
 }
 
 type AccordionProps = {
@@ -41,6 +43,7 @@ export const Accordion = (props: Testable<AccordionProps>) => {
 
   const iconSize = {
     [AccordionSize.Medium]: IconSize.Medium,
+    [AccordionSize.Large]: IconSize.Large,
   };
 
   return (
