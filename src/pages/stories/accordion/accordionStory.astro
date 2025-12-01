@@ -18,28 +18,24 @@ const sizes = Object.values(AccordionSize);
           <span class="chead">Default</span>
           <span class="chead">Disabled</span>
 
-          {sizes.map(
-            (size) =>
-              ((theme === AccordionTheme.Primary && size === AccordionSize.Medium) ||
-                (theme === AccordionTheme.Secondary && size === AccordionSize.Large)) && (
-                <>
-                  <span class="rhead">{size}</span>
-                  <Accordion client:only="solid-js" theme={theme} size={size} title="Гармонь" testId={DEFAULT_TEST_ID}>
-                    <PasteContent />
-                  </Accordion>
-                  <Accordion
-                    client:only="solid-js"
-                    disabled={true}
-                    theme={theme}
-                    size={size}
-                    title="Гармонь"
-                    testId={DEFAULT_TEST_ID}
-                  >
-                    <PasteContent />
-                  </Accordion>
-                </>
-              ),
-          )}
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <Accordion client:only="solid-js" theme={theme} size={size} title="Гармонь" testId={DEFAULT_TEST_ID}>
+                <PasteContent />
+              </Accordion>
+              <Accordion
+                client:only="solid-js"
+                disabled={true}
+                theme={theme}
+                size={size}
+                title="Гармонь"
+                testId={DEFAULT_TEST_ID}
+              >
+                <PasteContent />
+              </Accordion>
+            </>
+          ))}
         </div>
       </div>
     ))
