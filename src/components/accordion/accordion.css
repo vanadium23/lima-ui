@@ -60,13 +60,27 @@
   border-radius: 0.8rem;
 }
 
+.accordion_primary:active {
+  border-color: var(--neutral-900);
+}
+
 .accordion_primary .accordion__header {
-  color: var(--neutral-700);
+  color: var(--text-neutral-700);
   border-radius: 0.8rem;
+}
+
+.accordion_primary .accordion__header:active {
+  color: var(--neutral-900);
 }
 
 .accordion_primary .accordion__headerIcon {
   color: var(--neutral-700);
+}
+
+@media (hover: hover) {
+  .accordion_primary:has(.accordion__header:hover) {
+    border-color: var(--neutral-700);
+  }
 }
 
 .accordion_secondary {
@@ -74,8 +88,16 @@
   background: var(--neutral-100);
 }
 
+.accordion_secondary:active {
+  border-color: var(--neutral-900);
+}
+
 .accordion_secondary .accordion__header {
   color: var(--text-neutral-800);
+}
+
+.accordion_secondary .accordion__header:active {
+  color: var(--text-neutral-900);
 }
 
 .accordion_secondary .accordion__headerIcon {
@@ -83,7 +105,7 @@
 }
 
 @media (hover: hover) {
-  .accordion_primary:not(.accordion_disabled):has(.accordion__header:hover) {
+  .accordion_secondary:has(.accordion__header:hover) {
     border-color: var(--neutral-700);
   }
 }
@@ -109,10 +131,6 @@
 
 .accordion__header:focus:not(:focus-visible) {
   outline: none;
-}
-
-.accordion__header:active {
-  color: var(--neutral-900);
 }
 
 .accordion_primary:not(.accordion_disabled):has(.accordion__header:active) {
