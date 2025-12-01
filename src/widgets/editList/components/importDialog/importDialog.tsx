@@ -7,7 +7,7 @@ import { Button, ButtonSize, ButtonTheme, ButtonType } from "../../../../compone
 import { Dialog } from "../../../../components/dialog/dialog.tsx";
 import { ListStripeImport } from "../../../../components/listStripeImport/listStripeImport.tsx";
 import { notificationState } from "../../../../state/pushNotificationStateManager.ts";
-import { type Item, type List } from "../../../../types/types.ts";
+import { type ImportDialogItem, type ImportDialogList, type ItemId, type ListId } from "../../../../types/types.ts";
 import { getLists } from "../../services/getLists.ts";
 import { addImportItems } from "../../utilities/addImportItems.ts";
 import { pasteImportItemsAfter, pasteImportItemsBefore } from "../../utilities/pasteImportItems.ts";
@@ -20,14 +20,14 @@ type ImportDialogProps = {
 };
 
 type ImportDialogState = {
-  listsForImport: List[];
+  listsForImport: ImportDialogList[];
   loadingListsForImport: boolean;
   openImportDialog: boolean;
   pasteMethod?: "before" | "after" | "end";
   pasteIndex?: number;
-  itemsCache: Record<Item["id"], Item>;
-  listsCache: Record<List["id"], List>;
-  checkedItemsCount: Record<List["id"], number>;
+  itemsCache: Record<ItemId, ImportDialogItem>;
+  listsCache: Record<ListId, ImportDialogList>;
+  checkedItemsCount: Record<ListId, number>;
 };
 
 export const [storeImportDialog, setStoreImportDialog] = createStore<ImportDialogState>({
@@ -121,9 +121,9 @@ export const ImportDialog = (props: ImportDialogProps) => {
       }
     });
 
-    const checkedItems: (Item | List)[] = checkedItemsIds
+    const checkedItems: ImportDialogItem[] = checkedItemsIds
       .map((id) => storeImportDialog.itemsCache[id] ?? storeImportDialog.listsCache[id])
-      .filter((item): item is Item | List => Boolean(item));
+      .filter((item): item is ImportDialogItem => Boolean(item));
 
     if (storeImportDialog.pasteMethod === "after" && storeImportDialog.pasteIndex) {
       pasteImportItemsAfter(storeImportDialog.pasteIndex, checkedItems);

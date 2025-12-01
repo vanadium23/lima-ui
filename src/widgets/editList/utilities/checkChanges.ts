@@ -1,4 +1,4 @@
-import type { EditListItem, Item, List } from "../../../types/types.ts";
+import type { EditList, EditListItem, ItemFromBackend, ListName } from "../../../types/types.ts";
 import { setStoreEditList, storeEditList } from "../editList.store.tsx";
 
 import { createDefaultItem } from "./createDefaultItem.ts";
@@ -7,9 +7,9 @@ import { createDefaultItem } from "./createDefaultItem.ts";
 // ИЗНАЧАЛЬНО инициализированного списка при загрузке страницы
 
 export function checkChanges(
-  currentListName: List["name"],
-  currentListPurpose: List["purpose"],
-  currentListNote: List["note"],
+  currentListName: ListName,
+  currentListPurpose: EditList["purpose"],
+  currentListNote: EditList["note"],
   currentListItems: EditListItem[],
 ) {
   const initialData = storeEditList.initialList;
@@ -23,7 +23,7 @@ export function checkChanges(
   setStoreEditList("isChanged", hasChanges);
 }
 
-function itemsChanged(initialItems: Item[], currentItems: EditListItem[]) {
+function itemsChanged(initialItems: ItemFromBackend[], currentItems: EditListItem[]) {
   const currentItemsWithoutAutoItem = currentItems.filter((item) => !item.auto);
 
   if (initialItems.length !== currentItemsWithoutAutoItem.length) {

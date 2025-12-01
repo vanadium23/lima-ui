@@ -1,17 +1,17 @@
-import type { Item } from "../../../types/types.ts";
+import type { ImportDialogItem } from "../../../types/types.ts";
 import { setStoreEditList, storeEditList } from "../editList.store.tsx";
 
 import { convertItemsFromBackendToEditListItems } from "./convertItemsFromBackendToEditListItems.ts";
 
-export function pasteImportItemsBefore(index: number, importItems: Item[]) {
+export function pasteImportItemsBefore(index: number, importItems: ImportDialogItem[]) {
   pasteImportItems(index, importItems);
 }
 
-export function pasteImportItemsAfter(index: number, importItems: Item[]) {
+export function pasteImportItemsAfter(index: number, importItems: ImportDialogItem[]) {
   pasteImportItems(index + 1, importItems);
 }
 
-function pasteImportItems(insertIndex: number, importItems: Item[]) {
+function pasteImportItems(insertIndex: number, importItems: ImportDialogItem[]) {
   const separatedItemsBeforeNewItem = storeEditList.items.slice(0, insertIndex).map((item) => ({
     ...item,
     auto: false,

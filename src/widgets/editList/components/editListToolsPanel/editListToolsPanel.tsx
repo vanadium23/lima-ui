@@ -18,7 +18,7 @@ import {
   ToolsButtonTheme,
 } from "../../../../components/toolsButton/toolsButton.tsx";
 import { ToolsPanel, ToolsPanelSize, ToolsPanelTheme } from "../../../../organisms/toolsPanel/toolsPanel.tsx";
-import type { Item } from "../../../../types/types.ts";
+import type { EditListItem } from "../../../../types/types.ts";
 import { setStoreEditList, storeEditList } from "../../editList.store.tsx";
 import { addNewItem } from "../../utilities/addNewItem.ts";
 import { reachedItemsLimit } from "../../utilities/reachedItemsLimit.ts";
@@ -29,7 +29,7 @@ const toggleCheckable = () => setStoreEditList("isCheckable", !storeEditList.isC
 
 const openRemoveDialog = () => setStoreRemoveDialog("openRemoveDialog", true);
 
-function copyItemsToClipboard(items: Item[]) {
+function copyItemsToClipboard(items: EditListItem[]) {
   const textToCopy = items.map((item) => item.content.trim()).join("\n");
   navigator.clipboard.writeText(textToCopy).catch(() => {});
 }

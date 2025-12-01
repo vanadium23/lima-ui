@@ -1,7 +1,7 @@
 import { createSignal, Index, mergeProps, untrack } from "solid-js";
 
 import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
-import type { List } from "../../types/types.ts";
+import type { ImportDialogList } from "../../types/types.ts";
 import { setStoreImportDialog } from "../../widgets/editList/components/importDialog/importDialog.tsx";
 import { Checkbox, CheckboxSize, CheckboxTheme, type CheckedState } from "../checkbox/checkbox.tsx";
 import { Icon, IconSize } from "../icon/icon.tsx";
@@ -22,7 +22,7 @@ export enum ListStripeImportSize {
 type ListStripeImportProps = {
   theme?: ListStripeImportTheme;
   size?: ListStripeImportSize;
-  children: List;
+  children: ImportDialogList;
   titleHTMLName: string;
   disabled?: boolean;
   currentItemsCount?: number;

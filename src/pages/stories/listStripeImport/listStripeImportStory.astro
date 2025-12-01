@@ -6,25 +6,28 @@ import {
   ListStripeImportTheme,
 } from "../../../components/listStripeImport/listStripeImport.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
-import type { List } from "../../../types/types.ts";
+import type { ImportDialogList } from "../../../types/types.ts";
 
 const themes = Object.values(ListStripeImportTheme);
 const sizes = Object.values(ListStripeImportSize);
 
-const testListData: List = {
+const testListData: ImportDialogList = {
+  type: "list",
   id: "123134",
   name: "Пример списка для импорта",
   purpose: "Выберите элементы для импорта",
   note: "",
+  exportedTo: [],
   items: [
-    { id: "123", content: "Ололо1", originalList: { id: "1", name: "Название родительского списка" } },
-    { id: "123", content: "Ололо2", originalList: { id: "1", name: "Название родительского списка" } },
+    { type: "item", id: "123", content: "Ололо1", originalList: { id: "1", name: "Название родительского списка" } },
+    { type: "item", id: "123", content: "Ололо2", originalList: { id: "1", name: "Название родительского списка" } },
     {
+      type: "item",
       id: "123",
       content: "Длинный текст элемента списка для проверки отображения",
       originalList: { id: "1", name: "Название родительского списка" },
     },
-    { id: "123", content: "Ололо4", originalList: { id: "1", name: "Название родительского списка" } },
+    { type: "item", id: "123", content: "Ололо4", originalList: { id: "1", name: "Название родительского списка" } },
   ],
 };
 ---

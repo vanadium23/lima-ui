@@ -1,45 +1,74 @@
 import type { createSortable, useDragDropContext } from "@thisbeyond/solid-dnd";
 import type { JSX } from "solid-js";
 
-export type Item = {
-  content: string;
-  id: string;
-  originalList: { id: string; name: string };
-};
+export type ListId = string;
 
-export type ItemFromBackend = Item;
+export type ListName = string;
+
+export type ItemId = string;
 
 export type SimpleList = {
-  name: string;
-  id: string;
+  name: ListName;
+  id: ListId;
 };
 
-export type ListBase = {
-  id: string;
-  name: string;
+export type ItemFromBackend = {
+  type: "item";
+  id: ItemId;
+  content: string;
+  originalList: SimpleList;
+};
+
+export type ImportDialogItem = ItemFromBackend;
+
+export type ListFromBackend = {
+  type: "list";
+  id: ListId;
+  name: ListName;
   purpose: string;
-  exportedTo?: SimpleList[];
-};
-
-export type List = ListBase & {
-  items: Item[];
   note: string;
+  items: ItemFromBackend[];
+  exportedTo: SimpleList[] | null;
 };
 
-export type ListFromBackend = List;
+export type ImportDialogList = ListFromBackend;
 
-export type EditListItem = ItemFromBackend & {
+export type EditListItem = {
+  type: "item";
+  id: ItemId;
+  content: string;
+  originalList: SimpleList;
   dragId: string;
   auto: boolean;
 };
 
-export type EditListList = List & {
-  dragId: string;
+export type EditList = {
+  type: "list";
+  id: ListId;
+  name: ListName;
+  purpose: string;
+  note: string;
+  items: EditListItem[];
+  exportedTo: SimpleList[];
 };
 
-export type DragList = ListBase & {
-  items: EditListItem[];
+type NewItemData = { content: string };
+
+type UnchangedItemData = { id: ItemId };
+
+type UpdatedItemData = { id: ItemId; content: string };
+
+export type ItemData = NewItemData | UpdatedItemData | UnchangedItemData;
+
+export type NewListData = {
+  name: ListName;
+  purpose: string;
   note: string;
+  items: ItemData[];
+};
+
+export type UpdatedListData = NewListData & {
+  id: ListId;
 };
 
 export type ScrollContainer = HTMLDivElement | undefined;
@@ -57,29 +86,4 @@ export type DragSettings = {
       }
     | Record<string, never>;
   dragState: NonNullable<ReturnType<typeof useDragDropContext>>[0] | null;
-};
-
-// Переработанные типы
-
-export type ListId = string;
-
-export type ItemId = string;
-
-type NewItemData = { content: string };
-
-type UnchangedItemData = { id: ItemId };
-
-type UpdatedItemData = { id: ItemId; content: string };
-
-export type ItemData = NewItemData | UpdatedItemData | UnchangedItemData;
-
-export type NewListData = {
-  name: string;
-  purpose: string;
-  note: string;
-  items: ItemData[];
-};
-
-export type UpdatedListData = NewListData & {
-  id: ListId;
 };
