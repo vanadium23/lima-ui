@@ -42,20 +42,6 @@ export type DragList = ListBase & {
   note: string;
 };
 
-export type ItemToSend = Item | { id: string } | { content: string };
-
-export type NewListData = {
-  name: string;
-  purpose: string;
-  note: string;
-  items: ItemToSend[];
-};
-
-export type UpdatedList = ListBase & {
-  note: string;
-  items: ItemToSend[];
-};
-
 export type ScrollContainer = HTMLDivElement | undefined;
 
 export type Sortable = ReturnType<typeof createSortable>;
@@ -71,4 +57,29 @@ export type DragSettings = {
       }
     | Record<string, never>;
   dragState: NonNullable<ReturnType<typeof useDragDropContext>>[0] | null;
+};
+
+// Переработанные типы
+
+export type ListId = string;
+
+export type ItemId = string;
+
+type NewItemData = { content: string };
+
+type UnchangedItemData = { id: ItemId };
+
+type UpdatedItemData = { id: ItemId; content: string };
+
+export type ItemData = NewItemData | UpdatedItemData | UnchangedItemData;
+
+export type NewListData = {
+  name: string;
+  purpose: string;
+  note: string;
+  items: ItemData[];
+};
+
+export type UpdatedListData = NewListData & {
+  id: ListId;
 };

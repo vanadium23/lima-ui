@@ -1,6 +1,7 @@
 import { BACKEND_URL_LISTS } from "../../../../utilities/addresses.ts";
+import type { ListId } from "../../../types/types.ts";
 
-export async function removeList(id: string, backendURL = import.meta.env.PUBLIC_API_URL): Promise<void> {
+export async function removeList(id: ListId, backendURL = import.meta.env.PUBLIC_API_URL): Promise<void> {
   if (!id) {
     throw new Error("Потерялся ID списка");
   }
