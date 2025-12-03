@@ -27,7 +27,7 @@ export function isImportDialogLimitReached() {
 function getTotalCheckedItemsCount() {
   return (
     Object.values(storeImportDialog.checkedItemsCount).reduce((sum, count) => sum + count, 0) +
-    storeEditList.items.filter((item) => !item.auto).length
+    storeEditList.elements.filter((item) => !item.auto).length
     //TODO Задуматься на тем чтобы вынести в стор в отдельное свойство счетчик текущего количества пунктов без автопункта так как это используется в нескольких утилитах
   );
 }

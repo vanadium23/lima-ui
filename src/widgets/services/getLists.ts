@@ -1,5 +1,5 @@
-import { BACKEND_URL_LISTS } from "../../../../utilities/addresses.ts";
-import type { ListFromBackend } from "../../../types/types.ts";
+import { BACKEND_URL_LISTS } from "../../../utilities/addresses.ts";
+import type { ListFromBackend } from "../../types/types.ts";
 
 export async function getLists(
   backendURL = import.meta.env.PUBLIC_API_URL,

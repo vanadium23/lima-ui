@@ -2,7 +2,7 @@
 import { BACKEND_URL_NON_EXISTING, URL_MY_LISTS } from "../../../../utilities/addresses.ts";
 import AppPage from "../../../layouts/app/app.astro";
 import type { ListFromBackend } from "../../../types/types.ts";
-import { emptyList } from "../../../widgets/editList/editList.store.tsx";
+import { emptyListFromBackend } from "../../../widgets/editList/editList.store.tsx";
 import { EditList } from "../../../widgets/editList/editList.tsx";
 
 import "./style.css";
@@ -33,7 +33,7 @@ try {
   list = await response.json();
 } catch {
   listRequestError = true;
-  list = emptyList;
+  list = emptyListFromBackend;
 }
 ---
 

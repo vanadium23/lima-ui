@@ -2,7 +2,7 @@ import { URL_MY_LISTS } from "../../../../utilities/addresses.ts";
 import { soften } from "../../../../utilities/soften.ts";
 import { suffixTabTitle } from "../../../../utilities/tabTitle.ts";
 import { setLocation } from "../../../state/locationState.ts";
-import { type NewListData, type UpdatedListData } from "../../../types/types.ts";
+import { type ItemData, type NewListData, type UpdatedListData } from "../../../types/types.ts";
 import { setStoreEditList, storeEditList, updateStoreEditList } from "../editList.store.tsx";
 import { createList } from "../services/createList.ts";
 import { updateList } from "../services/updateList.ts";
@@ -11,11 +11,11 @@ export function prepareAndSendListData(event: SubmitEvent) {
   event.preventDefault();
 
   if (!storeEditList.sendingNow) {
-    const inputsValues = prepareListItemsDataForSending();
+    const elementsForSending = prepareListElementsDataForSending();
     const data = {
       name: storeEditList.name,
       purpose: storeEditList.purpose,
-      items: inputsValues,
+      items: elementsForSending,
       note: storeEditList.note,
       noDocumentedReasonForLatestUpdate: true,
     };
@@ -28,30 +28,30 @@ export function prepareAndSendListData(event: SubmitEvent) {
   }
 }
 
-function prepareListItemsDataForSending() {
+function prepareListElementsDataForSending(): ItemData[] {
   function removeAutoItem() {
-    return storeEditList.items.filter((item) => !item.auto);
+    return storeEditList.elements.filter((item) => !item.auto);
   }
 
-  return removeAutoItem().map((item) => {
-    const isNewItem = !item.id;
+  return removeAutoItem().map((element) => {
+    const isNewItem = !element.items[0].id;
 
     if (isNewItem) {
-      return { content: item.content };
+      return { content: element.items[0].content };
     }
 
     /* Ищем среди всех InitialItems тот InitialItem который является текущим Item'ом.*/
-    const initialItem = storeEditList.initialList.items.find((initialItemCandidate) => {
-      return initialItemCandidate.id === item.id;
+    const initialItem = storeEditList.initialList.elements.find((initialElementCandidate) => {
+      return initialElementCandidate.id === element.id;
     });
 
-    const itemIsImported = !initialItem;
+    const itemIsImportedNow = !initialItem;
 
-    if (itemIsImported || item.content === initialItem.content) {
-      return { id: item.id };
+    if (itemIsImportedNow || element.items[0].content === initialItem.items[0].content) {
+      return { id: element.id };
     }
 
-    return item;
+    return { id: element.id, content: element.items[0].content };
   });
 }
 

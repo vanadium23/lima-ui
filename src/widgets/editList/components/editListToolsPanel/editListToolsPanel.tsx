@@ -18,7 +18,7 @@ import {
   ToolsButtonTheme,
 } from "../../../../components/toolsButton/toolsButton.tsx";
 import { ToolsPanel, ToolsPanelSize, ToolsPanelTheme } from "../../../../organisms/toolsPanel/toolsPanel.tsx";
-import type { EditListItem } from "../../../../types/types.ts";
+import type { EditListElement } from "../../../../types/types.ts";
 import { setStoreEditList, storeEditList } from "../../editList.store.tsx";
 import { addNewItem } from "../../utilities/addNewItem.ts";
 import { reachedItemsLimit } from "../../utilities/reachedItemsLimit.ts";
@@ -29,8 +29,16 @@ const toggleCheckable = () => setStoreEditList("isCheckable", !storeEditList.isC
 
 const openRemoveDialog = () => setStoreRemoveDialog("openRemoveDialog", true);
 
-function copyItemsToClipboard(items: EditListItem[]) {
-  const textToCopy = items.map((item) => item.content.trim()).join("\n");
+function copyItemsToClipboard(elements: EditListElement[]) {
+  const textToCopy = elements
+    .map((element) => {
+      const elementContent = element.items.map((item) => item.content.trim());
+
+      return elementContent;
+    })
+    .flat()
+    .join("\n");
+
   navigator.clipboard.writeText(textToCopy).catch(() => {});
 }
 
@@ -52,7 +60,7 @@ const EditListToolsPanel = () => {
             componentType={ToolsButtonComponentType.Button}
             iconName={IconName.CopySimple}
             disabled={storeEditList.isNewList || Boolean(storeEditList.sendingNow)}
-            handleClick={() => copyItemsToClipboard(storeEditList.items)}
+            handleClick={() => copyItemsToClipboard(storeEditList.elements)}
             testId={TOOLS_PANEL_BUTTON_COPY_ITEMS}
           >
             Копировать пункты

@@ -125,7 +125,7 @@ export const ListItem = (props: ListItemProps) => {
   ];
 
   function isOnlyOneItem() {
-    return storeEditList.items.length === 1;
+    return storeEditList.elements.length === 1;
   }
 
   function getTestId() {

@@ -7,10 +7,11 @@ import { Button, ButtonSize, ButtonTheme, ButtonType } from "../../../../compone
 import { Dialog } from "../../../../components/dialog/dialog.tsx";
 import { ListStripeImport } from "../../../../components/listStripeImport/listStripeImport.tsx";
 import { notificationState } from "../../../../state/pushNotificationStateManager.ts";
-import { type ImportDialogItem, type ImportDialogList, type ItemId, type ListId } from "../../../../types/types.ts";
-import { getLists } from "../../services/getLists.ts";
+import { type EditListElement, type EditListType, type ItemId, type ListId } from "../../../../types/types.ts";
+import { getListsForImporting } from "../../services/getListsForImporting.ts";
 import { addImportItems } from "../../utilities/addImportItems.ts";
-import { pasteImportItemsAfter, pasteImportItemsBefore } from "../../utilities/pasteImportItems.ts";
+import { convertEditListToImportedListElement } from "../../utilities/convertItemsFromBackendToEditListItems.ts";
+import { pasteImportedItemsAfter, pasteImportedItemsBefore } from "../../utilities/pasteImportItems.ts";
 
 import { ImportDialogCounter, isImportDialogLimitReached } from "./components/importDialogCounter.tsx";
 import "./importDialog.css";
@@ -20,13 +21,13 @@ type ImportDialogProps = {
 };
 
 type ImportDialogState = {
-  listsForImport: ImportDialogList[];
+  listsForImport: EditListType[];
   loadingListsForImport: boolean;
   openImportDialog: boolean;
   pasteMethod?: "before" | "after" | "end";
   pasteIndex?: number;
-  itemsCache: Record<ItemId, ImportDialogItem>;
-  listsCache: Record<ListId, ImportDialogList>;
+  itemsCache: Record<ItemId, EditListElement>;
+  listsCache: Record<ListId, EditListType>;
   checkedItemsCount: Record<ListId, number>;
 };
 
@@ -57,8 +58,15 @@ export const ImportDialog = (props: ImportDialogProps) => {
     setStoreImportDialog("loadingListsForImport", true);
 
     try {
-      const lists = await getLists();
-      const filteredLists = lists.filter((availableList) => availableList.id !== props.currentListId);
+      const filteredLists: EditListType[] = (await getListsForImporting())
+        .filter((availableList) => availableList.id !== props.currentListId)
+        .map((list) => {
+          return {
+            ...list,
+            elements: list.elements.filter((element) => !element.isImported),
+          };
+        });
+
       notificationState.clearNetworkErrors();
 
       setStoreImportDialog({
@@ -104,7 +112,7 @@ export const ImportDialog = (props: ImportDialogProps) => {
     const target = event.target as HTMLFormElement;
 
     const checkedInputs = target.querySelectorAll<HTMLInputElement>("input[type='checkbox']:checked");
-    const checkedItemsIds: string[] = [];
+    const checkedItemsIds: (ListId | ItemId)[] = [];
     const ignoredGroupIds = new Set<string>();
 
     checkedInputs.forEach((input) => {
@@ -121,19 +129,27 @@ export const ImportDialog = (props: ImportDialogProps) => {
       }
     });
 
-    const checkedItems: ImportDialogItem[] = checkedItemsIds
-      .map((id) => storeImportDialog.itemsCache[id] ?? storeImportDialog.listsCache[id])
-      .filter((item): item is ImportDialogItem => Boolean(item));
+    const checkedItems: EditListElement[] = checkedItemsIds
+      .map((id) => {
+        const item = storeImportDialog.itemsCache[id];
+
+        if (item) return item;
+
+        const list = storeImportDialog.listsCache[id];
+
+        if (list) return convertEditListToImportedListElement(list);
+
+        return undefined;
+      })
+      .filter((element): element is EditListElement => Boolean(element));
 
     if (storeImportDialog.pasteMethod === "after" && storeImportDialog.pasteIndex) {
-      pasteImportItemsAfter(storeImportDialog.pasteIndex, checkedItems);
+      pasteImportedItemsAfter(storeImportDialog.pasteIndex, checkedItems);
     } else if (storeImportDialog.pasteMethod === "before" && storeImportDialog.pasteIndex) {
-      pasteImportItemsBefore(storeImportDialog.pasteIndex, checkedItems);
+      pasteImportedItemsBefore(storeImportDialog.pasteIndex, checkedItems);
     } else if (storeImportDialog.pasteMethod === "end") {
       addImportItems(checkedItems);
     }
-
-    console.log(checkedItems);
 
     handleClose();
   };

@@ -7,6 +7,8 @@ export type ListName = string;
 
 export type ItemId = string;
 
+export type ItemContent = string;
+
 export type SimpleList = {
   name: ListName;
   id: ListId;
@@ -15,11 +17,22 @@ export type SimpleList = {
 export type ItemFromBackend = {
   type: "item";
   id: ItemId;
-  content: string;
+  content: ItemContent;
   originalList: SimpleList;
+  exportedTo: SimpleList[];
 };
 
-export type ImportDialogItem = ItemFromBackend;
+export type ImportedListFromBackend = {
+  type: "list";
+  id: ListId;
+  name: ListName;
+  purpose: string;
+  note: string;
+  items: ItemFromBackend[];
+  exportedTo: SimpleList[];
+};
+
+export type ListElementFromBackend = ItemFromBackend | ImportedListFromBackend;
 
 export type ListFromBackend = {
   type: "list";
@@ -27,38 +40,53 @@ export type ListFromBackend = {
   name: ListName;
   purpose: string;
   note: string;
-  items: ItemFromBackend[];
+  items: ListElementFromBackend[];
   exportedTo: SimpleList[] | null;
 };
-
-export type ImportDialogList = ListFromBackend;
 
 export type EditListItem = {
   type: "item";
   id: ItemId;
-  content: string;
+  content: ItemContent;
   originalList: SimpleList;
   dragId: string;
   auto: boolean;
 };
 
-export type EditList = {
+export type EditListSimpleItem = {
+  id: ItemId;
+  content: ItemContent;
+};
+
+export type EditListElement = {
+  id: ItemId | ListId;
+  originalList: SimpleList;
+  items: [EditListSimpleItem, ...EditListSimpleItem[]];
+  isImported: boolean;
+  exportedTo: SimpleList[];
+  dragId: string;
+  auto: boolean;
+};
+
+export type EditListType = {
   type: "list";
   id: ListId;
   name: ListName;
   purpose: string;
   note: string;
-  items: EditListItem[];
+  elements: EditListElement[];
   exportedTo: SimpleList[];
 };
 
-type NewItemData = { content: string };
+type ImportedElementData = { id: ItemId };
 
 type UnchangedItemData = { id: ItemId };
 
-type UpdatedItemData = { id: ItemId; content: string };
+type UpdatedItemData = { id: ItemId; content: ItemContent };
 
-export type ItemData = NewItemData | UpdatedItemData | UnchangedItemData;
+type NewItemData = { content: ItemContent };
+
+export type ItemData = NewItemData | UpdatedItemData | UnchangedItemData | ImportedElementData;
 
 export type NewListData = {
   name: ListName;

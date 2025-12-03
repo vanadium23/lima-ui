@@ -2,7 +2,7 @@ import { For, mergeProps } from "solid-js";
 
 import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import { getListLink } from "../../../utilities/addresses.ts";
-import type { DragSettings, EditListItem } from "../../types/types.ts";
+import type { DragSettings, EditListSimpleItem } from "../../types/types.ts";
 import { storeEditList } from "../../widgets/editList/editList.store.tsx";
 import { reachedItemsLimit } from "../../widgets/editList/utilities/reachedItemsLimit.ts";
 import { removeItem } from "../../widgets/editList/utilities/removeItem.ts";
@@ -30,7 +30,7 @@ type ImportedGroupProps = {
   size?: ImportedGroupSize;
   itemIndex: number;
   checkable?: boolean;
-  children: EditListItem[];
+  children: EditListSimpleItem[];
   name: string;
   id: string;
   dragSettings?: DragSettings;

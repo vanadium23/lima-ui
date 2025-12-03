@@ -1,16 +1,15 @@
-import type { ImportDialogItem } from "../../../types/types.ts";
+import type { EditListElement } from "../../../types/types.ts";
 import { setStoreEditList, storeEditList } from "../editList.store.tsx";
 
-import { convertItemsFromBackendToEditListItems } from "./convertItemsFromBackendToEditListItems.ts";
 import { scroller } from "./scrollToBottom.ts";
 
-export function addImportItems(importItems: ImportDialogItem[]) {
-  const currentItems = storeEditList.items;
+export function addImportItems(importedItems: EditListElement[]) {
+  const currentItems = storeEditList.elements;
   const autoItemIndex = currentItems.findIndex((item) => item.auto);
 
-  setStoreEditList("items", [
+  setStoreEditList("elements", [
     ...currentItems.slice(0, autoItemIndex),
-    ...convertItemsFromBackendToEditListItems(importItems),
+    ...importedItems,
     ...currentItems.slice(autoItemIndex),
   ]);
 

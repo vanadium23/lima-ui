@@ -1,12 +1,12 @@
 import { createStore } from "solid-js/store";
 
-import type { EditList, ListFromBackend } from "../../types/types.ts";
+import type { EditListType, ListFromBackend } from "../../types/types.ts";
 
 import { addAutoItem } from "./utilities/addAutoItem.ts";
-import { convertItemsFromBackendToEditListItems } from "./utilities/convertItemsFromBackendToEditListItems.ts";
+import { convertElementsFromBackendToEditListElements as convertListElementsFromBackendToEditListElements } from "./utilities/convertItemsFromBackendToEditListItems.ts";
 
-export type EditListStore = EditList & {
-  initialList: ListFromBackend;
+export type EditListStore = EditListType & {
+  initialList: EditListType;
   sendingNow: false | "saving" | "deleting";
   error: boolean;
   removeError: boolean;
@@ -17,7 +17,17 @@ export type EditListStore = EditList & {
   itemsScrollStartPosition: number;
 };
 
-export const emptyList: ListFromBackend = {
+export const emptyList: EditListType = {
+  type: "list",
+  id: "",
+  name: "",
+  purpose: "",
+  note: "",
+  elements: [],
+  exportedTo: [],
+};
+
+export const emptyListFromBackend: ListFromBackend = {
   type: "list",
   id: "",
   name: "",
@@ -33,7 +43,7 @@ export const [storeEditList, setStoreEditList] = createStore<EditListStore>({
   name: "",
   purpose: "",
   note: "",
-  items: [],
+  elements: [],
   exportedTo: [],
   initialList: emptyList,
   sendingNow: false,
@@ -53,15 +63,21 @@ export function initStoreEditList(defaultList: ListFromBackend) {
 
 export function updateStoreEditList(updatedList: ListFromBackend) {
   setStoreEditList({
+    ...convertListFromBackendToEditList(updatedList),
+    initialList: convertListFromBackendToEditList(updatedList),
+    isNewList: updatedList.id === "",
+    sendingNow: false,
+  });
+}
+
+export function convertListFromBackendToEditList(updatedList: ListFromBackend): EditListType {
+  return {
     type: "list",
     id: updatedList.id,
-    items: convertItemsFromBackendToEditListItems(updatedList.items),
+    elements: convertListElementsFromBackendToEditListElements(updatedList.items, updatedList.id),
     name: updatedList.name,
     purpose: updatedList.purpose,
     note: updatedList.note,
     exportedTo: updatedList.exportedTo || [],
-    initialList: updatedList,
-    isNewList: updatedList.id === "",
-    sendingNow: false,
-  });
+  };
 }

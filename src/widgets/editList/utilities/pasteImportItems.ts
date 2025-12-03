@@ -1,29 +1,23 @@
-import type { ImportDialogItem } from "../../../types/types.ts";
+import type { EditListElement } from "../../../types/types.ts";
 import { setStoreEditList, storeEditList } from "../editList.store.tsx";
 
-import { convertItemsFromBackendToEditListItems } from "./convertItemsFromBackendToEditListItems.ts";
-
-export function pasteImportItemsBefore(index: number, importItems: ImportDialogItem[]) {
-  pasteImportItems(index, importItems);
+export function pasteImportedItemsBefore(index: number, importedItems: EditListElement[]) {
+  pasteImportedItems(index, importedItems);
 }
 
-export function pasteImportItemsAfter(index: number, importItems: ImportDialogItem[]) {
-  pasteImportItems(index + 1, importItems);
+export function pasteImportedItemsAfter(index: number, importedItems: EditListElement[]) {
+  pasteImportedItems(index + 1, importedItems);
 }
 
-function pasteImportItems(insertIndex: number, importItems: ImportDialogItem[]) {
-  const separatedItemsBeforeNewItem = storeEditList.items.slice(0, insertIndex).map((item) => ({
+function pasteImportedItems(insertIndex: number, importedElements: EditListElement[]) {
+  const separatedItemsBeforeNewItem = storeEditList.elements.slice(0, insertIndex).map((item) => ({
     ...item,
     auto: false,
   }));
 
-  const separatedItemsAfterNewItem = storeEditList.items.slice(insertIndex);
+  const separatedItemsAfterNewItem = storeEditList.elements.slice(insertIndex);
 
-  const resultingItems = [
-    ...separatedItemsBeforeNewItem,
-    ...convertItemsFromBackendToEditListItems(importItems),
-    ...separatedItemsAfterNewItem,
-  ];
+  const resultingItems = [...separatedItemsBeforeNewItem, ...importedElements, ...separatedItemsAfterNewItem];
 
-  setStoreEditList("items", resultingItems);
+  setStoreEditList("elements", resultingItems);
 }
