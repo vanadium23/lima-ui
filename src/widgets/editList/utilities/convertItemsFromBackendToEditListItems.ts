@@ -1,11 +1,13 @@
-import type {
-  EditListElement,
-  EditListSimpleItem,
-  EditListType,
-  ItemContent,
-  ItemId,
-  ListElementFromBackend,
-  ListId,
+import {
+  type EditListElement,
+  type EditListSimpleItem,
+  type EditListType,
+  isItemFromBackend,
+  type ItemContent,
+  type ItemFromBackend,
+  type ItemId,
+  type ListElementFromBackend,
+  type ListId,
 } from "../../../types/types.ts";
 
 import { createDragId } from "./createDefaultItem.ts";
@@ -21,13 +23,13 @@ export function convertElementsFromBackendToEditListElements(
         originalList: element.originalList,
         items: [createSimpleItem(element.id, element.content)],
         isImported: element.originalList.id !== listId,
-        exportedTo: element.exportedTo,
+        exportedTo: element.exportedTo || [],
         dragId: element.id || createDragId(),
         auto: false,
       };
     }
 
-    const listElements = convertToEditListSimpleItems(element.items);
+    const listElements = flattenListElementsAndConvertToSimpleItems(element.items);
 
     return {
       id: element.id,
@@ -37,7 +39,7 @@ export function convertElementsFromBackendToEditListElements(
       },
       items: listElements,
       isImported: true,
-      exportedTo: element.exportedTo,
+      exportedTo: element.exportedTo || [],
       dragId: element.id || createDragId(),
       auto: false,
     };
@@ -64,6 +66,24 @@ export function convertEditListToImportedListElement(list: EditListType): EditLi
     dragId: list.id,
     auto: false,
   };
+}
+
+function flattenListElementsAndConvertToSimpleItems(
+  listElements: ListElementFromBackend[],
+): [EditListSimpleItem, ...EditListSimpleItem[]] {
+  return convertToEditListSimpleItems(flattenListElements(listElements));
+}
+
+function flattenListElements(listElements: ListElementFromBackend[]): ItemFromBackend[] {
+  return listElements.reduce((items, element) => {
+    if (isItemFromBackend(element)) {
+      items.push(element);
+
+      return items;
+    }
+
+    return items.concat(flattenListElements(element.items));
+  }, [] as ItemFromBackend[]);
 }
 
 function convertToEditListSimpleItems(

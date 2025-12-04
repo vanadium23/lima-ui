@@ -22,17 +22,9 @@ export type ItemFromBackend = {
   exportedTo: SimpleList[];
 };
 
-export type ImportedListFromBackend = {
-  type: "list";
-  id: ListId;
-  name: ListName;
-  purpose: string;
-  note: string;
-  items: ItemFromBackend[];
-  exportedTo: SimpleList[];
-};
-
-export type ListElementFromBackend = ItemFromBackend | ImportedListFromBackend;
+export function isItemFromBackend(itemCandidate: ListElementFromBackend): itemCandidate is ItemFromBackend {
+  return itemCandidate.type === "item";
+}
 
 export type ListFromBackend = {
   type: "list";
@@ -43,6 +35,8 @@ export type ListFromBackend = {
   items: ListElementFromBackend[];
   exportedTo: SimpleList[] | null;
 };
+
+export type ListElementFromBackend = ItemFromBackend | ListFromBackend;
 
 export type EditListItem = {
   type: "item";

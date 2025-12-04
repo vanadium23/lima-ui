@@ -1,4 +1,4 @@
-import { createEffect, For, Show, untrack } from "solid-js";
+import { createEffect, For, Show } from "solid-js";
 import { createStore } from "solid-js/store";
 
 import { DEFAULT_TEST_ID, IMPORT_DIALOG, IMPORT_DIALOG_IMPORT_BUTTON } from "../../../../../features/testIds.ts";
@@ -58,8 +58,12 @@ export const ImportDialog = (props: ImportDialogProps) => {
     setStoreImportDialog("loadingListsForImport", true);
 
     try {
-      const filteredLists: EditListType[] = (await getListsForImporting())
-        .filter((availableList) => availableList.id !== props.currentListId)
+      const filteredLists: EditListType[] = (await getListsForImporting(props.currentListId))
+        .map((list) => {
+          setStoreImportDialog("listsCache", list.id, list);
+
+          return list;
+        })
         .map((list) => {
           return {
             ...list,
@@ -133,7 +137,7 @@ export const ImportDialog = (props: ImportDialogProps) => {
       .map((id) => {
         const item = storeImportDialog.itemsCache[id];
 
-        if (item) return item;
+        if (item) return { ...item, isImported: true };
 
         const list = storeImportDialog.listsCache[id];
 
@@ -187,12 +191,6 @@ export const ImportDialog = (props: ImportDialogProps) => {
         </Show>
         <For each={storeImportDialog.listsForImport}>
           {(list) => {
-            setStoreImportDialog(
-              "listsCache",
-              untrack(() => list.id),
-              untrack(() => list),
-            );
-
             return (
               <ListStripeImport titleHTMLName={list.name} testId={DEFAULT_TEST_ID}>
                 {list}
