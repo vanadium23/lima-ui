@@ -1,8 +1,7 @@
 import { ITEMS_LIMIT } from "../../../../configuration.ts";
-import { storeEditList } from "../editList.store.tsx";
+
+import { getEditListElementsWithoutAutoItem } from "./getEditListElementsWithoutAutoItem.tsx";
 
 export function reachedItemsLimit() {
-  const itemsButAuto = storeEditList.elements.filter((item) => !item.auto);
-
-  return itemsButAuto.length >= ITEMS_LIMIT;
+  return getEditListElementsWithoutAutoItem().length >= ITEMS_LIMIT;
 }

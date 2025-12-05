@@ -7,6 +7,8 @@ import { setStoreEditList, storeEditList, updateStoreEditList } from "../editLis
 import { createList } from "../services/createList.ts";
 import { updateList } from "../services/updateList.ts";
 
+import { getEditListElementsWithoutAutoItem } from "./getEditListElementsWithoutAutoItem.tsx";
+
 export function prepareAndSendListData(event: SubmitEvent) {
   event.preventDefault();
 
@@ -29,11 +31,7 @@ export function prepareAndSendListData(event: SubmitEvent) {
 }
 
 function prepareListElementsDataForSending(): ItemData[] {
-  function removeAutoItem() {
-    return storeEditList.elements.filter((item) => !item.auto);
-  }
-
-  return removeAutoItem().map((element) => {
+  return getEditListElementsWithoutAutoItem().map((element) => {
     const isNewItem = !element.items[0].id;
 
     if (isNewItem) {

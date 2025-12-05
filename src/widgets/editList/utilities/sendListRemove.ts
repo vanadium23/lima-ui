@@ -3,13 +3,13 @@ import { soften } from "../../../../utilities/soften.ts";
 import { setStoreEditList, storeEditList } from "../editList.store.tsx";
 import { removeList } from "../services/removeList.ts";
 
-export function sendListRemove() {
+export function sendListRemove(deletionMethod: "deletion" | "insertion" | "" = "") {
   setStoreEditList({
     removeError: false,
     sendingNow: "deleting",
   });
 
-  removeList(storeEditList.id)
+  removeList(storeEditList.id, deletionMethod)
     .then(async () => {
       await soften(() => {
         setStoreEditList("sendingNow", false);

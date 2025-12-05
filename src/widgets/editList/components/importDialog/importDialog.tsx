@@ -13,7 +13,9 @@ import { addImportItems } from "../../utilities/addImportItems.ts";
 import { convertEditListToImportedListElement } from "../../utilities/convertItemsFromBackendToEditListItems.ts";
 import { pasteImportedItemsAfter, pasteImportedItemsBefore } from "../../utilities/pasteImportItems.ts";
 
-import { ImportDialogCounter, isImportDialogLimitReached } from "./components/importDialogCounter.tsx";
+import { ImportDialogCounter } from "./components/importDialogCounter.tsx";
+import { getCheckedImportItemsCount } from "./utilities/getCheckedImportItemsCount.tsx";
+import { isImportDialogLimitReached } from "./utilities/isImportDialogLimitReached.tsx";
 import "./importDialog.css";
 
 type ImportDialogProps = {
@@ -172,7 +174,7 @@ export const ImportDialog = (props: ImportDialogProps) => {
             size={ButtonSize.Medium}
             form="importDialog"
             testId={IMPORT_DIALOG_IMPORT_BUTTON}
-            disabled={isImportDialogLimitReached()}
+            disabled={isImportDialogLimitReached() || getCheckedImportItemsCount() === 0}
           >
             Импортировать
           </Button>

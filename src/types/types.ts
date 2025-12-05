@@ -38,15 +38,6 @@ export type ListFromBackend = {
 
 export type ListElementFromBackend = ItemFromBackend | ListFromBackend;
 
-export type EditListItem = {
-  type: "item";
-  id: ItemId;
-  content: ItemContent;
-  originalList: SimpleList;
-  dragId: string;
-  auto: boolean;
-};
-
 export type EditListSimpleItem = {
   id: ItemId;
   content: ItemContent;
