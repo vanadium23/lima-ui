@@ -15,7 +15,6 @@
   width: 100%;
   border: none;
   resize: none;
-  scrollbar-gutter: stable;
 }
 
 .textarea__inner:focus {
