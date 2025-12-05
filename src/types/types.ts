@@ -1,53 +1,87 @@
 import type { createSortable, useDragDropContext } from "@thisbeyond/solid-dnd";
 import type { JSX } from "solid-js";
 
-export type Item = {
-  content: string;
-  id: string;
-  originalList: { id: string; name: string };
-};
+export type ListId = string;
 
-export type Items = Item[];
+export type ListName = string;
+
+export type ItemId = string;
+
+export type ItemContent = string;
 
 export type SimpleList = {
-  name: string;
-  id: string;
+  name: ListName;
+  id: ListId;
 };
 
-export type ListBase = {
-  id: string;
-  name: string;
+export type ItemFromBackend = {
+  type: "item";
+  id: ItemId;
+  content: ItemContent;
+  originalList: SimpleList;
+  exportedTo: SimpleList[];
+};
+
+export function isItemFromBackend(itemCandidate: ListElementFromBackend): itemCandidate is ItemFromBackend {
+  return itemCandidate.type === "item";
+}
+
+export type ListFromBackend = {
+  type: "list";
+  id: ListId;
+  name: ListName;
   purpose: string;
-  exportedTo?: SimpleList[];
-};
-
-export type List = ListBase & {
-  items: Items;
   note: string;
+  items: ListElementFromBackend[];
+  exportedTo: SimpleList[] | null;
 };
 
-export type DragItem = Item & {
+export type ListElementFromBackend = ItemFromBackend | ListFromBackend;
+
+export type EditListSimpleItem = {
+  id: ItemId;
+  content: ItemContent;
+};
+
+export type EditListElement = {
+  id: ItemId | ListId;
+  originalList: SimpleList;
+  items: [EditListSimpleItem, ...EditListSimpleItem[]];
+  isImported: boolean;
+  exportedTo: SimpleList[];
   dragId: string;
   auto: boolean;
 };
 
-export type DragList = ListBase & {
-  items: DragItem[];
-  note: string;
-};
-
-export type ItemToSend = Item | { id: string } | { content: string };
-
-export type NewList = {
-  name: string;
+export type EditListType = {
+  type: "list";
+  id: ListId;
+  name: ListName;
   purpose: string;
   note: string;
-  items: ItemToSend[];
+  elements: EditListElement[];
+  exportedTo: SimpleList[];
 };
 
-export type UpdatedList = ListBase & {
+type ImportedElementData = { id: ItemId };
+
+type UnchangedItemData = { id: ItemId };
+
+type UpdatedItemData = { id: ItemId; content: ItemContent };
+
+type NewItemData = { content: ItemContent };
+
+export type ItemData = NewItemData | UpdatedItemData | UnchangedItemData | ImportedElementData;
+
+export type NewListData = {
+  name: ListName;
+  purpose: string;
   note: string;
-  items: ItemToSend[];
+  items: ItemData[];
+};
+
+export type UpdatedListData = NewListData & {
+  id: ListId;
 };
 
 export type ScrollContainer = HTMLDivElement | undefined;

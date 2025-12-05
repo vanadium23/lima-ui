@@ -2,7 +2,7 @@ import { Then, When } from "@cucumber/cucumber";
 
 import { LISTS_LIMIT } from "../../configuration.ts";
 import { createList } from "../../src/widgets/editList/services/createList.ts";
-import { getLists } from "../../src/widgets/editList/services/getLists.ts";
+import { getLists } from "../../src/widgets/services/getLists.ts";
 import type { ComplexWorld } from "../context/hooks.ts";
 import {
   LIST_STRIPE,
@@ -10,40 +10,26 @@ import {
   LISTS_LIMIT_REACHED_WARNING,
   OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
 } from "../testIds.ts";
-import {
-  buildTestableSelector,
-  TEST_SUB_ID_ATTRIBUTE,
-} from "../utilities/buildTestableSelector.ts";
+import { buildTestableSelector, TEST_SUB_ID_ATTRIBUTE } from "../utilities/buildTestableSelector.ts";
 import { isMobile, isTablet } from "../utilities/discoverDevice.ts";
 import { getStringUpToLimit } from "../utilities/getStringOfLength.ts";
 import { getTimeoutOrCancelItIfDebugging } from "../utilities/getTimeoutOrCancelItIfDebugging.ts";
 
 Then("I expect to see created list", async function (this: ComplexWorld) {
-  await this.expectLocated(
-    this.accounting.elements.registerTestIdAndSubId(LIST_STRIPE, "0"),
-  ).toBeInViewport();
+  await this.expectLocated(this.accounting.elements.registerTestIdAndSubId(LIST_STRIPE, "0")).toBeInViewport();
 
-  this.accounting.elements.registerTestIdAndSubId(
-    LIST_STRIPE_LINK_TO_VIEW,
-    "0",
-  );
+  this.accounting.elements.registerTestIdAndSubId(LIST_STRIPE_LINK_TO_VIEW, "0");
 
   if (isTablet() || isMobile()) {
-    this.accounting.elements.registerTestIdAndSubId(
-      OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
-      "0",
-    );
+    this.accounting.elements.registerTestIdAndSubId(OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON, "0");
   }
 });
 
-Then(
-  "I hover away from anything actionable",
-  async function (this: ComplexWorld) {
-    await this.page.locator("body").hover({
-      position: { x: 0, y: 0 },
-    });
-  },
-);
+Then("I hover away from anything actionable", async function (this: ComplexWorld) {
+  await this.page.locator("body").hover({
+    position: { x: 0, y: 0 },
+  });
+});
 
 Then(
   "I expect to see the following number of list stripes: {int}",
@@ -52,25 +38,16 @@ Then(
       await this.page.waitForSelector(buildTestableSelector(LIST_STRIPE));
     }
 
-    const listsPositions = (await this.locateByIdParts(LIST_STRIPE).all()).map(
-      (listStripe) => listStripe.getAttribute(TEST_SUB_ID_ATTRIBUTE),
+    const listsPositions = (await this.locateByIdParts(LIST_STRIPE).all()).map((listStripe) =>
+      listStripe.getAttribute(TEST_SUB_ID_ATTRIBUTE),
     );
 
     for (const listPosition of listsPositions) {
-      this.accounting.elements.registerTestIdAndSubId(
-        LIST_STRIPE,
-        await listPosition,
-      );
-      this.accounting.elements.registerTestIdAndSubId(
-        LIST_STRIPE_LINK_TO_VIEW,
-        await listPosition,
-      );
+      this.accounting.elements.registerTestIdAndSubId(LIST_STRIPE, await listPosition);
+      this.accounting.elements.registerTestIdAndSubId(LIST_STRIPE_LINK_TO_VIEW, await listPosition);
 
       if (isTablet() || isMobile()) {
-        this.accounting.elements.registerTestIdAndSubId(
-          OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
-          await listPosition,
-        );
+        this.accounting.elements.registerTestIdAndSubId(OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON, await listPosition);
       }
     }
 
@@ -98,9 +75,6 @@ When(
   },
 );
 
-Then(
-  "I expect to see the warning about lists limit reached",
-  async function (this: ComplexWorld) {
-    await this.expectLocated(LISTS_LIMIT_REACHED_WARNING).toBeInViewport();
-  },
-);
+Then("I expect to see the warning about lists limit reached", async function (this: ComplexWorld) {
+  await this.expectLocated(LISTS_LIMIT_REACHED_WARNING).toBeInViewport();
+});

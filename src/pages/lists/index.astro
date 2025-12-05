@@ -1,11 +1,11 @@
 ---
 import { BACKEND_URL_LISTS, BACKEND_URL_NON_EXISTING } from "../../../utilities/addresses.ts";
 import AppPage from "../../layouts/app/app.astro";
-import type { ListBase } from "../../types/types.ts";
-import { getLists } from "../../widgets/editList/services/getLists.ts";
+import type { ListFromBackend } from "../../types/types.ts";
 import { Lists } from "../../widgets/lists/lists.tsx";
+import { getLists } from "../../widgets/services/getLists.ts";
 
-let lists: ListBase[] = [];
+let lists: ListFromBackend[] = [];
 
 let listsRequestError = false;
 

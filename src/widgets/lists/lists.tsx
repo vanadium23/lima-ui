@@ -17,12 +17,12 @@ import { PageError } from "../../components/pageError/pageError.tsx";
 import { Title } from "../../components/title/title.tsx";
 import { notificationState } from "../../state/pushNotificationStateManager.ts";
 import { isLimitReached, setIsLimitReached } from "../../state/reachListsLimit.ts";
-import type { ListBase } from "../../types/types.ts";
+import type { ListFromBackend } from "../../types/types.ts";
 
 import "./lists.css";
 
 type ListsProps = {
-  defaultLists: ListBase[];
+  defaultLists: ListFromBackend[];
   listsRequestError: boolean;
 };
 
@@ -39,7 +39,7 @@ export const Lists = (props: ListsProps) => {
   }
 
   function removingListInStore(listIdToRemove: string) {
-    setStore("lists", (lists: ListBase[]) => lists.filter((item) => item.id !== listIdToRemove));
+    setStore("lists", (lists) => lists.filter((item) => item.id !== listIdToRemove));
     setIsLimitReached(checkListsLimitReached());
   }
 

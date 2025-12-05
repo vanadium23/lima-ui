@@ -1,7 +1,10 @@
 import { BACKEND_URL_LISTS } from "../../../../utilities/addresses.ts";
-import type { List, NewList } from "../../../types/types.ts";
+import type { ListFromBackend, NewListData } from "../../../types/types.ts";
 
-export async function createList(data: NewList, backendURL = import.meta.env.PUBLIC_API_URL): Promise<List> {
+export async function createList(
+  data: NewListData,
+  backendURL = import.meta.env.PUBLIC_API_URL,
+): Promise<ListFromBackend> {
   const response = await fetch(backendURL + BACKEND_URL_LISTS, {
     method: "POST",
     headers: {

@@ -32,6 +32,10 @@
   border-bottom-color: var(--neutral-200);
 }
 
+.dropdownListItem_primary:last-child .dropdownListItem__text {
+  border-bottom-color: transparent;
+}
+
 .dropdownListItem_primary .dropdownListItem__text:focus-visible {
   background-color: var(--neutral-150);
   outline: var(--outline-set);

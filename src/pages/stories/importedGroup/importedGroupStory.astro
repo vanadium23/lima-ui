@@ -2,16 +2,15 @@
 import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
 import { ImportedGroup } from "../../../components/importedGroup/importedGroup.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
-import { type Item } from "../../../types/types.ts";
+import { type EditListSimpleItem } from "../../../types/types.ts";
 
-const exampleItems: Item[] = [
-  { id: "1", content: "Тестовый пункт 1", originalList: { id: "", name: "" } },
-  { id: "2", content: "Тестовый пункт 2", originalList: { id: "", name: "" } },
-  { id: "3", content: "Тестовый пункт 3", originalList: { id: "", name: "" } },
+const exampleItems: EditListSimpleItem[] = [
+  { id: "1", content: "Тестовый пункт 1" },
+  { id: "2", content: "Тестовый пункт 2" },
+  { id: "3", content: "Тестовый пункт 3" },
   {
     id: "4",
     content: "Длинный тестовый пункт для проверки отображения",
-    originalList: { id: "", name: "" },
   },
 ];
 ---

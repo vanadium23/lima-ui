@@ -2,8 +2,8 @@ import { mergeProps } from "solid-js";
 
 import { ITEMS_LIMIT } from "../../../../../../configuration.ts";
 import type { Testable } from "../../../../../components/utilities/testable.ts";
-import { storeEditList } from "../../../editList.store.tsx";
-import { storeImportDialog } from "../importDialog.tsx";
+import { getTotalCheckedItemsCount } from "../utilities/getTotalCheckedItemsCount.tsx";
+import { isImportDialogLimitReached } from "../utilities/isImportDialogLimitReached.tsx";
 
 import "./importDialogCounter.css";
 
@@ -19,18 +19,6 @@ type ImportDialogCounterProps = {
   theme?: ImportDialogCounterTheme;
   size?: ImportDialogCounterSize;
 };
-
-export function isImportDialogLimitReached() {
-  return getTotalCheckedItemsCount() > ITEMS_LIMIT;
-}
-
-function getTotalCheckedItemsCount() {
-  return (
-    Object.values(storeImportDialog.checkedItemsCount).reduce((sum, count) => sum + count, 0) +
-    storeEditList.items.filter((item) => !item.auto).length
-    //TODO Задуматься на тем чтобы вынести в стор в отдельное свойство счетчик текущего количества пунктов без автопункта так как это используется в нескольких утилитах
-  );
-}
 
 export const ImportDialogCounter = (props: Testable<ImportDialogCounterProps>) => {
   const mProps: Testable<Required<ImportDialogCounterProps>> = mergeProps(
