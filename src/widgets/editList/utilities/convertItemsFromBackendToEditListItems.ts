@@ -50,6 +50,7 @@ function createSimpleItem(id: ItemId, content: ItemContent): EditListSimpleItem 
   return {
     id,
     content,
+    exportedTo: [],
   };
 }
 

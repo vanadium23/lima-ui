@@ -16,10 +16,11 @@ import { notificationState } from "../../state/pushNotificationStateManager.ts";
 import { removeList } from "../../widgets/editList/services/removeList.ts";
 import { Button, ButtonSize, ButtonTheme } from "../button/button.tsx";
 import { Dialog, DialogSize, DialogTheme } from "../dialog/dialog.tsx";
-import { DropdownMenu } from "../dropdownMenu/dropdownMenu.tsx";
+import { Dropdown } from "../dropdown/dropdown.tsx";
 import { Icon, IconSize } from "../icon/icon.tsx";
 import { IconName } from "../icon/types.ts";
-import { IconButton, IconButtonComponentType, IconButtonSize } from "../iconButton/iconButton.tsx";
+import { IconButton, IconButtonSize } from "../iconButton/iconButton.tsx";
+import { Menu } from "../menu/menu.tsx";
 import { MenuItemTheme } from "../menuItem/menuItem.tsx";
 import { Tooltip } from "../tooltip/tooltip.tsx";
 import { type Testable } from "../utilities/testable.ts";
@@ -142,11 +143,11 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
       </a>
       {/* MAKSIM: Скрываются в состоянии Loading, когда нет Hover'а. */}
       <div class="listStripe__controls">
-        <DropdownMenu
-          component={(props) => (
+        <Dropdown
+          defaultPlacement={"bottom-end"}
+          anchor={(props) => (
             <IconButton
               ref={props.ref}
-              componentType={IconButtonComponentType.Button}
               handleClick={props.handleClick}
               testId={OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON}
               testSubId={mProps.testSubId || "0"}
@@ -156,10 +157,9 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
               loading={listStripeIsRemoving()}
             />
           )}
-          testId={LIST_ITEM_CONTEXT_MENU}
         >
-          {menuItems()}
-        </DropdownMenu>
+          <Menu testId={LIST_ITEM_CONTEXT_MENU}>{menuItems()}</Menu>
+        </Dropdown>
       </div>
 
       <Dialog

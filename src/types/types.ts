@@ -34,6 +34,7 @@ export type ListFromBackend = {
   note: string;
   items: ListElementFromBackend[];
   exportedTo: SimpleList[] | null;
+  hasExportedItems: boolean;
 };
 
 export type ListElementFromBackend = ItemFromBackend | ListFromBackend;
@@ -41,6 +42,7 @@ export type ListElementFromBackend = ItemFromBackend | ListFromBackend;
 export type EditListSimpleItem = {
   id: ItemId;
   content: ItemContent;
+  exportedTo: SimpleList[];
 };
 
 export type EditListElement = {
@@ -61,6 +63,7 @@ export type EditListType = {
   note: string;
   elements: EditListElement[];
   exportedTo: SimpleList[];
+  hasExportedItems: boolean;
 };
 
 type ImportedElementData = { id: ItemId };

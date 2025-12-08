@@ -31,6 +31,8 @@ try {
   }
 
   list = await response.json();
+
+  console.log(list);
 } catch {
   listRequestError = true;
   list = emptyListFromBackend;

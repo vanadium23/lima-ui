@@ -8,7 +8,7 @@ export function createDefaultElement(
   return {
     id: "",
     originalList: { id: listId, name: listName },
-    items: [{ id: "", content: "" }],
+    items: [{ id: "", content: "", exportedTo: [] }],
     isImported: false,
     exportedTo: [],
     dragId: createDragId(),

@@ -18,11 +18,12 @@ const testListData: EditListType = {
   purpose: "Выберите элементы для импорта",
   note: "",
   exportedTo: [],
+  hasExportedItems: false,
   elements: [
     {
       id: "123",
       originalList: { id: "1", name: "Название родительского списка" },
-      items: [{ id: "123", content: "Ололо1" }],
+      items: [{ id: "123", content: "Ололо1", exportedTo: [] }],
       isImported: true,
       exportedTo: [],
       dragId: "123",
@@ -31,7 +32,7 @@ const testListData: EditListType = {
     {
       id: "456",
       originalList: { id: "1", name: "Название родительского списка" },
-      items: [{ id: "456", content: "Ололо2" }],
+      items: [{ id: "456", content: "Ололо2", exportedTo: [] }],
       isImported: true,
       exportedTo: [],
       dragId: "456",
@@ -40,7 +41,7 @@ const testListData: EditListType = {
     {
       id: "789",
       originalList: { id: "1", name: "Название родительского списка" },
-      items: [{ id: "789", content: "Длинный текст элемента списка для проверки отображения" }],
+      items: [{ id: "789", content: "Длинный текст элемента списка для проверки отображения", exportedTo: [] }],
       isImported: true,
       exportedTo: [],
       dragId: "789",
@@ -49,7 +50,7 @@ const testListData: EditListType = {
     {
       id: "101112",
       originalList: { id: "1", name: "Название родительского списка" },
-      items: [{ id: "101112", content: "Ололо4" }],
+      items: [{ id: "101112", content: "Ололо4", exportedTo: [] }],
       isImported: true,
       exportedTo: [],
       dragId: "101112",

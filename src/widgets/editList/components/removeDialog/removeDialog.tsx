@@ -49,7 +49,7 @@ export const RemoveDialog = () => {
           </p>
         </Dialog>
       </Match>
-      <Match when={storeEditList.exportedTo.length >= 1}>
+      <Match when={storeEditList.exportedTo.length >= 1 || storeEditList.hasExportedItems}>
         <Dialog
           title="Удаление списка"
           onCancel={closeRemoveDialog}

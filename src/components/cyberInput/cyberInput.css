@@ -29,29 +29,37 @@
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
+}
+
+.cyberInput__buttonsPanel {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.cyberInput__hoverVisiblePanel {
   visibility: hidden;
 }
 
 @media (hover: none) {
-  .cyberInput__controls {
+  .cyberInput__hoverVisiblePanel {
     visibility: visible;
   }
 }
 
 @media (hover: hover) {
-  .cyberInput:hover .cyberInput__controls {
+  .cyberInput:hover .cyberInput__hoverVisiblePanel {
     visibility: visible;
   }
 }
 
-.cyberInput:focus-within .cyberInput__controls {
+.cyberInput:focus-within .cyberInput__hoverVisiblePanel {
   visibility: visible;
 }
 
 .cyberInput__counter {
   visibility: hidden;
   margin-top: auto;
-  text-align: center;
+  text-align: right;
 }
 
 .cyberInput:focus-within .cyberInput__counter {

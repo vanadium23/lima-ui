@@ -11,26 +11,26 @@ type Droppable = [
 ];
 
 export function createDroppable(placement: Placement = "bottom-end"): Droppable {
-  const [isMenuOpen, setIsMenuOpen] = createSignal(false);
+  const [isDropdownOpen, setIsDropdownOpen] = createSignal(false);
 
-  const [menuButtonRef, setMenuButtonRef] = createSignal<HTMLElement>();
+  const [dropdownButtonRef, setDropdownButtonRef] = createSignal<HTMLElement>();
 
-  const [menuRef, setMenuRef] = createSignal<HTMLElement>();
+  const [dropdownRef, setDropdownRef] = createSignal<HTMLElement>();
 
   createEffect(() => {
-    if (!isMenuOpen()) return;
+    if (!isDropdownOpen()) return;
 
     const handleClickOutside = (event: MouseEvent) => {
-      const menuButtonEl = menuButtonRef();
-      const menuEl = menuRef();
+      const dropdownButtonEl = dropdownButtonRef();
+      const dropdownEl = dropdownRef();
 
       if (
-        menuEl &&
-        menuButtonEl &&
-        !menuEl.contains(event.target as Node) &&
-        !menuButtonEl.contains(event.target as Node)
+        dropdownEl &&
+        dropdownButtonEl &&
+        !dropdownEl.contains(event.target as Node) &&
+        !dropdownButtonEl.contains(event.target as Node)
       ) {
-        setIsMenuOpen(false);
+        setIsDropdownOpen(false);
       }
     };
 
@@ -40,7 +40,7 @@ export function createDroppable(placement: Placement = "bottom-end"): Droppable 
     });
   });
 
-  const floatingPosition = useFloating(menuButtonRef, menuRef, {
+  const floatingPosition = useFloating(dropdownButtonRef, dropdownRef, {
     placement: placement,
     whileElementsMounted: (reference, floating, update) =>
       autoUpdate(reference, floating, update, {
@@ -49,5 +49,5 @@ export function createDroppable(placement: Placement = "bottom-end"): Droppable 
     middleware: [shift(), flip(), hide()], //TODO Подумать нужно ли Shift оставлять когда будет разработка под 320px
   });
 
-  return [isMenuOpen, setIsMenuOpen, setMenuButtonRef, setMenuRef, floatingPosition];
+  return [isDropdownOpen, setIsDropdownOpen, setDropdownButtonRef, setDropdownRef, floatingPosition];
 }

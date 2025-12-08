@@ -15,7 +15,7 @@ import {
   OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
   REMOVE_ITEM_MENUITEM,
 } from "../../../features/testIds.ts";
-import type { DragSettings } from "../../types/types.ts";
+import type { DragSettings, SimpleList } from "../../types/types.ts";
 import {
   openImportDialogPasteAfter,
   openImportDialogPasteBefore,
@@ -28,9 +28,11 @@ import { removeItem } from "../../widgets/editList/utilities/removeItem.ts";
 import { Checkbox, CheckboxSize, CheckboxTheme } from "../checkbox/checkbox.tsx";
 import { CyberInput } from "../cyberInput/cyberInput.tsx";
 import { DragHandle } from "../dragHandle/dragHandle.tsx";
-import { DropdownMenu } from "../dropdownMenu/dropdownMenu.tsx";
+import { Dropdown } from "../dropdown/dropdown.tsx";
+import { ExportedTo } from "../exportedTo/exportedTo.tsx";
 import { IconName } from "../icon/types.ts";
-import { IconButton, IconButtonComponentType, IconButtonSize } from "../iconButton/iconButton.tsx";
+import { IconButton, IconButtonComponentType, IconButtonSize, IconButtonTheme } from "../iconButton/iconButton.tsx";
+import { Menu } from "../menu/menu.tsx";
 import { MenuItemTheme } from "../menuItem/menuItem.tsx";
 import type { TestId, TestSubId } from "../utilities/testable.ts";
 
@@ -54,6 +56,7 @@ type ListItemProps = {
   checked?: boolean;
   dragSettings?: DragSettings;
   isDraggingOverlay?: boolean;
+  exportedTo?: SimpleList[];
 };
 
 export const ListItem = (props: ListItemProps) => {
@@ -71,6 +74,7 @@ export const ListItem = (props: ListItemProps) => {
         dragProps: {},
         dragState: null,
       },
+      exportedTo: [],
     },
     props,
   );
@@ -138,6 +142,8 @@ export const ListItem = (props: ListItemProps) => {
     }
   }
 
+  console.log(mProps.exportedTo);
+
   function getListItemTestSubId(testId: TestId, testSubId: TestSubId | undefined): TestSubId {
     return testId === AUTO_LIST_ITEM ? AUTO_LIST_ITEM : testSubId || "0";
   }
@@ -186,10 +192,34 @@ export const ListItem = (props: ListItemProps) => {
           onChange={(value) => handleItemChange(mProps.index, value)}
           testId={buildListItemInputTestId(getTestId())}
           testSubId={getListItemTestSubId(getTestId(), mProps.index)}
-          controlElements={
+          alwaysVisibleButtons={
+            <Show when={mProps.exportedTo.length > 0}>
+              <Dropdown
+                defaultPlacement={"bottom-end"}
+                anchor={(props) => (
+                  <IconButton
+                    ref={props.ref}
+                    handleClick={props.handleClick}
+                    testId={DEFAULT_TEST_ID}
+                    iconName={IconName.Link}
+                    size={IconButtonSize.MediumEmbedded}
+                    theme={IconButtonTheme.Quaternary}
+                    ariaLabel={"Меню импортов"}
+                    disabled={Boolean(storeEditList.sendingNow)}
+                  />
+                )}
+              >
+                <ExportedTo title={"Пункт экспортирован в списки:"} testId={DEFAULT_TEST_ID}>
+                  {mProps.exportedTo}
+                </ExportedTo>
+              </Dropdown>
+            </Show>
+          }
+          hoverVisibleButtons={
             <Show when={!mProps.auto}>
-              <DropdownMenu
-                component={(props) => (
+              <Dropdown
+                defaultPlacement={"bottom-end"}
+                anchor={(props) => (
                   <IconButton
                     ref={props.ref}
                     componentType={IconButtonComponentType.Button}
@@ -198,17 +228,15 @@ export const ListItem = (props: ListItemProps) => {
                     testSubId={getListItemTestSubId(getTestId(), mProps.index)}
                     size={IconButtonSize.MediumEmbedded}
                     iconName={IconName.DotsThree}
-                    ariaLabel={
-                      mProps.children ? `Меню пункта ${mProps.children.slice(0, 20)}...` : "Меню пустого пункта"
-                    }
+                    ariaLabel={`Меню пункта ${mProps.children.slice(0, 20)}...`}
                     disabled={Boolean(storeEditList.sendingNow)}
                   />
                 )}
-                testId={LIST_ITEM_CONTEXT_MENU}
-                testSubId={getListItemTestSubId(getTestId(), mProps.index)}
               >
-                {menuItems()}
-              </DropdownMenu>
+                <Menu testId={LIST_ITEM_CONTEXT_MENU} testSubId={getListItemTestSubId(getTestId(), mProps.index)}>
+                  {menuItems()}
+                </Menu>
+              </Dropdown>
             </Show>
           }
         >

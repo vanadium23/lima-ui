@@ -5,10 +5,6 @@ import "normalize.css";
 import "../main.css";
 import "./storybookPage.css";
 
-interface Props {
-  title: string;
-}
-
 const { title } = Astro.props;
 
 const components = [
@@ -23,7 +19,6 @@ const components = [
   { name: "Dialog", href: "/stories/dialog/dialogStory/" },
   { name: "Divider", href: "/stories/divider/dividerStory/" },
   { name: "Drag Handle", href: "/stories/dragHandle/dragHandleStory/" },
-  { name: "Dropdown Menu", href: "/stories/dropdownMenu/dropdownMenuStory/" },
   { name: "Header", href: "/stories/header/headerStory/" },
   { name: "Icon", href: "/stories/icon/iconStory/" },
   { name: "Icon Button", href: "/stories/iconButton/iconButtonStory/" },
@@ -42,7 +37,7 @@ const components = [
   { name: "Page Error", href: "/stories/pageError/pageErrorStory/" },
   { name: "Paste Content", href: "/stories/pasteContent/pasteContentStory/" },
   {
-    name: "PushNotification",
+    name: "Push Notification",
     href: "/stories/pushNotification/pushNotificationStory/",
   },
   {
@@ -60,11 +55,7 @@ const components = [
   { name: "Tools Button", href: "/stories/toolsButton/toolsButtonStory/" },
   { name: "Tooltip", href: "/stories/tooltip/tooltipStory/" },
   { name: "Link", href: "/stories/link/linkStory/" },
-  { name: "UserButton", href: "/stories/userButton/userButtonStory/" },
-  {
-    name: "Dropdown List",
-    href: "/stories/dropdownList/dropdownListStory/",
-  },
+  { name: "User Button", href: "/stories/userButton/userButtonStory/" },
   {
     name: "List Item Import",
     href: "/stories/listItemImport/listItemImportStory/",
