@@ -15,6 +15,7 @@ export type EditListStore = EditListType & {
   isNewList: boolean;
   draggedItem: string;
   itemsScrollStartPosition: number;
+  hasExportedItems: boolean;
 };
 
 export const emptyList: EditListType = {
@@ -25,6 +26,7 @@ export const emptyList: EditListType = {
   note: "",
   elements: [],
   exportedTo: [],
+  hasExportedItems: false,
 };
 
 export const emptyListFromBackend: ListFromBackend = {
@@ -35,6 +37,7 @@ export const emptyListFromBackend: ListFromBackend = {
   note: "",
   items: [],
   exportedTo: [],
+  hasExportedItems: false,
 };
 
 export const [storeEditList, setStoreEditList] = createStore<EditListStore>({
@@ -45,6 +48,7 @@ export const [storeEditList, setStoreEditList] = createStore<EditListStore>({
   note: "",
   elements: [],
   exportedTo: [],
+  hasExportedItems: false,
   initialList: emptyList,
   sendingNow: false,
   error: false,
@@ -79,5 +83,6 @@ export function convertListFromBackendToEditList(updatedList: ListFromBackend): 
     purpose: updatedList.purpose,
     note: updatedList.note,
     exportedTo: updatedList.exportedTo || [],
+    hasExportedItems: updatedList.hasExportedItems,
   };
 }

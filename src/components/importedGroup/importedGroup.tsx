@@ -7,11 +7,12 @@ import { storeEditList } from "../../widgets/editList/editList.store.tsx";
 import { reachedItemsLimit } from "../../widgets/editList/utilities/reachedItemsLimit.ts";
 import { removeItem } from "../../widgets/editList/utilities/removeItem.ts";
 import { DragHandle } from "../dragHandle/dragHandle.tsx";
-import { DropdownMenu } from "../dropdownMenu/dropdownMenu.tsx";
+import { Dropdown } from "../dropdown/dropdown.tsx";
 import { IconName } from "../icon/types.ts";
 import { IconButton, IconButtonSize } from "../iconButton/iconButton.tsx";
 import { ImportedItem } from "../importedItem/importedItem.tsx";
 import { Link, LinkSize } from "../link/link.tsx";
+import { Menu } from "../menu/menu.tsx";
 import { MenuItemComponentType, MenuItemTheme } from "../menuItem/menuItem.tsx";
 import type { Testable } from "../utilities/testable.ts";
 
@@ -113,8 +114,9 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
               {mProps.name}
             </Link>
             <div class="importedGroup__button">
-              <DropdownMenu
-                component={(props) => (
+              <Dropdown
+                defaultPlacement={"bottom-end"}
+                anchor={(props) => (
                   <IconButton
                     ref={props.ref}
                     handleClick={props.handleClick}
@@ -125,10 +127,9 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
                     disabled={Boolean(storeEditList.sendingNow)}
                   />
                 )}
-                testId={DEFAULT_TEST_ID}
               >
-                {menuItems()}
-              </DropdownMenu>
+                <Menu testId={DEFAULT_TEST_ID}>{menuItems()}</Menu>
+              </Dropdown>
             </div>
           </div>
         </div>

@@ -159,6 +159,7 @@ export const EditList = (props: EditListProps) => {
                           <ListItem
                             index={index()}
                             auto={element.auto}
+                            exportedTo={element.exportedTo}
                             dragSettings={{
                               dragData,
                               dragProps: {

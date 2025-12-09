@@ -34,10 +34,12 @@ export type ListFromBackend = {
   note: string;
   items: ListElementFromBackend[];
   exportedTo: SimpleList[] | null;
+  hasExportedItems: boolean;
 };
 
 export type ListElementFromBackend = ItemFromBackend | ListFromBackend;
 
+//TODO Придумать другое название для SimpleItem потому что уже один раз подорвались и перепутали с Element
 export type EditListSimpleItem = {
   id: ItemId;
   content: ItemContent;
@@ -61,6 +63,7 @@ export type EditListType = {
   note: string;
   elements: EditListElement[];
   exportedTo: SimpleList[];
+  hasExportedItems: boolean;
 };
 
 type ImportedElementData = { id: ItemId };
