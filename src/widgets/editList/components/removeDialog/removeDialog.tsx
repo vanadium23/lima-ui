@@ -23,7 +23,7 @@ const closeRemoveDialog = () => {
 export const RemoveDialog = () => {
   return (
     <Switch>
-      <Match when={storeEditList.exportedTo.length === 0}>
+      <Match when={!storeEditList.hasExportedItems && storeEditList.exportedTo.length === 0}>
         <Dialog
           title="Удаление списка"
           onCancel={closeRemoveDialog}
@@ -49,7 +49,7 @@ export const RemoveDialog = () => {
           </p>
         </Dialog>
       </Match>
-      <Match when={storeEditList.exportedTo.length >= 1 || storeEditList.hasExportedItems}>
+      <Match when={storeEditList.hasExportedItems || storeEditList.exportedTo.length >= 1}>
         <Dialog
           title="Удаление списка"
           onCancel={closeRemoveDialog}

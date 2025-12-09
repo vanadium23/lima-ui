@@ -7,12 +7,12 @@ import { createDroppable } from "../utilities/createDroppable.ts";
 export type DropdownProps = {
   children: JSX.Element;
   anchor: (props: { ref: Ref<HTMLButtonElement>; handleClick: () => void }) => JSX.Element;
-  defaultPlacement?: Placement;
+  defaultPlacement: Placement;
 };
 
-interface DropdownContextValue {
+type DropdownContextValue = {
   close: () => void;
-}
+};
 
 const DropdownContext = createContext<DropdownContextValue>();
 

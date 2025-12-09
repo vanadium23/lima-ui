@@ -31,7 +31,7 @@ import { DragHandle } from "../dragHandle/dragHandle.tsx";
 import { Dropdown } from "../dropdown/dropdown.tsx";
 import { ExportedTo } from "../exportedTo/exportedTo.tsx";
 import { IconName } from "../icon/types.ts";
-import { IconButton, IconButtonComponentType, IconButtonSize, IconButtonTheme } from "../iconButton/iconButton.tsx";
+import { IconButton, IconButtonSize, IconButtonTheme } from "../iconButton/iconButton.tsx";
 import { Menu } from "../menu/menu.tsx";
 import { MenuItemTheme } from "../menuItem/menuItem.tsx";
 import type { TestId, TestSubId } from "../utilities/testable.ts";
@@ -142,8 +142,6 @@ export const ListItem = (props: ListItemProps) => {
     }
   }
 
-  console.log(mProps.exportedTo);
-
   function getListItemTestSubId(testId: TestId, testSubId: TestSubId | undefined): TestSubId {
     return testId === AUTO_LIST_ITEM ? AUTO_LIST_ITEM : testSubId || "0";
   }
@@ -222,7 +220,6 @@ export const ListItem = (props: ListItemProps) => {
                 anchor={(props) => (
                   <IconButton
                     ref={props.ref}
-                    componentType={IconButtonComponentType.Button}
                     handleClick={props.handleClick}
                     testId={OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON}
                     testSubId={getListItemTestSubId(getTestId(), mProps.index)}

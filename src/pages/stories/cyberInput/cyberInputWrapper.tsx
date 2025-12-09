@@ -8,7 +8,7 @@ import {
 import { CyberInput, CyberInputSize, CyberInputTheme } from "../../../components/cyberInput/cyberInput.tsx";
 import { Dropdown } from "../../../components/dropdown/dropdown.tsx";
 import { IconName } from "../../../components/icon/types.ts";
-import { IconButton, IconButtonComponentType, IconButtonSize } from "../../../components/iconButton/iconButton.tsx";
+import { IconButton, IconButtonSize } from "../../../components/iconButton/iconButton.tsx";
 import { Menu } from "../../../components/menu/menu.tsx";
 import { MenuItemTheme } from "../../../components/menuItem/menuItem.tsx";
 import { storeEditList } from "../../../widgets/editList/editList.store.tsx";
@@ -77,7 +77,6 @@ export function CyberInputWrapper(props: CyberInputWrapperProps) {
           anchor={(props) => (
             <IconButton
               ref={props.ref}
-              componentType={IconButtonComponentType.Button}
               handleClick={props.handleClick}
               testId={OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON}
               size={IconButtonSize.MediumEmbedded}
