@@ -1,4 +1,4 @@
-import { getEditListElementsWithoutAutoItem } from "../../../utilities/getEditListElementsWithoutAutoItem.tsx";
+import { getEditListElementsWithoutAutoItem } from "../../../utilities/getEditListElementsWithoutAutoItem.ts";
 
 import { getCheckedImportItemsCount } from "./getCheckedImportItemsCount.tsx";
 

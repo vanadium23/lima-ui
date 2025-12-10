@@ -1,9 +1,9 @@
 import { URL_MY_LISTS } from "../../../../utilities/addresses.ts";
 import { soften } from "../../../../utilities/soften.ts";
 import { setStoreEditList, storeEditList } from "../editList.store.tsx";
-import { removeList } from "../services/removeList.ts";
+import { type DeletionMethod, removeList } from "../services/removeList.ts";
 
-export function sendListRemove(deletionMethod: "deletion" | "insertion" | "" = "") {
+export function sendListRemove(deletionMethod: DeletionMethod = "") {
   setStoreEditList({
     removeError: false,
     sendingNow: "deleting",

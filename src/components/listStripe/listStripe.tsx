@@ -8,20 +8,18 @@ import {
   LIST_STRIPE_LINK_TO_VIEW,
   LIST_STRIPE_REMOVE_BUTTON,
   OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
-  REMOVE_DIALOG_REMOVE_LIST_BUTTON,
-  REMOVE_LIST_DIALOG,
 } from "../../../features/testIds.ts";
+import { logReturn } from "../../../features/utilities/logReturn.ts";
 import { soften } from "../../../utilities/soften.ts";
 import { notificationState } from "../../state/pushNotificationStateManager.ts";
-import { removeList } from "../../widgets/editList/services/removeList.ts";
-import { Button, ButtonSize, ButtonTheme } from "../button/button.tsx";
-import { Dialog, DialogSize, DialogTheme } from "../dialog/dialog.tsx";
+import { type DeletionMethod, removeList } from "../../widgets/editList/services/removeList.ts";
 import { Dropdown } from "../dropdown/dropdown.tsx";
 import { Icon, IconSize } from "../icon/icon.tsx";
 import { IconName } from "../icon/types.ts";
 import { IconButton, IconButtonSize } from "../iconButton/iconButton.tsx";
 import { Menu } from "../menu/menu.tsx";
 import { MenuItemTheme } from "../menuItem/menuItem.tsx";
+import { RemoveDialog } from "../removeDialog/removeDialog.tsx";
 import { Tooltip } from "../tooltip/tooltip.tsx";
 import { type Testable } from "../utilities/testable.ts";
 
@@ -43,7 +41,8 @@ type ListStripeProps = {
   link: string;
   listId: string;
   removing?: boolean;
-  exported?: boolean;
+  isExportedList?: boolean;
+  hasExportedItems?: boolean;
   onRemoveSuccess: (listId: string) => void;
 };
 
@@ -53,45 +52,42 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
       theme: ListStripeTheme.Primary,
       size: ListStripeSize.Medium,
       removing: false,
-      exported: false,
+      isExportedList: false,
+      hasExportedItems: false,
     },
     props,
   );
 
-  const [isDialogOpen, setIsDialogOpen] = createSignal(false);
+  const [isOpenRemoveDialog, setOpenRemoveDialog] = createSignal(false);
 
   const [isRemoving, setIsRemoving] = createSignal(false);
-
-  const openDialog = () => {
-    setIsDialogOpen(true);
-  };
-
-  const closeDialog = () => {
-    setIsDialogOpen(false);
-  };
 
   const exportedTooltipMessage = "Список экспортирован в другие списки";
 
   function listStripeIsRemoving() {
     return isRemoving() || mProps.removing;
   }
+  // console.log(mProps.listTitle);
+  // console.log("hasExportedItems:", mProps.hasExportedItems);
+  // console.log("isExportedList:", mProps.isExportedList);
 
   const menuItems = () => [
     {
       children: "Удалить",
       icon: IconName.Trash,
-      handleClick: openDialog,
+      handleClick: () => {
+        setOpenRemoveDialog(true);
+      },
       theme: MenuItemTheme.Dangerous,
       testId: LIST_STRIPE_REMOVE_BUTTON,
       testSubId: mProps.testSubId,
     },
   ];
 
-  function removeListFromListStripe() {
+  function removeListFromListStripe(deletionMethod: DeletionMethod = "") {
     setIsRemoving(true);
-    setIsDialogOpen(false);
 
-    removeList(mProps.listId)
+    removeList(mProps.listId, deletionMethod)
       .then(() => {
         soften(() => mProps.onRemoveSuccess(mProps.listId));
       })
@@ -120,7 +116,7 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
       data-test-sub-id={mProps.testSubId}
     >
       <div class="listStripe__icon">
-        <Show when={mProps.exported}>
+        <Show when={mProps.isExportedList}>
           <Tooltip content={exportedTooltipMessage} testId={DEFAULT_TEST_ID}>
             <Icon name={IconName.Link} size={IconSize.Small} role={"img"} ariaLabel={exportedTooltipMessage} />
           </Tooltip>
@@ -162,33 +158,15 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
         </Dropdown>
       </div>
 
-      <Dialog
-        theme={DialogTheme.Primary}
-        size={DialogSize.Medium}
-        onCancel={closeDialog}
-        open={isDialogOpen()}
-        title={"Удаление списка"}
-        testId={REMOVE_LIST_DIALOG}
-        testSubId={mProps.testSubId || "0"}
-        controls={
-          <Button
-            theme={ButtonTheme.Dangerous}
-            size={ButtonSize.Medium}
-            handleClick={() => {
-              removeListFromListStripe();
-              closeDialog();
-            }}
-            testId={REMOVE_DIALOG_REMOVE_LIST_BUTTON}
-            testSubId={mProps.testSubId || "0"}
-          >
-            Удалить
-          </Button>
-        }
-      >
-        <p>
-          Список <strong>{mProps.listTitle}</strong> будет удален без возможности восстановления.
-        </p>
-      </Dialog>
+      <RemoveDialog
+        hasExported={logReturn(mProps.hasExportedItems || mProps.isExportedList)}
+        listName={mProps.listTitle}
+        sendListRemove={removeListFromListStripe}
+        open={isOpenRemoveDialog()}
+        onCancel={() => {
+          setOpenRemoveDialog(false);
+        }}
+      />
     </div>
   );
 };

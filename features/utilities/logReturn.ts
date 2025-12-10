@@ -7,3 +7,5 @@ export function logReturn<SomeType>(something: SomeType, label?: string | number
 
   return something;
 }
+
+export const returnLog = logReturn;

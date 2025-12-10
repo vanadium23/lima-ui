@@ -1,4 +1,4 @@
-import { Portal } from "solid-js/web";
+import { createSignal } from "solid-js";
 
 import {
   CHECKLIST_SWITCH,
@@ -11,6 +11,7 @@ import {
 } from "../../../../../features/testIds.ts";
 import { Divider } from "../../../../components/divider/divider.tsx";
 import { IconName } from "../../../../components/icon/types.ts";
+import { RemoveDialog } from "../../../../components/removeDialog/removeDialog.tsx";
 import { Switch } from "../../../../components/switch/switch.tsx";
 import {
   ToolsButton,
@@ -22,19 +23,17 @@ import type { EditListElement } from "../../../../types/types.ts";
 import { setStoreEditList, storeEditList } from "../../editList.store.tsx";
 import { addNewItem } from "../../utilities/addNewItem.ts";
 import { reachedItemsLimit } from "../../utilities/reachedItemsLimit.ts";
+import { sendListRemove } from "../../utilities/sendListRemove.ts";
 import { ImportDialog, openImportDialogPasteEnd } from "../importDialog/importDialog.tsx";
-import { RemoveDialog, setStoreRemoveDialog } from "../removeDialog/removeDialog.tsx";
 
 const toggleCheckable = () => setStoreEditList("isCheckable", !storeEditList.isCheckable);
 
-const openRemoveDialog = () => setStoreRemoveDialog("openRemoveDialog", true);
+const [isOpenRemoveDialog, setOpenRemoveDialog] = createSignal(false);
 
 function copyItemsToClipboard(elements: EditListElement[]) {
   const textToCopy = elements
     .map((element) => {
-      const elementContent = element.items.map((item) => item.content.trim());
-
-      return elementContent;
+      return element.items.map((item) => item.content.trim());
     })
     .flat()
     .join("\n");
@@ -43,6 +42,8 @@ function copyItemsToClipboard(elements: EditListElement[]) {
 }
 
 const EditListToolsPanel = () => {
+  const hasExported = storeEditList.hasExportedItems || storeEditList.exportedTo.length >= 1;
+
   return (
     <aside class="editList__toolsPanel">
       <ToolsPanel size={ToolsPanelSize.Medium} theme={ToolsPanelTheme.Primary} testId={TOOLS_PANEL}>
@@ -71,14 +72,22 @@ const EditListToolsPanel = () => {
             theme={ToolsButtonTheme.Dangerous}
             loading={storeEditList.sendingNow === "deleting"}
             disabled={storeEditList.isNewList || storeEditList.sendingNow === "saving"}
-            handleClick={openRemoveDialog}
+            handleClick={() => {
+              setOpenRemoveDialog(true);
+            }}
             testId={TOOLS_PANEL_BUTTON_REMOVE_LIST}
           >
             Удалить список
           </ToolsButton>
-          <Portal>
-            <RemoveDialog />
-          </Portal>
+          <RemoveDialog
+            hasExported={hasExported}
+            open={isOpenRemoveDialog()}
+            onCancel={() => {
+              setOpenRemoveDialog(false);
+            }}
+            listName={storeEditList.name}
+            sendListRemove={sendListRemove}
+          />
         </div>
         <Divider />
         <div class="toolsPanel__verticalSection">
@@ -102,9 +111,7 @@ const EditListToolsPanel = () => {
           >
             Импорт
           </ToolsButton>
-          <Portal>
-            <ImportDialog currentListId={storeEditList.id} />
-          </Portal>
+          <ImportDialog currentListId={storeEditList.id} />
 
           <ToolsButton
             componentType={ToolsButtonComponentType.Link}

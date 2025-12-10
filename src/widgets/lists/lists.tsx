@@ -10,6 +10,7 @@ import {
   NO_SAVED_LISTS_MESSAGE,
   PAGE_TITLE,
 } from "../../../features/testIds.ts";
+import { logReturn } from "../../../features/utilities/logReturn.ts";
 import { getListLink, URL_CREATE_LIST } from "../../../utilities/addresses.ts";
 import { Button, ButtonComponentType } from "../../components/button/button.tsx";
 import { ListStripe } from "../../components/listStripe/listStripe.tsx";
@@ -78,7 +79,8 @@ export const Lists = (props: ListsProps) => {
                   onRemoveSuccess={removingListInStore}
                   testId={LIST_STRIPE}
                   testSubId={index()}
-                  exported={Boolean(list.exportedTo?.length)}
+                  isExportedList={Boolean(list.exportedTo?.length)}
+                  hasExportedItems={logReturn(list, index()).hasExportedItems}
                 />
               </li>
             )}

@@ -1,66 +1,74 @@
-import { Match, Switch } from "solid-js";
-import { createStore } from "solid-js/store";
+import { createEffect, createSignal, Match, mergeProps, Switch } from "solid-js";
 
-import { REMOVE_DIALOG_REMOVE_LIST_BUTTON, REMOVE_LIST_DIALOG } from "../../../../../features/testIds.ts";
-import { Button, ButtonSize, ButtonTheme } from "../../../../components/button/button.tsx";
-import { Dialog } from "../../../../components/dialog/dialog.tsx";
-import { TextButton, TextButtonSize, TextButtonTheme } from "../../../../components/textButton/textButton.tsx";
-import { storeEditList } from "../../editList.store.tsx";
-import { sendListRemove } from "../../utilities/sendListRemove.ts";
+import { REMOVE_DIALOG_REMOVE_LIST_BUTTON, REMOVE_LIST_DIALOG } from "../../../features/testIds.ts";
+import type { DeletionMethod } from "../../widgets/editList/services/removeList.ts";
+import { Button, ButtonSize, ButtonTheme } from "../button/button.tsx";
+import { Dialog } from "../dialog/dialog.tsx";
+import { TextButton, TextButtonSize, TextButtonTheme } from "../textButton/textButton.tsx";
 
-type RemoveDialogState = {
-  openRemoveDialog: boolean;
+type RemoveDialogProps = {
+  hasExported: boolean;
+  listName: string;
+  sendListRemove: (deletionMethod?: DeletionMethod) => void;
+  open: boolean;
+  onCancel: () => void;
 };
 
-export const [storeRemoveDialog, setStoreRemoveDialog] = createStore<RemoveDialogState>({
-  openRemoveDialog: false,
-});
+export const RemoveDialog = (props: RemoveDialogProps) => {
+  const mProps: Required<RemoveDialogProps> = mergeProps(props);
 
-const closeRemoveDialog = () => {
-  setStoreRemoveDialog("openRemoveDialog", false);
-};
+  const [isRemoveDialogOpen, setIsRemoveDialogOpen] = createSignal(false);
 
-export const RemoveDialog = () => {
+  createEffect(() => {
+    setIsRemoveDialogOpen(mProps.open);
+  });
+
   return (
     <Switch>
-      <Match when={!storeEditList.hasExportedItems && storeEditList.exportedTo.length === 0}>
+      <Match when={!mProps.hasExported}>
         <Dialog
           title="Удаление списка"
-          onCancel={closeRemoveDialog}
+          onCancel={() => {
+            setIsRemoveDialogOpen(false);
+            mProps.onCancel();
+          }}
           controls={
             <Button
               theme={ButtonTheme.Dangerous}
               size={ButtonSize.Medium}
               handleClick={() => {
-                sendListRemove();
-                closeRemoveDialog();
+                mProps.sendListRemove();
+                setIsRemoveDialogOpen(false);
               }}
               testId={REMOVE_DIALOG_REMOVE_LIST_BUTTON}
             >
               Удалить
             </Button>
           }
-          open={storeRemoveDialog.openRemoveDialog}
+          open={isRemoveDialogOpen()}
           testId={REMOVE_LIST_DIALOG}
           testSubId={REMOVE_LIST_DIALOG}
         >
           <p>
-            Список <strong>{storeEditList.name}</strong> будет удален без возможности восстановления.
+            Список <strong>{mProps.listName}</strong> будет удален без возможности восстановления.
           </p>
         </Dialog>
       </Match>
-      <Match when={storeEditList.hasExportedItems || storeEditList.exportedTo.length >= 1}>
+      <Match when={mProps.hasExported}>
         <Dialog
           title="Удаление списка"
-          onCancel={closeRemoveDialog}
+          onCancel={() => {
+            setIsRemoveDialogOpen(false);
+            mProps.onCancel();
+          }}
           controls={
             <>
               <TextButton
                 theme={TextButtonTheme.Dangerous}
                 size={TextButtonSize.Medium}
                 handleClick={() => {
-                  sendListRemove("insertion");
-                  closeRemoveDialog();
+                  mProps.sendListRemove("insertion");
+                  setIsRemoveDialogOpen(false);
                 }}
                 testId={REMOVE_DIALOG_REMOVE_LIST_BUTTON}
               >
@@ -70,8 +78,8 @@ export const RemoveDialog = () => {
                 theme={ButtonTheme.Dangerous}
                 size={ButtonSize.Medium}
                 handleClick={() => {
-                  sendListRemove("deletion");
-                  closeRemoveDialog();
+                  mProps.sendListRemove("deletion");
+                  setIsRemoveDialogOpen(false);
                 }}
                 testId={REMOVE_DIALOG_REMOVE_LIST_BUTTON}
               >
@@ -79,7 +87,7 @@ export const RemoveDialog = () => {
               </Button>
             </>
           }
-          open={storeRemoveDialog.openRemoveDialog}
+          open={isRemoveDialogOpen()}
           testId={REMOVE_LIST_DIALOG}
           testSubId={REMOVE_LIST_DIALOG}
         >

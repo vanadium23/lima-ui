@@ -1,9 +1,11 @@
 import { BACKEND_URL_LISTS } from "../../../../utilities/addresses.ts";
 import type { ListId } from "../../../types/types.ts";
 
+export type DeletionMethod = "deletion" | "insertion" | "";
+
 export async function removeList(
   id: ListId,
-  deletionMethod: "deletion" | "insertion" | "" = "",
+  deletionMethod: DeletionMethod = "",
   backendURL = import.meta.env.PUBLIC_API_URL,
 ): Promise<void> {
   if (!id) {
