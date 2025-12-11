@@ -1,5 +1,5 @@
 ---
-import { PushNotificationWrapper } from "../../components/pushNotificationWrapper/pushNotificationWrapper.tsx";
+import { PushNotificationBar } from "../../components/pushNotificationWrapper/pushNotificationBar.tsx";
 import { Header } from "../../organisms/header/header.tsx";
 import Head from "../head/head.astro";
 
@@ -24,7 +24,7 @@ const { titleName, list404 = false } = Astro.props as Props;
     <main class="main">
       <slot name="mainContent" />
     </main>
-    <PushNotificationWrapper client:only="solid-js" />
+    <PushNotificationBar client:only="solid-js" />
 
     <footer></footer>
   </body>

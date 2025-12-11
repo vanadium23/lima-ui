@@ -1,11 +1,17 @@
-import { For, mergeProps } from "solid-js";
+import { createSignal, For, mergeProps } from "solid-js";
 
+import { ITEMS_LIMIT } from "../../../configuration.ts";
 import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import { getListLink } from "../../../utilities/addresses.ts";
-import type { DragSettings, EditListSimpleItem } from "../../types/types.ts";
-import { storeEditList } from "../../widgets/editList/editList.store.tsx";
+import { notificationState } from "../../state/pushNotificationStateManager.ts";
+import type { DragSettings, EditListElement, EditListSimpleItem } from "../../types/types.ts";
+import { setStoreEditList, storeEditList } from "../../widgets/editList/editList.store.tsx";
+import { createDefaultElement } from "../../widgets/editList/utilities/createDefaultItem.ts";
+import { getEditListElementsWithoutAutoItem } from "../../widgets/editList/utilities/getEditListElementsWithoutAutoItem.ts";
 import { reachedItemsLimit } from "../../widgets/editList/utilities/reachedItemsLimit.ts";
 import { removeItem } from "../../widgets/editList/utilities/removeItem.ts";
+import { Button } from "../button/button.tsx";
+import { Dialog } from "../dialog/dialog.tsx";
 import { DragHandle } from "../dragHandle/dragHandle.tsx";
 import { Dropdown } from "../dropdown/dropdown.tsx";
 import { IconName } from "../icon/types.ts";
@@ -55,11 +61,44 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
     props,
   );
 
+  const [isEditDialogOpen, setIsEditDialogOpen] = createSignal(false);
+
+  function reachedLimitEditItems() {
+    return mProps.children.length + getEditListElementsWithoutAutoItem().length > ITEMS_LIMIT;
+  }
+
+  function editListItem() {
+    if (!reachedLimitEditItems()) {
+      const newElements: EditListElement[] = mProps.children.map((item) =>
+        createDefaultElement(storeEditList.id, storeEditList.name, item.content),
+      );
+
+      setStoreEditList("elements", (elements) => [
+        ...elements.slice(0, mProps.itemIndex),
+        ...newElements,
+        ...elements.slice(mProps.itemIndex + 1),
+      ]);
+    } else {
+      notificationState.pushInfo(
+        "Превышение лимита пунктов",
+        <span>
+          Попробуйте{" "}
+          <Link href="/" testId={DEFAULT_TEST_ID}>
+            тариф PRO
+          </Link>{" "}
+          для расширенного взаимодействия со списками
+        </span>,
+      );
+    }
+  }
+
   const menuItems = () => [
     {
       children: "Редактировать",
       icon: IconName.NotePencil,
-      handleClick: () => {},
+      handleClick: () => {
+        setIsEditDialogOpen(true);
+      },
       testId: DEFAULT_TEST_ID,
       disabled: reachedItemsLimit(),
     },
@@ -146,6 +185,32 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
           )}
         </For>
       </div>
+      <Dialog
+        title="Редактировать импорт"
+        onCancel={() => {
+          setIsEditDialogOpen(false);
+        }}
+        controls={
+          <Button
+            handleClick={() => {
+              editListItem();
+              setIsEditDialogOpen(false);
+            }}
+            testId={DEFAULT_TEST_ID}
+            testSubId={mProps.testSubId || "0"}
+          >
+            Редактировать
+          </Button>
+        }
+        open={isEditDialogOpen()}
+        testId={mProps.testId}
+        testSubId={mProps.testSubId || "0"}
+      >
+        <p>
+          Редактируя импортированный список или пункт, вы открепляете его от исходного, и в дальнейшем любые изменения
+          исходного списка не будут отражаться на этом списке.
+        </p>
+      </Dialog>
     </div>
   );
 };

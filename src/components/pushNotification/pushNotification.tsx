@@ -1,4 +1,4 @@
-import { mergeProps } from "solid-js";
+import { type JSX, mergeProps } from "solid-js";
 
 import { buildErrorCloseButtonTestId } from "../../../features/testIds.ts";
 import { Icon, IconSize } from "../icon/icon.tsx";
@@ -20,8 +20,8 @@ export enum PushNotificationSize {
 
 type PushNotificationProps = {
   title: string;
-  description: string;
-  theme?: PushNotificationTheme;
+  description: JSX.Element;
+  theme: PushNotificationTheme;
   size?: PushNotificationSize;
   iconName: IconName;
   onClose?: () => void;
@@ -30,7 +30,6 @@ type PushNotificationProps = {
 export const PushNotification = (props: Testable<PushNotificationProps>) => {
   const mProps: Testable<Required<PushNotificationProps>> = mergeProps(
     {
-      theme: PushNotificationTheme.Dangerous,
       size: PushNotificationSize.Medium,
       onClose: () => {},
     },
