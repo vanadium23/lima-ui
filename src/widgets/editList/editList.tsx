@@ -139,7 +139,7 @@ export const EditList = (props: EditListProps) => {
                         return (
                           <ImportedGroup
                             testId={DEFAULT_TEST_ID}
-                            itemIndex={index()}
+                            index={index()}
                             id={element.originalList.id}
                             name={element.originalList.name}
                             dragSettings={{
@@ -186,7 +186,7 @@ export const EditList = (props: EditListProps) => {
                     <Match when={draggedElementData().originalList.id !== storeEditList.id}>
                       <ImportedGroup
                         testId={DEFAULT_TEST_ID}
-                        itemIndex={ITEMS_LIMIT + 1}
+                        index={ITEMS_LIMIT + 1}
                         id={draggedElementData().originalList.id}
                         name={draggedElementData().originalList.name}
                         isDraggingOverlay={true}

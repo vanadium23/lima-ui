@@ -1,13 +1,18 @@
 import { createSignal, For, mergeProps } from "solid-js";
 
 import { ITEMS_LIMIT } from "../../../configuration.ts";
-import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
+import { ADD_ITEM_ABOVE_MENUITEM, ADD_ITEM_BELOW_MENUITEM, DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import { getListLink } from "../../../utilities/addresses.ts";
 import { notificationState } from "../../state/pushNotificationStateManager.ts";
 import type { DragSettings, EditListElement, EditListSimpleItem } from "../../types/types.ts";
+import {
+  openImportDialogPasteAfter,
+  openImportDialogPasteBefore,
+} from "../../widgets/editList/components/importDialog/importDialog.tsx";
 import { setStoreEditList, storeEditList } from "../../widgets/editList/editList.store.tsx";
 import { createDefaultElement } from "../../widgets/editList/utilities/createDefaultItem.ts";
 import { getEditListElementsWithoutAutoItem } from "../../widgets/editList/utilities/getEditListElementsWithoutAutoItem.ts";
+import { pasteItemAfter, pasteItemBefore } from "../../widgets/editList/utilities/pasteNewItem.ts";
 import { reachedItemsLimit } from "../../widgets/editList/utilities/reachedItemsLimit.ts";
 import { removeItem } from "../../widgets/editList/utilities/removeItem.ts";
 import { Button } from "../button/button.tsx";
@@ -35,7 +40,7 @@ export enum ImportedGroupSize {
 type ImportedGroupProps = {
   theme?: ImportedGroupTheme;
   size?: ImportedGroupSize;
-  itemIndex: number;
+  index: number;
   checkable?: boolean;
   children: EditListSimpleItem[];
   name: string;
@@ -63,8 +68,12 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
 
   const [isEditDialogOpen, setIsEditDialogOpen] = createSignal(false);
 
+  function totalItemsBeforeEditImportedItems() {
+    return mProps.children.length + getEditListElementsWithoutAutoItem().length;
+  }
+
   function reachedLimitEditItems() {
-    return mProps.children.length + getEditListElementsWithoutAutoItem().length > ITEMS_LIMIT;
+    return totalItemsBeforeEditImportedItems() > ITEMS_LIMIT;
   }
 
   function editListItem() {
@@ -74,20 +83,14 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
       );
 
       setStoreEditList("elements", (elements) => [
-        ...elements.slice(0, mProps.itemIndex),
+        ...elements.slice(0, mProps.index),
         ...newElements,
-        ...elements.slice(mProps.itemIndex + 1),
+        ...elements.slice(mProps.index + 1),
       ]);
     } else {
       notificationState.pushInfo(
         "Превышение лимита пунктов",
-        <span>
-          Попробуйте{" "}
-          <Link href="/" testId={DEFAULT_TEST_ID}>
-            тариф PRO
-          </Link>{" "}
-          для расширенного взаимодействия со списками
-        </span>,
+        `Этот список нельзя встроить, так как будет превышен лимит ${totalItemsBeforeEditImportedItems()} из ${ITEMS_LIMIT} доступных элементов списка`,
       );
     }
   }
@@ -110,10 +113,46 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
       testId: DEFAULT_TEST_ID,
     },
     {
+      children: "Добавить пункт выше",
+      icon: IconName.Plus,
+      handleClick: () => {
+        pasteItemBefore(mProps.index);
+      },
+      testId: ADD_ITEM_ABOVE_MENUITEM,
+      disabled: reachedItemsLimit(),
+    },
+    {
+      children: "Добавить пункт ниже",
+      icon: IconName.Plus,
+      handleClick: () => {
+        pasteItemAfter(mProps.index);
+      },
+      testId: ADD_ITEM_BELOW_MENUITEM,
+      disabled: reachedItemsLimit(),
+    },
+    {
+      children: "Импортировать выше",
+      icon: IconName.SortDescending,
+      handleClick: () => {
+        openImportDialogPasteBefore(mProps.index);
+      },
+      testId: DEFAULT_TEST_ID,
+      disabled: reachedItemsLimit(),
+    },
+    {
+      children: "Импортировать ниже",
+      icon: IconName.SortAscending,
+      handleClick: () => {
+        openImportDialogPasteAfter(mProps.index);
+      },
+      testId: DEFAULT_TEST_ID,
+      disabled: reachedItemsLimit(),
+    },
+    {
       children: "Удалить импорт",
       icon: IconName.Trash,
       handleClick: () => {
-        removeItem(mProps.itemIndex);
+        removeItem(mProps.index);
       },
       theme: MenuItemTheme.Dangerous,
       testId: DEFAULT_TEST_ID,
