@@ -5,6 +5,7 @@ import type { DeletionMethod } from "../../widgets/editList/services/removeList.
 import { Button, ButtonSize, ButtonTheme } from "../button/button.tsx";
 import { Dialog } from "../dialog/dialog.tsx";
 import { TextButton, TextButtonSize, TextButtonTheme } from "../textButton/textButton.tsx";
+import type { Testable } from "../utilities/testable.ts";
 
 type RemoveDialogProps = {
   hasExported: boolean;
@@ -14,8 +15,8 @@ type RemoveDialogProps = {
   onCancel: () => void;
 };
 
-export const RemoveDialog = (props: RemoveDialogProps) => {
-  const mProps: Required<RemoveDialogProps> = mergeProps(props);
+export const RemoveDialog = (props: Testable<RemoveDialogProps>) => {
+  const mProps: Testable<Required<RemoveDialogProps>> = mergeProps(props);
 
   const [isRemoveDialogOpen, setIsRemoveDialogOpen] = createSignal(false);
 
@@ -41,13 +42,14 @@ export const RemoveDialog = (props: RemoveDialogProps) => {
                 setIsRemoveDialogOpen(false);
               }}
               testId={REMOVE_DIALOG_REMOVE_LIST_BUTTON}
+              testSubId={mProps.testSubId || "0"}
             >
               Удалить
             </Button>
           }
           open={isRemoveDialogOpen()}
-          testId={REMOVE_LIST_DIALOG}
-          testSubId={REMOVE_LIST_DIALOG}
+          testId={mProps.testId}
+          testSubId={mProps.testSubId || "0"}
         >
           <p>
             Список <strong>{mProps.listName}</strong> будет удален без возможности восстановления.
@@ -71,6 +73,7 @@ export const RemoveDialog = (props: RemoveDialogProps) => {
                   setIsRemoveDialogOpen(false);
                 }}
                 testId={REMOVE_DIALOG_REMOVE_LIST_BUTTON}
+                testSubId={mProps.testSubId || "0"}
               >
                 Удалить этот список
               </TextButton>
@@ -82,6 +85,7 @@ export const RemoveDialog = (props: RemoveDialogProps) => {
                   setIsRemoveDialogOpen(false);
                 }}
                 testId={REMOVE_DIALOG_REMOVE_LIST_BUTTON}
+                testSubId={mProps.testSubId || "0"}
               >
                 Удалить всё
               </Button>
@@ -89,7 +93,7 @@ export const RemoveDialog = (props: RemoveDialogProps) => {
           }
           open={isRemoveDialogOpen()}
           testId={REMOVE_LIST_DIALOG}
-          testSubId={REMOVE_LIST_DIALOG}
+          testSubId={mProps.testSubId || "0"}
         >
           <p>
             Вы удаляете экспортированный список. Выберите способ удаления:

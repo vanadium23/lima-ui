@@ -8,6 +8,7 @@ import {
   LIST_STRIPE_LINK_TO_VIEW,
   LIST_STRIPE_REMOVE_BUTTON,
   OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
+  REMOVE_LIST_DIALOG,
 } from "../../../features/testIds.ts";
 import { logReturn } from "../../../features/utilities/logReturn.ts";
 import { soften } from "../../../utilities/soften.ts";
@@ -166,6 +167,8 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
         onCancel={() => {
           setOpenRemoveDialog(false);
         }}
+        testId={REMOVE_LIST_DIALOG}
+        testSubId={mProps.testSubId || "0"}
       />
     </div>
   );
