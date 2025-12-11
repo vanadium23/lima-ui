@@ -8,8 +8,8 @@ import {
   LIST_STRIPE_LINK_TO_VIEW,
   LIST_STRIPE_REMOVE_BUTTON,
   OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
+  REMOVE_LIST_DIALOG,
 } from "../../../features/testIds.ts";
-import { logReturn } from "../../../features/utilities/logReturn.ts";
 import { soften } from "../../../utilities/soften.ts";
 import { notificationState } from "../../state/pushNotificationStateManager.ts";
 import { type DeletionMethod, removeList } from "../../widgets/editList/services/removeList.ts";
@@ -67,9 +67,6 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
   function listStripeIsRemoving() {
     return isRemoving() || mProps.removing;
   }
-  // console.log(mProps.listTitle);
-  // console.log("hasExportedItems:", mProps.hasExportedItems);
-  // console.log("isExportedList:", mProps.isExportedList);
 
   const menuItems = () => [
     {
@@ -159,13 +156,15 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
       </div>
 
       <RemoveDialog
-        hasExported={logReturn(mProps.hasExportedItems || mProps.isExportedList)}
+        hasExported={mProps.hasExportedItems || mProps.isExportedList}
         listName={mProps.listTitle}
         sendListRemove={removeListFromListStripe}
         open={isOpenRemoveDialog()}
         onCancel={() => {
           setOpenRemoveDialog(false);
         }}
+        testId={REMOVE_LIST_DIALOG}
+        testSubId={mProps.testSubId || "0"}
       />
     </div>
   );

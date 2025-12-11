@@ -2,6 +2,7 @@ import { createSignal } from "solid-js";
 
 import {
   CHECKLIST_SWITCH,
+  REMOVE_LIST_DIALOG,
   TOOLS_PANEL,
   TOOLS_PANEL_ADD_ITEM_BUTTON,
   TOOLS_PANEL_BUTTON_COPY_ITEMS,
@@ -87,6 +88,7 @@ const EditListToolsPanel = () => {
             }}
             listName={storeEditList.name}
             sendListRemove={sendListRemove}
+            testId={REMOVE_LIST_DIALOG}
           />
         </div>
         <Divider />
