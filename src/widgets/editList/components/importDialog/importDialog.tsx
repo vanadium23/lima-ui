@@ -6,13 +6,16 @@ import { soften } from "../../../../../utilities/soften.ts";
 import { Button, ButtonSize, ButtonTheme, ButtonType } from "../../../../components/button/button.tsx";
 import { Dialog } from "../../../../components/dialog/dialog.tsx";
 import { ListStripeImport } from "../../../../components/listStripeImport/listStripeImport.tsx";
-import { getLists } from "../../../../services/getLists.ts";
 import { notificationState } from "../../../../state/pushNotificationStateManager.ts";
-import { type Item, type List } from "../../../../types/types.ts";
+import { type EditListElement, type EditListType, type ItemId, type ListId } from "../../../../types/types.ts";
+import { getListsForImporting } from "../../services/getListsForImporting.ts";
 import { addImportItems } from "../../utilities/addImportItems.ts";
-import { pasteImportItemsAfter, pasteImportItemsBefore } from "../../utilities/pasteImportItems.ts";
+import { convertEditListToImportedListElement } from "../../utilities/convertItemsFromBackendToEditListItems.ts";
+import { pasteImportedItemsAfter, pasteImportedItemsBefore } from "../../utilities/pasteImportItems.ts";
 
-import { ImportDialogCounter, isImportDialogLimitReached } from "./components/importDialogCounter.tsx";
+import { ImportDialogCounter } from "./components/importDialogCounter.tsx";
+import { getCheckedImportItemsCount } from "./utilities/getCheckedImportItemsCount.tsx";
+import { isImportDialogLimitReached } from "./utilities/isImportDialogLimitReached.tsx";
 import "./importDialog.css";
 
 type ImportDialogProps = {
@@ -20,13 +23,14 @@ type ImportDialogProps = {
 };
 
 type ImportDialogState = {
-  listsForImport: List[];
+  listsForImport: EditListType[];
   loadingListsForImport: boolean;
   openImportDialog: boolean;
   pasteMethod?: "before" | "after" | "end";
   pasteIndex?: number;
-  itemsCache: Record<Item["id"], Item>;
-  checkedItemsCount: Record<List["id"], number>;
+  itemsCache: Record<ItemId, EditListElement>;
+  listsCache: Record<ListId, EditListType>;
+  checkedItemsCount: Record<ListId, number>;
 };
 
 export const [storeImportDialog, setStoreImportDialog] = createStore<ImportDialogState>({
@@ -35,6 +39,7 @@ export const [storeImportDialog, setStoreImportDialog] = createStore<ImportDialo
   openImportDialog: false,
   pasteMethod: "end",
   itemsCache: {},
+  listsCache: {},
   checkedItemsCount: {},
 });
 
@@ -55,8 +60,19 @@ export const ImportDialog = (props: ImportDialogProps) => {
     setStoreImportDialog("loadingListsForImport", true);
 
     try {
-      const lists = await getLists();
-      const filteredLists = lists.filter((availableList) => availableList.id !== props.currentListId);
+      const filteredLists: EditListType[] = (await getListsForImporting(props.currentListId))
+        .map((list) => {
+          setStoreImportDialog("listsCache", list.id, list);
+
+          return list;
+        })
+        .map((list) => {
+          return {
+            ...list,
+            elements: list.elements.filter((element) => !element.isImported),
+          };
+        });
+
       notificationState.clearNetworkErrors();
 
       setStoreImportDialog({
@@ -101,24 +117,42 @@ export const ImportDialog = (props: ImportDialogProps) => {
     event.preventDefault();
     const target = event.target as HTMLFormElement;
 
-    const formData = new FormData(target);
+    const checkedInputs = target.querySelectorAll<HTMLInputElement>("input[type='checkbox']:checked");
+    const checkedItemsIds: (ListId | ItemId)[] = [];
+    const ignoredGroupIds = new Set<string>();
 
-    const checkedItemsIds: string[] = [];
+    checkedInputs.forEach((input) => {
+      const dataId = input.dataset.id;
+      const groupId = input.dataset.groupId;
 
-    for (const [checkboxNameHTML, value] of formData.entries()) {
-      if (value === "on") {
-        checkedItemsIds.push(checkboxNameHTML);
+      if (dataId?.startsWith("list")) {
+        checkedItemsIds.push(dataId);
+        ignoredGroupIds.add(dataId);
+      } else if (dataId) {
+        if (!groupId || !ignoredGroupIds.has(groupId)) {
+          checkedItemsIds.push(dataId);
+        }
       }
-    }
+    });
 
-    const checkedItems: Item[] = checkedItemsIds
-      .map((id) => storeImportDialog.itemsCache[id])
-      .filter((item): item is Item => Boolean(item));
+    const checkedItems: EditListElement[] = checkedItemsIds
+      .map((id) => {
+        const item = storeImportDialog.itemsCache[id];
+
+        if (item) return { ...item, isImported: true };
+
+        const list = storeImportDialog.listsCache[id];
+
+        if (list) return convertEditListToImportedListElement(list);
+
+        return undefined;
+      })
+      .filter((element): element is EditListElement => Boolean(element));
 
     if (storeImportDialog.pasteMethod === "after" && storeImportDialog.pasteIndex) {
-      pasteImportItemsAfter(storeImportDialog.pasteIndex, checkedItems);
+      pasteImportedItemsAfter(storeImportDialog.pasteIndex, checkedItems);
     } else if (storeImportDialog.pasteMethod === "before" && storeImportDialog.pasteIndex) {
-      pasteImportItemsBefore(storeImportDialog.pasteIndex, checkedItems);
+      pasteImportedItemsBefore(storeImportDialog.pasteIndex, checkedItems);
     } else if (storeImportDialog.pasteMethod === "end") {
       addImportItems(checkedItems);
     }
@@ -140,7 +174,7 @@ export const ImportDialog = (props: ImportDialogProps) => {
             size={ButtonSize.Medium}
             form="importDialog"
             testId={IMPORT_DIALOG_IMPORT_BUTTON}
-            disabled={isImportDialogLimitReached()}
+            disabled={isImportDialogLimitReached() || getCheckedImportItemsCount() === 0}
           >
             Импортировать
           </Button>
@@ -158,11 +192,13 @@ export const ImportDialog = (props: ImportDialogProps) => {
           </div>
         </Show>
         <For each={storeImportDialog.listsForImport}>
-          {(list) => (
-            <ListStripeImport titleHTMLName={list.name} testId={DEFAULT_TEST_ID}>
-              {list}
-            </ListStripeImport>
-          )}
+          {(list) => {
+            return (
+              <ListStripeImport titleHTMLName={list.name} testId={DEFAULT_TEST_ID}>
+                {list}
+              </ListStripeImport>
+            );
+          }}
         </For>
       </form>
     </Dialog>

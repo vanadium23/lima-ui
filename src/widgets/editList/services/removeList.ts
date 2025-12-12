@@ -1,11 +1,26 @@
 import { BACKEND_URL_LISTS } from "../../../../utilities/addresses.ts";
+import type { ListId } from "../../../types/types.ts";
 
-export async function removeList(id: string, backendURL = import.meta.env.PUBLIC_API_URL): Promise<void> {
+export type DeletionMethod = "deletion" | "insertion" | "";
+
+export async function removeList(
+  id: ListId,
+  deletionMethod: DeletionMethod = "",
+  backendURL = import.meta.env.PUBLIC_API_URL,
+): Promise<void> {
   if (!id) {
     throw new Error("Потерялся ID списка");
   }
   const response = await fetch(`${backendURL}${BACKEND_URL_LISTS}/${id}`, {
     method: "DELETE",
+    ...(deletionMethod
+      ? {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ deletionMethod }),
+        }
+      : {}),
   });
 
   if (!response.ok) {

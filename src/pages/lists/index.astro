@@ -3,11 +3,11 @@ import { LISTS_LIMIT } from "../../../configuration.ts";
 import { BACKEND_URL_LISTS, BACKEND_URL_NON_EXISTING } from "../../../utilities/addresses.ts";
 import AppPage from "../../layouts/app/app.astro";
 import { getLists } from "../../services/getLists.ts";
-import type { ListBase } from "../../types/types.ts";
+import type { ListFromBackend } from "../../types/types.ts";
 import { Lists } from "../../widgets/lists/lists.tsx";
 
 /* TODO Запрос всех списков будет позже заменен на запрос конкретного количества списков с бекенда */
-let lists: ListBase[] = [];
+let lists: ListFromBackend[] = [];
 
 let listsRequestError = false;
 

@@ -1,7 +1,8 @@
-import { Portal } from "solid-js/web";
+import { createSignal } from "solid-js";
 
 import {
   CHECKLIST_SWITCH,
+  REMOVE_LIST_DIALOG,
   TOOLS_PANEL,
   TOOLS_PANEL_ADD_ITEM_BUTTON,
   TOOLS_PANEL_BUTTON_COPY_ITEMS,
@@ -11,6 +12,7 @@ import {
 } from "../../../../../features/testIds.ts";
 import { Divider } from "../../../../components/divider/divider.tsx";
 import { IconName } from "../../../../components/icon/types.ts";
+import { RemoveDialog } from "../../../../components/removeDialog/removeDialog.tsx";
 import { Switch } from "../../../../components/switch/switch.tsx";
 import {
   ToolsButton,
@@ -18,23 +20,31 @@ import {
   ToolsButtonTheme,
 } from "../../../../components/toolsButton/toolsButton.tsx";
 import { ToolsPanel, ToolsPanelSize, ToolsPanelTheme } from "../../../../organisms/toolsPanel/toolsPanel.tsx";
-import type { Item } from "../../../../types/types.ts";
+import type { EditListElement } from "../../../../types/types.ts";
 import { setStoreEditList, storeEditList } from "../../editList.store.tsx";
 import { addNewItem } from "../../utilities/addNewItem.ts";
 import { reachedItemsLimit } from "../../utilities/reachedItemsLimit.ts";
+import { sendListRemove } from "../../utilities/sendListRemove.ts";
 import { ImportDialog, openImportDialogPasteEnd } from "../importDialog/importDialog.tsx";
-import { RemoveDialog, setStoreRemoveDialog } from "../removeDialog/removeDialog.tsx";
 
 const toggleCheckable = () => setStoreEditList("isCheckable", !storeEditList.isCheckable);
 
-const openRemoveDialog = () => setStoreRemoveDialog("openRemoveDialog", true);
+const [isOpenRemoveDialog, setOpenRemoveDialog] = createSignal(false);
 
-function copyItemsToClipboard(items: Item[]) {
-  const textToCopy = items.map((item) => item.content.trim()).join("\n");
+function copyItemsToClipboard(elements: EditListElement[]) {
+  const textToCopy = elements
+    .map((element) => {
+      return element.items.map((item) => item.content.trim());
+    })
+    .flat()
+    .join("\n");
+
   navigator.clipboard.writeText(textToCopy).catch(() => {});
 }
 
 const EditListToolsPanel = () => {
+  const hasExported = storeEditList.hasExportedItems || storeEditList.exportedTo.length >= 1;
+
   return (
     <aside class="editList__toolsPanel">
       <ToolsPanel size={ToolsPanelSize.Medium} theme={ToolsPanelTheme.Primary} testId={TOOLS_PANEL}>
@@ -52,7 +62,7 @@ const EditListToolsPanel = () => {
             componentType={ToolsButtonComponentType.Button}
             iconName={IconName.CopySimple}
             disabled={storeEditList.isNewList || Boolean(storeEditList.sendingNow)}
-            handleClick={() => copyItemsToClipboard(storeEditList.items)}
+            handleClick={() => copyItemsToClipboard(storeEditList.elements)}
             testId={TOOLS_PANEL_BUTTON_COPY_ITEMS}
           >
             Копировать пункты
@@ -63,14 +73,23 @@ const EditListToolsPanel = () => {
             theme={ToolsButtonTheme.Dangerous}
             loading={storeEditList.sendingNow === "deleting"}
             disabled={storeEditList.isNewList || storeEditList.sendingNow === "saving"}
-            handleClick={openRemoveDialog}
+            handleClick={() => {
+              setOpenRemoveDialog(true);
+            }}
             testId={TOOLS_PANEL_BUTTON_REMOVE_LIST}
           >
             Удалить список
           </ToolsButton>
-          <Portal>
-            <RemoveDialog />
-          </Portal>
+          <RemoveDialog
+            hasExported={hasExported}
+            open={isOpenRemoveDialog()}
+            onCancel={() => {
+              setOpenRemoveDialog(false);
+            }}
+            listName={storeEditList.name}
+            sendListRemove={sendListRemove}
+            testId={REMOVE_LIST_DIALOG}
+          />
         </div>
         <Divider />
         <div class="toolsPanel__verticalSection">
@@ -94,9 +113,7 @@ const EditListToolsPanel = () => {
           >
             Импорт
           </ToolsButton>
-          <Portal>
-            <ImportDialog currentListId={storeEditList.id} />
-          </Portal>
+          <ImportDialog currentListId={storeEditList.id} />
 
           <ToolsButton
             componentType={ToolsButtonComponentType.Link}

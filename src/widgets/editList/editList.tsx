@@ -23,16 +23,16 @@ import { ImportedGroup } from "../../components/importedGroup/importedGroup.tsx"
 import { ListItem } from "../../components/listItem/listItem.tsx";
 import { PageError } from "../../components/pageError/pageError.tsx";
 import { notificationState } from "../../state/pushNotificationStateManager.ts";
-import { type List } from "../../types/types.ts";
+import { type ListFromBackend } from "../../types/types.ts";
 
 import { EditListHeader } from "./components/editListHeader/editListHeader.tsx";
 import EditListToolsPanel from "./components/editListToolsPanel/editListToolsPanel.tsx";
-import { emptyList, initStoreEditList, setStoreEditList, storeEditList } from "./editList.store.tsx";
+import { emptyListFromBackend, initStoreEditList, setStoreEditList, storeEditList } from "./editList.store.tsx";
 import { addAutoItem } from "./utilities/addAutoItem.ts";
 import { checkChanges } from "./utilities/checkChanges.ts";
 import {
   createScrollableCollisionsDetector,
-  draggedItemData,
+  draggedItemData as draggedElementData,
   dragIds,
   onDragEnd,
   onDragStart,
@@ -43,7 +43,7 @@ import { scroller } from "./utilities/scrollToBottom.ts";
 import "./editList.css";
 
 type EditListProps = {
-  defaultList?: List;
+  defaultList?: ListFromBackend;
   requestError?: boolean;
   errorText?: string;
   isListsLimitReached?: boolean;
@@ -52,7 +52,7 @@ type EditListProps = {
 export const EditList = (props: EditListProps) => {
   const mProps: Required<EditListProps> = mergeProps(
     {
-      defaultList: emptyList,
+      defaultList: emptyListFromBackend,
       requestError: false,
       errorText: "",
       isListsLimitReached: false,
@@ -81,11 +81,11 @@ export const EditList = (props: EditListProps) => {
       setStoreEditList("removeError", false);
     }
 
-    checkChanges(storeEditList.name, storeEditList.purpose, storeEditList.note, storeEditList.items);
+    checkChanges(storeEditList.name, storeEditList.purpose, storeEditList.note, storeEditList.elements);
   });
 
   createEffect(() => {
-    const lastItem = storeEditList.items.at(-1);
+    const lastItem = storeEditList.elements.at(-1);
 
     if (lastItem) {
       addAutoItem();
@@ -137,34 +137,17 @@ export const EditList = (props: EditListProps) => {
                 >
                   <DragDropSensors />
                   <SortableProvider ids={dragIds()}>
-                    <For each={storeEditList.items.slice(0, ITEMS_LIMIT)}>
-                      {(item, index) => {
-                        const dragData = createSortable(item.dragId);
+                    <For each={storeEditList.elements.slice(0, ITEMS_LIMIT)}>
+                      {(element, index) => {
+                        const dragData = createSortable(element.dragId);
 
-                        if (item.originalList.id === storeEditList.id) {
-                          return (
-                            <ListItem
-                              index={index()}
-                              auto={item.auto}
-                              dragSettings={{
-                                dragData,
-                                dragProps: {
-                                  ref: dragData.ref,
-                                  style: storeEditList.draggedItem ? transformStyle(dragData.transform) : {},
-                                },
-                                dragState: useDragDropContext()?.[0] || null,
-                              }}
-                            >
-                              {item.content}
-                            </ListItem>
-                          );
-                        } else {
+                        if (element.isImported) {
                           return (
                             <ImportedGroup
                               testId={DEFAULT_TEST_ID}
-                              itemIndex={index()}
-                              id={item.originalList.id}
-                              name={item.originalList.name}
+                              index={index()}
+                              id={element.originalList.id}
+                              name={element.originalList.name}
                               dragSettings={{
                                 dragData,
                                 dragProps: {
@@ -174,8 +157,26 @@ export const EditList = (props: EditListProps) => {
                                 dragState: useDragDropContext()?.[0] || null,
                               }}
                             >
-                              {[item]}
+                              {element.items}
                             </ImportedGroup>
+                          );
+                        } else {
+                          return (
+                            <ListItem
+                              index={index()}
+                              auto={element.auto}
+                              exportedTo={element.exportedTo}
+                              dragSettings={{
+                                dragData,
+                                dragProps: {
+                                  ref: dragData.ref,
+                                  style: storeEditList.draggedItem ? transformStyle(dragData.transform) : {},
+                                },
+                                dragState: useDragDropContext()?.[0] || null,
+                              }}
+                            >
+                              {element.items[0].content}
+                            </ListItem>
                           );
                         }
                       }}
@@ -183,20 +184,20 @@ export const EditList = (props: EditListProps) => {
                   </SortableProvider>
                   <DragOverlay>
                     <Switch>
-                      <Match when={draggedItemData().originalList.id === storeEditList.id}>
-                        <ListItem index={ITEMS_LIMIT + 1} auto={draggedItemData().auto} isDraggingOverlay={true}>
-                          {draggedItemData().content}
+                      <Match when={draggedElementData().originalList.id === storeEditList.id}>
+                        <ListItem index={ITEMS_LIMIT + 1} auto={draggedElementData().auto} isDraggingOverlay={true}>
+                          {draggedElementData().items[0].content}
                         </ListItem>
                       </Match>
-                      <Match when={draggedItemData().originalList.id !== storeEditList.id}>
+                      <Match when={draggedElementData().originalList.id !== storeEditList.id}>
                         <ImportedGroup
                           testId={DEFAULT_TEST_ID}
-                          itemIndex={ITEMS_LIMIT + 1}
-                          id={draggedItemData().originalList.id}
-                          name={draggedItemData().originalList.name}
+                          index={ITEMS_LIMIT + 1}
+                          id={draggedElementData().originalList.id}
+                          name={draggedElementData().originalList.name}
                           isDraggingOverlay={true}
                         >
-                          {[draggedItemData()]}
+                          {draggedElementData().items}
                         </ImportedGroup>
                       </Match>
                     </Switch>

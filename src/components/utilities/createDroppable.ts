@@ -1,12 +1,6 @@
-import { autoUpdate, flip, hide, shift } from "@floating-ui/dom";
+import { autoUpdate, flip, hide, type Placement, shift } from "@floating-ui/dom";
 import { useFloating, type UseFloatingResult } from "solid-floating-ui";
-import {
-  type Accessor,
-  createEffect,
-  createSignal,
-  onCleanup,
-  type Setter,
-} from "solid-js";
+import { type Accessor, createEffect, createSignal, onCleanup, type Setter } from "solid-js";
 
 type Droppable = [
   Accessor<boolean>,
@@ -16,27 +10,27 @@ type Droppable = [
   UseFloatingResult,
 ];
 
-export function createDroppable(): Droppable {
-  const [isMenuOpen, setIsMenuOpen] = createSignal(false);
+export function createDroppable(placement: Placement = "bottom-end"): Droppable {
+  const [isDropdownOpen, setIsDropdownOpen] = createSignal(false);
 
-  const [menuButtonRef, setMenuButtonRef] = createSignal<HTMLElement>();
+  const [dropdownButtonRef, setDropdownButtonRef] = createSignal<HTMLElement>();
 
-  const [menuRef, setMenuRef] = createSignal<HTMLElement>();
+  const [dropdownRef, setDropdownRef] = createSignal<HTMLElement>();
 
   createEffect(() => {
-    if (!isMenuOpen()) return;
+    if (!isDropdownOpen()) return;
 
     const handleClickOutside = (event: MouseEvent) => {
-      const menuButtonEl = menuButtonRef();
-      const menuEl = menuRef();
+      const dropdownButtonEl = dropdownButtonRef();
+      const dropdownEl = dropdownRef();
 
       if (
-        menuEl &&
-        menuButtonEl &&
-        !menuEl.contains(event.target as Node) &&
-        !menuButtonEl.contains(event.target as Node)
+        dropdownEl &&
+        dropdownButtonEl &&
+        !dropdownEl.contains(event.target as Node) &&
+        !dropdownButtonEl.contains(event.target as Node)
       ) {
-        setIsMenuOpen(false);
+        setIsDropdownOpen(false);
       }
     };
 
@@ -46,8 +40,8 @@ export function createDroppable(): Droppable {
     });
   });
 
-  const floatingPosition = useFloating(menuButtonRef, menuRef, {
-    placement: "bottom-end",
+  const floatingPosition = useFloating(dropdownButtonRef, dropdownRef, {
+    placement: placement,
     whileElementsMounted: (reference, floating, update) =>
       autoUpdate(reference, floating, update, {
         animationFrame: true,
@@ -55,11 +49,5 @@ export function createDroppable(): Droppable {
     middleware: [shift(), flip(), hide()], //TODO Подумать нужно ли Shift оставлять когда будет разработка под 320px
   });
 
-  return [
-    isMenuOpen,
-    setIsMenuOpen,
-    setMenuButtonRef,
-    setMenuRef,
-    floatingPosition,
-  ];
+  return [isDropdownOpen, setIsDropdownOpen, setDropdownButtonRef, setDropdownRef, floatingPosition];
 }

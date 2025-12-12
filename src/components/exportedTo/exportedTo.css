@@ -1,0 +1,49 @@
+.exportedTo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.exportedTo__title {
+  width: 100%;
+  text-align: left;
+}
+
+.exportedTo__list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  list-style: none;
+  margin: 0;
+}
+
+.exportedTo_medium {
+  width: 30.4rem;
+  padding: 0.6rem 0.4rem 0.6rem 0;
+  border-radius: 0.8rem;
+  min-height: 4.4rem;
+}
+
+@media (width <= 767px) {
+  .exportedTo_medium {
+    max-height: 22.4rem;
+  }
+}
+
+.exportedTo_medium .exportedTo__title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.8rem;
+  padding: 0.2rem 0 0.4rem 1.5rem;
+}
+
+.exportedTo_medium .exportedTo__list {
+  max-height: 17.7rem;
+  padding: 0 0.8rem 0 0;
+}
+
+.exportedTo_primary {
+  background: var(--neutral-100);
+  box-shadow: 0 0.2rem 1rem 0 rgb(0 0 0 / 15%);
+}

@@ -3,13 +3,14 @@ import { LISTS_LIMIT } from "../../../../configuration.ts";
 import { BACKEND_URL_LISTS, BACKEND_URL_NON_EXISTING, URL_MY_LISTS } from "../../../../utilities/addresses.ts";
 import AppPage from "../../../layouts/app/app.astro";
 import { getLists } from "../../../services/getLists.ts";
-import type { List } from "../../../types/types";
+import type { ListFromBackend } from "../../../types/types.ts";
+import { emptyListFromBackend } from "../../../widgets/editList/editList.store.tsx";
 import { EditList } from "../../../widgets/editList/editList.tsx";
 
 import "./style.css";
 
 let listRequestError = false;
-let list: List;
+let list: ListFromBackend;
 let errorText: string = "";
 
 function undefinedListId() {
@@ -34,13 +35,7 @@ try {
   list = await response.json();
 } catch {
   listRequestError = true;
-  list = {
-    name: "",
-    items: [],
-    id: "",
-    purpose: "",
-    note: "",
-  };
+  list = emptyListFromBackend;
 }
 
 let isListsLimitReached = false;

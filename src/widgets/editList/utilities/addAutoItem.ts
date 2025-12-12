@@ -1,29 +1,29 @@
 import { setStoreEditList, storeEditList } from "../editList.store.tsx";
 
-import { createDefaultItem } from "./createDefaultItem.ts";
+import { createDefaultElement } from "./createDefaultItem.ts";
 
 export function addAutoItem() {
-  const items = storeEditList.items;
-  const lastIndex = items.length - 1;
-  const lastItem = items[lastIndex];
-  const lastItemContent = lastItem?.content.trim();
+  const elements = storeEditList.elements;
+  const lastIndex = elements.length - 1;
+  const lastItem = elements[lastIndex];
+  const lastItemContent = lastItem?.items[0].content.trim();
 
   if (lastItemContent === "" && lastItem?.auto) {
     return;
   }
 
   if (lastItemContent === "") {
-    setStoreEditList("items", lastIndex, "auto", true);
+    setStoreEditList("elements", lastIndex, "auto", true);
 
     return;
   }
 
-  items.forEach((item, index) => {
+  elements.forEach((item, index) => {
     if (item.auto) {
-      setStoreEditList("items", index, "auto", false);
+      setStoreEditList("elements", index, "auto", false);
     }
   });
 
-  const autoItem = createDefaultItem(storeEditList.id, storeEditList.name, true);
-  setStoreEditList("items", items.length, autoItem);
+  const autoItem = createDefaultElement(storeEditList.id, storeEditList.name, "", true);
+  setStoreEditList("elements", elements.length, autoItem);
 }

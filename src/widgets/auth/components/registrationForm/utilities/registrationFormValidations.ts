@@ -1,3 +1,4 @@
+import { validatePassword } from "../../../../../../utilities/validatePassword.ts";
 import type { RegistrationFormInputs } from "../registrationForm.store.ts";
 
 export const isRegistrationFormValid = (inputs: RegistrationFormInputs) => {
@@ -7,20 +8,12 @@ export const isRegistrationFormValid = (inputs: RegistrationFormInputs) => {
 export const validateRegistrationForm = (inputs: RegistrationFormInputs) => {
   const { email, pass, repeat_pass, accept_agreement } = inputs;
 
-  const emailInput = document.getElementsByName("Электронная почта").item(0) as HTMLInputElement;
-  const isEmailValid = emailInput.checkValidity();
-
-  const passRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d!@#$%^&*]{8,}$/;
-  const isPassValid = passRegex.test(pass.value.toString());
+  const isPassValid = validatePassword(pass.value.toString());
   const isRepeatPassValid = !isPassValid || pass.value === repeat_pass.value;
   const isAcceptPoliceValid = Boolean(accept_agreement.value);
 
   const result: RegistrationFormInputs = {
-    email: {
-      ...email,
-      isValid: isEmailValid,
-      error: !isEmailValid ? "Неверный формат" : "",
-    },
+    email,
     pass: {
       ...pass,
       isValid: isPassValid,

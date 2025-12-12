@@ -117,8 +117,8 @@ button {
 
 /* WebKit браузеры (Chrome, Safari, Edge) */
 .scrollStyles::-webkit-scrollbar {
-  width: 0.8rem;
-  height: 0.8rem;
+  width: 1.6rem;
+  height: 1.6rem;
 }
 
 .scrollStyles::-webkit-scrollbar-track {
@@ -130,6 +130,7 @@ button {
   background-color: rgb(83 83 83 / 30%);
   border-radius: 10rem;
   background-clip: content-box;
+  border: 0.4rem solid var(--neutral-100);
 }
 
 .scrollStyles:hover::-webkit-scrollbar-thumb {
