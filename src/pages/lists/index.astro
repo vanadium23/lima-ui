@@ -28,11 +28,5 @@ const isListsLimitReached = lists.length >= LISTS_LIMIT;
 ---
 
 <AppPage titleName="Мои списки" isListsLimitReached={isListsLimitReached}>
-  <Lists
-    client:only="solid-js"
-    defaultLists={lists}
-    slot="mainContent"
-    listsRequestError={listsRequestError}
-    isListsLimitReached={isListsLimitReached}
-  />
+  <Lists client:only="solid-js" defaultLists={lists} slot="mainContent" listsRequestError={listsRequestError} />
 </AppPage>

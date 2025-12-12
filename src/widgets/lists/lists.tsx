@@ -23,7 +23,6 @@ import "./lists.css";
 type ListsProps = {
   defaultLists: ListBase[];
   listsRequestError: boolean;
-  isListsLimitReached: boolean;
 };
 
 export const Lists = (props: ListsProps) => {
@@ -47,6 +46,10 @@ export const Lists = (props: ListsProps) => {
       );
     }
   });
+
+  function isListsLimitReached() {
+    return storeLists.lists.length >= LISTS_LIMIT;
+  }
 
   return (
     <div slot="mainContent" class="lists">
@@ -79,7 +82,7 @@ export const Lists = (props: ListsProps) => {
         </ul>
 
         <div class="lists__errors">
-          <Show when={mProps.isListsLimitReached}>
+          <Show when={isListsLimitReached()}>
             <PageError testId={LISTS_LIMIT_REACHED_WARNING}>Вы использовали лимит в {LISTS_LIMIT} списков</PageError>
           </Show>
         </div>
@@ -89,7 +92,7 @@ export const Lists = (props: ListsProps) => {
             componentType={ButtonComponentType.Link}
             href={URL_CREATE_LIST}
             testId={CREATE_LIST_BUTTON}
-            disabled={mProps.isListsLimitReached}
+            disabled={isListsLimitReached()}
           >
             Создать
           </Button>
