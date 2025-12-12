@@ -68,16 +68,16 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
 
   const [isEditDialogOpen, setIsEditDialogOpen] = createSignal(false);
 
-  function totalItemsBeforeEditImportedItems() {
+  function totalElementsBeforeEditImportedGroup() {
     return mProps.children.length + getEditListElementsWithoutAutoItem().length;
   }
 
-  function reachedLimitEditItems() {
-    return totalItemsBeforeEditImportedItems() > ITEMS_LIMIT;
+  function reachedLimitEditListElements() {
+    return totalElementsBeforeEditImportedGroup() > ITEMS_LIMIT;
   }
 
-  function editListItem() {
-    if (!reachedLimitEditItems()) {
+  function editImportedGroup() {
+    if (!reachedLimitEditListElements()) {
       const newElements: EditListElement[] = mProps.children.map((item) =>
         createDefaultElement(storeEditList.id, storeEditList.name, item.content),
       );
@@ -90,7 +90,7 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
     } else {
       notificationState.pushInfo(
         "Превышение лимита пунктов",
-        `Этот список нельзя встроить, так как будет превышен лимит ${totalItemsBeforeEditImportedItems()} из ${ITEMS_LIMIT} доступных элементов списка`,
+        `Этот список нельзя встроить, так как будет превышен лимит ${totalElementsBeforeEditImportedGroup()} из ${ITEMS_LIMIT} доступных элементов списка`,
       );
     }
   }
@@ -232,7 +232,7 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
         controls={
           <Button
             handleClick={() => {
-              editListItem();
+              editImportedGroup();
               setIsEditDialogOpen(false);
             }}
             testId={DEFAULT_TEST_ID}
