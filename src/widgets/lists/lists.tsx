@@ -78,7 +78,8 @@ export const Lists = (props: ListsProps) => {
                   onRemoveSuccess={removingListInStore}
                   testId={LIST_STRIPE}
                   testSubId={index()}
-                  exported={Boolean(list.exportedTo?.length)}
+                  isExportedList={Boolean(list.exportedTo?.length)}
+                  hasExportedItems={list.hasExportedItems}
                 />
               </li>
             )}

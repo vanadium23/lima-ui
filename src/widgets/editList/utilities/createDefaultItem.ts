@@ -1,14 +1,15 @@
-import type { EditListElement, ListId, ListName } from "../../../types/types.ts";
+import type { EditListElement, ItemContent, ListId, ListName } from "../../../types/types.ts";
 
 export function createDefaultElement(
   listId: ListId = "",
   listName: ListName = "",
+  itemContent: ItemContent = "",
   auto: boolean = false,
 ): EditListElement {
   return {
     id: "",
     originalList: { id: listId, name: listName },
-    items: [{ id: "", content: "" }],
+    items: [{ id: "", content: itemContent }],
     isImported: false,
     exportedTo: [],
     dragId: createDragId(),

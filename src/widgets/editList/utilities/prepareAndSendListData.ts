@@ -7,7 +7,7 @@ import { setStoreEditList, storeEditList, updateStoreEditList } from "../editLis
 import { createList } from "../services/createList.ts";
 import { updateList } from "../services/updateList.ts";
 
-import { getEditListElementsWithoutAutoItem } from "./getEditListElementsWithoutAutoItem.tsx";
+import { getEditListElementsWithoutAutoItem } from "./getEditListElementsWithoutAutoItem.ts";
 
 export function prepareAndSendListData(event: SubmitEvent) {
   event.preventDefault();

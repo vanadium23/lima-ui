@@ -1,4 +1,4 @@
-.pushNotificationWrapper {
+.pushNotificationBar {
   position: fixed;
   top: 5.6rem;
   right: 0.8rem;
@@ -10,7 +10,7 @@
   pointer-events: none;
 }
 
-.pushNotificationWrapper__item {
+.pushNotificationBar__item {
   pointer-events: auto;
   animation: open-notification 0.3s ease-out;
 }
