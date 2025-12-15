@@ -86,6 +86,9 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
   function handleListCheckboxChange(checked: boolean) {
     const newState = new Array(mProps.children.elements.length).fill(checked);
     setItemsCheckboxState(newState);
+
+    setListCheckboxState(checked);
+
     calculateListCheckboxState();
     mProps.onSelectionChange();
   }
