@@ -1,6 +1,7 @@
 Feature: Failing to create a new list
 
   Background:
+    And I clear all data
     When I open "List Creation" page
 
   Scenario: "Save" button stays disabled when fields contain only spaces

@@ -1,6 +1,7 @@
 Feature: Basic list printing functionality
 
   Background:
+    And I clear all data
     When I open "List Creation" page
 
   Scenario: Print button enables after creating a list
