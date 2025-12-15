@@ -1,6 +1,7 @@
 Feature: Adding items above and below on the List page
 
   Background:
+    And I clear all data
     When I open "List Creation" page
 
   Scenario: Adding an item above the first one via context menu

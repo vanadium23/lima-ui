@@ -11,20 +11,21 @@ import "./app.css";
 interface Props {
   titleName: string;
   list404?: boolean;
+  isListsLimitReached: boolean;
 }
 
-const { titleName, list404 = false } = Astro.props as Props;
+const { titleName, list404 = false, isListsLimitReached } = Astro.props as Props;
 ---
 
 <!doctype html>
 <html lang="ru">
   <Head titleName={titleName} />
   <body>
-    <Header client:only="solid-js" list404={list404} />
+    <Header client:only="solid-js" list404={list404} isListsLimitReached={isListsLimitReached} />
 
     <div class="appContainer">
       <aside class="appContainer__nav">
-        <Sidebar client:only="solid-js" />
+        <Sidebar client:only="solid-js" isListsLimitReached={isListsLimitReached} />
       </aside>
 
       <main class="main">

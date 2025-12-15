@@ -1,8 +1,8 @@
 import { Then, When } from "@cucumber/cucumber";
 
 import { LISTS_LIMIT } from "../../configuration.ts";
+import { getLists } from "../../src/services/getLists.ts";
 import { createList } from "../../src/widgets/editList/services/createList.ts";
-import { getLists } from "../../src/widgets/services/getLists.ts";
 import type { ComplexWorld } from "../context/hooks.ts";
 import {
   LIST_STRIPE,

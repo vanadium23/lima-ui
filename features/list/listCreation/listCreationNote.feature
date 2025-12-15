@@ -1,6 +1,7 @@
 Feature: Note on the List Creation page
 
   Background:
+    And I clear all data
     When I open "List Creation" page
 
   Scenario: Expanding Note accordion and seeing Note text area

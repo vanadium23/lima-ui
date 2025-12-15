@@ -21,21 +21,23 @@ import "./header.css";
 type HeaderProps = {
   list404?: boolean;
   isLanding?: boolean;
+  isListsLimitReached?: boolean;
 };
 
 export const Header = (props: HeaderProps) => {
-  const mProps = mergeProps(
+  const mProps: Required<HeaderProps> = mergeProps(
     {
       list404: false,
       isLanding: false,
+      isListsLimitReached: false,
     },
     props,
   );
 
-  const showToggleIconButton = (): boolean => {
+  const showToolsPanelButton = (): boolean => {
     const currentLocation: string = location();
 
-    return !mProps.list404 && currentLocation !== URL_MY_LISTS;
+    return !mProps.list404 && currentLocation !== URL_MY_LISTS && !mProps.isListsLimitReached;
   };
 
   return (
@@ -74,7 +76,7 @@ export const Header = (props: HeaderProps) => {
             />
           </div>
           <div class="header__toggleToolsPanelButton">
-            <Show when={showToggleIconButton()}>
+            <Show when={showToolsPanelButton()}>
               <ToggleIconButton
                 iconName={IconName.SquareHalf}
                 ariaLabel={"Переключить панель инструментов"}

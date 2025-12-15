@@ -46,6 +46,7 @@ type EditListProps = {
   defaultList?: ListFromBackend;
   requestError?: boolean;
   errorText?: string;
+  isListsLimitReached?: boolean;
 };
 
 export const EditList = (props: EditListProps) => {
@@ -54,6 +55,7 @@ export const EditList = (props: EditListProps) => {
       defaultList: emptyListFromBackend,
       requestError: false,
       errorText: "",
+      isListsLimitReached: false,
     },
     props,
   );
@@ -113,116 +115,121 @@ export const EditList = (props: EditListProps) => {
   });
 
   return (
-    <Show when={!mProps.requestError}>
-      <div class="editList">
-        <div class="editList__main">
-          <form class="editList__form" method="post" onSubmit={prepareAndSendListData}>
-            <EditListHeader />
+    <Switch>
+      <Match when={mProps.isListsLimitReached}>
+        <div>Лимит списков превышен</div>
+      </Match>
+      <Match when={!mProps.requestError}>
+        <div class="editList">
+          <div class="editList__main">
+            <form class="editList__form" method="post" onSubmit={prepareAndSendListData}>
+              <EditListHeader />
 
-            <div
-              class="editList__scrollContainer scrollStyles"
-              ref={(el) => (scroller.scrollContainer = el)}
-              data-test-id={LIST_ITEMS}
-            >
-              <DragDropProvider
-                onDragStart={onDragStart}
-                onDragEnd={onDragEnd}
-                collisionDetector={createScrollableCollisionsDetector(scroller.scrollContainer, storeEditList)}
+              <div
+                class="editList__scrollContainer scrollStyles"
+                ref={(el) => (scroller.scrollContainer = el)}
+                data-test-id={LIST_ITEMS}
               >
-                <DragDropSensors />
-                <SortableProvider ids={dragIds()}>
-                  <For each={storeEditList.elements.slice(0, ITEMS_LIMIT)}>
-                    {(element, index) => {
-                      const dragData = createSortable(element.dragId);
+                <DragDropProvider
+                  onDragStart={onDragStart}
+                  onDragEnd={onDragEnd}
+                  collisionDetector={createScrollableCollisionsDetector(scroller.scrollContainer, storeEditList)}
+                >
+                  <DragDropSensors />
+                  <SortableProvider ids={dragIds()}>
+                    <For each={storeEditList.elements.slice(0, ITEMS_LIMIT)}>
+                      {(element, index) => {
+                        const dragData = createSortable(element.dragId);
 
-                      if (element.isImported) {
-                        return (
-                          <ImportedGroup
-                            testId={DEFAULT_TEST_ID}
-                            index={index()}
-                            id={element.originalList.id}
-                            name={element.originalList.name}
-                            dragSettings={{
-                              dragData,
-                              dragProps: {
-                                ref: dragData.ref,
-                                style: storeEditList.draggedItem ? transformStyle(dragData.transform) : {},
-                              },
-                              dragState: useDragDropContext()?.[0] || null,
-                            }}
-                          >
-                            {element.items}
-                          </ImportedGroup>
-                        );
-                      } else {
-                        return (
-                          <ListItem
-                            index={index()}
-                            auto={element.auto}
-                            exportedTo={element.exportedTo}
-                            dragSettings={{
-                              dragData,
-                              dragProps: {
-                                ref: dragData.ref,
-                                style: storeEditList.draggedItem ? transformStyle(dragData.transform) : {},
-                              },
-                              dragState: useDragDropContext()?.[0] || null,
-                            }}
-                          >
-                            {element.items[0].content}
-                          </ListItem>
-                        );
-                      }
-                    }}
-                  </For>
-                </SortableProvider>
-                <DragOverlay>
-                  <Switch>
-                    <Match when={draggedElementData().originalList.id === storeEditList.id}>
-                      <ListItem index={ITEMS_LIMIT + 1} auto={draggedElementData().auto} isDraggingOverlay={true}>
-                        {draggedElementData().items[0].content}
-                      </ListItem>
-                    </Match>
-                    <Match when={draggedElementData().originalList.id !== storeEditList.id}>
-                      <ImportedGroup
-                        testId={DEFAULT_TEST_ID}
-                        index={ITEMS_LIMIT + 1}
-                        id={draggedElementData().originalList.id}
-                        name={draggedElementData().originalList.name}
-                        isDraggingOverlay={true}
-                      >
-                        {draggedElementData().items}
-                      </ImportedGroup>
-                    </Match>
-                  </Switch>
-                </DragOverlay>
-              </DragDropProvider>
-            </div>
-
-            <Show when={storeEditList.error || reachedItemsLimit() || storeEditList.removeError}>
-              <div class="editList__errors">
-                <Show when={reachedItemsLimit()}>
-                  <PageError testId={ITEMS_LIMIT_REACHED_WARNING}>
-                    Вы использовали лимит в {ITEMS_LIMIT} пунктов
-                  </PageError>
-                </Show>
+                        if (element.isImported) {
+                          return (
+                            <ImportedGroup
+                              testId={DEFAULT_TEST_ID}
+                              index={index()}
+                              id={element.originalList.id}
+                              name={element.originalList.name}
+                              dragSettings={{
+                                dragData,
+                                dragProps: {
+                                  ref: dragData.ref,
+                                  style: storeEditList.draggedItem ? transformStyle(dragData.transform) : {},
+                                },
+                                dragState: useDragDropContext()?.[0] || null,
+                              }}
+                            >
+                              {element.items}
+                            </ImportedGroup>
+                          );
+                        } else {
+                          return (
+                            <ListItem
+                              index={index()}
+                              auto={element.auto}
+                              exportedTo={element.exportedTo}
+                              dragSettings={{
+                                dragData,
+                                dragProps: {
+                                  ref: dragData.ref,
+                                  style: storeEditList.draggedItem ? transformStyle(dragData.transform) : {},
+                                },
+                                dragState: useDragDropContext()?.[0] || null,
+                              }}
+                            >
+                              {element.items[0].content}
+                            </ListItem>
+                          );
+                        }
+                      }}
+                    </For>
+                  </SortableProvider>
+                  <DragOverlay>
+                    <Switch>
+                      <Match when={draggedElementData().originalList.id === storeEditList.id}>
+                        <ListItem index={ITEMS_LIMIT + 1} auto={draggedElementData().auto} isDraggingOverlay={true}>
+                          {draggedElementData().items[0].content}
+                        </ListItem>
+                      </Match>
+                      <Match when={draggedElementData().originalList.id !== storeEditList.id}>
+                        <ImportedGroup
+                          testId={DEFAULT_TEST_ID}
+                          index={ITEMS_LIMIT + 1}
+                          id={draggedElementData().originalList.id}
+                          name={draggedElementData().originalList.name}
+                          isDraggingOverlay={true}
+                        >
+                          {draggedElementData().items}
+                        </ImportedGroup>
+                      </Match>
+                    </Switch>
+                  </DragOverlay>
+                </DragDropProvider>
               </div>
-            </Show>
 
-            <div class="editList__controls">
-              <Button
-                type={ButtonType.Submit}
-                disabled={!storeEditList.isChanged || storeEditList.sendingNow === "deleting"}
-                loading={storeEditList.sendingNow === "saving"}
-                testId={SAVE_LIST_BUTTON}
-              >
-                Сохранить
-              </Button>
-            </div>
-          </form>
+              <Show when={storeEditList.error || reachedItemsLimit() || storeEditList.removeError}>
+                <div class="editList__errors">
+                  <Show when={reachedItemsLimit()}>
+                    <PageError testId={ITEMS_LIMIT_REACHED_WARNING}>
+                      Вы использовали лимит в {ITEMS_LIMIT} пунктов
+                    </PageError>
+                  </Show>
+                </div>
+              </Show>
+
+              <div class="editList__controls">
+                <Button
+                  type={ButtonType.Submit}
+                  disabled={!storeEditList.isChanged || storeEditList.sendingNow === "deleting"}
+                  loading={storeEditList.sendingNow === "saving"}
+                  testId={SAVE_LIST_BUTTON}
+                >
+                  Сохранить
+                </Button>
+              </div>
+            </form>
+          </div>
+          <EditListToolsPanel />
         </div>
-        <EditListToolsPanel />
-      </div>
-    </Show>
+      </Match>
+    </Switch>
   );
 };

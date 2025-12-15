@@ -1,5 +1,5 @@
+import { getLists } from "../../../services/getLists.ts";
 import { type EditListType, isItemFromBackend, type ListFromBackend, type ListId } from "../../../types/types.ts";
-import { getLists } from "../../services/getLists.ts";
 import { convertListFromBackendToEditList } from "../editList.store.tsx";
 
 export async function getListsForImporting(importingListId: ListId): Promise<EditListType[]> {

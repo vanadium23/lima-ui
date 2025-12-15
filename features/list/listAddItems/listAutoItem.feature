@@ -1,6 +1,7 @@
 Feature: Seeing the basis of the automatically added item
 
   Background:
+    And I clear all data
     When I open "List Creation" page
 
   Scenario: Seeing the new item automatically added
