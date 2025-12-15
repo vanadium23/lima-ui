@@ -1,6 +1,7 @@
 import { createEffect, For, Show } from "solid-js";
 import { createStore } from "solid-js/store";
 
+import { ITEMS_LIMIT } from "../../../../../configuration.ts";
 import { DEFAULT_TEST_ID, IMPORT_DIALOG, IMPORT_DIALOG_IMPORT_BUTTON } from "../../../../../features/testIds.ts";
 import { soften } from "../../../../../utilities/soften.ts";
 import { Button, ButtonSize, ButtonTheme, ButtonType } from "../../../../components/button/button.tsx";
@@ -13,8 +14,9 @@ import { addImportItems } from "../../utilities/addImportItems.ts";
 import { convertEditListToImportedListElement } from "../../utilities/convertItemsFromBackendToEditListItems.ts";
 import { pasteImportedItemsAfter, pasteImportedItemsBefore } from "../../utilities/pasteImportItems.ts";
 
-import { ImportDialogCounter } from "./components/importDialogCounter.tsx";
+import { ElementCounter } from "./components/elementCounter/elementCounter.tsx";
 import { getCheckedImportItemsCount } from "./utilities/getCheckedImportItemsCount.tsx";
+import { getTotalCheckedItemsCount } from "./utilities/getTotalCheckedItemsCount.tsx";
 import { isImportDialogLimitReached } from "./utilities/isImportDialogLimitReached.tsx";
 import "./importDialog.css";
 
@@ -167,7 +169,9 @@ export const ImportDialog = (props: ImportDialogProps) => {
       loading={storeImportDialog.loadingListsForImport}
       controls={
         <>
-          <ImportDialogCounter testId={DEFAULT_TEST_ID} />
+          <ElementCounter testId={DEFAULT_TEST_ID} isLimitReached={isImportDialogLimitReached()} maxCount={ITEMS_LIMIT}>
+            {getTotalCheckedItemsCount()}
+          </ElementCounter>
           <Button
             theme={ButtonTheme.Primary}
             type={ButtonType.Submit}
