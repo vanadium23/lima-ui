@@ -2,6 +2,7 @@ Feature: Seeing the amount of symbols left for typing in the inputs on the List 
 
   Background:
     When I open "List Creation" page
+    And I clear all data
 
   Scenario Outline: Seeing the correct counter remainder with some text in the input while creating a list
     And I focus <input name> input

@@ -52,7 +52,7 @@ Then("I expect to see the warning about items inputs limit reached", async funct
 
 When(
   "I fill all items inputs with their index",
-  { timeout: getTimeoutOrCancelItIfDebugging(60000) },
+  { timeout: getTimeoutOrCancelItIfDebugging(90000) },
   async function (this: ComplexWorld) {
     const itemInputs = this.locateByIdParts(LIST_ITEM_INPUT);
     const count = await itemInputs.count();

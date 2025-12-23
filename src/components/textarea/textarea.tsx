@@ -55,7 +55,7 @@ export const Textarea = (props: Testable<TextareaProps>) => {
     >
       <textarea
         name={mProps.name}
-        class="textarea__inner"
+        class="textarea__inner scrollStyles"
         disabled={mProps.disabled}
         maxlength={mProps.maxLength}
         placeholder={mProps.placeholder}

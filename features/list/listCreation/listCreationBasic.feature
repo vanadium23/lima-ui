@@ -1,6 +1,7 @@
 Feature: Seeing the basis of List Creation page
 
   Background:
+    And I clear all data
     When I open "List Creation" page
 
   Scenario: Seeing List Creation page

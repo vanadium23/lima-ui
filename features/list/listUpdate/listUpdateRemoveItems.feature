@@ -76,7 +76,7 @@ Feature: Removing items from an existing list
     Then I expect to see the "save" button enabled
 
   @heavy
-  Scenario: Adding list items to the limit and then removing one list item leads to limit warning disappear and buttons enablement
+  Scenario: Reenabling items adding buttons when deleting the on-limit item
     When I ensure the tools panel is open
     And I add list items to their limit
     And I fill all items inputs with their index

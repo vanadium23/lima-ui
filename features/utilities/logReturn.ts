@@ -1,7 +1,4 @@
-export function logReturn<SomeType>(
-  something: SomeType,
-  label?: string,
-): SomeType {
+export function logReturn<SomeType>(something: SomeType, label?: string | number): SomeType {
   if (label) {
     console.log(label, something);
   } else {
@@ -10,3 +7,5 @@ export function logReturn<SomeType>(
 
   return something;
 }
+
+export const returnLog = logReturn;

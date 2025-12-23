@@ -6,25 +6,56 @@ import {
   ListStripeImportTheme,
 } from "../../../components/listStripeImport/listStripeImport.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
-import type { List } from "../../../types/types.ts";
+import type { EditListType } from "../../../types/types.ts";
 
 const themes = Object.values(ListStripeImportTheme);
 const sizes = Object.values(ListStripeImportSize);
 
-const testListData: List = {
+const testListData: EditListType = {
+  type: "list",
   id: "123134",
   name: "Пример списка для импорта",
   purpose: "Выберите элементы для импорта",
   note: "",
-  items: [
-    { id: "123", content: "Ололо1", originalList: { id: "1", name: "Название родительского списка" } },
-    { id: "123", content: "Ололо2", originalList: { id: "1", name: "Название родительского списка" } },
+  exportedTo: [],
+  hasExportedItems: false,
+  elements: [
     {
       id: "123",
-      content: "Длинный текст элемента списка для проверки отображения",
       originalList: { id: "1", name: "Название родительского списка" },
+      items: [{ id: "123", content: "Ололо1" }],
+      isImported: true,
+      exportedTo: [],
+      dragId: "123",
+      auto: false,
     },
-    { id: "123", content: "Ололо4", originalList: { id: "1", name: "Название родительского списка" } },
+    {
+      id: "456",
+      originalList: { id: "1", name: "Название родительского списка" },
+      items: [{ id: "456", content: "Ололо2" }],
+      isImported: true,
+      exportedTo: [],
+      dragId: "456",
+      auto: false,
+    },
+    {
+      id: "789",
+      originalList: { id: "1", name: "Название родительского списка" },
+      items: [{ id: "789", content: "Длинный текст элемента списка для проверки отображения" }],
+      isImported: true,
+      exportedTo: [],
+      dragId: "789",
+      auto: false,
+    },
+    {
+      id: "101112",
+      originalList: { id: "1", name: "Название родительского списка" },
+      items: [{ id: "101112", content: "Ололо4" }],
+      isImported: true,
+      exportedTo: [],
+      dragId: "101112",
+      auto: false,
+    },
   ],
 };
 ---

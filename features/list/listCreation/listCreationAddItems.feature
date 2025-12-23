@@ -1,6 +1,7 @@
 Feature: Adding items on the List Creation page
 
   Background:
+    And I clear all data
     When I open "List Creation" page
 
   Scenario: Adding single item input

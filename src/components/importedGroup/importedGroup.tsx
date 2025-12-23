@@ -1,17 +1,29 @@
-import { For, mergeProps } from "solid-js";
+import { createSignal, For, mergeProps } from "solid-js";
 
-import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
+import { ITEMS_LIMIT } from "../../../configuration.ts";
+import { ADD_ITEM_ABOVE_MENUITEM, ADD_ITEM_BELOW_MENUITEM, DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import { getListLink } from "../../../utilities/addresses.ts";
-import type { DragSettings, Item } from "../../types/types.ts";
-import { storeEditList } from "../../widgets/editList/editList.store.tsx";
+import { notificationState } from "../../state/pushNotificationStateManager.ts";
+import type { DragSettings, EditListElement, EditListSimpleItem } from "../../types/types.ts";
+import {
+  openImportDialogPasteAfter,
+  openImportDialogPasteBefore,
+} from "../../widgets/editList/components/importDialog/importDialog.tsx";
+import { setStoreEditList, storeEditList } from "../../widgets/editList/editList.store.tsx";
+import { createDefaultElement } from "../../widgets/editList/utilities/createDefaultItem.ts";
+import { getEditListElementsWithoutAutoItem } from "../../widgets/editList/utilities/getEditListElementsWithoutAutoItem.ts";
+import { pasteItemAfter, pasteItemBefore } from "../../widgets/editList/utilities/pasteNewItem.ts";
 import { reachedItemsLimit } from "../../widgets/editList/utilities/reachedItemsLimit.ts";
 import { removeItem } from "../../widgets/editList/utilities/removeItem.ts";
+import { Button } from "../button/button.tsx";
+import { Dialog } from "../dialog/dialog.tsx";
 import { DragHandle } from "../dragHandle/dragHandle.tsx";
-import { DropdownMenu } from "../dropdownMenu/dropdownMenu.tsx";
+import { Dropdown } from "../dropdown/dropdown.tsx";
 import { IconName } from "../icon/types.ts";
 import { IconButton, IconButtonSize } from "../iconButton/iconButton.tsx";
 import { ImportedItem } from "../importedItem/importedItem.tsx";
 import { Link, LinkSize } from "../link/link.tsx";
+import { Menu } from "../menu/menu.tsx";
 import { MenuItemComponentType, MenuItemTheme } from "../menuItem/menuItem.tsx";
 import type { Testable } from "../utilities/testable.ts";
 
@@ -28,9 +40,9 @@ export enum ImportedGroupSize {
 type ImportedGroupProps = {
   theme?: ImportedGroupTheme;
   size?: ImportedGroupSize;
-  itemIndex: number;
+  index: number;
   checkable?: boolean;
-  children: Item[];
+  children: EditListSimpleItem[];
   name: string;
   id: string;
   dragSettings?: DragSettings;
@@ -54,11 +66,42 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
     props,
   );
 
+  const [isEditDialogOpen, setIsEditDialogOpen] = createSignal(false);
+
+  function totalElementsBeforeEditImportedGroup() {
+    return mProps.children.length + getEditListElementsWithoutAutoItem().length;
+  }
+
+  function reachedLimitEditListElements() {
+    return totalElementsBeforeEditImportedGroup() > ITEMS_LIMIT;
+  }
+
+  function editImportedGroup() {
+    if (!reachedLimitEditListElements()) {
+      const newElements: EditListElement[] = mProps.children.map((item) =>
+        createDefaultElement(storeEditList.id, storeEditList.name, item.content),
+      );
+
+      setStoreEditList("elements", (elements) => [
+        ...elements.slice(0, mProps.index),
+        ...newElements,
+        ...elements.slice(mProps.index + 1),
+      ]);
+    } else {
+      notificationState.pushInfo(
+        "Превышение лимита пунктов",
+        `Этот список нельзя встроить, так как будет превышен лимит ${totalElementsBeforeEditImportedGroup()} из ${ITEMS_LIMIT} доступных элементов списка`,
+      );
+    }
+  }
+
   const menuItems = () => [
     {
       children: "Редактировать",
       icon: IconName.NotePencil,
-      handleClick: () => {},
+      handleClick: () => {
+        setIsEditDialogOpen(true);
+      },
       testId: DEFAULT_TEST_ID,
       disabled: reachedItemsLimit(),
     },
@@ -70,10 +113,46 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
       testId: DEFAULT_TEST_ID,
     },
     {
+      children: "Добавить пункт выше",
+      icon: IconName.Plus,
+      handleClick: () => {
+        pasteItemBefore(mProps.index);
+      },
+      testId: ADD_ITEM_ABOVE_MENUITEM,
+      disabled: reachedItemsLimit(),
+    },
+    {
+      children: "Добавить пункт ниже",
+      icon: IconName.Plus,
+      handleClick: () => {
+        pasteItemAfter(mProps.index);
+      },
+      testId: ADD_ITEM_BELOW_MENUITEM,
+      disabled: reachedItemsLimit(),
+    },
+    {
+      children: "Импортировать выше",
+      icon: IconName.SortDescending,
+      handleClick: () => {
+        openImportDialogPasteBefore(mProps.index);
+      },
+      testId: DEFAULT_TEST_ID,
+      disabled: reachedItemsLimit(),
+    },
+    {
+      children: "Импортировать ниже",
+      icon: IconName.SortAscending,
+      handleClick: () => {
+        openImportDialogPasteAfter(mProps.index);
+      },
+      testId: DEFAULT_TEST_ID,
+      disabled: reachedItemsLimit(),
+    },
+    {
       children: "Удалить импорт",
       icon: IconName.Trash,
       handleClick: () => {
-        removeItem(mProps.itemIndex);
+        removeItem(mProps.index);
       },
       theme: MenuItemTheme.Dangerous,
       testId: DEFAULT_TEST_ID,
@@ -113,8 +192,9 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
               {mProps.name}
             </Link>
             <div class="importedGroup__button">
-              <DropdownMenu
-                component={(props) => (
+              <Dropdown
+                defaultPlacement={"bottom-end"}
+                anchor={(props) => (
                   <IconButton
                     ref={props.ref}
                     handleClick={props.handleClick}
@@ -125,10 +205,9 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
                     disabled={Boolean(storeEditList.sendingNow)}
                   />
                 )}
-                testId={DEFAULT_TEST_ID}
               >
-                {menuItems()}
-              </DropdownMenu>
+                <Menu testId={DEFAULT_TEST_ID}>{menuItems()}</Menu>
+              </Dropdown>
             </div>
           </div>
         </div>
@@ -145,6 +224,32 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
           )}
         </For>
       </div>
+      <Dialog
+        title="Редактировать импорт"
+        onCancel={() => {
+          setIsEditDialogOpen(false);
+        }}
+        controls={
+          <Button
+            handleClick={() => {
+              editImportedGroup();
+              setIsEditDialogOpen(false);
+            }}
+            testId={DEFAULT_TEST_ID}
+            testSubId={mProps.testSubId || "0"}
+          >
+            Редактировать
+          </Button>
+        }
+        open={isEditDialogOpen()}
+        testId={mProps.testId}
+        testSubId={mProps.testSubId || "0"}
+      >
+        <p>
+          Редактируя импортированный список или пункт, вы открепляете его от исходного, и в дальнейшем любые изменения
+          исходного списка не будут отражаться на этом списке.
+        </p>
+      </Dialog>
     </div>
   );
 };

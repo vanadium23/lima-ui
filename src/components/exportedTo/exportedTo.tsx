@@ -5,40 +5,45 @@ import type { SimpleList } from "../../types/types.ts";
 import { DropdownListItem } from "../dropdownListItem/dropdownListItem.tsx";
 import type { Testable } from "../utilities/testable.ts";
 
-import "./dropdownList.css";
+import "./exportedTo.css";
 
-export enum DropdownListTheme {
+export enum ExportedToTheme {
   Primary = "primary",
 }
 
-export enum DropdownListSize {
+export enum ExportedToSize {
   Medium = "medium",
 }
 
-export type DropdownListProps = {
-  theme?: DropdownListTheme;
-  size?: DropdownListSize;
+export type ExportedToProps = {
+  theme?: ExportedToTheme;
+  size?: ExportedToSize;
   children: SimpleList[];
+  title: string;
 };
 
-export const DropdownList = (props: Testable<DropdownListProps>) => {
-  const mProps: Testable<Required<DropdownListProps>> = mergeProps(
+export const ExportedTo = (props: Testable<ExportedToProps>) => {
+  const mProps: Testable<Required<ExportedToProps>> = mergeProps(
     {
-      theme: DropdownListTheme.Primary,
-      size: DropdownListSize.Medium,
+      theme: ExportedToTheme.Primary,
+      size: ExportedToSize.Medium,
     },
     props,
   );
 
   return (
     <div
-      class="dropdownList"
+      class="exportedTo"
       classList={{
-        [`dropdownList_${mProps.size}`]: true,
-        [`dropdownList_${mProps.theme}`]: true,
+        [`exportedTo_${mProps.size}`]: true,
+        [`exportedTo_${mProps.theme}`]: true,
       }}
     >
-      <ul class="dropdownList__list scrollStyles" data-test-id={DEFAULT_TEST_ID}>
+      <span class="exportedTo__title" id="exportedToDropdownTitle">
+        {mProps.title}
+      </span>
+
+      <ul class="exportedTo__list scrollStyles" aria-labelledby="exportedToDropdownTitle" data-test-id={mProps.testId}>
         <For each={mProps.children}>
           {(list, index) => {
             return (

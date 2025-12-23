@@ -1,4 +1,4 @@
-.dropdownMenu {
+.menu {
   display: flex;
   flex-direction: column;
   padding: 0;
@@ -9,11 +9,11 @@
   z-index: 1; /* фиксит накладывания поверх меню других элементов которые перерендериваются, например loading у кнопки удаления */
 }
 
-.dropdownMenu_medium {
+.menu_medium {
   gap: 0.1rem;
 }
 
-.dropdownMenu_primary {
+.menu_primary {
   background: var(--neutral-200);
   border-radius: 0.8rem;
   box-shadow: 0 0.2rem 1rem 0 rgb(0 0 0 / 15%);

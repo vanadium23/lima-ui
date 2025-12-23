@@ -1,7 +1,7 @@
 import { createSignal, Index, mergeProps, untrack } from "solid-js";
 
 import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
-import type { List } from "../../types/types.ts";
+import type { EditListType } from "../../types/types.ts";
 import { setStoreImportDialog } from "../../widgets/editList/components/importDialog/importDialog.tsx";
 import { Checkbox, CheckboxSize, CheckboxTheme, type CheckedState } from "../checkbox/checkbox.tsx";
 import { Icon, IconSize } from "../icon/icon.tsx";
@@ -22,7 +22,7 @@ export enum ListStripeImportSize {
 type ListStripeImportProps = {
   theme?: ListStripeImportTheme;
   size?: ListStripeImportSize;
-  children: List;
+  children: EditListType;
   titleHTMLName: string;
   disabled?: boolean;
   currentItemsCount?: number;
@@ -57,7 +57,7 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
   }
 
   function calculateListCheckboxState() {
-    if (mProps.children.items.length === getCheckedItemsCount()) {
+    if (mProps.children.elements.length === getCheckedItemsCount()) {
       setStoreImportDialog("checkedItemsCount", mProps.children.id, 1);
     } else {
       setStoreImportDialog("checkedItemsCount", mProps.children.id, getCheckedItemsCount());
@@ -75,7 +75,7 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
 
       if (getCheckedItemsCount() === 0) {
         setListCheckboxState(false);
-      } else if (getCheckedItemsCount() === mProps.children.items.length) {
+      } else if (getCheckedItemsCount() === mProps.children.elements.length) {
         setListCheckboxState(true);
       } else {
         setListCheckboxState("mixed");
@@ -84,8 +84,11 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
   }
 
   function handleListCheckboxChange(checked: boolean) {
-    const newState = new Array(mProps.children.items.length).fill(checked);
+    const newState = new Array(mProps.children.elements.length).fill(checked);
     setItemsCheckboxState(newState);
+
+    setListCheckboxState(checked);
+
     calculateListCheckboxState();
     mProps.onSelectionChange();
   }
@@ -110,6 +113,7 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
         <Checkbox
           theme={CheckboxTheme.Primary}
           size={CheckboxSize.Medium}
+          dataId={mProps.children.id}
           testId={DEFAULT_TEST_ID}
           testSubId={mProps.testSubId ?? ""}
           checked={getListCheckboxState()}
@@ -130,22 +134,24 @@ export const ListStripeImport = (props: Testable<ListStripeImportProps>) => {
           </div>
         </button>
         <div class="listStripeImport__items">
-          <Index each={mProps.children.items}>
-            {(getItem, index) => {
+          <Index each={mProps.children.elements}>
+            {(element, index) => {
               setStoreImportDialog(
                 "itemsCache",
-                untrack(() => getItem().id),
-                untrack(getItem),
+                untrack(() => element().id),
+                untrack(element),
               );
 
               return (
                 <ListItemImport
                   testId={DEFAULT_TEST_ID}
-                  checkboxHTMLName={getItem().id}
+                  itemId={element().id}
+                  listId={mProps.children.id}
+                  checkboxHTMLName={element().items[0].content}
                   checked={getItemsCheckboxState()[index] || false}
                   onCheckedChange={handleItemCheckboxChange(index)}
                 >
-                  {getItem().content}
+                  {element().items[0].content}
                 </ListItemImport>
               );
             }}

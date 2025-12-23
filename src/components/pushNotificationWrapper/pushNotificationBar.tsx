@@ -2,29 +2,23 @@ import { For, Show } from "solid-js";
 import { Portal } from "solid-js/web";
 
 import { notificationState } from "../../state/pushNotificationStateManager.ts";
-import { PushNotification, PushNotificationTheme } from "../pushNotification/pushNotification.tsx";
+import { PushNotification } from "../pushNotification/pushNotification.tsx";
 
-import "./pushNotificationWrapper.css";
+import "./pushNotificationBar.css";
 
-export const PushNotificationWrapper = () => {
+export const PushNotificationBar = () => {
   return (
     <Show when={notificationState.notifications().length > 0}>
       <Portal>
-        <div class="pushNotificationWrapper">
+        <div class="pushNotificationBar">
           <For each={notificationState.notifications()}>
             {(notification) => (
-              <div class="pushNotificationWrapper__item">
+              <div class="pushNotificationBar__item">
                 <PushNotification
                   title={notification.title}
                   description={notification.description}
                   iconName={notification.iconName}
-                  theme={
-                    notification.type === "success"
-                      ? PushNotificationTheme.Successful
-                      : notification.type === "network-error"
-                        ? PushNotificationTheme.Dangerous
-                        : PushNotificationTheme.Primary
-                  }
+                  theme={notification.theme}
                   onClose={() => notificationState.remove(notification.id)}
                   testId={notification.testId}
                   testSubId={notification.testSubId}

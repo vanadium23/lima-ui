@@ -1,10 +1,10 @@
 import type { CollisionDetector, DragEvent, Droppable } from "@thisbeyond/solid-dnd";
 import { onCleanup } from "solid-js";
 
-import type { Items, ScrollContainer } from "../../../types/types.ts";
+import type { ScrollContainer } from "../../../types/types.ts";
 import { type EditListStore, setStoreEditList, storeEditList } from "../editList.store.tsx";
 
-import { createDefaultItem, createDragId } from "./createDefaultItem.ts";
+import { createDefaultElement } from "./createDefaultItem.ts";
 import { scroller } from "./scrollToBottom.ts";
 
 const SCROLL_SPEED = 10; // Base scrolling speed
@@ -16,9 +16,10 @@ type AutoScrollOptions = {
 };
 
 export const draggedItemData = () =>
-  storeEditList.items.find((item) => item.dragId === storeEditList.draggedItem) || createDefaultItem(storeEditList.id);
+  storeEditList.elements.find((item) => item.dragId === storeEditList.draggedItem) ||
+  createDefaultElement(storeEditList.id);
 
-export const dragIds = () => storeEditList.items.map((item) => item.dragId);
+export const dragIds = () => storeEditList.elements.map((item) => item.dragId);
 
 export const onDragStart = ({ draggable }: DragEvent) => {
   setStoreEditList({
@@ -37,25 +38,19 @@ export const onDragEnd = ({ draggable, droppable }: DragEvent) => {
   autoScroll.stopListening();
 
   if (draggable && droppable) {
-    const currentItems = [...storeEditList.items];
+    const currentItems = [...storeEditList.elements];
     const fromIndex = currentItems.findIndex((item) => item.dragId === draggable.id);
     const toIndex = currentItems.findIndex((item) => item.dragId === droppable.id);
 
     if (fromIndex !== -1 && toIndex !== -1 && fromIndex !== toIndex) {
-      const updatedItems = [...currentItems];
-      const [movedItem] = updatedItems.splice(fromIndex, 1);
+      const updatedElements = [...currentItems];
+      const [movedItem] = updatedElements.splice(fromIndex, 1);
 
       if (!movedItem) return;
 
-      updatedItems.splice(toIndex, 0, movedItem);
+      updatedElements.splice(toIndex, 0, movedItem);
 
-      setStoreEditList(
-        "items",
-        updatedItems.map((item, index) => ({
-          ...item,
-          auto: index === updatedItems.length - 1 && item.content.trim() === "",
-        })),
-      );
+      setStoreEditList("elements", updatedElements);
     }
   }
 
@@ -165,11 +160,3 @@ export const createScrollableCollisionsDetector: ScrollableCollisionDetectorCrea
 
     return droppable;
   };
-
-export function convertItemsToDragItems(items: Items) {
-  return items.map((item) => ({
-    ...item,
-    dragId: item.id || createDragId(),
-    auto: false,
-  }));
-}

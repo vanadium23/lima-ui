@@ -26,6 +26,8 @@ type CheckboxProps = {
   dependent?: boolean /* TODO Нужно описать в FE-документации как это у нас работает и для чего */;
   onChange?: (checked: boolean) => void;
   name?: string;
+  dataId?: string;
+  dataGroupId?: string;
   required?: boolean;
   error?: boolean;
 };
@@ -41,6 +43,8 @@ export const Checkbox = (props: Testable<CheckboxProps>) => {
       dependent: false,
       onChange: () => {},
       name: "",
+      dataId: "",
+      dataGroupId: "",
       required: false,
       error: false,
     },
@@ -93,6 +97,8 @@ export const Checkbox = (props: Testable<CheckboxProps>) => {
           <input
             type="checkbox"
             class="checkbox__input"
+            data-id={mProps.dataId}
+            data-group-id={mProps.dataGroupId}
             disabled={mProps.disabled}
             checked={getCheckedState()}
             onChange={handleChange}
@@ -133,6 +139,8 @@ export const Checkbox = (props: Testable<CheckboxProps>) => {
           <input
             type="checkbox"
             class="checkbox__input"
+            data-id={mProps.dataId}
+            data-group-id={mProps.dataGroupId}
             disabled={mProps.disabled}
             checked={getCheckedState()}
             onChange={handleChange}

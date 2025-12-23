@@ -27,7 +27,8 @@ type ItemInputProps = {
   placeholder: string;
   onChange?: (value: string) => void;
   defaultIsError?: boolean;
-  controlElements?: JSXElement;
+  alwaysVisibleButtons?: JSXElement;
+  hoverVisibleButtons?: JSXElement;
 };
 
 export const CyberInput = (props: Testable<ItemInputProps>) => {
@@ -44,7 +45,8 @@ export const CyberInput = (props: Testable<ItemInputProps>) => {
       required: false,
       children: "",
       onChange: () => {},
-      controlElements: null,
+      alwaysVisibleButtons: null,
+      hoverVisibleButtons: null,
     },
     props,
   );
@@ -110,7 +112,10 @@ export const CyberInput = (props: Testable<ItemInputProps>) => {
         {mProps.children}
       </textarea>
       <div class="cyberInput__controls">
-        {mProps.controlElements}
+        <div class="cyberInput__buttonsPanel">
+          <div class="cyberInput__alwaysVisiblePanel">{mProps.alwaysVisibleButtons}</div>
+          <div class="cyberInput__hoverVisiblePanel">{mProps.hoverVisibleButtons}</div>
+        </div>
         <Show when={remainingChars() <= COUNTER_DISPLAY_LIMIT}>
           <div class="cyberInput__counter">
             <CharCounter testId={mProps.testId} testSubId={mProps.testSubId ?? ""}>
