@@ -1,4 +1,4 @@
-import { mergeProps, Show } from "solid-js";
+import { createSignal, mergeProps, Show } from "solid-js";
 
 import { EDIT_LIST_INPUT_LIMIT } from "../../../configuration.ts";
 import {
@@ -25,8 +25,10 @@ import { handleItemChange } from "../../widgets/editList/utilities/handleItemCha
 import { pasteItemAfter, pasteItemBefore } from "../../widgets/editList/utilities/pasteNewItem.ts";
 import { reachedItemsLimit } from "../../widgets/editList/utilities/reachedItemsLimit.ts";
 import { removeItem } from "../../widgets/editList/utilities/removeItem.ts";
+import { Button, ButtonSize, ButtonTheme } from "../button/button.tsx";
 import { Checkbox, CheckboxSize, CheckboxTheme } from "../checkbox/checkbox.tsx";
 import { CyberInput } from "../cyberInput/cyberInput.tsx";
+import { Dialog } from "../dialog/dialog.tsx";
 import { DragHandle } from "../dragHandle/dragHandle.tsx";
 import { Dropdown } from "../dropdown/dropdown.tsx";
 import { ExportedTo } from "../exportedTo/exportedTo.tsx";
@@ -34,6 +36,7 @@ import { IconName } from "../icon/types.ts";
 import { IconButton, IconButtonSize, IconButtonTheme } from "../iconButton/iconButton.tsx";
 import { Menu } from "../menu/menu.tsx";
 import { MenuItemTheme } from "../menuItem/menuItem.tsx";
+import { TextButton, TextButtonSize, TextButtonTheme } from "../textButton/textButton.tsx";
 import type { TestId, TestSubId } from "../utilities/testable.ts";
 
 import "./listItem.css";
@@ -50,6 +53,7 @@ type ListItemProps = {
   theme?: ListItemTheme;
   size?: ListItemSize;
   index: number;
+  id: string;
   name?: string;
   children?: string;
   auto?: boolean;
@@ -78,6 +82,8 @@ export const ListItem = (props: ListItemProps) => {
     },
     props,
   );
+
+  const [isRemoveExportedItemDialogOpen, setIsRemoveExportedItemDialogOpen] = createSignal(false);
 
   const menuItems = () => [
     {
@@ -120,7 +126,11 @@ export const ListItem = (props: ListItemProps) => {
       children: "Удалить пункт",
       icon: IconName.Trash,
       handleClick: () => {
-        removeItem(mProps.index);
+        if (mProps.exportedTo.length > 0) {
+          setIsRemoveExportedItemDialogOpen(true);
+        } else {
+          removeItem(mProps.index);
+        }
       },
       theme: MenuItemTheme.Dangerous,
       testId: REMOVE_ITEM_MENUITEM,
@@ -240,6 +250,52 @@ export const ListItem = (props: ListItemProps) => {
           {mProps.children}
         </CyberInput>
       </div>
+      <Dialog
+        title="Удаление пункта"
+        onCancel={() => {
+          setIsRemoveExportedItemDialogOpen(false);
+        }}
+        controls={
+          <>
+            <TextButton
+              theme={TextButtonTheme.Dangerous}
+              size={TextButtonSize.Medium}
+              handleClick={() => {
+                removeItem(mProps.index, { id: mProps.id, deletionMethod: "deletion" });
+                setIsRemoveExportedItemDialogOpen(false);
+                console.log(storeEditList.removedExportedItems);
+              }}
+              testId={DEFAULT_TEST_ID}
+              testSubId={getListItemTestSubId(getTestId(), mProps.index)}
+            >
+              Удалить всё
+            </TextButton>
+            <Button
+              theme={ButtonTheme.Dangerous}
+              size={ButtonSize.Medium}
+              handleClick={() => {
+                removeItem(mProps.index, { id: mProps.id, deletionMethod: "insertion" });
+                setIsRemoveExportedItemDialogOpen(false);
+                console.log(storeEditList.removedExportedItems);
+              }}
+              testId={DEFAULT_TEST_ID}
+              testSubId={getListItemTestSubId(getTestId(), mProps.index)}
+            >
+              Удалить этот пункт
+            </Button>
+          </>
+        }
+        open={isRemoveExportedItemDialogOpen()}
+        testId={DEFAULT_TEST_ID}
+        testSubId={getListItemTestSubId(getTestId(), mProps.index)}
+      >
+        <p>
+          Вы удаляете пункт, экспортированный в другие списки. Выберите способ удаления:
+          <br />
+          – Удалить этот пункт — все экспорты его в другие списки останутся в качестве пункта тех списков.
+          <br />– Удалить все — этот пункт будет удален из всех списков. Это действие нельзя отменить.
+        </p>
+      </Dialog>
     </div>
   );
 };

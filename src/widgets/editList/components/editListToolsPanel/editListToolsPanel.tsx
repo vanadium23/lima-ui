@@ -12,7 +12,7 @@ import {
 } from "../../../../../features/testIds.ts";
 import { Divider } from "../../../../components/divider/divider.tsx";
 import { IconName } from "../../../../components/icon/types.ts";
-import { RemoveDialog } from "../../../../components/removeDialog/removeDialog.tsx";
+import { RemoveListDialog } from "../../../../components/removeDialog/removeListDialog.tsx";
 import { Switch } from "../../../../components/switch/switch.tsx";
 import {
   ToolsButton,
@@ -29,7 +29,7 @@ import { ImportDialog, openImportDialogPasteEnd } from "../importDialog/importDi
 
 const toggleCheckable = () => setStoreEditList("isCheckable", !storeEditList.isCheckable);
 
-const [isOpenRemoveDialog, setOpenRemoveDialog] = createSignal(false);
+const [isOpenRemoveListDialog, setOpenRemoveListDialog] = createSignal(false);
 
 function copyItemsToClipboard(elements: EditListElement[]) {
   const textToCopy = elements
@@ -74,17 +74,17 @@ const EditListToolsPanel = () => {
             loading={storeEditList.sendingNow === "deleting"}
             disabled={storeEditList.isNewList || storeEditList.sendingNow === "saving"}
             handleClick={() => {
-              setOpenRemoveDialog(true);
+              setOpenRemoveListDialog(true);
             }}
             testId={TOOLS_PANEL_BUTTON_REMOVE_LIST}
           >
             Удалить список
           </ToolsButton>
-          <RemoveDialog
+          <RemoveListDialog
             hasExported={hasExported}
-            open={isOpenRemoveDialog()}
+            open={isOpenRemoveListDialog()}
             onCancel={() => {
-              setOpenRemoveDialog(false);
+              setOpenRemoveListDialog(false);
             }}
             listName={storeEditList.name}
             sendListRemove={sendListRemove}
