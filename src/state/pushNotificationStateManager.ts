@@ -4,12 +4,14 @@ import { DEFAULT_TEST_ID } from "../../features/testIds.ts";
 import { IconName } from "../components/icon/types.ts";
 import type { TestId, TestSubId } from "../components/utilities/testable.ts";
 
+export type NotificationType = "network-error" | "general" | "success";
+
 export type NotificationData = {
   id: string;
   title: string;
   description: string;
   iconName: IconName;
-  type?: "network-error" | "general";
+  type?: NotificationType;
   testId: TestId;
   testSubId: TestSubId;
 };
@@ -19,15 +21,47 @@ const [notifications, setNotifications] = createSignal<NotificationData[]>([]);
 export const notificationState = {
   notifications,
 
-  pushNetworkError: (
+  pushMessageToLocalStorage: (
+    type: NotificationType,
     title: string,
     description: string,
     testId: TestId = DEFAULT_TEST_ID,
   ) => {
     const id = Date.now().toString();
-    const testSubId =
-      notifications().findLast((notification) => notification.testId === testId)
-        ?.testSubId || "0";
+    const testSubId = notifications().findLast((notification) => notification.testId === testId)?.testSubId || "0";
+
+    const notification: NotificationData = {
+      id,
+      title,
+      description,
+      iconName: type === "success" ? IconName.CheckCircle : IconName.GlobeSimpleX,
+      type,
+      testId,
+      testSubId: `${Number(testSubId) + 1}`,
+    };
+
+    localStorage.setItem("notification", JSON.stringify(notification));
+  },
+
+  popMessageFromLocalStorage: () => {
+    const notificationRaw = localStorage.getItem("notification");
+
+    if (notificationRaw) {
+      const notification = JSON.parse(notificationRaw) as NotificationData;
+
+      setNotifications((prev) => [...prev, notification]);
+
+      setTimeout(() => {
+        notificationState.remove(notification.id);
+      }, 15000);
+
+      localStorage.removeItem("notification");
+    }
+  },
+
+  pushNetworkError: (title: string, description: string, testId: TestId = DEFAULT_TEST_ID) => {
+    const id = Date.now().toString();
+    const testSubId = notifications().findLast((notification) => notification.testId === testId)?.testSubId || "0";
 
     const notification: NotificationData = {
       id,

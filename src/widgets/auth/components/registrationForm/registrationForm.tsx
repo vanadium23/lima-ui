@@ -119,9 +119,7 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
               </label>
               <label class="registrationsForm__label">
                 <span class="registrationsForm__labelText">Придумайте пароль</span>
-                <span class="registrationsForm__hintText">
-                  минимум 8 символов, включая буквы латинского алфавита и цифры
-                </span>
+
                 <Input
                   type={InputType.Password}
                   placeholder="Пароль"
@@ -136,7 +134,22 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
                 >
                   {registrationFormStore.inputs.pass.value.toString()}
                 </Input>
-                <span class="registrationsForm__error" aria-live="polite" aria-atomic="true">
+                <span
+                  class="registrationsForm__hintText"
+                  classList={{
+                    registrationsForm__hiddenHintText: !registrationFormStore.inputs.pass.isValid,
+                  }}
+                >
+                  Минимум 8 символов: буквы (a-z) и цифры (0-9)
+                </span>
+                <span
+                  class="registrationsForm__error"
+                  classList={{
+                    registrationsForm__hiddenError: registrationFormStore.inputs.pass.isValid,
+                  }}
+                  aria-live="polite"
+                  aria-atomic="true"
+                >
                   {registrationFormStore.inputs.pass.error}
                 </span>
               </label>

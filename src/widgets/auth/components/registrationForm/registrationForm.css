@@ -67,15 +67,17 @@
 
 .registrationsForm__hintText {
   color: var(--text-neutral-800);
-  font-size: 1.2rem;
-  font-weight: 500;
-  line-height: 1.4rem;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+}
+
+.registrationsForm__hiddenHintText {
+  display: none;
 }
 
 .registrationsForm__policyLabelText {
   color: var(--text-neutral-800);
   font-size: 1.4rem;
-  font-weight: 500;
   line-height: 1.8rem;
 }
 
@@ -88,6 +90,10 @@
   font-size: 1.4rem;
   font-weight: 500;
   line-height: 1.8rem;
+}
+
+.registrationsForm__hiddenError {
+  display: none;
 }
 
 .registrationsForm__policyLabel {

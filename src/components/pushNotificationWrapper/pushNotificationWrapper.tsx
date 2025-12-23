@@ -2,10 +2,7 @@ import { For, Show } from "solid-js";
 import { Portal } from "solid-js/web";
 
 import { notificationState } from "../../state/pushNotificationStateManager.ts";
-import {
-  PushNotification,
-  PushNotificationTheme,
-} from "../pushNotification/pushNotification.tsx";
+import { PushNotification, PushNotificationTheme } from "../pushNotification/pushNotification.tsx";
 
 import "./pushNotificationWrapper.css";
 
@@ -21,7 +18,13 @@ export const PushNotificationWrapper = () => {
                   title={notification.title}
                   description={notification.description}
                   iconName={notification.iconName}
-                  theme={PushNotificationTheme.Dangerous}
+                  theme={
+                    notification.type === "success"
+                      ? PushNotificationTheme.Successful
+                      : notification.type === "network-error"
+                        ? PushNotificationTheme.Dangerous
+                        : PushNotificationTheme.Primary
+                  }
                   onClose={() => notificationState.remove(notification.id)}
                   testId={notification.testId}
                   testSubId={notification.testSubId}
