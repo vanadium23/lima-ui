@@ -13,6 +13,9 @@ import {
   LIST_ITEM,
   LIST_ITEM_CONTEXT_MENU,
   OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
+  REMOVE_DIALOG_DELETION_EXPORTED_ITEM_BUTTON,
+  REMOVE_DIALOG_INSERTION_EXPORTED_ITEM_BUTTON,
+  REMOVE_EXPORTED_ITEM_DIALOG,
   REMOVE_ITEM_MENUITEM,
 } from "../../../features/testIds.ts";
 import type { DragSettings, SimpleList } from "../../types/types.ts";
@@ -255,6 +258,9 @@ export const ListItem = (props: ListItemProps) => {
         onCancel={() => {
           setIsRemoveExportedItemDialogOpen(false);
         }}
+        open={isRemoveExportedItemDialogOpen()}
+        testId={REMOVE_EXPORTED_ITEM_DIALOG}
+        testSubId={getListItemTestSubId(getTestId(), mProps.index)}
         controls={
           <>
             <TextButton
@@ -265,7 +271,7 @@ export const ListItem = (props: ListItemProps) => {
                 setIsRemoveExportedItemDialogOpen(false);
                 console.log(storeEditList.deletedExportedItems);
               }}
-              testId={DEFAULT_TEST_ID}
+              testId={REMOVE_DIALOG_DELETION_EXPORTED_ITEM_BUTTON}
               testSubId={getListItemTestSubId(getTestId(), mProps.index)}
             >
               Удалить всё
@@ -278,16 +284,13 @@ export const ListItem = (props: ListItemProps) => {
                 setIsRemoveExportedItemDialogOpen(false);
                 console.log(storeEditList.deletedExportedItems);
               }}
-              testId={DEFAULT_TEST_ID}
+              testId={REMOVE_DIALOG_INSERTION_EXPORTED_ITEM_BUTTON}
               testSubId={getListItemTestSubId(getTestId(), mProps.index)}
             >
               Удалить этот пункт
             </Button>
           </>
         }
-        open={isRemoveExportedItemDialogOpen()}
-        testId={DEFAULT_TEST_ID}
-        testSubId={getListItemTestSubId(getTestId(), mProps.index)}
       >
         <p>
           Вы удаляете пункт, экспортированный в другие списки. Выберите способ удаления:
