@@ -16,7 +16,7 @@ export type EditListStore = EditListType & {
   draggedItem: string;
   itemsScrollStartPosition: number;
   hasExportedItems: boolean;
-  removedExportedItems: { id: string; deletionMethod: "deletion" | "insertion" }[];
+  deletedExportedItems: { id: string; deletionMethod: "deletion" | "insertion" }[];
 };
 
 export const emptyList: EditListType = {
@@ -59,7 +59,7 @@ export const [storeEditList, setStoreEditList] = createStore<EditListStore>({
   isNewList: "" === "",
   draggedItem: "",
   itemsScrollStartPosition: 0,
-  removedExportedItems: [],
+  deletedExportedItems: [],
 });
 
 export function initStoreEditList(defaultList: ListFromBackend) {
