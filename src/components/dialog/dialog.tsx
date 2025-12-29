@@ -1,4 +1,4 @@
-import { createEffect, type JSX, Match, mergeProps, Show, Switch } from "solid-js";
+import { createEffect, createSignal, type JSX, Match, mergeProps, Show, Switch } from "solid-js";
 import { Portal } from "solid-js/web";
 
 import { DIALOG_CLOSE_BUTTON } from "../../../features/testIds.ts";
@@ -42,15 +42,29 @@ export const Dialog = (props: Testable<DialogProps>) => {
 
   let dialogRef: HTMLDialogElement | undefined;
 
-  createEffect(() => {
-    if (mProps.open && dialogRef) {
-      dialogRef.showModal();
-    }
+  const [shouldRender, setShouldRender] = createSignal(false);
 
-    if (!mProps.open && dialogRef) {
-      closeDialog();
+  createEffect(() => {
+    const isOpen = mProps.open;
+
+    if (isOpen) {
+      setShouldRender(true);
+    } else if (dialogRef) {
+      dialogRef.close();
     }
   });
+
+  const setDialogRef = (el: HTMLDialogElement) => {
+    dialogRef = el;
+    queueMicrotask(() => {
+      dialogRef?.showModal();
+    });
+  };
+
+  const handleDialogClose = () => {
+    // Размонтируем только после закрытия
+    setShouldRender(false);
+  };
 
   const closeDialog = () => {
     if (dialogRef) {
@@ -71,54 +85,57 @@ export const Dialog = (props: Testable<DialogProps>) => {
   }
 
   return (
-    <Portal>
-      <dialog
-        class="dialog"
-        classList={{
-          [`dialog_${mProps.size}`]: true,
-          [`dialog_${mProps.theme}`]: true,
-        }}
-        aria-label={mProps.title}
-        aria-modal={mProps.open}
-        ref={(el) => (dialogRef = el)}
-        onClick={closeOnBackDropClick}
-        data-test-id={mProps.testId}
-        data-test-sub-id={mProps.testSubId}
-      >
-        <div class="dialog__wrapper">
-          <div class="dialog__header">
-            <h2 class="dialog__title">{mProps.title}</h2>
-            <IconButton
-              theme={IconButtonTheme.Primary}
-              size={IconButtonSize.MediumEmbedded}
-              iconName={IconName.X}
-              ariaLabel={`Закрыть диалоговое окно ${mProps.title}`}
-              handleClick={() => {
-                mProps.onCancel();
-                closeDialog();
-              }}
-              testId={DIALOG_CLOSE_BUTTON}
-              testSubId={mProps.testSubId ?? ""}
-            />
-          </div>
-          <Switch>
-            <Match when={mProps.loading}>
-              <div class="dialog__loadingIconWrapper">
-                <div class="dialog__loadingIcon">
-                  <Icon name={IconName.CircleNotch} size={IconSize.Large} />
+    <Show when={shouldRender()}>
+      <Portal>
+        <dialog
+          class="dialog"
+          classList={{
+            [`dialog_${mProps.size}`]: true,
+            [`dialog_${mProps.theme}`]: true,
+          }}
+          aria-label={mProps.title}
+          aria-modal={"true"}
+          ref={setDialogRef}
+          onClick={closeOnBackDropClick}
+          onClose={handleDialogClose}
+          data-test-id={mProps.testId}
+          data-test-sub-id={mProps.testSubId}
+        >
+          <div class="dialog__wrapper">
+            <div class="dialog__header">
+              <h2 class="dialog__title">{mProps.title}</h2>
+              <IconButton
+                theme={IconButtonTheme.Primary}
+                size={IconButtonSize.MediumEmbedded}
+                iconName={IconName.X}
+                ariaLabel={`Закрыть диалоговое окно ${mProps.title}`}
+                handleClick={() => {
+                  mProps.onCancel();
+                  closeDialog();
+                }}
+                testId={DIALOG_CLOSE_BUTTON}
+                testSubId={mProps.testSubId ?? ""}
+              />
+            </div>
+            <Switch>
+              <Match when={mProps.loading}>
+                <div class="dialog__loadingIconWrapper">
+                  <div class="dialog__loadingIcon">
+                    <Icon name={IconName.CircleNotch} size={IconSize.Large} />
+                  </div>
                 </div>
-              </div>
-            </Match>
-            <Match when={!mProps.loading}>
-              <div class="dialog__content scrollStyles">{mProps.children}</div>
-            </Match>
-          </Switch>
+              </Match>
+              <Match when={!mProps.loading}>
+                <div class="dialog__content scrollStyles">{mProps.children}</div>
+              </Match>
+            </Switch>
 
-          <Show when={mProps.controls}>
-            <div class="dialog__controls">{mProps.controls}</div>
-          </Show>
-        </div>
-      </dialog>
-    </Portal>
+            <Show when={mProps.controls}>
+              <div class="dialog__controls">{mProps.controls}</div>
+            </Show>
+          </div>
+        </dialog>
+      </Portal>
+    </Show>
   );
 };
