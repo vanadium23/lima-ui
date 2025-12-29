@@ -2,10 +2,10 @@ import { setStoreEditList } from "../editList.store.tsx";
 
 export function removeItem(
   indexToRemove: number,
-  deletedExportedItem?: { id: string; deletionMethod: "deletion" | "insertion" },
+  removedExportedItem?: { id: string; deletionMethod: "deletion" | "insertion" },
 ) {
-  if (deletedExportedItem?.id) {
-    setStoreEditList("deletedExportedItems", (items) => [...items, deletedExportedItem]);
+  if (removedExportedItem?.id) {
+    setStoreEditList("removedExportedItems", (items) => [...items, removedExportedItem]);
   }
 
   setStoreEditList("elements", (element) => {
