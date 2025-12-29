@@ -253,52 +253,54 @@ export const ListItem = (props: ListItemProps) => {
           {mProps.children}
         </CyberInput>
       </div>
-      <Dialog
-        title="Удаление пункта"
-        onCancel={() => {
-          setIsRemoveExportedItemDialogOpen(false);
-        }}
-        open={isRemoveExportedItemDialogOpen()}
-        testId={REMOVE_EXPORTED_ITEM_DIALOG}
-        testSubId={getListItemTestSubId(getTestId(), mProps.index)}
-        controls={
-          <>
-            <TextButton
-              theme={TextButtonTheme.Dangerous}
-              size={TextButtonSize.Medium}
-              handleClick={() => {
-                removeItem(mProps.index, { id: mProps.id, deletionMethod: "deletion" });
-                setIsRemoveExportedItemDialogOpen(false);
-                console.log(storeEditList.deletedExportedItems);
-              }}
-              testId={REMOVE_DIALOG_DELETION_EXPORTED_ITEM_BUTTON}
-              testSubId={getListItemTestSubId(getTestId(), mProps.index)}
-            >
-              Удалить всё
-            </TextButton>
-            <Button
-              theme={ButtonTheme.Dangerous}
-              size={ButtonSize.Medium}
-              handleClick={() => {
-                removeItem(mProps.index, { id: mProps.id, deletionMethod: "insertion" });
-                setIsRemoveExportedItemDialogOpen(false);
-                console.log(storeEditList.deletedExportedItems);
-              }}
-              testId={REMOVE_DIALOG_INSERTION_EXPORTED_ITEM_BUTTON}
-              testSubId={getListItemTestSubId(getTestId(), mProps.index)}
-            >
-              Удалить этот пункт
-            </Button>
-          </>
-        }
-      >
-        <p>
-          Вы удаляете пункт, экспортированный в другие списки. Выберите способ удаления:
-          <br />
-          – Удалить этот пункт — все экспорты его в другие списки останутся в качестве пункта тех списков.
-          <br />– Удалить все — этот пункт будет удален из всех списков. Это действие нельзя отменить.
-        </p>
-      </Dialog>
+      <Show when={mProps.exportedTo.length > 0}>
+        <Dialog
+          title="Удаление пункта"
+          onCancel={() => {
+            setIsRemoveExportedItemDialogOpen(false);
+          }}
+          open={isRemoveExportedItemDialogOpen()}
+          testId={REMOVE_EXPORTED_ITEM_DIALOG}
+          testSubId={getListItemTestSubId(getTestId(), mProps.index)}
+          controls={
+            <>
+              <TextButton
+                theme={TextButtonTheme.Dangerous}
+                size={TextButtonSize.Medium}
+                handleClick={() => {
+                  removeItem(mProps.index, { id: mProps.id, deletionMethod: "deletion" });
+                  setIsRemoveExportedItemDialogOpen(false);
+                  console.log(storeEditList.deletedExportedItems);
+                }}
+                testId={REMOVE_DIALOG_DELETION_EXPORTED_ITEM_BUTTON}
+                testSubId={getListItemTestSubId(getTestId(), mProps.index)}
+              >
+                Удалить всё
+              </TextButton>
+              <Button
+                theme={ButtonTheme.Dangerous}
+                size={ButtonSize.Medium}
+                handleClick={() => {
+                  removeItem(mProps.index, { id: mProps.id, deletionMethod: "insertion" });
+                  setIsRemoveExportedItemDialogOpen(false);
+                  console.log(storeEditList.deletedExportedItems);
+                }}
+                testId={REMOVE_DIALOG_INSERTION_EXPORTED_ITEM_BUTTON}
+                testSubId={getListItemTestSubId(getTestId(), mProps.index)}
+              >
+                Удалить этот пункт
+              </Button>
+            </>
+          }
+        >
+          <p>
+            Вы удаляете пункт, экспортированный в другие списки. Выберите способ удаления:
+            <br />
+            – Удалить этот пункт — все экспорты его в другие списки останутся в качестве пункта тех списков.
+            <br />– Удалить все — этот пункт будет удален из всех списков. Это действие нельзя отменить.
+          </p>
+        </Dialog>
+      </Show>
     </div>
   );
 };
