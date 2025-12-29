@@ -126,8 +126,14 @@ export const LIST_STRIPE_REMOVE_BUTTON = "listStripeRemoveButton";
 export const LIST_STRIPE_CONTEXT_MENU = "listStripeContextMenu";
 
 export const REMOVE_LIST_DIALOG = "removeListDialog";
-export const DIALOG_CLOSE_BUTTON = "dialogCloseButton";
+export const REMOVE_EXPORTED_ITEM_DIALOG = "removeExportedItemDialog";
+
+export function buildCloseDialogTestId(dialogTestId: TestId): TestId {
+  return `${dialogTestId}CloseButton`;
+}
 export const REMOVE_DIALOG_REMOVE_LIST_BUTTON = "removeDialogRemoveListButton";
+export const REMOVE_DIALOG_DELETION_EXPORTED_ITEM_BUTTON = "removeDialogDeletionExportedItemButton";
+export const REMOVE_DIALOG_INSERTION_EXPORTED_ITEM_BUTTON = "removeDialogInsertionExportedItemButton";
 
 export const IMPORT_DIALOG = "importDialog";
 export const IMPORT_DIALOG_IMPORT_BUTTON = "importDialogImportButton";

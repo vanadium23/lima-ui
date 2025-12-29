@@ -7,7 +7,7 @@ import { Dialog } from "../dialog/dialog.tsx";
 import { TextButton, TextButtonSize, TextButtonTheme } from "../textButton/textButton.tsx";
 import type { Testable } from "../utilities/testable.ts";
 
-type RemoveDialogProps = {
+type RemoveListDialogProps = {
   hasExported: boolean;
   listName: string;
   sendListRemove: (deletionMethod?: DeletionMethod) => void;
@@ -15,13 +15,13 @@ type RemoveDialogProps = {
   onCancel: () => void;
 };
 
-export const RemoveDialog = (props: Testable<RemoveDialogProps>) => {
-  const mProps: Testable<Required<RemoveDialogProps>> = mergeProps(props);
+export const RemoveListDialog = (props: Testable<RemoveListDialogProps>) => {
+  const mProps: Testable<Required<RemoveListDialogProps>> = mergeProps(props);
 
-  const [isRemoveDialogOpen, setIsRemoveDialogOpen] = createSignal(false);
+  const [isRemoveListDialogOpen, setIsRemoveListDialogOpen] = createSignal(false);
 
   createEffect(() => {
-    setIsRemoveDialogOpen(mProps.open);
+    setIsRemoveListDialogOpen(mProps.open);
   });
 
   return (
@@ -30,7 +30,7 @@ export const RemoveDialog = (props: Testable<RemoveDialogProps>) => {
         <Dialog
           title="Удаление списка"
           onCancel={() => {
-            setIsRemoveDialogOpen(false);
+            setIsRemoveListDialogOpen(false);
             mProps.onCancel();
           }}
           controls={
@@ -39,7 +39,7 @@ export const RemoveDialog = (props: Testable<RemoveDialogProps>) => {
               size={ButtonSize.Medium}
               handleClick={() => {
                 mProps.sendListRemove();
-                setIsRemoveDialogOpen(false);
+                setIsRemoveListDialogOpen(false);
               }}
               testId={REMOVE_DIALOG_REMOVE_LIST_BUTTON}
               testSubId={mProps.testSubId || "0"}
@@ -47,7 +47,7 @@ export const RemoveDialog = (props: Testable<RemoveDialogProps>) => {
               Удалить
             </Button>
           }
-          open={isRemoveDialogOpen()}
+          open={isRemoveListDialogOpen()}
           testId={mProps.testId}
           testSubId={mProps.testSubId || "0"}
         >
@@ -60,7 +60,7 @@ export const RemoveDialog = (props: Testable<RemoveDialogProps>) => {
         <Dialog
           title="Удаление списка"
           onCancel={() => {
-            setIsRemoveDialogOpen(false);
+            setIsRemoveListDialogOpen(false);
             mProps.onCancel();
           }}
           controls={
@@ -70,7 +70,7 @@ export const RemoveDialog = (props: Testable<RemoveDialogProps>) => {
                 size={TextButtonSize.Medium}
                 handleClick={() => {
                   mProps.sendListRemove("insertion");
-                  setIsRemoveDialogOpen(false);
+                  setIsRemoveListDialogOpen(false);
                 }}
                 testId={REMOVE_DIALOG_REMOVE_LIST_BUTTON}
                 testSubId={mProps.testSubId || "0"}
@@ -82,7 +82,7 @@ export const RemoveDialog = (props: Testable<RemoveDialogProps>) => {
                 size={ButtonSize.Medium}
                 handleClick={() => {
                   mProps.sendListRemove("deletion");
-                  setIsRemoveDialogOpen(false);
+                  setIsRemoveListDialogOpen(false);
                 }}
                 testId={REMOVE_DIALOG_REMOVE_LIST_BUTTON}
                 testSubId={mProps.testSubId || "0"}
@@ -91,7 +91,7 @@ export const RemoveDialog = (props: Testable<RemoveDialogProps>) => {
               </Button>
             </>
           }
-          open={isRemoveDialogOpen()}
+          open={isRemoveListDialogOpen()}
           testId={REMOVE_LIST_DIALOG}
           testSubId={mProps.testSubId || "0"}
         >

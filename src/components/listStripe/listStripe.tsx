@@ -19,7 +19,7 @@ import { IconName } from "../icon/types.ts";
 import { IconButton, IconButtonSize } from "../iconButton/iconButton.tsx";
 import { Menu } from "../menu/menu.tsx";
 import { MenuItemTheme } from "../menuItem/menuItem.tsx";
-import { RemoveDialog } from "../removeDialog/removeDialog.tsx";
+import { RemoveListDialog } from "../removeDialog/removeListDialog.tsx";
 import { Tooltip } from "../tooltip/tooltip.tsx";
 import { type Testable } from "../utilities/testable.ts";
 
@@ -58,7 +58,7 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
     props,
   );
 
-  const [isOpenRemoveDialog, setOpenRemoveDialog] = createSignal(false);
+  const [isOpenRemoveListDialog, setOpenRemoveListDialog] = createSignal(false);
 
   const [isRemoving, setIsRemoving] = createSignal(false);
 
@@ -73,7 +73,7 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
       children: "Удалить",
       icon: IconName.Trash,
       handleClick: () => {
-        setOpenRemoveDialog(true);
+        setOpenRemoveListDialog(true);
       },
       theme: MenuItemTheme.Dangerous,
       testId: LIST_STRIPE_REMOVE_BUTTON,
@@ -155,13 +155,13 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
         </Dropdown>
       </div>
 
-      <RemoveDialog
+      <RemoveListDialog
         hasExported={mProps.hasExportedItems || mProps.isExportedList}
         listName={mProps.listTitle}
         sendListRemove={removeListFromListStripe}
-        open={isOpenRemoveDialog()}
+        open={isOpenRemoveListDialog()}
         onCancel={() => {
-          setOpenRemoveDialog(false);
+          setOpenRemoveListDialog(false);
         }}
         testId={REMOVE_LIST_DIALOG}
         testSubId={mProps.testSubId || "0"}
