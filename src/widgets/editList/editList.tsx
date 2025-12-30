@@ -164,6 +164,7 @@ export const EditList = (props: EditListProps) => {
                           return (
                             <ListItem
                               index={index()}
+                              id={element.id}
                               auto={element.auto}
                               exportedTo={element.exportedTo}
                               dragSettings={{
@@ -185,7 +186,12 @@ export const EditList = (props: EditListProps) => {
                   <DragOverlay>
                     <Switch>
                       <Match when={draggedElementData().originalList.id === storeEditList.id}>
-                        <ListItem index={ITEMS_LIMIT + 1} auto={draggedElementData().auto} isDraggingOverlay={true}>
+                        <ListItem
+                          index={ITEMS_LIMIT + 1}
+                          id={"dragOverlayItem"}
+                          auto={draggedElementData().auto}
+                          isDraggingOverlay={true}
+                        >
                           {draggedElementData().items[0].content}
                         </ListItem>
                       </Match>

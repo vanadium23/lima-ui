@@ -1,7 +1,7 @@
 import { createEffect, createSignal, type JSX, Match, mergeProps, Show, Switch } from "solid-js";
 import { Portal } from "solid-js/web";
 
-import { DIALOG_CLOSE_BUTTON } from "../../../features/testIds.ts";
+import { buildCloseDialogTestId } from "../../../features/testIds.ts";
 import { Icon, IconSize } from "../icon/icon.tsx";
 import { IconName } from "../icon/types.ts";
 import { IconButton, IconButtonSize, IconButtonTheme } from "../iconButton/iconButton.tsx";
@@ -113,7 +113,7 @@ export const Dialog = (props: Testable<DialogProps>) => {
                   mProps.onCancel();
                   closeDialog();
                 }}
-                testId={DIALOG_CLOSE_BUTTON}
+                testId={buildCloseDialogTestId(mProps.testId)}
                 testSubId={mProps.testSubId ?? ""}
               />
             </div>
