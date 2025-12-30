@@ -62,7 +62,7 @@ export const Lists = (props: ListsProps) => {
         </span>
       </Show>
       <Show when={!mProps.listsRequestError}>
-        <ul class="lists__list">
+        <ul class="lists__list scrollStyles">
           <For each={storeLists.lists.slice().reverse()}>
             {(list, index) => (
               <li class="lists__item">
@@ -82,11 +82,11 @@ export const Lists = (props: ListsProps) => {
           </For>
         </ul>
 
-        <div class="lists__errors">
-          <Show when={isListsLimitReached()}>
+        <Show when={isListsLimitReached()}>
+          <div class="lists__errors">
             <PageError testId={LISTS_LIMIT_REACHED_WARNING}>Вы использовали лимит в {LISTS_LIMIT} списков</PageError>
-          </Show>
-        </div>
+          </div>
+        </Show>
 
         <div class="lists__new">
           <Button
