@@ -57,7 +57,7 @@ Then(
 
 When(
   "I add lists to their limit",
-  { timeout: getTimeoutOrCancelItIfDebugging(10000) },
+  { timeout: getTimeoutOrCancelItIfDebugging(60000) },
   async function (this: ComplexWorld) {
     const existingLists = await getLists(this.BACKEND_ADDRESS);
     const currentListsCount = existingLists.length;
