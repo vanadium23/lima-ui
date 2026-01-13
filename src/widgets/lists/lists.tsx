@@ -58,35 +58,37 @@ export const Lists = (props: ListsProps) => {
       </div>
       <Show when={storeLists.lists.length === 0 && !mProps.listsRequestError}>
         <span class="lists__emptyWarning" data-test-id={NO_SAVED_LISTS_MESSAGE}>
-          У вас еще нет сохраненных списков
+          Здесь будут ваши списки. Хотите создать первый список сейчас?
         </span>
       </Show>
       <Show when={!mProps.listsRequestError}>
-        <ul class="lists__list">
-          <For each={storeLists.lists.slice().reverse()}>
-            {(list, index) => (
-              <li class="lists__item">
-                <ListStripe
-                  listId={list.id}
-                  link={getListLink(list.id)}
-                  listTitle={list.name}
-                  listPurpose={list.purpose}
-                  onRemoveSuccess={removingListInStore}
-                  testId={LIST_STRIPE}
-                  testSubId={index()}
-                  isExportedList={Boolean(list.exportedTo?.length)}
-                  hasExportedItems={list.hasExportedItems}
-                />
-              </li>
-            )}
-          </For>
-        </ul>
+        <Show when={storeLists.lists.length > 0}>
+          <ul class="lists__list scrollStyles">
+            <For each={storeLists.lists.slice().reverse()}>
+              {(list, index) => (
+                <li class="lists__item">
+                  <ListStripe
+                    listId={list.id}
+                    link={getListLink(list.id)}
+                    listTitle={list.name}
+                    listPurpose={list.purpose}
+                    onRemoveSuccess={removingListInStore}
+                    testId={LIST_STRIPE}
+                    testSubId={index()}
+                    isExportedList={Boolean(list.exportedTo?.length)}
+                    hasExportedItems={list.hasExportedItems}
+                  />
+                </li>
+              )}
+            </For>
+          </ul>
+        </Show>
 
-        <div class="lists__errors">
-          <Show when={isListsLimitReached()}>
+        <Show when={isListsLimitReached()}>
+          <div class="lists__errors">
             <PageError testId={LISTS_LIMIT_REACHED_WARNING}>Вы использовали лимит в {LISTS_LIMIT} списков</PageError>
-          </Show>
-        </div>
+          </div>
+        </Show>
 
         <div class="lists__new">
           <Button

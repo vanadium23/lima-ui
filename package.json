@@ -13,14 +13,17 @@
     "preview": "astro preview",
     "astro": "astro",
     "test": "tsx scripts/runTests.ts",
+    "test-desktop": "tsx scripts/runTests.ts --desktop --verbose",
+    "test-tablet": "tsx scripts/runTests.ts --tablet --verbose",
+    "test-mobile": "tsx scripts/runTests.ts --mobile --verbose",
     "test-current": "tsx scripts/runTests.ts --current --desktop --verbose",
     "test-not-heavy": "tsx scripts/runTests.ts --not-heavy --desktop --verbose",
+    "show-trace": "playwright show-trace",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "prepare": "husky",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "show-trace": "playwright show-trace"
+    "prepare": "husky"
   },
   "dependencies": {
     "@astrojs/node": "^9.1.3",
