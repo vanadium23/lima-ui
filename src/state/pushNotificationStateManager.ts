@@ -23,46 +23,7 @@ const [notifications, setNotifications] = createSignal<NotificationData[]>([]);
 export const notificationState = {
   notifications,
 
-  pushMessageToLocalStorage: (
-    type: NotificationType,
-    title: string,
-    description: string,
-    testId: TestId = DEFAULT_TEST_ID,
-  ) => {
-    const id = Date.now().toString();
-    const testSubId = notifications().findLast((notification) => notification.testId === testId)?.testSubId || "0";
-
-    const notification: NotificationData = {
-      id,
-      title,
-      description,
-      iconName: type === "success" ? IconName.CheckCircle : IconName.GlobeSimpleX,
-      theme: type === "success" ? PushNotificationTheme.Successful : PushNotificationTheme.Dangerous,
-      type,
-      testId,
-      testSubId: `${Number(testSubId) + 1}`,
-    };
-
-    localStorage.setItem("notification", JSON.stringify(notification));
-  },
-
-  popMessageFromLocalStorage: () => {
-    const notificationRaw = localStorage.getItem("notification");
-
-    if (notificationRaw) {
-      const notification = JSON.parse(notificationRaw) as NotificationData;
-
-      setNotifications((prev) => [...prev, notification]);
-
-      setTimeout(() => {
-        notificationState.remove(notification.id);
-      }, 15000);
-
-      localStorage.removeItem("notification");
-    }
-  },
-
-  pushNetworkError: (title: string, description: string, testId: TestId = DEFAULT_TEST_ID) => {
+  pushNetworkError: (title: string, description: JSX.Element, testId: TestId = DEFAULT_TEST_ID) => {
     const id = Date.now().toString();
     const testSubId = notifications().findLast((notification) => notification.testId === testId)?.testSubId || "0";
 

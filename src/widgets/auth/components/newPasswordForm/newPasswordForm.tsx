@@ -1,9 +1,11 @@
 import {
+  DEFAULT_TEST_ID,
   NEW_PASSWORD_PASS_INPUT,
   NEW_PASSWORD_REPEAT_PASS_INPUT,
   NEW_PASSWORD_SUBMIT_BUTTON,
 } from "../../../../../features/testIds.ts";
 import { Button, ButtonType } from "../../../../components/button/button.tsx";
+import { HintErrorReplaceableText } from "../../../../components/hintErrorReplaceableText/hintErrorReplaceableText.tsx";
 import { AutocompleteType, Input, InputType } from "../../../../components/input/input.tsx";
 import { newPasswordFormStore } from "../newPasswordForm/newPasswordForm.store.ts";
 
@@ -57,24 +59,12 @@ export const NewPasswordForm = () => {
           >
             {newPasswordFormStore.inputs.pass.value.toString()}
           </Input>
-          <span
-            class="newPasswordForm__hintText"
-            classList={{
-              newPasswordForm__hiddenHintText: !newPasswordFormStore.inputs.pass.isValid,
-            }}
-          >
-            Минимум 8 символов: буквы (a-z) и цифры (0-9)
-          </span>
-          <span
-            class="newPasswordForm__error"
-            classList={{
-              newPasswordForm__hiddenError: newPasswordFormStore.inputs.pass.isValid,
-            }}
-            aria-live="polite"
-            aria-atomic="true"
-          >
-            {newPasswordFormStore.inputs.pass.error}
-          </span>
+          <HintErrorReplaceableText
+            hintText={"Минимум 8 символов: буквы (a-z) и цифры (0-9)"}
+            errorText={newPasswordFormStore.inputs.pass.error}
+            isError={!newPasswordFormStore.inputs.pass.isValid}
+            testId={DEFAULT_TEST_ID}
+          />
         </label>
         <label class="newPasswordForm__label">
           <span class="newPasswordForm__labelText">Повторите пароль</span>

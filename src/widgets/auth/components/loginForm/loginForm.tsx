@@ -54,7 +54,7 @@ export const LoginForm = (props: LoginFormProps) => {
   return (
     <Switch>
       <Match when={loginFormStore.isRestorePasswordMode}>
-        <RestorePasswordForm onSwitchBack={() => disableRestorePasswordMode()} />
+        <RestorePasswordForm onSwitchBack={disableRestorePasswordMode} />
       </Match>
       <Match when={!loginFormStore.isRestorePasswordMode}>
         <form class="loginForm__wrapper" method="post" onSubmit={onSubmit}>

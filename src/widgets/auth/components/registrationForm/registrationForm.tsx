@@ -14,6 +14,7 @@ import {
 import { AuthButton } from "../../../../components/authButton/authButton.tsx";
 import { Button, ButtonType } from "../../../../components/button/button.tsx";
 import { Checkbox } from "../../../../components/checkbox/checkbox.tsx";
+import { HintErrorReplaceableText } from "../../../../components/hintErrorReplaceableText/hintErrorReplaceableText.tsx";
 import { AutocompleteType, Input, InputType } from "../../../../components/input/input.tsx";
 import { Link } from "../../../../components/link/link.tsx";
 import { TextButton } from "../../../../components/textButton/textButton.tsx";
@@ -134,24 +135,12 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
                 >
                   {registrationFormStore.inputs.pass.value.toString()}
                 </Input>
-                <span
-                  class="registrationsForm__hintText"
-                  classList={{
-                    registrationsForm__hiddenHintText: !registrationFormStore.inputs.pass.isValid,
-                  }}
-                >
-                  Минимум 8 символов: буквы (a-z) и цифры (0-9)
-                </span>
-                <span
-                  class="registrationsForm__error"
-                  classList={{
-                    registrationsForm__hiddenError: registrationFormStore.inputs.pass.isValid,
-                  }}
-                  aria-live="polite"
-                  aria-atomic="true"
-                >
-                  {registrationFormStore.inputs.pass.error}
-                </span>
+                <HintErrorReplaceableText
+                  hintText={"Минимум 8 символов: буквы (a-z) и цифры (0-9)"}
+                  errorText={registrationFormStore.inputs.pass.error}
+                  isError={!registrationFormStore.inputs.pass.isValid}
+                  testId={DEFAULT_TEST_ID}
+                />
               </label>
               <label class="registrationsForm__label">
                 <span class="registrationsForm__labelText">Повторите пароль</span>

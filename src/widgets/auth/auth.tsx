@@ -3,7 +3,6 @@ import { createEffect, createSignal } from "solid-js";
 import { AUTH_TABS } from "../../../features/testIds.ts";
 import { Tabs } from "../../components/tabs/tabs.tsx";
 import { setUrlHash, urlHash } from "../../state/locationState.ts";
-import { notificationState } from "../../state/pushNotificationStateManager.ts";
 
 import { loginFormStore } from "./components/loginForm/loginForm.store.ts";
 import { LoginForm } from "./components/loginForm/loginForm.tsx";
@@ -68,8 +67,6 @@ export const Auth = () => {
 
     return authTabs;
   };
-
-  notificationState.popMessageFromLocalStorage();
 
   return (
     <div class="auth">

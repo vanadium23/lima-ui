@@ -1,7 +1,7 @@
 import { createStore } from "solid-js/store";
 
-import { NEW_PASSWORD_CHANGE_SUCCESS, REG_NETWORK_ERROR } from "../../../../../features/testIds.ts";
-import { URL_AUTH } from "../../../../../utilities/addresses.ts";
+import { REG_NETWORK_ERROR } from "../../../../../features/testIds.ts";
+import { URL_MY_LISTS } from "../../../../../utilities/addresses.ts";
 import { notificationState } from "../../../../state/pushNotificationStateManager.ts";
 import type { AuthFormInput } from "../../auth.tsx";
 import { requestPasswordChange } from "../../services/register.ts";
@@ -43,13 +43,7 @@ export function handleNewPassword(token: string) {
   requestPasswordChange(newPasswordFormStore.inputs.pass.value.toString(), token, false)
     .then((result) => {
       if (result) {
-        notificationState.pushMessageToLocalStorage(
-          "success",
-          "Пароль успешно изменен!",
-          "Войдите в систему, используя свою почту и новый пароль",
-          NEW_PASSWORD_CHANGE_SUCCESS,
-        );
-        window.location.replace(URL_AUTH);
+        window.location.replace(URL_MY_LISTS);
       }
     })
     .catch(() => {
