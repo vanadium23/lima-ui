@@ -6,11 +6,10 @@ import {
   PRINT_LIST_TITLE,
 } from "../../../../../features/testIds.ts";
 import { URL_MY_LISTS } from "../../../../../utilities/addresses.ts";
+import { DEFAULT_TAB_TITLE, suffixTabTitle } from "../../../../../utilities/tabTitle.ts";
 
 import "./style.css";
 import "normalize.css";
-
-const response = await fetch(`${import.meta.env.SERVER_API_URL}${URL_MY_LISTS}/${Astro.params.id}`);
 
 type Item = {
   content: string;
@@ -24,7 +23,29 @@ export type List = {
   note: string;
 };
 
-const list: List = await response.json();
+const emptyList: List = {
+  id: "",
+  name: "",
+  items: [],
+  purpose: "",
+  note: "",
+};
+
+let listRequestError = false;
+let errorText = "Нет соединения с сервером, попробуйте позже";
+let list: List = emptyList;
+
+try {
+  const response = await fetch(`${import.meta.env.SERVER_API_URL}${URL_MY_LISTS}/${Astro.params.id}`);
+
+  if (!response.ok) {
+    throw new Error("Request failed");
+  }
+  list = await response.json();
+} catch {
+  listRequestError = true;
+  list = emptyList;
+}
 
 const isCheckableParam = Astro.url.searchParams.get("checkable") === "true";
 ---
@@ -37,49 +58,54 @@ const isCheckableParam = Astro.url.searchParams.get("checkable") === "true";
     <meta content="#ffffff" name="msapplication-TileColor" />
     <meta content="img/favicon/ms-icon-144x144.png" name="msapplication-TileImage" />
     <meta content="#ffffff" name="theme-color" />
-    <title>Lima APP</title>
+    <title>{listRequestError ? DEFAULT_TAB_TITLE : suffixTabTitle(list.name)}</title>
   </head>
-  <body>
-    <div class="print">
-      <div class="print__header">
-        <div class="print__headerInner">
-          <span class="print__headerTitle" data-test-id={PRINT_LIST_TITLE}>{list.name}</span>
-          {
-            list.purpose && (
-              <span class="print__headerPurpose" data-test-id={PRINT_LIST_PURPOSE}>
-                {list.purpose}
+  <body data-print={listRequestError ? "false" : "true"}>
+    {
+      listRequestError ? (
+        <div class="print__error">{errorText}</div>
+      ) : (
+        <div class="print">
+          <div class="print__header">
+            <div class="print__headerInner">
+              <span class="print__headerTitle" data-test-id={PRINT_LIST_TITLE}>
+                {list.name}
               </span>
-            )
-          }
-        </div>
-        <div class="print__logo">Лого</div>
-      </div>
-      <div class="print__mainContent">
-        {
-          list.note && (
-            <div class="print__note">
-              <div class="print_noteTitle">Заметка:</div>
-              <div class="print_noteText" data-test-id={PRINT_LIST_NOTE}>
-                {list.note}
-              </div>
+              {list.purpose && (
+                <span class="print__headerPurpose" data-test-id={PRINT_LIST_PURPOSE}>
+                  {list.purpose}
+                </span>
+              )}
             </div>
-          )
-        }
-        <ul class=`print__items ${isCheckableParam ? "print__items_checklist" : "print__items_list"}`>
-          {
-            list.items.map((item, index) => (
-              <li class="print__item" data-test-id={PRINT_LIST_ITEM} data-test-sub-id={index}>
-                {item.content}
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-    </div>
+            <div class="print__logo">Лого</div>
+          </div>
+          <div class="print__mainContent">
+            {list.note && (
+              <div class="print__note">
+                <div class="print_noteTitle">Заметка:</div>
+                <div class="print_noteText" data-test-id={PRINT_LIST_NOTE}>
+                  {list.note}
+                </div>
+              </div>
+            )}
+            <ul class={`print__items ${isCheckableParam ? "print__items_checklist" : "print__items_list"}`}>
+              {list.items.map((item, index) => (
+                <li class="print__item" data-test-id={PRINT_LIST_ITEM} data-test-sub-id={index}>
+                  {item.content}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )
+    }
+
     <script>
-      window.addEventListener("load", () => {
-        window.print();
-      });
+      if (document.body.dataset.print === "true") {
+        window.addEventListener("load", () => {
+          window.print();
+        });
+      }
     </script>
   </body>
 </html>
