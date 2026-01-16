@@ -24,7 +24,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?font-family</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -36,7 +48,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?font-weight</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -48,7 +72,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?font-variant</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -60,7 +96,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?font-stretch</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -72,7 +120,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?position</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -84,7 +144,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?top</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -96,7 +168,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?bottom</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -108,7 +192,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?display</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -120,7 +216,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?float</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -132,7 +240,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?overflow</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -144,7 +264,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?overflow-y</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -156,7 +288,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?zoom</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -168,7 +312,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?align-items</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -180,7 +336,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?flex</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -192,7 +360,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?flex-basis</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -204,7 +384,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?flex-grow</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -216,7 +408,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?flex-wrap</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -228,7 +432,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?order</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -240,7 +456,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?width</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -252,7 +480,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?max-width</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -264,7 +504,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?min-height</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -276,7 +528,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?margin</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -288,7 +552,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?margin-right</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -300,7 +576,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?margin-left</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -312,7 +600,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?padding-top</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -324,7 +624,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?padding-bottom</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -336,7 +648,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?table-layout</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -348,7 +672,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?caption-side</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -360,7 +696,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?border-collapse</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -372,7 +720,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?list-style-position</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -384,7 +744,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?list-style-image</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -396,7 +768,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?quotes</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -408,7 +792,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?counter-increment</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -420,7 +816,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?cursor</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -432,7 +840,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?nav-index</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -444,7 +864,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?nav-right</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -456,7 +888,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?nav-left</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -468,7 +912,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?transition-delay</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -480,7 +936,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?transition-duration</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -492,7 +960,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?transform</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -504,7 +984,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?animation</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -516,7 +1008,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?animation-duration</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -528,7 +1032,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?animation-timing-function</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -540,7 +1056,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?animation-iteration-count</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -552,7 +1080,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?text-align</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -564,7 +1104,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?vertical-align</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -576,7 +1128,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?text-decoration</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -588,7 +1152,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?text-emphasis-color</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -600,7 +1176,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?text-emphasis-position</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -612,7 +1200,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?text-justify</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -624,7 +1224,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?word-spacing</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -636,7 +1248,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?text-transform</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -648,7 +1272,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?text-overflow</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -660,7 +1296,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?text-overflow-mode</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -672,7 +1320,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?word-break</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -684,7 +1344,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?hyphens</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -696,7 +1368,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?opacity</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -708,7 +1392,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?border</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -720,7 +1416,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?border-style</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -732,7 +1440,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?border-top</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -744,7 +1464,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?border-top-style</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -756,7 +1488,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?border-right</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -768,7 +1512,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?border-right-style</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -780,7 +1536,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?border-bottom</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -792,7 +1560,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?border-bottom-style</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -804,7 +1584,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?border-left</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -816,7 +1608,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?border-left-style</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -828,7 +1632,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?border-radius</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -840,7 +1656,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?border-top-right-radius</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -852,7 +1680,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?border-bottom-left-radius</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -864,7 +1704,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?border-image-source</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -876,7 +1728,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?border-image-width</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -888,7 +1752,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?border-image-repeat</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -900,7 +1776,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?outline-width</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -912,7 +1800,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?outline-color</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -924,7 +1824,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?background</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -936,7 +1848,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?background-image</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -948,7 +1872,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?background-attachment</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -960,7 +1896,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?background-position-x</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -972,7 +1920,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?background-clip</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -984,7 +1944,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?background-size</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>
@@ -996,7 +1968,19 @@
             </rule>
             <rule>
               <match>
+                <NAME>(-[a-z]+-)?</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
                 <NAME>(-[a-z]+-)?box-shadow</NAME>
+              </match>
+              <order>BY_NAME</order>
+            </rule>
+            <rule>
+              <match>
+                <NAME>(-[a-z]+-)?</NAME>
               </match>
               <order>BY_NAME</order>
             </rule>

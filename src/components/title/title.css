@@ -8,9 +8,9 @@
 }
 
 .title_medium {
-  font-size: 2.4rem;
+  font-size: 2rem;
   font-weight: 600;
-  line-height: 2.8rem;
+  line-height: 2.4rem;
 }
 
 .title_large {
@@ -25,11 +25,4 @@
 
 .title_center {
   text-align: center;
-}
-
-@media (width <= 767px) {
-  .title_medium {
-    font-size: 2rem;
-    line-height: 2.4rem;
-  }
 }

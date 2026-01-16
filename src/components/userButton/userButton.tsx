@@ -28,9 +28,9 @@ export const UserButton = (props: UserButtonProps) => {
   );
 
   return (
-    <button class="userButton" type="button" data-test-id={USER_BUTTON}>
+    <a class="userButton" href="/account" data-test-id={USER_BUTTON}>
       <span class="userButton__capital">{mProps.children?.[0]}</span>
       <span class="userButton__userName">{mProps.children}</span>
-    </button>
+    </a>
   );
 };
