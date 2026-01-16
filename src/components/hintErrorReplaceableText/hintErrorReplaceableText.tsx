@@ -1,4 +1,4 @@
-import { Match, mergeProps, Switch } from "solid-js";
+import { mergeProps } from "solid-js";
 
 import type { Testable } from "../utilities/testable.ts";
 
@@ -20,15 +20,15 @@ export const HintErrorReplaceableText = (props: Testable<HintErrorReplaceableTex
   );
 
   return (
-    <Switch>
-      <Match when={!mProps.isError}>
-        <span class="hintErrorReplaceableText__hint">{mProps.hintText}</span>
-      </Match>
-      <Match when={mProps.isError}>
-        <span class="hintErrorReplaceableText__error" aria-live="polite" aria-atomic="true">
-          {mProps.errorText}
-        </span>
-      </Match>
-    </Switch>
+    <span
+      class="hintErrorReplaceableText"
+      classList={{
+        hintErrorReplaceableText_error: mProps.isError,
+      }}
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      {mProps.isError ? mProps.errorText : mProps.hintText}
+    </span>
   );
 };
