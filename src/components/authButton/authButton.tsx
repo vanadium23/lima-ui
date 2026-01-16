@@ -74,7 +74,7 @@ export const AuthButton = (props: Testable<AuthButtonProps>) => {
           <Switch>
             <Match when={mProps.loading}>
               <div class="authButton__loadingIcon">
-                <Icon name={IconName.CircleNotch} size={IconSize.Medium} />
+                <Icon name={IconName.CircleNotch} size={IconSize.ExtraLarge} />
               </div>
             </Match>
             <Match when={mProps.iconName === "google"}>

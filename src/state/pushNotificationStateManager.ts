@@ -5,13 +5,15 @@ import { IconName } from "../components/icon/types.ts";
 import { PushNotificationTheme } from "../components/pushNotification/pushNotification.tsx";
 import type { TestId, TestSubId } from "../components/utilities/testable.ts";
 
+export type NotificationType = "network-error" | "info" | "success";
+
 export type NotificationData = {
   id: string;
   title: string;
   description: JSX.Element;
   theme: PushNotificationTheme;
   iconName: IconName;
-  type?: "network-error" | "info";
+  type?: NotificationType;
   testId: TestId;
   testSubId: TestSubId;
 };

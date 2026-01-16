@@ -25,6 +25,7 @@ type LoginFormState = {
   isLoading: boolean;
   authType: AuthType;
   isSuccessful: boolean;
+  isRestorePasswordMode: boolean;
 };
 
 export const [loginFormStore, setLoginFormStore] = createStore<LoginFormState>({
@@ -32,6 +33,7 @@ export const [loginFormStore, setLoginFormStore] = createStore<LoginFormState>({
   isLoading: false,
   authType: "email",
   isSuccessful: false,
+  isRestorePasswordMode: false,
 });
 
 export function initLoginFormStore() {
@@ -40,7 +42,16 @@ export function initLoginFormStore() {
     isLoading: false,
     authType: "email",
     isSuccessful: false,
+    isRestorePasswordMode: false,
   });
+}
+
+export function enableRestorePasswordMode() {
+  setLoginFormStore("isRestorePasswordMode", true);
+}
+
+export function disableRestorePasswordMode() {
+  setLoginFormStore("isRestorePasswordMode", false);
 }
 
 export function handleLogin(authType: AuthType) {
