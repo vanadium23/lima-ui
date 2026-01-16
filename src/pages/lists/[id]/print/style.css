@@ -73,7 +73,7 @@ body {
   font-style: normal;
   line-height: 1.8rem;
   white-space: pre-wrap;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 
 .print__items {
@@ -99,7 +99,7 @@ body {
   font-size: 1.4rem;
   line-height: 1.4rem;
   white-space: pre-wrap;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 
 .print__items_checklist .print__item::before {
