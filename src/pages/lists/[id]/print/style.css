@@ -130,5 +130,7 @@ body {
 
 .print__error {
   font-size: 1.4rem;
-  padding: 2rem;
+  line-height: 1.8rem;
+  color: var(--text-neutral-800);
+  padding: 1rem 1rem 0 2rem;
 }
