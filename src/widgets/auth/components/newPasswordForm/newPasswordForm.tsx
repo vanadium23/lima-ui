@@ -5,7 +5,7 @@ import {
   NEW_PASSWORD_SUBMIT_BUTTON,
 } from "../../../../../features/testIds.ts";
 import { Button, ButtonType } from "../../../../components/button/button.tsx";
-import { HintErrorReplaceableText } from "../../../../components/hintErrorReplaceableText/hintErrorReplaceableText.tsx";
+import { HintForInput } from "../../../../components/hintErrorReplaceableText/hintForInput.tsx";
 import { AutocompleteType, Input, InputType } from "../../../../components/input/input.tsx";
 import { newPasswordFormStore } from "../newPasswordForm/newPasswordForm.store.ts";
 
@@ -59,7 +59,7 @@ export const NewPasswordForm = () => {
           >
             {newPasswordFormStore.inputs.pass.value.toString()}
           </Input>
-          <HintErrorReplaceableText
+          <HintForInput
             hintText={"Минимум 8 символов: буквы (a-z) и цифры (0-9)"}
             errorText={newPasswordFormStore.inputs.pass.error}
             isError={!newPasswordFormStore.inputs.pass.isValid}

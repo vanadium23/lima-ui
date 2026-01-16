@@ -14,7 +14,7 @@ import {
 import { AuthButton } from "../../../../components/authButton/authButton.tsx";
 import { Button, ButtonType } from "../../../../components/button/button.tsx";
 import { Checkbox } from "../../../../components/checkbox/checkbox.tsx";
-import { HintErrorReplaceableText } from "../../../../components/hintErrorReplaceableText/hintErrorReplaceableText.tsx";
+import { HintForInput } from "../../../../components/hintErrorReplaceableText/hintForInput.tsx";
 import { AutocompleteType, Input, InputType } from "../../../../components/input/input.tsx";
 import { Link } from "../../../../components/link/link.tsx";
 import { TextButton } from "../../../../components/textButton/textButton.tsx";
@@ -135,7 +135,7 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
                 >
                   {registrationFormStore.inputs.pass.value.toString()}
                 </Input>
-                <HintErrorReplaceableText
+                <HintForInput
                   hintText={"Минимум 8 символов: буквы (a-z) и цифры (0-9)"}
                   errorText={registrationFormStore.inputs.pass.error}
                   isError={!registrationFormStore.inputs.pass.isValid}

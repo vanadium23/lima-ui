@@ -1,0 +1,12 @@
+.hintForInput_medium {
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+}
+
+.hintForInput_primary {
+  color: var(--text-neutral-800);
+}
+
+.hintForInput_error {
+  color: var(--text-dangerous-500);
+}

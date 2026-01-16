@@ -1,9 +1,0 @@
-.hintErrorReplaceableText {
-  color: var(--text-neutral-800);
-  font-size: 1.4rem;
-  line-height: 1.8rem;
-}
-
-.hintErrorReplaceableText_error {
-  color: var(--text-dangerous-500);
-}
