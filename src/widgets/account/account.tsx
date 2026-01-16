@@ -14,8 +14,8 @@ export const Account = () => {
       <div class="account__auth">
         <Title testId={DEFAULT_TEST_ID}>Личный кабинет</Title>
         <div class="account__authServices">
-          <span class="account__authServicesTitle">Способы входа</span>
-          <span class="account__authServicesSubTitle">Привяжите свою учетную запись для быстрой авторизации</span>
+          <span class="account__title">Способы входа</span>
+          <span class="account__subTitle">Привяжите свою учетную запись для быстрой авторизации</span>
           <div class="account__authServicesList">
             <AuthButton iconName={"google"} testId={DEFAULT_TEST_ID}>
               Google
@@ -58,9 +58,7 @@ export const Account = () => {
           testId={DEFAULT_TEST_ID}
         >
           <div class="account__settingsWrapper">
-            <span class="account__settingTitle">
-              Вы можете удалить аккаунт и все списки без возможности восстановления
-            </span>
+            <span class="account__subTitle">Вы можете удалить аккаунт и все списки без возможности восстановления</span>
             <Button theme={ButtonTheme.Dangerous} size={ButtonSize.Medium} testId={DEFAULT_TEST_ID}>
               Удалить аккаунт
             </Button>
