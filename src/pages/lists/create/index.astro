@@ -1,26 +1,9 @@
 ---
-import { LISTS_LIMIT } from "../../../../configuration.ts";
-import { BACKEND_URL_LISTS, BACKEND_URL_NON_EXISTING } from "../../../../utilities/addresses.ts";
+import { getListsAndCheckListsLimitReached } from "../../../../utilities/getListsAndCheckListsLimitReached.ts";
 import AppPage from "../../../layouts/app/app.astro";
-import { getLists } from "../../../services/getLists.ts";
 import { EditList } from "../../../widgets/editList/editList.tsx";
 
-let isListsLimitReached = false;
-
-let listsRequestError = false;
-
-try {
-  let backendURL = import.meta.env.SERVER_API_URL;
-  let backendListsAddress = BACKEND_URL_LISTS;
-
-  if (Astro.url.searchParams.get("error") === "true") {
-    backendListsAddress = BACKEND_URL_NON_EXISTING;
-  }
-
-  isListsLimitReached = (await getLists(backendURL, backendListsAddress)).length >= LISTS_LIMIT;
-} catch {
-  listsRequestError = true;
-}
+const { isListsLimitReached, listsRequestError } = await getListsAndCheckListsLimitReached(Astro.url);
 ---
 
 <AppPage titleName="Новый список" isListsLimitReached={isListsLimitReached}>

@@ -1,8 +1,7 @@
 ---
-import { LISTS_LIMIT } from "../../../../configuration.ts";
-import { BACKEND_URL_LISTS, BACKEND_URL_NON_EXISTING, URL_MY_LISTS } from "../../../../utilities/addresses.ts";
+import { BACKEND_URL_NON_EXISTING, URL_MY_LISTS } from "../../../../utilities/addresses.ts";
+import { getListsAndCheckListsLimitReached } from "../../../../utilities/getListsAndCheckListsLimitReached.ts";
 import AppPage from "../../../layouts/app/app.astro";
-import { getLists } from "../../../services/getLists.ts";
 import type { ListFromBackend } from "../../../types/types.ts";
 import { emptyListFromBackend } from "../../../widgets/editList/editList.store.tsx";
 import { EditList } from "../../../widgets/editList/editList.tsx";
@@ -38,20 +37,7 @@ try {
   list = emptyListFromBackend;
 }
 
-let isListsLimitReached = false;
-
-try {
-  let backendURL = import.meta.env.SERVER_API_URL;
-  let backendListsAddress = BACKEND_URL_LISTS;
-
-  if (Astro.url.searchParams.get("error") === "true") {
-    backendListsAddress = BACKEND_URL_NON_EXISTING;
-  }
-
-  isListsLimitReached = (await getLists(backendURL, backendListsAddress)).length >= LISTS_LIMIT;
-} catch {
-  console.error("Failed to get lists from backend");
-}
+const { isListsLimitReached } = await getListsAndCheckListsLimitReached(Astro.url);
 ---
 
 <AppPage titleName={list.name} list404={listRequestError} isListsLimitReached={isListsLimitReached}>

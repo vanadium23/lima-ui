@@ -40,8 +40,7 @@
 }
 
 .accordion_large .accordion__header {
-  padding-top: 1rem;
-  padding-bottom: 1.1rem;
+  padding: 0.6rem 1.6rem;
   font-size: 1.8rem;
   font-weight: 600;
   line-height: 2.2rem;
@@ -84,12 +83,8 @@
 }
 
 .accordion_secondary {
-  border-top: 0.1rem solid var(--neutral-500);
   background: var(--neutral-100);
-}
-
-.accordion_secondary:active {
-  border-color: var(--neutral-900);
+  border-radius: 0.8rem;
 }
 
 .accordion_secondary .accordion__header {
@@ -100,13 +95,13 @@
   color: var(--text-neutral-900);
 }
 
-.accordion_secondary .accordion__headerIcon {
-  color: var(--neutral-800);
-}
-
 @media (hover: hover) {
   .accordion_secondary:has(.accordion__header:hover) {
-    border-color: var(--neutral-700);
+    background: var(--neutral-150);
+  }
+
+  .accordion_secondary .accordion__header {
+    color: var(--text-neutral-700);
   }
 }
 

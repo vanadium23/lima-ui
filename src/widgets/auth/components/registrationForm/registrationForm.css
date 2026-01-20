@@ -65,17 +65,9 @@
   line-height: 2rem;
 }
 
-.registrationsForm__hintText {
-  color: var(--text-neutral-800);
-  font-size: 1.2rem;
-  font-weight: 500;
-  line-height: 1.4rem;
-}
-
 .registrationsForm__policyLabelText {
   color: var(--text-neutral-800);
   font-size: 1.4rem;
-  font-weight: 500;
   line-height: 1.8rem;
 }
 

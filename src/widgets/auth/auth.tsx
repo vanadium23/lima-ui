@@ -4,9 +4,11 @@ import { AUTH_TABS } from "../../../features/testIds.ts";
 import { Tabs } from "../../components/tabs/tabs.tsx";
 import { setUrlHash, urlHash } from "../../state/locationState.ts";
 
+import { loginFormStore } from "./components/loginForm/loginForm.store.ts";
 import { LoginForm } from "./components/loginForm/loginForm.tsx";
 import { registrationFormStore } from "./components/registrationForm/registrationForm.store.ts";
 import { RegistrationForm } from "./components/registrationForm/registrationForm.tsx";
+import { restorePasswordFormStore } from "./components/restorePasswordForm/restorePasswordForm.store.ts";
 import "./auth.css";
 
 export type AuthType = "email" | "google" | "yandex" | "vk";
@@ -57,7 +59,7 @@ export const Auth = () => {
   });
 
   const tabs = () => {
-    const isLoading = registrationFormStore.isLoading;
+    const isLoading = registrationFormStore.isLoading || loginFormStore.isLoading || restorePasswordFormStore.isLoading;
 
     if (isLoading) {
       return authTabs.map((tab) => ({ ...tab, disabled: true }));
