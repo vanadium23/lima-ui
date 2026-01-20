@@ -116,3 +116,17 @@ Feature: Basic list printing functionality
     And I ensure the tools panel is open
     And I press the print list button and check for system print dialog
     Then I expect the system print dialog to be triggered
+
+  Scenario: Print page displays error when list loading fails
+    When I type some text with length less or equal to the one of "list title" input limit
+    And I ensure the tools panel is open
+    And I press the "add list item" button
+    And I ensure the tools panel does not disturb
+    And I type some text with length less or equal to the one of "first item" input limit
+    And I press the "save" button
+    And I wait for the list to create
+    And I ensure the tools panel is open
+    And I press the print list button and wait for the new tab with error
+    Then I expect to see the default tab title
+    Then I expect to see the print page error message
+    Then I expect not to see the "list title" text

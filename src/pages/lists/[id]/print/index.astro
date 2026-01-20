@@ -1,11 +1,12 @@
 ---
 import {
+  PRINT_LIST_ERROR,
   PRINT_LIST_ITEM,
   PRINT_LIST_NOTE,
   PRINT_LIST_PURPOSE,
   PRINT_LIST_TITLE,
 } from "../../../../../features/testIds.ts";
-import { URL_MY_LISTS } from "../../../../../utilities/addresses.ts";
+import { BACKEND_URL_NON_EXISTING, URL_MY_LISTS } from "../../../../../utilities/addresses.ts";
 import { DEFAULT_TAB_TITLE, suffixTabTitle } from "../../../../../utilities/tabTitle.ts";
 
 import "./style.css";
@@ -32,11 +33,17 @@ const emptyList: List = {
 };
 
 let listRequestError = false;
-let errorText = "Нет соединения с сервером, попробуйте позже";
+const errorText = "Нет соединения с сервером, попробуйте позже";
 let list: List = emptyList;
 
 try {
-  const response = await fetch(`${import.meta.env.SERVER_API_URL}${URL_MY_LISTS}/${Astro.params.id}`);
+  let backendListsAddress = URL_MY_LISTS;
+
+  if (Astro.url.searchParams.get("error") === "true") {
+    backendListsAddress = BACKEND_URL_NON_EXISTING;
+  }
+
+  const response = await fetch(`${import.meta.env.SERVER_API_URL}${backendListsAddress}/${Astro.params.id}`);
 
   if (!response.ok) {
     throw new Error("Request failed");
@@ -63,7 +70,9 @@ const isCheckableParam = Astro.url.searchParams.get("checkable") === "true";
   <body data-print={listRequestError ? "false" : "true"}>
     {
       listRequestError ? (
-        <div class="print__error">{errorText}</div>
+        <div class="print__error" data-test-id={PRINT_LIST_ERROR}>
+          {errorText}
+        </div>
       ) : (
         <div class="print">
           <div class="print__header">
