@@ -157,6 +157,7 @@ export const PRINT_LIST_TITLE = "printListTitle";
 export const PRINT_LIST_PURPOSE = "printListPurpose";
 export const PRINT_LIST_NOTE = "printListNote";
 export const PRINT_LIST_ITEM = "printListItem";
+export const PRINT_LIST_ERROR = "printListError";
 
 export const AUTH_TABS = "authTabs";
 export const AUTH_GREETING_TITLE = "authGreetingTitle";
