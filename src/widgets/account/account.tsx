@@ -5,6 +5,7 @@ import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import { Accordion, AccordionSize, AccordionTheme } from "../../components/accordion/accordion.tsx";
 import { AuthButton } from "../../components/authButton/authButton.tsx";
 import { Button, ButtonSize, ButtonTheme } from "../../components/button/button.tsx";
+import { Dialog, DialogSize, DialogTheme } from "../../components/dialog/dialog.tsx";
 import { Divider } from "../../components/divider/divider.tsx";
 import { HintForInput } from "../../components/hintErrorReplaceableText/hintForInput.tsx";
 import { AutocompleteType, Input, InputType } from "../../components/input/input.tsx";
@@ -14,18 +15,19 @@ import { Title } from "../../components/title/title.tsx";
 import {
   accountStore,
   changePassword,
+  confirmUnlinkService,
   handleChangePasswordFormChange,
   handleEmailFormChange,
   linkEmail,
   linkService,
-  unlinkService,
+  setServiceToUnlink,
 } from "./account.store.ts";
 import "./account.css";
 
 export const Account = () => {
   const isAccountActionLoading = () =>
-    !!accountStore.unlinkingServiceId ||
-    accountStore.isLinking ||
+    Boolean(accountStore.unlinkingServiceId) ||
+    Boolean(accountStore.linkingServiceId) ||
     accountStore.emailForm.isLoading ||
     accountStore.changePasswordForm.isLoading;
 
@@ -48,7 +50,8 @@ export const Account = () => {
                   iconName={account.iconName!}
                   handleClick={() => linkService(account.id)}
                   testId={DEFAULT_TEST_ID}
-                  disabled={isAccountActionLoading()}
+                  loading={accountStore.linkingServiceId === account.id}
+                  disabled={isAccountActionLoading() && accountStore.linkingServiceId !== account.id}
                 >
                   {account.name}
                 </AuthButton>
@@ -70,7 +73,7 @@ export const Account = () => {
               >
                 <div class="account__authMethodRemove">
                   <TextButton
-                    handleClick={() => unlinkService(account.id)}
+                    handleClick={() => setServiceToUnlink(account)}
                     testId={DEFAULT_TEST_ID}
                     loading={accountStore.unlinkingServiceId === account.id}
                     disabled={isAccountActionLoading() && accountStore.unlinkingServiceId !== account.id}
@@ -307,6 +310,33 @@ export const Account = () => {
           </div>
         </Accordion>
       </div>
+
+      <Dialog
+        open={Boolean(accountStore.serviceToUnlink)}
+        onCancel={() => setServiceToUnlink(null)}
+        title="Подтверждение отвязки"
+        theme={DialogTheme.Primary}
+        size={DialogSize.Medium}
+        testId={DEFAULT_TEST_ID}
+        controls={
+          <Button
+            theme={ButtonTheme.Dangerous}
+            size={ButtonSize.Medium}
+            testId={DEFAULT_TEST_ID}
+            handleClick={confirmUnlinkService}
+          >
+            Отвязать
+          </Button>
+        }
+      >
+        <div class="account__removeAuthServiceText">
+          Вы точно хотите отвязать{" "}
+          <span class="account__removeAuthServiceName">
+            {accountStore.serviceToUnlink?.name} {accountStore.serviceToUnlink?.value}
+          </span>
+          ? Вы больше не сможете использовать его для входа в аккаунт Лимы.
+        </div>
+      </Dialog>
     </div>
   );
 };

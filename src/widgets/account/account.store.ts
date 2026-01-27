@@ -21,7 +21,8 @@ export interface EmailFormField {
 interface AccountState {
   connectedAccounts: ConnectedAccount[];
   unlinkingServiceId: AuthServiceId | null;
-  isLinking: boolean;
+  serviceToUnlink: ConnectedAccount | null;
+  linkingServiceId: AuthServiceId | null;
   emailForm: {
     email: EmailFormField;
     pass: EmailFormField;
@@ -46,7 +47,8 @@ const initialConnectedAccounts: ConnectedAccount[] = [
 export const [accountStore, setAccountStore] = createStore<AccountState>({
   connectedAccounts: initialConnectedAccounts,
   unlinkingServiceId: null,
-  isLinking: false,
+  serviceToUnlink: null,
+  linkingServiceId: null,
   emailForm: {
     email: { value: "", isValid: true, error: "" },
     pass: { value: "", isValid: true, error: "" },
@@ -144,11 +146,25 @@ export const unlinkService = async (id: AuthServiceId) => {
   setAccountStore("unlinkingServiceId", null);
 };
 
+export const setServiceToUnlink = (account: ConnectedAccount | null) => {
+  setAccountStore("serviceToUnlink", account);
+};
+
+export const confirmUnlinkService = async () => {
+  const account = accountStore.serviceToUnlink;
+
+  if (account) {
+    const id = account.id;
+    setAccountStore("serviceToUnlink", null);
+    await unlinkService(id);
+  }
+};
+
 export const linkService = async (id: AuthServiceId) => {
-  setAccountStore("isLinking", true);
+  setAccountStore("linkingServiceId", id);
 
   await mockApiDelay();
 
   setAccountStore("connectedAccounts", (acc) => acc.id === id, "isConnected", true);
-  setAccountStore("isLinking", false);
+  setAccountStore("linkingServiceId", null);
 };
