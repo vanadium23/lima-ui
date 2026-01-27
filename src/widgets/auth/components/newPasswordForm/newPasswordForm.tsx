@@ -8,8 +8,8 @@ import {
 import { Button, ButtonType } from "../../../../components/button/button.tsx";
 import { HintForInput } from "../../../../components/hintErrorReplaceableText/hintForInput.tsx";
 import { AutocompleteType, Input, InputType } from "../../../../components/input/input.tsx";
-import { newPasswordFormStore } from "../newPasswordForm/newPasswordForm.store.ts";
 
+import { newPasswordFormStore } from "./newPasswordForm.store.ts";
 import {
   handleChange,
   handleNewPassword,
