@@ -1,3 +1,4 @@
+import { MAX_PASSWORD_LENGTH } from "../../../../../configuration.ts";
 import {
   DEFAULT_TEST_ID,
   NEW_PASSWORD_PASS_INPUT,
@@ -49,7 +50,7 @@ export const NewPasswordForm = () => {
             type={InputType.Password}
             placeholder="Пароль"
             name="Пароль"
-            maxLength={360}
+            maxLength={MAX_PASSWORD_LENGTH}
             testId={NEW_PASSWORD_PASS_INPUT}
             required={true}
             error={!newPasswordFormStore.inputs.pass.isValid}
@@ -72,7 +73,7 @@ export const NewPasswordForm = () => {
             type={InputType.Password}
             placeholder="Пароль"
             name="Повторный пароль"
-            maxLength={360}
+            maxLength={MAX_PASSWORD_LENGTH}
             testId={NEW_PASSWORD_REPEAT_PASS_INPUT}
             required={true}
             error={!newPasswordFormStore.inputs.repeat_pass.isValid}

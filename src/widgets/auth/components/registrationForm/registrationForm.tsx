@@ -1,5 +1,6 @@
 import { Match, Switch } from "solid-js";
 
+import { MAX_EMAIL_LENGTH, MAX_PASSWORD_LENGTH } from "../../../../../configuration.ts";
 import {
   DEFAULT_TEST_ID,
   REG_ACCEPT_AGREEMENT,
@@ -104,7 +105,7 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
                   type={InputType.Email}
                   placeholder="example@email.ru"
                   name="Электронная почта"
-                  maxLength={360}
+                  maxLength={MAX_EMAIL_LENGTH}
                   testId={REG_EMAIL_INPUT}
                   required={true}
                   error={!registrationFormStore.inputs.email.isValid}
@@ -114,9 +115,11 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
                 >
                   {registrationFormStore.inputs.email.value.toString()}
                 </Input>
-                <span class="registrationsForm__error" aria-live="polite" aria-atomic="true">
-                  {registrationFormStore.inputs.email.error}
-                </span>
+                <HintForInput
+                  errorText={registrationFormStore.inputs.email.error}
+                  isError={!registrationFormStore.inputs.email.isValid}
+                  testId={DEFAULT_TEST_ID}
+                />
               </label>
               <label class="registrationsForm__label">
                 <span class="registrationsForm__labelText">Придумайте пароль</span>
@@ -125,7 +128,7 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
                   type={InputType.Password}
                   placeholder="Пароль"
                   name="Пароль"
-                  maxLength={360}
+                  maxLength={MAX_PASSWORD_LENGTH}
                   testId={REG_PASS_INPUT}
                   required={true}
                   error={!registrationFormStore.inputs.pass.isValid}
@@ -148,7 +151,7 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
                   type={InputType.Password}
                   placeholder="Пароль"
                   name="Повторный пароль"
-                  maxLength={360}
+                  maxLength={MAX_PASSWORD_LENGTH}
                   testId={REG_REPEAT_PASS_INPUT}
                   required={true}
                   error={!registrationFormStore.inputs.repeat_pass.isValid}
@@ -158,9 +161,11 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
                 >
                   {registrationFormStore.inputs.repeat_pass.value.toString()}
                 </Input>
-                <span class="registrationsForm__error" aria-live="polite" aria-atomic="true">
-                  {registrationFormStore.inputs.repeat_pass.error}
-                </span>
+                <HintForInput
+                  errorText={registrationFormStore.inputs.repeat_pass.error}
+                  isError={!registrationFormStore.inputs.repeat_pass.isValid}
+                  testId={DEFAULT_TEST_ID}
+                />
               </label>
               <label class="registrationsForm__policyLabel">
                 <Checkbox

@@ -89,6 +89,7 @@
 
 .accordion_secondary .accordion__header {
   color: var(--text-neutral-800);
+  border-radius: 0.8rem;
 }
 
 .accordion_secondary .accordion__header:active {
@@ -96,7 +97,7 @@
 }
 
 @media (hover: hover) {
-  .accordion_secondary:has(.accordion__header:hover) {
+  .accordion_secondary .accordion__header:hover {
     background: var(--neutral-150);
   }
 

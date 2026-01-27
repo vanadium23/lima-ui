@@ -1,65 +1,307 @@
+import { For, Match, Show, Switch } from "solid-js";
+
+import { MAX_EMAIL_LENGTH, MAX_PASSWORD_LENGTH } from "../../../configuration.ts";
 import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import { Accordion, AccordionSize, AccordionTheme } from "../../components/accordion/accordion.tsx";
 import { AuthButton } from "../../components/authButton/authButton.tsx";
 import { Button, ButtonSize, ButtonTheme } from "../../components/button/button.tsx";
 import { Divider } from "../../components/divider/divider.tsx";
+import { HintForInput } from "../../components/hintErrorReplaceableText/hintForInput.tsx";
+import { AutocompleteType, Input, InputType } from "../../components/input/input.tsx";
 import { TextButton } from "../../components/textButton/textButton.tsx";
 import { Title } from "../../components/title/title.tsx";
 
+import {
+  accountStore,
+  changePassword,
+  handleChangePasswordFormChange,
+  handleEmailFormChange,
+  linkEmail,
+  linkService,
+  unlinkService,
+} from "./account.store.ts";
 import "./account.css";
 
 export const Account = () => {
+  const isAccountActionLoading = () =>
+    !!accountStore.unlinkingServiceId ||
+    accountStore.isLinking ||
+    accountStore.emailForm.isLoading ||
+    accountStore.changePasswordForm.isLoading;
+
+  const getService = (id: string) => accountStore.connectedAccounts.find((acc) => acc.id === id);
+  const isConnected = (id: string) => getService(id)?.isConnected;
+
   return (
     <div class="account scrollStyles">
       <div class="account__auth">
         <Title testId={DEFAULT_TEST_ID}>Личный кабинет</Title>
         <div class="account__authServices">
           <span class="account__title">Способы входа</span>
-          <span class="account__subTitle">Привяжите свою учетную запись для быстрой авторизации</span>
+          <Show when={!isConnected("google") || !isConnected("vk") || !isConnected("yandex")}>
+            <span class="account__subTitle">Привяжите свою учетную запись для быстрой авторизации</span>
+          </Show>
           <div class="account__authServicesList">
-            <AuthButton iconName={"google"} testId={DEFAULT_TEST_ID}>
-              Google
-            </AuthButton>
-            <AuthButton iconName={"google"} testId={DEFAULT_TEST_ID}>
-              Google
-            </AuthButton>
-            <AuthButton iconName={"google"} testId={DEFAULT_TEST_ID}>
-              Google
-            </AuthButton>
+            <For each={accountStore.connectedAccounts.filter((acc) => acc.id !== "email" && !acc.isConnected)}>
+              {(account) => (
+                <AuthButton
+                  iconName={account.iconName!}
+                  handleClick={() => linkService(account.id)}
+                  testId={DEFAULT_TEST_ID}
+                  disabled={isAccountActionLoading()}
+                >
+                  {account.name}
+                </AuthButton>
+              )}
+            </For>
           </div>
         </div>
-        <div class="account__authMethod">
-          <div class="account__authMethodInfo">
-            <span class="account__authMethodInfoTitle">Эл.Почта</span>
-            <span class="account__authMethodInfoValue">example@gmail.com</span>
-          </div>
-          <div class="account__authMethodRemove">
-            <TextButton testId={DEFAULT_TEST_ID}>Отвязать</TextButton>
-          </div>
-        </div>
+        <For each={accountStore.connectedAccounts.filter((acc) => acc.isConnected)}>
+          {(account) => (
+            <div class="account__authMethod">
+              <div class="account__authMethodInfo">
+                <span class="account__authMethodInfoTitle">{account.name}</span>
+                <span class="account__authMethodInfoValue">{account.value}</span>
+              </div>
+              <Show
+                when={
+                  account.id !== "email" && accountStore.connectedAccounts.filter((acc) => acc.isConnected).length > 1
+                }
+              >
+                <div class="account__authMethodRemove">
+                  <TextButton
+                    handleClick={() => unlinkService(account.id)}
+                    testId={DEFAULT_TEST_ID}
+                    loading={accountStore.unlinkingServiceId === account.id}
+                    disabled={isAccountActionLoading() && accountStore.unlinkingServiceId !== account.id}
+                  >
+                    Отвязать
+                  </TextButton>
+                </div>
+              </Show>
+            </div>
+          )}
+        </For>
       </div>
       <Divider />
-      <div class="account__newPassword">
-        <Accordion
-          title={"Сменить пароль"}
-          size={AccordionSize.Large}
-          theme={AccordionTheme.Secondary}
-          testId={DEFAULT_TEST_ID}
-        >
-          S
-        </Accordion>
+      <div class="account__section">
+        <Switch>
+          <Match when={!isConnected("email")}>
+            <Accordion
+              title={"Добавить электронную почту"}
+              size={AccordionSize.Large}
+              theme={AccordionTheme.Secondary}
+              testId={DEFAULT_TEST_ID}
+            >
+              <div class="account__accordion">
+                <span class="account__subTitle">Вы можете добавить электронную почту для входа в аккаунт</span>
+                <div class="account__accordionWrapper">
+                  <div class="account__accordionInner">
+                    <div class="account__field">
+                      <label class="account__label">
+                        <span class="account__labelText">Электронная почта</span>
+                        <Input
+                          name="email"
+                          placeholder="example@email.com"
+                          type={InputType.Email}
+                          autocomplete={AutocompleteType.Email}
+                          maxLength={MAX_EMAIL_LENGTH}
+                          testId={DEFAULT_TEST_ID}
+                          disabled={isAccountActionLoading()}
+                          error={!accountStore.emailForm.email.isValid}
+                          onInput={(e) => handleEmailFormChange("email", (e.target as HTMLInputElement).value)}
+                        >
+                          {accountStore.emailForm.email.value}
+                        </Input>
+                      </label>
+                      <HintForInput
+                        errorText={accountStore.emailForm.email.error}
+                        isError={!accountStore.emailForm.email.isValid}
+                        testId={DEFAULT_TEST_ID}
+                      />
+                    </div>
+                    <div class="account__field">
+                      <label class="account__label">
+                        <span class="account__labelText">Придумайте пароль</span>
+                        <Input
+                          name="pass"
+                          placeholder="Введите пароль"
+                          type={InputType.Password}
+                          autocomplete={AutocompleteType.NewPassword}
+                          maxLength={MAX_PASSWORD_LENGTH}
+                          testId={DEFAULT_TEST_ID}
+                          disabled={isAccountActionLoading()}
+                          error={!accountStore.emailForm.pass.isValid}
+                          onInput={(e) => handleEmailFormChange("pass", (e.target as HTMLInputElement).value)}
+                        >
+                          {accountStore.emailForm.pass.value}
+                        </Input>
+                      </label>
+                      <HintForInput
+                        hintText={"Минимум 8 символов, буквы [a-z] и цифры [0-9]"}
+                        errorText={accountStore.emailForm.pass.error}
+                        isError={!accountStore.emailForm.pass.isValid}
+                        testId={DEFAULT_TEST_ID}
+                      />
+                    </div>
+                    <div class="account__field">
+                      <label class="account__label">
+                        <span class="account__labelText">Повторите пароль</span>
+                        <Input
+                          name="repeatPass"
+                          placeholder="Ввидите пароль"
+                          type={InputType.Password}
+                          autocomplete={AutocompleteType.NewPassword}
+                          maxLength={MAX_PASSWORD_LENGTH}
+                          testId={DEFAULT_TEST_ID}
+                          disabled={isAccountActionLoading()}
+                          error={!accountStore.emailForm.repeatPass.isValid}
+                          onInput={(e) => handleEmailFormChange("repeatPass", (e.target as HTMLInputElement).value)}
+                        >
+                          {accountStore.emailForm.repeatPass.value}
+                        </Input>
+                      </label>
+                      <HintForInput
+                        errorText={accountStore.emailForm.repeatPass.error}
+                        isError={!accountStore.emailForm.repeatPass.isValid}
+                        testId={DEFAULT_TEST_ID}
+                      />
+                    </div>
+                  </div>
+                  <Button
+                    theme={ButtonTheme.Primary}
+                    size={ButtonSize.Medium}
+                    testId={DEFAULT_TEST_ID}
+                    loading={accountStore.emailForm.isLoading}
+                    disabled={isAccountActionLoading() && !accountStore.emailForm.isLoading}
+                    handleClick={linkEmail}
+                  >
+                    Добавить
+                  </Button>
+                </div>
+              </div>
+            </Accordion>
+          </Match>
+          <Match when={isConnected("email")}>
+            <Accordion
+              title={"Сменить пароль"}
+              size={AccordionSize.Large}
+              theme={AccordionTheme.Secondary}
+              testId={DEFAULT_TEST_ID}
+            >
+              <div class="account__accordion">
+                <span class="account__subTitle">Вы можете изменить пароль для входа в аккаунт</span>
+                <div class="account__accordionWrapper">
+                  <div class="account__accordionInner">
+                    <div class="account__field">
+                      <label class="account__label">
+                        <span class="account__labelText">Текущий пароль</span>
+                        <Input
+                          name="oldPass"
+                          placeholder="Введите пароль"
+                          type={InputType.Password}
+                          autocomplete={AutocompleteType.Password}
+                          maxLength={MAX_PASSWORD_LENGTH}
+                          testId={DEFAULT_TEST_ID}
+                          disabled={isAccountActionLoading()}
+                          error={!accountStore.changePasswordForm.oldPass.isValid}
+                          onInput={(e) =>
+                            handleChangePasswordFormChange("oldPass", (e.target as HTMLInputElement).value)
+                          }
+                        >
+                          {accountStore.changePasswordForm.oldPass.value}
+                        </Input>
+                      </label>
+                      <HintForInput
+                        errorText={accountStore.changePasswordForm.oldPass.error}
+                        isError={!accountStore.changePasswordForm.oldPass.isValid}
+                        testId={DEFAULT_TEST_ID}
+                      />
+                    </div>
+                    <div class="account__field">
+                      <label class="account__label">
+                        <span class="account__labelText">Новый пароль</span>
+                        <Input
+                          name="newPass"
+                          placeholder="Введите пароль"
+                          type={InputType.Password}
+                          autocomplete={AutocompleteType.NewPassword}
+                          maxLength={MAX_PASSWORD_LENGTH}
+                          testId={DEFAULT_TEST_ID}
+                          disabled={isAccountActionLoading()}
+                          error={!accountStore.changePasswordForm.newPass.isValid}
+                          onInput={(e) =>
+                            handleChangePasswordFormChange("newPass", (e.target as HTMLInputElement).value)
+                          }
+                        >
+                          {accountStore.changePasswordForm.newPass.value}
+                        </Input>
+                      </label>
+                      <HintForInput
+                        hintText={"Минимум 8 символов, буквы [a-z] и цифры [0-9]"}
+                        errorText={accountStore.changePasswordForm.newPass.error}
+                        isError={!accountStore.changePasswordForm.newPass.isValid}
+                        testId={DEFAULT_TEST_ID}
+                      />
+                    </div>
+                    <div class="account__field">
+                      <label class="account__label">
+                        <span class="account__labelText">Повторите пароль</span>
+                        <Input
+                          name="repeatNewPass"
+                          placeholder="Введите пароль"
+                          type={InputType.Password}
+                          autocomplete={AutocompleteType.NewPassword}
+                          maxLength={MAX_PASSWORD_LENGTH}
+                          testId={DEFAULT_TEST_ID}
+                          disabled={isAccountActionLoading()}
+                          error={!accountStore.changePasswordForm.repeatNewPass.isValid}
+                          onInput={(e) =>
+                            handleChangePasswordFormChange("repeatNewPass", (e.target as HTMLInputElement).value)
+                          }
+                        >
+                          {accountStore.changePasswordForm.repeatNewPass.value}
+                        </Input>
+                      </label>
+                      <HintForInput
+                        errorText={accountStore.changePasswordForm.repeatNewPass.error}
+                        isError={!accountStore.changePasswordForm.repeatNewPass.isValid}
+                        testId={DEFAULT_TEST_ID}
+                      />
+                    </div>
+                  </div>
+                  <Button
+                    theme={ButtonTheme.Primary}
+                    size={ButtonSize.Medium}
+                    testId={DEFAULT_TEST_ID}
+                    loading={accountStore.changePasswordForm.isLoading}
+                    disabled={isAccountActionLoading() && !accountStore.changePasswordForm.isLoading}
+                    handleClick={changePassword}
+                  >
+                    Сменить пароль
+                  </Button>
+                </div>
+              </div>
+            </Accordion>
+          </Match>
+        </Switch>
       </div>
       <Divider />
-      <div class="account__settings">
+      <div class="account__section">
         <Accordion
           title={"Управление аккаунтом"}
           size={AccordionSize.Large}
           theme={AccordionTheme.Secondary}
           testId={DEFAULT_TEST_ID}
         >
-          <div class="account__settingsWrapper">
+          <div class="account__accordion">
             <span class="account__subTitle">Вы можете удалить аккаунт и все списки без возможности восстановления</span>
-            <Button theme={ButtonTheme.Dangerous} size={ButtonSize.Medium} testId={DEFAULT_TEST_ID}>
+            <Button
+              theme={ButtonTheme.Dangerous}
+              size={ButtonSize.Medium}
+              testId={DEFAULT_TEST_ID}
+              disabled={isAccountActionLoading()}
+            >
               Удалить аккаунт
             </Button>
           </div>

@@ -1,5 +1,6 @@
 import { Match, Switch } from "solid-js";
 
+import { MAX_EMAIL_LENGTH } from "../../../../../configuration.ts";
 import {
   RESTORE_PASS_BACK_TO_LOGIN_LINK,
   RESTORE_PASS_EMAIL_INPUT,
@@ -70,7 +71,7 @@ export const RestorePasswordForm = (props: RestorePasswordFormProps) => {
                 type={InputType.Email}
                 placeholder="example@email.com"
                 name="Электронная почта"
-                maxLength={360}
+                maxLength={MAX_EMAIL_LENGTH}
                 testId={RESTORE_PASS_EMAIL_INPUT}
                 required={true}
                 error={!restorePasswordFormStore.inputs.email.isValid}

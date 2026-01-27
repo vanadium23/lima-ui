@@ -15,7 +15,7 @@ export enum HintForInputSize {
 export type HintForInputProps = {
   theme?: HintForInputTheme;
   size?: HintForInputSize;
-  hintText: string;
+  hintText?: string;
   errorText?: string | undefined;
   isError?: boolean;
 };
@@ -25,6 +25,7 @@ export const HintForInput = (props: Testable<HintForInputProps>) => {
     {
       theme: HintForInputTheme.Primary,
       size: HintForInputSize.Medium,
+      hintText: "",
       errorText: "",
       isError: false,
     },
