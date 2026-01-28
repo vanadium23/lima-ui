@@ -35,6 +35,11 @@ interface AccountState {
     repeatNewPass: EmailFormField;
     isLoading: boolean;
   };
+  deleteAccountForm: {
+    isOpen: boolean;
+    confirmWord: string;
+    isLoading: boolean;
+  };
 }
 
 const initialConnectedAccounts: ConnectedAccount[] = [
@@ -59,6 +64,11 @@ export const [accountStore, setAccountStore] = createStore<AccountState>({
     oldPass: { value: "", isValid: true, error: "" },
     newPass: { value: "", isValid: true, error: "" },
     repeatNewPass: { value: "", isValid: true, error: "" },
+    isLoading: false,
+  },
+  deleteAccountForm: {
+    isOpen: false,
+    confirmWord: "",
     isLoading: false,
   },
 });
@@ -167,4 +177,32 @@ export const linkService = async (id: AuthServiceId) => {
 
   setAccountStore("connectedAccounts", (acc) => acc.id === id, "isConnected", true);
   setAccountStore("linkingServiceId", null);
+};
+
+export const setDeleteAccountDialogOpen = (isOpen: boolean) => {
+  setAccountStore("deleteAccountForm", "isOpen", isOpen);
+
+  if (!isOpen) {
+    setAccountStore("deleteAccountForm", "confirmWord", "");
+  }
+};
+
+export const handleDeleteAccountConfirmWordChange = (value: string) => {
+  setAccountStore("deleteAccountForm", "confirmWord", value);
+};
+
+export const deleteAccount = async () => {
+  if (accountStore.deleteAccountForm.confirmWord.toUpperCase() !== "УДАЛИТЬ") {
+    return;
+  }
+
+  setAccountStore("deleteAccountForm", "isLoading", true);
+
+  await mockApiDelay();
+
+  setAccountStore("deleteAccountForm", {
+    isOpen: false,
+    confirmWord: "",
+    isLoading: false,
+  });
 };

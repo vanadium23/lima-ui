@@ -16,10 +16,13 @@ import {
   accountStore,
   changePassword,
   confirmUnlinkService,
+  deleteAccount,
   handleChangePasswordFormChange,
+  handleDeleteAccountConfirmWordChange,
   handleEmailFormChange,
   linkEmail,
   linkService,
+  setDeleteAccountDialogOpen,
   setServiceToUnlink,
 } from "./account.store.ts";
 import "./account.css";
@@ -29,7 +32,8 @@ export const Account = () => {
     Boolean(accountStore.unlinkingServiceId) ||
     Boolean(accountStore.linkingServiceId) ||
     accountStore.emailForm.isLoading ||
-    accountStore.changePasswordForm.isLoading;
+    accountStore.changePasswordForm.isLoading ||
+    accountStore.deleteAccountForm.isLoading;
 
   const getService = (id: string) => accountStore.connectedAccounts.find((acc) => acc.id === id);
   const isConnected = (id: string) => getService(id)?.isConnected;
@@ -304,6 +308,7 @@ export const Account = () => {
               size={ButtonSize.Medium}
               testId={DEFAULT_TEST_ID}
               disabled={isAccountActionLoading()}
+              handleClick={() => setDeleteAccountDialogOpen(true)}
             >
               Удалить аккаунт
             </Button>
@@ -335,6 +340,49 @@ export const Account = () => {
             {accountStore.serviceToUnlink?.name} {accountStore.serviceToUnlink?.value}
           </span>
           ? Вы больше не сможете использовать его для входа в аккаунт Лимы.
+        </div>
+      </Dialog>
+
+      <Dialog
+        open={accountStore.deleteAccountForm.isOpen}
+        onCancel={() => setDeleteAccountDialogOpen(false)}
+        title="Удаление аккаунта"
+        theme={DialogTheme.Primary}
+        size={DialogSize.Medium}
+        testId={DEFAULT_TEST_ID}
+        loading={accountStore.deleteAccountForm.isLoading}
+        controls={
+          <Button
+            theme={ButtonTheme.Dangerous}
+            size={ButtonSize.Medium}
+            testId={DEFAULT_TEST_ID}
+            disabled={accountStore.deleteAccountForm.confirmWord.toUpperCase() !== "УДАЛИТЬ"}
+            handleClick={deleteAccount}
+          >
+            Удалить
+          </Button>
+        }
+      >
+        <div class="account__removeAccountDialogWrapper">
+          <p class="account__removeAccountText">
+            Вы точно хотите удалить аккаунт{" "}
+            <span class="account__removeAuthServiceName">
+              {accountStore.connectedAccounts.find((acc) => acc.isConnected)?.value}
+            </span>
+            ?
+          </p>
+          <p class="account__removeAccountText">
+            Все списки будут стёрты безвозвратно. Для подтверждения введите слово «УДАЛИТЬ»
+          </p>
+          <Input
+            name="confirmDelete"
+            placeholder="Введите слово «УДАЛИТЬ»"
+            maxLength={7}
+            testId={DEFAULT_TEST_ID}
+            onInput={(e) => handleDeleteAccountConfirmWordChange((e.target as HTMLInputElement).value)}
+          >
+            {accountStore.deleteAccountForm.confirmWord}
+          </Input>
         </div>
       </Dialog>
     </div>
