@@ -1,5 +1,6 @@
 import { createStore } from "solid-js/store";
 
+import { MIN_PASSWORD_LENGTH } from "../../../configuration.ts";
 import type { AuthButtonIconName } from "../../components/authButton/authButton.tsx";
 
 export type AuthServiceId = "google" | "vk" | "yandex" | "email";
@@ -86,8 +87,8 @@ export const handleChangePasswordFormChange = (field: "oldPass" | "newPass" | "r
 export const changePassword = async () => {
   const { oldPass, newPass, repeatNewPass } = accountStore.changePasswordForm;
 
-  const isOldPassValid = oldPass.value.length >= 8;
-  const isNewPassValid = newPass.value.length >= 8;
+  const isOldPassValid = oldPass.value.length >= MIN_PASSWORD_LENGTH;
+  const isNewPassValid = newPass.value.length >= MIN_PASSWORD_LENGTH;
   const isRepeatNewPassValid = newPass.value === repeatNewPass.value;
 
   setAccountStore("changePasswordForm", "oldPass", "isValid", isOldPassValid);

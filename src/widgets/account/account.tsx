@@ -1,11 +1,11 @@
 import { For, Match, Show, Switch } from "solid-js";
 
-import { MAX_EMAIL_LENGTH, MAX_PASSWORD_LENGTH } from "../../../configuration.ts";
+import { MAX_EMAIL_LENGTH, MAX_PASSWORD_LENGTH, MIN_PASSWORD_LENGTH } from "../../../configuration.ts";
 import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import { Accordion, AccordionSize, AccordionTheme } from "../../components/accordion/accordion.tsx";
 import { AuthButton } from "../../components/authButton/authButton.tsx";
-import { Button, ButtonSize, ButtonTheme } from "../../components/button/button.tsx";
-import { Dialog, DialogSize, DialogTheme } from "../../components/dialog/dialog.tsx";
+import { Button, ButtonTheme } from "../../components/button/button.tsx";
+import { Dialog } from "../../components/dialog/dialog.tsx";
 import { Divider } from "../../components/divider/divider.tsx";
 import { HintForInput } from "../../components/hintErrorReplaceableText/hintForInput.tsx";
 import { AutocompleteType, Input, InputType } from "../../components/input/input.tsx";
@@ -145,7 +145,7 @@ export const Account = () => {
                         </Input>
                       </label>
                       <HintForInput
-                        hintText={"Минимум 8 символов, буквы [a-z] и цифры [0-9]"}
+                        hintText={`Минимум ${MIN_PASSWORD_LENGTH} символов, буквы [a-z] и цифры [0-9]`}
                         errorText={accountStore.emailForm.pass.error}
                         isError={!accountStore.emailForm.pass.isValid}
                         testId={DEFAULT_TEST_ID}
@@ -176,8 +176,6 @@ export const Account = () => {
                     </div>
                   </div>
                   <Button
-                    theme={ButtonTheme.Primary}
-                    size={ButtonSize.Medium}
                     testId={DEFAULT_TEST_ID}
                     loading={accountStore.emailForm.isLoading}
                     disabled={isAccountActionLoading() && !accountStore.emailForm.isLoading}
@@ -245,7 +243,7 @@ export const Account = () => {
                         </Input>
                       </label>
                       <HintForInput
-                        hintText={"Минимум 8 символов, буквы [a-z] и цифры [0-9]"}
+                        hintText={`Минимум ${MIN_PASSWORD_LENGTH} символов, буквы [a-z] и цифры [0-9]`}
                         errorText={accountStore.changePasswordForm.newPass.error}
                         isError={!accountStore.changePasswordForm.newPass.isValid}
                         testId={DEFAULT_TEST_ID}
@@ -278,8 +276,6 @@ export const Account = () => {
                     </div>
                   </div>
                   <Button
-                    theme={ButtonTheme.Primary}
-                    size={ButtonSize.Medium}
                     testId={DEFAULT_TEST_ID}
                     loading={accountStore.changePasswordForm.isLoading}
                     disabled={isAccountActionLoading() && !accountStore.changePasswordForm.isLoading}
@@ -305,7 +301,6 @@ export const Account = () => {
             <span class="account__subTitle">Вы можете удалить аккаунт и все списки без возможности восстановления</span>
             <Button
               theme={ButtonTheme.Dangerous}
-              size={ButtonSize.Medium}
               testId={DEFAULT_TEST_ID}
               disabled={isAccountActionLoading()}
               handleClick={() => setDeleteAccountDialogOpen(true)}
@@ -320,16 +315,9 @@ export const Account = () => {
         open={Boolean(accountStore.serviceToUnlink)}
         onCancel={() => setServiceToUnlink(null)}
         title="Подтверждение отвязки"
-        theme={DialogTheme.Primary}
-        size={DialogSize.Medium}
         testId={DEFAULT_TEST_ID}
         controls={
-          <Button
-            theme={ButtonTheme.Dangerous}
-            size={ButtonSize.Medium}
-            testId={DEFAULT_TEST_ID}
-            handleClick={confirmUnlinkService}
-          >
+          <Button theme={ButtonTheme.Dangerous} testId={DEFAULT_TEST_ID} handleClick={confirmUnlinkService}>
             Отвязать
           </Button>
         }
@@ -347,14 +335,11 @@ export const Account = () => {
         open={accountStore.deleteAccountForm.isOpen}
         onCancel={() => setDeleteAccountDialogOpen(false)}
         title="Удаление аккаунта"
-        theme={DialogTheme.Primary}
-        size={DialogSize.Medium}
         testId={DEFAULT_TEST_ID}
         loading={accountStore.deleteAccountForm.isLoading}
         controls={
           <Button
             theme={ButtonTheme.Dangerous}
-            size={ButtonSize.Medium}
             testId={DEFAULT_TEST_ID}
             disabled={accountStore.deleteAccountForm.confirmWord.toUpperCase() !== "УДАЛИТЬ"}
             handleClick={deleteAccount}
@@ -369,11 +354,9 @@ export const Account = () => {
             <span class="account__removeAuthServiceName">
               {accountStore.connectedAccounts.find((acc) => acc.isConnected)?.value}
             </span>
-            ?
+            ? Все списки будут стёрты безвозвратно.
           </p>
-          <p class="account__removeAccountText">
-            Все списки будут стёрты безвозвратно. Для подтверждения введите слово «УДАЛИТЬ»
-          </p>
+          <p class="account__removeAccountText">Для подтверждения введите слово «УДАЛИТЬ»</p>
           <Input
             name="confirmDelete"
             placeholder="Введите слово «УДАЛИТЬ»"

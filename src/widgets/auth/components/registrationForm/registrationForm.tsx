@@ -1,6 +1,6 @@
 import { Match, Switch } from "solid-js";
 
-import { MAX_EMAIL_LENGTH, MAX_PASSWORD_LENGTH } from "../../../../../configuration.ts";
+import { MAX_EMAIL_LENGTH, MAX_PASSWORD_LENGTH, MIN_PASSWORD_LENGTH } from "../../../../../configuration.ts";
 import {
   DEFAULT_TEST_ID,
   REG_ACCEPT_AGREEMENT,
@@ -139,7 +139,7 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
                   {registrationFormStore.inputs.pass.value.toString()}
                 </Input>
                 <HintForInput
-                  hintText={"Минимум 8 символов: буквы (a-z) и цифры (0-9)"}
+                  hintText={`Минимум ${MIN_PASSWORD_LENGTH} символов, буквы [a-z] и цифры [0-9]`}
                   errorText={registrationFormStore.inputs.pass.error}
                   isError={!registrationFormStore.inputs.pass.isValid}
                   testId={DEFAULT_TEST_ID}

@@ -148,8 +148,4 @@
   .account__authMethodInfo {
     padding: 0;
   }
-
-  .account__emailLinkFields {
-    flex-direction: column;
-  }
 }

@@ -8,4 +8,5 @@ export const LISTS_SEARCH_MINIMAL_QUERY = 2;
 export const INPUT_DEBOUNCE = 350;
 export const COUNTER_DISPLAY_LIMIT = 10;
 export const MAX_PASSWORD_LENGTH = 64;
+export const MIN_PASSWORD_LENGTH = 8;
 export const MAX_EMAIL_LENGTH = 128;

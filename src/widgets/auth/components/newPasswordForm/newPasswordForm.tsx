@@ -1,4 +1,4 @@
-import { MAX_PASSWORD_LENGTH } from "../../../../../configuration.ts";
+import { MAX_PASSWORD_LENGTH, MIN_PASSWORD_LENGTH } from "../../../../../configuration.ts";
 import {
   DEFAULT_TEST_ID,
   NEW_PASSWORD_PASS_INPUT,
@@ -61,7 +61,7 @@ export const NewPasswordForm = () => {
             {newPasswordFormStore.inputs.pass.value.toString()}
           </Input>
           <HintForInput
-            hintText={"Минимум 8 символов: буквы (a-z) и цифры (0-9)"}
+            hintText={`Минимум ${MIN_PASSWORD_LENGTH} символов, буквы [a-z] и цифры [0-9]`}
             errorText={newPasswordFormStore.inputs.pass.error}
             isError={!newPasswordFormStore.inputs.pass.isValid}
             testId={DEFAULT_TEST_ID}
