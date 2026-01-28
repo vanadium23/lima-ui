@@ -1,6 +1,7 @@
 .hintForInput_medium {
   font-size: 1.4rem;
   line-height: 1.8rem;
+  min-height: 1.8rem;
 }
 
 .hintForInput_primary {

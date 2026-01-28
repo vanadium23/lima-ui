@@ -1,3 +1,4 @@
+import { MAX_PASSWORD_LENGTH, MIN_PASSWORD_LENGTH } from "../../../../../configuration.ts";
 import {
   DEFAULT_TEST_ID,
   NEW_PASSWORD_PASS_INPUT,
@@ -7,12 +8,12 @@ import {
 import { Button, ButtonType } from "../../../../components/button/button.tsx";
 import { HintForInput } from "../../../../components/hintErrorReplaceableText/hintForInput.tsx";
 import { AutocompleteType, Input, InputType } from "../../../../components/input/input.tsx";
-import { newPasswordFormStore } from "../newPasswordForm/newPasswordForm.store.ts";
 
 import {
   handleChange,
   handleNewPassword,
   initNewPasswordFormStore,
+  newPasswordFormStore,
   setNewPasswordFormStore,
 } from "./newPasswordForm.store.ts";
 import { isNewPasswordFormValid, validateNewPasswordForm } from "./utilities/newPasswordFormValidation.ts";
@@ -49,7 +50,7 @@ export const NewPasswordForm = () => {
             type={InputType.Password}
             placeholder="Пароль"
             name="Пароль"
-            maxLength={360}
+            maxLength={MAX_PASSWORD_LENGTH}
             testId={NEW_PASSWORD_PASS_INPUT}
             required={true}
             error={!newPasswordFormStore.inputs.pass.isValid}
@@ -60,7 +61,7 @@ export const NewPasswordForm = () => {
             {newPasswordFormStore.inputs.pass.value.toString()}
           </Input>
           <HintForInput
-            hintText={"Минимум 8 символов: буквы (a-z) и цифры (0-9)"}
+            hintText={`Минимум ${MIN_PASSWORD_LENGTH} символов, буквы [a-z] и цифры [0-9]`}
             errorText={newPasswordFormStore.inputs.pass.error}
             isError={!newPasswordFormStore.inputs.pass.isValid}
             testId={DEFAULT_TEST_ID}
@@ -72,7 +73,7 @@ export const NewPasswordForm = () => {
             type={InputType.Password}
             placeholder="Пароль"
             name="Повторный пароль"
-            maxLength={360}
+            maxLength={MAX_PASSWORD_LENGTH}
             testId={NEW_PASSWORD_REPEAT_PASS_INPUT}
             required={true}
             error={!newPasswordFormStore.inputs.repeat_pass.isValid}
