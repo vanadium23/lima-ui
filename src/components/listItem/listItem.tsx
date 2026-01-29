@@ -275,7 +275,7 @@ export const ListItem = (props: ListItemProps) => {
                 testId={REMOVE_DIALOG_DELETION_EXPORTED_ITEM_BUTTON}
                 testSubId={getListItemTestSubId(getTestId(), mProps.index)}
               >
-                Удалить все
+                Удалить везде
               </TextButton>
               <Button
                 theme={ButtonTheme.Dangerous}

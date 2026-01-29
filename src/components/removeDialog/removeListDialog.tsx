@@ -69,6 +69,18 @@ export const RemoveListDialog = (props: Testable<RemoveListDialogProps>) => {
                 theme={TextButtonTheme.Dangerous}
                 size={TextButtonSize.Medium}
                 handleClick={() => {
+                  mProps.sendListRemove("deletion");
+                  setIsRemoveListDialogOpen(false);
+                }}
+                testId={REMOVE_DIALOG_REMOVE_LIST_BUTTON}
+                testSubId={mProps.testSubId || "0"}
+              >
+                Удалить везде
+              </TextButton>
+              <Button
+                theme={ButtonTheme.Dangerous}
+                size={ButtonSize.Medium}
+                handleClick={() => {
                   mProps.sendListRemove("insertion");
                   setIsRemoveListDialogOpen(false);
                 }}
@@ -76,18 +88,6 @@ export const RemoveListDialog = (props: Testable<RemoveListDialogProps>) => {
                 testSubId={mProps.testSubId || "0"}
               >
                 Удалить этот список
-              </TextButton>
-              <Button
-                theme={ButtonTheme.Dangerous}
-                size={ButtonSize.Medium}
-                handleClick={() => {
-                  mProps.sendListRemove("deletion");
-                  setIsRemoveListDialogOpen(false);
-                }}
-                testId={REMOVE_DIALOG_REMOVE_LIST_BUTTON}
-                testSubId={mProps.testSubId || "0"}
-              >
-                Удалить всё
               </Button>
             </>
           }
