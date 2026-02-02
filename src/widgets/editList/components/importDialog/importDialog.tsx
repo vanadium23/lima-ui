@@ -151,9 +151,9 @@ export const ImportDialog = (props: ImportDialogProps) => {
       })
       .filter((element): element is EditListElement => Boolean(element));
 
-    if (storeImportDialog.pasteMethod === "after" && storeImportDialog.pasteIndex) {
+    if (storeImportDialog.pasteMethod === "after" && storeImportDialog.pasteIndex !== undefined) {
       pasteImportedItemsAfter(storeImportDialog.pasteIndex, checkedItems);
-    } else if (storeImportDialog.pasteMethod === "before" && storeImportDialog.pasteIndex) {
+    } else if (storeImportDialog.pasteMethod === "before" && storeImportDialog.pasteIndex !== undefined) {
       pasteImportedItemsBefore(storeImportDialog.pasteIndex, checkedItems);
     } else if (storeImportDialog.pasteMethod === "end") {
       addImportItems(checkedItems);
