@@ -5,6 +5,6 @@ import type { ComplexWorld } from "../../context/hooks.ts";
 
 When("I wait for the list update to complete", async function (this: ComplexWorld) {
   await this.page.waitForLoadState("networkidle");
-  // soften также применяется в интерфейсе для более плавного снятия загрузки.
+  // DOC soften также применяется в интерфейсе для более плавного снятия загрузки.
   await soften(() => {}, 2500);
 });

@@ -7,9 +7,9 @@ import { type EditListStore, setStoreEditList, storeEditList } from "../editList
 import { createDefaultElement } from "./createDefaultItem.ts";
 import { scroller } from "./scrollToBottom.ts";
 
-const SCROLL_SPEED = 10; // Base scrolling speed
-const SCROLL_THRESHOLD = 100; // Pixels from edge to trigger scrolling
-const MILLISECONDS_PER_FRAME = 16; // For smooth 60fps-like scrolling
+const SCROLL_SPEED = 10; // DOC Base scrolling speed
+const SCROLL_THRESHOLD = 100; // DOC Pixels from edge to trigger scrolling
+const MILLISECONDS_PER_FRAME = 16; // DOC For smooth 60fps-like scrolling
 
 type AutoScrollOptions = {
   isActive: () => boolean;

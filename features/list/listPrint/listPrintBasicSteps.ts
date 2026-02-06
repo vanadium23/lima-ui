@@ -11,7 +11,7 @@ When("I press the print list button and wait for the new tab with printing stub"
 
   const newPage = await this.context.waitForEvent("page");
 
-  // Print dialog is not closable in Playwright. This is why we need to disable it.
+  // DOC Print dialog is not closable in Playwright. This is why we need to disable it.
   await newPage.evaluate("window.print = () => {}");
 
   await newPage.waitForLoadState("networkidle");
@@ -84,7 +84,7 @@ When("I press the print list button and check for system print dialog", async fu
 
 Then("I expect the system print dialog to be triggered", async function (this: ComplexWorld) {
   await expect(async () => {
-    // Clicking on the body doesn't work as system dialog is shown.
+    // DOC Clicking on the body doesn't work as system dialog is shown.
     await this.page.locator(PRINT_LIST_TITLE).dblclick({ timeout: 1000 });
   }).not.toPass();
 });

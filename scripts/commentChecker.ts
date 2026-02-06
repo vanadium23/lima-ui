@@ -16,11 +16,9 @@ for (const file of files) {
   for (const [i, rawLine] of lines.entries()) {
     const line = rawLine.trim();
 
-    // TODO тест
     const singleMatch = line.match(/^\/\/\s*(.+)/);
     const singleText = singleMatch?.[1]?.trim();
 
-    // DOC тест2
     if (singleText && !isAllowed(singleText)) {
       errors.push(`${file}:${i + 1} — // ${singleText}`);
     }

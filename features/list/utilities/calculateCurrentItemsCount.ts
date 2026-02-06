@@ -7,9 +7,9 @@ export async function calculateCurrentItemsCount(complexWorld: ComplexWorld) {
   const currentUrl = complexWorld.page.url();
   const isCreateListPage = currentUrl.includes(URL_CREATE_LIST);
 
-  // SolidJS не успевает обновить DOM, и потому для страницы уже созданного списка нужно подождать.
-  // А на странице создания списка если отдельные пункты и добавлены, то это сделано заблаговременно,
-  // и их видно.
+  // DOC SolidJS не успевает обновить DOM, и потому для страницы уже созданного списка нужно подождать.
+  // DOC А на странице создания списка если отдельные пункты и добавлены, то это сделано заблаговременно,
+  // DOC и их видно.
   if (!isCreateListPage) {
     await complexWorld.page.waitForSelector(buildTestableSelector(LIST_ITEM));
   }

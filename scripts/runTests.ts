@@ -16,7 +16,7 @@ interface TestConfig {
   retry: number;
 }
 
-// Parse command line arguments
+// DOC Parse command line arguments
 const program = new Command();
 
 program
@@ -124,7 +124,7 @@ async function runTests() {
       const command = "npx";
       const args = ["cucumber-js"];
 
-      // Add device-specific report paths to prevent overwriting reports
+      // DOC Add device-specific report paths to prevent overwriting reports
       const deviceReportSuffix = `-${device}`;
       const resultsFolder = RESULTS_FOLDER.join("/");
       args.push(
@@ -143,7 +143,7 @@ async function runTests() {
         args.push("--tags", config.tags.map(escapeTagsWithSpaces).join(" and "));
       }
 
-      // Add import for TypeScript support
+      // DOC Add import for TypeScript support
       args.push("--import", "tsx/cucumber/import");
 
       if (config.verbose) {
@@ -228,7 +228,7 @@ function logDeviceInfo(device: string) {
     `${chalk.dim("• Pixel Ratio:")} ${deviceProfile.deviceScaleFactor}`,
   ].join("\n");
 
-  // Add some spacing and a separator line
+  // DOC Add some spacing and a separator line
   console.log("\n" + "=".repeat(60));
   console.log(header, deviceHeader);
   console.log("\n" + deviceInfo);

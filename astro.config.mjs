@@ -3,7 +3,7 @@ import solidJs from "@astrojs/solid-js";
 import { defineConfig } from "astro/config";
 import process from "process";
 
-// https://astro.build/config
+// DOC https://astro.build/config
 export default defineConfig({
   integrations: [solidJs()],
   output: "server",
@@ -15,7 +15,7 @@ export default defineConfig({
   },
   vite: {
     build: {
-      // To fix the SVG after build Vite issue as described in https://github.com/withastro/astro/issues/10296#issuecomment-1976825322.
+      // DOC To fix the SVG after build Vite issue as described in https://github.com/withastro/astro/issues/10296#issuecomment-1976825322.
       assetsInlineLimit: 0,
     },
     optimizeDeps: {
