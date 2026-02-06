@@ -16,12 +16,8 @@ try {
 
   const commitMsg = readFileSync(commitMsgFile, "utf8");
 
-  const escapedBranchName = branchName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const branchRegex = new RegExp(`^${escapedBranchName}\\s`);
-
-  if (!branchRegex.test(commitMsg)) {
-    const newCommitMsg = `${branchName} ${commitMsg}`;
-    writeFileSync(commitMsgFile, newCommitMsg, "utf8");
+  if (!commitMsg.startsWith(`${branchName} `)) {
+    writeFileSync(commitMsgFile, `${branchName} ${commitMsg}`, "utf8");
   }
 } catch (e) {
   console.error("Error in prepare-commit-msg script:", e);
