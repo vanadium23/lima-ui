@@ -1,6 +1,7 @@
 import { execSync } from "child_process";
 import { readFileSync, writeFileSync } from "fs";
 
+// тест 3
 const commitMsgFile = process.argv[2];
 
 if (!commitMsgFile) {
