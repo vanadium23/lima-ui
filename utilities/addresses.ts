@@ -9,6 +9,7 @@ export const TESTS_URL_ERROR_SIGN = "?error=true";
 export const TESTS_URL_LISTS_WITH_NETWORK_ERROR = `${URL_MY_LISTS}${TESTS_URL_ERROR_SIGN}`;
 
 /* Backend routing URLs */
+export const BACKEND_URL_USERS = "/users";
 export const BACKEND_URL_LISTS = "/lists";
 export const BACKEND_URL_NON_EXISTING = "/404";
 

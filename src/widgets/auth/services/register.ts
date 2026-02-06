@@ -1,21 +1,28 @@
+import { BACKEND_URL_USERS } from "../../../../utilities/addresses.ts";
+
 export type Account = {
   email: string;
   password: string;
+  passwordConfirmation?: string;
 };
 
-export async function registerNewAccount(data: Account, isMockFailure: boolean): Promise<boolean> {
-  const response = new Promise<boolean>((resolve, reject) => {
-    setTimeout(() => {
-      if (isMockFailure) {
-        reject("Network response was not ok ");
-      } else {
-        console.log("New acc was registered:", data);
-        resolve(true);
-      }
-    }, 3000);
+export async function registerNewAccount(
+  data: Account,
+  backendURL = import.meta.env.PUBLIC_API_URL,
+): Promise<undefined> {
+  const response = await fetch(backendURL + BACKEND_URL_USERS, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
   });
 
-  return await response;
+  if (!response.ok) {
+    throw new Error("Network response was not ok " + response.statusText);
+  }
+
+  return await response.json();
 }
 
 export async function loginToAccount(data: Account, isMockFailure: boolean): Promise<boolean> {
