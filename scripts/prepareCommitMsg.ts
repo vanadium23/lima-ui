@@ -18,9 +18,12 @@ try {
 
   const commitMsg = readFileSync(commitMsgFile, "utf8");
 
-  if (!commitMsg.startsWith(`${branchName}: `)) {
-    writeFileSync(commitMsgFile, `${branchName}: ${commitMsg}`, "utf8");
+  if (commitMsg.startsWith(`${branchName}: `)) {
+    process.exit(0);
   }
+
+  const cleanedMsg = commitMsg.replace(/^[A-Za-z]+-?\d+:?\s*/, "");
+  writeFileSync(commitMsgFile, `${branchName}: ${cleanedMsg}`, "utf8");
 } catch (e) {
   console.error("Error in prepare-commit-msg script:", e);
   process.exit(0);
