@@ -1,11 +1,11 @@
-import { For } from "solid-js"; // Импортируйте ваш компонент кнопки
+import { For } from "solid-js"; // DOC Импортируйте ваш компонент кнопки
 import type { Meta, StoryObj } from "storybook-solidjs-vite";
 
 import { Grid } from "../../storybook/grid.tsx";
 
 import { Button, ButtonComponentType, ButtonSize, ButtonTheme, ButtonType } from "./button.tsx";
 
-// Базовые настройки сторис, панели управления
+// DOC Базовые настройки сторис, панели управления
 const meta: Meta<typeof Button> = {
   title: "Components/Button",
   component: Button,
@@ -14,7 +14,7 @@ const meta: Meta<typeof Button> = {
   },
   tags: ["test"],
   argTypes: {
-    // Базовые
+    // DOC Базовые
     children: {
       type: { name: "string", required: true },
       control: { type: "text" },
@@ -26,7 +26,7 @@ const meta: Meta<typeof Button> = {
       },
     },
 
-    // Внешний вид
+    // DOC Внешний вид
     theme: {
       type: { name: "string" },
       control: {
@@ -57,7 +57,7 @@ const meta: Meta<typeof Button> = {
       },
     },
 
-    // Состояния
+    // DOC Состояния
     disabled: {
       control: { type: "boolean" },
       if: { arg: "loading", truthy: false },
@@ -78,7 +78,7 @@ const meta: Meta<typeof Button> = {
       },
     },
 
-    // Специализированные
+    // DOC Специализированные
 
     componentType: {
       type: { name: "string" },
@@ -130,7 +130,7 @@ const meta: Meta<typeof Button> = {
         category: "Специализированные",
       },
     },
-    // Действия
+    // DOC Действия
     handleClick: {
       type: { name: "function", required: true },
       if: { arg: "componentType", eq: "button" },
@@ -140,7 +140,7 @@ const meta: Meta<typeof Button> = {
         category: "Действия",
       },
     },
-    // Тестирование
+    // DOC Тестирование
     testId: {
       type: { name: "string", required: true },
       control: { type: "text" },

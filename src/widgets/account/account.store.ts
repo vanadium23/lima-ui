@@ -118,7 +118,7 @@ export const linkEmail = async () => {
   const { email, pass, repeatPass } = accountStore.emailForm;
 
   const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value);
-  const isPassValid = pass.value.length >= 8; // Упрощенная проверка для примера, можно использовать validatePassword
+  const isPassValid = pass.value.length >= 8; // DOC Упрощенная проверка для примера, можно использовать validatePassword
   const isRepeatPassValid = pass.value === repeatPass.value;
 
   setAccountStore("emailForm", "email", "isValid", isEmailValid);

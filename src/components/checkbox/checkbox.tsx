@@ -69,8 +69,8 @@ export const Checkbox = (props: Testable<CheckboxProps>) => {
     mProps.onChange(currentState);
   }
 
-  // Здесь мы преобразовываем из трех значений true/false/"mixed"
-  // в обычные true/false которые смогут принять нативные HTML-атрибуты
+  /* DOC Здесь мы преобразовываем из трех значений true/false/"mixed"
+  в обычные true/false которые смогут принять нативные HTML-атрибуты */
   function getCheckedState() {
     return getState() === true;
   }

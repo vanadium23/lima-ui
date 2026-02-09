@@ -65,7 +65,7 @@ async function verifyItemInputState(
     await expectDragHandle[visibility]();
     await expectDragHandle[enablement]();
 
-    // У автопункта нет выпадающего меню.
+    // DOC У автопункта нет выпадающего меню.
     if (["automatic", "new automatic", "old automatic"].includes(itemInputMeaning)) return;
 
     const expectOpenContextMenuListItemButton = complexWorld.expectLocated(

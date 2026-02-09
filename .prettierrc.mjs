@@ -1,7 +1,7 @@
 /** @type {import("prettier").Config} */
 export default {
   plugins: ["prettier-plugin-astro", "prettier-plugin-gherkin"],
-  printWidth: 120, // Максимальная длина строки для переноса
+  printWidth: 120, // DOC Максимальная длина строки для переноса
   overrides: [
     {
       files: "*.astro",
@@ -22,6 +22,6 @@ export default {
       },
     },
   ],
-  singleQuote: false, // Двойные кавычки
-  bracketSpacing: true, // пробелы внутри фигурных скобок
+  singleQuote: false, // DOC Двойные кавычки
+  bracketSpacing: true, // DOC Пробелы внутри фигурных скобок
 };
