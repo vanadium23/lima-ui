@@ -11,14 +11,14 @@
   --neutral-600: #777;
   --neutral-700: #444;
   --neutral-800: #222;
-  --neutral-900: #000;
+  --neutral-900: #05060f;
   --text-neutral-100: #fff;
   --text-neutral-300: #c4c4c4;
   --text-neutral-500: #999;
   --text-neutral-600: #777;
   --text-neutral-700: #444;
   --text-neutral-800: #222;
-  --text-neutral-900: #000;
+  --text-neutral-900: #05060f;
   --dangerous-300: #ff33330c;
   --dangerous-400: #f53b3c;
   --dangerous-500: #eb0000;
@@ -42,12 +42,10 @@
   --secondary-500: #cef55a;
   --secondary-600: #a6db09;
   --text-secondary-500: #cef55a;
-  --outline: #0285f1;
-  --outline-alt: #f0a;
+  --outline: var(--neutral-900);
 
   /* Custom-properties */
   --outline-set: 0.1rem solid var(--outline);
-  --outline-set-alt: 0.1rem solid var(--outline-alt);
   --outline-offset: -0.1rem;
   --preloader: rotate-preloader 0.7s linear infinite;
   --shadow-dragging: 0 0.2rem 1.6rem 0 rgb(0 0 0 / 15%);
