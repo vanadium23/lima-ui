@@ -8,6 +8,7 @@ import {
 } from "../../../../../features/testIds.ts";
 import { BACKEND_URL_NON_EXISTING, URL_MY_LISTS } from "../../../../../utilities/addresses.ts";
 import { DEFAULT_TAB_TITLE, suffixTabTitle } from "../../../../../utilities/tabTitle.ts";
+import { isItemFromBackend, type ListElementFromBackend, type ListFromBackend } from "../../../../types/types.ts";
 
 import "./style.css";
 import "normalize.css";
@@ -16,25 +17,34 @@ type Item = {
   content: string;
 };
 
-export type List = {
-  name: string;
-  id: string;
-  items: Item[];
-  purpose: string;
-  note: string;
-};
+export type List = ListFromBackend;
 
 const emptyList: List = {
+  type: "list",
   id: "",
   name: "",
   items: [],
   purpose: "",
   note: "",
+  exportedTo: [],
+  hasExportedItems: false,
 };
+
+function convertItemsFromBackendForPrint(elements: ListElementFromBackend[]): Item[] {
+  return elements.reduce((items, element) => {
+    if (isItemFromBackend(element)) {
+      items.push({ content: element.content });
+    } else if (element.type === "list") {
+      items.push(...convertItemsFromBackendForPrint(element.items));
+    }
+
+    return items;
+  }, [] as Item[]);
+}
 
 let listRequestError = false;
 const errorText = "Нет соединения с сервером, попробуйте позже";
-let list: List = emptyList;
+let list: List;
 
 try {
   let backendListsAddress = URL_MY_LISTS;
@@ -98,7 +108,7 @@ const isCheckableParam = Astro.url.searchParams.get("checkable") === "true";
               </div>
             )}
             <ul class={`print__items ${isCheckableParam ? "print__items_checklist" : "print__items_list"}`}>
-              {list.items.map((item, index) => (
+              {convertItemsFromBackendForPrint(list.items).map((item, index) => (
                 <li class="print__item" data-test-id={PRINT_LIST_ITEM} data-test-sub-id={index}>
                   {item.content}
                 </li>
