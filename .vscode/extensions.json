@@ -2,8 +2,10 @@
   "recommendations": [
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
+    "stylelint.vscode-stylelint",
     "alexkrechik.cucumberautocomplete",
-    "astro-build.astro-vscode"
-  ],
-  "unwantedRecommendations": []
+    "astro-build.astro-vscode",
+    "streetsidesoftware.code-spell-checker",
+    "streetsidesoftware.code-spell-checker-russian"
+  ]
 }

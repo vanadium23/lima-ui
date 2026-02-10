@@ -5,7 +5,7 @@
   "editor.codeActionsOnSave": {
     "source.addMissingImports": "always",
     "source.organizeImports": "always",
-    "source.fixAll.eslint": "always",
+    "source.fixAll.eslint": "always"
   },
 
   "javascript.preferences.importModuleSpecifier": "relative",
@@ -25,5 +25,7 @@
   "eslint.codeActionsOnSave.mode": "all",
 
   "prettier.requireConfig": true,
-  "prettier.useEditorConfig": false
+  "prettier.useEditorConfig": false,
+
+  "cSpell.language": "en,ru"
 }

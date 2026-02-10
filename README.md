@@ -21,6 +21,19 @@
 2. Устанавливаем зависимости при помощи команды: `npm install`. Это необходимо для работы ESLint, Prettier и других инструментов в IDE и CLI.
 3. Клонируем [серверный репозиторий](https://github.com/lima-ooo/lima).
 
+### Рекомендуемые расширения VS Code
+
+При открытии проекта VS Code предложит установить рекомендуемые расширения из файла `.vscode/extensions.json`:
+
+- **ESLint**
+- **Stylelint**
+- **Prettier**
+- **Astro**
+- **Cucumber (alexkrechik.cucumberautocomplete)**
+- **Code Spell Checker + Russian Dictionary** (проверка орфографии; новые слова добавляйте в **User Dictionary**, не в workspace‑настройки)
+
+Если уведомление не появилось, откройте панель **Extensions** в VS Code и введите: `@recommended`
+
 ### Запуск без Docker
 
 Если предпочтительно запускать проекты отдельно:
@@ -67,7 +80,7 @@ docker compose down
 
 - **ESLint** (8.54.0) — статический анализ кода
 - **Prettier** (3.1.1) — форматирование кода
-- **Stylelint** (15.11.0) — линтинг CSS
+- **Stylelint** (16.26.1) — линтинг CSS
 - **Husky** (9.1.7) — Git хуки
 - **lint-staged** (16.1.2) — линтинг только измененных файлов
 
@@ -106,9 +119,9 @@ docker compose down
 
 Отчеты сохраняются в папки:
 
-- HTML-отчеты: `featrue/results/reports`.
-- Скриншоты: `featrue/results/screenshots`.
-- Видео: `featrue/results/videos`.
+- HTML-отчеты: `feature/results/reports`.
+- Скриншоты: `feature/results/screenshots`.
+- Видео: `feature/results/videos`.
 
 ## Браузеры
 
