@@ -56,13 +56,11 @@ export function handleRegister(authType: AuthType) {
   setRegistrationFormStore("authType", authType);
   setRegistrationFormStore("isLoading", true);
   notificationState.clearNetworkErrors();
-  registerNewAccount(
-    {
-      email: registrationFormStore.inputs.email.value.toString(),
-      password: registrationFormStore.inputs.pass.value.toString(),
-    },
-    false,
-  )
+  registerNewAccount({
+    email: registrationFormStore.inputs.email.value.toString(),
+    password: registrationFormStore.inputs.pass.value.toString(),
+    passwordConfirmation: registrationFormStore.inputs.repeat_pass.value.toString(),
+  })
     .then((result) => {
       if (result) {
         if (authType !== "email") {
