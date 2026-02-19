@@ -19,9 +19,9 @@ import {
   SAVE_LIST_BUTTON,
 } from "../../../features/testIds.ts";
 import { Button, ButtonType } from "../../components/button/button.tsx";
+import { Error } from "../../components/error/error.tsx";
 import { ImportedGroup } from "../../components/importedGroup/importedGroup.tsx";
 import { ListItem } from "../../components/listItem/listItem.tsx";
-import { PageError } from "../../components/pageError/pageError.tsx";
 import { notificationState } from "../../state/pushNotificationStateManager.ts";
 import { type ListFromBackend } from "../../types/types.ts";
 
@@ -214,9 +214,7 @@ export const EditList = (props: EditListProps) => {
               <Show when={storeEditList.error || reachedItemsLimit() || storeEditList.removeError}>
                 <div class="editList__errors">
                   <Show when={reachedItemsLimit()}>
-                    <PageError testId={ITEMS_LIMIT_REACHED_WARNING}>
-                      Вы использовали лимит в {ITEMS_LIMIT} пунктов
-                    </PageError>
+                    <Error testId={ITEMS_LIMIT_REACHED_WARNING}>Вы использовали лимит в {ITEMS_LIMIT} пунктов</Error>
                   </Show>
                 </div>
               </Show>

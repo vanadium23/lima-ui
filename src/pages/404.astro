@@ -1,0 +1,16 @@
+---
+import { DEFAULT_TEST_ID } from "../../features/testIds.ts";
+import { PageError, PageErrorType } from "../components/pageError/pageError.tsx";
+import Landing from "../layouts/landing/landing.astro";
+---
+
+<Landing titleName="Ссылка устарела">
+  <PageError
+    slot="mainContent"
+    type={PageErrorType.NotFound}
+    title="Кажется, вы забрели не в ту степь"
+    testId={DEFAULT_TEST_ID}
+  >
+    Возможно, запрашиваемая страница была удалена, или в адресе допущена ошибка.</PageError
+  >
+</Landing>

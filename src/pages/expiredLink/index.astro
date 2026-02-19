@@ -1,23 +1,12 @@
 ---
 import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
-import { Button, ButtonComponentType } from "../../components/button/button.tsx";
-import { Title, TitlePosition } from "../../components/title/title.tsx";
+import { PageError, PageErrorType } from "../../components/pageError/pageError.tsx";
 import Landing from "../../layouts/landing/landing.astro";
-
-import "./style.css";
 ---
 
 <Landing titleName="Ссылка устарела">
-  <section class="expiredLink" slot="mainContent">
-    <div class="expiredLink__wrapper wrapper">
-      <Title position={TitlePosition.Center} testId={DEFAULT_TEST_ID}>Ссылка устарела или уже использована</Title>
-      <p class="expiredLink__text">
-        К сожалению, срок действия вашей персональной ссылки истек.<br /> Запросите новую ссылку, мы сразу вышлем ее на ваш
-        адрес электронной почты.
-      </p>
-      <Button client:only="solid-js" componentType={ButtonComponentType.Link} href="/" testId={DEFAULT_TEST_ID}
-        >На главную</Button
-      >
-    </div>
-  </section>
+  <PageError slot="mainContent" type={PageErrorType.ExpiredLink} title="Ссылка устарела" testId={DEFAULT_TEST_ID}>
+    К сожалению, срок действия вашей персональной ссылки истек.
+    <br /> Запросите новую ссылку, мы сразу вышлем ее на ваш адрес электронной почты.</PageError
+  >
 </Landing>
