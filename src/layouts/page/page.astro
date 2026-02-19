@@ -18,7 +18,7 @@ const { titleName, list404 = false } = Astro.props as Props;
 <html lang="ru">
   <Head titleName={titleName} />
   <body>
-    <Header client:only="solid-js" isLanding={true} list404={list404} />
+    <Header client:only="solid-js" minimal={true} list404={list404} />
 
     <main class="main">
       <slot name="mainContent" />
