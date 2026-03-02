@@ -1,42 +1,35 @@
-import { type JSX, mergeProps } from "solid-js";
+import type { JSX } from "solid-js";
 
+import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
+import { Button, ButtonComponentType } from "../button/button.tsx";
+import { Title, TitlePosition } from "../title/title.tsx";
 import type { Testable } from "../utilities/testable.ts";
 
 import "./pageError.css";
 
-export enum PageErrorTheme {
-  Dangerous = "dangerous",
-}
-
-export enum PageErrorSize {
-  Medium = "medium",
+export enum PageErrorType {
+  ExpiredLink = "expiredLink",
+  NotFound = "notFound",
 }
 
 type PageErrorProps = {
-  theme?: PageErrorTheme;
-  size?: PageErrorSize;
+  type: PageErrorType;
+  title: string;
   children: JSX.Element;
 };
 
 export const PageError = (props: Testable<PageErrorProps>) => {
-  const mProps: Testable<Required<PageErrorProps>> = mergeProps(
-    {
-      theme: PageErrorTheme.Dangerous,
-      size: PageErrorSize.Medium,
-    },
-    props,
-  );
-
   return (
-    <div
-      class="pageError"
-      classList={{
-        [`pageError_${mProps.size}`]: true,
-        [`pageError_${mProps.theme}`]: true,
-      }}
-      data-test-id={mProps.testId}
-    >
-      {mProps.children}
-    </div>
+    <section class={`pageError pageError_${props.type}`}>
+      <div class="pageError__wrapper wrapper">
+        <Title position={TitlePosition.Center} testId={DEFAULT_TEST_ID}>
+          {props.title}
+        </Title>
+        <p class="pageError__text">{props.children}</p>
+        <Button componentType={ButtonComponentType.Link} href="/" testId={DEFAULT_TEST_ID}>
+          На главную
+        </Button>
+      </div>
+    </section>
   );
 };

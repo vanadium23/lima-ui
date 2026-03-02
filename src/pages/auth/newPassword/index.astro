@@ -1,8 +1,8 @@
 ---
-import LandingPage from "../../../layouts/landing/landing.astro";
+import Page from "../../../layouts/page/page.astro";
 import { NewPassword } from "../../../widgets/auth/newPassword.tsx";
 ---
 
-<LandingPage titleName="Создание нового пароля">
+<Page titleName="Создание нового пароля">
   <NewPassword client:only="solid-js" slot="mainContent" />
-</LandingPage>
+</Page>

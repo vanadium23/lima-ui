@@ -42,6 +42,10 @@ function checkPaths(pathsData: PathsData): string[] {
   const regExpDirectoryName = /^(\[[a-z][a-zA-Z]*]|[a-z][a-zA-Z]*)$/;
 
   for (const [fileName, filePath] of Object.entries(pathsData.files)) {
+    if (/^404\.[a-z]+$/.test(fileName)) {
+      continue;
+    }
+
     if (!regExpFileName.test(fileName)) {
       errors.push(
         `❌ Имя файла 📄"${fileName}" по пути ${filePath} не соответствует camelCase правилам или содержит цифры`,

@@ -1,8 +1,8 @@
 ---
-import LandingPage from "../../layouts/landing/landing.astro";
+import Page from "../../layouts/page/page.astro";
 import { Auth } from "../../widgets/auth/auth.tsx";
 ---
 
-<LandingPage titleName="Регистрация">
+<Page titleName="Регистрация">
   <Auth client:only="solid-js" slot="mainContent" />
-</LandingPage>
+</Page>
