@@ -1,0 +1,14 @@
+.formField {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+  align-self: stretch;
+}
+
+.formField__labelText {
+  color: var(--text-neutral-800);
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 2rem;
+}

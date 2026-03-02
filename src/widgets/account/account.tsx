@@ -7,7 +7,7 @@ import { AuthButton } from "../../components/authButton/authButton.tsx";
 import { Button, ButtonTheme } from "../../components/button/button.tsx";
 import { Dialog } from "../../components/dialog/dialog.tsx";
 import { Divider } from "../../components/divider/divider.tsx";
-import { HintForInput } from "../../components/hintErrorReplaceableText/hintForInput.tsx";
+import { FormField } from "../../components/formField/formField.tsx";
 import { AutocompleteType, Input, InputType } from "../../components/input/input.tsx";
 import { TextButton } from "../../components/textButton/textButton.tsx";
 import { Title } from "../../components/title/title.tsx";
@@ -104,76 +104,52 @@ export const Account = () => {
                 <span class="account__subTitle">Вы можете добавить электронную почту для входа в аккаунт</span>
                 <div class="account__accordionWrapper">
                   <div class="account__accordionInner">
-                    <div class="account__field">
-                      <label class="account__label">
-                        <span class="account__labelText">Электронная почта</span>
-                        <Input
-                          name="email"
-                          placeholder="example@email.com"
-                          type={InputType.Email}
-                          autocomplete={AutocompleteType.Email}
-                          maxLength={MAX_EMAIL_LENGTH}
-                          testId={DEFAULT_TEST_ID}
-                          disabled={isAccountActionLoading()}
-                          error={!accountStore.emailForm.email.isValid}
-                          onInput={(e) => handleEmailFormChange("email", (e.target as HTMLInputElement).value)}
-                        >
-                          {accountStore.emailForm.email.value}
-                        </Input>
-                      </label>
-                      <HintForInput
-                        errorText={accountStore.emailForm.email.error}
-                        isError={!accountStore.emailForm.email.isValid}
-                        testId={DEFAULT_TEST_ID}
-                      />
-                    </div>
-                    <div class="account__field">
-                      <label class="account__label">
-                        <span class="account__labelText">Придумайте пароль</span>
-                        <Input
-                          name="pass"
-                          placeholder="Введите пароль"
-                          type={InputType.Password}
-                          autocomplete={AutocompleteType.NewPassword}
-                          maxLength={MAX_PASSWORD_LENGTH}
-                          testId={DEFAULT_TEST_ID}
-                          disabled={isAccountActionLoading()}
-                          error={!accountStore.emailForm.pass.isValid}
-                          onInput={(e) => handleEmailFormChange("pass", (e.target as HTMLInputElement).value)}
-                        >
-                          {accountStore.emailForm.pass.value}
-                        </Input>
-                      </label>
-                      <HintForInput
-                        hintText={`Минимум ${MIN_PASSWORD_LENGTH} символов, буквы [a-z] и цифры [0-9]`}
-                        errorText={accountStore.emailForm.pass.error}
-                        isError={!accountStore.emailForm.pass.isValid}
-                        testId={DEFAULT_TEST_ID}
-                      />
-                    </div>
-                    <div class="account__field">
-                      <label class="account__label">
-                        <span class="account__labelText">Повторите пароль</span>
-                        <Input
-                          name="repeatPass"
-                          placeholder="Ввидите пароль"
-                          type={InputType.Password}
-                          autocomplete={AutocompleteType.NewPassword}
-                          maxLength={MAX_PASSWORD_LENGTH}
-                          testId={DEFAULT_TEST_ID}
-                          disabled={isAccountActionLoading()}
-                          error={!accountStore.emailForm.repeatPass.isValid}
-                          onInput={(e) => handleEmailFormChange("repeatPass", (e.target as HTMLInputElement).value)}
-                        >
-                          {accountStore.emailForm.repeatPass.value}
-                        </Input>
-                      </label>
-                      <HintForInput
-                        errorText={accountStore.emailForm.repeatPass.error}
-                        isError={!accountStore.emailForm.repeatPass.isValid}
-                        testId={DEFAULT_TEST_ID}
-                      />
-                    </div>
+                    <FormField
+                      labelText="Электронная почта"
+                      errorText={accountStore.emailForm.email.error}
+                      isError={!accountStore.emailForm.email.isValid}
+                      name="email"
+                      placeholder="example@email.com"
+                      type={InputType.Email}
+                      autocomplete={AutocompleteType.Email}
+                      maxLength={MAX_EMAIL_LENGTH}
+                      testId={DEFAULT_TEST_ID}
+                      disabled={isAccountActionLoading()}
+                      onInput={(e) => handleEmailFormChange("email", (e.target as HTMLInputElement).value)}
+                    >
+                      {accountStore.emailForm.email.value}
+                    </FormField>
+                    <FormField
+                      labelText="Придумайте пароль"
+                      hintText={`Минимум ${MIN_PASSWORD_LENGTH} символов, буквы [a-z] и цифры [0-9]`}
+                      errorText={accountStore.emailForm.pass.error}
+                      isError={!accountStore.emailForm.pass.isValid}
+                      name="pass"
+                      placeholder="Введите пароль"
+                      type={InputType.Password}
+                      autocomplete={AutocompleteType.NewPassword}
+                      maxLength={MAX_PASSWORD_LENGTH}
+                      testId={DEFAULT_TEST_ID}
+                      disabled={isAccountActionLoading()}
+                      onInput={(e) => handleEmailFormChange("pass", (e.target as HTMLInputElement).value)}
+                    >
+                      {accountStore.emailForm.pass.value}
+                    </FormField>
+                    <FormField
+                      labelText="Повторите пароль"
+                      errorText={accountStore.emailForm.repeatPass.error}
+                      isError={!accountStore.emailForm.repeatPass.isValid}
+                      name="repeatPass"
+                      placeholder="Ввидите пароль"
+                      type={InputType.Password}
+                      autocomplete={AutocompleteType.NewPassword}
+                      maxLength={MAX_PASSWORD_LENGTH}
+                      testId={DEFAULT_TEST_ID}
+                      disabled={isAccountActionLoading()}
+                      onInput={(e) => handleEmailFormChange("repeatPass", (e.target as HTMLInputElement).value)}
+                    >
+                      {accountStore.emailForm.repeatPass.value}
+                    </FormField>
                   </div>
                   <Button
                     testId={DEFAULT_TEST_ID}
@@ -198,82 +174,54 @@ export const Account = () => {
                 <span class="account__subTitle">Вы можете изменить пароль для входа в аккаунт</span>
                 <div class="account__accordionWrapper">
                   <div class="account__accordionInner">
-                    <div class="account__field">
-                      <label class="account__label">
-                        <span class="account__labelText">Текущий пароль</span>
-                        <Input
-                          name="oldPass"
-                          placeholder="Введите пароль"
-                          type={InputType.Password}
-                          autocomplete={AutocompleteType.Password}
-                          maxLength={MAX_PASSWORD_LENGTH}
-                          testId={DEFAULT_TEST_ID}
-                          disabled={isAccountActionLoading()}
-                          error={!accountStore.changePasswordForm.oldPass.isValid}
-                          onInput={(e) =>
-                            handleChangePasswordFormChange("oldPass", (e.target as HTMLInputElement).value)
-                          }
-                        >
-                          {accountStore.changePasswordForm.oldPass.value}
-                        </Input>
-                      </label>
-                      <HintForInput
-                        errorText={accountStore.changePasswordForm.oldPass.error}
-                        isError={!accountStore.changePasswordForm.oldPass.isValid}
-                        testId={DEFAULT_TEST_ID}
-                      />
-                    </div>
-                    <div class="account__field">
-                      <label class="account__label">
-                        <span class="account__labelText">Новый пароль</span>
-                        <Input
-                          name="newPass"
-                          placeholder="Введите пароль"
-                          type={InputType.Password}
-                          autocomplete={AutocompleteType.NewPassword}
-                          maxLength={MAX_PASSWORD_LENGTH}
-                          testId={DEFAULT_TEST_ID}
-                          disabled={isAccountActionLoading()}
-                          error={!accountStore.changePasswordForm.newPass.isValid}
-                          onInput={(e) =>
-                            handleChangePasswordFormChange("newPass", (e.target as HTMLInputElement).value)
-                          }
-                        >
-                          {accountStore.changePasswordForm.newPass.value}
-                        </Input>
-                      </label>
-                      <HintForInput
-                        hintText={`Минимум ${MIN_PASSWORD_LENGTH} символов, буквы [a-z] и цифры [0-9]`}
-                        errorText={accountStore.changePasswordForm.newPass.error}
-                        isError={!accountStore.changePasswordForm.newPass.isValid}
-                        testId={DEFAULT_TEST_ID}
-                      />
-                    </div>
-                    <div class="account__field">
-                      <label class="account__label">
-                        <span class="account__labelText">Повторите пароль</span>
-                        <Input
-                          name="repeatNewPass"
-                          placeholder="Введите пароль"
-                          type={InputType.Password}
-                          autocomplete={AutocompleteType.NewPassword}
-                          maxLength={MAX_PASSWORD_LENGTH}
-                          testId={DEFAULT_TEST_ID}
-                          disabled={isAccountActionLoading()}
-                          error={!accountStore.changePasswordForm.repeatNewPass.isValid}
-                          onInput={(e) =>
-                            handleChangePasswordFormChange("repeatNewPass", (e.target as HTMLInputElement).value)
-                          }
-                        >
-                          {accountStore.changePasswordForm.repeatNewPass.value}
-                        </Input>
-                      </label>
-                      <HintForInput
-                        errorText={accountStore.changePasswordForm.repeatNewPass.error}
-                        isError={!accountStore.changePasswordForm.repeatNewPass.isValid}
-                        testId={DEFAULT_TEST_ID}
-                      />
-                    </div>
+                    <FormField
+                      labelText="Текущий пароль"
+                      errorText={accountStore.changePasswordForm.oldPass.error}
+                      isError={!accountStore.changePasswordForm.oldPass.isValid}
+                      name="oldPass"
+                      placeholder="Введите пароль"
+                      type={InputType.Password}
+                      autocomplete={AutocompleteType.Password}
+                      maxLength={MAX_PASSWORD_LENGTH}
+                      testId={DEFAULT_TEST_ID}
+                      disabled={isAccountActionLoading()}
+                      onInput={(e) => handleChangePasswordFormChange("oldPass", (e.target as HTMLInputElement).value)}
+                    >
+                      {accountStore.changePasswordForm.oldPass.value}
+                    </FormField>
+                    <FormField
+                      labelText="Новый пароль"
+                      hintText={`Минимум ${MIN_PASSWORD_LENGTH} символов, буквы [a-z] и цифры [0-9]`}
+                      errorText={accountStore.changePasswordForm.newPass.error}
+                      isError={!accountStore.changePasswordForm.newPass.isValid}
+                      name="newPass"
+                      placeholder="Введите пароль"
+                      type={InputType.Password}
+                      autocomplete={AutocompleteType.NewPassword}
+                      maxLength={MAX_PASSWORD_LENGTH}
+                      testId={DEFAULT_TEST_ID}
+                      disabled={isAccountActionLoading()}
+                      onInput={(e) => handleChangePasswordFormChange("newPass", (e.target as HTMLInputElement).value)}
+                    >
+                      {accountStore.changePasswordForm.newPass.value}
+                    </FormField>
+                    <FormField
+                      labelText="Повторите пароль"
+                      errorText={accountStore.changePasswordForm.repeatNewPass.error}
+                      isError={!accountStore.changePasswordForm.repeatNewPass.isValid}
+                      name="repeatNewPass"
+                      placeholder="Введите пароль"
+                      type={InputType.Password}
+                      autocomplete={AutocompleteType.NewPassword}
+                      maxLength={MAX_PASSWORD_LENGTH}
+                      testId={DEFAULT_TEST_ID}
+                      disabled={isAccountActionLoading()}
+                      onInput={(e) =>
+                        handleChangePasswordFormChange("repeatNewPass", (e.target as HTMLInputElement).value)
+                      }
+                    >
+                      {accountStore.changePasswordForm.repeatNewPass.value}
+                    </FormField>
                   </div>
                   <Button
                     testId={DEFAULT_TEST_ID}
