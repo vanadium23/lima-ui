@@ -1,4 +1,4 @@
-import { createEffect, createSignal } from "solid-js";
+import { createEffect, createSignal, onMount } from "solid-js";
 
 import { AUTH_TABS } from "../../../features/testIds.ts";
 import { Tabs } from "../../components/tabs/tabs.tsx";
@@ -9,6 +9,7 @@ import { LoginForm } from "./components/loginForm/loginForm.tsx";
 import { registrationFormStore } from "./components/registrationForm/registrationForm.store.ts";
 import { RegistrationForm } from "./components/registrationForm/registrationForm.tsx";
 import { restorePasswordFormStore } from "./components/restorePasswordForm/restorePasswordForm.store.ts";
+import { getUserInfo } from "./services/register.ts";
 import "./auth.css";
 
 export type AuthType = "email" | "google" | "yandex" | "vk";
@@ -56,6 +57,12 @@ export const Auth = () => {
       history.pushState({}, "", `auth#${activeAuthForm()}`);
       setUrlHash(`#${activeAuthForm()}`);
     }
+  });
+
+  onMount(() => {
+    getUserInfo().then((data) => {
+      console.log(data);
+    });
   });
 
   const tabs = () => {

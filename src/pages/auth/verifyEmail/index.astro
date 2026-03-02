@@ -1,0 +1,8 @@
+---
+import LandingPage from "../../../layouts/landing/landing.astro";
+import { VerifyEmail } from "../../../widgets/auth/verifyEmail.tsx";
+---
+
+<LandingPage titleName="Подтверждение email">
+  <VerifyEmail client:only="solid-js" slot="mainContent" />
+</LandingPage>
