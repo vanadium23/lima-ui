@@ -181,3 +181,4 @@ export const RESTORE_PASS_SUBMIT_BUTTON = "restorePassSubmitButton";
 export const NEW_PASSWORD_PASS_INPUT = "newPasswordPassInput";
 export const NEW_PASSWORD_REPEAT_PASS_INPUT = "newPasswordRepeatPassInput";
 export const NEW_PASSWORD_SUBMIT_BUTTON = "newPasswordSubmitButton";
+export const PAGE_NOT_FOUND = "pageNotFound";

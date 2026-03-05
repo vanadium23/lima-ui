@@ -1,5 +1,5 @@
 ---
-import { DEFAULT_TEST_ID } from "../../features/testIds.ts";
+import { PAGE_NOT_FOUND } from "../../features/testIds.ts";
 import { PageError, PageErrorType } from "../components/pageError/pageError.tsx";
 import Page from "../layouts/page/page.astro";
 ---
@@ -9,7 +9,7 @@ import Page from "../layouts/page/page.astro";
     slot="mainContent"
     type={PageErrorType.NotFound}
     title="Кажется, вы забрели не в ту степь"
-    testId={DEFAULT_TEST_ID}
+    testId={PAGE_NOT_FOUND}
   >
     Возможно, запрашиваемая страница была удалена, или в адресе допущена ошибка.</PageError
   >

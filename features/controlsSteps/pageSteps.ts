@@ -19,6 +19,7 @@ export const PAGES_MEANINGS = {
   "My Lists with failed lists loading": TESTS_URL_LISTS_WITH_NETWORK_ERROR,
   "Latest List": TESTS_URL_SOME_LIST,
   "Some List": TESTS_URL_SOME_LIST,
+  "Page Not Found": "/404",
 };
 
 type PageMeaning = keyof typeof PAGES_MEANINGS;
@@ -50,6 +51,12 @@ When(
 );
 
 Then("I expect to be on the {string} page", async function (this: ComplexWorld, pageMeaning: PageMeaning) {
+  if (pageMeaning === "Page Not Found") {
+    await expect(this.page).toHaveURL(/:\d+\/(?!lists\/create$|lists$|auth$|lists\/list-|404$).*$/);
+
+    return;
+  }
+
   throwIfUnknownPageMeaning(pageMeaning);
 
   await expect(this.page).toHaveURL(new RegExp(PAGES_MEANINGS[pageMeaning]));
