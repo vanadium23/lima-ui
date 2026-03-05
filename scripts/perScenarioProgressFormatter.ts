@@ -1,11 +1,5 @@
 import type { IFormatterOptions } from "@cucumber/cucumber";
-import {
-  Envelope,
-  TestCaseFinished,
-  TestCaseStarted,
-  TestRunFinished,
-  TestStepFinished,
-} from "@cucumber/messages";
+import { Envelope, TestCaseFinished, TestCaseStarted, TestRunFinished, TestStepFinished } from "@cucumber/messages";
 import chalk from "chalk";
 
 /**
@@ -35,12 +29,12 @@ class PerScenarioProgressFormatter {
     this.eventDataCollector = options.eventDataCollector;
     this.eventBroadcaster = options.eventBroadcaster;
 
-    // Scenario tracking
+    // DOC Scenario tracking
     this.scenarioMap = new Map();
     this.currentScenarioId = null;
     this.scenarioAttempts = new Map();
 
-    // Register event handlers
+    // DOC Register event handlers
     this.eventBroadcaster.on("envelope", this.processEnvelope.bind(this));
   }
 
@@ -67,9 +61,7 @@ class PerScenarioProgressFormatter {
   }
 
   onTestCaseStarted(testCaseStarted: TestCaseStarted): void {
-    const testCase = this.eventDataCollector.getTestCaseAttempt(
-      testCaseStarted.id,
-    );
+    const testCase = this.eventDataCollector.getTestCaseAttempt(testCaseStarted.id);
     if (!testCase) return;
 
     const pickleId = testCase.pickle.id;
@@ -81,20 +73,18 @@ class PerScenarioProgressFormatter {
       const scenarioName = scenarioInfo.name;
       let scenarioDisplay = scenarioName;
 
-      // Use the pickle ID as the key for tracking retries
-      // This ensures each unique scenario outline example is tracked separately
+      // DOC Use the pickle ID as the key for tracking retries
+      // DOC This ensures each unique scenario outline example is tracked separately
       const scenarioKey = pickleId;
 
-      // Check if this specific scenario has been run before
+      // DOC Check if this specific scenario has been run before
       const currentAttempt = this.scenarioAttempts.get(scenarioKey) || 0;
       const attemptNumber = currentAttempt + 1;
       this.scenarioAttempts.set(scenarioKey, attemptNumber);
 
-      // Only mark as a retry if this exact scenario has been run more than once
+      // DOC Only mark as a retry if this exact scenario has been run more than once
       if (attemptNumber > 1) {
-        scenarioDisplay = chalk.yellow(
-          `${scenarioName} (Retry Attempt ${attemptNumber})`,
-        );
+        scenarioDisplay = chalk.yellow(`${scenarioName} (Retry Attempt ${attemptNumber})`);
       }
 
       this.log(`\n${scenarioDisplay}: `);
@@ -104,9 +94,7 @@ class PerScenarioProgressFormatter {
   onTestStepFinished(testStepFinished: TestStepFinished): void {
     if (!this.currentScenarioId) return;
 
-    const testCaseAttempt = this.eventDataCollector.getTestCaseAttempt(
-      testStepFinished.testCaseStartedId,
-    );
+    const testCaseAttempt = this.eventDataCollector.getTestCaseAttempt(testStepFinished.testCaseStartedId);
     if (!testCaseAttempt) return;
 
     const scenarioInfo = this.scenarioMap.get(this.currentScenarioId);
@@ -114,10 +102,10 @@ class PerScenarioProgressFormatter {
 
     const status = testStepFinished.testStepResult.status;
 
-    // Add a colored dot based on step status
+    // DOC Add a colored dot based on step status
     let dot = ".";
 
-    // Handle status with string comparisons instead of enum
+    // DOC Handle status with string comparisons instead of enum
     switch (status) {
       case "PASSED":
         dot = chalk.green(".");
@@ -147,22 +135,22 @@ class PerScenarioProgressFormatter {
 
   onTestCaseFinished(_testCaseFinished: TestCaseFinished): void {
     if (this.currentScenarioId) {
-      // End the line for this scenario
+      // DOC End the line for this scenario
       this.log("");
       this.currentScenarioId = null;
     }
   }
 
   onTestRunFinished(_testRunFinished?: TestRunFinished): void {
-    // Use the scenarioMap to count scenarios
+    // DOC Use the scenarioMap to count scenarios
     const scenarioCount = this.scenarioMap.size;
 
-    // Print simplified summary
+    // DOC Print simplified summary
     this.log(`\n${scenarioCount} scenario${scenarioCount !== 1 ? "s" : ""}`);
     this.log("Test run finished");
   }
 
-  // Required method for Cucumber.js formatters
+  // DOC Required method for Cucumber.js formatters
   finished(): boolean {
     return true;
   }

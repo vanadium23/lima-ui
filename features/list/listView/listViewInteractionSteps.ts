@@ -8,7 +8,7 @@ import { buildTestableSelector } from "../../utilities/buildTestableSelector.ts"
 import { SWITCH_TEST_IDS, type SwitchMeaning } from "../listCreation/testIds.ts";
 
 Then("I expect clipboard to contain items content", async function (this: ComplexWorld) {
-  // Use system-appropriate line separator for cross-platform compatibility
+  // DOC Use system-appropriate line separator for cross-platform compatibility
   const expectedText = ["first item", "second item", "third item"].map((item) => this.data[item] + EOL || "").join("");
 
   const clipboardContent = await this.page.evaluate(() => navigator.clipboard.readText());

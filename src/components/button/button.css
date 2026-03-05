@@ -44,7 +44,7 @@
 }
 
 .button_primary:focus-visible {
-  outline: var(--outline-set-alt);
+  outline: var(--outline-set);
 }
 
 .button_secondary {
@@ -64,7 +64,7 @@
 }
 
 .button_secondary:focus-visible {
-  outline: var(--outline-set-alt);
+  outline: var(--outline-set);
 }
 
 .button_successful {

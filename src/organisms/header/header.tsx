@@ -20,7 +20,7 @@ import "./header.css";
 
 type HeaderProps = {
   list404?: boolean;
-  isLanding?: boolean;
+  minimal?: boolean;
   isListsLimitReached?: boolean;
 };
 
@@ -28,7 +28,7 @@ export const Header = (props: HeaderProps) => {
   const mProps: Required<HeaderProps> = mergeProps(
     {
       list404: false,
-      isLanding: false,
+      minimal: false,
       isListsLimitReached: false,
     },
     props,
@@ -43,7 +43,7 @@ export const Header = (props: HeaderProps) => {
   return (
     <header class="header" data-test-id={HEADER}>
       <div class="header__inner">
-        <Show when={!mProps.isLanding}>
+        <Show when={!mProps.minimal}>
           <div class="header__burger">
             <ToggleIconButton
               iconName={IconName.List}
@@ -59,12 +59,12 @@ export const Header = (props: HeaderProps) => {
           <Logo />
         </div>
       </div>
-      <Show when={!mProps.isLanding}>
+      <Show when={!mProps.minimal}>
         <div class="header__search">
           <Search />
         </div>
       </Show>
-      <Show when={!mProps.isLanding}>
+      <Show when={!mProps.minimal}>
         <div class="header__controls">
           <div class="header__searchOpen">
             <IconButton

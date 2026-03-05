@@ -51,7 +51,7 @@
 }
 
 .tab:focus-visible {
-  outline: var(--outline-set-alt);
+  outline: var(--outline-set);
   outline-offset: var(--outline-offset);
 }
 

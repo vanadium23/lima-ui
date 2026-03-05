@@ -3,8 +3,8 @@ import { setStoreEditList, storeEditList } from "../editList.store.tsx";
 
 import { createDefaultElement } from "./createDefaultItem.ts";
 
-// Идет проверка списка на изменения относительно содержания
-// ИЗНАЧАЛЬНО инициализированного списка при загрузке страницы
+/* DOC Идет проверка списка на изменения относительно содержания
+ИЗНАЧАЛЬНО инициализированного списка при загрузке страницы */
 
 export function checkChanges(
   currentListName: ListName,

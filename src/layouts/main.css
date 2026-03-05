@@ -1,7 +1,7 @@
 @import url("/fonts/montserrat/montserrat.css");
 
 :root {
-  /* Colors */
+  /* DOC Colors */
   --neutral-100: #fff;
   --neutral-150: #f9f9f9;
   --neutral-200: #eee;
@@ -11,14 +11,14 @@
   --neutral-600: #777;
   --neutral-700: #444;
   --neutral-800: #222;
-  --neutral-900: #000;
+  --neutral-900: #05060f;
   --text-neutral-100: #fff;
   --text-neutral-300: #c4c4c4;
   --text-neutral-500: #999;
   --text-neutral-600: #777;
   --text-neutral-700: #444;
   --text-neutral-800: #222;
-  --text-neutral-900: #000;
+  --text-neutral-900: #05060f;
   --dangerous-300: #ff33330c;
   --dangerous-400: #f53b3c;
   --dangerous-500: #eb0000;
@@ -42,12 +42,10 @@
   --secondary-500: #cef55a;
   --secondary-600: #a6db09;
   --text-secondary-500: #cef55a;
-  --outline: #0285f1;
-  --outline-alt: #f0a;
+  --outline: var(--neutral-900);
 
-  /* Custom-properties */
+  /* DOC Custom-properties */
   --outline-set: 0.1rem solid var(--outline);
-  --outline-set-alt: 0.1rem solid var(--outline-alt);
   --outline-offset: -0.1rem;
   --preloader: rotate-preloader 0.7s linear infinite;
   --shadow-dragging: 0 0.2rem 1.6rem 0 rgb(0 0 0 / 15%);
@@ -55,7 +53,7 @@
   --transition-dragging: transform 0.3s ease;
 }
 
-/* 1. Кастомный reset.css где мы настраиваем стили только для реально необходимых в проекте тегов */
+/* DOC 1. Кастомный reset.css где мы настраиваем стили только для реально необходимых в проекте тегов */
 
 *,
 *::before,
@@ -70,6 +68,19 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 500;
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 input,
@@ -96,7 +107,7 @@ button {
   border: none;
 }
 
-/* 2. Анимации прелоадера */
+/* DOC 2. Анимации прелоадера */
 
 @keyframes rotate-preloader {
   from {
@@ -108,14 +119,14 @@ button {
   }
 }
 
-/* 3. Стилизация скролбаров */
+/* DOC 3. Стилизация скролбаров */
 
 .scrollStyles {
   overflow: auto;
   scrollbar-gutter: stable;
 }
 
-/* WebKit браузеры (Chrome, Safari, Edge) */
+/* DOC WebKit браузеры (Chrome, Safari, Edge) */
 .scrollStyles::-webkit-scrollbar {
   width: 1.6rem;
   height: 1.6rem;
@@ -137,17 +148,17 @@ button {
   background-color: rgb(83 83 83 / 60%);
 }
 
-/* Убираем угловой элемент */
+/* DOC Убираем угловой элемент */
 .scrollStyles::-webkit-scrollbar-corner {
   background-color: transparent;
 }
 
-/* Дополнительные стили для лучшей кроссбраузерности */
+/* DOC Дополнительные стили для лучшей кроссбраузерности */
 .scrollStyles::-webkit-scrollbar-track-piece {
   background-color: transparent;
 }
 
-/* Стили для принудительного скрытия системных полос прокрутки на macOS */
+/* DOC Стили для принудительного скрытия системных полос прокрутки на macOS */
 .scrollStyles::-webkit-scrollbar-track:horizontal {
   background-color: transparent;
 }
@@ -156,17 +167,43 @@ button {
   background-color: transparent;
 }
 
-/* Стили для принудительного скрытия системных полос прокрутки на macOS */
+/* DOC Стили для принудительного скрытия системных полос прокрутки на macOS */
 .scrollStyles::-webkit-scrollbar-button {
   display: none;
   width: 0;
   height: 0;
 }
 
-/* Стандартные свойства для Firefox */
+/* DOC Стандартные свойства для Firefox */
 @supports not selector(::-webkit-scrollbar) {
   .scrollStyles {
     scrollbar-width: thin;
     scrollbar-color: rgb(83 83 83 / 30%) transparent;
+  }
+}
+
+/* DOC 4. Wrapper */
+
+.wrapper {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (width >= 768px) {
+  .wrapper {
+    max-width: 76.8rem;
+  }
+}
+
+@media (width >= 1024px) {
+  .wrapper {
+    max-width: 102.4rem;
+  }
+}
+
+@media (width >= 1280px) {
+  .wrapper {
+    max-width: 128rem;
   }
 }

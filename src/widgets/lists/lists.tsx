@@ -12,8 +12,8 @@ import {
 } from "../../../features/testIds.ts";
 import { getListLink, URL_CREATE_LIST } from "../../../utilities/addresses.ts";
 import { Button, ButtonComponentType } from "../../components/button/button.tsx";
+import { Error } from "../../components/error/error.tsx";
 import { ListStripe } from "../../components/listStripe/listStripe.tsx";
-import { PageError } from "../../components/pageError/pageError.tsx";
 import { Title } from "../../components/title/title.tsx";
 import { notificationState } from "../../state/pushNotificationStateManager.ts";
 import type { ListFromBackend } from "../../types/types.ts";
@@ -86,7 +86,7 @@ export const Lists = (props: ListsProps) => {
 
         <Show when={isListsLimitReached()}>
           <div class="lists__errors">
-            <PageError testId={LISTS_LIMIT_REACHED_WARNING}>Вы использовали лимит в {LISTS_LIMIT} списков</PageError>
+            <Error testId={LISTS_LIMIT_REACHED_WARNING}>Вы использовали лимит в {LISTS_LIMIT} списков</Error>
           </div>
         </Show>
 

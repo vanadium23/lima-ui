@@ -1,9 +1,4 @@
-import type {
-  FullTestId,
-  FullTestIdParts,
-  TestId,
-  TestSubId,
-} from "../../src/components/utilities/testable.ts";
+import type { FullTestId, FullTestIdParts, TestId, TestSubId } from "../../src/components/utilities/testable.ts";
 import type { SeveralTestIds } from "../testIds.ts";
 
 export const TEST_ID_ATTRIBUTE = "data-test-id";
@@ -23,9 +18,7 @@ export function buildTestableSubSelector(testSubId: TestSubId) {
 }
 
 export function buildFullTestId(testId: TestId, testSubId: TestSubId) {
-  return [testId, testSubId]
-    .filter((id) => id || id === 0)
-    .join(ID_SUB_ID_SEPARATOR);
+  return [testId, testSubId].filter((id) => id || id === 0).join(ID_SUB_ID_SEPARATOR);
 }
 
 export function destructureFullTestId(fullTestId: FullTestId): FullTestIdParts {
@@ -49,13 +42,11 @@ export function InPlaywrightExtractAllCompleteIds(
     idSubIdSeparator: string;
   },
 ): SeveralTestIds {
-  return elements.map(function extractCompleteId(
-    element: HTMLElement | SVGElement,
-  ): TestId {
+  return elements.map(function extractCompleteId(element: HTMLElement | SVGElement): TestId {
     const testId = element.getAttribute(testIdAttribute) || "";
     const testSubId = element.getAttribute(testSubIdAttribute) || "";
 
-    // The buildFullTestId function is not available in external Playwright browsers.
+    // DOC The buildFullTestId function is not available in external Playwright browsers.
     return [testId, testSubId].filter((id) => id).join(idSubIdSeparator);
   });
 }

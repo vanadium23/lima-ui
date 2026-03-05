@@ -1,0 +1,12 @@
+---
+import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
+import { PageError, PageErrorType } from "../../components/pageError/pageError.tsx";
+import Page from "../../layouts/page/page.astro";
+---
+
+<Page titleName="Ссылка устарела">
+  <PageError slot="mainContent" type={PageErrorType.ExpiredLink} title="Ссылка устарела" testId={DEFAULT_TEST_ID}>
+    К сожалению, срок действия вашей персональной ссылки истек.
+    <br /> Запросите новую ссылку, мы сразу вышлем ее на ваш адрес электронной почты.</PageError
+  >
+</Page>

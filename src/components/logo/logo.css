@@ -12,3 +12,12 @@
 .logo__text {
   padding: 0.2rem 0;
 }
+
+.logo:focus-visible {
+  outline: var(--outline-set);
+  outline-offset: var(--outline-offset);
+}
+
+.logo:focus:not(:focus-visible) {
+  outline: none;
+}

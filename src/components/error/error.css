@@ -1,0 +1,18 @@
+.error {
+  display: inline-flex;
+}
+
+.error_medium {
+  border: 0.1rem;
+  padding: 0.6rem 1.6rem;
+  border-radius: 0.8rem;
+  max-width: 50rem;
+  font-size: 1.6rem;
+  line-height: 2rem;
+}
+
+.error_dangerous {
+  border-style: solid;
+  color: var(--text-dangerous-500);
+  background: var(--dangerous-300);
+}

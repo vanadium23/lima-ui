@@ -62,7 +62,7 @@ export const Dialog = (props: Testable<DialogProps>) => {
   };
 
   const handleDialogClose = () => {
-    // Размонтируем только после закрытия
+    // DOC Размонтируем только после закрытия
     setShouldRender(false);
   };
 

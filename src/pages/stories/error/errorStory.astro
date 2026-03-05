@@ -1,17 +1,13 @@
 ---
 import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
-import {
-  PageError,
-  PageErrorSize,
-  PageErrorTheme,
-} from "../../../components/pageError/pageError.tsx";
+import { Error, ErrorSize, ErrorTheme } from "../../../components/error/error.tsx";
 import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
 
-const themes = Object.values(PageErrorTheme);
-const sizes = Object.values(PageErrorSize);
+const themes = Object.values(ErrorTheme);
+const sizes = Object.values(ErrorSize);
 ---
 
-<StorybookPage title="Accordion">
+<StorybookPage title="Error">
   {
     themes.map((theme) => (
       <div class="demoThemeWrapper">
@@ -23,9 +19,9 @@ const sizes = Object.values(PageErrorSize);
           {sizes.map((size) => (
             <>
               <span class="rhead">{size}</span>
-              <PageError theme={theme} size={size} testId={DEFAULT_TEST_ID}>
+              <Error theme={theme} size={size} testId={DEFAULT_TEST_ID}>
                 Ошибка, всё печально, грусти сильно...
-              </PageError>
+              </Error>
             </>
           ))}
         </div>
