@@ -22,7 +22,7 @@ export const PageError = (props: Testable<PageErrorProps>) => {
   return (
     <section class={`pageError pageError_${props.type}`}>
       <div class="pageError__wrapper wrapper">
-        <Title position={TitlePosition.Center} testId={DEFAULT_TEST_ID}>
+        <Title position={TitlePosition.Center} testId={props.testId}>
           {props.title}
         </Title>
         <p class="pageError__text">{props.children}</p>
