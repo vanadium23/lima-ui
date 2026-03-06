@@ -1,4 +1,5 @@
 import { BACKEND_URL_AUTH, BACKEND_URL_USERS } from "../../../../utilities/addresses.ts";
+import type { UserInfo } from "../../../types/types.ts";
 
 export type Account = {
   email: string;
@@ -47,8 +48,6 @@ export async function verifyEmail(
 
   return (await response.json()) as VerifyEmailResponse;
 }
-
-type UserInfo = { id: string; email: string; name: string | null };
 
 export async function getUserInfo(backendURL = import.meta.env.PUBLIC_API_URL): Promise<UserInfo> {
   const response = await fetch(backendURL + BACKEND_URL_USERS + "/me", {

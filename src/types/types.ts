@@ -103,3 +103,5 @@ export type DragSettings = {
     | Record<string, never>;
   dragState: NonNullable<ReturnType<typeof useDragDropContext>>[0] | null;
 };
+
+export type UserInfo = { id: string; email: string; name: string | null };

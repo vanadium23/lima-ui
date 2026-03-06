@@ -1,9 +1,40 @@
 ---
+import { BACKEND_URL_AUTH } from "../../../utilities/addresses.ts";
+/* TODO Запрос всех списков будет позже заменен на запрос конкретного количества списков с бекенда */
 import { getListsAndCheckListsLimitReached } from "../../../utilities/getListsAndCheckListsLimitReached.ts";
 import AppPage from "../../layouts/app/app.astro";
 import { Lists } from "../../widgets/lists/lists.tsx";
 
-/* TODO Запрос всех списков будет позже заменен на запрос конкретного количества списков с бекенда */
+const url = new URL(Astro.request.url);
+const verifyToken = url.searchParams.get("token");
+
+if (verifyToken) {
+  const response = await fetch(`${import.meta.env.PUBLIC_API_URL}${BACKEND_URL_AUTH}/verify-email`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ token: verifyToken }),
+  });
+
+  console.log("HHH token", verifyToken);
+  console.log("HHH resp", response);
+
+  if (response.ok) {
+    const { token: authToken } = await response.json();
+
+    Astro.cookies.set("token", authToken, {
+      path: "/",
+      maxAge: 60 * 60 * 24 * 90,
+      httpOnly: true,
+      secure: true,
+      sameSite: "lax",
+    });
+
+    return Astro.redirect("/lists", 302);
+  }
+
+  return Astro.redirect("/expiredLink", 302);
+}
+
 const { lists, isListsLimitReached, listsRequestError } = await getListsAndCheckListsLimitReached(Astro.url);
 ---
 
