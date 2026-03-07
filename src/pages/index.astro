@@ -1,7 +1,7 @@
 ---
 import { BACKEND_URL_USERS } from "../../utilities/addresses.ts";
 
-const response = await fetch(`${import.meta.env.PUBLIC_API_URL}${BACKEND_URL_USERS}/me`, {
+const response = await fetch(`${import.meta.env.SERVER_API_URL}${BACKEND_URL_USERS}/me`, {
   method: "GET",
   headers: {
     "Content-Type": "application/json",
