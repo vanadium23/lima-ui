@@ -1,15 +1,15 @@
-/* Client routing URLs */
 export const URL_MY_LISTS = "/lists";
 export const URL_CREATE_LIST = `${URL_MY_LISTS}/create`;
 export const URL_AUTH = "/auth";
 
-/* Test URLs */
 export const TESTS_URL_SOME_LIST = `${URL_MY_LISTS}/list-*`;
 export const TESTS_URL_ERROR_SIGN = "?error=true";
 export const TESTS_URL_LISTS_WITH_NETWORK_ERROR = `${URL_MY_LISTS}${TESTS_URL_ERROR_SIGN}`;
 
-/* Backend routing URLs */
+export const BACKEND_URL_USERS_ME = "/users/me";
 export const BACKEND_URL_USERS = "/users";
+export const BACKEND_URL_AUTH = "/auth";
+export const BACKEND_URL_AUTH_VERIFY_EMAIL = "/auth/verify-email";
 export const BACKEND_URL_LISTS = "/lists";
 export const BACKEND_URL_NON_EXISTING = "/404";
 

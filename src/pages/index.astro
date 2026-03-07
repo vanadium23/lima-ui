@@ -1,4 +1,17 @@
 ---
+import { BACKEND_URL_USERS_ME } from "../../utilities/addresses.ts";
+
+const response = await fetch(`${import.meta.env.SERVER_API_URL}${BACKEND_URL_USERS_ME}`, {
+  method: "GET",
+  headers: {
+    Authorization: `Bearer ${Astro.cookies.get("token")?.value}`,
+  },
+});
+
+if (response.ok) {
+  return Astro.redirect("/lists");
+}
+
 // TODO пытались использовать переменную URL_MY_LISTS, но Astro выдает ошибку.
 // TODO И это известный, но пока не исправленный баг: https://github.com/withastro/language-tools/issues/476.
 return Astro.redirect("/auth");
