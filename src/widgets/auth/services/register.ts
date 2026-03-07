@@ -1,5 +1,4 @@
 import { BACKEND_URL_USERS } from "../../../../utilities/addresses.ts";
-import type { UserInfo } from "../../../types/types.ts";
 
 export type Account = {
   email: string;
@@ -24,22 +23,6 @@ export async function registerNewAccount(
   }
 
   return await response.json();
-}
-
-export async function getUserInfo(backendURL = import.meta.env.PUBLIC_API_URL): Promise<UserInfo> {
-  const response = await fetch(backendURL + BACKEND_URL_USERS + "/me", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    },
-  });
-
-  if (!response.ok) {
-    throw new Error("Network response was not ok " + response.statusText);
-  }
-
-  return (await response.json()) as UserInfo;
 }
 
 export async function loginToAccount(data: Account, isMockFailure: boolean): Promise<boolean> {
