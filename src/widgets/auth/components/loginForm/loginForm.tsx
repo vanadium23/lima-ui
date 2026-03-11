@@ -1,6 +1,6 @@
 import { Match, Switch } from "solid-js";
 
-import { MAX_PASSWORD_LENGTH } from "../../../../../configuration.ts";
+import { MAX_EMAIL_LENGTH, MAX_PASSWORD_LENGTH } from "../../../../../configuration.ts";
 import {
   LOGIN_EMAIL_INPUT,
   LOGIN_GO_TO_REG_LINK,
@@ -98,7 +98,7 @@ export const LoginForm = (props: LoginFormProps) => {
               type={InputType.Email}
               placeholder="Электронная почта"
               name="Электронная почта"
-              maxLength={MAX_PASSWORD_LENGTH}
+              maxLength={MAX_EMAIL_LENGTH}
               testId={LOGIN_EMAIL_INPUT}
               required={true}
               onInput={handleChange("email")}

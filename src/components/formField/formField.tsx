@@ -20,8 +20,9 @@ export type FormFieldProps = {
   HintForInputProps;
 
 export const FormField = (props: Testable<FormFieldProps>) => {
-  const mProps = mergeProps(
+  const mProps: Testable<Required<FormFieldProps>> = mergeProps(
     {
+      children: "",
       hintText: "",
       errorText: "",
       isError: false,
@@ -38,10 +39,12 @@ export const FormField = (props: Testable<FormFieldProps>) => {
       onClear: () => {},
       hintTheme: HintForInputTheme.Primary,
       hintSize: HintForInputSize.Medium,
-      testSubId: "",
     },
     props,
   );
+
+  const testableProps = () =>
+    mProps.testSubId === undefined ? { testId: mProps.testId } : { testId: mProps.testId, testSubId: mProps.testSubId };
 
   return (
     <label class="formField">
@@ -62,8 +65,7 @@ export const FormField = (props: Testable<FormFieldProps>) => {
         onInput={mProps.onInput}
         onKeyDown={mProps.onKeyDown}
         onClear={mProps.onClear}
-        testId={mProps.testId}
-        testSubId={mProps.testSubId}
+        {...testableProps()}
       >
         {mProps.children?.toString() ?? ""}
       </Input>
@@ -73,8 +75,7 @@ export const FormField = (props: Testable<FormFieldProps>) => {
         hintText={mProps.hintText}
         errorText={mProps.errorText}
         isError={mProps.isError}
-        testId={mProps.testId}
-        testSubId={mProps.testSubId}
+        {...testableProps()}
       />
     </label>
   );
