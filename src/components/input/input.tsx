@@ -31,7 +31,7 @@ export enum AutocompleteType {
   Password = "password",
 }
 
-type InputProps = {
+export type InputProps = {
   theme?: InputTheme;
   size?: InputSize;
   error?: boolean;

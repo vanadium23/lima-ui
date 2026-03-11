@@ -1,6 +1,6 @@
 import { Match, Switch } from "solid-js";
 
-import { MAX_PASSWORD_LENGTH } from "../../../../../configuration.ts";
+import { MAX_EMAIL_LENGTH, MAX_PASSWORD_LENGTH } from "../../../../../configuration.ts";
 import {
   LOGIN_EMAIL_INPUT,
   LOGIN_GO_TO_REG_LINK,
@@ -10,7 +10,8 @@ import {
 } from "../../../../../features/testIds.ts";
 import { AuthButton } from "../../../../components/authButton/authButton.tsx";
 import { Button, ButtonType } from "../../../../components/button/button.tsx";
-import { AutocompleteType, Input, InputType } from "../../../../components/input/input.tsx";
+import { FormField } from "../../../../components/formField/formField.tsx";
+import { AutocompleteType, InputType } from "../../../../components/input/input.tsx";
 import { TextButton } from "../../../../components/textButton/textButton.tsx";
 import { RestorePasswordForm } from "../restorePasswordForm/restorePasswordForm.tsx";
 
@@ -90,42 +91,38 @@ export const LoginForm = (props: LoginFormProps) => {
           </div>
           <span class="loginForm__separator">или</span>
           <div class="loginForm__inputs">
-            <label class="loginForm__label">
-              <span class="loginForm__labelText">{"Электронная почта"}</span>
-              <Input
-                type={InputType.Email}
-                placeholder="Электронная почта"
-                name="Электронная почта"
-                maxLength={MAX_PASSWORD_LENGTH}
-                testId={LOGIN_EMAIL_INPUT}
-                required={true}
-                error={!loginFormStore.inputs.email.isValid}
-                onInput={handleChange("email")}
-                disabled={loginFormStore.isLoading}
-                autocomplete={AutocompleteType.Email}
-              >
-                {loginFormStore.inputs.email.value.toString()}
-              </Input>
-              <span class="loginForm__error">{loginFormStore.inputs.email.error}</span>
-            </label>
-            <label class="loginForm__label">
-              <span class="loginForm__labelText">{"Пароль"}</span>
-              <Input
-                type={InputType.Password}
-                placeholder="Введите пароль"
-                name="Пароль"
-                maxLength={MAX_PASSWORD_LENGTH}
-                testId={LOGIN_PASS_INPUT}
-                required={true}
-                error={!loginFormStore.inputs.pass.isValid}
-                onInput={handleChange("pass")}
-                disabled={loginFormStore.isLoading}
-                autocomplete={AutocompleteType.Password}
-              >
-                {loginFormStore.inputs.pass.value.toString()}
-              </Input>
-              <span class="loginForm__error">{loginFormStore.inputs.pass.error}</span>
-            </label>
+            <FormField
+              labelText="Электронная почта"
+              isError={!loginFormStore.inputs.email.isValid}
+              errorText={loginFormStore.inputs.email.error}
+              type={InputType.Email}
+              placeholder="Электронная почта"
+              name="Электронная почта"
+              maxLength={MAX_EMAIL_LENGTH}
+              testId={LOGIN_EMAIL_INPUT}
+              required={true}
+              onInput={handleChange("email")}
+              disabled={loginFormStore.isLoading}
+              autocomplete={AutocompleteType.Email}
+            >
+              {loginFormStore.inputs.email.value.toString()}
+            </FormField>
+            <FormField
+              labelText="Пароль"
+              isError={!loginFormStore.inputs.pass.isValid}
+              errorText={loginFormStore.inputs.pass.error}
+              type={InputType.Password}
+              placeholder="Введите пароль"
+              name="Пароль"
+              maxLength={MAX_PASSWORD_LENGTH}
+              testId={LOGIN_PASS_INPUT}
+              required={true}
+              onInput={handleChange("pass")}
+              disabled={loginFormStore.isLoading}
+              autocomplete={AutocompleteType.Password}
+            >
+              {loginFormStore.inputs.pass.value.toString()}
+            </FormField>
             <Button
               testId={LOGIN_SUBMIT_BUTTON}
               type={ButtonType.Submit}

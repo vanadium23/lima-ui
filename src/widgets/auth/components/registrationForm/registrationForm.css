@@ -50,35 +50,9 @@
   line-height: 2rem;
 }
 
-.registrationsForm__label {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.8rem;
-  align-self: stretch;
-}
-
-.registrationsForm__labelText {
-  color: var(--text-neutral-800);
-  font-size: 1.6rem;
-  font-weight: 600;
-  line-height: 2rem;
-}
-
 .registrationsForm__policyLabelText {
   color: var(--text-neutral-800);
   font-size: 1.4rem;
-  line-height: 1.8rem;
-}
-
-.registrationsForm__error {
-  display: flex;
-  height: 1.8rem;
-  justify-content: start;
-  align-items: center;
-  color: var(--dangerous-500);
-  font-size: 1.4rem;
-  font-weight: 500;
   line-height: 1.8rem;
 }
 
