@@ -3,20 +3,14 @@ import { expect } from "@playwright/test";
 
 import { ADDRESSES_MEANINGS, type AddressMeaning } from "../../utilities/addresses.ts";
 import type { ComplexWorld } from "../context/hooks.ts";
+import { DIALOG_TEST_IDS, type DialogMeaning } from "../controlsSteps/dialogSteps.ts";
 import { LIST_STRIPE_POSITIONS, type ListStripePosition } from "../controlsSteps/listStripeSteps.ts";
 import { BUTTON_TEST_IDS, type ButtonMeaning } from "../list/listCreation/testIds.ts";
 import { LIST_STRIPE, type WarningMeaning, WARNINGS_TEST_IDS } from "../testIds.ts";
 import { buildTestableSelector } from "../utilities/buildTestableSelector.ts";
 import { getTimeoutOrCancelItIfDebugging } from "../utilities/getTimeoutOrCancelItIfDebugging.ts";
 
-import {
-  CONTEXT_MENU_TEST_IDS,
-  type ContextMenuMeaning,
-  DIALOG_TEST_IDS,
-  type DialogMeaning,
-  LINK_TEST_IDS,
-  type LinkMeaning,
-} from "./testIds.ts";
+import { CONTEXT_MENU_TEST_IDS, type ContextMenuMeaning, LINK_TEST_IDS, type LinkMeaning } from "./testIds.ts";
 
 When("I hover {string} list stripe", async function (this: ComplexWorld, listStripePosition: ListStripePosition) {
   const listStripe = this.locateByIdParts(LIST_STRIPE).nth(LIST_STRIPE_POSITIONS[listStripePosition]);
@@ -27,17 +21,6 @@ When("I hover {string} list stripe", async function (this: ComplexWorld, listStr
 When("I press the visible {string} button", async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
   await this.locateVisible(`${BUTTON_TEST_IDS[buttonMeaning]}`).click();
 });
-
-Then(
-  "I expect to see the {string} dialog modal box",
-  async function (this: ComplexWorld, dialogMeaning: DialogMeaning) {
-    const expectDialog = this.expectLocatedVisible(DIALOG_TEST_IDS[dialogMeaning]);
-
-    await expectDialog.toBeInViewport();
-    await expectDialog.toHaveAttribute("open");
-    await expectDialog.toHaveAttribute("aria-modal", "true");
-  },
-);
 
 Then(
   "I expect not to see the {string} dialog modal box",

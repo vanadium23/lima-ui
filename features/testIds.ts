@@ -44,6 +44,7 @@ export const OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON = "openContextMenuListStripeBu
 export const REMOVE_ITEM_MENUITEM = "removeItemMenuitem";
 export const ADD_ITEM_ABOVE_MENUITEM = "addItemAboveMenuitem";
 export const ADD_ITEM_BELOW_MENUITEM = "addItemBelowMenuitem";
+export const IMPORT_ITEM_ABOVE_MENUITEM = "importItemAboveMenuitem";
 
 export const SEARCH_INPUT = "searchInput";
 export const SEARCH_BUTTON = "searchButton";
@@ -131,12 +132,18 @@ export const REMOVE_EXPORTED_ITEM_DIALOG = "removeExportedItemDialog";
 export function buildCloseDialogTestId(dialogTestId: TestId): TestId {
   return `${dialogTestId}CloseButton`;
 }
+
+export function buildLoadingDialogTestId(dialogTestId: TestId): TestId {
+  return `${dialogTestId}Loading`;
+}
 export const REMOVE_DIALOG_REMOVE_LIST_BUTTON = "removeDialogRemoveListButton";
 export const REMOVE_DIALOG_DELETION_EXPORTED_ITEM_BUTTON = "removeDialogDeletionExportedItemButton";
 export const REMOVE_DIALOG_INSERTION_EXPORTED_ITEM_BUTTON = "removeDialogInsertionExportedItemButton";
 
 export const IMPORT_DIALOG = "importDialog";
 export const IMPORT_DIALOG_IMPORT_BUTTON = "importDialogImportButton";
+export const IMPORT_DIALOG_EMPTY_MESSAGE = "importDialogEmptyMessage";
+export const IMPORT_DIALOG_LOADING = buildLoadingDialogTestId(IMPORT_DIALOG);
 
 export const DRAG_HANDLE = "dragHandle";
 
