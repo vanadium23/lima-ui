@@ -56,6 +56,7 @@ export const BUTTON_TEST_IDS = {
   "confirm list removal": REMOVE_DIALOG_REMOVE_LIST_BUTTON,
   "copy items": TOOLS_PANEL_BUTTON_COPY_ITEMS,
   import: TOOLS_PANEL_BUTTON_IMPORT_LIST,
+  "tools panel import": TOOLS_PANEL_BUTTON_IMPORT_LIST,
   "remove list tools panel": TOOLS_PANEL_BUTTON_REMOVE_LIST,
   "print list": TOOLS_PANEL_BUTTON_PRINT_LIST,
   "open context menu list stripe": OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,

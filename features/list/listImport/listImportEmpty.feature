@@ -20,3 +20,11 @@ Feature: Importing items when user has no lists
       | import position   |
       | import item above |
       | import item below |
+
+  @zero-lists
+  Scenario: User without lists opens import dialog via tools panel button and sees empty message
+    And I ensure the tools panel is open
+    And I press the "tools panel import" button
+    Then I expect to see the "import" dialog modal box
+    Then I expect to see the "import" dialog loading
+    Then I expect to see the "import" dialog empty message
