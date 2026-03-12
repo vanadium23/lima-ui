@@ -44,7 +44,8 @@ export const OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON = "openContextMenuListStripeBu
 export const REMOVE_ITEM_MENUITEM = "removeItemMenuitem";
 export const ADD_ITEM_ABOVE_MENUITEM = "addItemAboveMenuitem";
 export const ADD_ITEM_BELOW_MENUITEM = "addItemBelowMenuitem";
-export const IMPORT_ITEM_ABOVE_MENUITEM = "importItemAboveMenuitem";
+export const IMPORT_ABOVE_MENUITEM = "importAboveMenuitem";
+export const IMPORT_BELOW_MENUITEM = "importBelowMenuitem";
 
 export const SEARCH_INPUT = "searchInput";
 export const SEARCH_BUTTON = "searchButton";

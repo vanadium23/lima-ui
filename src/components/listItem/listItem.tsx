@@ -10,7 +10,8 @@ import {
   DEFAULT_TEST_ID,
   DRAG_HANDLE,
   DRAGGED_LIST_ITEM,
-  IMPORT_ITEM_ABOVE_MENUITEM,
+  IMPORT_ABOVE_MENUITEM,
+  IMPORT_BELOW_MENUITEM,
   LIST_ITEM,
   LIST_ITEM_CONTEXT_MENU,
   OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
@@ -114,7 +115,7 @@ export const ListItem = (props: ListItemProps) => {
       handleClick: () => {
         openImportDialogPasteBefore(mProps.index);
       },
-      testId: IMPORT_ITEM_ABOVE_MENUITEM,
+      testId: IMPORT_ABOVE_MENUITEM,
       disabled: reachedItemsLimit(),
     },
     {
@@ -123,7 +124,7 @@ export const ListItem = (props: ListItemProps) => {
       handleClick: () => {
         openImportDialogPasteAfter(mProps.index);
       },
-      testId: DEFAULT_TEST_ID,
+      testId: IMPORT_BELOW_MENUITEM,
       disabled: reachedItemsLimit(),
     },
     {

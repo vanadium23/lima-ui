@@ -10,7 +10,8 @@ import {
   CHECKLIST_SWITCH,
   CLEAR_SEARCH_BUTTON,
   CREATE_LIST_BUTTON,
-  IMPORT_ITEM_ABOVE_MENUITEM,
+  IMPORT_ABOVE_MENUITEM,
+  IMPORT_BELOW_MENUITEM,
   LIST_ITEM,
   LIST_ITEM_INPUT,
   LIST_PURPOSE_INPUT,
@@ -74,7 +75,8 @@ export const MENUITEM_TEST_IDS = {
   "remove automatic list item": buildFullTestId(REMOVE_ITEM_MENUITEM, AUTO_LIST_ITEM),
   "add item above": ADD_ITEM_ABOVE_MENUITEM,
   "add item below": ADD_ITEM_BELOW_MENUITEM,
-  "import item above": IMPORT_ITEM_ABOVE_MENUITEM,
+  "import item above": IMPORT_ABOVE_MENUITEM,
+  "import item below": IMPORT_BELOW_MENUITEM,
 };
 export type MenuitemMeaning = keyof typeof MENUITEM_TEST_IDS;
 
