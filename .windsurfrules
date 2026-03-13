@@ -1,28 +1,39 @@
-- Verify that your solution is working after introducing it.
-- Ensure that there are no linting of typing problems or warnings introduced with your solution.
-- Do the cleanup after completing your solution. Remove unnecessary logs, screenshots and other debugging files.
+# Правила разработки Lima UI
 
-For .feature files:
+- Проверь, что решение работает после его внедрения.
+- Убедись, что решение не добавляет проблем с линтингом или типизацией, а также предупреждений.
+- Сделай cleanup после завершения решения. Удали ненужный код, логи, скриншоты и другие отладочные файлы.
 
-- Use the existing steps as much as possible. In case there are no relevant, create the corresponding \*Steps.ts file and write the implementation there.
-- Don’t create the corresponding \*Steps.ts file if no new implemetnations are needed.
-- To test every new scenario add the @current tag, and then run the `npm test -- --current` command.
+## Написание тестов
 
-For \*Steps.ts files:
+Для .feature файлов:
 
-- Before introducing new methods first investigate existing ones from the ComplexWorld class.
-- Timeouts are poor solution. Never use them, but propose them to me after you try all possible solutions.
+- Используй существующие шаги по максимуму. Если нет подходящих, создай соответствующий \*Steps.ts файл и напиши реализацию там.
+- Не создавай соответствующий \*Steps.ts файл, если не нужны новые реализации.
+- Для тестирования каждого нового сценария добавь тег @current, затем запусти команду `npm test -- --current`.
 
-For .js files:
+Для \*Steps.ts файлов:
 
-- Don’t create new .js files unless asked explicitly.
+- Перед добавлением новых методов сначала изучи существующие из класса ComplexWorld.
+- Таймауты — плохое решение. Никогда не используй их, но предложи их мне после того, как попробуешь все возможные решения.
 
-For .ts files:
+Для testIds.ts:
 
-- `any` is not allowed.
-- try as much as possible to avoid `as`.
-- Don’t write comments saying the same as the code.
-- When importing from .ts or .tsx files, always use the extension.
-- Ensure no ESLint errors are present.
-- Ensure no TypeScript errors are present.
-- Ensure no Prettier errors are present.
+- `DEFAULT_TEST_ID` — заглушка. Создавай настоящие идентификаторы для конкретных ошибок (например, `IMPORT_ERROR`).
+- При добавлении новых значений в `ERRORS_TEST_IDS` добавляй соответствующие записи в `ERROR_CLOSE_BUTTONS_TEST_IDS`.
+
+## Общее по файлам
+
+Для .js файлов:
+
+- Не создавай новые .js файлы, если не попросили явно.
+
+Для .ts файлов:
+
+- `any` запрещён.
+- Старайся избегать `as` по возможности.
+- Не пиши комментарии, которые повторяют то, что делает код.
+- При импорте из .ts или .tsx файлов всегда указывай расширение.
+- Убедись, что нет ошибок ESLint.
+- Убедись, что нет ошибок TypeScript.
+- Убедись, что нет ошибок Prettier.

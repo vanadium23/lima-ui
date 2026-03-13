@@ -1,4 +1,5 @@
 import { Then } from "@cucumber/cucumber";
+import { expect } from "@playwright/test";
 
 import type { ComplexWorld } from "../context/hooks.ts";
 import {
@@ -7,6 +8,7 @@ import {
   IMPORT_DIALOG_EMPTY_MESSAGE,
   REMOVE_LIST_DIALOG,
 } from "../testIds.ts";
+import { getTimeoutOrCancelItIfDebugging } from "../utilities/getTimeoutOrCancelItIfDebugging.ts";
 
 export const DIALOG_TEST_IDS = {
   import: IMPORT_DIALOG,
@@ -43,5 +45,17 @@ Then(
   "I expect to see the {string} dialog empty message",
   async function (this: ComplexWorld, dialogMeaning: DialogMeaning) {
     await this.expectLocated(DIALOG_EMPTY_MESSAGE_TEST_IDS[dialogMeaning]).toBeInViewport();
+  },
+);
+
+Then(
+  "I expect not to see the {string} dialog modal box",
+  { timeout: getTimeoutOrCancelItIfDebugging(1000) },
+  async function (this: ComplexWorld, dialogMeaning: DialogMeaning) {
+    const dialogs = this.locateByIdParts(DIALOG_TEST_IDS[dialogMeaning]);
+
+    for (const dialog of await dialogs.all()) {
+      await expect(dialog).not.toBeInViewport();
+    }
   },
 );

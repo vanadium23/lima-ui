@@ -8,7 +8,6 @@ import { LIST_STRIPE_POSITIONS, type ListStripePosition } from "../controlsSteps
 import { BUTTON_TEST_IDS, type ButtonMeaning } from "../list/listCreation/testIds.ts";
 import { LIST_STRIPE, type WarningMeaning, WARNINGS_TEST_IDS } from "../testIds.ts";
 import { buildTestableSelector } from "../utilities/buildTestableSelector.ts";
-import { getTimeoutOrCancelItIfDebugging } from "../utilities/getTimeoutOrCancelItIfDebugging.ts";
 
 import { CONTEXT_MENU_TEST_IDS, type ContextMenuMeaning, LINK_TEST_IDS, type LinkMeaning } from "./testIds.ts";
 
@@ -21,18 +20,6 @@ When("I hover {string} list stripe", async function (this: ComplexWorld, listStr
 When("I press the visible {string} button", async function (this: ComplexWorld, buttonMeaning: ButtonMeaning) {
   await this.locateVisible(`${BUTTON_TEST_IDS[buttonMeaning]}`).click();
 });
-
-Then(
-  "I expect not to see the {string} dialog modal box",
-  { timeout: getTimeoutOrCancelItIfDebugging(500) },
-  async function (this: ComplexWorld, dialogMeaning: DialogMeaning) {
-    const dialogs = this.locateByIdParts(DIALOG_TEST_IDS[dialogMeaning]);
-
-    for (const dialog of await dialogs.all()) {
-      await expect(dialog).not.toBeInViewport();
-    }
-  },
-);
 
 When(
   "I click outside of the {string} dialog modal box",

@@ -107,16 +107,23 @@ export function buildErrorCloseButtonTestId(errorTestId: TestId): TestId {
   return `${errorTestId}CloseButton`;
 }
 
+export const IMPORT_ERROR = "importError";
+export const IMPORT_ERROR_CLOSE_BUTTON = buildErrorCloseButtonTestId(IMPORT_ERROR);
+
 export const ERRORS_TEST_IDS = {
   connection: NETWORK_ERROR,
   "single connection": buildFullTestId(NETWORK_ERROR, 1),
   "single list removal": buildFullTestId(LIST_REMOVAL_ERROR, 1),
+  import: IMPORT_ERROR,
+  "single import": buildFullTestId(IMPORT_ERROR, 1),
 };
 export type ErrorMeaning = keyof typeof ERRORS_TEST_IDS;
 export const ERROR_CLOSE_BUTTONS_TEST_IDS: Record<ErrorMeaning, TestId> = {
   connection: NETWORK_ERROR_CLOSE_BUTTON,
   "single connection": buildFullTestId(NETWORK_ERROR_CLOSE_BUTTON, 1),
   "single list removal": buildFullTestId(LIST_REMOVAL_ERROR_CLOSE_BUTTON, 1),
+  import: IMPORT_ERROR_CLOSE_BUTTON,
+  "single import": buildFullTestId(IMPORT_ERROR_CLOSE_BUTTON, 1),
 };
 
 export const NO_SAVED_LISTS_MESSAGE = "noSavedListsMessage";

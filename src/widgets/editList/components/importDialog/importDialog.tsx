@@ -7,6 +7,7 @@ import {
   IMPORT_DIALOG,
   IMPORT_DIALOG_EMPTY_MESSAGE,
   IMPORT_DIALOG_IMPORT_BUTTON,
+  IMPORT_ERROR,
 } from "../../../../../features/testIds.ts";
 import { soften } from "../../../../../utilities/soften.ts";
 import { Button, ButtonSize, ButtonTheme, ButtonType } from "../../../../components/button/button.tsx";
@@ -100,7 +101,7 @@ export const ImportDialog = (props: ImportDialogProps) => {
         notificationState.pushNetworkError(
           "Ошибка",
           "Не удалось загрузить списки для импорта, попробуйте еще раз",
-          DEFAULT_TEST_ID,
+          IMPORT_ERROR,
         );
       });
     }
