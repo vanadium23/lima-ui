@@ -29,7 +29,6 @@ Feature: Disabling controls when list is being updated
     Then I expect to see the "add list item" button disabled
     Then I expect to see the "copy items" button disabled
     Then I expect to see the "remove list tools panel" button disabled
-    Then I expect to see the "checklist" switch disabled
     Then I expect to see the "import" button disabled
     Then I expect to see the "print list" button disabled
     And I ensure the tools panel does not disturb

@@ -140,7 +140,6 @@ export const IMPORT_DIALOG_IMPORT_BUTTON = "importDialogImportButton";
 
 export const DRAG_HANDLE = "dragHandle";
 
-export const CHECKLIST_SWITCH = "checklistSwitch";
 export const CHECKBOX = "checkbox";
 
 export const TOGGLE_SIDEBAR_BUTTON = "toggleSidebarButton";

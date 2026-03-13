@@ -63,8 +63,6 @@ try {
   listRequestError = true;
   list = emptyList;
 }
-
-const isCheckableParam = Astro.url.searchParams.get("checkable") === "true";
 ---
 
 <!doctype html>
@@ -107,7 +105,7 @@ const isCheckableParam = Astro.url.searchParams.get("checkable") === "true";
                 </div>
               </div>
             )}
-            <ul class={`print__items ${isCheckableParam ? "print__items_checklist" : "print__items_list"}`}>
+            <ul class={"print__items print__items_list"}>
               {convertItemsFromBackendForPrint(list.items).map((item, index) => (
                 <li class="print__item" data-test-id={PRINT_LIST_ITEM} data-test-sub-id={index}>
                   {item.content}

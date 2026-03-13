@@ -7,7 +7,6 @@ import {
   buildCloseDialogTestId,
   buildInputCounterTestId,
   buildTextAreaCounterTestId,
-  CHECKLIST_SWITCH,
   CLEAR_SEARCH_BUTTON,
   CREATE_LIST_BUTTON,
   LIST_ITEM,
@@ -117,8 +116,3 @@ export const TEXT_AREA_TEST_IDS = {
   "list note": NOTE_TEXT_AREA,
 };
 export type TextAreaMeaning = keyof typeof TEXT_AREA_TEST_IDS;
-
-export const SWITCH_TEST_IDS = {
-  checklist: CHECKLIST_SWITCH,
-};
-export type SwitchMeaning = keyof typeof SWITCH_TEST_IDS;

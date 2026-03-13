@@ -10,7 +10,6 @@ export type EditListStore = EditListType & {
   sendingNow: false | "saving" | "deleting";
   error: boolean;
   removeError: boolean;
-  isCheckable: boolean;
   isChanged: boolean;
   isNewList: boolean;
   draggedItem: string;
@@ -54,7 +53,6 @@ export const [storeEditList, setStoreEditList] = createStore<EditListStore>({
   sendingNow: false,
   error: false,
   removeError: false,
-  isCheckable: false,
   isChanged: false,
   isNewList: "" === "",
   draggedItem: "",
