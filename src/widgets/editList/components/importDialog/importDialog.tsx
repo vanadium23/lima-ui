@@ -3,7 +3,6 @@ import { createStore } from "solid-js/store";
 
 import { ITEMS_LIMIT } from "../../../../../configuration.ts";
 import {
-  DEFAULT_TEST_ID,
   IMPORT_DIALOG,
   IMPORT_DIALOG_EMPTY_MESSAGE,
   IMPORT_DIALOG_IMPORT_BUTTON,
@@ -177,7 +176,7 @@ export const ImportDialog = (props: ImportDialogProps) => {
       loading={storeImportDialog.loadingListsForImport}
       controls={
         <>
-          <ElementCounter testId={DEFAULT_TEST_ID} isLimitReached={isImportDialogLimitReached()} maxCount={ITEMS_LIMIT}>
+          <ElementCounter testId={IMPORT_DIALOG} isLimitReached={isImportDialogLimitReached()} maxCount={ITEMS_LIMIT}>
             {getTotalCheckedItemsCount()}
           </ElementCounter>
           <Button
@@ -204,9 +203,9 @@ export const ImportDialog = (props: ImportDialogProps) => {
           </div>
         </Show>
         <For each={storeImportDialog.listsForImport}>
-          {(list) => {
+          {(list, index) => {
             return (
-              <ListStripeImport titleHTMLName={list.name} testId={DEFAULT_TEST_ID}>
+              <ListStripeImport titleHTMLName={list.name} index={index()}>
                 {list}
               </ListStripeImport>
             );

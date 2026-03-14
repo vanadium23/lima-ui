@@ -1,7 +1,34 @@
 import { Then } from "@cucumber/cucumber";
 
+import type { TestId } from "../../src/components/utilities/testable.ts";
 import type { ComplexWorld } from "../context/hooks.ts";
-import { ERROR_CLOSE_BUTTONS_TEST_IDS, type ErrorMeaning, ERRORS_TEST_IDS } from "../testIds.ts";
+import {
+  IMPORT_ERROR,
+  IMPORT_ERROR_CLOSE_BUTTON,
+  LIST_REMOVAL_ERROR,
+  LIST_REMOVAL_ERROR_CLOSE_BUTTON,
+  NETWORK_ERROR,
+  NETWORK_ERROR_CLOSE_BUTTON,
+} from "../testIds.ts";
+import { buildFullTestId } from "../utilities/buildTestableSelector.ts";
+
+const ERRORS_TEST_IDS = {
+  connection: NETWORK_ERROR,
+  "single connection": buildFullTestId(NETWORK_ERROR, 1),
+  "single list removal": buildFullTestId(LIST_REMOVAL_ERROR, 1),
+  import: IMPORT_ERROR,
+  "single import": buildFullTestId(IMPORT_ERROR, 1),
+};
+
+type ErrorMeaning = keyof typeof ERRORS_TEST_IDS;
+
+const ERROR_CLOSE_BUTTONS_TEST_IDS: Record<ErrorMeaning, TestId> = {
+  connection: NETWORK_ERROR_CLOSE_BUTTON,
+  "single connection": buildFullTestId(NETWORK_ERROR_CLOSE_BUTTON, 1),
+  "single list removal": buildFullTestId(LIST_REMOVAL_ERROR_CLOSE_BUTTON, 1),
+  import: IMPORT_ERROR_CLOSE_BUTTON,
+  "single import": buildFullTestId(IMPORT_ERROR_CLOSE_BUTTON, 1),
+};
 
 Then("I expect to see the {string} error", async function (this: ComplexWorld, errorMeaning: ErrorMeaning) {
   await this.expectLocated(this.accounting.elements.registerTestId(ERRORS_TEST_IDS[errorMeaning])).toBeInViewport();

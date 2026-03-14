@@ -1,7 +1,5 @@
 import type { TestId } from "../src/components/utilities/testable.ts";
 
-import { buildFullTestId } from "./utilities/buildTestableSelector.ts";
-
 export type SeveralTestIds = TestId[];
 
 export const DEFAULT_TEST_ID = "defaultTestId";
@@ -110,22 +108,6 @@ export function buildErrorCloseButtonTestId(errorTestId: TestId): TestId {
 export const IMPORT_ERROR = "importError";
 export const IMPORT_ERROR_CLOSE_BUTTON = buildErrorCloseButtonTestId(IMPORT_ERROR);
 
-export const ERRORS_TEST_IDS = {
-  connection: NETWORK_ERROR,
-  "single connection": buildFullTestId(NETWORK_ERROR, 1),
-  "single list removal": buildFullTestId(LIST_REMOVAL_ERROR, 1),
-  import: IMPORT_ERROR,
-  "single import": buildFullTestId(IMPORT_ERROR, 1),
-};
-export type ErrorMeaning = keyof typeof ERRORS_TEST_IDS;
-export const ERROR_CLOSE_BUTTONS_TEST_IDS: Record<ErrorMeaning, TestId> = {
-  connection: NETWORK_ERROR_CLOSE_BUTTON,
-  "single connection": buildFullTestId(NETWORK_ERROR_CLOSE_BUTTON, 1),
-  "single list removal": buildFullTestId(LIST_REMOVAL_ERROR_CLOSE_BUTTON, 1),
-  import: IMPORT_ERROR_CLOSE_BUTTON,
-  "single import": buildFullTestId(IMPORT_ERROR_CLOSE_BUTTON, 1),
-};
-
 export const NO_SAVED_LISTS_MESSAGE = "noSavedListsMessage";
 
 export const LIST_STRIPE = "listStripe";
@@ -144,6 +126,10 @@ export function buildCloseDialogTestId(dialogTestId: TestId): TestId {
 export function buildLoadingDialogTestId(dialogTestId: TestId): TestId {
   return `${dialogTestId}Loading`;
 }
+
+export function buildCheckboxTestId(testId: TestId): TestId {
+  return `${testId}Checkbox`;
+}
 export const REMOVE_DIALOG_REMOVE_LIST_BUTTON = "removeDialogRemoveListButton";
 export const REMOVE_DIALOG_DELETION_EXPORTED_ITEM_BUTTON = "removeDialogDeletionExportedItemButton";
 export const REMOVE_DIALOG_INSERTION_EXPORTED_ITEM_BUTTON = "removeDialogInsertionExportedItemButton";
@@ -152,6 +138,13 @@ export const IMPORT_DIALOG = "importDialog";
 export const IMPORT_DIALOG_IMPORT_BUTTON = "importDialogImportButton";
 export const IMPORT_DIALOG_EMPTY_MESSAGE = "importDialogEmptyMessage";
 export const IMPORT_DIALOG_LOADING = buildLoadingDialogTestId(IMPORT_DIALOG);
+export const IMPORT_DIALOG_LIST = "importDialogList";
+export const IMPORT_DIALOG_LIST_CHECKBOX = buildCheckboxTestId(IMPORT_DIALOG_LIST);
+export const IMPORT_DIALOG_LIST_ITEM = "importDialogListItem";
+
+export const IMPORTED_GROUP = "importedGroup";
+export const IMPORTED_GROUP_ITEM = "importedGroupItem";
+export const IMPORTED_GROUP_NAME_LINK = "importedGroupNameLink";
 
 export const DRAG_HANDLE = "dragHandle";
 

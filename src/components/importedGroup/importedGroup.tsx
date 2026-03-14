@@ -1,7 +1,13 @@
 import { createSignal, For, mergeProps } from "solid-js";
 
 import { ITEMS_LIMIT } from "../../../configuration.ts";
-import { ADD_ITEM_ABOVE_MENUITEM, ADD_ITEM_BELOW_MENUITEM, DEFAULT_TEST_ID } from "../../../features/testIds.ts";
+import {
+  ADD_ITEM_ABOVE_MENUITEM,
+  ADD_ITEM_BELOW_MENUITEM,
+  DEFAULT_TEST_ID,
+  IMPORTED_GROUP_ITEM,
+  IMPORTED_GROUP_NAME_LINK,
+} from "../../../features/testIds.ts";
 import { getListLink } from "../../../utilities/addresses.ts";
 import { notificationState } from "../../state/pushNotificationStateManager.ts";
 import type { DragSettings, EditListElement, EditListSimpleItem } from "../../types/types.ts";
@@ -186,7 +192,8 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
             <Link
               size={LinkSize.Small}
               href={getListLink(mProps.id)}
-              testId={DEFAULT_TEST_ID}
+              testId={IMPORTED_GROUP_NAME_LINK}
+              testSubId={mProps.index}
               disabled={Boolean(storeEditList.sendingNow)}
             >
               {mProps.name}
@@ -214,7 +221,7 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
         <For each={mProps.children}>
           {(item) => (
             <ImportedItem
-              testId={DEFAULT_TEST_ID}
+              testId={IMPORTED_GROUP_ITEM}
               checkable={mProps.checkable}
               checked={false}
               disabled={Boolean(storeEditList.sendingNow)}
