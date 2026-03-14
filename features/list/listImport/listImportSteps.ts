@@ -66,11 +66,19 @@ Then("I expect the import counter to show limit exceeded", async function (this:
 });
 
 Then("I expect the imported group to be above the first list item", async function (this: ComplexWorld) {
-  const importedGroupIndex = await getDomIndex(this.locateByIdParts(IMPORTED_GROUP).first());
-  const firstListItemIndex = await getDomIndex(this.locateByIdParts(LIST_ITEM).first());
-
-  expect(importedGroupIndex).toBeLessThan(firstListItemIndex);
+  await expectGroupPosition(this, true);
 });
+
+Then("I expect the imported group to be below the first list item", async function (this: ComplexWorld) {
+  await expectGroupPosition(this, false);
+});
+
+async function expectGroupPosition(complexWorld: ComplexWorld, isAbove: boolean) {
+  const importedGroupIndex = await getDomIndex(complexWorld.locateByIdParts(IMPORTED_GROUP).first());
+  const firstListItemIndex = await getDomIndex(complexWorld.locateByIdParts(LIST_ITEM).first());
+
+  expect(importedGroupIndex).toBe(isAbove ? firstListItemIndex - 1 : firstListItemIndex + 1);
+}
 
 async function getDomIndex(element: Locator): Promise<number> {
   return element.evaluate((el) => {

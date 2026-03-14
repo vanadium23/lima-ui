@@ -81,3 +81,21 @@ Feature: Importing elements from another list
     And I ensure the tools panel does not disturb
     Then I expect to see 1 imported group in the list
     Then I expect the imported group to be above the first list item
+
+  @some-lists
+  Scenario: User imports list below via context menu
+    When I add a list
+    And I add a list
+    And I ensure the tools panel is open
+    And I press the "add list item" button
+    And I ensure the tools panel does not disturb
+    When I hover "first list item"
+    And I press the "open context menu first item" button
+    And I press the visible "import item below" menu item
+    Then I expect to see the "import" dialog modal box
+    When I check the "first import list" checkbox
+    And I press the "import" button
+    Then I expect not to see the "import" dialog modal box
+    And I ensure the tools panel does not disturb
+    Then I expect to see 1 imported group in the list
+    Then I expect the imported group to be below the first list item
