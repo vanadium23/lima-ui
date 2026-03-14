@@ -1,5 +1,5 @@
 import { Then, When } from "@cucumber/cucumber";
-import { expect } from "@playwright/test";
+import { expect, type Locator } from "@playwright/test";
 
 import { ITEMS_LIMIT, LISTS_LIMIT } from "../../../configuration.ts";
 import type { ComplexWorld } from "../../context/hooks.ts";
@@ -9,6 +9,7 @@ import {
   IMPORTED_GROUP,
   IMPORTED_GROUP_ITEM,
   IMPORTED_GROUP_NAME_LINK,
+  LIST_ITEM,
 } from "../../testIds.ts";
 import { buildTestableSelector } from "../../utilities/buildTestableSelector.ts";
 
@@ -63,3 +64,19 @@ Then("I expect the import counter to show limit reached", async function (this: 
 Then("I expect the import counter to show limit exceeded", async function (this: ComplexWorld) {
   await this.expectLocated(IMPORT_DIALOG_COUNTER).toHaveText(`${ITEMS_LIMIT + 1}/${ITEMS_LIMIT}`);
 });
+
+Then("I expect the imported group to be above the first list item", async function (this: ComplexWorld) {
+  const importedGroupIndex = await getDomIndex(this.locateByIdParts(IMPORTED_GROUP).first());
+  const firstListItemIndex = await getDomIndex(this.locateByIdParts(LIST_ITEM).first());
+
+  expect(importedGroupIndex).toBeLessThan(firstListItemIndex);
+});
+
+async function getDomIndex(element: Locator): Promise<number> {
+  return element.evaluate((el) => {
+    const parent = el.parentElement;
+    if (!parent) return -1;
+
+    return Array.from(parent.children).indexOf(el);
+  });
+}

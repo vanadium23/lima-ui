@@ -40,6 +40,7 @@ Feature: Importing elements from another list
     Then I expect to see the "import" dialog loading
     Then I expect to see the "import" dialog empty message
 
+  @some-lists
   Scenario: User imports multiple lists in position order
     When I add a list
     And I add a list
@@ -62,3 +63,21 @@ Feature: Importing elements from another list
     Then I expect to see 2 imported groups in the list
     Then I expect the imported group #1 name to match the import list #1 name
     Then I expect the imported group #2 name to match the import list #3 name
+
+  @some-lists
+  Scenario: User imports list above via context menu
+    When I add a list
+    And I add a list
+    And I ensure the tools panel is open
+    And I press the "add list item" button
+    And I ensure the tools panel does not disturb
+    When I hover "first list item"
+    And I press the "open context menu first item" button
+    And I press the visible "import item above" menu item
+    Then I expect to see the "import" dialog modal box
+    When I check the "first import list" checkbox
+    And I press the "import" button
+    Then I expect not to see the "import" dialog modal box
+    And I ensure the tools panel does not disturb
+    Then I expect to see 1 imported group in the list
+    Then I expect the imported group to be above the first list item
