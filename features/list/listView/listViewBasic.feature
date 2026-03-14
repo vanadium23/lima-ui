@@ -21,7 +21,7 @@ Feature: Seeing the basis of List view page
     Then I expect to see the "add list item" button enabled
     Then I expect to see the "copy items" button enabled
     Then I expect to see the "remove list tools panel" button enabled
-    Then I expect to see the "import" button enabled
+    Then I expect to see the "tools panel import" button enabled
     Then I expect to see the "print list" button enabled
     And I ensure the tools panel does not disturb
     Then All necessary elements are on the "List View" page
@@ -46,7 +46,7 @@ Feature: Seeing the basis of List view page
     Then I expect to see the "add list item" button enabled
     Then I expect to see the "copy items" button enabled
     Then I expect to see the "remove list tools panel" button enabled
-    Then I expect to see the "import" button enabled
+    Then I expect to see the "tools panel import" button enabled
     Then I expect to see the "print list" button enabled
     And I ensure the tools panel does not disturb
     Then All necessary elements are on the "List View" page
