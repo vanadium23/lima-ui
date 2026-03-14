@@ -1,4 +1,4 @@
-import { Then } from "@cucumber/cucumber";
+import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
 import type { ComplexWorld } from "../../context/hooks.ts";
@@ -23,4 +23,11 @@ Then("I expect the first imported group name to match the first import list name
   const groupNameLink = firstImportedGroup.locator(buildTestableSelector(IMPORTED_GROUP_NAME_LINK));
   const groupName = await groupNameLink.textContent();
   expect(groupName).toBe(this.data["listTitle_0"]);
+});
+
+When("I press the first imported group name link", async function (this: ComplexWorld) {
+  const firstImportedGroup = this.locateByIdParts(IMPORTED_GROUP).first();
+  const groupNameLink = firstImportedGroup.locator(buildTestableSelector(IMPORTED_GROUP_NAME_LINK));
+
+  await groupNameLink.click();
 });

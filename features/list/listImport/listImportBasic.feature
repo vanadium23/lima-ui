@@ -30,3 +30,11 @@ Feature: Importing elements from another list
     And I press the "tools panel import" button
     Then I expect to see the "import" dialog modal box
     Then I expect to see the "first import list" checkbox
+    When I press the "cancel import" button
+    And I ensure the tools panel does not disturb
+    When I press the first imported group name link
+    And I ensure the tools panel is open
+    And I press the "tools panel import" button
+    Then I expect to see the "import" dialog modal box
+    Then I expect to see the "import" dialog loading
+    Then I expect to see the "import" dialog empty message
