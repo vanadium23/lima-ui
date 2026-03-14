@@ -26,11 +26,24 @@ Then(
 );
 
 Then("I expect the first imported group name to match the first import list name", async function (this: ComplexWorld) {
-  const firstImportedGroup = this.locateByIdParts(IMPORTED_GROUP).first();
-  const groupNameLink = firstImportedGroup.locator(buildTestableSelector(IMPORTED_GROUP_NAME_LINK));
-  const groupName = await groupNameLink.textContent();
-  expect(groupName).toBe(this.data["listTitle_0"]);
+  const importedGroupName = await getImportedGroupName(this, 0);
+  expect(importedGroupName).toBe(this.data["listTitle_0"]);
 });
+
+Then(
+  "I expect the imported group #{int} name to match the import list #{int} name",
+  async function (this: ComplexWorld, groupIndex: number, listIndex: number) {
+    const importedGroupName = await getImportedGroupName(this, groupIndex - 1);
+    expect(importedGroupName).toBe(this.data[`listTitle_${listIndex - 1}`]);
+  },
+);
+
+async function getImportedGroupName(complexWorld: ComplexWorld, index: number): Promise<string | null> {
+  const importedGroup = complexWorld.locateByIdParts(IMPORTED_GROUP).nth(index);
+  const groupNameLink = importedGroup.locator(buildTestableSelector(IMPORTED_GROUP_NAME_LINK));
+
+  return groupNameLink.textContent();
+}
 
 When("I press the first imported group name link", async function (this: ComplexWorld) {
   const firstImportedGroup = this.locateByIdParts(IMPORTED_GROUP).first();

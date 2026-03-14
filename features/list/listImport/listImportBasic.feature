@@ -39,3 +39,26 @@ Feature: Importing elements from another list
     Then I expect to see the "import" dialog modal box
     Then I expect to see the "import" dialog loading
     Then I expect to see the "import" dialog empty message
+
+  Scenario: User imports multiple lists in position order
+    When I add a list
+    And I add a list
+    And I add a list
+    And I add a list
+    And I ensure the tools panel is open
+    And I press the "tools panel import" button
+    Then I expect to see the "import" dialog modal box
+    When I check the "third import list" checkbox
+    And I check the "first import list" checkbox
+    And I press the "import" button
+    And I ensure the tools panel does not disturb
+    Then I expect to see 2 imported groups in the list
+    Then I expect the imported group #1 name to match the import list #1 name
+    Then I expect the imported group #2 name to match the import list #3 name
+    Then I expect to see the "save" button enabled
+    When I press the "save" button
+    And I wait for the list update to complete
+    And I refresh the page
+    Then I expect to see 2 imported groups in the list
+    Then I expect the imported group #1 name to match the import list #1 name
+    Then I expect the imported group #2 name to match the import list #3 name

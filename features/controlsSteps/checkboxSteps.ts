@@ -8,6 +8,7 @@ import { buildFullTestId } from "../utilities/buildTestableSelector.ts";
 const CHECKBOX_TEST_IDS = {
   "first import list": buildFullTestId(IMPORT_DIALOG_LIST_CHECKBOX, 0),
   "second import list": buildFullTestId(IMPORT_DIALOG_LIST_CHECKBOX, 1),
+  "third import list": buildFullTestId(IMPORT_DIALOG_LIST_CHECKBOX, 2),
 };
 
 type CheckboxMeaning = keyof typeof CHECKBOX_TEST_IDS;
