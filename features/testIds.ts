@@ -141,6 +141,7 @@ export const IMPORT_DIALOG_LOADING = buildLoadingDialogTestId(IMPORT_DIALOG);
 export const IMPORT_DIALOG_LIST = "importDialogList";
 export const IMPORT_DIALOG_LIST_CHECKBOX = buildCheckboxTestId(IMPORT_DIALOG_LIST);
 export const IMPORT_DIALOG_LIST_ITEM = "importDialogListItem";
+export const IMPORT_DIALOG_COUNTER = "importDialogCounter";
 
 export const IMPORTED_GROUP = "importedGroup";
 export const IMPORTED_GROUP_ITEM = "importedGroupItem";

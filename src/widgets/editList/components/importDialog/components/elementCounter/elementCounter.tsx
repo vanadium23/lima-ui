@@ -37,6 +37,7 @@ export const ElementCounter = (props: Testable<ElementCounterProps>) => {
         [`elementCounter_${mProps.theme}`]: true,
         elementCounter_limitReached: mProps.isLimitReached,
       }}
+      data-test-id={mProps.testId}
     >
       {`${mProps.children}/${mProps.maxCount}`}
     </div>

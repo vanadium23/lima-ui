@@ -1,9 +1,15 @@
 import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
-import { LISTS_LIMIT } from "../../../configuration.ts";
+import { ITEMS_LIMIT, LISTS_LIMIT } from "../../../configuration.ts";
 import type { ComplexWorld } from "../../context/hooks.ts";
-import { IMPORT_DIALOG_LIST, IMPORTED_GROUP, IMPORTED_GROUP_ITEM, IMPORTED_GROUP_NAME_LINK } from "../../testIds.ts";
+import {
+  IMPORT_DIALOG_COUNTER,
+  IMPORT_DIALOG_LIST,
+  IMPORTED_GROUP,
+  IMPORTED_GROUP_ITEM,
+  IMPORTED_GROUP_NAME_LINK,
+} from "../../testIds.ts";
 import { buildTestableSelector } from "../../utilities/buildTestableSelector.ts";
 
 Then("I expect to see {int} imported group(s) in the list", async function (this: ComplexWorld, count: number) {
@@ -35,4 +41,12 @@ When("I press the first imported group name link", async function (this: Complex
 
 Then("I expect to see all other lists in the import dialog", async function (this: ComplexWorld) {
   await this.expectLocated(IMPORT_DIALOG_LIST).toHaveCount(LISTS_LIMIT - 1);
+});
+
+Then("I expect the import counter to show limit reached", async function (this: ComplexWorld) {
+  await this.expectLocated(IMPORT_DIALOG_COUNTER).toHaveText(`${ITEMS_LIMIT}/${ITEMS_LIMIT}`);
+});
+
+Then("I expect the import counter to show limit exceeded", async function (this: ComplexWorld) {
+  await this.expectLocated(IMPORT_DIALOG_COUNTER).toHaveText(`${ITEMS_LIMIT + 1}/${ITEMS_LIMIT}`);
 });

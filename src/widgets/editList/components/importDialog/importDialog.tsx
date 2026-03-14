@@ -4,6 +4,7 @@ import { createStore } from "solid-js/store";
 import { ITEMS_LIMIT } from "../../../../../configuration.ts";
 import {
   IMPORT_DIALOG,
+  IMPORT_DIALOG_COUNTER,
   IMPORT_DIALOG_EMPTY_MESSAGE,
   IMPORT_DIALOG_IMPORT_BUTTON,
   IMPORT_ERROR,
@@ -176,7 +177,11 @@ export const ImportDialog = (props: ImportDialogProps) => {
       loading={storeImportDialog.loadingListsForImport}
       controls={
         <>
-          <ElementCounter testId={IMPORT_DIALOG} isLimitReached={isImportDialogLimitReached()} maxCount={ITEMS_LIMIT}>
+          <ElementCounter
+            testId={IMPORT_DIALOG_COUNTER}
+            isLimitReached={isImportDialogLimitReached()}
+            maxCount={ITEMS_LIMIT}
+          >
             {getTotalCheckedItemsCount()}
           </ElementCounter>
           <Button
