@@ -1,8 +1,9 @@
 Feature: Importing elements from another list
 
   Background:
-    And I clear all data
+    Given I clear all data
 
+  @zero-lists
   Scenario: User imports list via tools panel button
     When I add a list
     And I add a list

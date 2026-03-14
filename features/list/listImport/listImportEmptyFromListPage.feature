@@ -1,9 +1,10 @@
 Feature: Importing items when user has only one list from list page
 
   Background:
-    And I clear all data
+    Given I clear all data
     When I add a list
 
+  @zero-lists
   Scenario Outline: User with one list opens import dialog via context menu and sees empty message
     When I hover "first list item"
     And I press the "open context menu first item" button
@@ -17,6 +18,7 @@ Feature: Importing items when user has only one list from list page
       | import item above |
       | import item below |
 
+  @zero-lists
   Scenario: User with one list opens import dialog via tools panel button and sees empty message
     And I ensure the tools panel is open
     And I press the "tools panel import" button

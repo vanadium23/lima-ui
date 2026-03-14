@@ -1,7 +1,7 @@
 Feature: Importing items when user has no lists
 
   Background:
-    And I clear all data
+    Given I clear all data
     When I open "List Creation" page
 
   @zero-lists

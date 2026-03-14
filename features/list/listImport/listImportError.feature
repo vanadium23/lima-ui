@@ -1,10 +1,10 @@
 Feature: Importing elements error handling
 
   Background:
-    And I clear all data
+    Given I clear all data
     When I add a list
-    And I add a list
 
+  @any-lists
   Scenario: User opens import dialog but the request fails with an error
     Given Data server is not available
     When I hover "first list item"
