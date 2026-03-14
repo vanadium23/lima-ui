@@ -8,7 +8,9 @@ const url = new URL(Astro.request.url);
 const verifyToken = url.searchParams.get("token");
 
 if (verifyToken) {
-  const response = await fetch(`${import.meta.env.SERVER_API_URL}${BACKEND_URL_AUTH_VERIFY_EMAIL}`, {
+  const apiBase = import.meta.env.DEV ? import.meta.env.PUBLIC_API_URL : import.meta.env.SERVER_API_URL;
+
+  const response = await fetch(`${apiBase}${BACKEND_URL_AUTH_VERIFY_EMAIL}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ token: verifyToken }),

@@ -4,64 +4,22 @@ import { expect } from "@playwright/test";
 import { TESTS_URL_ERROR_SIGN } from "../../../utilities/addresses.ts";
 import type { ComplexWorld } from "../../context/hooks.ts";
 import { LIST_ITEM_INPUT } from "../../testIds.ts";
-import {
-  INPUT_TEST_IDS,
-  type InputMeaning,
-  SWITCH_TEST_IDS,
-  type SwitchMeaning,
-} from "../listCreation/testIds.ts";
+import { INPUT_TEST_IDS, type InputMeaning } from "../listCreation/testIds.ts";
 
-Then(
-  "I expect to see the {string} input enabled",
-  async function (this: ComplexWorld, inputMeaning: InputMeaning) {
-    const expectInput = this.expectLocated(
-      this.accounting.elements.registerTestId(INPUT_TEST_IDS[inputMeaning]),
-    );
+Then("I expect to see the {string} input enabled", async function (this: ComplexWorld, inputMeaning: InputMeaning) {
+  const expectInput = this.expectLocated(this.accounting.elements.registerTestId(INPUT_TEST_IDS[inputMeaning]));
 
-    await expectInput.toBeInViewport();
-    await expectInput.toBeEnabled();
-  },
-);
+  await expectInput.toBeInViewport();
+  await expectInput.toBeEnabled();
+});
 
-Then(
-  "I expect to see the {string} switch enabled",
-  async function (this: ComplexWorld, switchMeaning: SwitchMeaning) {
-    const switchElement = this.locateByIdParts(
-      this.accounting.elements.registerTestId(SWITCH_TEST_IDS[switchMeaning]),
-    );
+Then("I expect to see the {string} input", async function (this: ComplexWorld, inputMeaning: InputMeaning) {
+  await this.expectLocated(INPUT_TEST_IDS[inputMeaning]).toBeInViewport();
+});
 
-    await expect(switchElement).toBeInViewport();
-    await expect(switchElement.locator("input")).toBeEnabled();
-  },
-);
-
-Then(
-  "I expect to see the {string} switch disabled",
-  async function (this: ComplexWorld, switchMeaning: SwitchMeaning) {
-    const switchElement = this.locateByIdParts(
-      this.accounting.elements.registerTestId(SWITCH_TEST_IDS[switchMeaning]),
-    );
-
-    await expect(switchElement).toBeInViewport();
-    await expect(switchElement.locator("input")).toBeDisabled();
-  },
-);
-
-Then(
-  "I expect to see the {string} input",
-  async function (this: ComplexWorld, inputMeaning: InputMeaning) {
-    await this.expectLocated(INPUT_TEST_IDS[inputMeaning]).toBeInViewport();
-  },
-);
-
-Then(
-  "I expect not to see the last item input",
-  async function (this: ComplexWorld) {
-    await expect(
-      this.locateByIdParts(LIST_ITEM_INPUT).last(),
-    ).not.toBeInViewport();
-  },
-);
+Then("I expect not to see the last item input", async function (this: ComplexWorld) {
+  await expect(this.locateByIdParts(LIST_ITEM_INPUT).last()).not.toBeInViewport();
+});
 
 When("Error happens while loading", async function (this: ComplexWorld) {
   const currentUrl = this.page.url();

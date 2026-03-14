@@ -6,7 +6,6 @@ import {
   ADD_ITEM_BELOW_MENUITEM,
   AUTO_LIST_ITEM,
   buildListItemInputTestId,
-  CHECKBOX,
   DEFAULT_TEST_ID,
   DRAG_HANDLE,
   DRAGGED_LIST_ITEM,
@@ -31,7 +30,6 @@ import { pasteItemAfter, pasteItemBefore } from "../../widgets/editList/utilitie
 import { reachedItemsLimit } from "../../widgets/editList/utilities/reachedItemsLimit.ts";
 import { removeItem } from "../../widgets/editList/utilities/removeItem.ts";
 import { Button, ButtonSize, ButtonTheme } from "../button/button.tsx";
-import { Checkbox, CheckboxSize, CheckboxTheme } from "../checkbox/checkbox.tsx";
 import { CyberInput } from "../cyberInput/cyberInput.tsx";
 import { Dialog } from "../dialog/dialog.tsx";
 import { DragHandle } from "../dragHandle/dragHandle.tsx";
@@ -183,18 +181,6 @@ export const ListItem = (props: ListItemProps) => {
           dragHandle={mProps.dragSettings.dragData}
         />
       </div>
-      <Show when={storeEditList.isCheckable}>
-        <div class="listItem__checkbox">
-          <Checkbox
-            theme={CheckboxTheme.Primary}
-            size={CheckboxSize.Medium}
-            testId={CHECKBOX}
-            testSubId={getListItemTestSubId(getTestId(), mProps.index)}
-            disabled={Boolean(storeEditList.sendingNow)}
-            checked={mProps.checked}
-          />
-        </div>
-      </Show>
       <div class="listItem__inner">
         <CyberInput
           maxLength={EDIT_LIST_INPUT_LIMIT}

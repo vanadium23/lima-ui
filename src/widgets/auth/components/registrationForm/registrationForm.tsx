@@ -15,8 +15,8 @@ import {
 import { AuthButton } from "../../../../components/authButton/authButton.tsx";
 import { Button, ButtonType } from "../../../../components/button/button.tsx";
 import { Checkbox } from "../../../../components/checkbox/checkbox.tsx";
-import { HintForInput } from "../../../../components/hintErrorReplaceableText/hintForInput.tsx";
-import { AutocompleteType, Input, InputType } from "../../../../components/input/input.tsx";
+import { FormField } from "../../../../components/formField/formField.tsx";
+import { AutocompleteType, InputType } from "../../../../components/input/input.tsx";
 import { Link } from "../../../../components/link/link.tsx";
 import { TextButton } from "../../../../components/textButton/textButton.tsx";
 
@@ -99,74 +99,55 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
             </div>
             <span class="registrationsForm__separator">или</span>
             <div class="registrationsForm__inputs">
-              <label class="registrationsForm__label">
-                <span class="registrationsForm__labelText">Электронная почта</span>
-                <Input
-                  type={InputType.Email}
-                  placeholder="example@email.ru"
-                  name="Электронная почта"
-                  maxLength={MAX_EMAIL_LENGTH}
-                  testId={REG_EMAIL_INPUT}
-                  required={true}
-                  error={!registrationFormStore.inputs.email.isValid}
-                  onInput={handleChange("email")}
-                  disabled={registrationFormStore.isLoading}
-                  autocomplete={AutocompleteType.Email}
-                >
-                  {registrationFormStore.inputs.email.value.toString()}
-                </Input>
-                <HintForInput
-                  errorText={registrationFormStore.inputs.email.error}
-                  isError={!registrationFormStore.inputs.email.isValid}
-                  testId={DEFAULT_TEST_ID}
-                />
-              </label>
-              <label class="registrationsForm__label">
-                <span class="registrationsForm__labelText">Придумайте пароль</span>
-
-                <Input
-                  type={InputType.Password}
-                  placeholder="Пароль"
-                  name="Пароль"
-                  maxLength={MAX_PASSWORD_LENGTH}
-                  testId={REG_PASS_INPUT}
-                  required={true}
-                  error={!registrationFormStore.inputs.pass.isValid}
-                  onInput={handleChange("pass")}
-                  disabled={registrationFormStore.isLoading}
-                  autocomplete={AutocompleteType.NewPassword}
-                >
-                  {registrationFormStore.inputs.pass.value.toString()}
-                </Input>
-                <HintForInput
-                  hintText={`Минимум ${MIN_PASSWORD_LENGTH} символов, буквы [a-z] и цифры [0-9]`}
-                  errorText={registrationFormStore.inputs.pass.error}
-                  isError={!registrationFormStore.inputs.pass.isValid}
-                  testId={DEFAULT_TEST_ID}
-                />
-              </label>
-              <label class="registrationsForm__label">
-                <span class="registrationsForm__labelText">Повторите пароль</span>
-                <Input
-                  type={InputType.Password}
-                  placeholder="Пароль"
-                  name="Повторный пароль"
-                  maxLength={MAX_PASSWORD_LENGTH}
-                  testId={REG_REPEAT_PASS_INPUT}
-                  required={true}
-                  error={!registrationFormStore.inputs.repeat_pass.isValid}
-                  onInput={handleChange("repeat_pass")}
-                  disabled={registrationFormStore.isLoading}
-                  autocomplete={AutocompleteType.NewPassword}
-                >
-                  {registrationFormStore.inputs.repeat_pass.value.toString()}
-                </Input>
-                <HintForInput
-                  errorText={registrationFormStore.inputs.repeat_pass.error}
-                  isError={!registrationFormStore.inputs.repeat_pass.isValid}
-                  testId={DEFAULT_TEST_ID}
-                />
-              </label>
+              <FormField
+                labelText="Электронная почта"
+                errorText={registrationFormStore.inputs.email.error}
+                isError={!registrationFormStore.inputs.email.isValid}
+                type={InputType.Email}
+                placeholder="example@email.ru"
+                name="Электронная почта"
+                maxLength={MAX_EMAIL_LENGTH}
+                testId={REG_EMAIL_INPUT}
+                required={true}
+                onInput={handleChange("email")}
+                disabled={registrationFormStore.isLoading}
+                autocomplete={AutocompleteType.Email}
+              >
+                {registrationFormStore.inputs.email.value.toString()}
+              </FormField>
+              <FormField
+                labelText="Придумайте пароль"
+                hintText={`Минимум ${MIN_PASSWORD_LENGTH} символов, буквы [a-z] и цифры [0-9]`}
+                errorText={registrationFormStore.inputs.pass.error}
+                isError={!registrationFormStore.inputs.pass.isValid}
+                type={InputType.Password}
+                placeholder="Пароль"
+                name="Пароль"
+                maxLength={MAX_PASSWORD_LENGTH}
+                testId={REG_PASS_INPUT}
+                required={true}
+                onInput={handleChange("pass")}
+                disabled={registrationFormStore.isLoading}
+                autocomplete={AutocompleteType.NewPassword}
+              >
+                {registrationFormStore.inputs.pass.value.toString()}
+              </FormField>
+              <FormField
+                labelText="Повторите пароль"
+                errorText={registrationFormStore.inputs.repeat_pass.error}
+                isError={!registrationFormStore.inputs.repeat_pass.isValid}
+                type={InputType.Password}
+                placeholder="Пароль"
+                name="Повторный пароль"
+                maxLength={MAX_PASSWORD_LENGTH}
+                testId={REG_REPEAT_PASS_INPUT}
+                required={true}
+                onInput={handleChange("repeat_pass")}
+                disabled={registrationFormStore.isLoading}
+                autocomplete={AutocompleteType.NewPassword}
+              >
+                {registrationFormStore.inputs.repeat_pass.value.toString()}
+              </FormField>
               <label class="registrationsForm__policyLabel">
                 <Checkbox
                   testId={REG_ACCEPT_AGREEMENT}

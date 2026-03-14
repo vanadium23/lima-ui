@@ -1,7 +1,6 @@
 import { createSignal } from "solid-js";
 
 import {
-  CHECKLIST_SWITCH,
   REMOVE_LIST_DIALOG,
   TOOLS_PANEL,
   TOOLS_PANEL_ADD_ITEM_BUTTON,
@@ -13,7 +12,6 @@ import {
 import { Divider } from "../../../../components/divider/divider.tsx";
 import { IconName } from "../../../../components/icon/types.ts";
 import { RemoveListDialog } from "../../../../components/removeDialog/removeListDialog.tsx";
-import { Switch } from "../../../../components/switch/switch.tsx";
 import {
   ToolsButton,
   ToolsButtonComponentType,
@@ -21,13 +19,11 @@ import {
 } from "../../../../components/toolsButton/toolsButton.tsx";
 import { ToolsPanel, ToolsPanelSize, ToolsPanelTheme } from "../../../../organisms/toolsPanel/toolsPanel.tsx";
 import type { EditListElement } from "../../../../types/types.ts";
-import { setStoreEditList, storeEditList } from "../../editList.store.tsx";
+import { storeEditList } from "../../editList.store.tsx";
 import { addNewItem } from "../../utilities/addNewItem.ts";
 import { reachedItemsLimit } from "../../utilities/reachedItemsLimit.ts";
 import { sendListRemove } from "../../utilities/sendListRemove.ts";
 import { ImportDialog, openImportDialogPasteEnd } from "../importDialog/importDialog.tsx";
-
-const toggleCheckable = () => setStoreEditList("isCheckable", !storeEditList.isCheckable);
 
 const [isOpenRemoveListDialog, setOpenRemoveListDialog] = createSignal(false);
 
@@ -92,17 +88,6 @@ const EditListToolsPanel = () => {
           />
         </div>
         <Divider />
-        <div class="toolsPanel__verticalSection">
-          <Switch
-            testId={CHECKLIST_SWITCH}
-            disabled={Boolean(storeEditList.sendingNow)}
-            checked={storeEditList.isCheckable}
-            onChange={toggleCheckable}
-          >
-            Чек-лист
-          </Switch>
-        </div>
-        <Divider />
         <div class="toolsPanel__horizontalSection">
           <ToolsButton
             componentType={ToolsButtonComponentType.Button}
@@ -118,7 +103,7 @@ const EditListToolsPanel = () => {
           <ToolsButton
             componentType={ToolsButtonComponentType.Link}
             iconName={IconName.Printer}
-            href={`./${storeEditList.id}/print?checkable=${storeEditList.isCheckable}`}
+            href={`./${storeEditList.id}/print`}
             testId={TOOLS_PANEL_BUTTON_PRINT_LIST}
             disabled={storeEditList.isNewList || Boolean(storeEditList.sendingNow)}
             openInNewTab={true}

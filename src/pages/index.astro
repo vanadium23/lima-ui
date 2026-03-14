@@ -1,7 +1,9 @@
 ---
 import { BACKEND_URL_USERS_ME } from "../../utilities/addresses.ts";
 
-const response = await fetch(`${import.meta.env.SERVER_API_URL}${BACKEND_URL_USERS_ME}`, {
+const apiBase = import.meta.env.DEV ? import.meta.env.PUBLIC_API_URL : import.meta.env.SERVER_API_URL;
+
+const response = await fetch(`${apiBase}${BACKEND_URL_USERS_ME}`, {
   method: "GET",
   headers: {
     Authorization: `Bearer ${Astro.cookies.get("token")?.value}`,

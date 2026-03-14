@@ -13,8 +13,8 @@ export enum HintForInputSize {
 }
 
 export type HintForInputProps = {
-  theme?: HintForInputTheme;
-  size?: HintForInputSize;
+  hintTheme?: HintForInputTheme;
+  hintSize?: HintForInputSize;
   hintText?: string;
   errorText?: string | undefined;
   isError?: boolean;
@@ -23,8 +23,8 @@ export type HintForInputProps = {
 export const HintForInput = (props: Testable<HintForInputProps>) => {
   const mProps: Testable<Required<HintForInputProps>> = mergeProps(
     {
-      theme: HintForInputTheme.Primary,
-      size: HintForInputSize.Medium,
+      hintTheme: HintForInputTheme.Primary,
+      hintSize: HintForInputSize.Medium,
       hintText: "",
       errorText: "",
       isError: false,
@@ -36,8 +36,8 @@ export const HintForInput = (props: Testable<HintForInputProps>) => {
     <span
       class="hintForInput"
       classList={{
-        [`hintForInput_${mProps.size}`]: true,
-        [`hintForInput_${mProps.theme}`]: !mProps.isError,
+        [`hintForInput_${mProps.hintSize}`]: true,
+        [`hintForInput_${mProps.hintTheme}`]: !mProps.isError,
         hintForInput_error: mProps.isError,
       }}
       aria-live="polite"
