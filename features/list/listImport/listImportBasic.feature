@@ -20,7 +20,7 @@ Feature: Importing elements from another list
     Then I expect not to see the "import" dialog modal box
     And I ensure the tools panel does not disturb
     Then I expect to see 1 imported group in the list
-    Then I expect to see at least 1 imported item in the first imported group
+    Then I expect to see 1 item in the first imported group
     Then I expect the first imported group name to match the first import list name
     Then I expect to see the "save" button enabled
     When I press the "save" button

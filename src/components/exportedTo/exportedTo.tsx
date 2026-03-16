@@ -1,6 +1,5 @@
 import { For, mergeProps } from "solid-js";
 
-import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import type { SimpleList } from "../../types/types.ts";
 import { DropdownListItem } from "../dropdownListItem/dropdownListItem.tsx";
 import type { Testable } from "../utilities/testable.ts";
@@ -47,7 +46,7 @@ export const ExportedTo = (props: Testable<ExportedToProps>) => {
         <For each={mProps.children}>
           {(list, index) => {
             return (
-              <DropdownListItem listId={list.id} testId={DEFAULT_TEST_ID} testSubId={index()}>
+              <DropdownListItem listId={list.id} testId={mProps.testId} testSubId={index()}>
                 {list.name}
               </DropdownListItem>
             );

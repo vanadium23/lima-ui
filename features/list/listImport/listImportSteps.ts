@@ -4,6 +4,7 @@ import { expect, type Locator } from "@playwright/test";
 import { ITEMS_LIMIT, LISTS_LIMIT } from "../../../configuration.ts";
 import type { ComplexWorld } from "../../context/hooks.ts";
 import {
+  EXPORTED_TO_LIST,
   IMPORT_DIALOG_COUNTER,
   IMPORT_DIALOG_LIST,
   IMPORTED_GROUP,
@@ -11,20 +12,11 @@ import {
   IMPORTED_GROUP_NAME_LINK,
   LIST_ITEM,
 } from "../../testIds.ts";
-import { buildTestableSelector } from "../../utilities/buildTestableSelector.ts";
+import { buildFullTestId, buildTestableSelector } from "../../utilities/buildTestableSelector.ts";
 
 Then("I expect to see {int} imported group(s) in the list", async function (this: ComplexWorld, count: number) {
   await this.expectLocated(IMPORTED_GROUP).toHaveCount(count);
 });
-
-Then(
-  "I expect to see at least {int} imported item(s) in the first imported group",
-  async function (this: ComplexWorld, count: number) {
-    const firstImportedGroup = this.locateByIdParts(IMPORTED_GROUP).first();
-    const importedItems = firstImportedGroup.locator(buildTestableSelector(IMPORTED_GROUP_ITEM));
-    expect(await importedItems.count()).toBeGreaterThanOrEqual(count);
-  },
-);
 
 Then("I expect the first imported group name to match the first import list name", async function (this: ComplexWorld) {
   const importedGroupName = await getImportedGroupName(this, 0);
@@ -88,3 +80,37 @@ async function getDomIndex(element: Locator): Promise<number> {
     return Array.from(parent.children).indexOf(el);
   });
 }
+
+const EXPORTED_TO_LIST_ITEM_TEST_IDS = {
+  "first exported to list": buildFullTestId(EXPORTED_TO_LIST, 0),
+};
+
+type ExportedToListItemMeaning = keyof typeof EXPORTED_TO_LIST_ITEM_TEST_IDS;
+
+When(
+  "I press the {string} in the exported to list",
+  async function (this: ComplexWorld, listItemMeaning: ExportedToListItemMeaning) {
+    const listItem = this.locateByFullId(EXPORTED_TO_LIST_ITEM_TEST_IDS[listItemMeaning]);
+    const link = listItem.locator("a");
+
+    await link.click();
+  },
+);
+
+Then("I expect to see {int} item(s) in the first imported group", async function (this: ComplexWorld, count: number) {
+  const firstImportedGroup = this.locateByIdParts(IMPORTED_GROUP).first();
+  const importedItems = firstImportedGroup.locator(buildTestableSelector(IMPORTED_GROUP_ITEM));
+
+  expect(await importedItems.count()).toBe(count);
+});
+
+Then(
+  "I expect the first item in the first imported group to contain the text from {string} input",
+  async function (this: ComplexWorld, inputMeaning: string) {
+    const firstImportedGroup = this.locateByIdParts(IMPORTED_GROUP).first();
+    const firstItem = firstImportedGroup.locator(buildTestableSelector(IMPORTED_GROUP_ITEM)).first();
+    const expectedText = this.data[inputMeaning];
+
+    await expect(firstItem).toHaveText(expectedText!);
+  },
+);

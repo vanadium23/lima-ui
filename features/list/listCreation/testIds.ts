@@ -9,6 +9,7 @@ import {
   buildTextAreaCounterTestId,
   CLEAR_SEARCH_BUTTON,
   CREATE_LIST_BUTTON,
+  EXPORTED_TO_BUTTON,
   IMPORT_ABOVE_MENUITEM,
   IMPORT_BELOW_MENUITEM,
   IMPORT_DIALOG,
@@ -69,6 +70,7 @@ export const BUTTON_TEST_IDS = {
   search: SEARCH_BUTTON,
   "clear search": CLEAR_SEARCH_BUTTON,
   "close search error notification": SEARCH_NETWORK_ERROR_CLOSE_BUTTON,
+  "exported to": EXPORTED_TO_BUTTON,
 };
 export type ButtonMeaning = keyof typeof BUTTON_TEST_IDS;
 

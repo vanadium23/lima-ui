@@ -147,6 +147,9 @@ export const IMPORTED_GROUP = "importedGroup";
 export const IMPORTED_GROUP_ITEM = "importedGroupItem";
 export const IMPORTED_GROUP_NAME_LINK = "importedGroupNameLink";
 
+export const EXPORTED_TO_BUTTON = "exportedToButton";
+export const EXPORTED_TO_LIST = "exportedToList";
+
 export const DRAG_HANDLE = "dragHandle";
 
 export const CHECKBOX = "checkbox";
