@@ -9,7 +9,6 @@ import {
   TOOLS_PANEL_BUTTON_PRINT_LIST,
   TOOLS_PANEL_BUTTON_REMOVE_LIST,
 } from "../../../../../features/testIds.ts";
-import { Divider } from "../../../../components/divider/divider.tsx";
 import { IconName } from "../../../../components/icon/types.ts";
 import { RemoveListDialog } from "../../../../components/removeDialog/removeListDialog.tsx";
 import {
@@ -87,7 +86,6 @@ const EditListToolsPanel = () => {
             testId={REMOVE_LIST_DIALOG}
           />
         </div>
-        <Divider />
         <div class="toolsPanel__horizontalSection">
           <ToolsButton
             componentType={ToolsButtonComponentType.Button}
