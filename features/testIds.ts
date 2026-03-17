@@ -146,6 +146,8 @@ export const IMPORT_DIALOG_COUNTER = "importDialogCounter";
 export const IMPORTED_GROUP = "importedGroup";
 export const IMPORTED_GROUP_ITEM = "importedGroupItem";
 export const IMPORTED_GROUP_NAME_LINK = "importedGroupNameLink";
+export const OPEN_CONTEXT_MENU_IMPORTED_GROUP_BUTTON = "openContextMenuImportedGroupButton";
+export const GO_TO_SOURCE_LIST_MENUITEM = "goToSourceListMenuitem";
 
 export const EXPORTED_TO_BUTTON = "exportedToButton";
 export const EXPORTED_TO_LIST = "exportedToList";

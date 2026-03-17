@@ -5,8 +5,10 @@ import {
   ADD_ITEM_ABOVE_MENUITEM,
   ADD_ITEM_BELOW_MENUITEM,
   DEFAULT_TEST_ID,
+  GO_TO_SOURCE_LIST_MENUITEM,
   IMPORTED_GROUP_ITEM,
   IMPORTED_GROUP_NAME_LINK,
+  OPEN_CONTEXT_MENU_IMPORTED_GROUP_BUTTON,
 } from "../../../features/testIds.ts";
 import { getListLink } from "../../../utilities/addresses.ts";
 import { notificationState } from "../../state/pushNotificationStateManager.ts";
@@ -116,7 +118,7 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
       componentType: MenuItemComponentType.Link,
       href: getListLink(mProps.id),
       icon: IconName.ArrowBendUpLeft,
-      testId: DEFAULT_TEST_ID,
+      testId: GO_TO_SOURCE_LIST_MENUITEM,
     },
     {
       children: "Добавить пункт выше",
@@ -208,7 +210,8 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
                     iconName={IconName.DotsThree}
                     size={IconButtonSize.MediumEmbedded}
                     ariaLabel={`Меню импорта из списка ${mProps.name}`}
-                    testId={DEFAULT_TEST_ID}
+                    testId={OPEN_CONTEXT_MENU_IMPORTED_GROUP_BUTTON}
+                    testSubId={mProps.testSubId ?? "0"}
                     disabled={Boolean(storeEditList.sendingNow)}
                   />
                 )}
@@ -243,14 +246,14 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
               setIsEditDialogOpen(false);
             }}
             testId={DEFAULT_TEST_ID}
-            testSubId={mProps.testSubId || "0"}
+            testSubId={mProps.testSubId ?? "0"}
           >
             Редактировать
           </Button>
         }
         open={isEditDialogOpen()}
         testId={mProps.testId}
-        testSubId={mProps.testSubId || "0"}
+        testSubId={mProps.testSubId ?? "0"}
       >
         <p>
           Редактируя импортированный список или пункт, вы открепляете его от исходного, и в дальнейшем любые изменения

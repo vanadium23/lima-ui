@@ -10,6 +10,7 @@ import {
   CLEAR_SEARCH_BUTTON,
   CREATE_LIST_BUTTON,
   EXPORTED_TO_BUTTON,
+  GO_TO_SOURCE_LIST_MENUITEM,
   IMPORT_ABOVE_MENUITEM,
   IMPORT_BELOW_MENUITEM,
   IMPORT_DIALOG,
@@ -22,6 +23,7 @@ import {
   LIST_TITLE_INPUT,
   NOTE_ACCORDION,
   NOTE_TEXT_AREA,
+  OPEN_CONTEXT_MENU_IMPORTED_GROUP_BUTTON,
   OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
   OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
   REMOVE_DIALOG_REMOVE_LIST_BUTTON,
@@ -71,6 +73,7 @@ export const BUTTON_TEST_IDS = {
   "clear search": CLEAR_SEARCH_BUTTON,
   "close search error notification": SEARCH_NETWORK_ERROR_CLOSE_BUTTON,
   "exported to": EXPORTED_TO_BUTTON,
+  "open context menu imported group": OPEN_CONTEXT_MENU_IMPORTED_GROUP_BUTTON,
 };
 export type ButtonMeaning = keyof typeof BUTTON_TEST_IDS;
 
@@ -87,6 +90,7 @@ export const MENUITEM_TEST_IDS = {
   "import item below": IMPORT_BELOW_MENUITEM,
   "edit first list": buildFullTestId(LIST_STRIPE_EDIT_BUTTON, 0),
   "edit second list": buildFullTestId(LIST_STRIPE_EDIT_BUTTON, 1),
+  "go to source list": GO_TO_SOURCE_LIST_MENUITEM,
 };
 export type MenuitemMeaning = keyof typeof MENUITEM_TEST_IDS;
 

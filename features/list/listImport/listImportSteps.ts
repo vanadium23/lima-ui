@@ -97,6 +97,10 @@ When(
   },
 );
 
+When("I hover the first imported group", async function (this: ComplexWorld) {
+  await this.locateByIdParts(IMPORTED_GROUP).first().hover();
+});
+
 Then("I expect to see {int} item(s) in the first imported group", async function (this: ComplexWorld, count: number) {
   const firstImportedGroup = this.locateByIdParts(IMPORTED_GROUP).first();
   const importedItems = firstImportedGroup.locator(buildTestableSelector(IMPORTED_GROUP_ITEM));

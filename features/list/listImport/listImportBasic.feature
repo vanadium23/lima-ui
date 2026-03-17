@@ -2,11 +2,11 @@ Feature: Importing elements from another list
 
   Background:
     Given I clear all data
+    When I add a list
+    And I add a list
 
   @zero-lists
   Scenario: User imports list via tools panel button
-    When I add a list
-    And I add a list
     And I ensure the tools panel is open
     And I press the "tools panel import" button
     Then I expect to see the "import" dialog modal box
@@ -42,8 +42,6 @@ Feature: Importing elements from another list
 
   @some-lists
   Scenario: User imports multiple lists in position order
-    When I add a list
-    And I add a list
     And I add a list
     And I add a list
     And I ensure the tools panel is open
@@ -66,8 +64,6 @@ Feature: Importing elements from another list
 
   @some-lists
   Scenario: User imports list above via context menu
-    When I add a list
-    And I add a list
     And I ensure the tools panel is open
     And I press the "add list item" button
     And I ensure the tools panel does not disturb
@@ -84,8 +80,6 @@ Feature: Importing elements from another list
 
   @some-lists
   Scenario: User imports list below via context menu
-    When I add a list
-    And I add a list
     And I ensure the tools panel is open
     And I press the "add list item" button
     And I ensure the tools panel does not disturb
@@ -99,3 +93,18 @@ Feature: Importing elements from another list
     And I ensure the tools panel does not disturb
     Then I expect to see 1 imported group in the list
     Then I expect the imported group to be below the first list item
+
+  @some-lists
+  Scenario: Pressing "Go to source list" navigates to the imported list page
+    And I ensure the tools panel is open
+    And I press the "tools panel import" button
+    Then I expect to see the "import" dialog modal box
+    When I check the "first import list" checkbox
+    And I press the "import" button
+    And I ensure the tools panel does not disturb
+    And I press the "save" button
+    And I wait for the list update to complete
+    When I hover the first imported group
+    And I press the visible "open context menu imported group" button
+    And I press the visible "go to source list" menu item
+    Then I expect to see the "exported to" button
