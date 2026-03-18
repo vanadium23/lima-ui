@@ -23,6 +23,11 @@
 }
 
 .icon_extraLarge {
+  width: 3.2rem;
+  height: 3.2rem;
+}
+
+.icon_extraExtraLarge {
   width: 4rem;
   height: 4rem;
 }
