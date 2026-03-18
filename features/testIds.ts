@@ -149,6 +149,9 @@ export const IMPORTED_GROUP_NAME_LINK = "importedGroupNameLink";
 export const OPEN_CONTEXT_MENU_IMPORTED_GROUP_BUTTON = "openContextMenuImportedGroupButton";
 export const GO_TO_SOURCE_LIST_MENUITEM = "goToSourceListMenuitem";
 export const REMOVE_IMPORTED_GROUP_MENUITEM = "removeImportedGroupMenuitem";
+export const EDIT_IMPORTED_GROUP_MENUITEM = "editImportedGroupMenuitem";
+export const EDIT_IMPORTED_GROUP_DIALOG = "editImportedGroupDialog";
+export const EDIT_IMPORTED_GROUP_BUTTON = "editImportedGroupButton";
 
 export const EXPORTED_TO_BUTTON = "exportedToButton";
 export const EXPORTED_TO_LIST = "exportedToList";

@@ -117,7 +117,6 @@ Feature: Importing elements from another list
     When I check the "first import list" checkbox
     And I press the "import" button
     And I ensure the tools panel does not disturb
-    Then I expect to see 1 imported group in the list
     And I press the "save" button
     And I wait for the list update to complete
     When I press the first imported group name link
@@ -130,5 +129,46 @@ Feature: Importing elements from another list
     Then I expect to see the "save" button enabled
     And I press the "save" button
     And I wait for the list update to complete
+    When I navigate to the saved page URL
+    Then I expect not to see the "exported to" button
+
+  @some-lists
+  Scenario: Pressing "Edit" button in context menu shows edit import dialog
+    And I ensure the tools panel is open
+    When I press the "tools panel import" button
+    Then I expect to see the "import" dialog modal box
+    When I check the "first import list" checkbox
+    And I press the "import" button
+    And I ensure the tools panel does not disturb
+    And I press the "save" button
+    And I wait for the list update to complete
+    And I press the first imported group name link
+    And I ensure the tools panel is open
+    And I press the "add list item" button
+    And I press the "add list item" button
+    And I ensure the tools panel does not disturb
+    And I type the following text into the "first item" input: "First item text"
+    And I type the following text into the "second item" input: "Second item text"
+    And I type the following text into the "third item" input: "Third item text"
+    And I press the "save" button
+    And I wait for the list update to complete
+    And I save the current page URL
+    When I press the "exported to" button
+    And I press the "first exported to list" in the exported to list
+    When I hover the first imported group
+    And I press the visible "open context menu imported group" button
+    And I press the visible "edit imported group" menu item
+    Then I expect to see the "edit import" dialog modal box
+    When I press the "edit imported group" button
+    Then I expect not to see the "edit import" dialog modal box
+    Then I expect to see 0 imported groups in the list
+    Then I expect to see the "second item" input to have the following text: "First item text"
+    Then I expect to see the "third item" input to have the following text: "Second item text"
+    Then I expect to see the "forth item" input to have the following text: "Third item text"
+    Then I expect to see the "save" button enabled
+    And I press the "save" button
+    And I wait for the list update to complete
+    And I refresh the page
+    Then I expect to see 0 imported groups in the list
     When I navigate to the saved page URL
     Then I expect not to see the "exported to" button

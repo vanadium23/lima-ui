@@ -5,6 +5,9 @@ import {
   ADD_ITEM_ABOVE_MENUITEM,
   ADD_ITEM_BELOW_MENUITEM,
   DEFAULT_TEST_ID,
+  EDIT_IMPORTED_GROUP_BUTTON,
+  EDIT_IMPORTED_GROUP_DIALOG,
+  EDIT_IMPORTED_GROUP_MENUITEM,
   GO_TO_SOURCE_LIST_MENUITEM,
   IMPORTED_GROUP_ITEM,
   IMPORTED_GROUP_NAME_LINK,
@@ -111,7 +114,7 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
       handleClick: () => {
         setIsEditDialogOpen(true);
       },
-      testId: DEFAULT_TEST_ID,
+      testId: EDIT_IMPORTED_GROUP_MENUITEM,
       disabled: reachedItemsLimit(),
     },
     {
@@ -246,14 +249,14 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
               editImportedGroup();
               setIsEditDialogOpen(false);
             }}
-            testId={DEFAULT_TEST_ID}
+            testId={EDIT_IMPORTED_GROUP_BUTTON}
             testSubId={mProps.testSubId ?? "0"}
           >
             Редактировать
           </Button>
         }
         open={isEditDialogOpen()}
-        testId={mProps.testId}
+        testId={EDIT_IMPORTED_GROUP_DIALOG}
         testSubId={mProps.testSubId ?? "0"}
       >
         <p>

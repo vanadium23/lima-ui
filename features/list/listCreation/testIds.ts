@@ -9,6 +9,8 @@ import {
   buildTextAreaCounterTestId,
   CLEAR_SEARCH_BUTTON,
   CREATE_LIST_BUTTON,
+  EDIT_IMPORTED_GROUP_BUTTON,
+  EDIT_IMPORTED_GROUP_MENUITEM,
   EXPORTED_TO_BUTTON,
   GO_TO_SOURCE_LIST_MENUITEM,
   IMPORT_ABOVE_MENUITEM,
@@ -75,6 +77,7 @@ export const BUTTON_TEST_IDS = {
   "close search error notification": SEARCH_NETWORK_ERROR_CLOSE_BUTTON,
   "exported to": EXPORTED_TO_BUTTON,
   "open context menu imported group": OPEN_CONTEXT_MENU_IMPORTED_GROUP_BUTTON,
+  "edit imported group": EDIT_IMPORTED_GROUP_BUTTON,
 };
 export type ButtonMeaning = keyof typeof BUTTON_TEST_IDS;
 
@@ -93,6 +96,7 @@ export const MENUITEM_TEST_IDS = {
   "edit second list": buildFullTestId(LIST_STRIPE_EDIT_BUTTON, 1),
   "go to source list": GO_TO_SOURCE_LIST_MENUITEM,
   "remove imported group": REMOVE_IMPORTED_GROUP_MENUITEM,
+  "edit imported group": EDIT_IMPORTED_GROUP_MENUITEM,
 };
 export type MenuitemMeaning = keyof typeof MENUITEM_TEST_IDS;
 

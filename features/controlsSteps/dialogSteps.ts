@@ -4,6 +4,7 @@ import { expect } from "@playwright/test";
 import type { ComplexWorld } from "../context/hooks.ts";
 import {
   buildLoadingDialogTestId,
+  EDIT_IMPORTED_GROUP_DIALOG,
   IMPORT_DIALOG,
   IMPORT_DIALOG_EMPTY_MESSAGE,
   REMOVE_LIST_DIALOG,
@@ -13,17 +14,20 @@ import { getTimeoutOrCancelItIfDebugging } from "../utilities/getTimeoutOrCancel
 export const DIALOG_TEST_IDS = {
   import: IMPORT_DIALOG,
   "remove list": REMOVE_LIST_DIALOG,
+  "edit import": EDIT_IMPORTED_GROUP_DIALOG,
 };
 export type DialogMeaning = keyof typeof DIALOG_TEST_IDS;
 
 export const DIALOG_LOADING_TEST_IDS: Record<DialogMeaning, string> = {
   import: buildLoadingDialogTestId(IMPORT_DIALOG),
   "remove list": buildLoadingDialogTestId(REMOVE_LIST_DIALOG),
+  "edit import": "",
 };
 
 export const DIALOG_EMPTY_MESSAGE_TEST_IDS: Record<DialogMeaning, string> = {
   import: IMPORT_DIALOG_EMPTY_MESSAGE,
   "remove list": "",
+  "edit import": "",
 };
 
 Then(
