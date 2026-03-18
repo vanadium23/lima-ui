@@ -108,3 +108,27 @@ Feature: Importing elements from another list
     And I press the visible "open context menu imported group" button
     And I press the visible "go to source list" menu item
     Then I expect to see the "exported to" button
+
+  @some-lists
+  Scenario: Pressing "Remove" button removes the imported group and enables "Save" button
+    And I ensure the tools panel is open
+    And I press the "tools panel import" button
+    Then I expect to see the "import" dialog modal box
+    When I check the "first import list" checkbox
+    And I press the "import" button
+    And I ensure the tools panel does not disturb
+    Then I expect to see 1 imported group in the list
+    And I press the "save" button
+    And I wait for the list update to complete
+    When I press the first imported group name link
+    And I save the current page URL
+    And I go back to the previous page
+    When I hover the first imported group
+    And I press the visible "open context menu imported group" button
+    And I press the visible "remove imported group" menu item
+    Then I expect to see 0 imported groups in the list
+    Then I expect to see the "save" button enabled
+    And I press the "save" button
+    And I wait for the list update to complete
+    When I navigate to the saved page URL
+    Then I expect not to see the "exported to" button

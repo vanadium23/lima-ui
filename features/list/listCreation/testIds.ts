@@ -27,6 +27,7 @@ import {
   OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
   OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON,
   REMOVE_DIALOG_REMOVE_LIST_BUTTON,
+  REMOVE_IMPORTED_GROUP_MENUITEM,
   REMOVE_ITEM_MENUITEM,
   REMOVE_LIST_DIALOG,
   SAVE_LIST_BUTTON,
@@ -91,6 +92,7 @@ export const MENUITEM_TEST_IDS = {
   "edit first list": buildFullTestId(LIST_STRIPE_EDIT_BUTTON, 0),
   "edit second list": buildFullTestId(LIST_STRIPE_EDIT_BUTTON, 1),
   "go to source list": GO_TO_SOURCE_LIST_MENUITEM,
+  "remove imported group": REMOVE_IMPORTED_GROUP_MENUITEM,
 };
 export type MenuitemMeaning = keyof typeof MENUITEM_TEST_IDS;
 

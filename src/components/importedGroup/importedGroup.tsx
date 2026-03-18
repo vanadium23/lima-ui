@@ -9,6 +9,7 @@ import {
   IMPORTED_GROUP_ITEM,
   IMPORTED_GROUP_NAME_LINK,
   OPEN_CONTEXT_MENU_IMPORTED_GROUP_BUTTON,
+  REMOVE_IMPORTED_GROUP_MENUITEM,
 } from "../../../features/testIds.ts";
 import { getListLink } from "../../../utilities/addresses.ts";
 import { notificationState } from "../../state/pushNotificationStateManager.ts";
@@ -163,7 +164,7 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
         removeItem(mProps.index);
       },
       theme: MenuItemTheme.Dangerous,
-      testId: DEFAULT_TEST_ID,
+      testId: REMOVE_IMPORTED_GROUP_MENUITEM,
     },
   ];
 
