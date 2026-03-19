@@ -13,6 +13,7 @@ import {
   IMPORT_BELOW_MENUITEM,
   IMPORTED_GROUP_ITEM,
   IMPORTED_GROUP_NAME_LINK,
+  LIMIT_EXCEEDED_ERROR,
   OPEN_CONTEXT_MENU_IMPORTED_GROUP_BUTTON,
   REMOVE_IMPORTED_GROUP_MENUITEM,
 } from "../../../features/testIds.ts";
@@ -83,7 +84,7 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
   const [isEditDialogOpen, setIsEditDialogOpen] = createSignal(false);
 
   function totalElementsBeforeEditImportedGroup() {
-    return mProps.children.length + getEditListElementsWithoutAutoItem().length;
+    return mProps.children.length + getEditListElementsWithoutAutoItem().length - 1;
   }
 
   function reachedLimitEditListElements() {
@@ -105,6 +106,7 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
       notificationState.pushInfo(
         "Превышение лимита пунктов",
         `Этот список нельзя встроить, так как будет превышен лимит ${totalElementsBeforeEditImportedGroup()} из ${ITEMS_LIMIT} доступных элементов списка`,
+        LIMIT_EXCEEDED_ERROR,
       );
     }
   }
@@ -117,7 +119,6 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
         setIsEditDialogOpen(true);
       },
       testId: EDIT_IMPORTED_GROUP_MENUITEM,
-      disabled: reachedItemsLimit(),
     },
     {
       children: "К исходному списку",

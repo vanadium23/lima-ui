@@ -108,6 +108,9 @@ export function buildErrorCloseButtonTestId(errorTestId: TestId): TestId {
 export const IMPORT_ERROR = "importError";
 export const IMPORT_ERROR_CLOSE_BUTTON = buildErrorCloseButtonTestId(IMPORT_ERROR);
 
+export const LIMIT_EXCEEDED_ERROR = "limitExceededError";
+export const LIMIT_EXCEEDED_ERROR_CLOSE_BUTTON = buildErrorCloseButtonTestId(LIMIT_EXCEEDED_ERROR);
+
 export const NO_SAVED_LISTS_MESSAGE = "noSavedListsMessage";
 
 export const LIST_STRIPE = "listStripe";

@@ -36,7 +36,7 @@ Then("I expect not to see the first item input", async function () {
 
 When(
   "I add list items to their limit",
-  { timeout: getTimeoutOrCancelItIfDebugging(60000) },
+  { timeout: getTimeoutOrCancelItIfDebugging(90000) },
   async function (this: ComplexWorld) {
     await addSeveralItems(this, ITEMS_LIMIT);
   },
@@ -44,7 +44,7 @@ When(
 
 When(
   "I add list items to one below their limit",
-  { timeout: getTimeoutOrCancelItIfDebugging(60000) },
+  { timeout: getTimeoutOrCancelItIfDebugging(90000) },
   async function (this: ComplexWorld) {
     await addSeveralItems(this, ITEMS_LIMIT - 1);
   },

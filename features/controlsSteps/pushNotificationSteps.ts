@@ -5,6 +5,8 @@ import type { ComplexWorld } from "../context/hooks.ts";
 import {
   IMPORT_ERROR,
   IMPORT_ERROR_CLOSE_BUTTON,
+  LIMIT_EXCEEDED_ERROR,
+  LIMIT_EXCEEDED_ERROR_CLOSE_BUTTON,
   LIST_REMOVAL_ERROR,
   LIST_REMOVAL_ERROR_CLOSE_BUTTON,
   NETWORK_ERROR,
@@ -18,6 +20,7 @@ const ERRORS_TEST_IDS = {
   "single list removal": buildFullTestId(LIST_REMOVAL_ERROR, 1),
   import: IMPORT_ERROR,
   "single import": buildFullTestId(IMPORT_ERROR, 1),
+  "limit exceeded": LIMIT_EXCEEDED_ERROR,
 };
 
 type ErrorMeaning = keyof typeof ERRORS_TEST_IDS;
@@ -28,6 +31,7 @@ const ERROR_CLOSE_BUTTONS_TEST_IDS: Record<ErrorMeaning, TestId> = {
   "single list removal": buildFullTestId(LIST_REMOVAL_ERROR_CLOSE_BUTTON, 1),
   import: IMPORT_ERROR_CLOSE_BUTTON,
   "single import": buildFullTestId(IMPORT_ERROR_CLOSE_BUTTON, 1),
+  "limit exceeded": LIMIT_EXCEEDED_ERROR_CLOSE_BUTTON,
 };
 
 Then("I expect to see the {string} error", async function (this: ComplexWorld, errorMeaning: ErrorMeaning) {
