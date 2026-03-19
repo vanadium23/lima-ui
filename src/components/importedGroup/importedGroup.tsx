@@ -9,6 +9,8 @@ import {
   EDIT_IMPORTED_GROUP_DIALOG,
   EDIT_IMPORTED_GROUP_MENUITEM,
   GO_TO_SOURCE_LIST_MENUITEM,
+  IMPORT_ABOVE_MENUITEM,
+  IMPORT_BELOW_MENUITEM,
   IMPORTED_GROUP_ITEM,
   IMPORTED_GROUP_NAME_LINK,
   OPEN_CONTEXT_MENU_IMPORTED_GROUP_BUTTON,
@@ -148,7 +150,7 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
       handleClick: () => {
         openImportDialogPasteBefore(mProps.index);
       },
-      testId: DEFAULT_TEST_ID,
+      testId: IMPORT_ABOVE_MENUITEM,
       disabled: reachedItemsLimit(),
     },
     {
@@ -157,7 +159,7 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
       handleClick: () => {
         openImportDialogPasteAfter(mProps.index);
       },
-      testId: DEFAULT_TEST_ID,
+      testId: IMPORT_BELOW_MENUITEM,
       disabled: reachedItemsLimit(),
     },
     {

@@ -118,3 +118,34 @@ Then(
     await expect(firstItem).toHaveText(expectedText!);
   },
 );
+
+Then("I expect the list item to be above the first imported group", async function (this: ComplexWorld) {
+  await expectListItemPosition(this, true);
+});
+
+Then("I expect the list item to be below the first imported group", async function (this: ComplexWorld) {
+  await expectListItemPosition(this, false);
+});
+
+Then("I expect the second imported group to be above the first imported group", async function (this: ComplexWorld) {
+  await expectSecondImportedGroupPosition(this, true);
+});
+
+Then("I expect the second imported group to be below the first imported group", async function (this: ComplexWorld) {
+  await expectSecondImportedGroupPosition(this, false);
+});
+
+async function expectListItemPosition(complexWorld: ComplexWorld, isAbove: boolean) {
+  const listItems = complexWorld.locateByIdParts(LIST_ITEM);
+  const lastListItemIndex = await getDomIndex(listItems.last());
+  const importedGroupIndex = await getDomIndex(complexWorld.locateByIdParts(IMPORTED_GROUP).first());
+
+  expect(lastListItemIndex).toBe(isAbove ? importedGroupIndex - 1 : importedGroupIndex + 1);
+}
+
+async function expectSecondImportedGroupPosition(complexWorld: ComplexWorld, isAbove: boolean) {
+  const firstGroupIndex = await getDomIndex(complexWorld.locateByIdParts(IMPORTED_GROUP).first());
+  const secondGroupIndex = await getDomIndex(complexWorld.locateByIdParts(IMPORTED_GROUP).nth(1));
+
+  expect(isAbove ? firstGroupIndex : secondGroupIndex).toBe(isAbove ? secondGroupIndex - 1 : firstGroupIndex + 1);
+}

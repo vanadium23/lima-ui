@@ -9,7 +9,7 @@ Feature: Importing elements error handling
     Given Data server is not available
     When I hover "first list item"
     And I press the "open context menu first item" button
-    And I press the visible "import item below" menu item
+    And I press the visible "import element below" menu item
     Then I expect to see the "import" dialog modal box
     Then I expect not to see the "import" dialog modal box
     Then I expect to see the "single import" error

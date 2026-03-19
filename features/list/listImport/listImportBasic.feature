@@ -69,7 +69,7 @@ Feature: Importing elements from another list
     And I ensure the tools panel does not disturb
     When I hover "first list item"
     And I press the "open context menu first item" button
-    And I press the visible "import item above" menu item
+    And I press the visible "import element above" menu item
     Then I expect to see the "import" dialog modal box
     When I check the "first import list" checkbox
     And I press the "import" button
@@ -85,7 +85,7 @@ Feature: Importing elements from another list
     And I ensure the tools panel does not disturb
     When I hover "first list item"
     And I press the "open context menu first item" button
-    And I press the visible "import item below" menu item
+    And I press the visible "import element below" menu item
     Then I expect to see the "import" dialog modal box
     When I check the "first import list" checkbox
     And I press the "import" button
@@ -172,3 +172,73 @@ Feature: Importing elements from another list
     Then I expect to see 0 imported groups in the list
     When I navigate to the saved page URL
     Then I expect not to see the "exported to" button
+
+  @some-lists
+  Scenario: Pressing "Add item above" on imported group context menu adds item above the group
+    And I ensure the tools panel is open
+    And I press the "tools panel import" button
+    Then I expect to see the "import" dialog modal box
+    When I check the "first import list" checkbox
+    And I press the "import" button
+    And I ensure the tools panel does not disturb
+    Then I expect to see 1 imported group in the list
+    When I hover the first imported group
+    And I press the visible "open context menu imported group" button
+    And I press the visible "add item above" menu item
+    Then I expect the list item to be above the first imported group
+
+  @some-lists
+  Scenario: Pressing "Add item below" on imported group context menu adds item below the group
+    And I ensure the tools panel is open
+    And I press the "tools panel import" button
+    Then I expect to see the "import" dialog modal box
+    When I check the "first import list" checkbox
+    And I press the "import" button
+    And I ensure the tools panel does not disturb
+    Then I expect to see 1 imported group in the list
+    When I hover the first imported group
+    And I press the visible "open context menu imported group" button
+    And I press the visible "add item below" menu item
+    Then I expect the list item to be below the first imported group
+
+  @some-lists
+  Scenario: Pressing "Import above" on imported group context menu adds imported group above
+    And I add a list
+    And I add a list
+    And I ensure the tools panel is open
+    And I press the "tools panel import" button
+    Then I expect to see the "import" dialog modal box
+    When I check the "third import list" checkbox
+    And I press the "import" button
+    And I ensure the tools panel does not disturb
+    Then I expect to see 1 imported group in the list
+    When I hover the first imported group
+    And I press the visible "open context menu imported group" button
+    And I press the visible "import element above" menu item
+    Then I expect to see the "import" dialog modal box
+    When I check the "first import list" checkbox
+    And I press the "import" button
+    And I ensure the tools panel does not disturb
+    Then I expect to see 2 imported groups in the list
+    Then I expect the second imported group to be above the first imported group
+
+  @some-lists
+  Scenario: Pressing "Import below" on imported group context menu adds imported group below
+    And I add a list
+    And I add a list
+    And I ensure the tools panel is open
+    And I press the "tools panel import" button
+    Then I expect to see the "import" dialog modal box
+    When I check the "third import list" checkbox
+    And I press the "import" button
+    And I ensure the tools panel does not disturb
+    Then I expect to see 1 imported group in the list
+    When I hover the first imported group
+    And I press the visible "open context menu imported group" button
+    And I press the visible "import element below" menu item
+    Then I expect to see the "import" dialog modal box
+    When I check the "first import list" checkbox
+    And I press the "import" button
+    And I ensure the tools panel does not disturb
+    Then I expect to see 2 imported groups in the list
+    Then I expect the second imported group to be below the first imported group
