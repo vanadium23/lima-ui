@@ -14,9 +14,9 @@ Feature: Importing items when user has only one list from list page
     Then I expect to see the "import" dialog empty message
 
     Examples:
-      | import position   |
-      | import item above |
-      | import item below |
+      | import position      |
+      | import element above |
+      | import element below |
 
   @zero-lists
   Scenario: User with one list opens import dialog via tools panel button and sees empty message

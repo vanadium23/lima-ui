@@ -17,9 +17,9 @@ Feature: Importing items when user has no lists
     Then I expect to see the "import" dialog empty message
 
     Examples:
-      | import position   |
-      | import item above |
-      | import item below |
+      | import position      |
+      | import element above |
+      | import element below |
 
   @zero-lists
   Scenario: User without lists opens import dialog via tools panel button and sees empty message
