@@ -49,22 +49,20 @@ When("I ensure search is visible", async function (this: ComplexWorld) {
   }
 });
 
-const SEARCH_RESULTS_COUNT_MEANINGS = {
+const SEARCH_RESULTS_COUNT_MEANINGS: Record<string, number> = {
   "on-limit": LISTS_LIMIT,
-} as const;
-
-type SearchResultsCountMeaning = keyof typeof SEARCH_RESULTS_COUNT_MEANINGS;
+};
 
 function resolveSearchResultsCount(value: string): number {
   if (value in SEARCH_RESULTS_COUNT_MEANINGS) {
-    return SEARCH_RESULTS_COUNT_MEANINGS[value as SearchResultsCountMeaning];
+    return SEARCH_RESULTS_COUNT_MEANINGS[value] || -1;
   }
 
   return parseInt(value, 10);
 }
 
 Then(
-  "I expect to have the following number of search results: {string}",
+  "I expect to have the following number of search results: {}",
   async function (this: ComplexWorld, expectedSearchResultsQuantity: string) {
     const count = resolveSearchResultsCount(expectedSearchResultsQuantity);
     await this.expectLocated(SEARCH_RESULT).toHaveCount(count);
