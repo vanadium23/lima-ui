@@ -3,7 +3,7 @@ import { createStore } from "solid-js/store";
 import { MIN_PASSWORD_LENGTH } from "../../../configuration.ts";
 import type { AuthButtonIconName } from "../../components/authButton/authButton.tsx";
 
-export type AuthServiceId = "google" | "vk" | "yandex" | "email";
+export type AuthServiceId = "vk" | "yandex" | "email";
 
 export interface ConnectedAccount {
   id: AuthServiceId;
@@ -45,7 +45,6 @@ interface AccountState {
 
 const initialConnectedAccounts: ConnectedAccount[] = [
   { id: "email", name: "Эл. почта", value: "example@gmail.com", isConnected: false },
-  { id: "google", name: "Google", value: "google-user@gmail.com", isConnected: true, iconName: "google" },
   { id: "vk", name: "VK ID", value: "vk-user", isConnected: false, iconName: "vk" },
   { id: "yandex", name: "Яндекс ID", value: "yandex-user", isConnected: false, iconName: "yandex" },
 ];

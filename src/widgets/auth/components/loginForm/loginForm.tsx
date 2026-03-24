@@ -62,15 +62,6 @@ export const LoginForm = (props: LoginFormProps) => {
         <form class="loginForm__wrapper" method="post" onSubmit={onSubmit}>
           <div class="loginForm__socials">
             <AuthButton
-              iconName={"google"}
-              testId={"google_auth"}
-              loading={loginFormStore.authType === "google" && loginFormStore.isLoading}
-              disabled={loginFormStore.authType !== "google" && loginFormStore.isLoading}
-              handleClick={() => handleLogin("google")}
-            >
-              Google
-            </AuthButton>
-            <AuthButton
               iconName={"vk"}
               testId={"vk_auth"}
               loading={loginFormStore.authType === "vk" && loginFormStore.isLoading}
