@@ -70,15 +70,6 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
           <form class="registrationsForm__wrapper" method="post" onSubmit={onSubmit}>
             <div class="registrationsForm__socials">
               <AuthButton
-                iconName={"google"}
-                testId={DEFAULT_TEST_ID}
-                loading={registrationFormStore.authType === "google" && registrationFormStore.isLoading}
-                disabled={registrationFormStore.isLoading}
-                handleClick={() => handleRegister("google")}
-              >
-                Google
-              </AuthButton>
-              <AuthButton
                 iconName={"vk"}
                 testId={DEFAULT_TEST_ID}
                 loading={registrationFormStore.authType === "vk" && registrationFormStore.isLoading}

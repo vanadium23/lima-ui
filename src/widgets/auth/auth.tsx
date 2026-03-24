@@ -11,7 +11,7 @@ import { RegistrationForm } from "./components/registrationForm/registrationForm
 import { restorePasswordFormStore } from "./components/restorePasswordForm/restorePasswordForm.store.ts";
 import "./auth.css";
 
-export type AuthType = "email" | "google" | "yandex" | "vk";
+export type AuthType = "email" | "yandex" | "vk";
 
 export type AuthFormInput = {
   value: string | boolean;

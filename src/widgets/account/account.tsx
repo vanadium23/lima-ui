@@ -44,7 +44,7 @@ export const Account = () => {
         <Title testId={DEFAULT_TEST_ID}>Личный кабинет</Title>
         <div class="account__authServices">
           <span class="account__title">Способы входа</span>
-          <Show when={!isConnected("google") || !isConnected("vk") || !isConnected("yandex")}>
+          <Show when={!isConnected("vk") || !isConnected("yandex")}>
             <span class="account__subTitle">Привяжите свою учетную запись для быстрой авторизации</span>
           </Show>
           <div class="account__authServicesList">
