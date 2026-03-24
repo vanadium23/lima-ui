@@ -1,0 +1,57 @@
+---
+import StorybookPage from "../../../../layouts/storybook/storybookPage.astro";
+import {
+  MarketingTitle,
+  MarketingTitlePosition,
+  MarketingTitleSize,
+  MarketingTitleTheme,
+} from "../../../../marketing/marketingTitle/marketingTitle.tsx";
+
+const themes = Object.values(MarketingTitleTheme);
+const sizes = Object.values(MarketingTitleSize);
+---
+
+<StorybookPage title="MarketingTitle">
+  <h2>MarketingTitle position - Left</h2>
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 class="demoThemeWrapper__title">{theme}</h3>
+        <div class="grid grid_1Col">
+          <span class="chead" />
+          <span class="chead">h1</span>
+
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <MarketingTitle client:only="solid-js" theme={theme} size={size} position={MarketingTitlePosition.Left}>
+                Заголовок
+              </MarketingTitle>
+            </>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+  <h2>MarketingTitle position - Center</h2>
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 class="demoThemeWrapper__title">{theme}</h3>
+        <div class="grid grid_1Col">
+          <span class="chead" />
+          <span class="chead">h1</span>
+
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <MarketingTitle client:only="solid-js" theme={theme} size={size} position={MarketingTitlePosition.Center}>
+                Ужаааааааааассссссссссноооооооо длиииииииииный заголовок
+              </MarketingTitle>
+            </>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+</StorybookPage>
