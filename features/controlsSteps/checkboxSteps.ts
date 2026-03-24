@@ -2,13 +2,14 @@ import { Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
 import type { ComplexWorld } from "../context/hooks.ts";
-import { IMPORT_DIALOG_LIST_CHECKBOX } from "../testIds.ts";
+import { LIST_STRIPE_IMPORT_CHECKBOX, LIST_STRIPE_IMPORT_ITEM_CHECKBOX } from "../testIds.ts";
 import { buildFullTestId } from "../utilities/buildTestableSelector.ts";
 
 const CHECKBOX_TEST_IDS = {
-  "first import list": buildFullTestId(IMPORT_DIALOG_LIST_CHECKBOX, 0),
-  "second import list": buildFullTestId(IMPORT_DIALOG_LIST_CHECKBOX, 1),
-  "third import list": buildFullTestId(IMPORT_DIALOG_LIST_CHECKBOX, 2),
+  "first import list": buildFullTestId(LIST_STRIPE_IMPORT_CHECKBOX, 0),
+  "second import list": buildFullTestId(LIST_STRIPE_IMPORT_CHECKBOX, 1),
+  "third import list": buildFullTestId(LIST_STRIPE_IMPORT_CHECKBOX, 2),
+  "first import item": buildFullTestId(LIST_STRIPE_IMPORT_ITEM_CHECKBOX, 0),
 };
 
 type CheckboxMeaning = keyof typeof CHECKBOX_TEST_IDS;

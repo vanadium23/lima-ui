@@ -141,9 +141,11 @@ export const IMPORT_DIALOG = "importDialog";
 export const IMPORT_DIALOG_IMPORT_BUTTON = "importDialogImportButton";
 export const IMPORT_DIALOG_EMPTY_MESSAGE = "importDialogEmptyMessage";
 export const IMPORT_DIALOG_LOADING = buildLoadingDialogTestId(IMPORT_DIALOG);
-export const IMPORT_DIALOG_LIST = "importDialogList";
-export const IMPORT_DIALOG_LIST_CHECKBOX = buildCheckboxTestId(IMPORT_DIALOG_LIST);
-export const IMPORT_DIALOG_LIST_ITEM = "importDialogListItem";
+export const LIST_STRIPE_IMPORT = "listStripeImport";
+export const LIST_STRIPE_IMPORT_CHECKBOX = buildCheckboxTestId(LIST_STRIPE_IMPORT);
+export const LIST_STRIPE_IMPORT_HEADER = "listStripeImportHeader";
+export const LIST_STRIPE_IMPORT_ITEM = "listStripeImportItem";
+export const LIST_STRIPE_IMPORT_ITEM_CHECKBOX = buildCheckboxTestId(LIST_STRIPE_IMPORT_ITEM);
 export const IMPORT_DIALOG_COUNTER = "importDialogCounter";
 
 export const IMPORTED_GROUP = "importedGroup";

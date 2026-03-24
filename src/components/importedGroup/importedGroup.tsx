@@ -187,6 +187,7 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
         importedGroup_transition: Boolean(mProps.dragSettings.dragState?.active.draggable),
       }}
       data-test-id={mProps.testId}
+      data-test-sub-id={mProps.testSubId ?? "0"}
     >
       <div class="importedGroup__dragHandle">
         <DragHandle
@@ -229,12 +230,13 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
           </div>
         </div>
         <For each={mProps.children}>
-          {(item) => (
+          {(item, index) => (
             <ImportedItem
-              testId={IMPORTED_GROUP_ITEM}
               checkable={mProps.checkable}
               checked={false}
               disabled={Boolean(storeEditList.sendingNow)}
+              testId={IMPORTED_GROUP_ITEM}
+              testSubId={index()}
             >
               {item.content}
             </ImportedItem>

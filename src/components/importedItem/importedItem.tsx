@@ -43,6 +43,7 @@ export const ImportedItem = (props: Testable<ImportedItemProps>) => {
         importedItem_disabled: mProps.disabled,
       }}
       data-test-id={mProps.testId}
+      data-test-sub-id={mProps.testSubId ?? "0"}
     >
       <Show when={mProps.checkable}>
         <div class="importedItem__checkbox">

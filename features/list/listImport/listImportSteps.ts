@@ -6,11 +6,11 @@ import type { ComplexWorld } from "../../context/hooks.ts";
 import {
   EXPORTED_TO_LIST,
   IMPORT_DIALOG_COUNTER,
-  IMPORT_DIALOG_LIST,
   IMPORTED_GROUP,
   IMPORTED_GROUP_ITEM,
   IMPORTED_GROUP_NAME_LINK,
   LIST_ITEM,
+  LIST_STRIPE_IMPORT,
 } from "../../testIds.ts";
 import { buildFullTestId, buildTestableSelector } from "../../utilities/buildTestableSelector.ts";
 
@@ -46,7 +46,7 @@ When("I press the first imported group name link", async function (this: Complex
 });
 
 Then("I expect to see all other lists in the import dialog", async function (this: ComplexWorld) {
-  await this.expectLocated(IMPORT_DIALOG_LIST).toHaveCount(LISTS_LIMIT - 1);
+  await this.expectLocated(LIST_STRIPE_IMPORT).toHaveCount(LISTS_LIMIT - 1);
 });
 
 Then("I expect the import counter to show limit reached", async function (this: ComplexWorld) {

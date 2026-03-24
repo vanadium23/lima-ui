@@ -1,6 +1,11 @@
 import { createSignal, Index, mergeProps, untrack } from "solid-js";
 
-import { IMPORT_DIALOG_LIST, IMPORT_DIALOG_LIST_CHECKBOX, IMPORT_DIALOG_LIST_ITEM } from "../../../features/testIds.ts";
+import {
+  LIST_STRIPE_IMPORT,
+  LIST_STRIPE_IMPORT_CHECKBOX,
+  LIST_STRIPE_IMPORT_HEADER,
+  LIST_STRIPE_IMPORT_ITEM,
+} from "../../../features/testIds.ts";
 import type { EditListType } from "../../types/types.ts";
 import { setStoreImportDialog } from "../../widgets/editList/components/importDialog/importDialog.tsx";
 import { Checkbox, CheckboxSize, CheckboxTheme, type CheckedState } from "../checkbox/checkbox.tsx";
@@ -106,7 +111,7 @@ export const ListStripeImport = (props: ListStripeImportProps) => {
         listStripeImport_expanded: getExpanded(),
         listStripeImport_collapsed: !getExpanded(),
       }}
-      data-test-id={IMPORT_DIALOG_LIST}
+      data-test-id={LIST_STRIPE_IMPORT}
       data-test-sub-id={mProps.index}
     >
       <div class="listStripeImport__checkbox">
@@ -114,7 +119,7 @@ export const ListStripeImport = (props: ListStripeImportProps) => {
           theme={CheckboxTheme.Primary}
           size={CheckboxSize.Medium}
           dataId={mProps.children.id}
-          testId={IMPORT_DIALOG_LIST_CHECKBOX}
+          testId={LIST_STRIPE_IMPORT_CHECKBOX}
           testSubId={String(mProps.index)}
           checked={getListCheckboxState()}
           onChange={handleListCheckboxChange}
@@ -123,7 +128,13 @@ export const ListStripeImport = (props: ListStripeImportProps) => {
       </div>
 
       <div class="listStripeImport__accordion">
-        <button type="button" class="listStripeImport__header" onClick={toggleExpanded}>
+        <button
+          type="button"
+          class="listStripeImport__header"
+          onClick={toggleExpanded}
+          data-test-id={LIST_STRIPE_IMPORT_HEADER}
+          data-test-sub-id={mProps.index}
+        >
           <div class="listStripeImport__headerInner">
             <span class="listStripeImport__title">{mProps.children.name}</span>
             {mProps.children.purpose && <span class="listStripeImport__purpose">{mProps.children.purpose}</span>}
@@ -144,12 +155,13 @@ export const ListStripeImport = (props: ListStripeImportProps) => {
 
               return (
                 <ListItemImport
-                  testId={IMPORT_DIALOG_LIST_ITEM}
                   itemId={element().id}
                   listId={mProps.children.id}
                   checkboxHTMLName={element().items[0].content}
                   checked={getItemsCheckboxState()[index] || false}
                   onCheckedChange={handleItemCheckboxChange(index)}
+                  testId={LIST_STRIPE_IMPORT_ITEM}
+                  testSubId={index}
                 >
                   {element().items[0].content}
                 </ListItemImport>
