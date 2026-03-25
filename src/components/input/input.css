@@ -1,3 +1,10 @@
+:root {
+  --primary-default-bg: var(--neutral-100);
+  --secondary-default-bg: var(--primary-200);
+  --secondary-hover-bg: var(--primary-100);
+  --secondary-active-bg: var(--neutral-100);
+}
+
 .input {
   display: flex;
   align-items: center;
@@ -61,6 +68,9 @@
 
 .input_primary .input__inner {
   color: var(--text-neutral-700);
+
+  /* DOC: хак чтобы перекрыть заливку браузерами при подстановки данных автокомплитом */
+  box-shadow: inset 0 0 0 100rem var(--neutral-100);
 }
 
 .input_primary .input__inner::placeholder {
@@ -86,8 +96,26 @@
   background: var(--primary-200);
 }
 
+.input_secondary .input__inner {
+  color: var(--text-neutral-800);
+
+  /* DOC: хак чтобы перекрыть заливку браузерами при подстановки данных автокомплитом */
+  box-shadow: inset 0 0 0 100rem var(--primary-200);
+}
+
 .input_secondary .input__inner::placeholder {
   color: var(--text-neutral-500);
+}
+
+.input_secondary:has(.input__inner:focus) {
+  background: var(--primary-100);
+}
+
+.input_secondary .input__inner:focus {
+  background: var(--primary-100);
+
+  /* DOC: хак чтобы перекрыть заливку браузерами при подстановки данных автокомплитом */
+  box-shadow: inset 0 0 0 100rem var(--primary-100);
 }
 
 .input_secondary.input_error {
@@ -98,14 +126,15 @@
   color: var(--text-dangerous-500);
 }
 
-.input_secondary .input__inner {
-  color: var(--text-neutral-800);
-}
-
 @media (hover: hover) {
   .input_secondary:hover {
     background: var(--primary-100);
     border-color: var(--primary-100);
+  }
+
+  .input_secondary:hover .input__inner {
+    /* DOC: хак чтобы перекрыть заливку браузерами при подстановки данных автокомплитом */
+    box-shadow: inset 0 0 0 100rem var(--primary-100);
   }
 }
 
@@ -115,6 +144,9 @@
 
 .input_disabled .input__inner {
   cursor: not-allowed;
+
+  /* DOC: хак чтобы перекрыть заливку браузерами при подстановки данных автокомплитом */
+  box-shadow: inset 0 0 0 100rem var(--neutral-200);
 }
 
 .input_disabled {
