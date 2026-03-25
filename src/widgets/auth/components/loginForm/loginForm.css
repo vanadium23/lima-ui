@@ -43,14 +43,14 @@
   line-height: 2rem;
 }
 
-@media (width <= 767px) {
-  .loginForm__wrapper {
-    padding: 1rem 2rem;
-  }
-}
-
 @media (width <= 1023px) {
   .loginForm__goToRegistration {
     flex-direction: column;
+  }
+}
+
+@media (width <= 400px) {
+  .loginForm__wrapper {
+    padding: 1rem;
   }
 }

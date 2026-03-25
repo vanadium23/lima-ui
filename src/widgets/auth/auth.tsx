@@ -70,20 +70,22 @@ export const Auth = () => {
 
   return (
     <div class="auth">
-      <div class="auth__greeting">
-        <div class="auth__greetingInner">
-          <div class="auth__greetingTitle">Начните работу с Лимой</div>
-          <div class="auth__greetingDescription">Держите порядок всегда под рукой!</div>
+      <div class="auth__wrapper wrapper">
+        <div class="auth__greeting">
+          <div class="auth__greetingInner">
+            <div class="auth__greetingTitle">Начните работу с Лимой</div>
+            <div class="auth__greetingDescription">Держите порядок всегда под рукой!</div>
+          </div>
         </div>
-      </div>
-      <div class="auth__tabs">
-        <Tabs
-          ariaLabel="Переключение форм входа\регистрации"
-          tabs={tabs()}
-          testId={AUTH_TABS}
-          activeTab={getActiveTabIdx()}
-          onSwitchActiveTab={switchActiveTabIdx}
-        />
+        <div class="auth__tabs">
+          <Tabs
+            ariaLabel="Переключение форм входа\регистрации"
+            tabs={tabs()}
+            testId={AUTH_TABS}
+            activeTab={getActiveTabIdx()}
+            onSwitchActiveTab={switchActiveTabIdx}
+          />
+        </div>
       </div>
     </div>
   );
