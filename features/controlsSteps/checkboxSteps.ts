@@ -10,6 +10,7 @@ const CHECKBOX_TEST_IDS = {
   "second import list": buildFullTestId(LIST_STRIPE_IMPORT_CHECKBOX, 1),
   "third import list": buildFullTestId(LIST_STRIPE_IMPORT_CHECKBOX, 2),
   "first import item": buildFullTestId(LIST_STRIPE_IMPORT_ITEM_CHECKBOX, 0),
+  "second import item": buildFullTestId(LIST_STRIPE_IMPORT_ITEM_CHECKBOX, 1),
 };
 
 type CheckboxMeaning = keyof typeof CHECKBOX_TEST_IDS;
