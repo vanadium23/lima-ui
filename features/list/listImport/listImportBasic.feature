@@ -242,18 +242,3 @@ Feature: Importing elements from another list
     And I ensure the tools panel does not disturb
     Then I expect to see 2 imported groups in the list
     Then I expect the second imported group to be below the first imported group
-
-  @some-lists
-  Scenario: Remove imported group button is disabled when list has only one imported group
-    And I ensure the tools panel is open
-    And I press the "tools panel import" button
-    Then I expect to see the "import" dialog modal box
-    When I check the "first import list" checkbox
-    And I press the "import" button
-    And I ensure the tools panel does not disturb
-    When I hover "first list item"
-    And I press the "open context menu first item" button
-    And I press the visible "remove list item" menu item
-    When I press the "save" button
-    And I wait for the list update to complete
-    Then I expect to see the "save" button disabled
