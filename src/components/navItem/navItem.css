@@ -23,19 +23,13 @@
   font-weight: 600;
 }
 
-.navItem_primary:active:not(.navItem_disabled) {
-  background: var(--neutral-200);
-}
-
 @media (hover: hover) {
-  .navItem_primary:hover:not(.navItem_disabled) {
+  .navItem_primary:hover {
     background: var(--neutral-200);
-    color: var(--text-neutral-700);
   }
 }
 
 .navItem:focus-visible {
-  background: var(--neutral-200);
   outline: var(--outline-set);
   outline-offset: var(--outline-offset);
 }
