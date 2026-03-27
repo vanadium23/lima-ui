@@ -20,11 +20,14 @@ export function prepareAndSendListData(event: SubmitEvent) {
       items: elementsForSending,
       note: storeEditList.note,
       noDocumentedReasonForLatestUpdate: true,
-      removedExportedItems: storeEditList.removedExportedItems,
+      exportedItemsDeletionMethods: storeEditList.removedExportedItems,
     };
 
     if (storeEditList.id) {
-      sendUpdatedList({ ...data, id: storeEditList.id });
+      sendUpdatedList({
+        ...data,
+        id: storeEditList.id,
+      });
     } else {
       sendNewList(data);
     }
@@ -39,7 +42,7 @@ function prepareListElementsDataForSending(): ItemData[] {
       return { content: element.items[0].content };
     }
 
-    /* Ищем среди всех InitialItems тот InitialItem который является текущим Item'ом.*/
+    /* DOC: Ищем среди всех initial items тот, который соответствует текущему item. */
     const initialItem = storeEditList.initialList.elements.find((initialElementCandidate) => {
       return initialElementCandidate.id === element.id;
     });
