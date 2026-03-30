@@ -1,10 +1,3 @@
-:root {
-  --primary-default-bg: var(--neutral-100);
-  --secondary-default-bg: var(--primary-200);
-  --secondary-hover-bg: var(--primary-100);
-  --secondary-active-bg: var(--neutral-100);
-}
-
 .input {
   display: flex;
   align-items: center;
