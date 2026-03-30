@@ -1,4 +1,5 @@
 import { type JSX, mergeProps } from "solid-js";
+import { Dynamic } from "solid-js/web";
 
 import "./marketingTitle.css";
 
@@ -17,7 +18,16 @@ export enum MarketingTitlePosition {
   Center = "center",
 }
 
+export enum MarketingTitleTag {
+  h1 = "h1",
+  h2 = "h2",
+  h3 = "h3",
+  h4 = "h4",
+  h5 = "h5",
+}
+
 type MarketingTitleProps = {
+  tag?: MarketingTitleTag;
   theme?: MarketingTitleTheme;
   size?: MarketingTitleSize;
   position?: MarketingTitlePosition;
@@ -27,6 +37,7 @@ type MarketingTitleProps = {
 export const MarketingTitle = (props: MarketingTitleProps) => {
   const mProps: Required<MarketingTitleProps> = mergeProps(
     {
+      tag: MarketingTitleTag.h1,
       theme: MarketingTitleTheme.Primary,
       size: MarketingTitleSize.Medium,
       position: MarketingTitlePosition.Left,
@@ -35,7 +46,8 @@ export const MarketingTitle = (props: MarketingTitleProps) => {
   );
 
   return (
-    <h1
+    <Dynamic
+      component={mProps.tag}
       class="marketingTitle"
       classList={{
         [`marketingTitle_${mProps.size}`]: true,
@@ -44,6 +56,6 @@ export const MarketingTitle = (props: MarketingTitleProps) => {
       }}
     >
       {mProps.children}
-    </h1>
+    </Dynamic>
   );
 };

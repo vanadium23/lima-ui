@@ -1,6 +1,9 @@
 .marketingTitle {
   margin: 0;
   padding: 0;
+  width: 100%;
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 .marketingTitle_primary {
