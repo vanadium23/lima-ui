@@ -20,7 +20,7 @@ export function prepareAndSendListData(event: SubmitEvent) {
       items: elementsForSending,
       note: storeEditList.note,
       noDocumentedReasonForLatestUpdate: true,
-      exportedItemsDeletionMethods: storeEditList.removedExportedItems,
+      exportedItemsDeletionMethods: storeEditList.exportedItemsDeletionMethods,
     };
 
     if (storeEditList.id) {
