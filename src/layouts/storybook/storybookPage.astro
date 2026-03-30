@@ -7,6 +7,10 @@ import "./storybookPage.css";
 
 const { title } = Astro.props;
 
+const marketingComponents = [
+  { name: "MarketingTitle", href: "/stories/marketing/marketingTitle/marketingTitleStory/" },
+];
+
 const components = [
   { name: "Accordion", href: "/stories/accordion/accordionStory/" },
   { name: "Button", href: "/stories/button/buttonStory/" },
@@ -170,6 +174,14 @@ Font changes also influence how our stretching text areas are initially drawn.
             <span class="storybookSidebar__sectionTitle">Components</span>
             {
               components.map((component) => (
+                <a class="storybookSidebar__navItem" href={component.href}>
+                  {component.name}
+                </a>
+              ))
+            }
+            <span class="storybookSidebar__sectionTitle">Marketing Components</span>
+            {
+              marketingComponents.map((component) => (
                 <a class="storybookSidebar__navItem" href={component.href}>
                   {component.name}
                 </a>
