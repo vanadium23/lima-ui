@@ -4,7 +4,7 @@ import { REG_NETWORK_ERROR } from "../../../../../features/testIds.ts";
 import { URL_MY_LISTS } from "../../../../../utilities/addresses.ts";
 import { notificationState } from "../../../../state/pushNotificationStateManager.ts";
 import type { AuthFormInput } from "../../auth.tsx";
-import { requestPasswordChange } from "../../services/register.ts";
+import { requestPasswordChange } from "../../services/changePassword.ts";
 
 export type NewPasswordFormInputsNames = "pass" | "repeat_pass";
 export type NewPasswordFormInputs = Record<NewPasswordFormInputsNames, AuthFormInput>;

@@ -8,7 +8,7 @@ export const TESTS_URL_LISTS_WITH_NETWORK_ERROR = `${URL_MY_LISTS}${TESTS_URL_ER
 
 export const BACKEND_URL_USERS_ME = "/users/me";
 export const BACKEND_URL_USERS = "/users";
-export const BACKEND_URL_AUTH = "/auth";
+export const BACKEND_URL_AUTH_LOGIN = "/auth/login";
 export const BACKEND_URL_AUTH_VERIFY_EMAIL = "/auth/verify-email";
 export const BACKEND_URL_LISTS = "/lists";
 export const BACKEND_URL_NON_EXISTING = "/404";
