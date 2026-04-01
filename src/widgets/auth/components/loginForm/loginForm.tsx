@@ -18,8 +18,8 @@ import { RestorePasswordForm } from "../restorePasswordForm/restorePasswordForm.
 import {
   disableRestorePasswordMode,
   enableRestorePasswordMode,
-  handleChange,
   handleLogin,
+  handleLoginInputChange,
   initLoginFormStore,
   loginFormStore,
   setLoginFormStore,
@@ -92,7 +92,7 @@ export const LoginForm = (props: LoginFormProps) => {
               maxLength={MAX_EMAIL_LENGTH}
               testId={LOGIN_EMAIL_INPUT}
               required={true}
-              onInput={handleChange("email")}
+              onInput={handleLoginInputChange("email")}
               disabled={loginFormStore.isLoading}
               autocomplete={AutocompleteType.Email}
             >
@@ -108,7 +108,7 @@ export const LoginForm = (props: LoginFormProps) => {
               maxLength={MAX_PASSWORD_LENGTH}
               testId={LOGIN_PASS_INPUT}
               required={true}
-              onInput={handleChange("pass")}
+              onInput={handleLoginInputChange("pass")}
               disabled={loginFormStore.isLoading}
               autocomplete={AutocompleteType.Password}
             >
