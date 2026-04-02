@@ -15,7 +15,7 @@ export enum CheckboxSize {
   Medium = "medium",
 }
 
-export type CheckedState = true | false | "mixed";
+export type CheckedState = boolean | "mixed";
 
 type CheckboxProps = {
   theme?: CheckboxTheme;
@@ -51,13 +51,13 @@ export const Checkbox = (props: Testable<CheckboxProps>) => {
     props,
   );
 
-  const [hasError, setHasError] = createSignal(mProps.error);
+  const [hasError, setHasError] = createSignal(false);
 
-  // eslint-disable-next-line solid/reactivity
-  const [getState, setState] = createSignal(mProps.checked);
+  const [getState, setState] = createSignal<CheckedState>(false);
 
   createEffect(() => {
     setState(mProps.checked);
+    setHasError(mProps.error);
   });
 
   function handleChange(event: Event) {

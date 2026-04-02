@@ -28,7 +28,7 @@ export enum AutocompleteType {
   Off = "off",
   Email = "email",
   NewPassword = "new-password",
-  Password = "password",
+  Password = "current-password",
 }
 
 export type InputProps = {
@@ -129,7 +129,7 @@ export const Input = (props: Testable<InputProps>) => {
         data-test-id={mProps.testId}
         data-test-sub-id={mProps.testSubId}
         autocomplete={mProps.autocomplete}
-        aria-label={mProps.ariaLabel}
+        aria-label={mProps.ariaLabel || undefined}
         onInput={handleInput}
         onKeyDown={(e) => mProps.onKeyDown(e)}
       />

@@ -152,11 +152,21 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
                 />
                 <span class="registrationsForm__policyLabelText">
                   Я даю согласие на обработку моих персональных данных в соответствии с{" "}
-                  <Link href="#" testId={REG_CONFIDENTIAL_POLICY_LINK} disabled={registrationFormStore.isLoading}>
+                  <Link
+                    href="#"
+                    targetBlank={true}
+                    testId={REG_CONFIDENTIAL_POLICY_LINK}
+                    disabled={registrationFormStore.isLoading}
+                  >
                     Политикой конфиденциальности
                   </Link>{" "}
                   и{" "}
-                  <Link href="#" testId={REG_USERS_AGREEMENT_LINK} disabled={registrationFormStore.isLoading}>
+                  <Link
+                    href="#"
+                    targetBlank={true}
+                    testId={REG_USERS_AGREEMENT_LINK}
+                    disabled={registrationFormStore.isLoading}
+                  >
                     Пользовательским соглашением
                   </Link>
                 </span>

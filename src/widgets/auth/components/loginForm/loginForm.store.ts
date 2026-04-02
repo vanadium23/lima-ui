@@ -4,7 +4,7 @@ import { REG_NETWORK_ERROR } from "../../../../../features/testIds.ts";
 import { URL_MY_LISTS } from "../../../../../utilities/addresses.ts";
 import { notificationState } from "../../../../state/pushNotificationStateManager.ts";
 import type { AuthFormInput, AuthType } from "../../auth.tsx";
-import { loginToAccount } from "../../services/register.ts";
+import { LOGIN_ERROR_WRONG_CREDENTIALS, LoginError, loginToAccount } from "../../services/login.ts";
 
 export type LoginFormInputsNames = "email" | "pass";
 export type LoginFormInputs = Record<LoginFormInputsNames, AuthFormInput>;
@@ -58,25 +58,28 @@ export function handleLogin(authType: AuthType) {
   setLoginFormStore("authType", authType);
   setLoginFormStore("isLoading", true);
   notificationState.clearNetworkErrors();
-  loginToAccount(
-    {
-      email: loginFormStore.inputs.email.value.toString(),
-      password: loginFormStore.inputs.pass.value.toString(),
-    },
-    false,
-  )
-    .then((result) => {
-      if (result) {
-        window.location.replace(URL_MY_LISTS);
-      }
+  loginToAccount({
+    email: loginFormStore.inputs.email.value.toString(),
+    password: loginFormStore.inputs.pass.value.toString(),
+  })
+    .then(() => {
+      window.location.replace(URL_MY_LISTS);
     })
-    .catch(() => {
+    .catch((error: unknown) => {
       setLoginFormStore("isLoading", false);
+
+      if (error instanceof LoginError && error.code === LOGIN_ERROR_WRONG_CREDENTIALS) {
+        setLoginFormStore("inputs", "email", "isValid", false);
+        setLoginFormStore("inputs", "email", "error", "Неверный адрес почты или пароль");
+
+        return;
+      }
+
       notificationState.pushNetworkError("Ошибка", "Нет соединения с сервером, попробуйте еще раз", REG_NETWORK_ERROR);
     });
 }
 
-export const handleChange = (inputName: LoginFormInputsNames) => (e: InputEvent) => {
+export const handleLoginInputChange = (inputName: LoginFormInputsNames) => (e: InputEvent) => {
   if (e.target instanceof HTMLInputElement) {
     setLoginFormStore("inputs", inputName, "isValid", true);
     setLoginFormStore("inputs", inputName, "error", "");

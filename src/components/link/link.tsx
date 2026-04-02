@@ -20,6 +20,7 @@ type LinkProps = {
   href: string;
   children: string;
   disabled?: boolean;
+  targetBlank?: boolean;
 };
 
 export const Link = (props: Testable<LinkProps>) => {
@@ -28,6 +29,7 @@ export const Link = (props: Testable<LinkProps>) => {
       theme: LinkTheme.Primary,
       size: LinkSize.Medium,
       disabled: false,
+      targetBlank: false,
     },
     props,
   );
@@ -36,6 +38,8 @@ export const Link = (props: Testable<LinkProps>) => {
     <Dynamic
       component={mProps.disabled ? "span" : "a"}
       href={!mProps.disabled ? mProps.href : undefined}
+      target={mProps.targetBlank ? "_blank" : undefined}
+      rel={mProps.targetBlank ? "noopener noreferrer" : undefined}
       class="link"
       classList={{
         [`link_${mProps.size}`]: true,
