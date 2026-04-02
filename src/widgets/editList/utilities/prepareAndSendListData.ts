@@ -20,13 +20,13 @@ export function prepareAndSendListData(event: SubmitEvent) {
       items: elementsForSending,
       note: storeEditList.note,
       noDocumentedReasonForLatestUpdate: true,
-      exportedItemsDeletionMethods: storeEditList.exportedItemsDeletionMethods,
     };
 
     if (storeEditList.id) {
       sendUpdatedList({
         ...data,
         id: storeEditList.id,
+        exportedItemsDeletionMethods: storeEditList.exportedItemsDeletionMethods,
       });
     } else {
       sendNewList(data);

@@ -85,6 +85,7 @@ export type NewListData = {
 
 export type UpdatedListData = NewListData & {
   id: ListId;
+  exportedItemsDeletionMethods: { id: ItemId; deletionMethod: "deletion" | "insertion" }[];
 };
 
 export type ScrollContainer = HTMLDivElement | undefined;
