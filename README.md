@@ -71,7 +71,7 @@ docker compose down
    http://localhost:4321/lists?token=rgt_xxxxx
    ```
    После этого произойдёт автоматическая авторизация и будет установлена сессионная cookie.
-4. Чтобы выйти из аккаунта — удалить cookie сайта через DevTools во вкладке **Application → Cookies**.
+4. Чтобы выйти из аккаунта — нужно нажать кнопку "Выйти из аккаунта" в сайдбаре или удалить cookie сайта через DevTools во вкладке **Application → Cookies**.
 
 ## 🧞 Команды
 

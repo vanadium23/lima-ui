@@ -1,7 +1,7 @@
 import { createStore } from "solid-js/store";
 
 import { REG_NETWORK_ERROR } from "../../../../../features/testIds.ts";
-import { URL_MY_LISTS } from "../../../../../utilities/addresses.ts";
+import { REDIRECT_TO_PARAM, URL_MY_LISTS } from "../../../../../utilities/addresses.ts";
 import { notificationState } from "../../../../state/pushNotificationStateManager.ts";
 import type { AuthFormInput, AuthType } from "../../auth.tsx";
 import { LOGIN_ERROR_WRONG_CREDENTIALS, LoginError, loginToAccount } from "../../services/login.ts";
@@ -63,7 +63,11 @@ export function handleLogin(authType: AuthType) {
     password: loginFormStore.inputs.pass.value.toString(),
   })
     .then(() => {
-      window.location.replace(URL_MY_LISTS);
+      const params = new URLSearchParams(window.location.search);
+      const redirectTo = params.get(REDIRECT_TO_PARAM);
+
+      //DOC: Редирект на URL после успешной авторизации, на который пользователь хотел перейти изначально.
+      window.location.replace(redirectTo ?? URL_MY_LISTS);
     })
     .catch((error: unknown) => {
       setLoginFormStore("isLoading", false);

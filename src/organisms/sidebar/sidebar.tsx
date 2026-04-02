@@ -8,6 +8,7 @@ import { IconButton, IconButtonSize, IconButtonTheme } from "../../components/ic
 import { Nav } from "../../components/nav/nav.tsx";
 import { UserButton, UserButtonSize, UserButtonTheme } from "../../components/userButton/userButton.tsx";
 import { panelState } from "../../state/sidebarsStateManager.ts";
+import { logout } from "../../widgets/auth/services/logout.ts";
 
 import "./sidebar.css";
 
@@ -36,7 +37,12 @@ export const Sidebar = (props: SidebarProps) => {
           <UserButton theme={UserButtonTheme.Primary} size={UserButtonSize.Medium}>
             Ефросинья_Мыловареная
           </UserButton>
-          <IconButton iconName={IconName.SignOut} ariaLabel="Выйти из аккаунта" testId={SIGN_OUT_BUTTON} />
+          <IconButton
+            iconName={IconName.SignOut}
+            ariaLabel="Выйти из аккаунта"
+            testId={SIGN_OUT_BUTTON}
+            handleClick={logout}
+          />
         </div>
         <Divider theme={DividerTheme.Primary} size={DividerSize.Medium} orientation={DividerOrientation.Horizontal} />
         <Nav isListsLimitReached={mProps.isListsLimitReached} />
