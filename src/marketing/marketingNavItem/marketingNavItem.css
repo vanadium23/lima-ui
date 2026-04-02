@@ -1,5 +1,4 @@
 .marketingNavItem {
-  width: 100%;
   text-decoration: none;
 }
 
@@ -31,10 +30,11 @@
 }
 
 .marketingNavItem:focus-visible {
-  border: var(--outline-set);
+  outline: var(--outline-set);
+  outline-offset: var(--outline-offset);
   border-radius: 4rem;
 }
 
 .marketingNavItem:focus:not(:focus-visible) {
-  border: none;
+  outline: none;
 }
