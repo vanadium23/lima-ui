@@ -14,7 +14,8 @@ import chalk from "chalk";
 import { execSync } from "child_process";
 
 import type { FullTestId, TestId, TestSubId } from "../../src/components/utilities/testable.ts";
-import { type AddressMeaning, PAGE_TYPES } from "../../utilities/addresses.ts";
+import { type AddressMeaning, PAGE_TYPES, URL_AUTH } from "../../utilities/addresses.ts";
+import { LOGIN_EMAIL_INPUT, LOGIN_PASS_INPUT, LOGIN_SUBMIT_BUTTON } from "../testIds.ts";
 import {
   buildTestableSelector,
   buildTestableSubSelector,
@@ -27,6 +28,9 @@ import { createTracePath } from "../utilities/traces.ts";
 import { type AccountedTesting, createAccountedTesting } from "./createAccountedTesting.ts";
 
 let browser: Browser;
+
+const DEFAULT_USER_EMAIL = "testBot@lima.ooo";
+const DEFAULT_USER_PASSWORD = "devTestBot0";
 
 type ComplexWorldParameters = Record<string, never>;
 
@@ -68,9 +72,15 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
   }
 
   async request(address: string, method: string) {
-    return fetch(`${this.BACKEND_ADDRESS}${address}`, {
+    const response = await fetch(`${this.BACKEND_ADDRESS}${address}`, {
       method,
     });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: ${await response.text()}`);
+    }
+
+    return response;
   }
 
   locateByIdParts(testId: TestId, testSubId?: TestSubId) {
@@ -105,6 +115,16 @@ export class ComplexWorld extends World<ComplexWorldParameters> {
 
   expectLocatedVisible(fullTestId: FullTestId) {
     return expect(this.locateVisible(fullTestId));
+  }
+
+  async loginAsDefaultUser() {
+    await this.navigate(URL_AUTH);
+
+    await this.locateByIdParts(LOGIN_EMAIL_INPUT).fill(DEFAULT_USER_EMAIL);
+    await this.locateByIdParts(LOGIN_PASS_INPUT).fill(DEFAULT_USER_PASSWORD);
+    await this.locateByIdParts(LOGIN_SUBMIT_BUTTON).click();
+
+    await this.page.waitForURL((url) => !url.pathname.includes(URL_AUTH));
   }
 }
 
@@ -148,9 +168,15 @@ async function getRunningChromium() {
   });
 }
 
-Before(async function (this: ComplexWorld) {
+Before(async function (this: ComplexWorld, scenario: ITestCaseHookParameter) {
   await this.setContextAndPage();
   this.accounting.elements.clearTestIds();
+
+  const skipAuth = scenario.pickle.tags.some((tag) => tag.name === "@noAuth");
+
+  if (!skipAuth) {
+    await this.loginAsDefaultUser();
+  }
 });
 
 After({ timeout: 60000 }, async function (this: ComplexWorld, scenario: ITestCaseHookParameter) {
