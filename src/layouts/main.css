@@ -23,10 +23,12 @@
   --dangerous-400: #f53b3c;
   --dangerous-500: #eb0000;
   --dangerous-600: #c80507;
-  --successful-500: #02b96f;
   --text-dangerous-400: #f53b3c;
   --text-dangerous-500: #eb0000;
   --text-dangerous-600: #a40506;
+  --successful-500: #02b96f;
+  --text-successful-500: #02b96f;
+  --attention-500: #fc5f2b;
   --primary-100: #dfecf7;
   --primary-200: #c8dff2;
   --primary-250: #9ecff7;

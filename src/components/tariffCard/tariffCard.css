@@ -1,0 +1,129 @@
+.tariffCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-style: solid;
+}
+
+.tariffCard__top {
+  display: flex;
+  flex-direction: column;
+}
+
+.tariffCard__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tariffCard__title {
+  width: 100%;
+  text-align: center;
+}
+
+.tariffCard__benefits {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tariffCard__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tariffCard__prices {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tariffCard__legend {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.tariffCard_primary {
+  background: var(--neutral-100);
+  border-color: var(--neutral-200);
+  box-shadow: 0 0.2rem 1.2rem 0 rgb(0 0 0 / 15%);
+}
+
+.tariffCard_primary .tariffCard__title {
+  color: var(--text-neutral-900);
+}
+
+.tariffCard_primary .tariffCard__unit {
+  color: var(--text-neutral-800);
+}
+
+.tariffCard_primary .tariffCard__legend {
+  color: var(--text-neutral-900);
+}
+
+.tariffCard_secondary {
+  background: linear-gradient(180deg, #fff 60%, #cae1ff 100%);
+  border-color: var(--neutral-200);
+  box-shadow: 0 0.2rem 1.2rem 0 rgb(0 0 0 / 15%);
+}
+
+.tariffCard_secondary .tariffCard__title {
+  color: var(--text-neutral-900);
+}
+
+.tariffCard_secondary .tariffCard__unit {
+  color: var(--text-neutral-800);
+}
+
+.tariffCard_secondary .tariffCard__legend {
+  color: var(--text-neutral-900);
+}
+
+.tariffCard_medium {
+  padding: 3rem 2rem;
+  border-width: 0.1rem;
+  border-radius: 1.4rem;
+  width: 30rem;
+}
+
+.tariffCard_medium .tariffCard__top {
+  gap: 2.8rem;
+  padding-bottom: 4.8rem;
+}
+
+.tariffCard_medium .tariffCard__header {
+  gap: 1.6rem;
+}
+
+.tariffCard_medium .tariffCard__title {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 2.4rem;
+}
+
+.tariffCard_medium .tariffCard__benefits {
+  gap: 1rem;
+}
+
+.tariffCard_medium .tariffCard__bottom {
+  gap: 1.4rem;
+}
+
+.tariffCard_medium .tariffCard__unit {
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  padding-top: 0.8rem;
+}
+
+.tariffCard_medium .tariffCard__prices {
+  column-gap: 0.6rem;
+}
+
+.tariffCard_medium .tariffCard__legend {
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+}

@@ -1,0 +1,34 @@
+.tariffCardBenefit {
+  display: flex;
+}
+
+.tariffCardBenefit__icon {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.tariffCardBenefit_medium {
+  gap: 1rem;
+}
+
+.tariffCardBenefit_medium .tariffCardBenefit__text {
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 2.2rem;
+}
+
+.tariffCardBenefit_default .tariffCardBenefit__icon {
+  color: var(--successful-500);
+}
+
+.tariffCardBenefit_default .tariffCardBenefit__text {
+  color: var(--text-neutral-800);
+}
+
+.tariffCardBenefit_additional .tariffCardBenefit__icon {
+  color: var(--attention-500);
+}
+
+.tariffCardBenefit_additional .tariffCardBenefit__text {
+  color: var(--text-neutral-800);
+}
