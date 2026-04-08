@@ -37,16 +37,16 @@
 
 .marketingButton_primary {
   color: var(--text-neutral-100);
-  background: var(--accent-500, #fc5f2b);
+  background: var(--accent-500);
 }
 
 .marketingButton_primary:active {
-  background: var(--accent-600, #ff480c);
+  background: var(--accent-600);
 }
 
 @media (hover: hover) {
   .marketingButton_primary:hover {
-    background: var(--accent-400, #f67246);
+    background: var(--accent-400);
   }
 }
 
