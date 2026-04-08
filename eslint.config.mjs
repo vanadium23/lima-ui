@@ -107,7 +107,7 @@ export default defineConfig([
         "error",
         {
           caseSensitive: true,
-          ignore: ["^@astrojs/.*", "^astro/.*"],
+          ignore: ["^@astrojs/.*", "^astro/.*", "^astro:.*"],
         },
       ],
 
