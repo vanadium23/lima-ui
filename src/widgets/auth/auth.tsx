@@ -53,7 +53,7 @@ export const Auth = () => {
 
   createEffect(() => {
     if (urlHash() !== activeAuthForm()) {
-      history.pushState({}, "", `auth#${activeAuthForm()}`);
+      history.pushState({}, "", `auth${window.location.search}#${activeAuthForm()}`);
       setUrlHash(`#${activeAuthForm()}`);
     }
   });

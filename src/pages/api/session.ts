@@ -1,7 +1,7 @@
 import type { APIRoute } from "astro";
 
 import { BACKEND_URL_AUTH_LOGIN } from "../../../utilities/addresses.ts";
-import { setSessionCookie } from "../../../utilities/setSessionCookie.ts";
+import { deleteSessionCookie, setSessionCookie } from "../../../utilities/setSessionCookie.ts";
 
 const createSession: APIRoute = async ({ request, cookies }) => {
   const body = await request.json();
@@ -31,4 +31,10 @@ const createSession: APIRoute = async ({ request, cookies }) => {
   });
 };
 
-export { createSession as POST };
+const deleteSession: APIRoute = ({ cookies }) => {
+  deleteSessionCookie(cookies);
+
+  return new Response(null, { status: 204 });
+};
+
+export { createSession as POST, deleteSession as DELETE };

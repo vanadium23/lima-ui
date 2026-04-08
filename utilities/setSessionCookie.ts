@@ -12,3 +12,7 @@ export function setSessionCookie(cookies: AstroCookies, token: string): void {
     sameSite: "lax",
   });
 }
+
+export function deleteSessionCookie(cookies: AstroCookies): void {
+  cookies.delete(SESSION_COOKIE_NAME, { path: "/" });
+}
