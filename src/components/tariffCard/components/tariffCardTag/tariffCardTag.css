@@ -1,0 +1,20 @@
+.tariffCardTag {
+  display: inline-flex;
+  text-transform: lowercase;
+}
+
+.tariffCardTag_hidden {
+  visibility: hidden;
+}
+
+.tariffCardTag_medium {
+  border-radius: 2rem;
+  padding: 0.4rem 1rem;
+}
+
+.tariffCardTag_primary {
+  background: linear-gradient(95deg, #ff1795 35.71%, #ff7fc5 86.54%);
+  color: var(--text-neutral-100);
+  font-size: 1.6rem;
+  line-height: 2rem;
+}

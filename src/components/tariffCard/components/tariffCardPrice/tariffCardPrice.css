@@ -1,0 +1,18 @@
+.tariffCardPrice_medium {
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 2.6rem;
+}
+
+.tariffCardPrice_defaultPrice {
+  color: var(--text-neutral-900);
+}
+
+.tariffCardPrice_oldPrice {
+  color: var(--text-neutral-900);
+  text-decoration-line: line-through;
+}
+
+.tariffCardPrice_salePrice {
+  color: var(--text-successful-500);
+}

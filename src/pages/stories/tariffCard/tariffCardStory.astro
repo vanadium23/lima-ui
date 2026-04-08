@@ -1,0 +1,74 @@
+---
+import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
+import { TariffCardBenefitTheme } from "../../../components/tariffCard/components/tariffCardBenefit/tariffCardBenefit.tsx";
+import { TariffCard, TariffCardSize, TariffCardTheme } from "../../../components/tariffCard/tariffCard.tsx";
+import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
+
+const themes = Object.values(TariffCardTheme);
+const sizes = Object.values(TariffCardSize);
+
+const benefits = [
+  { theme: TariffCardBenefitTheme.Default, text: "Очень много текста для теста переноса строк" },
+  { theme: TariffCardBenefitTheme.Additional, text: "Немножко текста" },
+  { theme: TariffCardBenefitTheme.Additional, text: "Тестовый текст" },
+];
+---
+
+<StorybookPage title="TariffCard">
+  <h2>TariffCard</h2>
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 class="demoThemeWrapper__title">{theme}</h3>
+        <div class="grid grid_1Col">
+          <span class="chead" />
+          <span class="chead">Default</span>
+
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <TariffCard
+                client:only="solid-js"
+                theme={theme}
+                title="Тариф"
+                benefits={benefits}
+                monthPrice="0"
+                current={true}
+                testId={DEFAULT_TEST_ID}
+              />
+            </>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+
+  <h2>TariffCard Popular</h2>
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 class="demoThemeWrapper__title">{theme}</h3>
+        <div class="grid grid_1Col">
+          <span class="chead" />
+          <span class="chead">Default</span>
+
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <TariffCard
+                client:only="solid-js"
+                theme={theme}
+                title="Тариф"
+                popular={true}
+                benefits={benefits}
+                monthPrice="199"
+                yearPrice="128"
+                testId={DEFAULT_TEST_ID}
+              />
+            </>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+</StorybookPage>
