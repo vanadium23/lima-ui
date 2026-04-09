@@ -90,6 +90,13 @@
   width: 30rem;
 }
 
+@media (width <= 767px) {
+  .tariffCard_medium {
+    width: 26.4rem;
+    padding: 2rem 1rem;
+  }
+}
+
 .tariffCard_medium .tariffCard__top {
   gap: 2.8rem;
   padding-bottom: 4.8rem;
@@ -126,4 +133,29 @@
 .tariffCard_medium .tariffCard__legend {
   font-size: 1.2rem;
   line-height: 1.6rem;
+}
+
+.tariffCard__dialogGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0.2rem 0 0.2rem 1rem;
+  width: 100%;
+  gap: 2rem;
+}
+
+.trafficCard__dialogDescription {
+  grid-column: 1/-1;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  color: var(--text-neutral-800);
+}
+
+.tariffCard__freeText {
+  color: var(--text-neutral-800);
+  font-size: 1.6rem;
+  line-height: 2rem;
+}
+
+.tariffCard__freeText b {
+  font-weight: 600;
 }
