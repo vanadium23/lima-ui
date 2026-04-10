@@ -1,8 +1,8 @@
 import { Match, mergeProps, Show, Switch } from "solid-js";
 
-import { Price, PriceSize, PriceTheme } from "../cardPrice/price.tsx";
 import { Icon, IconSize } from "../icon/icon.tsx";
 import { IconName } from "../icon/types.ts";
+import { Price, PriceSize, PriceTheme } from "../price/price.tsx";
 import type { Testable } from "../utilities/testable.ts";
 
 import "./paymentRadioCard.css";
@@ -46,7 +46,6 @@ export const PaymentRadioCard = (props: Testable<PaymentRadioCardProps>) => {
       classList={{
         [`paymentRadioCard_${mProps.size}`]: true,
         [`paymentRadioCard_${mProps.theme}`]: true,
-        paymentRadioCard_checked: mProps.checked,
       }}
       data-test-id={mProps.testId}
       data-test-sub-id={mProps.testSubId}

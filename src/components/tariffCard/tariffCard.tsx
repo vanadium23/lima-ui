@@ -2,10 +2,10 @@ import { createSignal, For, mergeProps, Show } from "solid-js";
 
 import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
 import { Button, ButtonTheme } from "../button/button.tsx";
-import { Price, PriceTheme } from "../cardPrice/price.tsx";
 import { Dialog, DialogTheme } from "../dialog/dialog.tsx";
 import { Link } from "../link/link.tsx";
 import { PaymentRadioCard } from "../paymentRadioCard/paymentRadioCard.tsx";
+import { Price, PriceTheme } from "../price/price.tsx";
 import type { Testable } from "../utilities/testable.ts";
 
 import { TariffCardBenefit, type TariffCardBenefitProps } from "./components/tariffCardBenefit/tariffCardBenefit.tsx";
