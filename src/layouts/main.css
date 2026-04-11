@@ -2,6 +2,9 @@
 
 :root {
   /* DOC Colors */
+  --accent-400: #f67246;
+  --accent-500: #fc5f2b;
+  --accent-600: #ff480c;
   --neutral-100: #fff;
   --neutral-150: #f9f9f9;
   --neutral-200: #eee;
