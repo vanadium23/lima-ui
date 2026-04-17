@@ -10,15 +10,15 @@
   line-height: 2.6rem;
 }
 
-.price_defaultPrice {
+.price_default {
   color: var(--text-neutral-900);
 }
 
-.price_oldPrice {
+.price_old {
   color: var(--text-neutral-900);
   text-decoration-line: line-through;
 }
 
-.price_salePrice {
+.price_sale {
   color: var(--text-successful-500);
 }

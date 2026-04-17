@@ -69,7 +69,7 @@ export const PaymentRadioCard = (props: Testable<PaymentRadioCardProps>) => {
         <Switch>
           <Match when={mProps.salePrice > 0}>
             <span class="paymentRadioCard__value">
-              <Price theme={PriceTheme.DefaultPrice} size={PriceSize.Small}>
+              <Price theme={PriceTheme.Default} size={PriceSize.Small}>
                 {yearPrice()}
               </Price>
               <span class="paymentRadioCard__unit">/ год с автопродлением</span>
@@ -77,7 +77,7 @@ export const PaymentRadioCard = (props: Testable<PaymentRadioCardProps>) => {
           </Match>
           <Match when={mProps.salePrice === 0}>
             <span class="paymentRadioCard__value">
-              <Price theme={PriceTheme.DefaultPrice} size={PriceSize.Small}>
+              <Price theme={PriceTheme.Default} size={PriceSize.Small}>
                 {mProps.price}
               </Price>
               <span class="paymentRadioCard__unit">/ мес. с автопродлением</span>
@@ -88,10 +88,10 @@ export const PaymentRadioCard = (props: Testable<PaymentRadioCardProps>) => {
           <span class="paymentRadioCard__sale">
             <span class="paymentRadioCard__value">
               <span class="paymentRadioCard__unit">Выгодно: </span>
-              <Price theme={PriceTheme.OldPrice} size={PriceSize.Small}>
+              <Price theme={PriceTheme.Old} size={PriceSize.Small}>
                 {mProps.price}
               </Price>
-              <Price theme={PriceTheme.SalePrice} size={PriceSize.Small}>
+              <Price theme={PriceTheme.Sale} size={PriceSize.Small}>
                 {mProps.salePrice}
               </Price>
               <span class="paymentRadioCard__unit">/ мес.* </span>

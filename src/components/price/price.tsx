@@ -3,9 +3,9 @@ import { mergeProps } from "solid-js";
 import "./price.css";
 
 export enum PriceTheme {
-  DefaultPrice = "defaultPrice",
-  OldPrice = "oldPrice",
-  SalePrice = "salePrice",
+  Default = "default",
+  Old = "old",
+  Sale = "sale",
 }
 
 export enum PriceSize {
@@ -22,7 +22,7 @@ type PriceProps = {
 export const Price = (props: PriceProps) => {
   const mProps: Required<PriceProps> = mergeProps(
     {
-      theme: PriceTheme.DefaultPrice,
+      theme: PriceTheme.Default,
       size: PriceSize.Medium,
     },
     props,
