@@ -76,6 +76,29 @@ Feature: Importing items from another list
     Then I expect the item #1 in the imported group #2 to contain the following text: "Item B"
 
   @some-lists
+  Scenario: Pressing the list name link above an imported item opens the source list
+    When I open "My Lists" page
+    And I press on the "first" list stripe
+    And I type the following text into the "first item" input: "Source item A"
+    And I type the following text into the "automatic item" input: "Source item B"
+    And I press the "save" button
+    And I wait for the list update to complete
+    And I open "My Lists" page
+    And I press on the "second" list stripe
+    And I ensure the tools panel is open
+    And I press the "tools panel import" button
+    Then I expect to see the "import" dialog modal box
+    When I press the "first import list" list stripe for import
+    And I check the "first import item" checkbox in the "first import list"
+    And I press the "import" button
+    And I ensure the tools panel does not disturb
+    And I press the "save" button
+    And I wait for the list update to complete
+    When I press the first imported group name link
+    Then I expect to be on the "Some List" page
+    Then I expect the "list title" input to match the import list #2 name
+
+  @some-lists
   Scenario: User imports a mix of items and a whole list
     When I open "My Lists" page
     And I press on the "first" list stripe

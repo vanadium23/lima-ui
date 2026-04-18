@@ -13,6 +13,7 @@ import {
   LIST_STRIPE_IMPORT,
 } from "../../testIds.ts";
 import { buildFullTestId, buildTestableSelector } from "../../utilities/buildTestableSelector.ts";
+import { INPUT_TEST_IDS, type InputMeaning } from "../listCreation/testIds.ts";
 
 Then("I expect to see {int} imported group(s) in the list", async function (this: ComplexWorld, count: number) {
   await this.expectLocated(IMPORTED_GROUP).toHaveCount(count);
@@ -28,6 +29,14 @@ Then(
   async function (this: ComplexWorld, groupIndex: number, listIndex: number) {
     const importedGroupName = await getImportedGroupName(this, groupIndex - 1);
     expect(importedGroupName).toBe(this.data[`listTitle_${listIndex - 1}`]);
+  },
+);
+
+Then(
+  "I expect the {string} input to match the import list #{int} name",
+  async function (this: ComplexWorld, inputMeaning: InputMeaning, listIndex: number) {
+    const input = this.locateByFullId(INPUT_TEST_IDS[inputMeaning]);
+    await expect(input).toHaveValue(this.data[`listTitle_${listIndex - 1}`] ?? "");
   },
 );
 
