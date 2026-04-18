@@ -18,8 +18,8 @@ import { RestorePasswordForm } from "../restorePasswordForm/restorePasswordForm.
 import {
   disableRestorePasswordMode,
   enableRestorePasswordMode,
-  handleChange,
   handleLogin,
+  handleLoginInputChange,
   initLoginFormStore,
   loginFormStore,
   setLoginFormStore,
@@ -62,15 +62,6 @@ export const LoginForm = (props: LoginFormProps) => {
         <form class="loginForm__wrapper" method="post" onSubmit={onSubmit}>
           <div class="loginForm__socials">
             <AuthButton
-              iconName={"google"}
-              testId={"google_auth"}
-              loading={loginFormStore.authType === "google" && loginFormStore.isLoading}
-              disabled={loginFormStore.authType !== "google" && loginFormStore.isLoading}
-              handleClick={() => handleLogin("google")}
-            >
-              Google
-            </AuthButton>
-            <AuthButton
               iconName={"vk"}
               testId={"vk_auth"}
               loading={loginFormStore.authType === "vk" && loginFormStore.isLoading}
@@ -101,7 +92,7 @@ export const LoginForm = (props: LoginFormProps) => {
               maxLength={MAX_EMAIL_LENGTH}
               testId={LOGIN_EMAIL_INPUT}
               required={true}
-              onInput={handleChange("email")}
+              onInput={handleLoginInputChange("email")}
               disabled={loginFormStore.isLoading}
               autocomplete={AutocompleteType.Email}
             >
@@ -117,7 +108,7 @@ export const LoginForm = (props: LoginFormProps) => {
               maxLength={MAX_PASSWORD_LENGTH}
               testId={LOGIN_PASS_INPUT}
               required={true}
-              onInput={handleChange("pass")}
+              onInput={handleLoginInputChange("pass")}
               disabled={loginFormStore.isLoading}
               autocomplete={AutocompleteType.Password}
             >

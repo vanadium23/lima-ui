@@ -1,0 +1,91 @@
+.marketingButton {
+  cursor: pointer;
+  appearance: none;
+  text-decoration: none;
+  border-radius: 4rem;
+  font-weight: 600;
+}
+
+.marketingButton_medium {
+  font-size: 2.6rem;
+  line-height: 3.2rem;
+  min-width: 11rem;
+  padding: 1.2rem 3.2rem;
+}
+
+@media (width <= 767px) {
+  .marketingButton_medium {
+    font-size: 2rem;
+    line-height: 2.4rem;
+    padding: 1rem 2rem;
+  }
+}
+
+.marketingButton_small {
+  font-size: 1.8rem;
+  line-height: 2.2rem;
+  min-width: 1.1rem;
+  padding: 0.6rem 1.6rem;
+}
+
+@media (width <= 767px) {
+  .marketingButton_small {
+    font-size: 1.6rem;
+    line-height: 2rem;
+  }
+}
+
+.marketingButton_primary {
+  color: var(--text-neutral-100);
+  background: var(--accent-500);
+}
+
+.marketingButton_primary:active {
+  background: var(--accent-600);
+}
+
+@media (hover: hover) {
+  .marketingButton_primary:hover {
+    background: var(--accent-400);
+  }
+}
+
+.marketingButton_secondary {
+  color: var(--text-neutral-800);
+  background: var(--secondary-500);
+}
+
+.marketingButton_secondary:active {
+  background: var(--secondary-600);
+}
+
+@media (hover: hover) {
+  .marketingButton_secondary:hover {
+    border-color: var(--secondary-400);
+  }
+}
+
+.marketingButton_tertiary {
+  border: 0.1rem solid var(--neutral-500);
+  color: var(--text-neutral-800);
+  background: var(--text-neutral-100);
+}
+
+.marketingButton_tertiary:active {
+  border-color: var(--neutral-600);
+}
+
+@media (hover: hover) {
+  .marketingButton_tertiary:hover {
+    border-color: var(--neutral-400);
+  }
+}
+
+.marketingButton:focus-visible {
+  outline: var(--outline-set);
+  outline-offset: var(--outline-offset);
+}
+
+.marketingButton:focus:not(:focus-visible) {
+  outline: none;
+}

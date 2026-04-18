@@ -258,7 +258,6 @@ export const ListItem = (props: ListItemProps) => {
                 handleClick={() => {
                   removeItem(mProps.index, { id: mProps.id, deletionMethod: "deletion" });
                   setIsRemoveExportedItemDialogOpen(false);
-                  console.log(storeEditList.removedExportedItems);
                 }}
                 testId={REMOVE_DIALOG_DELETION_EXPORTED_ITEM_BUTTON}
                 testSubId={getListItemTestSubId(getTestId(), mProps.index)}
@@ -271,7 +270,6 @@ export const ListItem = (props: ListItemProps) => {
                 handleClick={() => {
                   removeItem(mProps.index, { id: mProps.id, deletionMethod: "insertion" });
                   setIsRemoveExportedItemDialogOpen(false);
-                  console.log(storeEditList.removedExportedItems);
                 }}
                 testId={REMOVE_DIALOG_INSERTION_EXPORTED_ITEM_BUTTON}
                 testSubId={getListItemTestSubId(getTestId(), mProps.index)}

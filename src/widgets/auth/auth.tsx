@@ -11,7 +11,7 @@ import { RegistrationForm } from "./components/registrationForm/registrationForm
 import { restorePasswordFormStore } from "./components/restorePasswordForm/restorePasswordForm.store.ts";
 import "./auth.css";
 
-export type AuthType = "email" | "google" | "yandex" | "vk";
+export type AuthType = "email" | "yandex" | "vk";
 
 export type AuthFormInput = {
   value: string | boolean;
@@ -53,7 +53,7 @@ export const Auth = () => {
 
   createEffect(() => {
     if (urlHash() !== activeAuthForm()) {
-      history.pushState({}, "", `auth#${activeAuthForm()}`);
+      history.pushState({}, "", `auth${window.location.search}#${activeAuthForm()}`);
       setUrlHash(`#${activeAuthForm()}`);
     }
   });
@@ -70,20 +70,22 @@ export const Auth = () => {
 
   return (
     <div class="auth">
-      <div class="auth__greeting">
-        <div class="auth__greetingInner">
-          <div class="auth__greetingTitle">Начните работу с Лимой</div>
-          <div class="auth__greetingDescription">Держите порядок всегда под рукой!</div>
+      <div class="auth__wrapper wrapper">
+        <div class="auth__greeting">
+          <div class="auth__greetingInner">
+            <div class="auth__greetingTitle">Начните работу с Лимой</div>
+            <div class="auth__greetingDescription">Держите порядок всегда под рукой!</div>
+          </div>
         </div>
-      </div>
-      <div class="auth__tabs">
-        <Tabs
-          ariaLabel="Переключение форм входа\регистрации"
-          tabs={tabs()}
-          testId={AUTH_TABS}
-          activeTab={getActiveTabIdx()}
-          onSwitchActiveTab={switchActiveTabIdx}
-        />
+        <div class="auth__tabs">
+          <Tabs
+            ariaLabel="Переключение форм входа\регистрации"
+            tabs={tabs()}
+            testId={AUTH_TABS}
+            activeTab={getActiveTabIdx()}
+            onSwitchActiveTab={switchActiveTabIdx}
+          />
+        </div>
       </div>
     </div>
   );

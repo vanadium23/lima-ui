@@ -4,12 +4,11 @@ import { Icon, IconSize } from "../icon/icon.tsx";
 import { IconName } from "../icon/types.ts";
 import type { Testable } from "../utilities/testable.ts";
 
-import { GoogleIcon } from "./components/icons/googleIcon.tsx";
 import { VkIcon } from "./components/icons/vkIcon.tsx";
 import { YandexIcon } from "./components/icons/yandexIcon.tsx";
 import "./authButton.css";
 
-export type AuthButtonIconName = "google" | "yandex" | "vk";
+export type AuthButtonIconName = "yandex" | "vk";
 
 export type AuthButtonIconProps = {
   disabled?: boolean;
@@ -74,11 +73,8 @@ export const AuthButton = (props: Testable<AuthButtonProps>) => {
           <Switch>
             <Match when={mProps.loading}>
               <div class="authButton__loadingIcon">
-                <Icon name={IconName.CircleNotch} size={IconSize.ExtraLarge} />
+                <Icon name={IconName.CircleNotch} size={IconSize.ExtraExtraLarge} />
               </div>
-            </Match>
-            <Match when={mProps.iconName === "google"}>
-              <GoogleIcon disabled={mProps.disabled} />
             </Match>
             <Match when={mProps.iconName === "yandex"}>
               <YandexIcon disabled={mProps.disabled} />

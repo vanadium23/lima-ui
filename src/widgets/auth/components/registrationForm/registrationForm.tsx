@@ -70,15 +70,6 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
           <form class="registrationsForm__wrapper" method="post" onSubmit={onSubmit}>
             <div class="registrationsForm__socials">
               <AuthButton
-                iconName={"google"}
-                testId={DEFAULT_TEST_ID}
-                loading={registrationFormStore.authType === "google" && registrationFormStore.isLoading}
-                disabled={registrationFormStore.isLoading}
-                handleClick={() => handleRegister("google")}
-              >
-                Google
-              </AuthButton>
-              <AuthButton
                 iconName={"vk"}
                 testId={DEFAULT_TEST_ID}
                 loading={registrationFormStore.authType === "vk" && registrationFormStore.isLoading}
@@ -161,11 +152,21 @@ export const RegistrationForm = (props: RegistrationFormProps) => {
                 />
                 <span class="registrationsForm__policyLabelText">
                   Я даю согласие на обработку моих персональных данных в соответствии с{" "}
-                  <Link href="#" testId={REG_CONFIDENTIAL_POLICY_LINK} disabled={registrationFormStore.isLoading}>
+                  <Link
+                    href="#"
+                    targetBlank={true}
+                    testId={REG_CONFIDENTIAL_POLICY_LINK}
+                    disabled={registrationFormStore.isLoading}
+                  >
                     Политикой конфиденциальности
                   </Link>{" "}
                   и{" "}
-                  <Link href="#" testId={REG_USERS_AGREEMENT_LINK} disabled={registrationFormStore.isLoading}>
+                  <Link
+                    href="#"
+                    targetBlank={true}
+                    testId={REG_USERS_AGREEMENT_LINK}
+                    disabled={registrationFormStore.isLoading}
+                  >
                     Пользовательским соглашением
                   </Link>
                 </span>

@@ -3,7 +3,7 @@ import { createStore } from "solid-js/store";
 import { REG_NETWORK_ERROR } from "../../../../../features/testIds.ts";
 import { notificationState } from "../../../../state/pushNotificationStateManager.ts";
 import type { AuthFormInput } from "../../auth.tsx";
-import { requestPasswordRestore } from "../../services/register.ts";
+import { requestPasswordRestore } from "../../services/restorePassword.ts";
 
 export type RestorePasswordFormInputsNames = "email";
 export type RestorePasswordFormInputs = Record<RestorePasswordFormInputsNames, AuthFormInput>;

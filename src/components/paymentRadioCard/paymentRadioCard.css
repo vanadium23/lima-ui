@@ -1,0 +1,110 @@
+.paymentRadioCard {
+  position: relative;
+  cursor: pointer;
+  border-style: solid;
+  display: flex;
+  flex-direction: column;
+}
+
+.paymentRadioCard__input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.paymentRadioCard__indicator {
+  display: none;
+}
+
+.paymentRadioCard__input:checked + .paymentRadioCard__header .paymentRadioCard__indicator {
+  display: block;
+}
+
+.paymentRadioCard__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.paymentRadioCard__inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.paymentRadioCard_medium {
+  padding: 1rem;
+  border-width: 0.1rem;
+  border-radius: 0.8rem;
+  gap: 1rem;
+}
+
+.paymentRadioCard_medium .paymentRadioCard__title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 2rem;
+  color: var(--text-neutral-900);
+}
+
+.paymentRadioCard_medium .paymentRadioCard__inner {
+  gap: 0.8rem;
+}
+
+.paymentRadioCard_medium .paymentRadioCard__value {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.paymentRadioCard_medium .paymentRadioCard__unit {
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.8rem;
+}
+
+.paymentRadioCard__sale {
+  display: flex;
+  flex-direction: column;
+}
+
+.paymentRadioCard_medium .paymentRadioCard__legend {
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.6rem;
+}
+
+.paymentRadioCard_primary {
+  border-color: var(--neutral-200);
+  background: var(--neutral-100);
+  box-shadow: 0 0.2rem 1.2rem 0 rgb(0 0 0 / 12%);
+}
+
+.paymentRadioCard_primary:has(.paymentRadioCard__input:checked) {
+  border-color: var(--neutral-600);
+}
+
+.paymentRadioCard_primary .paymentRadioCard__indicator {
+  color: var(--successful-500);
+}
+
+.paymentRadioCard_primary .paymentRadioCard__unit {
+  color: var(--text-neutral-800);
+}
+
+.paymentRadioCard_primary .paymentRadioCard__legend {
+  color: var(--text-neutral-800);
+}
+
+@media (hover: hover) {
+  .paymentRadioCard_primary:hover:not(.paymentRadioCard_checked) {
+    background: var(--neutral-150);
+  }
+}
+
+.paymentRadioCard__input:focus {
+  outline: none;
+}
+
+.paymentRadioCard:has(.paymentRadioCard__input:focus-visible) {
+  outline: var(--outline-set);
+  outline-offset: var(--outline-offset);
+}

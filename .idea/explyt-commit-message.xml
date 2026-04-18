@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CommitMessageSettings">
+    <option name="customPrompt" value="Commit message template: &quot;$CURRENT_BRANCH_NAME$: Short commit message&quot;" />
+  </component>
+</project>

@@ -1,0 +1,40 @@
+.marketingNavItem {
+  text-decoration: none;
+}
+
+.marketingNavItem_medium {
+  font-size: 1.8rem;
+  line-height: 2.2rem;
+  padding: 0.6rem 1.6rem;
+  font-weight: 600;
+}
+
+.marketingNavItem_small {
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  padding: 0.2rem 1.2rem;
+}
+
+.marketingNavItem_primary {
+  color: var(--text-neutral-800);
+}
+
+.marketingNavItem_primary.marketingNavItem_active {
+  color: var(--text-neutral-900);
+}
+
+@media (hover: hover) {
+  .marketingNavItem_primary:hover {
+    color: var(--text-neutral-700);
+  }
+}
+
+.marketingNavItem:focus-visible {
+  outline: var(--outline-set);
+  outline-offset: var(--outline-offset);
+  border-radius: 4rem;
+}
+
+.marketingNavItem:focus:not(:focus-visible) {
+  outline: none;
+}

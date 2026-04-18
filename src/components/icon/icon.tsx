@@ -9,6 +9,7 @@ export enum IconSize {
   Medium = "medium",
   Large = "large",
   ExtraLarge = "extraLarge",
+  ExtraExtraLarge = "extraExtraLarge",
 }
 
 type IconProps = {

@@ -1,0 +1,24 @@
+.price_small {
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.8rem;
+}
+
+.price_medium {
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 2.6rem;
+}
+
+.price_defaultPrice {
+  color: var(--text-neutral-900);
+}
+
+.price_oldPrice {
+  color: var(--text-neutral-900);
+  text-decoration-line: line-through;
+}
+
+.price_salePrice {
+  color: var(--text-successful-500);
+}

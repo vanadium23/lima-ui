@@ -1,6 +1,10 @@
 .auth {
-  width: 128rem;
-  margin: 0 auto;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.auth__wrapper {
   display: flex;
   padding: 2rem 6rem 1rem;
   gap: 2rem;
@@ -37,16 +41,30 @@
 
 .auth__tabs {
   width: 100%;
-  max-width: 50rem;
+  max-width: 44rem;
   min-height: 70.5rem;
+  background: transparent;
+}
+
+@media (width <= 1279px) {
+  .auth__greetingDescription {
+    text-align: center;
+    font-size: 2rem;
+    line-height: 2.4rem;
+  }
 }
 
 @media (width <= 1023px) {
-  .auth {
-    padding: 1.2rem 0 2rem;
+  .auth__wrapper {
+    padding: 1.2rem 1rem 2rem;
     flex-direction: column;
     align-items: center;
     width: 100%;
+  }
+
+  .auth__tabs {
+    max-width: 37.6rem;
+    min-height: auto;
   }
 
   .auth__greeting {

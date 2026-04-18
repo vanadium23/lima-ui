@@ -49,34 +49,36 @@ export const FormField = (props: Testable<FormFieldProps>) => {
   return (
     <label class="formField">
       <span class="formField__labelText">{mProps.labelText}</span>
-      <Input
-        theme={mProps.inputTheme}
-        size={mProps.inputSize}
-        error={mProps.isError}
-        disabled={mProps.disabled}
-        placeholder={mProps.placeholder}
-        name={mProps.name}
-        maxLength={mProps.maxLength}
-        required={mProps.required}
-        type={mProps.type}
-        autocomplete={mProps.autocomplete}
-        countable={mProps.countable}
-        clearable={mProps.clearable}
-        onInput={mProps.onInput}
-        onKeyDown={mProps.onKeyDown}
-        onClear={mProps.onClear}
-        {...testableProps()}
-      >
-        {mProps.children?.toString() ?? ""}
-      </Input>
-      <HintForInput
-        hintTheme={mProps.hintTheme}
-        hintSize={mProps.hintSize}
-        hintText={mProps.hintText}
-        errorText={mProps.errorText}
-        isError={mProps.isError}
-        {...testableProps()}
-      />
+      <span class="formField__inner">
+        <Input
+          theme={mProps.inputTheme}
+          size={mProps.inputSize}
+          error={mProps.isError}
+          disabled={mProps.disabled}
+          placeholder={mProps.placeholder}
+          name={mProps.name}
+          maxLength={mProps.maxLength}
+          required={mProps.required}
+          type={mProps.type}
+          autocomplete={mProps.autocomplete}
+          countable={mProps.countable}
+          clearable={mProps.clearable}
+          onInput={mProps.onInput}
+          onKeyDown={mProps.onKeyDown}
+          onClear={mProps.onClear}
+          {...testableProps()}
+        >
+          {mProps.children?.toString() ?? ""}
+        </Input>
+        <HintForInput
+          hintTheme={mProps.hintTheme}
+          hintSize={mProps.hintSize}
+          hintText={mProps.hintText}
+          errorText={mProps.errorText}
+          isError={mProps.isError}
+          {...testableProps()}
+        />
+      </span>
     </label>
   );
 };

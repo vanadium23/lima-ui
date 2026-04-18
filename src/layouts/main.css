@@ -2,6 +2,9 @@
 
 :root {
   /* DOC Colors */
+  --accent-400: #f67246;
+  --accent-500: #fc5f2b;
+  --accent-600: #ff480c;
   --neutral-100: #fff;
   --neutral-150: #f9f9f9;
   --neutral-200: #eee;
@@ -23,11 +26,14 @@
   --dangerous-400: #f53b3c;
   --dangerous-500: #eb0000;
   --dangerous-600: #c80507;
-  --successful-500: #02b96f;
   --text-dangerous-400: #f53b3c;
   --text-dangerous-500: #eb0000;
   --text-dangerous-600: #a40506;
-  --primary-100: #dfecf7;
+  --successful-500: #02b96f;
+  --text-successful-500: #02b96f;
+  --attention-500: #fc5f2b;
+  --primary-100: #e9f3fb;
+  --primary-150: #dfecf7;
   --primary-200: #c8dff2;
   --primary-250: #9ecff7;
   --primary-300: #72bbf8;
