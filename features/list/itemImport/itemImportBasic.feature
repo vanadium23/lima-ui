@@ -76,6 +76,37 @@ Feature: Importing items from another list
     Then I expect the item #1 in the imported group #2 to contain the following text: "Item B"
 
   @some-lists
+  Scenario: User imports a mix of items and a whole list
+    When I open "My Lists" page
+    And I press on the "first" list stripe
+    And I ensure the tools panel is open
+    And I press the "add list item" button
+    And I ensure the tools panel does not disturb
+    And I type the following text into the "first item" input: "Item A"
+    And I type the following text into the "second item" input: "Item B"
+    And I type the following text into the "automatic item" input: "Item C"
+    And I press the "save" button
+    And I wait for the list update to complete
+    And I add a list
+    And I ensure the tools panel is open
+    And I press the "tools panel import" button
+    Then I expect to see the "import" dialog modal box
+    When I press the "second import list" list stripe for import
+    And I check the "first import item" checkbox in the "second import list"
+    And I check the "second import item" checkbox in the "second import list"
+    And I check the "first import list" checkbox
+    And I press the "import" button
+    And I ensure the tools panel does not disturb
+    Then I expect to see 3 imported groups in the list
+    Then I expect to see 1 item in the imported group #2
+    Then I expect to see 1 item in the imported group #3
+    Then I expect the item #1 in the imported group #2 to contain the following text: "Item A"
+    Then I expect the item #1 in the imported group #3 to contain the following text: "Item B"
+    Then I expect the imported group #1 name to match the import list #1 name
+    Then I expect the imported group #2 name to match the import list #2 name
+    Then I expect the imported group #3 name to match the import list #2 name
+
+  @some-lists
   Scenario: User imports multiple items in position order
     When I open "My Lists" page
     And I press on the "first" list stripe
