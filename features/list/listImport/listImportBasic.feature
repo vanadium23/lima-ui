@@ -256,3 +256,22 @@ Feature: Importing elements from another list
     When I open "My Lists" page
     Then I expect the "second" list stripe to be marked as exported
     Then I expect the "first" list stripe to not be marked as exported
+
+  @some-lists
+  Scenario: Removing all imports of a list hides the exported icon on the My Lists page
+    And I ensure the tools panel is open
+    And I press the "tools panel import" button
+    Then I expect to see the "import" dialog modal box
+    When I check the "first import list" checkbox
+    And I press the "import" button
+    And I ensure the tools panel does not disturb
+    And I press the "save" button
+    And I wait for the list update to complete
+    When I hover the first imported group
+    And I press the visible "open context menu imported group" button
+    And I press the visible "remove imported group" menu item
+    And I press the "save" button
+    And I wait for the list update to complete
+    When I open "My Lists" page
+    Then I expect the "second" list stripe to not be marked as exported
+    Then I expect the "first" list stripe to not be marked as exported
