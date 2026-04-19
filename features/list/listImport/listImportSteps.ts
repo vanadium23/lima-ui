@@ -4,7 +4,7 @@ import { expect, type Locator } from "@playwright/test";
 import { ITEMS_LIMIT, LISTS_LIMIT } from "../../../configuration.ts";
 import type { ComplexWorld } from "../../context/hooks.ts";
 import {
-  EXPORTED_TO_LIST,
+  EXPORTED_TO_LIST_ITEM,
   IMPORT_DIALOG_COUNTER,
   IMPORTED_GROUP,
   IMPORTED_GROUP_ITEM,
@@ -91,7 +91,9 @@ async function getDomIndex(element: Locator): Promise<number> {
 }
 
 const EXPORTED_TO_LIST_ITEM_TEST_IDS = {
-  "first exported to list": buildFullTestId(EXPORTED_TO_LIST, 0),
+  "first exported to list": buildFullTestId(EXPORTED_TO_LIST_ITEM, 0),
+  "second exported to list": buildFullTestId(EXPORTED_TO_LIST_ITEM, 1),
+  "third exported to list": buildFullTestId(EXPORTED_TO_LIST_ITEM, 2),
 };
 
 type ExportedToListItemMeaning = keyof typeof EXPORTED_TO_LIST_ITEM_TEST_IDS;
@@ -103,6 +105,17 @@ When(
     const link = listItem.locator("a");
 
     await link.click();
+  },
+);
+
+Then("I expect to see {int} list(s) in the exported to dropdown", async function (this: ComplexWorld, count: number) {
+  await this.expectLocated(EXPORTED_TO_LIST_ITEM).toHaveCount(count);
+});
+
+Then(
+  "I expect the {string} to contain the text of the {string} list name",
+  async function (this: ComplexWorld, listItemMeaning: ExportedToListItemMeaning, listTitleKey: string) {
+    await this.expectLocated(EXPORTED_TO_LIST_ITEM_TEST_IDS[listItemMeaning]).toHaveText(this.data[listTitleKey] ?? "");
   },
 );
 

@@ -208,9 +208,7 @@ export const ListItem = (props: ListItemProps) => {
                   />
                 )}
               >
-                <ExportedTo title={"Пункт экспортирован в списки:"} testId={DEFAULT_TEST_ID}>
-                  {mProps.exportedTo}
-                </ExportedTo>
+                <ExportedTo title={"Пункт экспортирован в списки:"}>{mProps.exportedTo}</ExportedTo>
               </Dropdown>
             </Show>
           }
