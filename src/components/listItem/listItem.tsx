@@ -6,9 +6,9 @@ import {
   ADD_ITEM_BELOW_MENUITEM,
   AUTO_LIST_ITEM,
   buildListItemInputTestId,
-  DEFAULT_TEST_ID,
   DRAG_HANDLE,
   DRAGGED_LIST_ITEM,
+  EXPORTED_TO_ITEM_BUTTON,
   IMPORT_ABOVE_MENUITEM,
   IMPORT_BELOW_MENUITEM,
   LIST_ITEM,
@@ -199,11 +199,12 @@ export const ListItem = (props: ListItemProps) => {
                   <IconButton
                     ref={props.ref}
                     handleClick={props.handleClick}
-                    testId={DEFAULT_TEST_ID}
+                    testId={EXPORTED_TO_ITEM_BUTTON}
+                    testSubId={mProps.index}
                     iconName={IconName.Link}
                     size={IconButtonSize.MediumEmbedded}
                     theme={IconButtonTheme.Quaternary}
-                    ariaLabel={"Меню импортов"}
+                    ariaLabel={"Меню экспортов"}
                     disabled={Boolean(storeEditList.sendingNow)}
                   />
                 )}

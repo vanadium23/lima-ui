@@ -333,3 +333,49 @@ Feature: Importing elements from another list
     Then I expect the "first exported to list" to contain the text of the "listTitle_1" list name
     Then I expect the "second exported to list" to contain the text of the "listTitle_2" list name
     Then I expect the "third exported to list" to contain the text of the "listTitle_3" list name
+
+  @some-lists
+  Scenario: The exported-to dropdown on an item shows every list where the item is imported
+    When I open "My Lists" page
+    And I press on the "second" list stripe
+    And I type the following text into the "first item" input: "Source item A"
+    And I type the following text into the "automatic item" input: "Source item B"
+    And I press the "save" button
+    And I wait for the list update to complete
+    And I open "My Lists" page
+    And I press on the "second" list stripe
+    And I ensure the tools panel is open
+    And I press the "tools panel import" button
+    Then I expect to see the "import" dialog modal box
+    When I press the "first import list" list stripe for import
+    And I check the "first import item" checkbox in the "first import list"
+    And I press the "import" button
+    And I ensure the tools panel does not disturb
+    And I press the "save" button
+    And I wait for the list update to complete
+    When I add a list
+    And I ensure the tools panel is open
+    And I press the "tools panel import" button
+    Then I expect to see the "import" dialog modal box
+    When I press the "first import list" list stripe for import
+    And I check the "first import item" checkbox in the "first import list"
+    And I press the "import" button
+    And I ensure the tools panel does not disturb
+    And I press the "save" button
+    And I wait for the list update to complete
+    When I add a list
+    And I ensure the tools panel is open
+    And I press the "tools panel import" button
+    Then I expect to see the "import" dialog modal box
+    When I press the "first import list" list stripe for import
+    And I check the "first import item" checkbox in the "first import list"
+    And I press the "import" button
+    And I ensure the tools panel does not disturb
+    And I press the "save" button
+    And I wait for the list update to complete
+    When I press the first imported group name link
+    And I press the "exported to first item" button
+    Then I expect to see 3 lists in the exported to dropdown
+    Then I expect the "first exported to list" to contain the text of the "listTitle_1" list name
+    Then I expect the "second exported to list" to contain the text of the "listTitle_2" list name
+    Then I expect the "third exported to list" to contain the text of the "listTitle_3" list name

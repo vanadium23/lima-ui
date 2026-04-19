@@ -12,6 +12,7 @@ import {
   EDIT_IMPORTED_GROUP_BUTTON,
   EDIT_IMPORTED_GROUP_MENUITEM,
   EXPORTED_TO_BUTTON,
+  EXPORTED_TO_ITEM_BUTTON,
   GO_TO_SOURCE_LIST_MENUITEM,
   IMPORT_ABOVE_MENUITEM,
   IMPORT_BELOW_MENUITEM,
@@ -76,6 +77,9 @@ export const BUTTON_TEST_IDS = {
   "clear search": CLEAR_SEARCH_BUTTON,
   "close search error notification": SEARCH_NETWORK_ERROR_CLOSE_BUTTON,
   "exported to": EXPORTED_TO_BUTTON,
+  "exported to first item": buildFullTestId(EXPORTED_TO_ITEM_BUTTON, 0),
+  "exported to second item": buildFullTestId(EXPORTED_TO_ITEM_BUTTON, 1),
+  "exported to third item": buildFullTestId(EXPORTED_TO_ITEM_BUTTON, 2),
   "open context menu imported group": OPEN_CONTEXT_MENU_IMPORTED_GROUP_BUTTON,
   "edit imported group": EDIT_IMPORTED_GROUP_BUTTON,
 };
