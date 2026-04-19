@@ -275,3 +275,26 @@ Feature: Importing elements from another list
     When I open "My Lists" page
     Then I expect the "second" list stripe to not be marked as exported
     Then I expect the "first" list stripe to not be marked as exported
+
+  @some-lists
+  Scenario: A list whose individual items are imported elsewhere has no exported icon on the My Lists page
+    When I open "My Lists" page
+    And I press on the "first" list stripe
+    And I type the following text into the "first item" input: "Source item A"
+    And I type the following text into the "automatic item" input: "Source item B"
+    And I press the "save" button
+    And I wait for the list update to complete
+    And I open "My Lists" page
+    And I press on the "second" list stripe
+    And I ensure the tools panel is open
+    And I press the "tools panel import" button
+    Then I expect to see the "import" dialog modal box
+    When I press the "first import list" list stripe for import
+    And I check the "first import item" checkbox in the "first import list"
+    And I press the "import" button
+    And I ensure the tools panel does not disturb
+    And I press the "save" button
+    And I wait for the list update to complete
+    When I open "My Lists" page
+    Then I expect the "first" list stripe to not be marked as exported
+    Then I expect the "second" list stripe to not be marked as exported
