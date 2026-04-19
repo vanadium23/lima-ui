@@ -242,3 +242,17 @@ Feature: Importing elements from another list
     And I ensure the tools panel does not disturb
     Then I expect to see 2 imported groups in the list
     Then I expect the second imported group to be below the first imported group
+
+  @some-lists
+  Scenario: A list exported elsewhere is marked with an icon on the My Lists page
+    And I ensure the tools panel is open
+    And I press the "tools panel import" button
+    Then I expect to see the "import" dialog modal box
+    When I check the "first import list" checkbox
+    And I press the "import" button
+    And I ensure the tools panel does not disturb
+    And I press the "save" button
+    And I wait for the list update to complete
+    When I open "My Lists" page
+    Then I expect the "second" list stripe to be marked as exported
+    Then I expect the "first" list stripe to not be marked as exported

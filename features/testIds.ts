@@ -159,6 +159,7 @@ export const EDIT_IMPORTED_GROUP_DIALOG = "editImportedGroupDialog";
 export const EDIT_IMPORTED_GROUP_BUTTON = "editImportedGroupButton";
 
 export const EXPORTED_TO_BUTTON = "exportedToButton";
+export const EXPORTED_TO_MARK = "exportedToMark";
 export const EXPORTED_TO_LIST = "exportedToList";
 
 export const DRAG_HANDLE = "dragHandle";
