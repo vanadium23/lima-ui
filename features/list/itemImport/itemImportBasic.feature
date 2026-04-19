@@ -76,6 +76,34 @@ Feature: Importing items from another list
     Then I expect the item #1 in the imported group #2 to contain the following text: "Item B"
 
   @some-lists
+  Scenario: Editing an item in the source list is reflected wherever the item is imported
+    When I open "My Lists" page
+    And I press on the "first" list stripe
+    And I type the following text into the "first item" input: "Initial item text"
+    And I press the "save" button
+    And I wait for the list update to complete
+    And I open "My Lists" page
+    And I press on the "second" list stripe
+    And I ensure the tools panel is open
+    And I press the "tools panel import" button
+    Then I expect to see the "import" dialog modal box
+    When I press the "first import list" list stripe for import
+    And I check the "first import item" checkbox in the "first import list"
+    And I press the "import" button
+    And I ensure the tools panel does not disturb
+    And I press the "save" button
+    And I wait for the list update to complete
+    When I press the first imported group name link
+    And I type the following text into the "first item" input: "Updated item text"
+    And I press the "save" button
+    And I wait for the list update to complete
+    When I press the "exported to" button
+    And I press the "first exported to list" in the exported to list
+    Then I expect to see 1 imported group in the list
+    Then I expect to see 1 item in the imported group #1
+    Then I expect the item #1 in the imported group #1 to contain the following text: "Updated item text"
+
+  @some-lists
   Scenario: Pressing the list name link above an imported item opens the source list
     When I open "My Lists" page
     And I press on the "first" list stripe
