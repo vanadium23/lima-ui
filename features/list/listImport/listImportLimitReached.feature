@@ -82,3 +82,21 @@ Feature: Reaching items limit through importing
     And I press the visible "open context menu imported group" button
     And I press the visible "remove imported group" menu item
     Then I expect not to see the warning about items inputs limit reached
+
+  @heavy
+  @some-lists
+  Scenario: Reaching items limit exclusively via importing whole lists
+    When I add lists to their limit
+    And I open "My Lists" page
+    And I press on the "first" list stripe
+    And I ensure the tools panel is open
+    And I press the "tools panel import" button
+    Then I expect to see the "import" dialog modal box
+    When I check the first 99 import list checkboxes
+    And I press the "import" button
+    And I ensure the tools panel does not disturb
+    Then I expect to see 99 imported groups in the list
+    And I expect to see the warning about items inputs limit reached
+    When I press the "save" button
+    And I wait for the list update to complete
+    Then I expect to see the warning about items inputs limit reached

@@ -11,8 +11,10 @@ import {
   IMPORTED_GROUP_NAME_LINK,
   LIST_ITEM,
   LIST_STRIPE_IMPORT,
+  LIST_STRIPE_IMPORT_CHECKBOX,
 } from "../../testIds.ts";
 import { buildFullTestId, buildTestableSelector } from "../../utilities/buildTestableSelector.ts";
+import { getTimeoutOrCancelItIfDebugging } from "../../utilities/getTimeoutOrCancelItIfDebugging.ts";
 import { INPUT_TEST_IDS, type InputMeaning } from "../listCreation/testIds.ts";
 
 Then("I expect to see {int} imported group(s) in the list", async function (this: ComplexWorld, count: number) {
@@ -122,6 +124,19 @@ Then(
 When("I hover the first imported group", async function (this: ComplexWorld) {
   await this.locateByIdParts(IMPORTED_GROUP).first().hover();
 });
+
+When(
+  "I check the first {int} import list checkboxes",
+  { timeout: getTimeoutOrCancelItIfDebugging(120000) },
+  async function (this: ComplexWorld, count: number) {
+    for (let index = 0; index < count; index++) {
+      const checkbox = this.locateByIdParts(LIST_STRIPE_IMPORT_CHECKBOX, index);
+
+      await checkbox.scrollIntoViewIfNeeded();
+      await checkbox.click();
+    }
+  },
+);
 
 Then("I expect to see {int} item(s) in the first imported group", async function (this: ComplexWorld, count: number) {
   const firstImportedGroup = this.locateByIdParts(IMPORTED_GROUP).first();
