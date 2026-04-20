@@ -134,6 +134,8 @@ export function buildCheckboxTestId(testId: TestId): TestId {
   return `${testId}Checkbox`;
 }
 export const REMOVE_DIALOG_REMOVE_LIST_BUTTON = "removeDialogRemoveListButton";
+export const REMOVE_DIALOG_DELETION_EXPORTED_LIST_BUTTON = "removeDialogDeletionExportedListButton";
+export const REMOVE_DIALOG_INSERTION_EXPORTED_LIST_BUTTON = "removeDialogInsertionExportedListButton";
 export const REMOVE_DIALOG_DELETION_EXPORTED_ITEM_BUTTON = "removeDialogDeletionExportedItemButton";
 export const REMOVE_DIALOG_INSERTION_EXPORTED_ITEM_BUTTON = "removeDialogInsertionExportedItemButton";
 

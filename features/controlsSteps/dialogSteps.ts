@@ -7,6 +7,7 @@ import {
   EDIT_IMPORTED_GROUP_DIALOG,
   IMPORT_DIALOG,
   IMPORT_DIALOG_EMPTY_MESSAGE,
+  REMOVE_EXPORTED_ITEM_DIALOG,
   REMOVE_LIST_DIALOG,
 } from "../testIds.ts";
 import { getTimeoutOrCancelItIfDebugging } from "../utilities/getTimeoutOrCancelItIfDebugging.ts";
@@ -14,6 +15,7 @@ import { getTimeoutOrCancelItIfDebugging } from "../utilities/getTimeoutOrCancel
 export const DIALOG_TEST_IDS = {
   import: IMPORT_DIALOG,
   "remove list": REMOVE_LIST_DIALOG,
+  "remove exported item": REMOVE_EXPORTED_ITEM_DIALOG,
   "edit import": EDIT_IMPORTED_GROUP_DIALOG,
 };
 export type DialogMeaning = keyof typeof DIALOG_TEST_IDS;
@@ -21,12 +23,14 @@ export type DialogMeaning = keyof typeof DIALOG_TEST_IDS;
 export const DIALOG_LOADING_TEST_IDS: Record<DialogMeaning, string> = {
   import: buildLoadingDialogTestId(IMPORT_DIALOG),
   "remove list": buildLoadingDialogTestId(REMOVE_LIST_DIALOG),
+  "remove exported item": "",
   "edit import": "",
 };
 
 export const DIALOG_EMPTY_MESSAGE_TEST_IDS: Record<DialogMeaning, string> = {
   import: IMPORT_DIALOG_EMPTY_MESSAGE,
   "remove list": "",
+  "remove exported item": "",
   "edit import": "",
 };
 
