@@ -5,6 +5,7 @@ import {
   ADD_ITEM_ABOVE_MENUITEM,
   ADD_ITEM_BELOW_MENUITEM,
   DEFAULT_TEST_ID,
+  DRAG_HANDLE,
   EDIT_IMPORTED_GROUP_BUTTON,
   EDIT_IMPORTED_GROUP_DIALOG,
   EDIT_IMPORTED_GROUP_MENUITEM,
@@ -192,7 +193,7 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
       <div class="importedGroup__dragHandle">
         <DragHandle
           disabled={Boolean(storeEditList.sendingNow)}
-          testId={DEFAULT_TEST_ID}
+          testId={DRAG_HANDLE}
           dragHandle={mProps.dragSettings.dragData}
         />
       </div>
