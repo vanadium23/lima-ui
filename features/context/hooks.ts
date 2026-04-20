@@ -168,7 +168,7 @@ async function getRunningChromium() {
   });
 }
 
-Before(async function (this: ComplexWorld, scenario: ITestCaseHookParameter) {
+Before({ timeout: 15000 }, async function (this: ComplexWorld, scenario: ITestCaseHookParameter) {
   await this.setContextAndPage();
   this.accounting.elements.clearTestIds();
 

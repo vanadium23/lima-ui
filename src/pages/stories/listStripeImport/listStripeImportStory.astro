@@ -1,5 +1,4 @@
 ---
-import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
 import {
   ListStripeImport,
   ListStripeImportSize,
@@ -72,7 +71,7 @@ const testListData: EditListType = {
           {sizes.map((size) => (
             <>
               <span class="rhead">{size}</span>
-              <ListStripeImport testId={DEFAULT_TEST_ID} titleHTMLName={"Title"} client:only="solid-js">
+              <ListStripeImport titleHTMLName={"Title"} client:only="solid-js" index={0}>
                 {testListData}
               </ListStripeImport>
             </>

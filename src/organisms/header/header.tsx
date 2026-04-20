@@ -37,7 +37,7 @@ export const Header = (props: HeaderProps) => {
   const showToolsPanelButton = (): boolean => {
     const currentLocation: string = location();
 
-    return !mProps.list404 && currentLocation !== URL_MY_LISTS && !mProps.isListsLimitReached;
+    return !mProps.list404 && currentLocation !== URL_MY_LISTS;
   };
 
   return (

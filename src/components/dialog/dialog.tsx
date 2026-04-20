@@ -1,7 +1,7 @@
 import { createEffect, createSignal, type JSX, Match, mergeProps, Show, Switch } from "solid-js";
 import { Portal } from "solid-js/web";
 
-import { buildCloseDialogTestId } from "../../../features/testIds.ts";
+import { buildCloseDialogTestId, buildLoadingDialogTestId } from "../../../features/testIds.ts";
 import { Icon, IconSize } from "../icon/icon.tsx";
 import { IconName } from "../icon/types.ts";
 import { IconButton, IconButtonSize, IconButtonTheme } from "../iconButton/iconButton.tsx";
@@ -119,7 +119,7 @@ export const Dialog = (props: Testable<DialogProps>) => {
             </div>
             <Switch>
               <Match when={mProps.loading}>
-                <div class="dialog__loadingIconWrapper">
+                <div class="dialog__loadingIconWrapper" data-test-id={buildLoadingDialogTestId(mProps.testId)}>
                   <div class="dialog__loadingIcon">
                     <Icon name={IconName.CircleNotch} size={IconSize.Large} />
                   </div>

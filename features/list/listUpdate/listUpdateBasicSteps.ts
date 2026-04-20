@@ -1,10 +1,8 @@
 import { When } from "@cucumber/cucumber";
 
-import { soften } from "../../../utilities/soften.ts";
 import type { ComplexWorld } from "../../context/hooks.ts";
+import { SAVE_LIST_BUTTON } from "../../testIds.ts";
 
 When("I wait for the list update to complete", async function (this: ComplexWorld) {
-  await this.page.waitForLoadState("networkidle");
-  // DOC soften также применяется в интерфейсе для более плавного снятия загрузки.
-  await soften(() => {}, 2500);
+  await this.expectLocated(SAVE_LIST_BUTTON).toContainClass("button_disabled");
 });

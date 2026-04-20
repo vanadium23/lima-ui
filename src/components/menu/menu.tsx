@@ -53,7 +53,6 @@ export const Menu = (props: Testable<MenuProps>) => {
               menuItem.handleClick?.();
               dropdown?.close();
             }}
-            disabled={menuItem.disabled}
           >
             {menuItem.children}
           </MenuItem>

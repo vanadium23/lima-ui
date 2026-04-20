@@ -1,6 +1,6 @@
 import { mergeProps } from "solid-js";
 
-import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
+import { LIST_STRIPE_IMPORT_ITEM, LIST_STRIPE_IMPORT_ITEM_CHECKBOX } from "../../../features/testIds.ts";
 import { Checkbox, CheckboxSize, CheckboxTheme } from "../checkbox/checkbox.tsx";
 import type { Testable } from "../utilities/testable.ts";
 
@@ -45,8 +45,8 @@ export const ListItemImport = (props: Testable<ListItemImportProps>) => {
         [`listItemImport_${mProps.size}`]: true,
         [`listItemImport_${mProps.theme}`]: true,
       }}
-      data-test-id={mProps.testId}
-      data-test-sub-id={mProps.testSubId}
+      data-test-id={LIST_STRIPE_IMPORT_ITEM}
+      data-test-sub-id={mProps.testSubId ?? "0"}
     >
       <span class="listItemImport__checkbox">
         <Checkbox
@@ -54,8 +54,8 @@ export const ListItemImport = (props: Testable<ListItemImportProps>) => {
           size={CheckboxSize.Small}
           dataId={mProps.itemId}
           dataGroupId={mProps.listId}
-          testId={DEFAULT_TEST_ID}
-          testSubId={mProps.testSubId ?? ""}
+          testId={LIST_STRIPE_IMPORT_ITEM_CHECKBOX}
+          testSubId={mProps.testSubId ?? "0"}
           dependent={true}
           checked={mProps.checked}
           onChange={mProps.onCheckedChange}

@@ -36,15 +36,27 @@ Then("I expect not to see the first item input", async function () {
 
 When(
   "I add list items to their limit",
-  { timeout: getTimeoutOrCancelItIfDebugging(60000) },
+  { timeout: getTimeoutOrCancelItIfDebugging(90000) },
   async function (this: ComplexWorld) {
-    const addItemButton = this.locateByIdParts(TOOLS_PANEL_ADD_ITEM_BUTTON);
-
-    for (let i = await calculateCurrentItemsCount(this); i < ITEMS_LIMIT; i++) {
-      await addItemButton.click();
-    }
+    await addSeveralItems(this, ITEMS_LIMIT);
   },
 );
+
+When(
+  "I add list items to one below their limit",
+  { timeout: getTimeoutOrCancelItIfDebugging(90000) },
+  async function (this: ComplexWorld) {
+    await addSeveralItems(this, ITEMS_LIMIT - 1);
+  },
+);
+
+async function addSeveralItems(complexWorld: ComplexWorld, itemsCount: number) {
+  const addItemButton = complexWorld.locateByIdParts(TOOLS_PANEL_ADD_ITEM_BUTTON);
+
+  for (let i = await calculateCurrentItemsCount(complexWorld); i < itemsCount; i++) {
+    await addItemButton.click();
+  }
+}
 
 Then("I expect to see the warning about items inputs limit reached", async function (this: ComplexWorld) {
   await this.expectLocated(ITEMS_LIMIT_REACHED_WARNING).toBeInViewport();

@@ -1,9 +1,8 @@
 import { For, mergeProps } from "solid-js";
 
-import { DEFAULT_TEST_ID } from "../../../features/testIds.ts";
+import { EXPORTED_TO_LIST, EXPORTED_TO_LIST_ITEM } from "../../../features/testIds.ts";
 import type { SimpleList } from "../../types/types.ts";
 import { DropdownListItem } from "../dropdownListItem/dropdownListItem.tsx";
-import type { Testable } from "../utilities/testable.ts";
 
 import "./exportedTo.css";
 
@@ -22,8 +21,8 @@ export type ExportedToProps = {
   title: string;
 };
 
-export const ExportedTo = (props: Testable<ExportedToProps>) => {
-  const mProps: Testable<Required<ExportedToProps>> = mergeProps(
+export const ExportedTo = (props: ExportedToProps) => {
+  const mProps: Required<ExportedToProps> = mergeProps(
     {
       theme: ExportedToTheme.Primary,
       size: ExportedToSize.Medium,
@@ -43,11 +42,15 @@ export const ExportedTo = (props: Testable<ExportedToProps>) => {
         {mProps.title}
       </span>
 
-      <ul class="exportedTo__list scrollStyles" aria-labelledby="exportedToDropdownTitle" data-test-id={mProps.testId}>
+      <ul
+        class="exportedTo__list scrollStyles"
+        aria-labelledby="exportedToDropdownTitle"
+        data-test-id={EXPORTED_TO_LIST}
+      >
         <For each={mProps.children}>
           {(list, index) => {
             return (
-              <DropdownListItem listId={list.id} testId={DEFAULT_TEST_ID} testSubId={index()}>
+              <DropdownListItem listId={list.id} testId={EXPORTED_TO_LIST_ITEM} testSubId={index()}>
                 {list.name}
               </DropdownListItem>
             );

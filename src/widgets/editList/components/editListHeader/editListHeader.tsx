@@ -1,7 +1,7 @@
 import { Show } from "solid-js";
 
 import { LIST_PURPOSE_INPUT_LIMIT, LIST_TITLE_INPUT_LIMIT } from "../../../../../configuration.ts";
-import { DEFAULT_TEST_ID, LIST_PURPOSE_INPUT, LIST_TITLE_INPUT } from "../../../../../features/testIds.ts";
+import { EXPORTED_TO_BUTTON, LIST_PURPOSE_INPUT, LIST_TITLE_INPUT } from "../../../../../features/testIds.ts";
 import { CyberInput, CyberInputSize, CyberInputTheme } from "../../../../components/cyberInput/cyberInput.tsx";
 import { Dropdown } from "../../../../components/dropdown/dropdown.tsx";
 import { ExportedTo } from "../../../../components/exportedTo/exportedTo.tsx";
@@ -24,7 +24,7 @@ export const EditListHeader = () => {
                 <IconButton
                   ref={props.ref}
                   handleClick={props.handleClick}
-                  testId={DEFAULT_TEST_ID}
+                  testId={EXPORTED_TO_BUTTON}
                   iconName={IconName.Link}
                   theme={IconButtonTheme.Quaternary}
                   ariaLabel={"Меню импортов"}
@@ -32,9 +32,7 @@ export const EditListHeader = () => {
                 />
               )}
             >
-              <ExportedTo title={"Целиком экспортирован в списки:"} testId={DEFAULT_TEST_ID}>
-                {storeEditList.exportedTo}
-              </ExportedTo>
+              <ExportedTo title={"Целиком экспортирован в списки:"}>{storeEditList.exportedTo}</ExportedTo>
             </Dropdown>
           </Show>
         </div>

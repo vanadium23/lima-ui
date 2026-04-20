@@ -11,7 +11,7 @@ import { createEffect, For, Match, mergeProps, onCleanup, onMount, Show, Switch 
 
 import { ITEMS_LIMIT } from "../../../configuration.ts";
 import {
-  DEFAULT_TEST_ID,
+  IMPORTED_GROUP,
   ITEMS_LIMIT_REACHED_WARNING,
   LIST_ITEMS,
   LIST_REMOVAL_ERROR,
@@ -144,7 +144,8 @@ export const EditList = (props: EditListProps) => {
                         if (element.isImported) {
                           return (
                             <ImportedGroup
-                              testId={DEFAULT_TEST_ID}
+                              testId={IMPORTED_GROUP}
+                              testSubId={index()}
                               index={index()}
                               id={element.originalList.id}
                               name={element.originalList.name}
@@ -197,7 +198,8 @@ export const EditList = (props: EditListProps) => {
                       </Match>
                       <Match when={draggedElementData().originalList.id !== storeEditList.id}>
                         <ImportedGroup
-                          testId={DEFAULT_TEST_ID}
+                          testId={IMPORTED_GROUP}
+                          testSubId={ITEMS_LIMIT + 1}
                           index={ITEMS_LIMIT + 1}
                           id={draggedElementData().originalList.id}
                           name={draggedElementData().originalList.name}

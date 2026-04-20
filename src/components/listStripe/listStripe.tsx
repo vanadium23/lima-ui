@@ -2,6 +2,7 @@ import { createSignal, mergeProps, Show } from "solid-js";
 
 import {
   DEFAULT_TEST_ID,
+  EXPORTED_TO_MARK,
   LIST_ITEM_CONTEXT_MENU,
   LIST_REMOVAL_ERROR,
   LIST_STRIPE,
@@ -115,7 +116,9 @@ export const ListStripe = (props: Testable<ListStripeProps>) => {
       <div class="listStripe__icon">
         <Show when={mProps.isExportedList}>
           <Tooltip content={exportedTooltipMessage} testId={DEFAULT_TEST_ID}>
-            <Icon name={IconName.Link} size={IconSize.Small} role={"img"} ariaLabel={exportedTooltipMessage} />
+            <span data-test-id={EXPORTED_TO_MARK}>
+              <Icon name={IconName.Link} size={IconSize.Small} role={"img"} ariaLabel={exportedTooltipMessage} />
+            </span>
           </Tooltip>
         </Show>
       </div>

@@ -1,6 +1,11 @@
 import { createEffect, createSignal, Match, mergeProps, Switch } from "solid-js";
 
-import { REMOVE_DIALOG_REMOVE_LIST_BUTTON, REMOVE_LIST_DIALOG } from "../../../features/testIds.ts";
+import {
+  REMOVE_DIALOG_DELETION_EXPORTED_LIST_BUTTON,
+  REMOVE_DIALOG_INSERTION_EXPORTED_LIST_BUTTON,
+  REMOVE_DIALOG_REMOVE_LIST_BUTTON,
+  REMOVE_LIST_DIALOG,
+} from "../../../features/testIds.ts";
 import type { DeletionMethod } from "../../widgets/editList/services/removeList.ts";
 import { Button, ButtonSize, ButtonTheme } from "../button/button.tsx";
 import { Dialog } from "../dialog/dialog.tsx";
@@ -72,7 +77,7 @@ export const RemoveListDialog = (props: Testable<RemoveListDialogProps>) => {
                   mProps.sendListRemove("deletion");
                   setIsRemoveListDialogOpen(false);
                 }}
-                testId={REMOVE_DIALOG_REMOVE_LIST_BUTTON}
+                testId={REMOVE_DIALOG_DELETION_EXPORTED_LIST_BUTTON}
                 testSubId={mProps.testSubId || "0"}
               >
                 Удалить везде
@@ -84,7 +89,7 @@ export const RemoveListDialog = (props: Testable<RemoveListDialogProps>) => {
                   mProps.sendListRemove("insertion");
                   setIsRemoveListDialogOpen(false);
                 }}
-                testId={REMOVE_DIALOG_REMOVE_LIST_BUTTON}
+                testId={REMOVE_DIALOG_INSERTION_EXPORTED_LIST_BUTTON}
                 testSubId={mProps.testSubId || "0"}
               >
                 Удалить этот список
