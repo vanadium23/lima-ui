@@ -1,0 +1,34 @@
+.marketingReviewCard {
+  display: flex;
+  gap: 0.8rem;
+  padding: 0.8rem;
+  align-items: start;
+  border-radius: 2rem;
+  background: var(--neutral-100);
+}
+
+.marketingReviewCard_medium {
+  height: 20rem;
+  width: 20rem;
+}
+
+@media (width <= 767px) {
+  .marketingReviewCard_medium {
+    height: 12rem;
+    width: 16rem;
+  }
+}
+
+.marketingReviewCard_thumbnail {
+  height: 3.4rem;
+  width: 3.4rem;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.marketingReviewCard_content {
+  height: 100%;
+  flex-grow: 1;
+  overflow: hidden;
+}
