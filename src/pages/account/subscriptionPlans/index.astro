@@ -1,0 +1,54 @@
+---
+import { DEFAULT_TEST_ID, PAGE_TITLE } from "../../../../features/testIds.ts";
+import { getListsAndCheckListsLimitReached } from "../../../../utilities/getListsAndCheckListsLimitReached.ts";
+import { TariffCardBenefitTheme } from "../../../components/tariffCard/components/tariffCardBenefit/tariffCardBenefit.tsx";
+import { TariffCard, TariffCardTheme } from "../../../components/tariffCard/tariffCard.tsx";
+import { Title } from "../../../components/title/title.tsx";
+import AppPage from "../../../layouts/app/app.astro";
+
+import "./style.css";
+
+const { isListsLimitReached } = await getListsAndCheckListsLimitReached(Astro.url);
+
+const benefitsBasePlan = [
+  { theme: TariffCardBenefitTheme.Default, text: "Очень много текста для теста переноса строк" },
+  { theme: TariffCardBenefitTheme.Default, text: "Немножко текста" },
+  { theme: TariffCardBenefitTheme.Default, text: "Тестовый текст" },
+];
+
+const benefitsProPlan = [
+  { theme: TariffCardBenefitTheme.Default, text: "Тестовый текст" },
+  { theme: TariffCardBenefitTheme.Default, text: "Тестовый текст" },
+  { theme: TariffCardBenefitTheme.Default, text: "Очень много текста для теста переноса строк" },
+  { theme: TariffCardBenefitTheme.Additional, text: "Немножко текста" },
+  { theme: TariffCardBenefitTheme.Additional, text: "Тестовый текст" },
+];
+---
+
+<AppPage titleName="Тарифы" isListsLimitReached={isListsLimitReached}>
+  <div class="subscriptionPlans scrollStyles" slot="mainContent">
+    <div class="subscriptionPlans__title">
+      <Title testId={PAGE_TITLE}>Тарифы</Title>
+    </div>
+    <div class="subscriptionPlans__wrapper">
+      <TariffCard
+        client:only="solid-js"
+        title="Базовый"
+        benefits={benefitsBasePlan}
+        price={0}
+        testId={DEFAULT_TEST_ID}
+        current={true}
+      />
+      <TariffCard
+        client:only="solid-js"
+        title="Профессиональный"
+        popular={true}
+        theme={TariffCardTheme.Secondary}
+        benefits={benefitsProPlan}
+        price={189}
+        salePrice={129}
+        testId={DEFAULT_TEST_ID}
+      />
+    </div>
+  </div>
+</AppPage>

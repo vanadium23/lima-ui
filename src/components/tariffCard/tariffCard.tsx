@@ -71,13 +71,13 @@ export const TariffCard = (props: Testable<TariffCardProps>) => {
       </div>
       <div class="tariffCard__bottom">
         <div class="tariffCard__prices">
-          <Price theme={PriceTheme.DefaultPrice}>{mProps.price}</Price>
+          <Price theme={PriceTheme.Default}>{mProps.price}</Price>
           <span class="tariffCard__unit">/ мес.</span>
         </div>
         <Show when={mProps.salePrice}>
           <div class="tariffCard__prices">
-            <Price theme={PriceTheme.OldPrice}>{mProps.price}</Price>
-            <Price theme={PriceTheme.SalePrice}>{mProps.salePrice}</Price>
+            <Price theme={PriceTheme.Old}>{mProps.price}</Price>
+            <Price theme={PriceTheme.Sale}>{mProps.salePrice}</Price>
             <span class="tariffCard__unit">/ мес.*</span>
             <span class="tariffCard__legend">*при оплате за год</span>
           </div>
