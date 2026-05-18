@@ -1,17 +1,18 @@
 .account {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 1.2rem 0 2rem 2.4rem;
+  gap: 2rem;
+  padding: 1.2rem 0 2rem 3.6rem;
   width: 100%;
   max-width: 75rem;
 }
 
-.account__title {
-  font-size: 1.8rem;
-  font-weight: 600;
-  line-height: 2.2rem;
-  color: var(--text-neutral-800);
+.account__username {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+  max-width: 44rem;
 }
 
 .account__subTitle {
@@ -19,13 +20,6 @@
   font-weight: 500;
   line-height: 2rem;
   color: var(--text-neutral-800);
-}
-
-.account__auth {
-  display: flex;
-  flex-direction: column;
-  padding-left: 1.2rem;
-  gap: 2rem;
 }
 
 .account__authServices {
@@ -67,7 +61,8 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 1.6rem;
-  padding: 0.8rem 0.8rem 0.8rem 1rem;
+  width: 100%;
+  padding: 2rem 1rem;
 }
 
 .account__accordionWrapper {
@@ -84,6 +79,16 @@
   gap: 0.8rem;
   width: 100%;
   max-width: 44rem;
+}
+
+.account__accordionSection {
+  padding: 0 1rem;
+  width: 100%;
+}
+
+.account__accordionSection:not(:last-child) {
+  padding: 0 1rem 1rem;
+  border-bottom: 0.1rem solid var(--neutral-200);
 }
 
 .account__removeAuthServiceText {

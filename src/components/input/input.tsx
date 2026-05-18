@@ -29,6 +29,7 @@ export enum AutocompleteType {
   Email = "email",
   NewPassword = "new-password",
   Password = "current-password",
+  Nickname = "nickname",
 }
 
 export type InputProps = {
@@ -38,6 +39,7 @@ export type InputProps = {
   disabled?: boolean;
   placeholder: string;
   name: string;
+  minLength?: number | undefined;
   maxLength: number;
   required?: boolean;
   type?: InputType;
@@ -65,6 +67,8 @@ export const Input = (props: Testable<InputProps>) => {
       countable: false,
       clearable: false,
       ariaLabel: "",
+      minLength: undefined,
+      maxLength: undefined,
       onInput: () => {},
       onKeyDown: () => {},
       onClear: () => {},
