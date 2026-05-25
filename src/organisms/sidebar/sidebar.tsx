@@ -1,14 +1,13 @@
 import { mergeProps } from "solid-js";
 
-import { ADD_GROUP_BUTTON, PRO_VERSION_BUTTON, SIDEBAR, SIGN_OUT_BUTTON } from "../../../features/testIds.ts";
+import { ADD_GROUP_BUTTON, PRO_VERSION_BUTTON, SIDEBAR } from "../../../features/testIds.ts";
 import { Button, ButtonSize, ButtonTheme } from "../../components/button/button.tsx";
 import { Divider, DividerOrientation, DividerSize, DividerTheme } from "../../components/divider/divider.tsx";
 import { IconName } from "../../components/icon/types.ts";
 import { IconButton, IconButtonSize, IconButtonTheme } from "../../components/iconButton/iconButton.tsx";
 import { Nav } from "../../components/nav/nav.tsx";
-import { UserButton, UserButtonSize, UserButtonTheme } from "../../components/userButton/userButton.tsx";
+import { UserBadge } from "../../components/userBadge/userBadge.tsx";
 import { panelState } from "../../state/sidebarsStateManager.ts";
-import { logout } from "../../widgets/auth/services/logout.ts";
 
 import "./sidebar.css";
 
@@ -33,17 +32,9 @@ export const Sidebar = (props: SidebarProps) => {
       data-test-id={SIDEBAR}
     >
       <div class="sidebar__top">
-        <div class="sidebar__user">
-          <UserButton theme={UserButtonTheme.Primary} size={UserButtonSize.Medium}>
-            Ефросинья_Мыловареная
-          </UserButton>
-          <IconButton
-            iconName={IconName.SignOut}
-            ariaLabel="Выйти из аккаунта"
-            testId={SIGN_OUT_BUTTON}
-            handleClick={logout}
-          />
-        </div>
+        <UserBadge tariff={"professional"} error={true}>
+          example@mail.ru
+        </UserBadge>
         <Divider theme={DividerTheme.Primary} size={DividerSize.Medium} orientation={DividerOrientation.Horizontal} />
         <Nav isListsLimitReached={mProps.isListsLimitReached} />
       </div>

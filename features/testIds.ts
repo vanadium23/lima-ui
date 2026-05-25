@@ -62,7 +62,7 @@ export function buildClearInputButtonTestId(inputTestId: TestId): TestId {
   return `${inputTestId}ClearButton`;
 }
 
-export const USER_BUTTON = "userButton";
+export const USER_BADGE = "userBadge";
 
 const COUNTER_SUFFIX = "Counter";
 
