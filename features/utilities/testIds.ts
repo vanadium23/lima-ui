@@ -35,7 +35,7 @@ import {
   TOOLS_PANEL_BUTTON_IMPORT_LIST,
   TOOLS_PANEL_BUTTON_PRINT_LIST,
   TOOLS_PANEL_BUTTON_REMOVE_LIST,
-  USER_BUTTON,
+  USER_BADGE,
 } from "../testIds.ts";
 
 import { buildFullTestId } from "./buildTestableSelector.ts";
@@ -44,7 +44,7 @@ import { isDesktop, isMobile, isTablet } from "./discoverDevice.ts";
 const PAGE_TEMPLATE_PARTS = [
   HEADER,
   PAGE_TAB_TITLE,
-  ...(isDesktop() ? [SIDEBAR, USER_BUTTON, ADD_GROUP_BUTTON, PRO_VERSION_BUTTON, SIGN_OUT_BUTTON] : []),
+  ...(isDesktop() ? [SIDEBAR, USER_BADGE, ADD_GROUP_BUTTON, PRO_VERSION_BUTTON, SIGN_OUT_BUTTON] : []),
   ...(isDesktop() || isTablet() ? [SEARCH_INPUT, SEARCH_BUTTON] : []),
   ...(isTablet() || isMobile() ? [TOGGLE_SIDEBAR_BUTTON] : []),
   ...(isMobile() ? [OPEN_SEARCH_BUTTON] : []),

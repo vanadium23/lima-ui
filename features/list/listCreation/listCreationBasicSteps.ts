@@ -15,7 +15,7 @@ import {
   TOGGLE_SIDEBAR_BUTTON,
   TOGGLE_TOOLS_PANEL_BUTTON,
   TOOLS_PANEL,
-  USER_BUTTON,
+  USER_BADGE,
 } from "../../testIds.ts";
 import {
   ID_SUB_ID_SEPARATOR,
@@ -32,7 +32,7 @@ Then("I expect to see sidebar or its button", async function (this: ComplexWorld
   if (isDesktop()) {
     await this.expectLocated(this.accounting.elements.registerTestId(SIDEBAR)).toBeInViewport();
 
-    await this.expectLocated(this.accounting.elements.registerTestId(USER_BUTTON)).toBeInViewport();
+    await this.expectLocated(this.accounting.elements.registerTestId(USER_BADGE)).toBeInViewport();
 
     await this.expectLocated(this.accounting.elements.registerTestId(SIGN_OUT_BUTTON)).toBeInViewport();
 
