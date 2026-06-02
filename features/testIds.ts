@@ -1,7 +1,5 @@
 import type { TestId } from "../src/components/utilities/testable.ts";
 
-import { buildFullTestId } from "./utilities/buildTestableSelector.ts";
-
 export type SeveralTestIds = TestId[];
 
 export const DEFAULT_TEST_ID = "defaultTestId";
@@ -44,6 +42,8 @@ export const OPEN_CONTEXT_MENU_LIST_STRIPE_BUTTON = "openContextMenuListStripeBu
 export const REMOVE_ITEM_MENUITEM = "removeItemMenuitem";
 export const ADD_ITEM_ABOVE_MENUITEM = "addItemAboveMenuitem";
 export const ADD_ITEM_BELOW_MENUITEM = "addItemBelowMenuitem";
+export const IMPORT_ABOVE_MENUITEM = "importAboveMenuitem";
+export const IMPORT_BELOW_MENUITEM = "importBelowMenuitem";
 
 export const SEARCH_INPUT = "searchInput";
 export const SEARCH_BUTTON = "searchButton";
@@ -62,7 +62,7 @@ export function buildClearInputButtonTestId(inputTestId: TestId): TestId {
   return `${inputTestId}ClearButton`;
 }
 
-export const USER_BUTTON = "userButton";
+export const USER_BADGE = "userBadge";
 
 const COUNTER_SUFFIX = "Counter";
 
@@ -105,17 +105,11 @@ export function buildErrorCloseButtonTestId(errorTestId: TestId): TestId {
   return `${errorTestId}CloseButton`;
 }
 
-export const ERRORS_TEST_IDS = {
-  connection: NETWORK_ERROR,
-  "single connection": buildFullTestId(NETWORK_ERROR, 1),
-  "single list removal": buildFullTestId(LIST_REMOVAL_ERROR, 1),
-};
-export type ErrorMeaning = keyof typeof ERRORS_TEST_IDS;
-export const ERROR_CLOSE_BUTTONS_TEST_IDS: Record<ErrorMeaning, TestId> = {
-  connection: NETWORK_ERROR_CLOSE_BUTTON,
-  "single connection": buildFullTestId(NETWORK_ERROR_CLOSE_BUTTON, 1),
-  "single list removal": buildFullTestId(LIST_REMOVAL_ERROR_CLOSE_BUTTON, 1),
-};
+export const IMPORT_ERROR = "importError";
+export const IMPORT_ERROR_CLOSE_BUTTON = buildErrorCloseButtonTestId(IMPORT_ERROR);
+
+export const LIMIT_EXCEEDED_ERROR = "limitExceededError";
+export const LIMIT_EXCEEDED_ERROR_CLOSE_BUTTON = buildErrorCloseButtonTestId(LIMIT_EXCEEDED_ERROR);
 
 export const NO_SAVED_LISTS_MESSAGE = "noSavedListsMessage";
 
@@ -131,12 +125,46 @@ export const REMOVE_EXPORTED_ITEM_DIALOG = "removeExportedItemDialog";
 export function buildCloseDialogTestId(dialogTestId: TestId): TestId {
   return `${dialogTestId}CloseButton`;
 }
+
+export function buildLoadingDialogTestId(dialogTestId: TestId): TestId {
+  return `${dialogTestId}Loading`;
+}
+
+export function buildCheckboxTestId(testId: TestId): TestId {
+  return `${testId}Checkbox`;
+}
 export const REMOVE_DIALOG_REMOVE_LIST_BUTTON = "removeDialogRemoveListButton";
+export const REMOVE_DIALOG_DELETION_EXPORTED_LIST_BUTTON = "removeDialogDeletionExportedListButton";
+export const REMOVE_DIALOG_INSERTION_EXPORTED_LIST_BUTTON = "removeDialogInsertionExportedListButton";
 export const REMOVE_DIALOG_DELETION_EXPORTED_ITEM_BUTTON = "removeDialogDeletionExportedItemButton";
 export const REMOVE_DIALOG_INSERTION_EXPORTED_ITEM_BUTTON = "removeDialogInsertionExportedItemButton";
 
 export const IMPORT_DIALOG = "importDialog";
 export const IMPORT_DIALOG_IMPORT_BUTTON = "importDialogImportButton";
+export const IMPORT_DIALOG_EMPTY_MESSAGE = "importDialogEmptyMessage";
+export const IMPORT_DIALOG_LOADING = buildLoadingDialogTestId(IMPORT_DIALOG);
+export const LIST_STRIPE_IMPORT = "listStripeImport";
+export const LIST_STRIPE_IMPORT_CHECKBOX = buildCheckboxTestId(LIST_STRIPE_IMPORT);
+export const LIST_STRIPE_IMPORT_HEADER = "listStripeImportHeader";
+export const LIST_STRIPE_IMPORT_ITEM = "listStripeImportItem";
+export const LIST_STRIPE_IMPORT_ITEM_CHECKBOX = buildCheckboxTestId(LIST_STRIPE_IMPORT_ITEM);
+export const IMPORT_DIALOG_COUNTER = "importDialogCounter";
+
+export const IMPORTED_GROUP = "importedGroup";
+export const IMPORTED_GROUP_ITEM = "importedGroupItem";
+export const IMPORTED_GROUP_NAME_LINK = "importedGroupNameLink";
+export const OPEN_CONTEXT_MENU_IMPORTED_GROUP_BUTTON = "openContextMenuImportedGroupButton";
+export const GO_TO_SOURCE_LIST_MENUITEM = "goToSourceListMenuitem";
+export const REMOVE_IMPORTED_GROUP_MENUITEM = "removeImportedGroupMenuitem";
+export const EDIT_IMPORTED_GROUP_MENUITEM = "editImportedGroupMenuitem";
+export const EDIT_IMPORTED_GROUP_DIALOG = "editImportedGroupDialog";
+export const EDIT_IMPORTED_GROUP_BUTTON = "editImportedGroupButton";
+
+export const EXPORTED_TO_BUTTON = "exportedToButton";
+export const EXPORTED_TO_ITEM_BUTTON = "exportedToItemButton";
+export const EXPORTED_TO_MARK = "exportedToMark";
+export const EXPORTED_TO_LIST = "exportedToList";
+export const EXPORTED_TO_LIST_ITEM = "exportedToListItem";
 
 export const DRAG_HANDLE = "dragHandle";
 

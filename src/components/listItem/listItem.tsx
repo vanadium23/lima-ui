@@ -6,9 +6,11 @@ import {
   ADD_ITEM_BELOW_MENUITEM,
   AUTO_LIST_ITEM,
   buildListItemInputTestId,
-  DEFAULT_TEST_ID,
   DRAG_HANDLE,
   DRAGGED_LIST_ITEM,
+  EXPORTED_TO_ITEM_BUTTON,
+  IMPORT_ABOVE_MENUITEM,
+  IMPORT_BELOW_MENUITEM,
   LIST_ITEM,
   LIST_ITEM_CONTEXT_MENU,
   OPEN_CONTEXT_MENU_LIST_ITEM_BUTTON,
@@ -111,7 +113,7 @@ export const ListItem = (props: ListItemProps) => {
       handleClick: () => {
         openImportDialogPasteBefore(mProps.index);
       },
-      testId: DEFAULT_TEST_ID,
+      testId: IMPORT_ABOVE_MENUITEM,
       disabled: reachedItemsLimit(),
     },
     {
@@ -120,7 +122,7 @@ export const ListItem = (props: ListItemProps) => {
       handleClick: () => {
         openImportDialogPasteAfter(mProps.index);
       },
-      testId: DEFAULT_TEST_ID,
+      testId: IMPORT_BELOW_MENUITEM,
       disabled: reachedItemsLimit(),
     },
     {
@@ -197,18 +199,17 @@ export const ListItem = (props: ListItemProps) => {
                   <IconButton
                     ref={props.ref}
                     handleClick={props.handleClick}
-                    testId={DEFAULT_TEST_ID}
+                    testId={EXPORTED_TO_ITEM_BUTTON}
+                    testSubId={mProps.index}
                     iconName={IconName.Link}
                     size={IconButtonSize.MediumEmbedded}
                     theme={IconButtonTheme.Quaternary}
-                    ariaLabel={"Меню импортов"}
+                    ariaLabel={"Меню экспортов"}
                     disabled={Boolean(storeEditList.sendingNow)}
                   />
                 )}
               >
-                <ExportedTo title={"Пункт экспортирован в списки:"} testId={DEFAULT_TEST_ID}>
-                  {mProps.exportedTo}
-                </ExportedTo>
+                <ExportedTo title={"Пункт экспортирован в списки:"}>{mProps.exportedTo}</ExportedTo>
               </Dropdown>
             </Show>
           }

@@ -82,3 +82,21 @@ function throwIfUnknownPageMeaning(pageMeaning: PageMeaning): never | void {
 
   if (!address) throw new Error(`Unknown page meaning: ${pageMeaning}`);
 }
+
+When("I save the current page URL", async function (this: ComplexWorld) {
+  this.data["savedPageUrl"] = this.page.url().replace(this.FRONTEND_ADDRESS, "");
+});
+
+When("I navigate to the saved page URL", async function (this: ComplexWorld) {
+  const savedUrl = this.data["savedPageUrl"];
+
+  if (!savedUrl) {
+    throw new Error("No saved page URL found");
+  }
+
+  await this.navigate(savedUrl);
+});
+
+When("I go back to the previous page", async function (this: ComplexWorld) {
+  await this.page.goBack();
+});

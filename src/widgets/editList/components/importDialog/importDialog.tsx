@@ -2,7 +2,13 @@ import { createEffect, For, Show } from "solid-js";
 import { createStore } from "solid-js/store";
 
 import { ITEMS_LIMIT } from "../../../../../configuration.ts";
-import { DEFAULT_TEST_ID, IMPORT_DIALOG, IMPORT_DIALOG_IMPORT_BUTTON } from "../../../../../features/testIds.ts";
+import {
+  IMPORT_DIALOG,
+  IMPORT_DIALOG_COUNTER,
+  IMPORT_DIALOG_EMPTY_MESSAGE,
+  IMPORT_DIALOG_IMPORT_BUTTON,
+  IMPORT_ERROR,
+} from "../../../../../features/testIds.ts";
 import { soften } from "../../../../../utilities/soften.ts";
 import { Button, ButtonSize, ButtonTheme, ButtonType } from "../../../../components/button/button.tsx";
 import { Dialog } from "../../../../components/dialog/dialog.tsx";
@@ -77,9 +83,11 @@ export const ImportDialog = (props: ImportDialogProps) => {
 
       notificationState.clearNetworkErrors();
 
-      setStoreImportDialog({
-        listsForImport: filteredLists,
-        loadingListsForImport: false,
+      await soften(() => {
+        setStoreImportDialog({
+          listsForImport: filteredLists,
+          loadingListsForImport: false,
+        });
       });
     } catch (error) {
       console.error("Error loading lists:", error);
@@ -93,9 +101,9 @@ export const ImportDialog = (props: ImportDialogProps) => {
         notificationState.pushNetworkError(
           "Ошибка",
           "Не удалось загрузить списки для импорта, попробуйте еще раз",
-          DEFAULT_TEST_ID,
+          IMPORT_ERROR,
         );
-      }, 2000);
+      });
     }
   };
 
@@ -169,7 +177,11 @@ export const ImportDialog = (props: ImportDialogProps) => {
       loading={storeImportDialog.loadingListsForImport}
       controls={
         <>
-          <ElementCounter testId={DEFAULT_TEST_ID} isLimitReached={isImportDialogLimitReached()} maxCount={ITEMS_LIMIT}>
+          <ElementCounter
+            testId={IMPORT_DIALOG_COUNTER}
+            isLimitReached={isImportDialogLimitReached()}
+            maxCount={ITEMS_LIMIT}
+          >
             {getTotalCheckedItemsCount()}
           </ElementCounter>
           <Button
@@ -190,15 +202,15 @@ export const ImportDialog = (props: ImportDialogProps) => {
     >
       <form class="importDialog" id="importDialog" method="post" onSubmit={addImportedItems}>
         <Show when={!storeImportDialog.loadingListsForImport && storeImportDialog.listsForImport.length === 0}>
-          <div class="importDialog__emptyMessage">
+          <div class="importDialog__emptyMessage" data-test-id={IMPORT_DIALOG_EMPTY_MESSAGE}>
             Пока здесь пусто, но скоро появятся списки для импорта. Пожалуйста, создайте как минимум два списка для
             начала.
           </div>
         </Show>
         <For each={storeImportDialog.listsForImport}>
-          {(list) => {
+          {(list, index) => {
             return (
-              <ListStripeImport titleHTMLName={list.name} testId={DEFAULT_TEST_ID}>
+              <ListStripeImport titleHTMLName={list.name} index={index()}>
                 {list}
               </ListStripeImport>
             );

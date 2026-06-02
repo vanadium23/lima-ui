@@ -3,13 +3,7 @@ import {
   LIST_STRIPE_CONTEXT_MENU,
   LIST_STRIPE_EDIT_BUTTON,
   LIST_STRIPE_LINK_TO_VIEW,
-  REMOVE_LIST_DIALOG,
 } from "../testIds.ts";
-
-export const DIALOG_TEST_IDS = {
-  "remove list": REMOVE_LIST_DIALOG,
-};
-export type DialogMeaning = keyof typeof DIALOG_TEST_IDS;
 
 export const LINK_TEST_IDS = {
   "edit list": LIST_STRIPE_EDIT_BUTTON,

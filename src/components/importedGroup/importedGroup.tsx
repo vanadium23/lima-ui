@@ -1,7 +1,23 @@
 import { createSignal, For, mergeProps } from "solid-js";
 
 import { ITEMS_LIMIT } from "../../../configuration.ts";
-import { ADD_ITEM_ABOVE_MENUITEM, ADD_ITEM_BELOW_MENUITEM, DEFAULT_TEST_ID } from "../../../features/testIds.ts";
+import {
+  ADD_ITEM_ABOVE_MENUITEM,
+  ADD_ITEM_BELOW_MENUITEM,
+  DEFAULT_TEST_ID,
+  DRAG_HANDLE,
+  EDIT_IMPORTED_GROUP_BUTTON,
+  EDIT_IMPORTED_GROUP_DIALOG,
+  EDIT_IMPORTED_GROUP_MENUITEM,
+  GO_TO_SOURCE_LIST_MENUITEM,
+  IMPORT_ABOVE_MENUITEM,
+  IMPORT_BELOW_MENUITEM,
+  IMPORTED_GROUP_ITEM,
+  IMPORTED_GROUP_NAME_LINK,
+  LIMIT_EXCEEDED_ERROR,
+  OPEN_CONTEXT_MENU_IMPORTED_GROUP_BUTTON,
+  REMOVE_IMPORTED_GROUP_MENUITEM,
+} from "../../../features/testIds.ts";
 import { getListLink } from "../../../utilities/addresses.ts";
 import { notificationState } from "../../state/pushNotificationStateManager.ts";
 import type { DragSettings, EditListElement, EditListSimpleItem } from "../../types/types.ts";
@@ -69,7 +85,7 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
   const [isEditDialogOpen, setIsEditDialogOpen] = createSignal(false);
 
   function totalElementsBeforeEditImportedGroup() {
-    return mProps.children.length + getEditListElementsWithoutAutoItem().length;
+    return mProps.children.length + getEditListElementsWithoutAutoItem().length - 1;
   }
 
   function reachedLimitEditListElements() {
@@ -91,6 +107,7 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
       notificationState.pushInfo(
         "Превышение лимита пунктов",
         `Этот список нельзя встроить, так как будет превышен лимит ${totalElementsBeforeEditImportedGroup()} из ${ITEMS_LIMIT} доступных элементов списка`,
+        LIMIT_EXCEEDED_ERROR,
       );
     }
   }
@@ -102,15 +119,14 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
       handleClick: () => {
         setIsEditDialogOpen(true);
       },
-      testId: DEFAULT_TEST_ID,
-      disabled: reachedItemsLimit(),
+      testId: EDIT_IMPORTED_GROUP_MENUITEM,
     },
     {
       children: "К исходному списку",
       componentType: MenuItemComponentType.Link,
       href: getListLink(mProps.id),
       icon: IconName.ArrowBendUpLeft,
-      testId: DEFAULT_TEST_ID,
+      testId: GO_TO_SOURCE_LIST_MENUITEM,
     },
     {
       children: "Добавить пункт выше",
@@ -136,7 +152,7 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
       handleClick: () => {
         openImportDialogPasteBefore(mProps.index);
       },
-      testId: DEFAULT_TEST_ID,
+      testId: IMPORT_ABOVE_MENUITEM,
       disabled: reachedItemsLimit(),
     },
     {
@@ -145,7 +161,7 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
       handleClick: () => {
         openImportDialogPasteAfter(mProps.index);
       },
-      testId: DEFAULT_TEST_ID,
+      testId: IMPORT_BELOW_MENUITEM,
       disabled: reachedItemsLimit(),
     },
     {
@@ -155,7 +171,7 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
         removeItem(mProps.index);
       },
       theme: MenuItemTheme.Dangerous,
-      testId: DEFAULT_TEST_ID,
+      testId: REMOVE_IMPORTED_GROUP_MENUITEM,
     },
   ];
 
@@ -172,11 +188,12 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
         importedGroup_transition: Boolean(mProps.dragSettings.dragState?.active.draggable),
       }}
       data-test-id={mProps.testId}
+      data-test-sub-id={mProps.testSubId ?? "0"}
     >
       <div class="importedGroup__dragHandle">
         <DragHandle
           disabled={Boolean(storeEditList.sendingNow)}
-          testId={DEFAULT_TEST_ID}
+          testId={DRAG_HANDLE}
           dragHandle={mProps.dragSettings.dragData}
         />
       </div>
@@ -186,7 +203,8 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
             <Link
               size={LinkSize.Small}
               href={getListLink(mProps.id)}
-              testId={DEFAULT_TEST_ID}
+              testId={IMPORTED_GROUP_NAME_LINK}
+              testSubId={mProps.index}
               disabled={Boolean(storeEditList.sendingNow)}
             >
               {mProps.name}
@@ -201,7 +219,8 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
                     iconName={IconName.DotsThree}
                     size={IconButtonSize.MediumEmbedded}
                     ariaLabel={`Меню импорта из списка ${mProps.name}`}
-                    testId={DEFAULT_TEST_ID}
+                    testId={OPEN_CONTEXT_MENU_IMPORTED_GROUP_BUTTON}
+                    testSubId={mProps.testSubId ?? "0"}
                     disabled={Boolean(storeEditList.sendingNow)}
                   />
                 )}
@@ -212,12 +231,13 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
           </div>
         </div>
         <For each={mProps.children}>
-          {(item) => (
+          {(item, index) => (
             <ImportedItem
-              testId={DEFAULT_TEST_ID}
               checkable={mProps.checkable}
               checked={false}
               disabled={Boolean(storeEditList.sendingNow)}
+              testId={IMPORTED_GROUP_ITEM}
+              testSubId={index()}
             >
               {item.content}
             </ImportedItem>
@@ -235,15 +255,15 @@ export const ImportedGroup = (props: Testable<ImportedGroupProps>) => {
               editImportedGroup();
               setIsEditDialogOpen(false);
             }}
-            testId={DEFAULT_TEST_ID}
-            testSubId={mProps.testSubId || "0"}
+            testId={EDIT_IMPORTED_GROUP_BUTTON}
+            testSubId={mProps.testSubId ?? "0"}
           >
             Редактировать
           </Button>
         }
         open={isEditDialogOpen()}
-        testId={mProps.testId}
-        testSubId={mProps.testSubId || "0"}
+        testId={EDIT_IMPORTED_GROUP_DIALOG}
+        testSubId={mProps.testSubId ?? "0"}
       >
         <p>
           Редактируя импортированный список или пункт, вы открепляете его от исходного, и в дальнейшем любые изменения

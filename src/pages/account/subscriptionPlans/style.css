@@ -1,0 +1,16 @@
+.subscriptionPlans {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.subscriptionPlans__title {
+  padding: 1.2rem 2rem 0 3.6rem;
+}
+
+.subscriptionPlans__wrapper {
+  display: flex;
+  padding: 4rem 0 2rem 3.6rem;
+  gap: 2.8rem;
+  flex-wrap: wrap;
+}

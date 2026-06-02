@@ -1,0 +1,113 @@
+.userBadge {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.userBadge__capital {
+  display: block;
+  flex-shrink: 0;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.userBadge__link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.userBadge__wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.userBadge__userName {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.userBadge__tariffWrapper {
+  display: flex;
+}
+
+.userBadge__tariff {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.userBadge_medium {
+  gap: 0.6rem;
+}
+
+.userBadge_medium .userBadge__capital {
+  font-size: 1.6rem;
+  line-height: 2rem;
+  border-radius: 0.8rem;
+  padding: 0.2rem;
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.userBadge_medium .userBadge__userName {
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+}
+
+.userBadge_medium .userBadge__link {
+  gap: 0.4rem;
+  padding: 0.4rem 1rem 0.4rem 1.6rem;
+}
+
+.userBadge_medium .userBadge__tariffWrapper {
+  gap: 0.4rem;
+}
+
+.userBadge_medium .userBadge__tariff {
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+}
+
+.userBadge_primary .userBadge__capital {
+  background: linear-gradient(180deg, #c8f051 0%, #0285f1 65.5%);
+  color: var(--text-neutral-100);
+  font-weight: 600;
+}
+
+.userBadge_primary .userBadge__userName {
+  color: var(--text-neutral-900);
+  font-weight: 600;
+}
+
+.userBadge_primary .userBadge__tariff {
+  color: var(--text-primary-700);
+}
+
+.userBadge_primary .userBadge__error {
+  color: var(--attention-500);
+}
+
+@media (hover: hover) {
+  .userBadge_primary:hover .userBadge__capital {
+    background: linear-gradient(180deg, #daf098 0%, #40a5f8 65%);
+  }
+
+  .userBadge_primary .userBadge__link:hover {
+    background: var(--neutral-200);
+  }
+}
+
+.userBadge__link:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.userBadge__link:focus-visible {
+  outline: var(--outline-set);
+  outline-offset: var(--outline-offset);
+}

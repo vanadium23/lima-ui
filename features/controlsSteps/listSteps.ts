@@ -39,6 +39,10 @@ async function fillListFields(complexWorld: ComplexWorld) {
     complexWorld.data[input] = inputText;
     await complexWorld.locateByFullId(INPUT_TEST_IDS[input]).fill(inputText);
   }
+
+  const listIndex = complexWorld.data.listCount ? parseInt(complexWorld.data.listCount, 10) : 0;
+  complexWorld.data[`listTitle_${listIndex}`] = complexWorld.data["list title"]!;
+  complexWorld.data.listCount = String(listIndex + 1);
 }
 
 async function saveList(complexWorld: ComplexWorld) {

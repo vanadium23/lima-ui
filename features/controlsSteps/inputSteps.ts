@@ -41,6 +41,13 @@ Then("I expect to see the {string} input empty", async function (this: ComplexWo
   await expect(input).toHaveValue("");
 });
 
+Then(
+  "I expect to see the {string} input to have the following text: {string}",
+  async function (this: ComplexWorld, inputName: InputMeaning, text: string) {
+    await expect(locateInput(this, inputName)).toHaveValue(text);
+  },
+);
+
 const INPUT_LIMIT_RELATION = {
   "list title": LIST_TITLE_INPUT_LIMIT,
   "list purpose": LIST_PURPOSE_INPUT_LIMIT,

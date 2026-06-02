@@ -32,7 +32,8 @@
   --successful-500: #02b96f;
   --text-successful-500: #02b96f;
   --attention-500: #fc5f2b;
-  --primary-100: #dfecf7;
+  --primary-100: #e9f3fb;
+  --primary-150: #dfecf7;
   --primary-200: #c8dff2;
   --primary-250: #9ecff7;
   --primary-300: #72bbf8;
@@ -43,6 +44,7 @@
   --text-primary-400: #41a6f8;
   --text-primary-500: #0285f1;
   --text-primary-600: #083aec;
+  --text-primary-700: #0165b8;
   --secondary-400: #daf098;
   --secondary-500: #cef55a;
   --secondary-600: #a6db09;

@@ -1,0 +1,65 @@
+---
+import { DEFAULT_TEST_ID } from "../../../../features/testIds.ts";
+import {
+  PaymentRadioCard,
+  PaymentRadioCardSize,
+  PaymentRadioCardTheme,
+} from "../../../components/paymentRadioCard/paymentRadioCard.tsx";
+import StorybookPage from "../../../layouts/storybook/storybookPage.astro";
+
+const themes = Object.values(PaymentRadioCardTheme);
+const sizes = Object.values(PaymentRadioCardSize);
+---
+
+<StorybookPage title="Payment Radio Card">
+  <h2>Month</h2>
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 class="demoThemeWrapper__title">{theme}</h3>
+        <div class="grid grid_1Col">
+          <span class="chead" />
+          <span class="chead">Default</span>
+
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <PaymentRadioCard
+                title={"Ежемесячная подписка"}
+                price={199}
+                groupName={"test"}
+                testId={DEFAULT_TEST_ID}
+              />
+            </>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+
+  <h2>Year</h2>
+  {
+    themes.map((theme) => (
+      <div class="demoThemeWrapper">
+        <h3 class="demoThemeWrapper__title">{theme}</h3>
+        <div class="grid grid_1Col">
+          <span class="chead" />
+          <span class="chead">Default</span>
+
+          {sizes.map((size) => (
+            <>
+              <span class="rhead">{size}</span>
+              <PaymentRadioCard
+                title={"Годовая подписка"}
+                price={199}
+                salePrice={129}
+                groupName={"test"}
+                testId={DEFAULT_TEST_ID}
+              />
+            </>
+          ))}
+        </div>
+      </div>
+    ))
+  }
+</StorybookPage>

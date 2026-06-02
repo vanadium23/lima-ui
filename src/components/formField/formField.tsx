@@ -30,6 +30,7 @@ export const FormField = (props: Testable<FormFieldProps>) => {
       required: false,
       countable: false,
       clearable: false,
+      minLength: undefined,
       inputTheme: InputTheme.Primary,
       inputSize: InputSize.Medium,
       type: InputType.Text,
