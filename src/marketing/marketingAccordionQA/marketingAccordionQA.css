@@ -1,8 +1,7 @@
 .marketingAccordionQa {
   display: flex;
   flex-direction: column;
-  flex-shrink: 0;
-  flex-grow: 1;
+  flex: 1 0 auto;
   width: 100%;
   border-radius: 0;
 }
@@ -60,7 +59,7 @@
 
 .marketingAccordionQa__header:focus-visible {
   outline: var(--outline-set);
-  outline-offset: -0.2rem;
+  outline-offset: var(--outline-offset);
 }
 
 .marketingAccordionQa__header:focus:not(:focus-visible) {
