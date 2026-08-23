@@ -59,7 +59,8 @@ When(
   "I add lists to their limit",
   { timeout: getTimeoutOrCancelItIfDebugging(90000) },
   async function (this: ComplexWorld) {
-    const existingLists = await getLists(this.BACKEND_ADDRESS);
+    const token = (await this.context.cookies(this.FRONTEND_ADDRESS)).find((cookie) => cookie.name === "token")?.value;
+    const existingLists = await getLists(this.BACKEND_ADDRESS, undefined, token);
     const currentListsCount = existingLists.length;
 
     for (let i = currentListsCount; i < LISTS_LIMIT; i++) {
@@ -70,7 +71,7 @@ When(
         items: [{ content: getStringUpToLimit(10) }],
       };
 
-      await createList(listData, this.BACKEND_ADDRESS);
+      await createList(listData, this.BACKEND_ADDRESS, token);
     }
   },
 );

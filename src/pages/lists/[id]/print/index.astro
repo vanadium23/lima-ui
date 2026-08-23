@@ -45,6 +45,7 @@ function convertItemsFromBackendForPrint(elements: ListElementFromBackend[]): It
 let listRequestError = false;
 const errorText = "Нет соединения с сервером, попробуйте позже";
 let list: List;
+const token = Astro.cookies.get("token")?.value;
 
 try {
   let backendListsAddress = URL_MY_LISTS;
@@ -53,7 +54,11 @@ try {
     backendListsAddress = BACKEND_URL_NON_EXISTING;
   }
 
-  const response = await fetch(`${import.meta.env.SERVER_API_URL}${backendListsAddress}/${Astro.params.id}`);
+  const response = await fetch(`${import.meta.env.SERVER_API_URL}${backendListsAddress}/${Astro.params.id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 
   if (!response.ok) {
     throw new Error("Request failed");

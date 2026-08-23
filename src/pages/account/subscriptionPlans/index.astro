@@ -8,7 +8,7 @@ import AppPage from "../../../layouts/app/app.astro";
 
 import "./style.css";
 
-const { isListsLimitReached } = await getListsAndCheckListsLimitReached(Astro.url);
+const { isListsLimitReached } = await getListsAndCheckListsLimitReached(Astro.url, Astro.cookies.get("token")?.value);
 
 const benefitsBasePlan = [
   { theme: TariffCardBenefitTheme.Default, text: "Очень много текста для теста переноса строк" },

@@ -13,4 +13,5 @@ services:
       - PUBLIC_API_URL=http://localhost:${HOST_PORT:-3000}
       - SERVER_API_URL=http://svernik:${PORT:-3000}
     depends_on:
-      - svernik
+      svernik:
+        condition: service_healthy

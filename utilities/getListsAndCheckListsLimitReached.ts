@@ -4,7 +4,7 @@ import type { ListFromBackend } from "../src/types/types.ts";
 
 import { BACKEND_URL_LISTS, BACKEND_URL_NON_EXISTING } from "./addresses.ts";
 
-export async function getListsAndCheckListsLimitReached(currentUrl?: URL) {
+export async function getListsAndCheckListsLimitReached(currentUrl?: URL, token?: string) {
   let lists: ListFromBackend[] = [];
 
   let isListsLimitReached = false;
@@ -19,7 +19,7 @@ export async function getListsAndCheckListsLimitReached(currentUrl?: URL) {
       backendListsAddress = BACKEND_URL_NON_EXISTING;
     }
 
-    lists = await getLists(backendURL, backendListsAddress);
+    lists = await getLists(backendURL, backendListsAddress, token);
 
     isListsLimitReached = lists.length >= LISTS_LIMIT;
   } catch {

@@ -4,7 +4,10 @@ import AppPage from "../../layouts/app/app.astro";
 import { Lists } from "../../widgets/lists/lists.tsx";
 
 /* TODO Запрос всех списков будет позже заменен на запрос конкретного количества списков с бекенда */
-const { lists, isListsLimitReached, listsRequestError } = await getListsAndCheckListsLimitReached(Astro.url);
+const { lists, isListsLimitReached, listsRequestError } = await getListsAndCheckListsLimitReached(
+  Astro.url,
+  Astro.cookies.get("token")?.value,
+);
 ---
 
 <AppPage titleName="Мои списки" isListsLimitReached={isListsLimitReached}>

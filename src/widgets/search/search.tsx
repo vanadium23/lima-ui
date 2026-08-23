@@ -75,13 +75,7 @@ export const Search = (props: SearchProps) => {
     });
 
     try {
-      let backend: string;
-
-      if (backendURL) {
-        backend = backendURL;
-      } else {
-        backend = import.meta.env.PUBLIC_API_URL;
-      }
+      const backend = backendURL ?? "/api";
 
       const response = await fetch(`${backend}/search/lists`, {
         method: "POST",
