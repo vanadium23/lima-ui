@@ -1,10 +1,7 @@
 import { BACKEND_URL_LISTS } from "../../../../utilities/addresses.ts";
 import type { ListFromBackend, UpdatedListData } from "../../../types/types.ts";
 
-export async function updateList(
-  data: UpdatedListData,
-  backendURL = import.meta.env.PUBLIC_API_URL,
-): Promise<ListFromBackend> {
+export async function updateList(data: UpdatedListData, backendURL = "/api"): Promise<ListFromBackend> {
   const response = await fetch(`${backendURL}${BACKEND_URL_LISTS}/${data.id}`, {
     method: "PATCH",
     headers: {

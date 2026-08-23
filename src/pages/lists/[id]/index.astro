@@ -11,6 +11,7 @@ import "./style.css";
 let listRequestError = false;
 let list: ListFromBackend;
 let errorText: string = "";
+const token = Astro.cookies.get("token")?.value;
 
 function undefinedListId() {
   throw new Error("Can't find list ID");
@@ -24,7 +25,11 @@ try {
     errorText = "Ошибка соединения с сервером, попробуйте еще раз";
     backendListsAddress = BACKEND_URL_NON_EXISTING;
   }
-  const response = await fetch(`${backendURL}${backendListsAddress}/${Astro.params.id}`);
+  const response = await fetch(`${backendURL}${backendListsAddress}/${Astro.params.id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 
   if (!response.ok) {
     errorText = "Список с указанным ID не найден!";
@@ -37,7 +42,7 @@ try {
   list = emptyListFromBackend;
 }
 
-const { isListsLimitReached } = await getListsAndCheckListsLimitReached(Astro.url);
+const { isListsLimitReached } = await getListsAndCheckListsLimitReached(Astro.url, token);
 ---
 
 <AppPage titleName={list.name} list404={listRequestError} isListsLimitReached={isListsLimitReached}>

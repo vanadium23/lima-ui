@@ -9,7 +9,7 @@ Given("There is no internet connection", async function (this: ComplexWorld) {
 });
 
 Given("Data server is not available", async function (this: ComplexWorld) {
-  await this.context.route(`${this.BACKEND_ADDRESS}/**`, (route) => route.abort("failed"));
+  await this.context.route(`${this.FRONTEND_ADDRESS}/api/**`, (route) => route.abort("failed"));
 });
 
 Then("I expect to be focused on the {string} input", async function (this: ComplexWorld, inputMeaning: InputMeaning) {
