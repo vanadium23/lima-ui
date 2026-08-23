@@ -31,8 +31,6 @@
   animation: var(--preloader);
 }
 
-/* Sizes */
-
 .iconButton_small {
   width: 2.4rem;
   height: 2.4rem;
@@ -63,7 +61,12 @@
   border-radius: 0.8rem;
 }
 
-/* Themes */
+.iconButton_xxlLanding {
+  width: 4.2rem;
+  height: 4.2rem;
+  border: 0.1rem solid transparent;
+  border-radius: 0.8rem;
+}
 
 .iconButton_primary {
   color: var(--neutral-800);

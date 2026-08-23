@@ -19,6 +19,7 @@ export enum IconButtonSize {
   MediumEmbedded = "mediumEmbedded",
   Medium = "medium",
   Large = "large",
+  XxlLanding = "xxlLanding",
 }
 
 export enum IconButtonType {
@@ -67,6 +68,7 @@ export const IconButton = (props: Testable<IconButtonProps>) => {
     [IconButtonSize.MediumEmbedded]: IconSize.Medium,
     [IconButtonSize.Medium]: IconSize.Medium,
     [IconButtonSize.Large]: IconSize.Large,
+    [IconButtonSize.XxlLanding]: IconSize.ExtraExtraLarge,
   };
 
   return (
