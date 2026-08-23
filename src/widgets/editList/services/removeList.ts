@@ -3,11 +3,7 @@ import type { ListId } from "../../../types/types.ts";
 
 export type DeletionMethod = "deletion" | "insertion" | "";
 
-export async function removeList(
-  id: ListId,
-  deletionMethod: DeletionMethod = "",
-  backendURL = import.meta.env.PUBLIC_API_URL,
-): Promise<void> {
+export async function removeList(id: ListId, deletionMethod: DeletionMethod = "", backendURL = "/api"): Promise<void> {
   if (!id) {
     throw new Error("Потерялся ID списка");
   }

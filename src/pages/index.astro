@@ -1,15 +1,19 @@
 ---
 import { BACKEND_URL_USERS_ME } from "../../utilities/addresses.ts";
 
-const response = await fetch(`${import.meta.env.SERVER_API_URL}${BACKEND_URL_USERS_ME}`, {
-  method: "GET",
-  headers: {
-    Authorization: `Bearer ${Astro.cookies.get("token")?.value}`,
-  },
-});
+try {
+  const response = await fetch(`${import.meta.env.SERVER_API_URL}${BACKEND_URL_USERS_ME}`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${Astro.cookies.get("token")?.value}`,
+    },
+  });
 
-if (response.ok) {
-  return Astro.redirect("/lists");
+  if (response.ok) {
+    return Astro.redirect("/lists");
+  }
+} catch {
+  // DOC: Backend may still be starting while the UI container accepts its first request.
 }
 
 // TODO пытались использовать переменную URL_MY_LISTS, но Astro выдает ошибку.

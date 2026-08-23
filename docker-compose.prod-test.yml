@@ -17,4 +17,5 @@ services:
       - NODE_ENV=production
       - HOST=0.0.0.0
     depends_on:
-      - svernik
+      svernik:
+        condition: service_healthy

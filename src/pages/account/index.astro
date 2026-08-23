@@ -3,7 +3,7 @@ import { getListsAndCheckListsLimitReached } from "../../../utilities/getListsAn
 import AppPage from "../../layouts/app/app.astro";
 import { Account } from "../../widgets/account/account.tsx";
 
-const { isListsLimitReached } = await getListsAndCheckListsLimitReached(Astro.url);
+const { isListsLimitReached } = await getListsAndCheckListsLimitReached(Astro.url, Astro.cookies.get("token")?.value);
 ---
 
 <AppPage titleName="Новый список" isListsLimitReached={isListsLimitReached}>
