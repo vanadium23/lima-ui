@@ -37,77 +37,28 @@ env:
 
 jobs:
   backend-ts-integration:
+    # The monorepo is self-sufficient: the CI runs the BDD harness against
+    # our own src-ts backend only. The Clojure control run (the same
+    # harness against the legacy backend) stays a local tool via
+    # `make cucumber-js-clj` (needs a sibling lima-ng clone); the kaocha
+    # suite in the lima-ng CI keeps guarding the Clojure side.
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          path: lima-ui
       - uses: docker/setup-buildx-action@v3
       - name: Prepare node
         uses: actions/setup-node@v4
         with:
           node-version: "24"
           cache: "npm"
-          cache-dependency-path: lima-ui/package-lock.json
+          cache-dependency-path: package-lock.json
       - name: Install dependencies
         run: npm ci
-        working-directory: lima-ui
       - name: TS compile check
         run: |
           npx tsc -p tsconfig.backend.json
           npx tsc -p tests-ts/tsconfig.json
-        working-directory: lima-ui
       - name: Integration tests (TS backend, TS harness)
         run: |
           cp .env.example .env
           make cucumber-js
-        working-directory: lima-ui
-
-  backend-clj-control:
-    # Double verification: the same TS harness against the legacy Clojure
-    # backend from the sibling lima-ng checkout (needs java + lein for the
-    # backend only; the runner itself is node).
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          path: lima-ui
-      # actions/checkout cannot fetch another repository with the scoped
-      # GITHUB_TOKEN (the API call 404s); lima-ng is public, so a plain
-      # anonymous clone works.
-      - name: Checkout the legacy Clojure backend
-        run: git clone --depth 1 https://github.com/vanadium23/lima-ng.git lima-ng
-      - uses: docker/setup-buildx-action@v3
-      - name: Prepare java
-        uses: actions/setup-java@v4
-        with:
-          distribution: "temurin"
-          java-version: "21"
-      - name: Setup Clojure
-        uses: DeLaGuardo/setup-clojure@12.5
-        with:
-          cli: latest
-          lein: latest
-      - name: Cache clojure dependencies
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.m2/repository
-            ~/.gitlibs
-            ~/.deps.clj
-          key: cljdeps-${{ hashFiles('lima-ng/project.clj') }}
-          restore-keys: cljdeps-
-      - name: Prepare node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "24"
-          cache: "npm"
-          cache-dependency-path: lima-ui/package-lock.json
-      - name: Install dependencies
-        run: npm ci
-        working-directory: lima-ui
-      - name: Integration tests (Clojure backend, TS harness)
-        run: |
-          cp .env.example .env
-          make cucumber-js-clj
-        working-directory: lima-ui
