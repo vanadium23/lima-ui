@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "src/**"
+      - "src-ts/**"
       - "features/**"
       - "scripts/**"
       - "utilities/**"
@@ -12,11 +13,15 @@ on:
       - "configuration.ts"
       - "astro.config.mjs"
       - "tsconfig.json"
-      - "eslint.config.mjs"
+      - "package.json"
+      - "package-lock.json"
       - "docker-compose.yml"
+      - "docker-compose.backend.yml"
       - "docker-compose.prod-test.yml"
       - "Dockerfile"
-      - "Dockerfile.prod-test"
+      - "Dockerfile.app"
+      - ".env.example"
+      - ".github/workflows/e2e-tests.yml"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -28,6 +33,9 @@ permissions:
 
 jobs:
   e2e-tests:
+    # The whole application (TS API + Astro UI) is built from this
+    # repository as a single container (Dockerfile.app): no cross-repo
+    # backend checkout and no LIMA_BACKEND_REPO_TOKEN needed anymore.
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -45,40 +53,10 @@ jobs:
             frontend-port: 4323
 
     steps:
-      - name: Verify required secrets
-        run: |
-          MISSING_SECRETS=()
-
-          if [ -z "${{ secrets.LIMA_BACKEND_REPO_TOKEN }}" ]; then
-            MISSING_SECRETS+=("LIMA_BACKEND_REPO_TOKEN")
-          fi
-
-          if [ ${#MISSING_SECRETS[@]} -gt 0 ]; then
-            echo "❌ Error: The following required secrets are missing:"
-            printf '  - %s\n' "${MISSING_SECRETS[@]}"
-            echo ""
-            echo "Please configure these secrets in:"
-            echo "https://github.com/${{ github.repository }}/settings/secrets/actions"
-            exit 1
-          fi
-
-          echo "✅ All required secrets are configured"
-
       - name: Checkout UI repository
         uses: actions/checkout@v4
         with:
           path: lima-UI
-
-      - name: Checkout Lima backend repository
-        uses: actions/checkout@v4
-        with:
-          repository: ${{ github.repository_owner }}/lima
-          token: ${{ secrets.LIMA_BACKEND_REPO_TOKEN }}
-          path: lima
-
-      - name: Configure backend environment
-        run: |
-          cp lima/.env.example lima/.env
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -95,11 +73,12 @@ jobs:
         run: npx playwright install --with-deps
         working-directory: lima-UI
 
-      - name: Start backend, database, and front-end
+      - name: Start the application (backend + database + front-end)
         run: |
+          cp .env.example .env
           docker compose -f docker-compose.prod-test.yml -p lima-${{ matrix.device }} up -d --build
-          # Verify backend API is responding with expected data
-          timeout 180 bash -c 'until curl -s http://localhost:${{ matrix.backend-port }}/ | jq -e ".greeting" > /dev/null; do sleep 10; done'
+          # Verify the API is responding with expected data
+          timeout 240 bash -c 'until curl -s http://localhost:${{ matrix.backend-port }}/ | jq -e ".greeting" > /dev/null; do sleep 10; done'
           # Wait for the front-end to be available
           timeout 120 bash -c 'until curl -s http://localhost:${{ matrix.frontend-port }}/ > /dev/null; do sleep 5; done'
         working-directory: lima-UI

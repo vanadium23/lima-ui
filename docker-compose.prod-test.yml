@@ -1,21 +1,32 @@
 include:
-  - path: ../lima/docker-compose.yml
+  - docker-compose.backend.yml
 
 services:
-  lima-ui-prod:
+  # The e2e stand: the single-container application (Dockerfile.app —
+  # API + UI in one process) plus mongo and mailslurper from the backend
+  # stand. Replaces the old ../lima include: the monorepo carries its own
+  # backend now, no cross-repo checkout and no LIMA_BACKEND_REPO_TOKEN.
+  lima-app:
     build:
       context: .
-      dockerfile: Dockerfile.prod-test
-      args:
-        - SERVER_API_URL=http://svernik:${PORT:-3000}
-        - PUBLIC_API_URL=http://localhost:${HOST_PORT:-3000}
+      dockerfile: Dockerfile.app
     ports:
+      - "${HOST_PORT:-3000}:3000"
       - "${FRONTEND_PORT:-4321}:4321"
     environment:
-      - PUBLIC_API_URL=http://localhost:${HOST_PORT:-3000}
-      - SERVER_API_URL=http://svernik:${PORT:-3000}
-      - NODE_ENV=production
-      - HOST=0.0.0.0
+      - PORT=3000
+      - UI_PORT=4321
+      - MONGO_HOST=mongo
+      - MONGO_PORT=27017
+      - SMTP_HOST=mailslurper
+      - SERVER_URL=http://localhost:${HOST_PORT:-3000}
+      - CLIENT_ADDRESS=http://localhost:${FRONTEND_PORT:-4321}
+      - DEV=true
+    env_file:
+      - .env
     depends_on:
-      svernik:
+      mongo:
         condition: service_healthy
+      mailslurper:
+        condition: service_started
+    restart: on-failure
