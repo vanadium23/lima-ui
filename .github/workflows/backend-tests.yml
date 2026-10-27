@@ -14,6 +14,9 @@ on:
       - "package-lock.json"
       - "tsconfig.backend.json"
       - "docker-compose.backend.yml"
+      - "docker-compose.yml"
+      - "Dockerfile.app"
+      - "astro.config.mjs"
       - ".env.example"
       - ".github/workflows/backend-tests.yml"
   push:
@@ -29,6 +32,9 @@ on:
       - "package-lock.json"
       - "tsconfig.backend.json"
       - "docker-compose.backend.yml"
+      - "docker-compose.yml"
+      - "Dockerfile.app"
+      - "astro.config.mjs"
       - ".env.example"
       - ".github/workflows/backend-tests.yml"
 
@@ -62,3 +68,13 @@ jobs:
         run: |
           cp .env.example .env
           make cucumber-js
+
+  build-app-image:
+    # The single-container application (Dockerfile.app): build the image
+    # to keep the Astro middleware build + the runtime layer green.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - name: Build the app image
+        run: docker build -f Dockerfile.app -t lima-app:ci .

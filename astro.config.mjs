@@ -8,7 +8,11 @@ export default defineConfig({
   integrations: [solidJs()],
   output: "server",
   adapter: node({
-    mode: "standalone",
+    // The monorepo container (Dockerfile.app) hosts Astro inside the Lima
+    // fastify backend: it needs the middleware build. Everything else —
+    // `npm run dev`, `npm start`, the standalone Dockerfile — keeps the
+    // default standalone mode.
+    mode: process.env.ASTRO_ADAPTER_MODE === "middleware" ? "middleware" : "standalone",
   }),
   devToolbar: {
     enabled: false,

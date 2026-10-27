@@ -714,3 +714,21 @@ make cucumber-js-clj      # тот же харнесс × Clojure-бэкенд (
 ```
 
 Каталоги `src-ts/`, `tests-ts/`, `features-backend/` исключены из ESLint / Prettier / lint-staged проекта: у бэкенда свой стиль, а `.feature`-файлы заморожены. UI-e2e (`npm test`) и бэкенд-BDD — независимые наборы (`cucumber.json`: профили `default` и `backend` соответственно).
+
+### Единый контейнер приложения (API + UI одним процессом)
+
+`Dockerfile.app` собирает монорепо-приложение: TS-бэкенд (`src-ts`) и Astro-UI в одном контейнере и одном node-процессе (`src-ts/server-app.ts`):
+
+- `:3000` — API Лимы (замороженный BDD-контракт, без изменений);
+- `:4321` — UI: страницы и `/api/*`-эндпоинты (SSR-форварды идут на `127.0.0.1:3000` того же процесса; браузер общается только с `:4321`).
+
+Два порта обязательны: `GET /lists` — это и JSON API (контракт), и страница «Мои списки», поэтому UI не может делить порт с API.
+
+```bash
+docker compose up -d          # app + mongo + mailslurper, UI на :4321
+docker compose down           # остановить
+```
+
+Важно: `docker-compose.yml` (app-стенд) и `docker-compose.backend.yml` (BDD-стенд для `make cucumber-js`) публикуют одни порты (27017/2500) — не запускайте их одновременно: перед app-стендом сделайте `docker compose -f docker-compose.backend.yml down` (и наоборот).
+
+UI-билд для контейнера собирается в middleware-режиме (`ASTRO_ADAPTER_MODE=middleware`, см. `astro.config.mjs`); обычный `npm run build` и `npm start` работают как раньше (standalone).
