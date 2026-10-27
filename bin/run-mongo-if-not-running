@@ -1,0 +1,17 @@
+#!/bin/sh
+
+if [ "$MONGO_INSTALLATION" = "docker" ]; then
+  docker compose -f docker-compose.backend.yml up -d mongo
+  exit 0
+fi
+
+if ! command -v mongod >/dev/null; then
+  echo "MongoDB is not installed. Set it up first. Or use Docker." >&2
+  exit 1
+fi
+
+if ! pgrep mongo >/dev/null; then
+  mongod --config /usr/local/etc/mongod.conf --fork
+else
+  echo "MongoDB is already running."
+fi

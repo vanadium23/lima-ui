@@ -3,6 +3,21 @@ name: E2E Tests
 on:
   pull_request:
     branches: [main]
+    paths:
+      - "src/**"
+      - "features/**"
+      - "scripts/**"
+      - "utilities/**"
+      - "public/**"
+      - "configuration.ts"
+      - "package.json"
+      - "package-lock.json"
+      - "astro.config.mjs"
+      - "tsconfig.json"
+      - "eslint.config.mjs"
+      - "docker-compose*.yml"
+      - "Dockerfile*"
+      - ".github/workflows/e2e-tests.yml"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

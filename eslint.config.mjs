@@ -36,6 +36,9 @@ export default defineConfig([
     "**/*.woff2",
     "**/package-lock.json",
     "eslint.config.mjs",
+    "src-ts/",
+    "tests-ts/",
+    "features-backend/",
   ]),
   {
     extends: compat.extends(

@@ -1,0 +1,113 @@
+name: Backend Tests
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "src-ts/**"
+      - "tests-ts/**"
+      - "features-backend/**"
+      - "bin/**"
+      - "Makefile"
+      - "package.json"
+      - "package-lock.json"
+      - "tsconfig.backend.json"
+      - "docker-compose.backend.yml"
+      - ".env.example"
+      - ".github/workflows/backend-tests.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "src-ts/**"
+      - "tests-ts/**"
+      - "features-backend/**"
+      - "bin/**"
+      - "Makefile"
+      - "package.json"
+      - "package-lock.json"
+      - "tsconfig.backend.json"
+      - "docker-compose.backend.yml"
+      - ".env.example"
+      - ".github/workflows/backend-tests.yml"
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  backend-ts-integration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: lima-ui
+      - uses: docker/setup-buildx-action@v3
+      - name: Prepare node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: lima-ui/package-lock.json
+      - name: Install dependencies
+        run: npm ci
+        working-directory: lima-ui
+      - name: TS compile check
+        run: |
+          npx tsc -p tsconfig.backend.json
+          npx tsc -p tests-ts/tsconfig.json
+        working-directory: lima-ui
+      - name: Integration tests (TS backend, TS harness)
+        run: |
+          cp .env.example .env
+          make cucumber-js
+        working-directory: lima-ui
+
+  backend-clj-control:
+    # Double verification: the same TS harness against the legacy Clojure
+    # backend from the sibling lima-ng checkout (needs java + lein for the
+    # backend only; the runner itself is node).
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: lima-ui
+      - name: Checkout the legacy Clojure backend
+        uses: actions/checkout@v4
+        with:
+          repository: vanadium23/lima-ng
+          path: lima-ng
+      - uses: docker/setup-buildx-action@v3
+      - name: Prepare java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "21"
+      - name: Setup Clojure
+        uses: DeLaGuardo/setup-clojure@12.5
+        with:
+          cli: latest
+          lein: latest
+      - name: Cache clojure dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.m2/repository
+            ~/.gitlibs
+            ~/.deps.clj
+          key: cljdeps-${{ hashFiles('lima-ng/project.clj') }}
+          restore-keys: cljdeps-
+      - name: Prepare node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: lima-ui/package-lock.json
+      - name: Install dependencies
+        run: npm ci
+        working-directory: lima-ui
+      - name: Integration tests (Clojure backend, TS harness)
+        run: |
+          cp .env.example .env
+          make cucumber-js-clj
+        working-directory: lima-ui
