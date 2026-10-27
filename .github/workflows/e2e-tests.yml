@@ -10,14 +10,13 @@ on:
       - "utilities/**"
       - "public/**"
       - "configuration.ts"
-      - "package.json"
-      - "package-lock.json"
       - "astro.config.mjs"
       - "tsconfig.json"
       - "eslint.config.mjs"
-      - "docker-compose*.yml"
-      - "Dockerfile*"
-      - ".github/workflows/e2e-tests.yml"
+      - "docker-compose.yml"
+      - "docker-compose.prod-test.yml"
+      - "Dockerfile"
+      - "Dockerfile.prod-test"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
