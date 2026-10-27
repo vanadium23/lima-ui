@@ -72,11 +72,11 @@ jobs:
       - uses: actions/checkout@v4
         with:
           path: lima-ui
+      # actions/checkout cannot fetch another repository with the scoped
+      # GITHUB_TOKEN (the API call 404s); lima-ng is public, so a plain
+      # anonymous clone works.
       - name: Checkout the legacy Clojure backend
-        uses: actions/checkout@v4
-        with:
-          repository: vanadium23/lima-ng
-          path: lima-ng
+        run: git clone --depth 1 https://github.com/vanadium23/lima-ng.git lima-ng
       - uses: docker/setup-buildx-action@v3
       - name: Prepare java
         uses: actions/setup-java@v4
