@@ -693,3 +693,24 @@ _Исключением являются файлы шрифтов и конфи
 ## Главный совет
 
 Изучайте уже имеющиеся компоненты и код, чтобы лучше понимать наши подходы и иметь примеры реализации.
+
+## Backend и BDD (монорепо-часть, из lima-ng)
+
+В этом репозитории, помимо UI, живёт TypeScript-бэкенд Лимы и BDD-харнесс (перенесены из `vanadium23/lima-ng`):
+
+- `src-ts/` — бэкенд (fastify 5 + MongoDB driver + zod), запуск `npm run dev:backend`
+- `tests-ts/` — BDD-харнесс на `@cucumber/cucumber` + tsx (степы на TypeScript)
+- `features-backend/` — 83 замороженные фичи контракта бэкенда (Gherkin; перенесены из lima-ng, менять формулировки нельзя)
+- `bin/` — раннеры (`cucumber-js`, `run-backend-for-tests`, `run-mongo-if-not-running`)
+- `docker-compose.backend.yml` — dev-стенд для тестов: MongoDB 6 + MailSlurper
+- `tsconfig.backend.json` — отдельный tsconfig бэкенда (не пересекается с tsconfig UI)
+
+### Запуск интеграционных тестов бэкенда
+
+```bash
+cp .env.example .env      # однократно
+make cucumber-js          # харнесс × TS-бэкенд (~12–20 мин)
+make cucumber-js-clj      # тот же харнесс × Clojure-бэкенд (двойная верификация; нужен sibling-клон vanadium23/lima-ng с lein)
+```
+
+Каталоги `src-ts/`, `tests-ts/`, `features-backend/` исключены из ESLint / Prettier / lint-staged проекта: у бэкенда свой стиль, а `.feature`-файлы заморожены. UI-e2e (`npm test`) и бэкенд-BDD — независимые наборы (`cucumber.json`: профили `default` и `backend` соответственно).

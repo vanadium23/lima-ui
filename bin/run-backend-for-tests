@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# Starts the Lima backend for BDD testing as a foreground process, so
+# the parent (the TS test harness) can manage the whole process tree.
+# The backend selector is LIMA_TEST_BACKEND: "clojure" runs the legacy
+# Clojure application via lein from the sibling lima-ng checkout
+# (LIMA_NG_DIR overrides the path), "ts" runs the TypeScript backend
+# from this repository.
+set -u
+
+if [ "$#" -ne 1 ]; then
+  echo "Usage: bin/run-backend-for-tests <clojure|ts>" >&2
+  exit 64
+fi
+
+case "$1" in
+  clojure)
+    cd "${LIMA_NG_DIR:-../lima-ng}" || exit 66
+    exec lein run
+    ;;
+  ts)
+    exec npm run dev:backend
+    ;;
+  *)
+    echo "Unknown test backend: $1 (expected clojure or ts)" >&2
+    exit 64
+    ;;
+esac

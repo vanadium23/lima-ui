@@ -8,6 +8,10 @@
   "scripts": {
     "dev": "concurrently \"astro dev --open --host\" \"astro check --watch\"",
     "dev:docker": "concurrently \"astro dev --host\" \"astro check --watch\"",
+    "dev:backend": "tsx watch src-ts/server.ts",
+    "seed-dev-users": "tsx src-ts/bin/dev-users.ts",
+    "typecheck:backend": "tsc -p tsconfig.backend.json",
+    "typecheck:tests": "tsc -p tests-ts/tsconfig.json",
     "start": "node dist/server/entry.mjs",
     "build": "astro check && astro build",
     "preview": "astro preview",
@@ -30,11 +34,18 @@
     "@astrojs/solid-js": "^5.1.1",
     "@floating-ui/dom": "^1.7.4",
     "@thisbeyond/solid-dnd": "^0.7.5",
+    "@types/nodemailer": "^8.0.2",
     "astro": "^5.14.0",
+    "bcryptjs": "^3.0.2",
+    "dotenv": "^16.4.5",
+    "fastify": "^5.0.0",
+    "mongodb": "^6.10.0",
     "normalize.css": "^8.0.1",
+    "nodemailer": "^10.0.16",
     "solid-floating-ui": "^0.3.1",
     "solid-js": "^1.9.9",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",

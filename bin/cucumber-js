@@ -1,0 +1,29 @@
+#!/bin/sh
+
+# The TypeScript BDD harness runner for the backend features: cucumber-js
+# with the tsx loader (the step files import src-ts modules directly).
+# Uses the "backend" profile from cucumber.json (tests-ts step files), so
+# the UI e2e "default" profile stays untouched. The feature path is always
+# passed as a CLI argument (cucumber-js merges profile paths with CLI ones,
+# so the profile itself defines none): without arguments the full
+# features-backend suite runs.
+set -a
+if [ -f .env ]; then
+  . ./.env
+fi
+set +a
+
+# Without a positional (non-flag) argument — no args at all or flags only
+# (e.g. --dry-run) — append the default features-backend path.
+has_feature_path=0
+for arg in "$@"; do
+  case "$arg" in
+    -*) ;;
+    *) has_feature_path=1; break ;;
+  esac
+done
+if [ "$has_feature_path" -eq 0 ]; then
+  set -- "$@" features-backend
+fi
+
+exec node --import tsx node_modules/@cucumber/cucumber/bin/cucumber-js -p backend "$@"

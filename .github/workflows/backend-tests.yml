@@ -1,0 +1,64 @@
+name: Backend Tests
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "src-ts/**"
+      - "tests-ts/**"
+      - "features-backend/**"
+      - "bin/**"
+      - "Makefile"
+      - "package.json"
+      - "package-lock.json"
+      - "tsconfig.backend.json"
+      - "docker-compose.backend.yml"
+      - ".env.example"
+      - ".github/workflows/backend-tests.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "src-ts/**"
+      - "tests-ts/**"
+      - "features-backend/**"
+      - "bin/**"
+      - "Makefile"
+      - "package.json"
+      - "package-lock.json"
+      - "tsconfig.backend.json"
+      - "docker-compose.backend.yml"
+      - ".env.example"
+      - ".github/workflows/backend-tests.yml"
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  backend-ts-integration:
+    # The monorepo is self-sufficient: the CI runs the BDD harness against
+    # our own src-ts backend only. The Clojure control run (the same
+    # harness against the legacy backend) stays a local tool via
+    # `make cucumber-js-clj` (needs a sibling lima-ng clone); the kaocha
+    # suite in the lima-ng CI keeps guarding the Clojure side.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - name: Prepare node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+          cache-dependency-path: package-lock.json
+      - name: Install dependencies
+        run: npm ci
+      - name: TS compile check
+        run: |
+          npx tsc -p tsconfig.backend.json
+          npx tsc -p tests-ts/tsconfig.json
+      - name: Integration tests (TS backend, TS harness)
+        run: |
+          cp .env.example .env
+          make cucumber-js

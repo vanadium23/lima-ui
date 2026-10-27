@@ -7,5 +7,12 @@
     "paths": ["features"],
     "import": ["features/**/*.ts"],
     "order": "random"
+  },
+  "backend": {
+    "formatOptions": {
+      "snippetInterface": "async-await"
+    },
+    "format": ["progress"],
+    "import": ["tests-ts/**/*.ts"]
   }
 }

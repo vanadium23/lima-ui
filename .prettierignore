@@ -20,5 +20,10 @@ Thumbs.db
 *.svg
 *.woff2
 
-# Ignore lock files
+# Backend (ported from lima-ng: own style, frozen BDD contract)
+src-ts/
+tests-ts/
+features-backend/
+
+# Lock files
 package-lock.json

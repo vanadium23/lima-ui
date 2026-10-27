@@ -24,5 +24,9 @@ npm-debug.log*
 # Cucumber test artifacts
 /features/results/
 
+# Backend (ported from lima-ng)
+target/
+log/
+
 *storybook.log
 storybook-static
