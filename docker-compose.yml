@@ -1,17 +1,34 @@
 include:
-  - path: ../lima/docker-compose.yml
+  - docker-compose.backend.yml
 
 services:
-  lima-ui:
-    build: .
+  # The whole Lima application in one container: the TS API (src-ts,
+  # :3000) and the Astro UI (:4321) in a single node process
+  # (Dockerfile.app / src-ts/server-app.ts). The browser talks to the UI
+  # port only — pages and /api/* are same-origin there; the UI's
+  # server-side fetches reach the API over 127.0.0.1:3000 inside the
+  # process. Port 3000 is still published for the BDD harness runs.
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.app
     ports:
       - "${FRONTEND_PORT:-4321}:4321"
-    volumes:
-      - .:/app
-      - /app/node_modules
+      - "${HOST_PORT:-3000}:3000"
     environment:
-      - PUBLIC_API_URL=http://localhost:${HOST_PORT:-3000}
-      - SERVER_API_URL=http://svernik:${PORT:-3000}
+      - PORT=3000
+      - UI_PORT=4321
+      - MONGO_HOST=mongo
+      - MONGO_PORT=27017
+      - SMTP_HOST=mailslurper
+      - SERVER_URL=http://localhost:${HOST_PORT:-3000}
+      - CLIENT_ADDRESS=http://localhost:${FRONTEND_PORT:-4321}
+      - DEV=true
+    env_file:
+      - .env
     depends_on:
-      svernik:
+      mongo:
         condition: service_healthy
+      mailslurper:
+        condition: service_started
+    restart: on-failure

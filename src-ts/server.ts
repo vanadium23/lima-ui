@@ -176,6 +176,39 @@ export const buildApp = (options: {
 };
 
 export const startServer = async (): Promise<void> => {
+  const handle = await bootstrapBackend();
+  const { app } = handle;
+
+  let shuttingDown = false;
+  const shutdown = async (signal: string): Promise<void> => {
+    if (shuttingDown) {
+      return;
+    }
+    shuttingDown = true;
+    process.stdout.write(`Received ${signal}, shutting down.\n`);
+    try {
+      await app.close();
+      await handle.close();
+      process.exit(0);
+    } catch (error) {
+      process.stderr.write(`Shutdown error: ${String(error)}\n`);
+      process.exit(1);
+    }
+  };
+  process.once("SIGTERM", () => void shutdown("SIGTERM"));
+  process.once("SIGINT", () => void shutdown("SIGINT"));
+};
+
+// Shared boot path (env → mongo → indexes → dev users → listening app):
+// server.ts (pure API, the BDD contract) and server-app.ts (API + the
+// hosted Astro UI in one process) both start through it.
+export interface BackendHandle {
+  app: FastifyInstance;
+  config: ReturnType<typeof loadConfig>;
+  close: () => Promise<void>;
+}
+
+export const bootstrapBackend = async (): Promise<BackendHandle> => {
   process.env.NODE_ENV ??= "development";
   const dotenv = await import("dotenv");
   dotenv.config();
@@ -204,24 +237,13 @@ export const startServer = async (): Promise<void> => {
   await app.listen({ port: config.port, host: "0.0.0.0" });
   process.stdout.write(`Lima TS backend listening on :${config.port}\n`);
 
-  let shuttingDown = false;
-  const shutdown = async (signal: string): Promise<void> => {
-    if (shuttingDown) {
-      return;
-    }
-    shuttingDown = true;
-    process.stdout.write(`Received ${signal}, shutting down.\n`);
-    try {
-      await app.close();
+  return {
+    app,
+    config,
+    close: async () => {
       await database.close();
-      process.exit(0);
-    } catch (error) {
-      process.stderr.write(`Shutdown error: ${String(error)}\n`);
-      process.exit(1);
-    }
+    },
   };
-  process.once("SIGTERM", () => void shutdown("SIGTERM"));
-  process.once("SIGINT", () => void shutdown("SIGINT"));
 };
 
 // Entry point: tsx runs this file directly; start unless imported as a module.
