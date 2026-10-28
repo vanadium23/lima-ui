@@ -11,7 +11,6 @@ services:
       context: .
       dockerfile: Dockerfile.app
     ports:
-      - "${HOST_PORT:-3000}:3000"
       - "${FRONTEND_PORT:-4321}:4321"
     environment:
       - PORT=3000

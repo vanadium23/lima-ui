@@ -43,14 +43,11 @@ jobs:
         device: [desktop, tablet, mobile]
         include:
           - device: desktop
-            backend-port: 3000
-            frontend-port: 4321
+            app-port: 4321
           - device: tablet
-            backend-port: 3001
-            frontend-port: 4322
+            app-port: 4322
           - device: mobile
-            backend-port: 3002
-            frontend-port: 4323
+            app-port: 4323
 
     steps:
       - name: Checkout UI repository
@@ -77,23 +74,22 @@ jobs:
         run: |
           cp .env.example .env
           docker compose -f docker-compose.prod-test.yml -p lima-${{ matrix.device }} up -d --build
-          # Verify the API is responding with expected data
-          timeout 240 bash -c 'until curl -s http://localhost:${{ matrix.backend-port }}/ | jq -e ".greeting" > /dev/null; do sleep 10; done'
+          # Verify the API is responding with expected data (single public port)
+          timeout 240 bash -c 'until curl -s http://localhost:${{ matrix.app-port }}/api/ | jq -e ".greeting" > /dev/null; do sleep 10; done'
           # Wait for the front-end to be available
-          timeout 120 bash -c 'until curl -s http://localhost:${{ matrix.frontend-port }}/ > /dev/null; do sleep 5; done'
+          timeout 120 bash -c 'until curl -s http://localhost:${{ matrix.app-port }}/ > /dev/null; do sleep 5; done'
         working-directory: lima-UI
         env:
-          HOST_PORT: ${{ matrix.backend-port }}
           PORT: 3000
-          FRONTEND_PORT: ${{ matrix.frontend-port }}
-          CLIENT_ADDRESS: http://localhost:${{ matrix.frontend-port }}
+          FRONTEND_PORT: ${{ matrix.app-port }}
+          CLIENT_ADDRESS: http://localhost:${{ matrix.app-port }}
 
       - name: Run E2E tests
         run: npm test -- --${{ matrix.device }} --verbose --retry 1
         working-directory: lima-UI
         env:
-          PUBLIC_API_URL: http://localhost:${{ matrix.backend-port }}
-          CLIENT_ADDRESS: http://localhost:${{ matrix.frontend-port }}
+          PUBLIC_API_URL: http://localhost:${{ matrix.app-port }}
+          CLIENT_ADDRESS: http://localhost:${{ matrix.app-port }}
 
       - name: Stop services
         if: always()

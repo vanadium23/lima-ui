@@ -54,7 +54,8 @@ try {
     backendListsAddress = BACKEND_URL_NON_EXISTING;
   }
 
-  const response = await fetch(`${import.meta.env.SERVER_API_URL}${backendListsAddress}/${Astro.params.id}`, {
+  // DOC: Contract v2: the API lives under /api (SERVER_API_URL has no path).
+  const response = await fetch(`${import.meta.env.SERVER_API_URL}/api${backendListsAddress}/${Astro.params.id}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

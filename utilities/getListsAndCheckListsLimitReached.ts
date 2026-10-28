@@ -12,7 +12,9 @@ export async function getListsAndCheckListsLimitReached(currentUrl?: URL, token?
   let listsRequestError = false;
 
   try {
-    const backendURL = import.meta.env.SERVER_API_URL;
+    // DOC: Contract v2: the API lives under /api; the SSR fetch goes straight
+    // DOC: to the internal backend (SERVER_API_URL has no path part).
+    const backendURL = `${import.meta.env.SERVER_API_URL}/api`;
     let backendListsAddress = BACKEND_URL_LISTS;
 
     if (currentUrl?.searchParams.get("error") === "true") {

@@ -14,7 +14,6 @@ services:
       dockerfile: Dockerfile.app
     ports:
       - "${FRONTEND_PORT:-4321}:4321"
-      - "${HOST_PORT:-3000}:3000"
     environment:
       - PORT=3000
       - UI_PORT=4321

@@ -467,25 +467,25 @@ export const registerSvernikRoutes = (
 ): void => {
   const preHandler = authPreHandler(dependencies);
   app.post(
-    "/lists",
+    ROUTES.lists,
     { preHandler },
     createListHandler(dependencies.database, dependencies.serverUrl),
   );
   // GET/HEAD /lists: the automatic HEAD serves the same handler, like
   // the Clojure :head entry pointing at show-lists-or-respond-with-error.
-  app.get("/lists", { preHandler }, showListsHandler(dependencies.database));
+  app.get(ROUTES.lists, { preHandler }, showListsHandler(dependencies.database));
   app.get(
-    "/lists/:listId",
+    ROUTES.list,
     { preHandler },
     showListHandler(dependencies.database),
   );
   app.patch(
-    "/lists/:listId",
+    ROUTES.list,
     { preHandler },
     updateListHandler(dependencies.database, dependencies.serverUrl),
   );
   app.delete(
-    "/lists/:listId",
+    ROUTES.list,
     { preHandler },
     deleteListHandler(dependencies.database),
   );
