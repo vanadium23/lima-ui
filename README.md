@@ -34,33 +34,45 @@
 
 Если уведомление не появилось, откройте панель **Extensions** в VS Code и введите: `@recommended`
 
-### Запуск без Docker
+### Запуск без Docker (локальная разработка, контракт v2)
 
-Если предпочтительно запускать проекты отдельно:
-
-1. Запускаем backend: `cd ../lima && docker compose up`
-2. Устанавливаем зависимости при помощи команды: `npm install`.
-3. Запускаем frontend: `npm run dev`
-
-### Запуск с Docker
-
-Проект настроен для работы с Docker и автоматически включает backend из `../lima`:
+Всё живёт в этом репозитории: TS-бэкенд (`src-ts`) и UI. Понадобятся два терминала и Docker только для инфраструктуры (MongoDB + MailSlurper):
 
 ```bash
-# Убедитесь, что в ../lima есть файл .env (скопируйте из .env.example)
-cp ../lima/.env.example ../lima/.env
+# 0. Однократно: окружение и зависимости
+cp .env.example .env
+npm install
 
-# Запустите все сервисы (backend + frontend) одной командой
-docker compose up
+# 1. Инфраструктура (mongo :27017, mailslurper :2500/:8080/:8085)
+docker compose -f docker-compose.backend.yml up -d
 
-# Или в фоновом режиме
-docker compose up -d
+# 2. Терминал 1 — TS-бэкенд на :3000 (DEV=true сеет дев-аккаунты)
+npm run dev:backend
 
-# Остановить все сервисы
+# 3. Терминал 2 — UI на :4321 (astro dev + astro check --watch)
+npm run dev
+```
+
+Открываем `http://localhost:4321`. Дев-логин: `user@example.com` / `correctPassword1` (полный список аккаунтов сеет бэкенд при старте). Запросы браузера на `/api/*` проксируются vite на бэкенд (`astro.config.mjs`), кроме `/api/session` — это UI-шлюз сессий (httpOnly cookie).
+
+Если `/api/lists` внезапно отвечает минутами — база обросла списками от e2e-прогонов; почистить:
+
+```bash
+curl -X POST http://localhost:3000/api/clear-lists-and-items
+```
+
+BDD-прогоны бэкенда (`make cucumber-js`) используют ту же инфраструктуру из шага 1 — оба процесса (dev и прогоны) не запускать одновременно.
+
+### Запуск с Docker (полный стек одним контейнером)
+
+Единый контейнер приложения (API + UI одним процессом) плюс mongo и mailslurper, наружу один порт:
+
+```bash
+docker compose up -d        # UI на http://localhost:4321, API под /api/*
 docker compose down
 ```
 
-Фронтенд будет доступен на `http://localhost:4321`, backend на порту из `.env` файла backend-проекта.
+Не запускать одновременно с `docker-compose.backend.yml` — оба стенда публикуют порты mongo/mailslurper.
 
 ### Создание локального профиля пользователя
 
