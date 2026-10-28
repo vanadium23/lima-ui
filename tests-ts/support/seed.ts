@@ -24,14 +24,14 @@ import { TEST_USER_EMAIL, TEST_USER_PASSWORD } from "./config.ts";
 // tests.prepare-test-utils/get-user-id: login over HTTP, then read the
 // profile — works identically against both backends.
 export const getUserId = async (): Promise<string> => {
-  const login = await request("POST", `${serverUrl()}/auth/login`, {
+  const login = await request("POST", `${serverUrl()}/api/auth/login`, {
     body: { email: TEST_USER_EMAIL, password: TEST_USER_PASSWORD },
   });
   const token = (login.body as { token?: string } | null)?.token;
   if (token === undefined) {
     throw new Error(`Cannot login as the test user: HTTP ${login.status}.`);
   }
-  const profile = await request("GET", `${serverUrl()}/users/me`, { token });
+  const profile = await request("GET", `${serverUrl()}/api/users/me`, { token });
   const id = (profile.body as { id?: string } | null)?.id;
   if (id === undefined) {
     throw new Error(`Cannot read the test user profile: HTTP ${profile.status}.`);
@@ -88,7 +88,7 @@ const itemsData = [
   },
 ] as const;
 
-const listRoute = (id: string): string => `${serverUrl()}/lists/${id}`;
+const listRoute = (id: string): string => `${serverUrl()}/api/lists/${id}`;
 
 // prepare-lists-test-data lists-data, byte-for-byte (URLs through the
 // local API route like the donor does).

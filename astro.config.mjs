@@ -18,6 +18,19 @@ export default defineConfig({
     enabled: false,
   },
   vite: {
+    // Contract v2 dev stand: the browser talks to the same origin, and
+    // /api/* is the real API (src-ts on :3000). /api/session stays an
+    // Astro endpoint (sets/clears the httpOnly session cookie), so it
+    // bypasses the proxy.
+    server: {
+      proxy: {
+        "/api": {
+          target: process.env.SERVER_API_URL || "http://localhost:3000",
+          changeOrigin: true,
+          bypass: (req) => (req.url?.startsWith("/api/session") ? req.url : undefined),
+        },
+      },
+    },
     build: {
       // DOC To fix the SVG after build Vite issue as described in https://github.com/withastro/astro/issues/10296#issuecomment-1976825322.
       assetsInlineLimit: 0,

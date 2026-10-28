@@ -24,5 +24,5 @@ COPY --from=build /app/dist ./dist
 COPY package.json tsconfig.backend.json ./
 COPY src-ts ./src-ts
 COPY resources ./resources
-EXPOSE 3000 4321
+EXPOSE 4321
 CMD ["node", "--import", "tsx", "src-ts/server-app.ts"]

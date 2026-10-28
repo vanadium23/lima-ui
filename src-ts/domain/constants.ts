@@ -133,22 +133,30 @@ export const PASSWORD_MIN_LENGTH = 8;
 export const PASSWORD_MAX_LENGTH = 64;
 export const NAME_MAX_LENGTH = 32;
 
+// Contract v2 (2026-10-27, owner's decision): the whole API lives under
+// the /api prefix, so the UI owns the root paths and the container
+// exposes a single port. The .feature files carry no URLs — the paths
+// live in step implementations only, so the frozen feature texts and
+// the Clojure donor steps (root paths against the root-path backend)
+// are untouched.
+const API = "/api";
+
 export const ROUTES = {
-  home: "/",
-  login: "/auth/login",
-  verifyEmail: "/auth/verify-email",
-  resetPassword: "/auth/reset-password",
-  confirmResetPassword: "/auth/reset-password/confirm",
-  users: "/users",
-  profile: "/users/me",
-  lists: "/lists",
-  searchLists: "/search/lists",
-  countLists: "/count/lists",
-  list: "/lists/:listId",
-  items: "/items",
-  item: "/items/:itemId",
-  clearListsAndItems: "/clear-lists-and-items",
-  clearUsers: "/clear-users",
+  home: `${API}/`,
+  login: `${API}/auth/login`,
+  verifyEmail: `${API}/auth/verify-email`,
+  resetPassword: `${API}/auth/reset-password`,
+  confirmResetPassword: `${API}/auth/reset-password/confirm`,
+  users: `${API}/users`,
+  profile: `${API}/users/me`,
+  lists: `${API}/lists`,
+  searchLists: `${API}/search/lists`,
+  countLists: `${API}/count/lists`,
+  list: `${API}/lists/:listId`,
+  items: `${API}/items`,
+  item: `${API}/items/:itemId`,
+  clearListsAndItems: `${API}/clear-lists-and-items`,
+  clearUsers: `${API}/clear-users`,
 } as const;
 
 // Clojure auth.user-sessions.create: (generate-token-value "ses") —

@@ -58,7 +58,7 @@ const segmentsOf = (path: string): string[] => path.split("/").slice(1);
 
 // Exact or parameterized match ("/lists/:listId" matches
 // "/lists/list-abc"); the suite uses literal id-shaped segments.
-const routeMatches = (pattern: string, path: string): boolean => {
+export const routeMatches = (pattern: string, path: string): boolean => {
   const patternSegments = segmentsOf(pattern);
   const pathSegments = segmentsOf(path);
   return (

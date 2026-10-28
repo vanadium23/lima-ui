@@ -18,7 +18,8 @@ function undefinedListId() {
 }
 
 try {
-  let backendURL = import.meta.env.SERVER_API_URL;
+  // DOC: Contract v2: the API lives under /api (SERVER_API_URL has no path).
+  let backendURL = `${import.meta.env.SERVER_API_URL}/api`;
   let backendListsAddress = URL_MY_LISTS;
 
   if (Astro.url.searchParams.get("error") === "true") {

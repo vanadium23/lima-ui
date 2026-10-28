@@ -31,6 +31,10 @@ export const unauthorizedBody = (): {
 
 // wrap-user-authentication: parse "Bearer <token>" and resolve the user
 // for every request; 401s are the protected routes' own concern.
+// Contract v2: when the Authorization header is absent, the UI session
+// cookie ("token", set by the /api/session endpoint) carries the same
+// ses_ token — same-origin browser requests then reach the API directly
+// without any proxying endpoint.
 export const attachUser = async (
   database: Db,
   secret: string,
@@ -39,10 +43,18 @@ export const attachUser = async (
   request.user = null;
   const header = request.headers.authorization;
   const match = header === undefined ? null : /^Bearer (.+)$/.exec(header);
-  if (match === null) {
+  let token: string | null = match === null ? null : (match[1] ?? null);
+  if (token === null) {
+    const cookieHeader = request.headers.cookie;
+    if (typeof cookieHeader === "string") {
+      const cookieMatch = /(?:^|;\s*)token=([^;]+)/.exec(cookieHeader);
+      token = cookieMatch === null ? null : (cookieMatch[1] ?? null);
+    }
+  }
+  if (token === null) {
     return;
   }
-  const user = await verifySession(database, secret, match[1] ?? "");
+  const user = await verifySession(database, secret, token);
   if (user !== null) {
     request.user = user;
   }

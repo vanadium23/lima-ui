@@ -20,7 +20,7 @@ let backend: ChildProcess | null = null;
 
 const loginProbe = async (): Promise<number | null> => {
   try {
-    const response = await request("POST", `${serverUrl()}/auth/login`, {
+    const response = await request("POST", `${serverUrl()}/api/auth/login`, {
       body: { email: TEST_USER_EMAIL, password: TEST_USER_PASSWORD },
       followRedirects: true,
     });

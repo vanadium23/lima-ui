@@ -2,7 +2,8 @@
 import { BACKEND_URL_USERS_ME } from "../../utilities/addresses.ts";
 
 try {
-  const response = await fetch(`${import.meta.env.SERVER_API_URL}${BACKEND_URL_USERS_ME}`, {
+  // DOC: Contract v2: the API lives under /api (SERVER_API_URL has no path).
+  const response = await fetch(`${import.meta.env.SERVER_API_URL}/api${BACKEND_URL_USERS_ME}`, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${Astro.cookies.get("token")?.value}`,

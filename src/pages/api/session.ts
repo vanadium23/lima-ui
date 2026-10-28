@@ -6,7 +6,9 @@ import { deleteSessionCookie, setSessionCookie } from "../../../utilities/setSes
 const createSession: APIRoute = async ({ request, cookies }) => {
   const body = await request.json();
 
-  const backendResponse = await fetch(`${import.meta.env.SERVER_API_URL}${BACKEND_URL_AUTH_LOGIN}`, {
+  // DOC: Contract v2: the API lives under /api itself; this endpoint stays as
+  // DOC: the session gateway only (httpOnly cookie set server-side, logout).
+  const backendResponse = await fetch(`${import.meta.env.SERVER_API_URL}/api${BACKEND_URL_AUTH_LOGIN}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),

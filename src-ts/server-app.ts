@@ -1,28 +1,28 @@
-// Single-process Lima application: the API server (frozen BDD contract,
-// exactly what src-ts/server.ts boots) plus the built Astro UI hosted by
-// a plain node:http listener. Dockerfile.app runs this file so one
-// container serves everything:
+// Single-port Lima application (contract v2): ONE public listener serves
+// everything — the UI (pages, static assets, the /api/session cookie
+// gateway) and the real API under /api/*, which is proxied to the API
+// fastify instance listening internally (127.0.0.1:PORT). Dockerfile.app
+// runs this file, so the container exposes a single port.
 //
-//   :PORT    (3000) — the Lima API, untouched (cucumber runs against it);
-//   :UI_PORT (4321) — the Astro UI (pages + /api/* endpoints). The UI's
-//                     server-side fetches use SERVER_API_URL, baked at
-//                     build time as http://127.0.0.1:3000 — same process.
+//   public :UI_PORT (4321) — everything:
+//     /api/<route in the API registry> → internal API fastify;
+//     everything else (/, /lists pages, /api/session, /_astro assets)
+//     → static files from dist/client or the Astro middleware handler.
 //
-// Two listeners are deliberate: GET /lists is BOTH a frozen API route
-// (JSON) and the "my lists" page (HTML), so the UI cannot share the API
-// port. The UI listener is a raw http server — NOT fastify: fastify's
-// body parsing consumes the request stream, and the Astro middleware
-// ("Response body object should not be disturbed or locked") then
-// cannot rebuild its WebAPI Request from it. Raw req/res pass through
-// untouched; existing files from dist/client are served first.
+// The internal listener is a deliberate implementation detail: it keeps
+// the API lifecycle (fastify body parsing, the frozen contract
+// handlers) untouched while the public surface is one origin. The raw
+// node:http listener exists because fastify's body parsing would break
+// the Astro middleware (see the history of this file).
 import type { IncomingMessage, ServerResponse } from "node:http";
+import { request as httpRequest } from "node:http";
 import { createServer } from "node:http";
 import { existsSync, statSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
-import { bootstrapBackend, type BackendHandle } from "./server.ts";
+import { ROUTE_METHODS, bootstrapBackend, routeMatches, type BackendHandle } from "./server.ts";
 
 const DEFAULT_UI_PORT = 4321;
 
@@ -48,15 +48,61 @@ const MIME_TYPES: Readonly<Record<string, string>> = {
   ".woff2": "font/woff2",
 };
 
+const pathOnlyOf = (request: IncomingMessage): string =>
+  (request.url ?? "/").split("?")[0] ?? "/";
+
+// Public /api surface: exactly the frozen route registry. /api/session
+// (the UI cookie gateway) and unknown /api paths fall through to Astro.
+const isApiRoute = (request: IncomingMessage): boolean => {
+  const pathOnly = pathOnlyOf(request);
+  return ROUTE_METHODS.some(
+    ([pattern, methods]) =>
+      pathOnly.startsWith("/api/") &&
+      methods.includes(request.method ?? "") &&
+      routeMatches(pattern, pathOnly),
+  );
+};
+
+const proxyToApi = (
+  request: IncomingMessage,
+  response: ServerResponse,
+  apiPort: number,
+): void => {
+  const headers = { ...request.headers };
+  delete headers.host;
+  delete headers.connection;
+  const upstream = httpRequest(
+    {
+      host: "127.0.0.1",
+      port: apiPort,
+      method: request.method,
+      path: request.url,
+      headers,
+    },
+    (upstreamResponse) => {
+      response.writeHead(
+        upstreamResponse.statusCode ?? 502,
+        upstreamResponse.headers,
+      );
+      upstreamResponse.pipe(response);
+    },
+  );
+  upstream.on("error", (error) => {
+    if (!response.headersSent) {
+      response.writeHead(502, { "content-type": "text/plain" });
+    }
+    response.end(`API proxy error: ${String(error)}`);
+  });
+  request.pipe(upstream);
+};
+
 // Exact files from the Astro client build (/_astro assets, favicon…).
 // Missing paths fall through to the Astro handler.
 const serveStaticFile = async (
   request: IncomingMessage,
   response: ServerResponse,
 ): Promise<boolean> => {
-  const pathname = decodeURIComponent(
-    (request.url ?? "/").split("?")[0] ?? "/",
-  );
+  const pathname = decodeURIComponent(pathOnlyOf(request));
   const filePath = path.normalize(path.join(clientDir, pathname));
   if (!filePath.startsWith(clientDir)) {
     return false;
@@ -98,10 +144,13 @@ export const startAppServer = async (): Promise<void> => {
   }
 
   const uiPort = Number(process.env.UI_PORT ?? DEFAULT_UI_PORT);
-
   const ui = createServer((request, response) => {
     void (async () => {
       try {
+        if (isApiRoute(request)) {
+          proxyToApi(request, response, backend.config.port);
+          return;
+        }
         if (await serveStaticFile(request, response)) {
           return;
         }
@@ -118,7 +167,9 @@ export const startAppServer = async (): Promise<void> => {
     ui.once("error", reject);
     ui.listen(uiPort, "0.0.0.0", () => resolve());
   });
-  process.stdout.write(`Lima UI (Astro) listening on :${uiPort}\n`);
+  process.stdout.write(
+    `Lima app listening on :${uiPort} (API proxied internally on :${backend.config.port})\n`,
+  );
 
   let shuttingDown = false;
   const shutdown = async (signal: string): Promise<void> => {

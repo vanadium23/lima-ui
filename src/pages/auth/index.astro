@@ -7,7 +7,8 @@ import { Auth } from "../../widgets/auth/auth.tsx";
 const verifyToken = Astro.url.searchParams.get("token");
 
 if (verifyToken) {
-  const response = await fetch(`${import.meta.env.SERVER_API_URL}${BACKEND_URL_AUTH_VERIFY_EMAIL}`, {
+  // DOC: Contract v2: the API lives under /api (SERVER_API_URL has no path).
+  const response = await fetch(`${import.meta.env.SERVER_API_URL}/api${BACKEND_URL_AUTH_VERIFY_EMAIL}`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ token: verifyToken }),

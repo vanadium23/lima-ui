@@ -60,7 +60,9 @@ When(
   { timeout: getTimeoutOrCancelItIfDebugging(90000) },
   async function (this: ComplexWorld) {
     const token = (await this.context.cookies(this.FRONTEND_ADDRESS)).find((cookie) => cookie.name === "token")?.value;
-    const existingLists = await getLists(this.BACKEND_ADDRESS, undefined, token);
+    // DOC: Contract v2: the API lives under /api on the same origin.
+    const apiAddress = `${this.BACKEND_ADDRESS}/api`;
+    const existingLists = await getLists(apiAddress, undefined, token);
     const currentListsCount = existingLists.length;
 
     for (let i = currentListsCount; i < LISTS_LIMIT; i++) {
@@ -71,7 +73,7 @@ When(
         items: [{ content: getStringUpToLimit(10) }],
       };
 
-      await createList(listData, this.BACKEND_ADDRESS, token);
+      await createList(listData, apiAddress, token);
     }
   },
 );
