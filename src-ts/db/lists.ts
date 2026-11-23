@@ -15,6 +15,7 @@ import {
   COLLECTIONS,
   CREATED_AT_FIELD,
   ID_FIELD,
+  ITEMS_FIELD,
   MONGO_ID_FIELD,
   NAME_FIELD,
   NEWER_VERSION_ID_FIELD,
@@ -91,126 +92,320 @@ export const findReferencingLists = async (
   }));
 };
 
-// list-has-exported-items?: own-origin item ids (originalListId equal
-// to this list's id) referenced by some OTHER most-recent list.
-const listHasExportedItems = async (
+// ===== Read enrichment (find-svernik / get-list-with-dereferenced-items) =====
+//
+// A list read resolves references, not values: every stored items entry
+// is a bare id (an item document or a nested list), items carry
+// original-list {id, name}, lists carry exported-to and
+// has-exported-items. One Mongo round trip PER REFERENCE was 729
+// sequential finds for GET /lists over 60 lists x 5 items. The batch
+// below resolves a whole nesting level in three queries (items, lists,
+// referencing lists) with the per-reference semantics of the lookups it
+// replaces:
+//  - find-item: the most recent version of the id, owned by the
+//    referencing list's user;
+//  - find-essence (nested list, original list): the most recent version
+//    of the id, any user;
+//  - aggregate-lookup-exported-to: the most recent lists whose items
+//    contain the essence id, minus the original list, in createdAt order.
+
+// A list referencing itself (directly or through nested lists) recursed
+// without end — a stack overflow, i.e. a 500. Same failure here, without
+// hanging the event loop.
+const MAX_NESTING_DEPTH = 64;
+
+interface ListEntry {
+  document: RawEssence;
+  ownerId: string;
+  depth: number;
+}
+
+// One place of a list's items array: a resolved item (enriched once the
+// level's referencing lists are read) or a nested list (its placeholder
+// is filled in place after the next level is read, so the array keeps
+// the reference order).
+type ItemPlace = { item: RawEssence } | { slot: RawEssence };
+
+const storedItemsOf = (list: RawEssence): unknown[] =>
+  Array.isArray(list.items) ? (list.items as unknown[]) : [];
+
+// `items: value` on an array field: the field itself or one element.
+const referencesEssence = (items: unknown, essenceId: string): boolean =>
+  Array.isArray(items) ? items.includes(essenceId) : items === essenceId;
+
+// The most recent version of every id in ONE query. The version chain
+// keeps exactly one most-recent document per id; should that invariant
+// ever break, the FIRST in natural order wins — what findOne answered.
+const findMostRecentById = async (
   database: Db,
-  listId: string,
-  ownOriginItemIds: string[],
-): Promise<boolean> => {
-  if (ownOriginItemIds.length === 0) {
-    return false;
+  collection: string,
+  ids: Iterable<string>,
+): Promise<Map<string, RawEssence>> => {
+  const found = new Map<string, RawEssence>();
+  const unique = [...new Set(ids)];
+  if (unique.length === 0) {
+    return found;
   }
-  const other = await database
-    .collection(COLLECTIONS.lists)
-    .findOne(
-      {
-        // Excluded by essence id field — see findReferencingLists.
-        [ID_FIELD]: { $ne: listId },
-        [NEWER_VERSION_ID_FIELD]: null,
-        items: { $in: ownOriginItemIds },
-      } as never,
-    );
-  return other !== null;
+  const documents = await database
+    .collection(collection)
+    .find<RawEssence>({
+      [ID_FIELD]: { $in: unique },
+      [NEWER_VERSION_ID_FIELD]: null,
+    } as never)
+    .toArray();
+  for (const document of documents) {
+    const id = String(document[ID_FIELD]);
+    if (!found.has(id)) {
+      found.set(id, document);
+    }
+  }
+  return found;
 };
 
-// Enrich a raw ITEM document for the response: exportedTo + originalList.
-// findExportedToLists=false mirrors the Clojure read paths built on
-// aggregate-set-empty-exported-to (find-all-most-recent-lists, nested
-// item reads): exportedTo collapses to null instead of a lookup.
-const enrichItem = async (
+// The most recent lists referencing any of the essence ids: {id, name}
+// plus the items array the in-memory filter needs, in createdAt order —
+// findReferencingLists for a whole set (filtering a sorted sequence per
+// essence id keeps each id's order).
+const findReferencingListsByIds = async (
   database: Db,
+  essenceIds: Iterable<string>,
+): Promise<RawEssence[]> => {
+  const unique = [...new Set(essenceIds)];
+  if (unique.length === 0) {
+    return [];
+  }
+  return database
+    .collection(COLLECTIONS.lists)
+    .find<RawEssence>(
+      {
+        [NEWER_VERSION_ID_FIELD]: null,
+        [ITEMS_FIELD]: { $in: unique },
+      } as never,
+      { projection: { [ID_FIELD]: 1, name: 1, [ITEMS_FIELD]: 1 } },
+    )
+    .sort({ createdAt: 1 })
+    .toArray();
+};
+
+// Enrich a raw ITEM document: exportedTo + originalList. The
+// findExportedToLists=false branch mirrors the Clojure read paths built
+// on aggregate-set-empty-exported-to (find-all-most-recent-lists, nested
+// item reads): exportedTo collapses to null instead of a lookup.
+const enrichItemFromLookups = (
   item: RawEssence,
   findExportedToLists: boolean,
-): Promise<RawEssence> => {
+  listDocuments: Map<string, RawEssence>,
+  referencing: RawEssence[],
+): RawEssence => {
+  const itemId = String(item.id);
   const originalListId =
     typeof item.originalListId === "string" ? item.originalListId : null;
   const exportedTo = findExportedToLists
-    ? await findReferencingLists(database, String(item.id), originalListId)
+    ? referencing
+        .filter(
+          (document) =>
+            // The $ne original-list-id branch of findReferencingLists.
+            (originalListId === null ||
+              document[ID_FIELD] !== originalListId) &&
+            referencesEssence(document[ITEMS_FIELD], itemId),
+        )
+        .map((document) => ({ id: document.id, name: document.name }))
     : null;
   const enriched: RawEssence = { ...item, exportedTo };
   if (originalListId !== null) {
-    const owner = await findListDocument(database, originalListId);
-    if (owner !== null) {
+    const owner = listDocuments.get(originalListId);
+    if (owner !== undefined) {
       enriched.originalList = { id: owner.id, name: owner.name };
     }
   }
   return enriched;
 };
 
-const dereferenceItems = async (
+// find-svernik + get-sorted-svernik for a batch of lists of ONE nesting
+// level: dereference the items, compute exportedTo and
+// has-exported-items. findExportedToLists=false is the
+// aggregate-set-empty-exported-to branch of find-all-most-recent-lists:
+// the top-level lists keep their real exportedTo, their items get
+// exportedTo: null. Nested lists always re-enter with the real lookups.
+const enrichListEntries = async (
   database: Db,
-  storedItems: unknown[],
-  ownerId: string,
+  entries: ListEntry[],
   findExportedToLists: boolean,
 ): Promise<RawEssence[]> => {
-  const resolved: RawEssence[] = [];
-  for (const essenceId of storedItems) {
-    if (isListId(essenceId)) {
-      const nested = await findListDocument(database, essenceId);
-      if (nested !== null) {
-        // Nested lists dereference with their OWN user-id (Clojure:
-        // get-list-with-dereferenced-items reads (:user-id list)),
-        // not the requester's; nested reads keep the REAL exported-to
-        // lookups (Clojure re-enters find-svernik for them).
-        resolved.push(
-          await enrichList(
-            database,
-            nested,
-            String(nested.userId),
-            true,
-          ),
-        );
-      }
-    } else if (isItemId(essenceId)) {
-      const item = await findItemDocument(database, essenceId, ownerId);
-      if (item !== null) {
-        resolved.push(
-          await enrichItem(database, item, findExportedToLists),
-        );
+  if (entries.length === 0) {
+    return [];
+  }
+  for (const entry of entries) {
+    if (entry.depth > MAX_NESTING_DEPTH) {
+      throw new RangeError(
+        "List nesting is too deep (a list referencing itself?).",
+      );
+    }
+  }
+  const storedPerEntry = entries.map((entry) => storedItemsOf(entry.document));
+
+  // The references of this level.
+  const itemIds = new Set<string>();
+  const listIds = new Set<string>();
+  for (const storedItems of storedPerEntry) {
+    for (const essenceId of storedItems) {
+      if (isListId(essenceId)) {
+        listIds.add(essenceId);
+      } else if (isItemId(essenceId)) {
+        itemIds.add(essenceId);
       }
     }
   }
-  return resolved;
-};
 
-// Enrich a LIST document: dereference items, compute exportedTo and
-// has-exported-items. Mirrors find-svernik + get-sorted-svernik.
-// findExportedToLists=false = the aggregate-set-empty-exported-to
-// branch used by find-all-most-recent-lists: the TOP-LEVEL list keeps
-// its real exportedTo, nested items get exportedTo: null.
-const enrichList = async (
-  database: Db,
-  list: RawEssence,
-  ownerId: string,
-  findExportedToLists: boolean,
-): Promise<RawEssence> => {
-  const storedItems = Array.isArray(list.items) ? list.items : [];
-  const items = await dereferenceItems(
+  // find-item: the most recent version of the id, owned by the
+  // referencing list's user — keyed by owner + id.
+  const itemDocuments = await findMostRecentById(
     database,
-    storedItems,
-    ownerId,
-    findExportedToLists,
+    COLLECTIONS.items,
+    itemIds,
   );
-  const ownOriginItemIds = items
-    .filter(
-      (item) =>
-        typeof item.originalListId === "string" &&
-        item.originalListId === list.id &&
-        typeof item.id === "string",
-    )
-    .map((item) => String(item.id));
-  const exportedTo = await findReferencingLists(
+  const resolvedItems = new Map<string, RawEssence | null>();
+  for (const entry of entries) {
+    for (const essenceId of storedItemsOf(entry.document)) {
+      if (!isItemId(essenceId)) {
+        continue;
+      }
+      const key = `${entry.ownerId}\u0000${essenceId}`;
+      if (resolvedItems.has(key)) {
+        continue;
+      }
+      const document = itemDocuments.get(essenceId);
+      resolvedItems.set(
+        key,
+        document !== undefined && document[USER_ID_FIELD] === entry.ownerId
+          ? (withRenamedId(document) as RawEssence)
+          : null,
+      );
+    }
+  }
+
+  // find-essence: the most recent version of the id, any user — the
+  // nested lists and the items' original lists.
+  for (const item of resolvedItems.values()) {
+    if (item !== null && typeof item.originalListId === "string") {
+      listIds.add(item.originalListId);
+    }
+  }
+  const listDocuments = await findMostRecentById(
     database,
-    String(list.id),
-    null,
+    COLLECTIONS.lists,
+    listIds,
   );
-  const hasExportedItems = await listHasExportedItems(
-    database,
-    String(list.id),
-    ownOriginItemIds,
-  );
-  return { ...list, items, exportedTo, hasExportedItems };
+
+  // The items arrays in reference order; the next level's entries.
+  const placesPerEntry: ItemPlace[][] = [];
+  const childSlots: RawEssence[] = [];
+  const childEntries: ListEntry[] = [];
+  for (const [index, entry] of entries.entries()) {
+    const places: ItemPlace[] = [];
+    for (const essenceId of storedPerEntry[index] ?? []) {
+      if (isListId(essenceId)) {
+        const nested = listDocuments.get(essenceId);
+        if (nested !== undefined) {
+          // Nested lists dereference with their OWN user-id (Clojure:
+          // get-list-with-dereferenced-items reads (:user-id list)),
+          // not the requester's; nested reads keep the REAL exported-to
+          // lookups (Clojure re-enters find-svernik for them).
+          const slot: RawEssence = {};
+          places.push({ slot });
+          childSlots.push(slot);
+          childEntries.push({
+            document: withRenamedId(nested) as RawEssence,
+            ownerId: String(nested[USER_ID_FIELD]),
+            depth: entry.depth + 1,
+          });
+        }
+      } else if (isItemId(essenceId)) {
+        const item = resolvedItems.get(`${entry.ownerId}\u0000${essenceId}`);
+        if (item !== undefined && item !== null) {
+          places.push({ item });
+        }
+      }
+    }
+    placesPerEntry.push(places);
+  }
+
+  // The next level, then the placeholders are filled in place.
+  const children = await enrichListEntries(database, childEntries, true);
+  for (const [index, slot] of childSlots.entries()) {
+    const child = children[index];
+    if (child !== undefined) {
+      Object.assign(slot, child);
+    }
+  }
+
+  // list-has-exported-items?: the own-origin item ids (originalListId
+  // equal to this list's id) — over the final items, nested lists
+  // included, like the Clojure (filter … (:items list)).
+  const ownOriginIdsPerEntry = placesPerEntry.map((places, index) => {
+    const listId = entries[index]?.document[ID_FIELD];
+    return places
+      .map((place) => ("slot" in place ? place.slot : place.item))
+      .filter(
+        (essence) =>
+          typeof essence.originalListId === "string" &&
+          essence.originalListId === listId &&
+          typeof essence.id === "string",
+      )
+      .map((essence) => String(essence.id));
+  });
+
+  // aggregate-lookup-exported-to for every list of the level, plus the
+  // items' exported-to (real lookups) or at least the own-origin ids
+  // the has-exported-items check needs.
+  const referencedIds = new Set<string>();
+  for (const entry of entries) {
+    referencedIds.add(String(entry.document[ID_FIELD]));
+  }
+  for (const essenceId of findExportedToLists ? itemIds : []) {
+    referencedIds.add(essenceId);
+  }
+  if (!findExportedToLists) {
+    for (const ownOriginIds of ownOriginIdsPerEntry) {
+      for (const essenceId of ownOriginIds) {
+        referencedIds.add(essenceId);
+      }
+    }
+  }
+  const referencing = await findReferencingListsByIds(database, referencedIds);
+
+  return entries.map((entry, index) => {
+    const items = (placesPerEntry[index] ?? []).map((place) =>
+      "slot" in place
+        ? place.slot
+        : enrichItemFromLookups(
+            place.item,
+            findExportedToLists,
+            listDocuments,
+            referencing,
+          ),
+    );
+    const listId = String(entry.document[ID_FIELD]);
+    const ownOriginIds = new Set(ownOriginIdsPerEntry[index]);
+    // aggregate-lookup-exported-to: the {id, name} of every most-recent
+    // list whose items contain this list.
+    const exportedTo = referencing
+      .filter((document) => referencesEssence(document[ITEMS_FIELD], listId))
+      .map((document) => ({ id: document.id, name: document.name }));
+    // Some OTHER most-recent list references an own-origin item.
+    const hasExportedItems =
+      ownOriginIds.size > 0 &&
+      referencing.some(
+        (document) =>
+          // Excluded by the essence id field — see findReferencingLists.
+          document[ID_FIELD] !== entry.document[ID_FIELD] &&
+          storedItemsOf(document).some(
+            (essenceId) =>
+              typeof essenceId === "string" && ownOriginIds.has(essenceId),
+          ),
+      );
+    return { ...entry.document, items, exportedTo, hasExportedItems };
+  });
 };
 
 // Full read used by GET /lists/:id and the 201 body. The TOP-LEVEL
@@ -233,12 +428,12 @@ export const findSvernik = async (
   if (document === null) {
     return null;
   }
-  return enrichList(
+  const [enriched] = await enrichListEntries(
     database,
-    withRenamedId(document) as RawEssence,
-    userId,
+    [{ document: withRenamedId(document) as RawEssence, ownerId: userId, depth: 0 }],
     true,
   );
+  return enriched ?? null;
 };
 
 // prefetch-updated-items: item-id → current item document (nil when
@@ -249,17 +444,36 @@ export interface PrefetchedItems {
 
 export const prefetchItems = async (
   database: Db,
-  rawDataItems: unknown[],
+  rawDataItems: unknown,
   userId: string,
 ): Promise<PrefetchedItems> => {
   const prefetched: PrefetchedItems = {};
-  for (const entry of rawDataItems) {
-    const id =
-      typeof entry === "object" && entry !== null && !Array.isArray(entry)
-        ? (entry as RawEssence).id
-        : undefined;
-    if (typeof id === "string" && isItemId(id) && !(id in prefetched)) {
-      prefetched[id] = await findItemDocument(database, id, userId);
+  const stored = Array.isArray(rawDataItems) ? rawDataItems : [];
+  const itemIds: string[] = [];
+  for (const candidate of stored) {
+    if (candidate === null || typeof candidate !== "object") {
+      continue;
+    }
+    const itemId = (candidate as RawEssence).id;
+    if (typeof itemId !== "string" || !isItemId(itemId)) {
+      continue;
+    }
+    if (!(itemId in prefetched)) {
+      prefetched[itemId] = null;
+      itemIds.push(itemId);
+    }
+  }
+  // One query for the whole incoming items array; find-item semantics
+  // (the most recent version, owned by userId) applied per id.
+  const documents = await findMostRecentById(
+    database,
+    COLLECTIONS.items,
+    itemIds,
+  );
+  for (const itemId of itemIds) {
+    const document = documents.get(itemId);
+    if (document !== undefined && document[USER_ID_FIELD] === userId) {
+      prefetched[itemId] = withRenamedId(document) as RawEssence;
     }
   }
   return prefetched;
@@ -335,11 +549,6 @@ export const withRenamedId = (document: RawEssence | null): RawEssence | null =>
   return { ...rest, versionId: _id };
 };
 
-// find-all-most-recent-lists: match among the most recent versions for
-// the user; find-essences receives NO :sort-essences stage → natural
-// MongoDB order. Each hit is enriched exactly like find-svernik minus
-// the top-level user scoping (dereference with the list's OWN user-id,
-// like get-list-with-dereferenced-items).
 export const findAllMostRecentLists = async (
   database: Db,
   userId: string,
@@ -351,21 +560,19 @@ export const findAllMostRecentLists = async (
       [USER_ID_FIELD]: userId,
     } as never)
     .toArray();
-  const lists: RawEssence[] = [];
-  for (const document of documents) {
-    lists.push(
-      await enrichList(
-        database,
-        withRenamedId(document) as RawEssence,
-        String(document[USER_ID_FIELD]),
-        // find-all-most-recent-lists dereferences nested items with
-        // aggregate-set-empty-exported-to: items carry exportedTo:
-        // null (only the top-level exportedTo lookup stays real).
-        false,
-      ),
-    );
-  }
-  return lists;
+  // The whole page is dereferenced per nesting level (one query per
+  // kind), not per reference. find-all-most-recent-lists dereferences
+  // nested items with aggregate-set-empty-exported-to: items carry
+  // exportedTo: null (only the top-level exportedTo lookup stays real).
+  return enrichListEntries(
+    database,
+    documents.map((document) => ({
+      document: withRenamedId(document) as RawEssence,
+      ownerId: String(document[USER_ID_FIELD]),
+      depth: 0,
+    })),
+    false,
+  );
 };
 
 // count-most-recent-lists: countDocuments with the same filter.
