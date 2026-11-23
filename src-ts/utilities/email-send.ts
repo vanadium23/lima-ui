@@ -48,6 +48,11 @@ export interface EmailDependencies {
   smtpPort: number;
   smtpFrom: string;
   clientAddress: string;
+  // email_send.clj smtp-config: postal :user / :pass / :tls. No user →
+  // unauthenticated submission (the local MailSlurper).
+  smtpUser?: string;
+  smtpPass?: string;
+  smtpTls: boolean;
 }
 
 interface SendOptions {
@@ -61,13 +66,26 @@ const sendEmail = async (
   dependencies: EmailDependencies,
   options: SendOptions,
 ): Promise<void> => {
+  // No SMTP_USER → unauthenticated plain submission: the local
+  // MailSlurper, same as the postal config the Clojure side uses in dev.
   const transport = nodemailer.createTransport({
     host: dependencies.smtpHost,
     port: dependencies.smtpPort,
-    secure: false,
-    // MailSlurper accepts unauthenticated local submissions, same as
-    // the postal config the Clojure side uses.
-    tls: { rejectUnauthorized: false },
+    // Implicit TLS on the SMTPS port only; 587 starts plain and is
+    // upgraded by STARTTLS below.
+    secure: dependencies.smtpPort === 465,
+    // postal :tls true → STARTTLS, a server without it is an error.
+    requireTLS: dependencies.smtpTls,
+    // Certificate verification stays on (NODE_EXTRA_CA_CERTS for a
+    // private CA) — postal verifies too.
+    ...(dependencies.smtpUser === undefined
+      ? {}
+      : {
+          auth: {
+            user: dependencies.smtpUser,
+            pass: dependencies.smtpPass ?? "",
+          },
+        }),
   });
   try {
     await transport.sendMail({

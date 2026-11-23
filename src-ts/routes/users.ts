@@ -110,7 +110,7 @@ export const registerUsersRoutes = (
     createUserOrRespondWithError(dependencies, request, reply));
   app.head(ROUTES.users, emptyDetails);
 
-  const preHandler = authPreHandler(dependencies);
+  const preHandler = authPreHandler;
   // exposeHeadRoute: false — the explicit HEAD registration below is
   // the empty-details handler from users.clj; Fastify's implicit HEAD
   // would collide with it.

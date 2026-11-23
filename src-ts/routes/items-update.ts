@@ -370,7 +370,7 @@ export const registerItemUpdateRoutes = (
   app: FastifyInstance,
   dependencies: ProtectedRouteDependencies,
 ): void => {
-  const preHandler = authPreHandler(dependencies);
+  const preHandler = authPreHandler;
   // No HEAD here: GET /items/:itemId (routes/items.ts) already serves
   // HEAD automatically; a second HEAD registration would throw.
   app.patch(

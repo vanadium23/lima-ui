@@ -6,6 +6,7 @@
 import type { FastifyReply, FastifyRequest } from "fastify";
 import type { Db } from "mongodb";
 import {
+  compareUnknownUserPassword,
   compareUserPassword,
   createSession,
   verifySession,
@@ -132,13 +133,18 @@ export const attemptLogin = async (
   if (errors.length > 0) {
     return { errors };
   }
+  const password = stringOf(rawData.password);
   const user = await findUserByEmail(
     dependencies.database,
     stringOf(rawData.email),
   );
+  // An unknown email costs the same bcrypt round as a wrong password
+  // (compareUnknownUserPassword), so the response time does not leak
+  // which emails are registered.
   const passwordMatches =
-    user !== null &&
-    (await compareUserPassword(stringOf(rawData.password), user));
+    user !== null
+      ? await compareUserPassword(password, user)
+      : await compareUnknownUserPassword(password);
   if (user === null || !passwordMatches) {
     return { errors: [{ ...USER_ERRORS.passwordWrong }] };
   }

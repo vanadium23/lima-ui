@@ -23,6 +23,12 @@ const rawConfigSchema = z.object({
   SMTP_FROM: z.string().default("test@localhost"),
   SMTP_USER: z.string().optional(),
   SMTP_PASS: z.string().optional(),
+  SMTP_TLS: z
+    .string()
+    .default("false")
+    .refine((value) => ["true", "false"].includes(value), {
+      message: "SMTP_TLS must be 'true' or 'false'",
+    }),
   // Public URL of this server; essence URL fields point here (the
   // Clojure code reads the same key from cprop env).
   SERVER_URL: z.string().url().default("http://localhost:3000"),
@@ -43,6 +49,9 @@ export interface Config {
   smtpHost: string;
   smtpPort: number;
   smtpFrom: string;
+  smtpUser?: string;
+  smtpPass?: string;
+  smtpTls: boolean;
 }
 
 export const mongoUriFrom = (raw: RawConfig): string =>
@@ -73,5 +82,8 @@ export const loadConfig = (
     smtpHost: raw.SMTP_HOST,
     smtpPort: raw.SMTP_PORT,
     smtpFrom: raw.SMTP_FROM,
+    smtpUser: raw.SMTP_USER || undefined,
+    smtpPass: raw.SMTP_PASS || undefined,
+    smtpTls: raw.SMTP_TLS === "true",
   };
 };

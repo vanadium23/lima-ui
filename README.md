@@ -46,7 +46,8 @@ npm install
 # 1. Инфраструктура (mongo :27017, mailslurper :2500/:8080/:8085)
 docker compose -f docker-compose.backend.yml up -d
 
-# 2. Терминал 1 — TS-бэкенд на :3000 (DEV=true сеет дев-аккаунты)
+# 2. Терминал 1 — TS-бекенд на :3000 (DEV=true сеет дев-аккаунты
+#    и монтирует дев-роуты /api/clear-*; без DEV их нет — как в prod-профиле донора)
 npm run dev:backend
 
 # 3. Терминал 2 — UI на :4321 (astro dev + astro check --watch)
@@ -55,7 +56,7 @@ npm run dev
 
 Открываем `http://localhost:4321`. Дев-логин: `user@example.com` / `correctPassword1` (полный список аккаунтов сеет бэкенд при старте). Запросы браузера на `/api/*` проксируются vite на бэкенд (`astro.config.mjs`), кроме `/api/session` — это UI-шлюз сессий (httpOnly cookie).
 
-Если `/api/lists` внезапно отвечает минутами — база обросла списками от e2e-прогонов; почистить:
+Если `/api/lists` внезапно отвечает минутами — база обросла списками от e2e-прогонов; почистить (роут существует только при `DEV=true`):
 
 ```bash
 curl -X POST http://localhost:3000/api/clear-lists-and-items

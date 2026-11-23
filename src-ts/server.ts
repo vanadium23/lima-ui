@@ -6,7 +6,7 @@ import Fastify from "fastify";
 import { pathToFileURL } from "node:url";
 import { loadConfig } from "./config.ts";
 import { connectDatabase } from "./db.ts";
-import { createListsIndexes } from "./db/indexes.ts";
+import { createItemsIndexes, createListsIndexes } from "./db/indexes.ts";
 import { createDevUsers } from "./domain/user.ts";
 import { attachUser } from "./auth/middleware.ts";
 import { ERRORS, ROUTES } from "./domain/constants.ts";
@@ -75,6 +75,10 @@ export const buildApp = (options: {
   sessionHmacSecret: string;
   serverUrl: string;
   email: EmailDependencies;
+  // DEV=true mounts the dev-only utility routes (the Clojure backend
+  // ships them in the dev profile only — env/prod has an empty
+  // utility-routes).
+  dev: boolean;
 }): FastifyInstance => {
   const app = Fastify({ logger: false, caseSensitive: true });
   // The Clojure stack treats any body as JSON (content-type is added
@@ -109,6 +113,9 @@ export const buildApp = (options: {
     smtpPort: options.email.smtpPort,
     smtpFrom: options.email.smtpFrom,
     clientAddress: options.email.clientAddress,
+    smtpUser: options.email.smtpUser,
+    smtpPass: options.email.smtpPass,
+    smtpTls: options.email.smtpTls,
   };
   registerAuthRoutes(app, {
     ...dependencies,
@@ -118,11 +125,17 @@ export const buildApp = (options: {
     ...dependencies,
     email: emailDependencies,
   });
-  registerProtectedRouteSkeletons(app, dependencies);
+  registerProtectedRouteSkeletons(app);
   registerItemRoutes(app, dependencies);
   registerItemUpdateRoutes(app, dependencies);
   registerSvernikRoutes(app, { ...dependencies, serverUrl: options.serverUrl });
-  registerUtilityRoutes(app, dependencies);
+  // The clear-* routes wipe collections without authentication. The
+  // Clojure backend mounts them through a profile-dependent namespace
+  // (dev: real routes, prod: utility-routes [] → 404), so a non-dev
+  // process must not expose them at all.
+  if (options.dev) {
+    registerUtilityRoutes(app, dependencies);
+  }
 
   // reitit's redirect-trailing-slash-handler runs above auth for
   // every URL, so the redirect happens in the earliest hook, before
@@ -164,11 +177,18 @@ export const buildApp = (options: {
     sendSortedJSON(reply, 404, errorsBody(ERRORS.resourceNotFound));
   });
 
-  app.setErrorHandler((error: NodeJS.ErrnoException & { statusCode?: number }, _request, reply) => {
+  app.setErrorHandler((error: NodeJS.ErrnoException & { statusCode?: number }, request, reply) => {
     if (error.statusCode === 400) {
       sendSortedJSON(reply, 400, errorsBody(ERRORS.invalidJSON));
       return;
     }
+    // middleware.clj logs the caught exception before answering the
+    // generic error; the response carries no detail, so this line is
+    // the only trace a 500 leaves.
+    process.stderr.write(
+      `Unhandled error on ${request.method} ${request.raw.url ?? "/"}: ` +
+        `${error.stack ?? String(error)}\n`,
+    );
     sendSortedJSON(reply, 500, errorsBody(ERRORS.generalSvernik));
   });
 
@@ -217,6 +237,7 @@ export const bootstrapBackend = async (): Promise<BackendHandle> => {
   // lists-full-text-index (sverniks_collection.clj): the {name: "text"}
   // index must exist before the first /search/lists $text query.
   await createListsIndexes(database.database);
+  await createItemsIndexes(database.database);
   // The server seeds the dev accounts only when DEV=true (the
   // standalone bin/dev-users.ts entry point creates them on demand).
   if (config.dev) {
@@ -227,11 +248,15 @@ export const bootstrapBackend = async (): Promise<BackendHandle> => {
     database,
     sessionHmacSecret: config.sessionHmacSecret,
     serverUrl: config.serverUrl,
+    dev: config.dev,
     email: {
       smtpHost: config.smtpHost,
       smtpPort: config.smtpPort,
       smtpFrom: config.smtpFrom,
       clientAddress: config.clientAddress,
+      smtpUser: config.smtpUser,
+      smtpPass: config.smtpPass,
+      smtpTls: config.smtpTls,
     },
   });
   await app.listen({ port: config.port, host: "0.0.0.0" });

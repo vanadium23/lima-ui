@@ -106,3 +106,17 @@ export const compareUserPassword = (
   user: UserDocument,
 ): Promise<boolean> =>
   bcrypt.compare(candidate, user[PASSWORD_FIELD]).catch(() => false);
+
+// bcrypt (cost 12, the login cost) of a random throwaway string: the
+// stand-in hash for the unknown-email branch of the login, so that it
+// burns the same bcrypt round as a wrong password.
+export const UNKNOWN_USER_PASSWORD_HASH =
+  "$2b$12$CW5Y4nxQP40.8Q0NNmaWm.wnDd.olaP.XGeSFvVMkEXUmRxREdDQK";
+
+// Same work and the same result (always false) as a wrong password:
+// the login response — body AND timing — does not reveal which emails
+// are registered.
+export const compareUnknownUserPassword = (
+  candidate: string,
+): Promise<boolean> =>
+  bcrypt.compare(candidate, UNKNOWN_USER_PASSWORD_HASH).catch(() => false);

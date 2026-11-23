@@ -465,7 +465,7 @@ export const registerSvernikRoutes = (
   app: FastifyInstance,
   dependencies: ProtectedRouteDependencies & { serverUrl: string },
 ): void => {
-  const preHandler = authPreHandler(dependencies);
+  const preHandler = authPreHandler;
   app.post(
     ROUTES.lists,
     { preHandler },

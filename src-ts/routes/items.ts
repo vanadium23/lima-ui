@@ -17,6 +17,7 @@ import {
   ERROR_ID_FIELD,
   ERROR_TEXT_FIELD,
   ID_FIELD,
+  NEWER_VERSION_ID_FIELD,
   ORIGINAL_LIST_FIELD,
   ORIGINAL_LIST_ID_FIELD,
 } from "../domain/fields.ts";
@@ -50,11 +51,13 @@ export const enrichItemForRead = async (
   );
   const enriched: RawEssence = { ...item, exportedTo };
   if (originalListId !== null) {
-    const owner = await database
-      .collection(COLLECTIONS.lists)
-      .findOne({ [ID_FIELD]: originalListId } as never, {
-        projection: { [ID_FIELD]: 1, name: 1 },
-      });
+    // aggregate-lookup-original-list: among the MOST RECENT versions
+    // only — the same list id is stored once per version, and the bare
+    // lookup answered with the oldest version's name after a rename.
+    const owner = await database.collection(COLLECTIONS.lists).findOne(
+      { [ID_FIELD]: originalListId, [NEWER_VERSION_ID_FIELD]: null } as never,
+      { projection: { [ID_FIELD]: 1, name: 1 } },
+    );
     if (owner !== null) {
       enriched[ORIGINAL_LIST_FIELD] = {
         id: owner.id,
@@ -90,7 +93,7 @@ export const registerItemRoutes = (
   app: FastifyInstance,
   dependencies: ProtectedRouteDependencies,
 ): void => {
-  const preHandler = authPreHandler(dependencies);
+  const preHandler = authPreHandler;
   app.get(
     ROUTES.item,
     { preHandler },

@@ -7,7 +7,7 @@ import type {
   FastifyReply,
   FastifyRequest,
 } from "fastify";
-import { attachUser, sendUnauthorized } from "../auth/middleware.ts";
+import { sendUnauthorized } from "../auth/middleware.ts";
 import { ROUTES } from "../domain/constants.ts";
 import type { Db } from "mongodb";
 
@@ -16,21 +16,19 @@ export interface ProtectedRouteDependencies {
   sessionHmacSecret: string;
 }
 
-// middleware/protected: auth resolves in preHandler (after body
-// parsing, so invalid JSON is a 400 before any auth decision);
-// no user → exact 401 body.
-export const authPreHandler =
-  (dependencies: ProtectedRouteDependencies) =>
-  async (request: FastifyRequest, reply: FastifyReply): Promise<void> => {
-    await attachUser(
-      dependencies.database,
-      dependencies.sessionHmacSecret,
-      request,
-    );
-    if (request.user === null) {
-      sendUnauthorized(reply);
-    }
-  };
+// middleware/protected: the session is resolved ONCE per request by the
+// application-level preHandler (buildApp — after body parsing, so
+// invalid JSON is a 400 before any auth decision); a protected route
+// only turns a missing user into the exact 401 body. Resolving it again
+// here doubled the session + user lookups of every protected request.
+export const authPreHandler = async (
+  request: FastifyRequest,
+  reply: FastifyReply,
+): Promise<void> => {
+  if (request.user === null) {
+    sendUnauthorized(reply);
+  }
+};
 
 const notImplemented = (
   _request: FastifyRequest,
@@ -41,16 +39,11 @@ const notImplemented = (
 
 export const registerProtectedRouteSkeletons = (
   app: FastifyInstance,
-  dependencies: ProtectedRouteDependencies,
 ): void => {
-  const preHandler = authPreHandler(dependencies);
-
-  // POST/HEAD /search/lists is a real route now (routes/sverniks.ts,
-  // ET-209); the rest stays here as the not-yet-implemented surface.
   app.route({
     method: ["HEAD"],
     url: ROUTES.items,
-    preHandler,
+    preHandler: authPreHandler,
     handler: notImplemented,
   });
   // GET/HEAD /items/:itemId is a real route (routes/items.ts, ET-220);
