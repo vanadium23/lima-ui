@@ -7,6 +7,10 @@ const portSchema = z.coerce.number().int().positive();
 
 const rawConfigSchema = z.object({
   PORT: portSchema.default(3000),
+  // The API is reached through the UI (vite dev proxy, server-app.ts),
+  // so the loopback is enough; 0.0.0.0 only for a standalone API
+  // container with a published port.
+  BACKEND_HOST: z.string().min(1).default("127.0.0.1"),
   MONGO_HOST: z.string().min(1),
   MONGO_PORT: portSchema,
   MONGO_USER: z.string().min(1),
@@ -41,6 +45,7 @@ export type RawConfig = z.infer<typeof rawConfigSchema>;
 
 export interface Config {
   port: number;
+  backendHost: string;
   mongoUri: string;
   sessionHmacSecret: string;
   dev: boolean;
@@ -74,6 +79,7 @@ export const loadConfig = (
   const raw = parsed.data;
   return {
     port: raw.PORT,
+    backendHost: raw.BACKEND_HOST,
     mongoUri: mongoUriFrom(raw),
     sessionHmacSecret: raw.SESSION_HMAC_SECRET,
     dev: raw.DEV === "true",

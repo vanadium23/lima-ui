@@ -79,8 +79,17 @@ export const buildApp = (options: {
   // ships them in the dev profile only — env/prod has an empty
   // utility-routes).
   dev: boolean;
+  // Behind the UI proxy (server-app.ts) request.ip — the ip stored with
+  // a session — comes from the X-Forwarded-For that proxy sets. A
+  // directly reachable backend must not trust the header: the client
+  // would choose its own ip.
+  trustProxy?: boolean;
 }): FastifyInstance => {
-  const app = Fastify({ logger: false, caseSensitive: true });
+  const app = Fastify({
+    logger: false,
+    caseSensitive: true,
+    trustProxy: options.trustProxy ?? false,
+  });
   // The Clojure stack treats any body as JSON (content-type is added
   // when missing, decode errors become 400); a single lenient parser
   // replicates that for every content type.
@@ -228,7 +237,9 @@ export interface BackendHandle {
   close: () => Promise<void>;
 }
 
-export const bootstrapBackend = async (): Promise<BackendHandle> => {
+export const bootstrapBackend = async (
+  options: { trustProxy?: boolean } = {},
+): Promise<BackendHandle> => {
   process.env.NODE_ENV ??= "development";
   const dotenv = await import("dotenv");
   dotenv.config();
@@ -249,6 +260,7 @@ export const bootstrapBackend = async (): Promise<BackendHandle> => {
     sessionHmacSecret: config.sessionHmacSecret,
     serverUrl: config.serverUrl,
     dev: config.dev,
+    trustProxy: options.trustProxy ?? false,
     email: {
       smtpHost: config.smtpHost,
       smtpPort: config.smtpPort,
@@ -259,8 +271,10 @@ export const bootstrapBackend = async (): Promise<BackendHandle> => {
       smtpTls: config.smtpTls,
     },
   });
-  await app.listen({ port: config.port, host: "0.0.0.0" });
-  process.stdout.write(`Lima TS backend listening on :${config.port}\n`);
+  await app.listen({ port: config.port, host: config.backendHost });
+  process.stdout.write(
+    `Lima TS backend listening on ${config.backendHost}:${config.port}\n`,
+  );
 
   return {
     app,

@@ -5,7 +5,7 @@
 // runs this file, so the container exposes a single port.
 //
 //   public :UI_PORT (4321) — everything:
-//     /api/<route in the API registry> → internal API fastify;
+//     /api/* (minus /api/session) → internal API fastify;
 //     everything else (/, /lists pages, /api/session, /_astro assets)
 //     → static files from dist/client or the Astro middleware handler.
 //
@@ -22,7 +22,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { pathToFileURL } from "node:url";
 
-import { ROUTE_METHODS, bootstrapBackend, routeMatches, type BackendHandle } from "./server.ts";
+import { bootstrapBackend, type BackendHandle } from "./server.ts";
 
 const DEFAULT_UI_PORT = 4321;
 
@@ -51,15 +51,20 @@ const MIME_TYPES: Readonly<Record<string, string>> = {
 const pathOnlyOf = (request: IncomingMessage): string =>
   (request.url ?? "/").split("?")[0] ?? "/";
 
-// Public /api surface: exactly the frozen route registry. /api/session
-// (the UI cookie gateway) and unknown /api paths fall through to Astro.
-const isApiRoute = (request: IncomingMessage): boolean => {
+// Public /api surface: ALL of /api is the API, like on :3000 and like
+// the vite dev proxy (astro.config.mjs) — the backend answers unknown
+// routes and methods with its JSON 404/405. Routing only the frozen
+// registry let e.g. DELETE /api/lists fall through to Astro, whose
+// origin check answered 403 text/plain and whose 404 is HTML. The one
+// exception is /api/session, the UI cookie gateway served by Astro.
+const isSessionGateway = (pathOnly: string): boolean =>
+  pathOnly === "/api/session" || pathOnly === "/api/session/";
+
+const isApiRequest = (request: IncomingMessage): boolean => {
   const pathOnly = pathOnlyOf(request);
-  return ROUTE_METHODS.some(
-    ([pattern, methods]) =>
-      pathOnly.startsWith("/api/") &&
-      methods.includes(request.method ?? "") &&
-      routeMatches(pattern, pathOnly),
+  return (
+    (pathOnly === "/api" || pathOnly.startsWith("/api/")) &&
+    !isSessionGateway(pathOnly)
   );
 };
 
@@ -71,6 +76,15 @@ const proxyToApi = (
   const headers = { ...request.headers };
   delete headers.host;
   delete headers.connection;
+  // The backend trusts X-Forwarded-For only behind this proxy
+  // (trustProxy in server-app mode), and the header is SET here from
+  // the socket — whatever the client sent is dropped — so the ip stored
+  // with a session is the real client's and cannot be chosen by it.
+  if (request.socket.remoteAddress !== undefined) {
+    headers["x-forwarded-for"] = request.socket.remoteAddress;
+  } else {
+    delete headers["x-forwarded-for"];
+  }
   const upstream = httpRequest(
     {
       host: "127.0.0.1",
@@ -126,7 +140,9 @@ export const startAppServer = async (): Promise<void> => {
         "ASTRO_ADAPTER_MODE=middleware npm run build",
     );
   }
-  const backend: BackendHandle = await bootstrapBackend();
+  // The API is reachable only through this process (the proxy sets the
+  // client ip itself), so it may trust X-Forwarded-For.
+  const backend: BackendHandle = await bootstrapBackend({ trustProxy: true });
   // The built UI endpoints read process.env.SERVER_API_URL at runtime
   // (vite turns import.meta.env.SERVER_API_URL into it in the SSR
   // bundle): point them at the API listener of this very process.
@@ -147,7 +163,7 @@ export const startAppServer = async (): Promise<void> => {
   const ui = createServer((request, response) => {
     void (async () => {
       try {
-        if (isApiRoute(request)) {
+        if (isApiRequest(request)) {
           proxyToApi(request, response, backend.config.port);
           return;
         }
