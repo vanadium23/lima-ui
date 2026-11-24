@@ -2,8 +2,8 @@
 // dev_users.clj (same emails/passwords, idempotent insert, email always
 // verified) and src/auth/users/create.clj (user document shape:
 // "user"-prefixed string id, bcrypt password hash, empty name).
-import bcrypt from "bcryptjs";
 import type { Db } from "mongodb";
+import { bcryptHash } from "../utilities/password-hash.ts";
 import {
   COLLECTIONS,
   CREATED_AT_FIELD,
@@ -75,7 +75,7 @@ const insertDevUser = async (
     [VERSION_ID_FIELD]: userId,
     [EMAIL_FIELD]: email,
     [EMAIL_VERIFIED_FIELD]: true,
-    [PASSWORD_FIELD]: await bcrypt.hash(password, 12),
+    [PASSWORD_FIELD]: await bcryptHash(password),
     [NAME_FIELD]: "",
     [CREATED_AT_FIELD]: nowISOString(),
   };

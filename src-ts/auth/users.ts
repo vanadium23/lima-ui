@@ -11,8 +11,8 @@
 //  - src/auth/errors/password_reset_errors_gatherer.clj
 // gather-field-errors discipline (svernik/errors/utilities.clj): the
 // FIRST firing predicate decides; at most ONE error per gatherer call.
-import bcrypt from "bcryptjs";
 import type { Db } from "mongodb";
+import { bcryptHash } from "../utilities/password-hash.ts";
 import {
   NAME_MAX_LENGTH,
   PASSWORD_MAX_LENGTH,
@@ -207,7 +207,7 @@ const findUser = async (
 // hash-password (auth.utilities.password-management): bcrypt with the
 // same work factor the dev-user seeding already uses (ADR-0001).
 export const hashPassword = (password: string): Promise<string> =>
-  bcrypt.hash(password, 12);
+  bcryptHash(password);
 
 // auth.users.create/create-user-from-valid-data: id = version-id =
 // generated "user-…" string, email-verified false, empty name.

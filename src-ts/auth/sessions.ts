@@ -3,9 +3,9 @@
 // shifted back by session age, _id = session id) and
 // src/auth/user_sessions/verify.clj (alive check against
 // session-max-age-days from static config).
-import bcrypt from "bcryptjs";
 import type { Db } from "mongodb";
 import { SESSION_MAX_AGE_DAYS } from "../domain/constants.ts";
+import { bcryptVerify } from "../utilities/password-hash.ts";
 import {
   COLLECTIONS,
   CREATED_AT_FIELD,
@@ -105,7 +105,7 @@ export const compareUserPassword = (
   candidate: string,
   user: UserDocument,
 ): Promise<boolean> =>
-  bcrypt.compare(candidate, user[PASSWORD_FIELD]).catch(() => false);
+  bcryptVerify(candidate, user[PASSWORD_FIELD]).catch(() => false);
 
 // bcrypt (cost 12, the login cost) of a random throwaway string: the
 // stand-in hash for the unknown-email branch of the login, so that it
@@ -119,4 +119,4 @@ export const UNKNOWN_USER_PASSWORD_HASH =
 export const compareUnknownUserPassword = (
   candidate: string,
 ): Promise<boolean> =>
-  bcrypt.compare(candidate, UNKNOWN_USER_PASSWORD_HASH).catch(() => false);
+  bcryptVerify(candidate, UNKNOWN_USER_PASSWORD_HASH).catch(() => false);
