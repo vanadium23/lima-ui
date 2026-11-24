@@ -10,7 +10,7 @@
 //  - runtime-only fields the stored documents lack: exported-to
 //    (lists referencing this essence), has-exported-items (list) and
 //    original-list {id, name} (item).
-import type { Db } from "mongodb";
+import type { AnyBulkWriteOperation, Db } from "mongodb";
 import {
   COLLECTIONS,
   CREATED_AT_FIELD,
@@ -160,6 +160,51 @@ const findMostRecentById = async (
     }
   }
   return found;
+};
+
+// get-list-with-dereferenced-items false, the lookup half, for the RAW
+// stored items array of ONE list: essence-id → the most recent version
+// of the referenced document (still raw: the version id sits in _id),
+// or null. A list id resolves whatever the user (find-list), an item id
+// only when the list's user owns it (find-item); anything else — a
+// foreign item, an unknown or malformed id — is null. The two kinds are
+// read in one query each instead of one round trip per reference.
+// Each caller projects the documents the way its donor does.
+export const storedReferenceLookup = async (
+  database: Db,
+  listDocument: RawEssence,
+): Promise<(essenceId: string) => RawEssence | null> => {
+  const storedItems = Array.isArray(listDocument[ITEMS_FIELD])
+    ? (listDocument[ITEMS_FIELD] as unknown[])
+    : [];
+  const ownerId = String(listDocument[USER_ID_FIELD]);
+  const listIds: string[] = [];
+  const itemIds: string[] = [];
+  for (const essenceId of storedItems) {
+    if (typeof essenceId === "string") {
+      if (isListId(essenceId)) {
+        listIds.push(essenceId);
+      } else if (isItemId(essenceId)) {
+        itemIds.push(essenceId);
+      }
+    }
+  }
+  const [lists, items] = await Promise.all([
+    findMostRecentById(database, COLLECTIONS.lists, listIds),
+    findMostRecentById(database, COLLECTIONS.items, itemIds),
+  ]);
+  return (essenceId: string): RawEssence | null => {
+    if (isListId(essenceId)) {
+      return lists.get(essenceId) ?? null;
+    }
+    if (isItemId(essenceId)) {
+      const item = items.get(essenceId);
+      return item !== undefined && item[USER_ID_FIELD] === ownerId
+        ? item
+        : null;
+    }
+    return null;
+  };
 };
 
 // The most recent lists referencing any of the essence ids: {id, name}
@@ -483,37 +528,56 @@ export const prefetchItems = async (
 // items collection; :updated items are persisted as new versions (the
 // previous version document gets newerVersionId set); the stored
 // list's items array holds BARE ID STRINGS.
+//
+// All the item writes of ONE list go in a single ordered bulk: the
+// previous-version marks first, then every new document in items
+// order. The driver sends one command per contiguous run of one
+// operation type, so a mark/insert pair per item would still cost a
+// round trip per operation (the donor's shape: one await per write);
+// grouped by type a list of N items costs two commands instead of
+// 2N.
+// Ordered keeps the stop-at-first-failure behaviour of the
+// sequential awaits and the items order inside each group; what
+// changes is only how far the list stands updated when a bulk fails
+// midway — with sequential pairs the items before the failing one
+// were complete, here a failing insert batch leaves every updated
+// item of the list marked.
 export const insertList = async (
   database: Db,
   svernik: RawEssence,
 ): Promise<void> => {
   const items = svernik.items;
   const storedItems: string[] = [];
+  const marks: AnyBulkWriteOperation<RawEssence>[] = [];
+  const insertions: AnyBulkWriteOperation<RawEssence>[] = [];
   if (Array.isArray(items)) {
     for (const item of items as RawEssence[]) {
       if (item.state === "new") {
-        await database
-          .collection(COLLECTIONS.items)
-          .insertOne(essenceToDocument(item));
+        insertions.push({ insertOne: { document: essenceToDocument(item) } });
       } else if (item.state === "updated") {
-        await database
-          .collection(COLLECTIONS.items)
-          .updateOne(
+        marks.push({
+          updateOne: {
             // create-mongo-unique-essence-filter: id + newest version —
             // without newerVersionId:null this matches ALL versions and
             // corrupts the version chain on 3+ chained updates.
-            {
+            filter: {
               [ID_FIELD]: item.id,
               [NEWER_VERSION_ID_FIELD]: null,
             } as never,
-            { $set: { [NEWER_VERSION_ID_FIELD]: item.versionId } } as never,
-          );
-        await database
-          .collection(COLLECTIONS.items)
-          .insertOne(essenceToDocument(item));
+            update: {
+              $set: { [NEWER_VERSION_ID_FIELD]: item.versionId },
+            } as never,
+          },
+        });
+        insertions.push({ insertOne: { document: essenceToDocument(item) } });
       }
       storedItems.push(String(item.id));
     }
+  }
+  if (marks.length + insertions.length > 0) {
+    await database
+      .collection(COLLECTIONS.items)
+      .bulkWrite([...marks, ...insertions], { ordered: true });
   }
   const document = essenceToDocument({ ...svernik, items: storedItems });
   await database.collection(COLLECTIONS.lists).insertOne(document);

@@ -41,11 +41,11 @@ import type { EssenceError } from "../errors/svernik-errors.ts";
 import {
   deleteAllVersions,
   essenceToDocument,
-  findItemDocument,
-  findListDocument,
   findSvernik,
   insertList,
   markUpdated,
+  storedReferenceLookup,
+  withRenamedId,
 } from "../db/lists.ts";
 
 // deletion-method-allowed-values (svernik/domain/deletion_result.clj).
@@ -179,7 +179,8 @@ const resolveItems = async (
   listDocument: RawEssence,
 ): Promise<RawEssence[]> => {
   const storedItems = asArray(listDocument[ITEMS_FIELD]);
-  const ownerId = String(listDocument[USER_ID_FIELD]);
+  // One query per reference KIND (lists, items), not per reference.
+  const lookup = await storedReferenceLookup(database, listDocument);
   const resolved: RawEssence[] = [];
   for (const essenceId of storedItems) {
     if (typeof essenceId !== "string") {
@@ -189,16 +190,9 @@ const resolveItems = async (
       }
       continue;
     }
-    if (isListId(essenceId)) {
-      const nested = await findListDocument(database, essenceId);
-      if (nested !== null) {
-        resolved.push(nested);
-      }
-    } else if (isItemId(essenceId)) {
-      const item = await findItemDocument(database, essenceId, ownerId);
-      if (item !== null) {
-        resolved.push(item);
-      }
+    const document = lookup(essenceId);
+    if (document !== null) {
+      resolved.push(withRenamedId(document) as RawEssence);
     }
   }
   return resolved;

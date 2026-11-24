@@ -43,10 +43,10 @@ import type {
   EssenceErrorTemplate,
 } from "../errors/svernik-errors.ts";
 import {
-  findItemDocument,
-  findListDocument,
   insertList,
   markUpdated,
+  storedReferenceLookup,
+  withRenamedId,
 } from "../db/lists.ts";
 
 // deletion-method-allowed-values (svernik/domain/deletion_result.clj).
@@ -466,23 +466,22 @@ const resolveItems = async (
   const storedItems = Array.isArray(listDocument[ITEMS_FIELD])
     ? (listDocument[ITEMS_FIELD] as unknown[])
     : [];
-  const ownerId = String(listDocument[USER_ID_FIELD]);
+  // One query per reference KIND (lists, items), not per reference.
+  const lookup = await storedReferenceLookup(database, listDocument);
   const resolved: RawEssence[] = [];
   for (const essenceId of storedItems) {
     if (typeof essenceId !== "string") {
       continue;
     }
-    if (isListId(essenceId)) {
-      const nested = await findListDocument(database, essenceId);
-      if (nested !== null) {
-        resolved.push({ [ID_FIELD]: nested[ID_FIELD], name: nested.name });
-      }
-    } else if (isItemId(essenceId)) {
-      const item = await findItemDocument(database, essenceId, ownerId);
-      if (item !== null) {
-        resolved.push(item);
-      }
+    const document = lookup(essenceId);
+    if (document === null) {
+      continue;
     }
+    resolved.push(
+      isListId(essenceId)
+        ? { [ID_FIELD]: document[ID_FIELD], name: document.name }
+        : (withRenamedId(document) as RawEssence),
+    );
   }
   return resolved;
 };
