@@ -12,6 +12,7 @@ import {
   CREATED_AT_FIELD,
   ID_FIELD,
   ITEMS_FIELD,
+  NAME_FIELD,
   NEWER_VERSION_ID_FIELD,
   ORIGINAL_LIST_ID_FIELD,
   USER_ID_FIELD,
@@ -43,6 +44,18 @@ export const createListsIndexes = async (database: Db): Promise<void> => {
   // Lists referencing an essence (exportedTo, the importing-list
   // cascades): the stored items are bare id strings.
   await lists.createIndex({ [ITEMS_FIELD]: 1, [NEWER_VERSION_ID_FIELD]: 1 });
+  // Search (POST /search/lists): the $or is planned branch by branch,
+  // and the name-regex branch with only the name index examined the
+  // name of EVERY list of EVERY user (case-insensitive regex bounds
+  // span the whole index). Owner + current-version + name in one index
+  // lets the planner scope that branch to the user's own current lists
+  // and apply the regex on the index keys, so only the matches are
+  // fetched. The query stays byte-identical to the donor's.
+  await lists.createIndex({
+    [USER_ID_FIELD]: 1,
+    [NEWER_VERSION_ID_FIELD]: 1,
+    [NAME_FIELD]: 1,
+  });
 };
 
 export const createItemsIndexes = async (database: Db): Promise<void> => {
